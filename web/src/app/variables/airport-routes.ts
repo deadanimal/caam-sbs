@@ -1,0 +1,66 @@
+export const AirportRoutes: any = [
+  {
+    pointAlat: 2.755044,
+    pointAlong: 101.704175,
+    pointBlat: 5.92288,
+    pointBlong: 116.050987,
+    desc: "WMKK -> WBKK",
+  },
+  {
+    pointAlat: 2.755044,
+    pointAlong: 101.704175,
+    pointBlat: 1.486775,
+    pointBlong: 110.34152,
+    desc: "WMKK -> WBGG",
+  },
+  {
+    pointAlat: 2.755044,
+    pointAlong: 101.704175,
+    pointBlat: 6.342302,
+    pointBlong: 99.731061,
+    desc: "WMKK -> WMKL",
+  },
+  {
+    pointAlat: 2.755044,
+    pointAlong: 101.704175,
+    pointBlat: 5.295758,
+    pointBlong: 100.274992,
+    desc: "WMKK -> WMKP",
+  },
+
+  {
+    pointAlat: 5.92288,
+    pointAlong: 116.050987,
+    pointBlat: 1.486775,
+    pointBlong: 110.34152,
+    desc: "WBKK -> WBGG",
+  },
+  {
+    pointAlat: 5.92288,
+    pointAlong: 116.050987,
+    pointBlat: 6.342302,
+    pointBlong: 99.731061,
+    desc: "WBKK -> WMKL",
+  },
+  {
+    pointAlat: 5.92288,
+    pointAlong: 116.050987,
+    pointBlat: 5.295758,
+    pointBlong: 100.274992,
+    desc: "WBKK -> WMKP",
+  },
+  {
+    pointAlat: 1.486775,
+    pointAlong: 110.34152,
+    pointBlat: 6.342302,
+    pointBlong: 99.731061,
+    desc: "WBGG -> WMKL",
+  },
+  {
+    pointAlat: 1.486775,
+    pointAlong: 110.34152,
+    pointBlat: 5.295758,
+    pointBlong: 100.274992,
+    desc: "WBGG -> WMKP",
+  },
+];

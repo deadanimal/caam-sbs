@@ -1,0 +1,19 @@
+.client-logo-area {
+    text-align: center;
+    margin-bottom: 2rem;
+    .client-logo {
+        max-height: 9rem;
+    }
+}
+
+.bg-custom {
+    background-color: #3d52d5;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('../../../assets/img/background/caam-login-bg.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

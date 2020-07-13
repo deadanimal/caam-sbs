@@ -1,0 +1,695 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Finance - Invoice
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button
+            class="btn btn-dark"
+            (click)="
+              open(
+                classic1,
+                'modal_mini',
+                'sm',
+                'Add New Register Invoice',
+                'add'
+              )
+            "
+          >
+            Add New Register Invoice
+          </button>
+
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-header bg-dark">
+                    <div class="text-muted text-center mb-3">
+                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    </div>
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <form>
+                      <div class="form-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="formInput.ctg"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option selected>Please select CTG</option>
+                          <option value="OVF">OVF</option>
+                          <option value="OUB">OUB</option>
+                          <option value="IR">IR</option>
+                          <option value="INB">INB</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="datetime-local"
+                          class="form-control"
+                          placeholder="Enter date"
+                          [(ngModel)]="formInput.date"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter fpl no"
+                          [(ngModel)]="formInput.fplno"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter act type"
+                          [(ngModel)]="formInput.actype"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="formInput.dep"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option value="">Please select dep</option>
+                          <option value="WSSL">WSSL</option>
+                          <option value="LBSF">LBSF</option>
+                          <option value="VTSM">VTSM</option>
+                          <option value="WSSS">WSSS</option>
+                          <option value="VTSP">VTSP</option>
+                          <option value="WMKK">WMKK</option>
+                          <option value="ZGGG">ZGGG</option>
+                          <option value="NHHH">NHHH</option>
+                          <option value="ZSHC">ZSHC</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="formInput.dest"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option value="">Please select dest</option>
+                          <option value="OMDW">OMDW</option>
+                          <option value="WIHH">WIHH</option>
+                          <option value="VIDP">VIDP</option>
+                          <option value="VCBI">VCBI</option>
+                          <option value="VTSP">VTSP</option>
+                          <option value="VANP">VANP</option>
+                          <option value="M765">M765</option>
+                          <option value="WSSS">WSSS</option>
+                          <option value="WMSA">WMSA</option>
+                          <option value="WMKL">WMKL</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter route"
+                          [(ngModel)]="formInput.route"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter distance"
+                          [(ngModel)]="formInput.dist"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="formInput.rate"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option value="">Please select rate</option>
+                          <option value="-">-</option>
+                          <option value="0.1">0.1</option>
+                          <option value="0.2">0.2</option>
+                          <option value="0.3">0.3</option>
+                          <option value="0.4">0.4</option>
+                          <option value="0.5">0.5</option>
+                          <option value="0.6">0.6</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter amount"
+                          [(ngModel)]="formInput.amount"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-dark" *ngIf="process !== 'view'">
+                          Submit
+                        </button>
+                        <button
+                          class="btn btn-dark"
+                          *ngIf="process === 'view'"
+                          (click)="deleteRegisterInvoice()"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="c('Close click')"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">CTG</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.ctg"
+                >
+                  <option selected>Please select CTG</option>
+                  <option value="OVF">OVF</option>
+                  <option value="OUB">OUB</option>
+                  <option value="IR">IR</option>
+                  <option value="INB">INB</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">Start Date</label>
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-calendar-grid-58"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Please pick a date"
+                    class="form-control form-control-sm"
+                    bsDatepicker
+                    [(ngModel)]="searchInput.startdate"
+                    [bsConfig]="{
+                      isAnimated: true,
+                      containerClass: 'theme-default',
+                      dateInputFormat: 'DD/MM/YYYY'
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">FPL No</label>
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  [(ngModel)]="searchInput.fplno"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">End Date</label>
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-calendar-grid-58"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Please pick a date"
+                    class="form-control form-control-sm"
+                    bsDatepicker
+                    [(ngModel)]="searchInput.enddate"
+                    [bsConfig]="{
+                      isAnimated: true,
+                      containerClass: 'theme-default',
+                      dateInputFormat: 'DD/MM/YYYY'
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">DEP</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.dep"
+                >
+                  <option value="">Please select dep</option>
+                  <option value="WSSL">WSSL</option>
+                  <option value="LBSF">LBSF</option>
+                  <option value="VTSM">VTSM</option>
+                  <option value="WSSS">WSSS</option>
+                  <option value="VTSP">VTSP</option>
+                  <option value="WMKK">WMKK</option>
+                  <option value="ZGGG">ZGGG</option>
+                  <option value="NHHH">NHHH</option>
+                  <option value="ZSHC">ZSHC</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">DEST</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.dest"
+                >
+                  <option value="">Please select dest</option>
+                  <option value="OMDW">OMDW</option>
+                  <option value="WIHH">WIHH</option>
+                  <option value="VIDP">VIDP</option>
+                  <option value="VCBI">VCBI</option>
+                  <option value="VTSP">VTSP</option>
+                  <option value="VANP">VANP</option>
+                  <option value="M765">M765</option>
+                  <option value="WSSS">WSSS</option>
+                  <option value="WMSA">WMSA</option>
+                  <option value="WMKL">WMKL</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-dark btn-sm"
+              (click)="searchTable()"
+            >
+              Filter
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm"
+              (click)="resetTable()"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header text-muted text-uppercase">
+                  Number of patients according to triage ({{ todaydate }})
+                </div>
+                <div class="card-body">
+                  <div id="chartdiv" style="width: 100%; height: 400px"></div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Register Invoice List</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Ln"></ngx-datatable-column>
+            <ngx-datatable-column name="Ctg"></ngx-datatable-column>
+            <ngx-datatable-column name="Date"></ngx-datatable-column>
+            <ngx-datatable-column name="Fplno"></ngx-datatable-column>
+            <ngx-datatable-column name="Actype"></ngx-datatable-column>
+            <ngx-datatable-column name="Dep"></ngx-datatable-column>
+            <ngx-datatable-column name="Dest"></ngx-datatable-column>
+            <ngx-datatable-column name="Route"></ngx-datatable-column>
+            <ngx-datatable-column name="Dist"></ngx-datatable-column>
+            <ngx-datatable-column name="Rate"></ngx-datatable-column>
+            <ngx-datatable-column name="Amount"></ngx-datatable-column>
+            <ngx-datatable-column name="Debit"> </ngx-datatable-column>
+            <ngx-datatable-column name="Credit"> </ngx-datatable-column>
+            <ngx-datatable-column name="Totalamount"> </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="openRegisterInvoice(row, invoice)"
+                >
+                  <i class="fas fa-file-invoice"></i>
+                </button>
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editRegisterInvoice(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+
+                <!-- <button
+                      class="btn btn-danger btn-sm"
+                      (click)="deleteRegisterInvoice(value)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button> -->
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #invoice let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card mb-0">
+        <div class="card-header">
+          <h4 class="m-0">Generated Invoice</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6 text-left">
+              <ngx-qrcode
+                [qrc-value]="value"
+                qrc-class="aclass"
+                qrc-errorCorrectionLevel="L"
+              >
+              </ngx-qrcode>
+            </div>
+            <div class="col-6 text-right">
+              <img
+                src="assets/img/logo/caam-logo.png"
+                class="invoice-logo"
+                alt="..."
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <p class="mb-0">INVOICE #41341</p>
+              <p class="font-weight-bold mt-0">PIPELINE NETWORK SDN. BHD.</p>
+            </div>
+            <div class="col-auto"></div>
+            <div class="col-lg-5">
+              <div class="text-right">
+                <p>
+                  Aras 1-4, Blok Podium, 27, Persiaran Perdana, 62618 Putrajaya
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr class="mt-2" />
+          <div class="table responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Cost</th>
+                  <th scope="col" class="text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr>
+                  <th scope="row">Item 1</th>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>RM 100.00</td>
+                  <td class="text-right">RM200.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+              <table class="table align-items-center table-flush">
+                <tbody class="list">
+                  <tr>
+                    <th scope="row">Sub total</th>
+                    <td class="text-right">RM 200</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">0% tax</th>
+                    <td class="text-right">RM 0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Grand total</th>
+                    <td class="text-right font-weight-bold">RM 200</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <hr class="mt-2" />
+          <div class="text-center">
+            <button
+              class="btn btn-dark btn-sm"
+              (click)="open(pdfinvoice, '', 'lg', '', 'invoice')"
+            >
+              View
+            </button>
+            <button
+              class="btn btn-dark btn-sm"
+              (click)="open(payment, 'modal_mini', 'sm', 'Pay Now', 'payment')"
+            >
+              Pay Now
+            </button>
+            <button class="btn btn-secondary btn-sm" (click)="c('Close modal')">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #pdfinvoice let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card mb-0">
+        <!-- <div class="card-header">
+          <h4 class="m-0">Generated Invoice</h4>
+        </div> -->
+        <div class="card-body">
+          <img
+            src="../../../../../assets/img/invoice/invoice-1.jpg"
+            style="position: relative; width: 100%;"
+          />
+          <ngx-qrcode
+            [qrc-value]="value"
+            qrc-class="aclass"
+            qrc-errorCorrectionLevel="L"
+            style="position: absolute; top: 10%; left: 45%;"
+          >
+          </ngx-qrcode>
+          <h2
+            class="font-weight-bold"
+            style="position: absolute; top: 20%; left: 45%;"
+          >
+            Scan to Pay
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #payment let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="card">
+        <div class="card-body">
+          <div class="row justify-content-between align-items-center">
+            <div class="col">
+              <img
+                alt="Image placeholder"
+                src="assets/img/icons/cards/mastercard.png"
+              />
+            </div>
+            <div class="col-auto">
+              <div class="d-flex align-items-center">
+                <small class="text-dark font-weight-bold mr-3">
+                  Make default
+                </small>
+                <div>
+                  <label class="custom-toggle custom-toggle-dark"
+                    ><input checked="" type="checkbox" /><span
+                      class="custom-toggle-slider rounded-circle"
+                      data-label-off="No"
+                      data-label-on="Yes"
+                    ></span
+                  ></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="form-secondary">
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-single-02"></i
+                    ></span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Name on card"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-credit-card"></i
+                    ></span>
+                  </div>
+                  <input
+                    class="form-control"
+                    placeholder="Card number"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="ni ni-calendar-grid-58"></i
+                        ></span>
+                      </div>
+                      <input
+                        class="form-control"
+                        placeholder="MM/YY"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="ni ni-lock-circle-open"></i
+                        ></span>
+                      </div>
+                      <input
+                        class="form-control"
+                        placeholder="CCV"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-dark" type="button" (click)="clickPayment()">
+                  Pay Now
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  (click)="c('Close modal')"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
