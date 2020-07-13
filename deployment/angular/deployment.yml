@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    name: caam-sbs-webapp
+  name: caam-sbs-webapp
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caam-sbs-webapp
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: caam-sbs-webapp
+    spec:
+      containers:
+      - image: syafiqpipe/caam-sbs-webapp:1.0.0
+        imagePullPolicy: Always   
+        name: caam-sbs-webapp
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

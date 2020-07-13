@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caam-sbs-webapp
+  labels:
+    service: caam-sbs-webapp
+  name: caam-sbs-webapp
+spec:
+  selector:
+    app: caam-sbs-webapp
+  ports:
+  - port: 80
+    targetPort: 80

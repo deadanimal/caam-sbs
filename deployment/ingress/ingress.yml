@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: caam-sbs-my-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "caam-sbs-my-prod"
+spec:
+  tls:
+  - hosts:
+    - caam-sbs.pipe.my
+    - caam-sbs-api.pipe.my
+
+    secretName: caam-sbs-my-prod
+
+  rules:
+  - host: caam-sbs-api.pipe.my
+    http:
+      paths:
+      - backend:
+          serviceName: caam-sbs-api
+          servicePort: 5000    
+  - host: caam-sbs.pipe.my
+    http:
+      paths:
+      - backend:
+          serviceName: caam-sbs-webapp
+          servicePort: 80    

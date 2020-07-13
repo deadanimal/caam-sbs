@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caam-sbs-api
+  labels:
+    service: caam-sbs-api
+spec:
+  selector:
+    app: caam-sbs-api
+  ports:
+  - port: 5000
+    targetPort: 5000

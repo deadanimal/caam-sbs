@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caam-sbs-api-celery-worker
+  labels:
+    deployment: caam-sbs-api-celery-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: caam-sbs-api-celery-worker
+  template:
+    metadata:
+      labels:
+        pod: caam-sbs-api-celery-worker
+    spec:
+      containers:
+        - name: caam-sbs-api-celery-worker
+          image: syafiqpipe/caam-sbs-api
+          # celery -A caam-sbsapi worker -l debug
+          command: ['celery', '-A', 'core', 'worker', '-l', 'info']
+          envFrom:
+            - secretRef:
+                name: caam-sbs-api-secret            

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caam-sbs-api-deployment
+  labels:
+    app: caam-sbs-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: caam-sbs-api
+  template:
+    metadata:
+      labels:
+        app: caam-sbs-api
+    spec:
+      containers:
+      - name: caam-sbs-api
+        image: syafiqpipe/caam-sbs-api:1.0.2 #boleh tambah version
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        envFrom:
+          - secretRef:
+              name: caam-sbs-api-secret
