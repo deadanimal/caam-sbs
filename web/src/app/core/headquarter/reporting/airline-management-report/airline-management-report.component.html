@@ -1,0 +1,480 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Airline Management Report
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >Admin able to view and export monthly and yearly report of
+              airline management.</small
+            >
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-primary">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape bg-primary text-white rounded-circle shadow"
+                  >
+                    <i class="fas fa-plane-departure"> </i>
+                  </div>
+                </div>
+                <div class="col">
+                  <h5
+                    class="card-title text-uppercase text-muted mb-0 text-left"
+                  >
+                    Active Airlines
+                  </h5>
+                  <span class="h2 font-weight-bold mb-0 text-left"> 2491 </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-info">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape bg-info text-white rounded-circle shadow"
+                  >
+                    <i class="fas fa-fighter-jet"> </i>
+                  </div>
+                </div>
+                <div class="col">
+                  <h5
+                    class="card-title text-uppercase text-muted mb-0 text-left"
+                  >
+                    Aircraft Counts
+                  </h5>
+                  <span class="h2 font-weight-bold mb-0 text-left"> 1982 </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-success">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape bg-success text-white rounded-circle shadow"
+                  >
+                    <i class="fas fa-file-invoice"> </i>
+                  </div>
+                </div>
+                <div class="col">
+                  <h5
+                    class="card-title text-uppercase text-muted mb-0 text-left"
+                  >
+                    Total Invoices
+                  </h5>
+
+                  <span class="h2 font-weight-bold mb-0 text-left"> 924 </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-warning">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape bg-warning text-white rounded-circle shadow"
+                  >
+                    <i class="fas fa-money-bill-wave"> </i>
+                  </div>
+                </div>
+                <div class="col">
+                  <h5
+                    class="card-title text-uppercase text-muted mb-0 text-left"
+                  >
+                    Target Revenue
+                  </h5>
+
+                  <span class="h2 font-weight-bold mb-0 text-left">
+                    RM912345.00</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">Operator</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.operator"
+                >
+                  <option selected value="">Please select operator</option>
+                  <option value="APMM">APMM</option>
+                  <option value="TUDM">TUDM</option>
+                  <option value="TAG SAN MARINO">TAG SAN MARINO</option>
+                  <option value="Air Adventure Flying Club"
+                    >Air Adventure Flying Club</option
+                  >
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">CTG</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.ctg"
+                >
+                  <option selected value="">Please select CTG</option>
+                  <option value="OVF">OVF</option>
+                  <option value="OUB">OUB</option>
+                  <option value="IR">IR</option>
+                  <option value="INB">INB</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">Date</label>
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-calendar-grid-58"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Please pick a date"
+                    class="form-control form-control-sm"
+                    bsDatepicker
+                    [(ngModel)]="searchInput.date"
+                    [bsConfig]="{
+                      isAnimated: true,
+                      containerClass: 'theme-default',
+                      dateInputFormat: 'DD/MM/YYYY'
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">FPL No</label>
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  placeholder="Search FPL No"
+                  [(ngModel)]="searchInput.fplno"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">AC Type</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.actype"
+                >
+                  <option value="">Please select ac type</option>
+                  <option value="GLEX">GLEX</option>
+                  <option value="GLF5">GLF5</option>
+                  <option value="GLF6">GLF6</option>
+                  <option value="E35L">E35L</option>
+                  <option value="E190">E190</option>
+                  <option value="IL76">IL76</option>
+                  <option value="2020">2020</option>
+                  <option value="GLF6">GLF6</option>
+                  <option value="CL60">CL60</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">DEP</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.dep"
+                >
+                  <option value="">Please select dep</option>
+                  <option value="WSSL">WSSL</option>
+                  <option value="LBSF">LBSF</option>
+                  <option value="VTSM">VTSM</option>
+                  <option value="WSSS">WSSS</option>
+                  <option value="VTSP">VTSP</option>
+                  <option value="WMKK">WMKK</option>
+                  <option value="ZGGG">ZGGG</option>
+                  <option value="NHHH">NHHH</option>
+                  <option value="ZSHC">ZSHC</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">DEST</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.dest"
+                >
+                  <option value="">Please select dest</option>
+                  <option value="OMDW">OMDW</option>
+                  <option value="WIHH">WIHH</option>
+                  <option value="VIDP">VIDP</option>
+                  <option value="VCBI">VCBI</option>
+                  <option value="VTSP">VTSP</option>
+                  <option value="VANP">VANP</option>
+                  <option value="M765">M765</option>
+                  <option value="WSSS">WSSS</option>
+                  <option value="WMSA">WMSA</option>
+                  <option value="WMKL">WMKL</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">Route</label>
+                <select
+                  class="form-control form-control-sm custom-select custom-select-sm"
+                  [(ngModel)]="searchInput.route"
+                >
+                  <option selected value="">Select route</option>
+                  <option>Route A</option>
+                  <option>Route B</option>
+                  <option>Route C</option>
+                  <option>Route D</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-dark btn-sm"
+            >
+              Filter
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col"></div>
+            <div class="col-auto text-right">
+              <div class="mr-1 dropdown" dropdown>
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                >
+                  Export
+                </button>
+                <div
+                  aria-labelledby="dropdownMenuButton"
+                  *dropdownMenu
+                  class="dropdown-menu"
+                >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as PDF</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Excel</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Report</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)">Print</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chartdiv" style="width: 100%; height: 500px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h4 class="m-0">Flight Information List</h4>
+            </div>
+            <div class="col-auto">
+              <div class="mr-1 dropdown" dropdown>
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                >
+                  Export
+                </button>
+                <div
+                  aria-labelledby="dropdownMenuButton"
+                  *dropdownMenu
+                  class="dropdown-menu"
+                >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as PDF</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Excel</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Report</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)">Print</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center flush-table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Operator</th>
+                <th scope="col">CTG</th>
+                <th scope="col">Date</th>
+                <th scope="col">FPL No.</th>
+                <th scope="col">AC Type</th>
+                <th scope="col">DEP</th>
+                <th scope="col">DEST</th>
+                <th scope="col">Route</th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <tr>
+                <th scope="row">Malaysia Airlines</th>
+                <td>OUB</td>
+                <td>5/26/2019</td>
+                <td>WDE438</td>
+                <td>IQS719</td>
+                <td>0792</td>
+                <td>EVW988</td>
+                <td>VYT483-JFX667-CON401</td>
+              </tr>
+              <tr>
+                <th scope="row">Malindo Air</th>
+                <td>INB</td>
+                <td>11/22/2019</td>
+                <td>AGE949</td>
+                <td>KMI526</td>
+                <td>9912</td>
+                <td>RCV641</td>
+                <td>MBE511-XGH484-GTY093</td>
+              </tr>
+              <tr>
+                <th scope="row">Firefly</th>
+                <td>IR</td>
+                <td>11/15/2019</td>
+                <td>OHJ134</td>
+                <td>XOV618</td>
+                <td>4831</td>
+                <td>SFJ555</td>
+                <td>GEK834-AFC328-AWH169</td>
+              </tr>
+              <tr>
+                <th scope="row">Malindo Air</th>
+                <td>INB</td>
+                <td>7/16/2019</td>
+                <td>UZR070</td>
+                <td>TZN719</td>
+                <td>8792</td>
+                <td>NVJ289</td>
+                <td>IFS681-ZVK425-VDG894</td>
+              </tr>
+              <tr>
+                <th scope="row">Malindo Air</th>
+                <td>OVF</td>
+                <td>3/18/2019</td>
+                <td>OEJ659</td>
+                <td>FLV014</td>
+                <td>6267</td>
+                <td>VAN847</td>
+                <td>HUP867-CIB986-JCH141</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fa fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fa fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

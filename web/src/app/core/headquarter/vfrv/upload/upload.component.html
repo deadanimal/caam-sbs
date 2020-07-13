@@ -1,0 +1,465 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Upload
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >User able to upload VFR and TFL data in this module. This system
+              will automatically check for error, calculate the invoice and
+              generate invoice.<br />
+              User will need to update the error data in order to generate
+              invoice.<br />
+              After cleaning the data, user will need to press submit button in
+              order to save into database.</small
+            >
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+
+        <!-- <div class=" col-lg-6 col-5 text-right">
+          <button
+            class="btn btn-dark"
+            (click)="open(classic1, 'modal_mini', 'sm', 'Add New Watch Tower')"
+          >
+            Add New Watch Tower
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="m-0">Upload VFR and TFL Data</h4>
+        </div>
+        <div class="card-body">
+          <div
+            class="dropzone dropzone-single"
+            data-toggle="dropzone"
+            data-dropzone-url="http://"
+          >
+            <div class="fallback">
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  id="dropzoneBasicUpload"
+                />
+                <label class="custom-file-label" for="dropzoneBasicUpload"
+                  >Choose file</label
+                >
+              </div>
+            </div>
+            <div class="dz-preview dz-preview-single">
+              <div class="dz-preview-cover">
+                <img
+                  class="dz-preview-img"
+                  src="..."
+                  alt="..."
+                  data-dz-thumbnail=""
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-sm btn-default mt-3"
+            (click)="swalDistributed()"
+          >
+            Upload
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Upload VFR and TFL Data</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Rtid"></ngx-datatable-column>
+            <ngx-datatable-column name="Callsign"></ngx-datatable-column>
+            <ngx-datatable-column name="Registration"></ngx-datatable-column>
+            <ngx-datatable-column name="Operator"></ngx-datatable-column>
+            <ngx-datatable-column name="Groundhandler"></ngx-datatable-column>
+            <ngx-datatable-column name="Toa"></ngx-datatable-column>
+            <ngx-datatable-column name="Dep"></ngx-datatable-column>
+            <ngx-datatable-column name="Arrovf">
+              <ng-template ngx-datatable-header-template>
+                <div class="ngxdtheader">Dest</div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Ataatd">
+              <ng-template ngx-datatable-header-template>
+                <div class="ngxdtheader">Active Time</div>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.ata }} / {{ row.atd }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Dateofflight">
+              <ng-template ngx-datatable-header-template>
+                <div class="ngxdtheader">DATE OF FLIGHT</div>
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Cl">
+              <ng-template ngx-datatable-header-template>
+                <div class="ngxdtheader">C+L</div>
+              </ng-template>
+            </ngx-datatable-column> -->
+            <!-- <ngx-datatable-column name="Maximum" [width]="200">
+              <ng-template ngx-datatable-header-template>
+                <div class="ngxdtheader">Maximum Takeoff Weight</div>
+              </ng-template>
+            </ngx-datatable-column> -->
+            <ngx-datatable-column name="Distance"></ngx-datatable-column>
+
+            <!-- <ngx-datatable-column name="Altmod"></ngx-datatable-column>
+            <ngx-datatable-column name="Model"></ngx-datatable-column>
+            <ngx-datatable-column name="From"></ngx-datatable-column>
+            <ngx-datatable-column name="Ata"></ngx-datatable-column>--
+            <ngx-datatable-column name="To"></ngx-datatable-column>
+            <ngx-datatable-column name="Atd"></ngx-datatable-column>--
+            <ngx-datatable-column name="Fr"></ngx-datatable-column>
+            <ngx-datatable-column name="Tof"></ngx-datatable-column>
+            <ngx-datatable-column name="Total"></ngx-datatable-column>
+            <ngx-datatable-column name="Remarks"></ngx-datatable-column> -->
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editUpload(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button *ngIf="row.no == 1" class="btn btn-warning btn-sm">
+                  <i class="fas fa-lightbulb"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+          <div class="text-center" *ngIf="temp.length > 0">
+            <button class="btn btn-dark" (click)="submit()">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #classic1 let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-dark">
+          <div class="text-muted text-center mb-3">
+            <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+          </div>
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+          <form>
+            <div class="row">
+              <div class="col-lg-6 col-xs-12">
+                <div class="form-group">
+                  <label class="form-control-label">Callsign</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter callsign"
+                    [(ngModel)]="formInput.callsign"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                  <small>* Duplicate Callsign</small>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Operator</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter operator"
+                    [(ngModel)]="formInput.operator"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                  <small>* Wrong Name</small>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">A/C Type (Model)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter A/C type (model)"
+                    [(ngModel)]="formInput.toa"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                  <small>* Wrong Type</small>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">ARR/OVF</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter arr/ovf"
+                    [(ngModel)]="formInput.arrovf"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">C+L</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter cl"
+                    [(ngModel)]="formInput.cl"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-xs-12">
+                <div class="form-group">
+                  <label class="form-control-label">Registration</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter registration"
+                    [(ngModel)]="formInput.registration"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Ground Handler</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter groundhandler"
+                    [(ngModel)]="formInput.groundhandler"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">DEP</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter dep"
+                    [(ngModel)]="formInput.dep"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Date of Flight</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter dateofflight"
+                    [(ngModel)]="formInput.dateofflight"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                  <small>* Wrong Date</small>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label"
+                    >Route List</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter route list"
+                    [(ngModel)]="formInput.routelist"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter altmod"
+                [(ngModel)]="formInput.altmod"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter model"
+                [(ngModel)]="formInput.model"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter from"
+                [(ngModel)]="formInput.from"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter ata"
+                [(ngModel)]="formInput.ata"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter to"
+                [(ngModel)]="formInput.to"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter atd"
+                [(ngModel)]="formInput.atd"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter fr"
+                [(ngModel)]="formInput.fr"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter tof"
+                [(ngModel)]="formInput.tof"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter total"
+                [(ngModel)]="formInput.total"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter remarks"
+                [(ngModel)]="formInput.remarks"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div> -->
+            <div class="text-center">
+              <button class="btn btn-dark" (click)="submit()">
+                Submit
+              </button>
+              <button
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="c('Close click')"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

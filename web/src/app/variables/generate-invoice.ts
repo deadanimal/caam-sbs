@@ -1,0 +1,42 @@
+export const GenerateInvoices = [
+  {
+    companyname: "AEROFLOT RUSSIAN AIRLINES",
+    totalflight: 51,
+    totaldistance: 169983,
+    totalvalue: 84991.5,
+    invoicenumber: "N/A",
+    status: "Error",
+  },
+  {
+    companyname: "Aeronautical Radio of Thailand Ltd.",
+    totalflight: 164,
+    totaldistance: 546612,
+    totalvalue: 273306,
+    invoicenumber: "N/A",
+    status: "Error",
+  },
+  {
+    companyname: "AIR ALSIE ASIA PACIFIC",
+    totalflight: 134,
+    totaldistance: 446622,
+    totalvalue: 223311,
+    invoicenumber: "#INV11332",
+    status: "Complete",
+  },
+  {
+    companyname: "AIRASIA SDN BHD",
+    totalflight: 194,
+    totaldistance: 646602,
+    totalvalue: 323301,
+    invoicenumber: "#INV11333",
+    status: "Complete",
+  },
+  {
+    companyname: "AIR CALEDONIE INTERNATIONAL",
+    totalflight: 49,
+    totaldistance: 163317,
+    totalvalue: 81658.5,
+    invoicenumber: "#INV11334",
+    status: "Complete",
+  },
+];

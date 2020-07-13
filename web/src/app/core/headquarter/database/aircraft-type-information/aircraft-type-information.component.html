@@ -1,0 +1,277 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Aircraft Type Information
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >User able to view and update the aircraft type
+              information.</small
+            >
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button class="btn btn-dark" (click)="createAircraftType(classic1)">
+            Add New Aircraft Type
+          </button>
+
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-header bg-dark">
+                    <div class="text-muted text-center mb-3">
+                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    </div>
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <form>
+                      <div class="form-group">
+                        <label class="form-control-label">Aircraft Model</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter aircraft model"
+                          [(ngModel)]="formInput.aircraftmodel"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label"
+                          >ACFT Type</label
+                        ><br />
+                        <div
+                          class="custom-control custom-radio custom-control-inline"
+                        >
+                          <input
+                            type="radio"
+                            id="radioFW"
+                            name="radioStatus"
+                            class="custom-control-input"
+                          />
+                          <label class="custom-control-label" for="radioFW"
+                            >Fixed Wing</label
+                          >
+                        </div>
+                        <div
+                          class="custom-control custom-radio custom-control-inline"
+                        >
+                          <input
+                            type="radio"
+                            id="radioH"
+                            name="radioStatus"
+                            class="custom-control-input"
+                          />
+                          <label class="custom-control-label" for="radioH"
+                            >Chopper</label
+                          >
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label">MTOW (kg)</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter MTOW"
+                          [(ngModel)]="formInput.weight"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label"
+                          >Weight Category</label
+                        >
+                        <select
+                          class="form-control"
+                          [(ngModel)]="formInput.weightcategory"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option value=""
+                            >Please select weight category</option
+                          >
+                          <option value="L">L</option>
+                          <option value="M">M</option>
+                          <option value="H">H</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label"
+                          >Variant Aircraft</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter variant aircraft"
+                          [(ngModel)]="formInput.variantaircraft"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label"
+                          >Rate (RM)</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter rate (RM)"
+                          [(ngModel)]="formInput.rate"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-dark" (click)="submit()">
+                          Submit
+                        </button>
+                        <button
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="c('Close click')"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Aircraft List</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Aircraftmodel">
+              <ng-template ngx-datatable-header-template>
+                <span>Aircraft Model</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>ACFT Type</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Weightcategory">
+              <ng-template ngx-datatable-header-template>
+                <span>Weight Category</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Weight">
+              <ng-template ngx-datatable-header-template>
+                <span>MTOW</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Variantaircraft">
+              <ng-template ngx-datatable-header-template>
+                <span>Variant Aircraft</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Rate (RM)</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template ngx-datatable-header-template>
+                <span>Actions</span>
+              </ng-template>
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editAircraftType(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

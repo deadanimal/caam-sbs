@@ -1,0 +1,542 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Airline Information
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >User able to search specific airline information, add new
+              companies, update airline information and receive notification for
+              error that occur in the database.</small
+            >
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button class="btn btn-dark" (click)="createCompanies(classic1)">
+            Add New Companies
+          </button>
+
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-header bg-dark">
+                    <div class="text-muted text-center mb-3">
+                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="row">
+                        <div class="col-lg-6 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Company Name</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter company name"
+                              [(ngModel)]="formInput.companyname"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">ICAO Code</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter ICode"
+                              [(ngModel)]="formInput.icode"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">PIC Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter PIC Name"
+                              [(ngModel)]="formInput.picname"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Email 1</label>
+                            <input
+                              type="email"
+                              class="form-control"
+                              placeholder="Enter Email 1"
+                              [(ngModel)]="formInput.email"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Email 3</label>
+                            <input
+                              type="email"
+                              class="form-control"
+                              placeholder="Enter Email 3"
+                              [(ngModel)]="formInput.email3"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Address</label>
+                            <textarea
+                              rows="3"
+                              class="form-control"
+                              placeholder="Enter address"
+                              [(ngModel)]="formInput.address"
+                              [ngModelOptions]="{ standalone: true }"
+                            ></textarea>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label">CID</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter CID"
+                              [(ngModel)]="formInput.cid"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">IATA Code</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter IATA"
+                              [(ngModel)]="formInput.iata"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Telephone Number</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter telephone number"
+                              [(ngModel)]="formInput.telno"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Email 2</label>
+                            <input
+                              type="email"
+                              class="form-control"
+                              placeholder="Enter Email 2"
+                              [(ngModel)]="formInput.email2"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Email 4</label>
+                            <input
+                              type="email"
+                              class="form-control"
+                              placeholder="Enter Email 4"
+                              [(ngModel)]="formInput.email4"
+                              [ngModelOptions]="{ standalone: true }"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Status</label
+                            ><br />
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="radioActive"
+                                name="radioStatus"
+                                class="custom-control-input"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="radioActive"
+                                >Active</label
+                              >
+                            </div>
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="radioInactive"
+                                name="radioStatus"
+                                class="custom-control-input"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="radioInactive"
+                                >Inactive</label
+                              >
+                            </div>
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="radioSuspended"
+                                name="radioStatus"
+                                class="custom-control-input"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="radioSuspended"
+                                >Suspended</label
+                              >
+                            </div>
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="radioBankrupt"
+                                name="radioStatus"
+                                class="custom-control-input"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="radioBankrupt"
+                                >Bankrupt</label
+                              >
+                            </div>
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="radioCeased"
+                                name="radioStatus"
+                                class="custom-control-input"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="radioCeased"
+                                >Ceased</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-dark" (click)="submit()">
+                          Submit
+                        </button>
+                        <button
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="c('Close click')"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <!-- <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header text-muted text-uppercase">
+              Number of patients according to triage ({{ todaydate }})
+            </div>
+            <div class="card-body">
+              <div id="chartdiv" style="width: 100%; height: 400px"></div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="mb-0">Companies List</h3>
+            </div>
+            <div class="col-auto">
+              <div class="mr-1 dropdown" dropdown>
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                >
+                  Export
+                </button>
+                <div
+                  aria-labelledby="dropdownMenuButton"
+                  *dropdownMenu
+                  class="dropdown-menu"
+                >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Download</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as PDF</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Excel</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Report</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)">Print</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            [rowClass]="getRowClass"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Companyname">
+              <ng-template ngx-datatable-header-template>
+                <span>Company Name</span>
+              </ng-template>
+              <!-- <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                {{ value }} <br /><button class="btn btn-sm btn-primary">
+                  View
+                </button>
+              </ng-template> -->
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Cid"></ngx-datatable-column>
+            <ngx-datatable-column name="Icode">
+              <ng-template ngx-datatable-header-template>
+                <span>ICAO Code</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Iata">
+              <ng-template ngx-datatable-header-template>
+                <span>IATA Code</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Pr">
+              <ng-template ngx-datatable-header-template>
+                <span>Status</span>
+              </ng-template>
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <span
+                  class="badge"
+                  [ngClass]="
+                    value == 'Active' ? 'badge-success' : 'badge-warning'
+                  "
+                  >{{ value }}</span
+                >
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Last Login</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Action" sortable="false" prop="id">
+              <ng-template ngx-datatable-header-template>
+                <span>Action</span>
+              </ng-template>
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editCompanies(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Companies detail -->
+  <!-- <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Companies List</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+          >
+            <ngx-datatable-column name="Cid"></ngx-datatable-column>
+            <ngx-datatable-column name="Icode"></ngx-datatable-column>
+            <ngx-datatable-column name="Iata"></ngx-datatable-column>
+            <ngx-datatable-column name="Companyname">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{ value }} <br/><button class="btn btn-sm btn-primary">View</button>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Picname"></ngx-datatable-column>
+            <ngx-datatable-column name="Email"></ngx-datatable-column>
+            <ngx-datatable-column name="Email2"></ngx-datatable-column>
+            <ngx-datatable-column name="Telno"></ngx-datatable-column>
+            <ngx-datatable-column name="Address"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editCompanies(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="deleteCompanies(value)"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

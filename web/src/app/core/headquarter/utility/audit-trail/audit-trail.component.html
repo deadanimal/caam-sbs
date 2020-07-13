@@ -1,0 +1,142 @@
+<div class="header pb-6">
+  <div class=" container-fluid">
+    <div class=" header-body">
+      <div class=" row align-items-center py-4">
+        <div class=" col-lg-6 col-7">
+          <h6 class=" h2 text-dark d-inline-block mb-0">
+            Utility - Audit Trail
+          </h6>
+
+          <nav
+            aria-label="breadcrumb"
+            class=" d-none d-md-inline-block ml-md-4"
+          >
+            <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class=" breadcrumb-item">
+                <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class=" container-fluid mt--6">
+  <!-- <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-header text-muted text-uppercase">
+                    Number of patients according to triage ({{ todaydate }})
+                  </div>
+                  <div class="card-body">
+                    <div id="chartdiv" style="width: 100%; height: 400px"></div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class=" mb-0">Audit Trail List</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter module"
+                  [(ngModel)]="searchInput.module"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter action"
+                  [(ngModel)]="searchInput.action"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter username"
+                  [(ngModel)]="searchInput.username"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-dark" (click)="searchTable()">
+              Search
+            </button>
+            <button class="btn btn-secondary" (click)="resetTable()">
+              Reset
+            </button>
+          </div>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <!-- <div class="col-sm-12 col-md-6">
+                          <div id="datatable_filter" class="dataTables_filter">
+                            <label>
+                              <input
+                                type="search"
+                                class="form-control form-control-sm"
+                                placeholder="Search records"
+                                aria-controls="datatable"
+                                (keyup)="filterTable($event)"
+                              />
+                            </label>
+                          </div>
+                        </div> -->
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+          >
+            <ngx-datatable-column name="Module"></ngx-datatable-column>
+            <ngx-datatable-column name="Action"></ngx-datatable-column>
+            <ngx-datatable-column name="Username"></ngx-datatable-column>
+            <ngx-datatable-column name="Date"></ngx-datatable-column>
+            <ngx-datatable-column name="Time"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
