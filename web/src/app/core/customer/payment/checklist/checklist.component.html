@@ -1,0 +1,387 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Checklist
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >User able to view payment checklist that have been done by
+              client.<br />Client that have not paid, the system will mark it as
+              'Pending' and the payment date will maintain N/A (not available).
+              The system will send notification to user if the client have not
+              made payment for more than 30 and 60 days.
+            </small>
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">Start date</label>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="ni ni-calendar-grid-58"></i
+                      ></span>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Select start date"
+                      class="form-control"
+                      bsDatepicker
+                      [bsConfig]="{
+                        isAnimated: true,
+                        containerClass: 'theme-default'
+                      }"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label">End date</label>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"
+                        ><i class="ni ni-calendar-grid-58"></i
+                      ></span>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Select end date"
+                      class="form-control"
+                      bsDatepicker
+                      [bsConfig]="{
+                        isAnimated: true,
+                        containerClass: 'theme-default'
+                      }"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-dark btn-sm"
+              (click)="searchTable()"
+            >
+              Filter
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm"
+              (click)="resetTable()"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="mb-0">Checklist</h3>
+            </div>
+            <div class="col-auto">
+              <div class="mr-1 dropdown" dropdown>
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                >
+                  Export
+                </button>
+                <div
+                  aria-labelledby="dropdownMenuButton"
+                  *dropdownMenu
+                  class="dropdown-menu"
+                >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as PDF</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Excel</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Report</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)">Print</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Companyname"></ngx-datatable-column>
+            <ngx-datatable-column name="Invoicenumber"></ngx-datatable-column>
+            <ngx-datatable-column name="Invoicedate"></ngx-datatable-column>
+            <ngx-datatable-column name="Paymentdate"></ngx-datatable-column>
+            <ngx-datatable-column name="Completepayment">
+              <ng-template ngx-datatable-header-template>
+                <div class="ngxdtheader">Payment Status</div>
+              </ng-template>
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <div *ngIf="row.paymentdate != 'N/A'">
+                  <span class="badge badge-success badge-lg">complete</span>
+                </div>
+                <div *ngIf="row.paymentdate == 'N/A'" [innerHTML]="paymentStatus(row.invoicedate)">
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editChecklist(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #classic1 let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-dark">
+          <div class="text-muted text-center mb-3">
+            <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+          </div>
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+          <form>
+            <div class="row">
+              <div class="col-lg-6 col-xs-12">
+                <div class="form-group">
+                  <label class="form-control-label">Company Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter company name"
+                    [(ngModel)]="formInput.companyname"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Invoice Amount</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Enter invoice amount"
+                    [(ngModel)]="formInput.totalamount"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Payment Status</label><br />
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      id="pending"
+                      name="status"
+                      class="custom-control-input"
+                    />
+                    <label class="custom-control-label" for="pending"
+                      >Pending</label
+                    >
+                  </div>
+                  <div
+                    class="custom-control custom-radio custom-control-inline"
+                  >
+                    <input
+                      type="radio"
+                      id="complete"
+                      name="status"
+                      class="custom-control-input"
+                    />
+                    <label class="custom-control-label" for="complete"
+                      >Complete</label
+                    >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Payment Amount</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Enter payment amount"
+                    [(ngModel)]="formInput.paymentamount"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-xs-12">
+                <div class="form-group">
+                  <label class="form-control-label">Invoice Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter invoice number"
+                    [(ngModel)]="formInput.invoicenumber"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Invoice Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter invoice date"
+                    [(ngModel)]="formInput.invoicedate"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label">Payment Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter payment date"
+                    [(ngModel)]="formInput.paymentdate"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label"
+                    >Upload Proof of Payment</label
+                  >
+                  <div class="custom-file">
+                    <input
+                      type="file"
+                      class="custom-file-input"
+                      id="customFileLang"
+                      lang="en"
+                    />
+                    <label class="custom-file-label" for="customFileLang"
+                      >Select file</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-dark">
+                Submit
+              </button>
+              <button
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="c('Close click')"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
