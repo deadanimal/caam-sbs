@@ -16,38 +16,54 @@ from users.models import (
     CustomUser
 )
 
-class Aircraft(models.Model):
+class Aircraft(models.Model): #
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    registration_num = models.CharField(max_length=100, default='NA')
-    model = models.CharField(max_length=100, default='NA')
-    manufacturer = models.CharField(max_length=100, default='NA')
-    airline = models.ForeignKey(Organisation, on_delete=models.CASCADE, related_name='aircraft_airline')
-    description = models.CharField(max_length=255, default='NA')
-    mtow = models.IntegerField(default=0)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
+    description = models.CharField(max_length=255, default='NA') #
+    registration_num = models.CharField(max_length=100, default='NA') #
+    model = models.CharField(max_length=100, default='NA') #
+    manufacturer = models.ForeignKey(
+        Organisation,
+        on_delete=models.CASCADE,
+        related_name='aircraft_airline',
+        limit_choices_to={
+            'organisation_type': 'MN'
+        }
+    ) #
 
     AIRCRAFT_TYPE = [
         ('H', 'Choppper'),
         ('FW', 'Fixed Wing'),
         ('NA', 'Not Available')
     ]
-    aircraft_type = models.CharField(max_length=2, choices=AIRCRAFT_TYPE, default='NA')
+    aircraft_type = models.CharField(max_length=2, choices=AIRCRAFT_TYPE, default='NA') #
     
-    AIRCRAFT_CATEGORY = [
+    WEIGHT_CATEGORY = [
         ('L', 'Light'),
         ('M', 'Medium'),
         ('H', 'Heavy'),
         ('NA', 'Not Available')
     ]
-    aircraft_category = models.CharField(max_length=2, choices=AIRCRAFT_CATEGORY, default='NA')
-    rate = models.IntegerField(default=0)
-    is_active = models.BooleanField(default=True)
+    weight_category = models.CharField(max_length=2, choices=WEIGHT_CATEGORY, default='NA') #
+    min_weight = models.IntegerField(blank=True, default=0) #
+    max_weight = models.IntegerField(blank=True, default=0) #
 
-    created_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
+    operator = models.ForeignKey(
+        Organisation,
+        on_delete=models.CASCADE,
+        related_name='aircraft_operator',
+        limit_choices_to={
+            'organisation_type': 'AL'
+        }
+    ) #
+
+    is_active = models.BooleanField(default=True) #
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-created_date']
+        ordering = ['-created_at']
 
 
     def __str__(self):

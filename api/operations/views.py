@@ -10,27 +10,51 @@ from rest_framework_extensions.mixins import NestedViewSetMixin
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from operations.models import (
+from .models import (
+    Charge,
     Callsign,
     Rate,
     Route,
     Upload
 )
 
-from operations.serializers import (
+from .serializers import (
+    ChargeSerializer,
     CallsignSerializer,
     RateSerializer,
     RouteSerializer,
     UploadSerializer
 )
 
+class ChargeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    queryset = Charge.objects.all()
+    serializer_class = ChargeSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filterset_fields = [
+        'aircraft',
+        'charge_rate',
+        'charge_min'
+    ]
+
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [AllowAny]
+        else:
+            permission_classes = [AllowAny]
+
+        return [permission() for permission in permission_classes]    
+
+    
+    def get_queryset(self):
+        queryset = Charge.objects.all()
+        return queryset 
+
 class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Callsign.objects.all()
     serializer_class = CallsignSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     filterset_fields = [
-        'organisation_id',
-        'created_date'
+        'created_at'
     ]
 
     def get_permissions(self):
@@ -55,7 +79,7 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         'lower_weight_limit',
         'upper_weight_limit',
         'rate',
-        'created_date'
+        'created_at'
     ]
 
     def get_permissions(self):
@@ -80,8 +104,7 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         'location_departure',
         'location_destination',
         'distance',
-        'category',
-        'created_date'
+        'created_at'
     ]
 
     def get_permissions(self):
@@ -105,7 +128,7 @@ class UploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     filterset_fields = [
         'data_type',
         'uploaded_by',
-        'created_date'
+        'created_at'
     ]
 
     def get_permissions(self):

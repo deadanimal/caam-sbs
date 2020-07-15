@@ -42,14 +42,10 @@ class CustomUserViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     serializer_class = CustomUserSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     filterset_fields = [
-        'age', 
-        'postcode', 
-        'city', 
-        'state', 
-        'country', 
-        'user_type', 
-        'gender_type',
-        'race_type',
+        'position',
+        'department',
+        'organisation',
+        'user_type',
         'is_active',
         'date_joined'
     ]

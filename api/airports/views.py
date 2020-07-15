@@ -10,11 +10,11 @@ from rest_framework_extensions.mixins import NestedViewSetMixin
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from airports.models import (
+from .models import (
     Airport
 )
 
-from airports.serializers import (
+from .serializers import (
     AirportSerializer
 )
 
@@ -28,7 +28,7 @@ class AirportViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         'airport_category', 
         'pic_name', 
         'is_active',
-        'created_date'
+        'created_at'
     ]
 
     def get_permissions(self):
