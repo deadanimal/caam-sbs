@@ -42,10 +42,15 @@ airports_router = router.register(
 
 # Operations app
 from operations.views import (
+    ChargeViewSet,
     CallsignViewSet,
     RateViewSet,
     RouteViewSet,
     UploadViewSet
+)
+
+charges_router = router.register (
+    'charges', ChargeViewSet
 )
 
 callsigns_router = router.register(
@@ -81,6 +86,31 @@ from users.views import (
 users_router = router.register(
     'users', CustomUserViewSet
 )
+
+# Payments
+from payments.views import (
+    InvoiceViewSet,
+    PaymentViewSet,
+    ReceiptViewSet,
+    ReminderViewSet
+)
+
+invoice_router = router.register(
+    'invoices', InvoiceViewSet
+)
+
+payments_router = router.register(
+    'payments', PaymentViewSet
+)
+
+receipts_router = router.register(
+    'receipts', ReceiptViewSet
+)
+
+reminders_router = router.register(
+    'reminders', ReminderViewSet
+)
+
 
 
 urlpatterns = [

@@ -23,13 +23,12 @@ class OrganisationViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     serializer_class = OrganisationSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     filterset_fields = [
-        'organisation_type', 
+        'organisation_type',
         'postcode', 
         'city', 
         'state', 
-        'country',
-        'is_active',
-        'created_date'
+        'country', 
+        'is_active'
     ]
 
     def get_permissions(self):

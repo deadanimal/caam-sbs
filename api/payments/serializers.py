@@ -9,48 +9,39 @@ from rest_framework import serializers
 from django.utils.timezone import now
 
 from .models import (
-    Charge,
-    Callsign,
-    Rate,
-    Route,
-    Upload
+    Invoice,
+    Payment,
+    Receipt,
+    Reminder
 )
 
-class ChargeSerializer(serializers.ModelSerializer):
+class InvoiceSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Charge
+        model = Invoice
         fields = '__all__'
         read_only_fields = ['id']
 
-class CallsignSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Callsign
-        fields = '__all__'
-        read_only_fields = ['id']
     
-
-class RateSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Rate
-        fields = '__all__'
-        read_only_fields = ['id']
-    
-
-class RouteSerializer(serializers.ModelSerializer):
+class PaymentSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Route
+        model = Payment
         fields = '__all__'
         read_only_fields = ['id']
-    
 
-class UploadSerializer(serializers.ModelSerializer):
+
+class ReceiptSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Upload
+        model = Receipt
         fields = '__all__'
         read_only_fields = ['id']
-    
+
+
+class ReminderSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Reminder
+        fields = '__all__'
+        read_only_fields = ['id']

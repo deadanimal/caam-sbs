@@ -10,11 +10,11 @@ from rest_framework_extensions.mixins import NestedViewSetMixin
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from aircrafts.models import (
+from .models import (
     Aircraft
 )
 
-from aircrafts.serializers import (
+from .serializers import (
     AircraftSerializer
 )
 
@@ -25,13 +25,13 @@ class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     filterset_fields = [
         'model', 
         'manufacturer', 
-        'airline', 
-        'mtow', 
         'aircraft_type',
-        'aircraft_category',
-        'rate',
+        'weight_category',
+        'min_weight',
+        'max_weight',
+        'operator',
         'is_active',
-        'created_date'
+        'created_at'
     ]
 
     def get_permissions(self):
