@@ -46,7 +46,7 @@ from operations.views import (
     CallsignViewSet,
     RateViewSet,
     RouteViewSet,
-    UploadViewSet
+    FileUploadViewSet
 )
 
 charges_router = router.register (
@@ -65,8 +65,8 @@ routes_router = router.register(
     'routes', RouteViewSet
 )
 
-uploads_router = router.register(
-    'uploads', UploadViewSet
+file_uploads_router = router.register(
+    'file-uploads', FileUploadViewSet
 )
 
 # Organisations app

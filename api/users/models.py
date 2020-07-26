@@ -15,25 +15,31 @@ from organisations.models import (
     Organisation
 )
 
-class CustomUser(AbstractUser): #
+class CustomUser(AbstractUser):
     
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
-    full_name = models.CharField(blank=True, max_length=255) #
-    mobile = models.CharField(blank=True, max_length=100) #
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    full_name = models.CharField(blank=True, max_length=255)
+    mobile = models.CharField(blank=True, max_length=100)
 
-    position = models.CharField(blank=True, max_length=100) #
-    department = models.CharField(blank=True, max_length=100) #
+    position = models.CharField(blank=True, max_length=100)
+    department = models.CharField(blank=True, max_length=100)
 
     USER_TYPE = [
         ('AD', 'Administrator'),
         ('CL', 'Client'),
         ('ST', 'Staff')
     ]
-    user_type = models.CharField(max_length=2, choices=USER_TYPE, default='CS') #
+    user_type = models.CharField(max_length=2, choices=USER_TYPE, default='CS')
 
-    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, related_name='user_organisation') #
+    organisation = models.ForeignKey(
+        Organisation, 
+        on_delete=models.SET_NULL,
+        related_name='user_organisation',
+        blank=True,
+        null=True
+    )
 
-    profile_picture = models.ImageField(null=True, upload_to=PathAndRename('images')) #
+    profile_picture = models.ImageField(null=True, upload_to=PathAndRename('images'))
 
     class Meta:
         ordering = ['-date_joined']

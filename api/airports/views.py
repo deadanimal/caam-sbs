@@ -41,7 +41,18 @@ class AirportViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     
     def get_queryset(self):
+        user = self.request.user
         queryset = Airport.objects.all()
+
+        # if user.user_type == 'CL':
+        #     ueryset = Airport.objects.all()
+        # elif user.user_type == 'ST':
+        #     queryset = Airport.objects.all()
+        # elif user.user_type == 'AD':
+        #     queryset = Airport.objects.all()              
+        # else:
+        #     queryset = Airport.objects.none()
+
 
         """
         if self.request.user.is_anonymous:

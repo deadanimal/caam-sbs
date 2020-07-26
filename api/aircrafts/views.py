@@ -15,7 +15,8 @@ from .models import (
 )
 
 from .serializers import (
-    AircraftSerializer
+    AircraftSerializer,
+    AircraftExtendedSerializer
 )
 
 class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -35,6 +36,7 @@ class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     ]
 
     def get_permissions(self):
+        # permission_classes = [AllowAny] # AllowAny IsAuthenticated
         if self.action == 'list':
             permission_classes = [AllowAny]
         else:
@@ -44,22 +46,29 @@ class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     
     def get_queryset(self):
+        user = self.request.user
         queryset = Aircraft.objects.all()
 
-        """
-        if self.request.user.is_anonymous:
-            queryset = Company.objects.none()
+        # if user.user_type == 'CL':
+        #     queryset = Aircraft.objects.filter(
+        #         operator = user.organisation
+        #     )
+        # elif user.user_type == 'ST':
+        #     queryset = Aircraft.objects.all()
+        # elif user.user_type == 'AD':
+        #     queryset = Aircraft.objects.all()              
+        # else:
+        #     queryset = Aircraft.objects.none()
 
-        else:
-            user = self.request.user
-            company_employee = CompanyEmployee.objects.filter(employee=user)
-            company = company_employee[0].company
-            
-            if company.company_type == 'AD':
-                queryset = Aircraft.objects.all()
-            else:
-                queryset = Aircraft.objects.filter(company=company.id)
-        """
-        return queryset    
+        return queryset 
+        
+
+    @action(methods=['GET'], detail=False)
+    def extended(self, request, *args, **kwargs):
+        
+        queryset = Aircraft.objects.all()
+        serializer_class = AircraftExtendedSerializer(queryset, many=True)
+        
+        return Response(serializer_class.data)
  
  

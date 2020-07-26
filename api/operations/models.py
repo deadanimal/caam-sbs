@@ -24,15 +24,14 @@ from users.models import (
     CustomUser
 )
 
-class Charge(models.Model):
+class Rate(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
-    name = models.CharField(max_length=100, default='NA') #
-    rate_id = models.CharField(max_length=100, default='NA') #
-    aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE, related_name='charge_aircraft') #
-    charge_rate = models.FloatField(default=0, blank=True) # Auto gen from calculation table
-    charge_min = models.FloatField(default=10, blank=True) # If < 10 akan masuk
- 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=100, default='NA')
+    lower_weight_limit = models.CharField(max_length=100, default='NA')
+    upper_weight_limit = models.CharField(max_length=100, default='NA')
+    rate = models.CharField(max_length=100, default='NA')
+
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
@@ -41,7 +40,34 @@ class Charge(models.Model):
 
 
     def __str__(self):
-        return self.rate_id
+        return self.name
+
+
+class Charge(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    aircraft = models.ForeignKey(
+        Aircraft,
+        on_delete=models.CASCADE,
+        related_name='charge_aircraft'
+    )
+    rate = models.ForeignKey(
+        Rate,
+        on_delete=models.CASCADE,
+        related_name='charge_rate'
+    )
+    charge_rate = models.FloatField(default=0)
+    charge_minimum = models.FloatField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+
+    def __str__(self):
+        return "{}".format(self.aircraft.name)
 
 
 class Callsign(models.Model):
@@ -67,25 +93,6 @@ class Callsign(models.Model):
 
     def __str__(self):
         return self.callsign
-
-
-class Rate(models.Model):
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100, default='NA')
-    lower_weight_limit = models.CharField(max_length=100, default='NA')
-    upper_weight_limit = models.CharField(max_length=100, default='NA')
-    rate = models.CharField(max_length=100, default='NA')
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ['-created_at']
-
-
-    def __str__(self):
-        return self.name
 
 
 class Route(models.Model):
@@ -126,7 +133,7 @@ class Route(models.Model):
         return self.name
 
 
-class Upload(models.Model):
+class FileUpload(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, default='NA')
@@ -137,10 +144,48 @@ class Upload(models.Model):
         ('NA', 'Not Available')
     ]
     data_type = models.CharField(max_length=3, choices=DATA_TYPE, default='NA')
-    document_url = models.FileField(null=True, blank=True, upload_to=PathAndRename('document'))
-    # model = models.CharField()
-    # operator = models.CharField()
-    uploaded_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='upload_by')
+    data_file_link = models.FileField(null=True, blank=True, upload_to=PathAndRename('data_upload'))
+    
+    route = models.ForeignKey(
+        Route,
+        on_delete=models.CASCADE,
+        related_name='file_upload_route'
+    )
+    operator = models.ForeignKey(
+        Organisation,
+        on_delete=models.CASCADE,
+        related_name='file_upload_operator',
+        limit_choices_to={
+            'organisation_type': 'AL'
+        }
+    )
+    aircraft = models.ForeignKey(
+        Aircraft,
+        on_delete=models.CASCADE,
+        related_name='file_upload_aircraft'
+    )
+    charge = models.ForeignKey(
+        Charge,
+        on_delete=models.CASCADE,
+        related_name='file_upload_charge'
+    )
+    uploaded_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='file_upload_uploaded_by',
+        limit_choices_to={
+            'user_type': 'ST'
+        }
+    )
+
+    FLIGHT_RULE = [
+        ('I', 'Instrument'),
+        ('V', 'Visual')
+    ]
+    flight_rule = models.CharField(max_length=1, choices=FLIGHT_RULE, default='I')
+    remarks = models.TextField(blank=True, null=True)
+    touchdown = models.IntegerField(default=0, blank=True)
+    approval_permit_num = models.CharField(max_length=100)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

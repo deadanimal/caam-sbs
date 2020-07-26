@@ -19,9 +19,13 @@ from .models import (
 
 from .serializers import (
     InvoiceSerializer,
+    InvoiceExtendedSerializer,
     PaymentSerializer,
+    PaymentExtendedSerializer,
     ReceiptSerializer,
-    ReminderSerializer
+    ReceiptExtendedSerializer,
+    ReminderSerializer,
+    ReminderExtendedSerializer
 )
 
 class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -63,6 +67,15 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         """
         return queryset    
 
+
+    @action(methods=['GET'], detail=False)
+    def extended(self, request, *args, **kwargs):
+        
+        queryset = Invoice.objects.all()
+        serializer_class = InvoiceExtendedSerializer(queryset, many=True)
+        
+        return Response(serializer_class.data) 
+ 
  
 class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Payment.objects.all()
@@ -104,7 +117,14 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         """
         return queryset    
  
- 
+    
+    @action(methods=['GET'], detail=False)
+    def extended(self, request, *args, **kwargs):
+        
+        queryset = Payment.objects.all()
+        serializer_class = PaymentExtendedSerializer(queryset, many=True)
+        
+        return Response(serializer_class.data) 
 
 class ReceiptViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Receipt.objects.all()
@@ -142,7 +162,15 @@ class ReceiptViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 queryset = Invoice.objects.filter(company=company.id)
         """
         return queryset    
- 
+    
+
+    @action(methods=['GET'], detail=False)
+    def extended(self, request, *args, **kwargs):
+        
+        queryset = Receipt.objects.all()
+        serializer_class = ReceiptExtendedSerializer(queryset, many=True)
+        
+        return Response(serializer_class.data) 
  
 
 class ReminderViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -183,5 +211,13 @@ class ReminderViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 queryset = Invoice.objects.filter(company=company.id)
         """
         return queryset    
- 
+    
+
+    @action(methods=['GET'], detail=False)
+    def extended(self, request, *args, **kwargs):
+        
+        queryset = Reminder.objects.all()
+        serializer_class = ReminderExtendedSerializer(queryset, many=True)
+        
+        return Response(serializer_class.data) 
  
