@@ -11,13 +11,13 @@
 }
 
 .bg-custom {
-    background-color: #3d52d5;
-    height: 100vh;
-    overflow: hidden;
+    // background-color: #3d52d5;
     background-image: url('../../../assets/img/background/caam-login-bg.png');
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    height: 100vh;
+    overflow: hidden;
 }
