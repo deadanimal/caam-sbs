@@ -8,6 +8,10 @@ from simple_history.models import HistoricalRecords
 
 from core.helpers import PathAndRename
 
+from aircrafts.models import (
+    Aircraft
+)
+
 from organisations.models import (
     Organisation
 )
@@ -17,17 +21,17 @@ from users.models import (
 )
 
 from operations.models import (
-    Upload
+    FileUpload
 )
-
 
 class Invoice(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     uploaded_data = models.ForeignKey(
-        Upload,
+        FileUpload,
         on_delete=models.CASCADE,
-        related_name='invoice_uploaded_data'
+        related_name='invoice_uploaded_data',
+        null=True
     )
     amount = models.FloatField(default=0, blank=True)
     debit_note = models.FloatField(default=0, blank=True)
@@ -47,7 +51,7 @@ class Invoice(models.Model):
 
 class Payment(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     invoice = models.ForeignKey(
         Invoice,
         on_delete=models.CASCADE,
@@ -78,16 +82,17 @@ class Payment(models.Model):
 
 class Receipt(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     payment = models.ForeignKey(
         Payment,
         on_delete=models.CASCADE,
         related_name='receipt_payment'
     )
     uploaded_data = models.ForeignKey(
-        Upload,
+        FileUpload,
         on_delete=models.CASCADE,
-        related_name='reminder_uploaded_data'
+        related_name='receipt_uploaded_data',
+        null=True
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -103,8 +108,8 @@ class Receipt(models.Model):
 
 class Reminder(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
-    description = models.CharField(max_length=255, default='NA', blank=True) #
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    description = models.CharField(max_length=255, default='NA', blank=True)
     operator = models.ForeignKey(
         Organisation,
         on_delete=models.CASCADE,
