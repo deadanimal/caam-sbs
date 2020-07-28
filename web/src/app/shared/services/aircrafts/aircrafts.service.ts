@@ -62,7 +62,7 @@ export class AircraftsService {
   }
 
   filter(field: string): Observable<AircraftsModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<AircraftsModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("AircraftsModel", res);

@@ -62,7 +62,7 @@ export class RoutesService {
   }
 
   filter(field: string): Observable<RoutesModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<RoutesModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("RoutesModel", res);

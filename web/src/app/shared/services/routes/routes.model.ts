@@ -9,6 +9,7 @@ export class RoutesModel {
   public total_distance: string;
   public flight_type: string;
   public category_type: string;
+  public site: string;
   public created_at: any;
   public modified_at: any;
 
@@ -23,6 +24,7 @@ export class RoutesModel {
     total_distance: string,
     flight_type: string,
     category_type: string,
+    site: string,
     created_at: any,
     modified_at: any
   ) {
@@ -36,6 +38,7 @@ export class RoutesModel {
     this.total_distance = total_distance;
     this.flight_type = flight_type;
     this.category_type = category_type;
+    this.site = site;
     this.created_at = created_at;
     this.modified_at = modified_at;
   }

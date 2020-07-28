@@ -62,7 +62,7 @@ export class AirportsService {
   }
 
   filter(field: string): Observable<AirportsModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<AirportsModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("AirportsModel", res);

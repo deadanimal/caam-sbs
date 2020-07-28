@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Form } from "@angular/forms";
 import { tap } from "rxjs/operators";
 import { Observable } from "rxjs";
@@ -10,7 +10,7 @@ import { UploadsModel } from "./uploads.model";
   providedIn: "root",
 })
 export class UploadsService {
-  url: string = environment.baseUrl + "v1/uploads/";
+  url: string = environment.baseUrl + "v1/file-uploads/";
 
   // Data
   public umodels: UploadsModel[] = [];
@@ -19,7 +19,11 @@ export class UploadsService {
   constructor(private http: HttpClient) {}
 
   post(body): Observable<UploadsModel> {
-    return this.http.post<any>(this.url, body).pipe(
+    let headers = new HttpHeaders({
+      "Content-Type": "multipart/form-data",
+    });
+    let options = { headers: headers };
+    return this.http.post<any>(this.url, body, options).pipe(
       tap((res) => {
         console.log("UploadsModel", res);
       })
@@ -62,7 +66,7 @@ export class UploadsService {
   }
 
   filter(field: string): Observable<UploadsModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<UploadsModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("UploadsModel", res);

@@ -62,7 +62,7 @@ export class RemindersService {
   }
 
   filter(field: string): Observable<RemindersModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<RemindersModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("RemindersModel", res);
