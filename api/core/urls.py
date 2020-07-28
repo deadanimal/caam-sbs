@@ -111,7 +111,14 @@ reminders_router = router.register(
     'reminders', ReminderViewSet
 )
 
+# Countries app
+from countries.views import (
+    CountryViewSet
+)
 
+countries_router = router.register(
+    'countries', CountryViewSet
+)
 
 urlpatterns = [
     url(r'v1/', include(router.urls)),
