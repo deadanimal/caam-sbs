@@ -62,7 +62,7 @@ export class InvoicesService {
   }
 
   filter(field: string): Observable<InvoicesModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<InvoicesModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("InvoicesModel", res);

@@ -4,7 +4,7 @@
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
           <h6 class="h2 text-dark d-inline-block mb-0">
-            Aircraft Type Information
+            Aircraft
           </h6>
 
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
@@ -18,8 +18,7 @@
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
             <small class="text-justify"
-              >User able to view and update the aircraft type
-              information.</small
+              >User able to view and update the aircraft information.</small
             >
           </ng-template>
           <button
@@ -36,8 +35,8 @@
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button class="btn btn-dark" (click)="createAircraftType(classic1)">
-            Add New Aircraft Type
+          <button class="btn btn-dark" (click)="create(classic1)">
+            Add New Aircraft
           </button>
 
           <ng-template #classic1 let-c="close" let-d="dismiss">
@@ -50,99 +49,164 @@
                     </div>
                   </div>
                   <div class="card-body px-lg-5 py-lg-5">
-                    <form>
-                      <div class="form-group">
-                        <label class="form-control-label">Aircraft Model</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter aircraft model"
-                          [(ngModel)]="formInput.aircraftmodel"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label"
-                          >ACFT Type</label
-                        ><br />
-                        <div
-                          class="custom-control custom-radio custom-control-inline"
-                        >
-                          <input
-                            type="radio"
-                            id="radioFW"
-                            name="radioStatus"
-                            class="custom-control-input"
-                          />
-                          <label class="custom-control-label" for="radioFW"
-                            >Fixed Wing</label
-                          >
+                    <form [formGroup]="aircraftFormGroup">
+                      <div class="row">
+                        <div class="col-lg-6 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Registration Number</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter registration number"
+                              formControlName="registration_num"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Aircraft Model</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter aircraft model"
+                              formControlName="model"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Weight Category</label
+                            >
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="weight_category"
+                            >
+                              <option value="">Please select</option>
+                              <option value="L">Light</option>
+                              <option value="M">Medium</option>
+                              <option value="H">Heavy</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Manufacturer</label
+                            >
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="manufacturer"
+                            >
+                              <option value="">Please select</option>
+                              <option
+                                [value]="manufacturer.id"
+                                *ngFor="let manufacturer of manufacturers"
+                                >{{ manufacturer.name }}</option
+                              >
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Operator</label>
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="operator"
+                            >
+                              <option value="">Please select</option>
+                              <option
+                                [value]="operator.id"
+                                *ngFor="let operator of operators"
+                                >{{ operator.name }}</option
+                              >
+                            </select>
+                          </div>
                         </div>
-                        <div
-                          class="custom-control custom-radio custom-control-inline"
-                        >
-                          <input
-                            type="radio"
-                            id="radioH"
-                            name="radioStatus"
-                            class="custom-control-input"
-                          />
-                          <label class="custom-control-label" for="radioH"
-                            >Chopper</label
-                          >
+
+                        <div class="col-lg-6 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Description</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter description"
+                              formControlName="description"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">ACFT Type</label
+                            ><br />
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="fixedwing"
+                                name="aircraft_type"
+                                formControlName="aircraft_type"
+                                class="custom-control-input"
+                              />
+                              <label
+                                class="custom-control-label"
+                                for="fixedwing"
+                                >Fixed Wing</label
+                              >
+                            </div>
+                            <div
+                              class="custom-control custom-radio custom-control-inline"
+                            >
+                              <input
+                                type="radio"
+                                id="chopper"
+                                name="aircraft_type"
+                                formControlName="aircraft_type"
+                                class="custom-control-input"
+                              />
+                              <label class="custom-control-label" for="chopper"
+                                >Chopper</label
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Minimum MTOW (kg)</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="Enter MTOW"
+                              formControlName="min_weight"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Maximum MTOW (kg)</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="Enter MTOW"
+                              formControlName="max_weight"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Status</label>
+                            <select
+                              class="form-control"
+                              formControlName="is_active"
+                            >
+                              <option value="" selected
+                                >Please select status</option
+                              >
+                              <option value="true">Active</option>
+                              <option value="false">Not Active</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="form-control-label">MTOW (kg)</label>
-                        <input
-                          type="number"
-                          class="form-control"
-                          placeholder="Enter MTOW"
-                          [(ngModel)]="formInput.weight"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label"
-                          >Weight Category</label
-                        >
-                        <select
-                          class="form-control"
-                          [(ngModel)]="formInput.weightcategory"
-                          [ngModelOptions]="{ standalone: true }"
-                        >
-                          <option value=""
-                            >Please select weight category</option
-                          >
-                          <option value="L">L</option>
-                          <option value="M">M</option>
-                          <option value="H">H</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label"
-                          >Variant Aircraft</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter variant aircraft"
-                          [(ngModel)]="formInput.variantaircraft"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label"
-                          >Rate (RM)</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter rate (RM)"
-                          [(ngModel)]="formInput.rate"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
+
                       <div class="text-center">
                         <button class="btn btn-dark" (click)="submit()">
                           Submit
@@ -172,7 +236,7 @@
     <div class="col">
       <div class="card">
         <div class="card-header">
-          <h3 class="mb-0">Aircraft List</h3>
+          <h3 class="mb-0">Aircraft</h3>
         </div>
         <div class="dataTables_wrapper py-4">
           <div class="row">
@@ -222,34 +286,44 @@
             (activate)="onActivate($event)"
             [scrollbarH]="true"
           >
-            <ngx-datatable-column name="Aircraftmodel">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Aircraft Model</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.model }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>ACFT Type</span>
               </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Weightcategory">
-              <ng-template ngx-datatable-header-template>
-                <span>Weight Category</span>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Weight">
-              <ng-template ngx-datatable-header-template>
-                <span>MTOW</span>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Variantaircraft">
-              <ng-template ngx-datatable-header-template>
-                <span>Variant Aircraft</span>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.aircraft_type }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Rate (RM)</span>
+                <span>Weight Category</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.weight_category }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Min Weight</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.min_weight }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Max Weight</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.max_weight }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
@@ -263,7 +337,7 @@
               >
                 <button
                   class="btn btn-dark btn-sm"
-                  (click)="editAircraftType(row, classic1)"
+                  (click)="edit(row, classic1)"
                 >
                   <i class="fas fa-edit"></i>
                 </button>

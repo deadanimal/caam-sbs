@@ -1,7 +1,15 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as RateLists from "src/app/variables/rate-lists";
 import swal from "sweetalert2";
+
+import { RatesService } from "src/app/shared/services/rates/rates.service";
 
 export enum SelectionType {
   single = "single",
@@ -21,18 +29,11 @@ export class RateListComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = RateLists.RateLists;
+  rows = []; //RateLists.RateLists;
   SelectionType = SelectionType;
 
-  // formInput
-  formInput = {
-    ln: "",
-    rateid: "",
-    lowerweightlimit: "",
-    upperweightlimit: "",
-    raterm: "",
-    minimumcharges: "",
-  };
+  // Forms
+  rateFormGroup: FormGroup;
 
   // searchInput
   searchInput = {
@@ -48,13 +49,41 @@ export class RateListComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private rateService: RatesService
+  ) {
+    this.getRates();
+
+    this.rateFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      name: new FormControl(""),
+      lower_weight_limit: new FormControl(""),
+      upper_weight_limit: new FormControl(""),
+      rate: new FormControl(""),
     });
+  }
+
+  getRates() {
+    this.rateService.get().subscribe(
+      (res) => {
+        if (res) {
+          this.rows = res;
+          this.temp = this.rows.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+        }
+      },
+      (err) => {
+        console.log("err", err);
+      }
+    );
   }
 
   entriesChange($event) {
@@ -65,7 +94,12 @@ export class RateListComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
+        if (
+          d[key]
+            .toString()
+            .toLowerCase()
+            .indexOf(val.toString().toLowerCase()) !== -1
+        ) {
           return true;
         }
       }
@@ -142,22 +176,18 @@ export class RateListComponent implements OnInit {
     }
   }
 
-  createRateList(content) {
-    this.formInput.ln = "";
-    this.formInput.rateid = "";
-    this.formInput.lowerweightlimit = "";
-    this.formInput.upperweightlimit = "";
-    this.formInput.raterm = "";
-
+  create(content) {
     this.open(content, "modal-mini", "sm", "Add New Rate");
   }
 
-  editRateList(row, content) {
-    this.formInput = row;
+  edit(row, content) {
+    this.rateFormGroup.patchValue({
+      ...row,
+    });
     this.open(content, "modal-mini", "sm", "Edit Rate");
   }
 
-  deleteRateList() {
+  delete() {
     swal
       .fire({
         title: "Are you sure?",
@@ -184,17 +214,57 @@ export class RateListComponent implements OnInit {
   }
 
   submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
-    });
+    if (this.processTitle == "Add New Rate") {
+      this.rateService.post(this.rateFormGroup.value).subscribe(
+        (res) => {
+          if (res) {
+            swal
+              .fire({
+                title: "Success",
+                text: "The submission has successfully created",
+                type: "success",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+              })
+              .then((result) => {
+                if (result.value) {
+                  this.modalService.dismissAll();
+                  this.getRates();
+                }
+              });
+          }
+        },
+        (err) => {
+          console.error("err", err);
+        }
+      );
+    } else if (this.processTitle == "Edit Rate") {
+      this.rateService
+        .update(this.rateFormGroup.value.id, this.rateFormGroup.value)
+        .subscribe(
+          (res) => {
+            if (res) {
+              swal
+                .fire({
+                  title: "Success",
+                  text: "The submission has successfully updated",
+                  type: "success",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-success",
+                })
+                .then((result) => {
+                  if (result.value) {
+                    this.modalService.dismissAll();
+                    this.getRates();
+                  }
+                });
+            }
+          },
+          (err) => {
+            console.error("err", err);
+          }
+        );
+    }
   }
 
   ngOnInit() {}

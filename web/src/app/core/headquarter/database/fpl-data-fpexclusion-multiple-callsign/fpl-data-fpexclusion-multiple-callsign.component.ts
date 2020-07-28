@@ -1,55 +1,102 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as MultipleCallsigns from "src/app/variables/multiple-callsigns";
 import swal from "sweetalert2";
+
+import { AircraftsService } from 'src/app/shared/services/aircrafts/aircrafts.service';
+import { CallsignsService } from "src/app/shared/services/callsigns/callsigns.service";
+import { OrganisationsService } from 'src/app/shared/services/organisations/organisations.service';
 
 export enum SelectionType {
   single = "single",
   multi = "multi",
   multiClick = "multiClick",
   cell = "cell",
-  checkbox = "checkbox"
+  checkbox = "checkbox",
 }
 
 @Component({
   selector: "app-fpl-data-fpexclusion-multiple-callsign",
   templateUrl: "./fpl-data-fpexclusion-multiple-callsign.component.html",
-  styleUrls: ["./fpl-data-fpexclusion-multiple-callsign.component.scss"]
+  styleUrls: ["./fpl-data-fpexclusion-multiple-callsign.component.scss"],
 })
 export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = MultipleCallsigns.MultipleCallsigns;
+  rows = []; //MultipleCallsigns.MultipleCallsigns;
   SelectionType = SelectionType;
 
-  // formInput
-
-  formInput = {
-    cid: "",
-    companyname: "",
-    callsign: ""
-  };
+  // Forms
+  callsignFormGroup: FormGroup;
 
   // searchInput
   searchInput = {
     cid: "",
     companyname: "",
-    callsign: ""
+    callsign: "",
   };
+
+  // Dropdowns
+  aircrafts = [];
+  airlines = [];
 
   // Modal
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private aircraftService: AircraftsService,
+    private callsignService: CallsignsService,
+    private organisationService: OrganisationsService
+  ) {
+    this.getCallsign();
+
+    this.callsignFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      callsign: new FormControl(""),
+      cid: new FormControl(""),
+      aircraft: new FormControl(""),
     });
+
+    this.aircraftService.get().subscribe(
+      (res) => { this.aircrafts = res; console.log(this.aircrafts) },
+      (err) => { console.error("err", err); }
+    );
+
+    this.organisationService.filter("organisation_type=AL").subscribe(
+      (res) => { this.airlines = res; console.log(this.airlines) },
+      (err) => { console.error("err", err); }
+    );
+  }
+
+  getCallsign() {
+    this.callsignService.get().subscribe(
+      (res) => {
+        console.log("res", res);
+        this.rows = res;
+        this.temp = this.rows.map((prop, key) => {
+          return {
+            ...prop,
+            // id: key,
+            no: key,
+          };
+        });
+      },
+      (err) => {
+        console.error("err", err);
+      }
+    );
   }
 
   entriesChange($event) {
@@ -58,9 +105,14 @@ export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
 
   filterTable($event) {
     let val = $event.target.value;
-    this.temp = this.rows.filter(function(d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
+        if (
+          d[key]
+            .toString()
+            .toLowerCase()
+            .indexOf(val.toString().toLowerCase()) !== -1
+        ) {
           return true;
         }
       }
@@ -70,7 +122,7 @@ export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
 
   searchTable() {
     let object = this.searchInput;
-    this.temp = this.rows.filter(function(d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in object) {
         if (object[key]) {
           if (
@@ -111,13 +163,13 @@ export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
       .open(content, {
         windowClass: "modal-mini",
         centered: true,
-        backdrop: 'static'
+        backdrop: "static",
       })
       .result.then(
-        result => {
+        (result) => {
           this.closeResult = "Closed with: $result";
         },
-        reason => {
+        (reason) => {
           this.closeResult = "Dismissed $this.getDismissReason(reason)";
         }
       );
@@ -134,20 +186,18 @@ export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
     }
   }
 
-  createMultipleCallsign(content) {
-    this.formInput.cid = "";
-    this.formInput.companyname = "";
-    this.formInput.callsign = "";
-
-    this.open(content, "modal-mini", "sm", "Add New Multiple Callsign");
+  create(content) {
+    this.open(content, "modal-mini", "sm", "Add New Callsign");
   }
 
-  editMultipleCallsign(row, content) {
-    this.formInput = row;
-    this.open(content, "modal-mini", "sm", "Edit Multiple Callsign");
+  edit(row, content) {
+    this.callsignFormGroup.patchValue({
+      ...row,
+    });
+    this.open(content, "modal-mini", "sm", "Edit Callsign");
   }
 
-  deleteMultipleCallsign() {
+  delete() {
     swal
       .fire({
         title: "Are you sure?",
@@ -157,9 +207,9 @@ export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
         buttonsStyling: false,
         confirmButtonClass: "btn btn-danger",
         confirmButtonText: "Yes, delete it!",
-        cancelButtonClass: "btn btn-secondary"
+        cancelButtonClass: "btn btn-secondary",
       })
-      .then(result => {
+      .then((result) => {
         if (result.value) {
           // Show confirmation
           swal.fire({
@@ -167,24 +217,64 @@ export class FplDataFpexclusionMultipleCallsignComponent implements OnInit {
             text: "Your file has been deleted.",
             type: "success",
             buttonsStyling: false,
-            confirmButtonClass: "btn btn-primary"
+            confirmButtonClass: "btn btn-primary",
           });
         }
       });
   }
 
   submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
-    });
+    if (this.processTitle == "Add New Callsign") {
+      this.callsignService.post(this.callsignFormGroup.value).subscribe(
+        (res) => {
+          if (res) {
+            swal
+              .fire({
+                title: "Success",
+                text: "The submission has successfully created",
+                type: "success",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+              })
+              .then((result) => {
+                if (result.value) {
+                  this.modalService.dismissAll();
+                  this.getCallsign();
+                }
+              });
+          }
+        },
+        (err) => {
+          console.error("err", err);
+        }
+      );
+    } else if (this.processTitle == "Edit Callsign") {
+      this.callsignService
+        .update(this.callsignFormGroup.value.id, this.callsignFormGroup.value)
+        .subscribe(
+          (res) => {
+            if (res) {
+              swal
+                .fire({
+                  title: "Success",
+                  text: "The submission has successfully updated",
+                  type: "success",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-success",
+                })
+                .then((result) => {
+                  if (result.value) {
+                    this.modalService.dismissAll();
+                    this.getCallsign();
+                  }
+                });
+            }
+          },
+          (err) => {
+            console.error("err", err);
+          }
+        );
+    }
   }
 
   ngOnInit() {}

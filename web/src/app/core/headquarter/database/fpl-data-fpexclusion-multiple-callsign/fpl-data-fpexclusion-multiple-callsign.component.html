@@ -4,7 +4,7 @@
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
           <h6 class="h2 text-dark d-inline-block mb-0">
-            Multiple Callsign
+            Callsign
           </h6>
 
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
@@ -18,7 +18,7 @@
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
             <small class="text-justify"
-              >User able to view and update the multiple callsign.</small
+              >User able to view and update the callsign.</small
             >
           </ng-template>
           <button
@@ -35,11 +35,8 @@
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button
-            class="btn btn-dark"
-            (click)="createMultipleCallsign(classic1)"
-          >
-            Add New Multiple Callsign
+          <button class="btn btn-dark" (click)="create(classic1)">
+            Add New Callsign
           </button>
 
           <ng-template #classic1 let-c="close" let-d="dismiss">
@@ -52,18 +49,22 @@
                     </div>
                   </div>
                   <div class="card-body px-lg-5 py-lg-5">
-                    <form>
+                    <form [formGroup]="callsignFormGroup">
                       <div class="form-group">
                         <label class="form-control-label">CID</label>
-                        <input
-                          type="text"
+                        <select
                           class="form-control"
-                          placeholder="Enter CID"
-                          [(ngModel)]="formInput.cid"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
+                          placeholder="Please select"
+                          formControlName="cid"
+                        >
+                          <option
+                            [value]="airline.id"
+                            *ngFor="let airline of airlines"
+                            >{{ airline.name }}</option
+                          >
+                        </select>
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label class="form-control-label">Company Name</label>
                         <input
                           type="text"
@@ -72,16 +73,29 @@
                           [(ngModel)]="formInput.companyname"
                           [ngModelOptions]="{ standalone: true }"
                         />
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <label class="form-control-label">Callsign</label>
                         <input
                           type="text"
                           class="form-control"
                           placeholder="Enter callsign"
-                          [(ngModel)]="formInput.callsign"
-                          [ngModelOptions]="{ standalone: true }"
+                          formControlName="callsign"
                         />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label">Aircraft</label>
+                        <select
+                          class="form-control"
+                          placeholder="Please select"
+                          formControlName="aircraft"
+                        >
+                          <option
+                            [value]="aircraft.id"
+                            *ngFor="let aircraft of aircrafts"
+                            >{{ aircraft.description }}</option
+                          >
+                        </select>
                       </div>
                       <div class="text-center">
                         <button class="btn btn-dark" (click)="submit()">
@@ -124,7 +138,7 @@
     <div class="col">
       <div class="card">
         <div class="card-header">
-          <h3 class="mb-0">Multiple Callsign List</h3>
+          <h3 class="mb-0">Callsign</h3>
         </div>
         <div class="dataTables_wrapper py-4">
           <div class="row">
@@ -205,14 +219,14 @@
               >
                 <button
                   class="btn btn-dark btn-sm"
-                  (click)="editMultipleCallsign(row, classic1)"
+                  (click)="edit(row, classic1)"
                 >
                   <i class="fas fa-edit"></i>
                 </button>
 
                 <!-- <button
                       class="btn btn-danger btn-sm"
-                      (click)="deleteMultipleCallsign(value)"
+                      (click)="delete(value)"
                     >
                       <i class="fas fa-trash"></i>
                     </button> -->

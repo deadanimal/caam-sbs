@@ -1,7 +1,15 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as Companies from "src/app/variables/companies";
 import swal from "sweetalert2";
+
+import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 
 export enum SelectionType {
   single = "single",
@@ -21,25 +29,10 @@ export class AirlineInformationComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = Companies.Companies;
+  rows = []; //Companies.Companies;
   SelectionType = SelectionType;
 
-  // formInput
-
-  formInput = {
-    cid: "",
-    icode: "",
-    iata: "",
-    companyname: "",
-    picname: "",
-    email: "",
-    email2: "",
-    email3: "",
-    email4: "",
-    telno: "",
-    address: "",
-    pr: "",
-  };
+  airlineFormGroup: FormGroup;
 
   // searchInput
   searchInput = {
@@ -53,13 +46,57 @@ export class AirlineInformationComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private organisationService: OrganisationsService
+  ) {
+    this.getAirline();
+
+    this.airlineFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      name: new FormControl(""),
+      shortname: new FormControl(""),
+      cid: new FormControl(""),
+      is_active: new FormControl(""),
+      organisation_type: new FormControl("AL"),
+      email_1: new FormControl(""),
+      email_2: new FormControl(""),
+      email_3: new FormControl(""),
+      email_4: new FormControl(""),
+      office_num: new FormControl(""),
+      mobile_num: new FormControl(""),
+      fax_number: new FormControl(""),
+      pic_name: new FormControl(""),
+      pic_num: new FormControl(""),
+      address_line_1: new FormControl(""),
+      address_line_2: new FormControl(""),
+      address_line_3: new FormControl(""),
+      postcode: new FormControl(""),
+      city: new FormControl(""),
+      state: new FormControl(""),
+      country: new FormControl(""),
     });
+  }
+
+  getAirline() {
+    let filter = "organisation_type=AL";
+    this.organisationService.filter(filter).subscribe(
+      (res) => {
+        console.log("res", res);
+        this.rows = res;
+        this.temp = this.rows.map((prop, key) => {
+          return {
+            ...prop,
+            id: key,
+          };
+        });
+      },
+      (err) => {
+        console.error("err", err);
+      }
+    );
   }
 
   entriesChange($event) {
@@ -70,7 +107,12 @@ export class AirlineInformationComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
+        if (
+          d[key]
+            .toString()
+            .toLowerCase()
+            .indexOf(val.toString().toLowerCase()) !== -1
+        ) {
           return true;
         }
       }
@@ -140,29 +182,18 @@ export class AirlineInformationComponent implements OnInit {
     }
   }
 
-  createCompanies(content) {
-    this.formInput.cid = "";
-    this.formInput.icode = "";
-    this.formInput.iata = "";
-    this.formInput.companyname = "";
-    this.formInput.picname = "";
-    this.formInput.email = "";
-    this.formInput.email2 = "";
-    this.formInput.email3 = "";
-    this.formInput.email4 = "";
-    this.formInput.telno = "";
-    this.formInput.address = "";
-    this.formInput.pr = "";
-
-    this.open(content, "modal-mini", "sm", "Add New Companies");
+  create(content) {
+    this.open(content, "modal-mini", "sm", "Add New Airline");
   }
 
-  editCompanies(row, content) {
-    this.formInput = row;
-    this.open(content, "modal-mini", "sm", "Edit Companies");
+  edit(row, content) {
+    this.airlineFormGroup.patchValue({
+      ...row,
+    });
+    this.open(content, "modal-mini", "sm", "Edit Airline");
   }
 
-  deleteCompanies() {
+  delete() {
     swal
       .fire({
         title: "Are you sure?",
@@ -196,17 +227,57 @@ export class AirlineInformationComponent implements OnInit {
   };
 
   submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
-    });
+    if (this.processTitle == "Add New Airline") {
+      this.organisationService.post(this.airlineFormGroup.value).subscribe(
+        (res) => {
+          if (res) {
+            swal
+              .fire({
+                title: "Success",
+                text: "The submission has successfully created",
+                type: "success",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+              })
+              .then((result) => {
+                if (result.value) {
+                  this.modalService.dismissAll();
+                  this.getAirline();
+                }
+              });
+          }
+        },
+        (err) => {
+          console.error("err", err);
+        }
+      );
+    } else if (this.processTitle == "Edit Airline") {
+      this.organisationService
+        .update(this.airlineFormGroup.value.id, this.airlineFormGroup.value)
+        .subscribe(
+          (res) => {
+            if (res) {
+              swal
+                .fire({
+                  title: "Success",
+                  text: "The submission has successfully updated",
+                  type: "success",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-success",
+                })
+                .then((result) => {
+                  if (result.value) {
+                    this.modalService.dismissAll();
+                    this.getAirline();
+                  }
+                });
+            }
+          },
+          (err) => {
+            console.error("err", err);
+          }
+        );
+    }
   }
 
   ngOnInit() {}

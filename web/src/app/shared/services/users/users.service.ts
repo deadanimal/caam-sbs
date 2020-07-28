@@ -62,7 +62,7 @@ export class UsersService {
   }
 
   filter(field: string): Observable<UsersModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<UsersModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("UsersModel", res);

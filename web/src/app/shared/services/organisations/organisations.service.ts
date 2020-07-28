@@ -62,7 +62,7 @@ export class OrganisationsService {
   }
 
   filter(field: string): Observable<OrganisationsModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<OrganisationsModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("OrganisationsModel", res);

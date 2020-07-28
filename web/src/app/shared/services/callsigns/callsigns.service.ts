@@ -62,7 +62,7 @@ export class CallsignsService {
   }
 
   filter(field: string): Observable<CallsignsModel[]> {
-    let urlFilter = this.url + "?" + field + "/";
+    let urlFilter = this.url + "?" + field;
     return this.http.get<CallsignsModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("CallsignsModel", res);
