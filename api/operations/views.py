@@ -143,7 +143,8 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         'location_departure',
         'location_destination',
         'distance',
-        'created_at'
+        'created_at',
+        'site'
     ]
 
     def get_permissions(self):
