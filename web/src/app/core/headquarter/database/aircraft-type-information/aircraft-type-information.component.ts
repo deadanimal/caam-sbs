@@ -1,20 +1,29 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as AircraftTypes from "src/app/variables/aircraft-types";
 import swal from "sweetalert2";
+
+import { AircraftsService } from "src/app/shared/services/aircrafts/aircrafts.service";
+import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 
 export enum SelectionType {
   single = "single",
   multi = "multi",
   multiClick = "multiClick",
   cell = "cell",
-  checkbox = "checkbox"
+  checkbox = "checkbox",
 }
 
 @Component({
   selector: "app-aircraft-type-information",
   templateUrl: "./aircraft-type-information.component.html",
-  styleUrls: ["./aircraft-type-information.component.scss"]
+  styleUrls: ["./aircraft-type-information.component.scss"],
 })
 export class AircraftTypeInformationComponent implements OnInit {
   entries: number = 5;
@@ -24,35 +33,77 @@ export class AircraftTypeInformationComponent implements OnInit {
   rows = AircraftTypes.AircraftTypes;
   SelectionType = SelectionType;
 
-  // formInput
-  
-  formInput = {
-    aircraftmodel: "",
-    weight: "",
-    weightcategory: "",
-    variantaircraft: "",
-    rate: "",
-  };
+  // Forms
+  aircraftFormGroup: FormGroup;
+
+  // Dropdowns
+  manufacturers = [];
+  operators = [];
 
   // searchInput
   searchInput = {
     aircraftmodel: "",
     weight: "",
     weightcategory: "",
-    variantaircraft: ""
+    variantaircraft: "",
   };
 
   // Modal
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private aircraftService: AircraftsService,
+    private organisationService: OrganisationsService
+  ) {
+    this.getAircraft();
+
+    this.aircraftFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      description: new FormControl(""),
+      registration_num: new FormControl(""),
+      model: new FormControl(""),
+      manufacturer: new FormControl(""),
+      aircraft_type: new FormControl(""),
+      weight_category: new FormControl(""),
+      min_weight: new FormControl(""),
+      max_weight: new FormControl(""),
+      operator: new FormControl(""),
+      is_active: new FormControl(""),
     });
+
+    this.organisationService.filter("organisation_type=AL").subscribe(
+      (res) => {this.operators = res;},
+      (err) => {console.log("err", err)}
+    );
+
+    this.organisationService.filter("organisation_type=MN").subscribe(
+      (res) => {this.manufacturers = res;},
+      (err) => {console.log("err", err)}
+    );
+  }
+
+  getAircraft() {
+    this.aircraftService.get().subscribe(
+      (res) => {
+        if (res) {
+          this.rows = res;
+          this.temp = this.rows.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+        }
+      },
+      (err) => {
+        console.error("err", err);
+      }
+    );
   }
 
   entriesChange($event) {
@@ -61,7 +112,7 @@ export class AircraftTypeInformationComponent implements OnInit {
 
   filterTable($event) {
     let val = $event.target.value;
-    this.temp = this.rows.filter(function(d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in d) {
         if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
           return true;
@@ -73,10 +124,16 @@ export class AircraftTypeInformationComponent implements OnInit {
 
   searchTable() {
     let object = this.searchInput;
-    this.temp = this.rows.filter(function(d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in object) {
         if (object[key]) {
-          if (d[key].toString().toLowerCase().indexOf(object[key].toString().toLowerCase()) !== -1) return true;
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(object[key].toString().toLowerCase()) !== -1
+          )
+            return true;
         }
       }
       return false;
@@ -105,20 +162,21 @@ export class AircraftTypeInformationComponent implements OnInit {
   open(content, type, modalDimension, processTitle) {
     this.processTitle = processTitle;
     // if (modalDimension === "sm" && type === "modal_mini") {
-      this.modalService
-        .open(content, {
-          windowClass: "modal-mini",
-          centered: true,
-          backdrop: 'static'
-        })
-        .result.then(
-          result => {
-            this.closeResult = "Closed with: $result";
-          },
-          reason => {
-            this.closeResult = "Dismissed $this.getDismissReason(reason)";
-          }
-        );
+    this.modalService
+      .open(content, {
+        windowClass: "modal-mini",
+        size: "lg",
+        centered: true,
+        backdrop: "static",
+      })
+      .result.then(
+        (result) => {
+          this.closeResult = "Closed with: $result";
+        },
+        (reason) => {
+          this.closeResult = "Dismissed $this.getDismissReason(reason)";
+        }
+      );
     // }
   }
 
@@ -132,57 +190,95 @@ export class AircraftTypeInformationComponent implements OnInit {
     }
   }
 
-  createAircraftType(content) {
-    this.formInput.aircraftmodel = "";
-    this.formInput.weight = "";
-    this.formInput.weightcategory = "";
-    this.formInput.variantaircraft = "";
-    this.formInput.rate = "";
-    
-    this.open(content, 'modal-mini', 'sm', 'Add New Aircraft Type');
+  create(content) {
+    this.open(content, "modal-mini", "sm", "Add New Aircraft");
   }
 
-  editAircraftType(row, content) {
-    this.formInput = row;
-    this.open(content, 'modal-mini', 'sm', 'Edit Aircraft Type');
+  edit(row, content) {
+    this.aircraftFormGroup.patchValue({
+      ...row,
+    });
+    this.open(content, "modal-mini", "sm", "Edit Aircraft");
   }
 
-  deleteAircraftType(){
-    swal.fire({
-        title: 'Are you sure?',
+  delete() {
+    swal
+      .fire({
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
         buttonsStyling: false,
-        confirmButtonClass: 'btn btn-danger',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonClass: 'btn btn-secondary'
-    }).then((result) => {
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonClass: "btn btn-secondary",
+      })
+      .then((result) => {
         if (result.value) {
-            // Show confirmation
-            swal.fire({
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
-                type: 'success',
-                buttonsStyling: false,
-                confirmButtonClass: 'btn btn-primary'
-            });
+          // Show confirmation
+          swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            type: "success",
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-primary",
+          });
         }
-    })
+      });
   }
 
   submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
-    });
+    if (this.processTitle == "Add New Aircraft") {
+      this.aircraftService.post(this.aircraftFormGroup.value).subscribe(
+        (res) => {
+          if (res) {
+            swal
+              .fire({
+                title: "Success",
+                text: "The submission has successfully created",
+                type: "success",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+              })
+              .then((result) => {
+                if (result.value) {
+                  this.modalService.dismissAll();
+                  this.getAircraft();
+                }
+              });
+          }
+        },
+        (err) => {
+          console.error("err", err);
+        }
+      );
+    } else if (this.processTitle == "Edit Aircraft") {
+      this.aircraftService
+        .update(this.aircraftFormGroup.value.id, this.aircraftFormGroup.value)
+        .subscribe(
+          (res) => {
+            if (res) {
+              swal
+                .fire({
+                  title: "Success",
+                  text: "The submission has successfully updated",
+                  type: "success",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-success",
+                })
+                .then((result) => {
+                  if (result.value) {
+                    this.modalService.dismissAll();
+                    this.getAircraft();
+                  }
+                });
+            }
+          },
+          (err) => {
+            console.error("err", err);
+          }
+        );
+    }
   }
 
   ngOnInit() {}

@@ -1,7 +1,15 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as AirportLists from "src/app/variables/airport-lists";
 import swal from "sweetalert2";
+
+import { AirportsService } from "src/app/shared/services/airports/airports.service";
 
 export enum SelectionType {
   single = "single",
@@ -18,19 +26,14 @@ export enum SelectionType {
 })
 export class AirportListComponent implements OnInit {
   entries: number = 5;
-  airportSelected: any[] = [];
-  airportTemp = [];
-  airportActiveRow: any;
-  airportRows = AirportLists.AirportLists;
+  selected: any[] = [];
+  temp = [];
+  activeRow: any;
+  rows = AirportLists.AirportLists;
   SelectionType = SelectionType;
 
-  // formInput
-  airportFormInput = {
-    category: "",
-    icaocode: "",
-    airportname: "",
-    country: "",
-  };
+  // Forms
+  airportFormGroup: FormGroup;
 
   // searchInput
   airportSearchInput = {
@@ -44,12 +47,43 @@ export class AirportListComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.airportTemp = this.airportRows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private airportService: AirportsService
+  ) {
+    this.getAirport();
+
+    this.airportFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      name: new FormControl(""),
+      icao_code: new FormControl(""),
+      iata_code: new FormControl(""),
+      country: new FormControl(""),
+      country_code: new FormControl(""),
+      airport_category: new FormControl(""),
+      office_num: new FormControl(""),
+      mobile_num: new FormControl(""),
+      fax_num: new FormControl(""),
+      pic_name: new FormControl(""),
+      pic_num: new FormControl(""),
+      is_active: new FormControl(""),
+    });
+  }
+
+  getAirport() {
+    this.airportService.get().subscribe((res) => {
+      this.rows = res;
+      this.temp = this.rows.map((prop, key) => {
+        return {
+          ...prop,
+          // id: key,
+          no: key,
+        };
+      });
+    }, (err) => {
+      console.error("err", err);
     });
   }
 
@@ -59,9 +93,14 @@ export class AirportListComponent implements OnInit {
 
   filterTable($event) {
     let val = $event.target.value;
-    this.airportTemp = this.airportRows.filter(function (d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
+        if (
+          d[key]
+            .toString()
+            .toLowerCase()
+            .indexOf(val.toString().toLowerCase()) !== -1
+        ) {
           return true;
         }
       }
@@ -71,7 +110,7 @@ export class AirportListComponent implements OnInit {
 
   searchAirportTable() {
     let object = this.airportSearchInput;
-    this.airportTemp = this.airportRows.filter(function (d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in object) {
         if (object[key]) {
           if (
@@ -88,7 +127,7 @@ export class AirportListComponent implements OnInit {
   }
 
   resetAirportTable() {
-    this.airportTemp = this.airportRows;
+    this.temp = this.rows;
 
     this.airportSearchInput.category = "";
     this.airportSearchInput.icaocode = "";
@@ -96,13 +135,13 @@ export class AirportListComponent implements OnInit {
     this.airportSearchInput.country = "";
   }
 
-  onAirportSelect({ selected }) {
-    this.airportSelected.splice(0, this.airportSelected.length);
-    this.airportSelected.push(...selected);
+  onSelect({ selected }) {
+    this.selected.splice(0, this.selected.length);
+    this.selected.push(...selected);
   }
 
-  onAirportActivate(event) {
-    this.airportActiveRow = event.row;
+  onActivate(event) {
+    this.activeRow = event.row;
   }
 
   // Modal Add New Customer
@@ -112,8 +151,9 @@ export class AirportListComponent implements OnInit {
     this.modalService
       .open(content, {
         windowClass: "modal-mini",
+        size: "lg",
         centered: true,
-        backdrop: 'static'
+        backdrop: "static",
       })
       .result.then(
         (result) => {
@@ -136,21 +176,19 @@ export class AirportListComponent implements OnInit {
     }
   }
 
-  createAirportList(content) {
-    this.airportFormInput.category = "";
-    this.airportFormInput.icaocode = "";
-    this.airportFormInput.airportname = "";
-    this.airportFormInput.country = "";
-
+  create(content) {
+    this.airportFormGroup.reset();
     this.open(content, "modal-mini", "sm", "Add New Airport");
   }
 
-  editAirportList(row, content) {
-    this.airportFormInput = row;
+  edit(row, content) {
+    this.airportFormGroup.patchValue({
+      ...row,
+    });
     this.open(content, "modal-mini", "sm", "Edit Airport");
   }
 
-  deleteAirportList() {
+  delete() {
     swal
       .fire({
         title: "Are you sure?",
@@ -177,17 +215,57 @@ export class AirportListComponent implements OnInit {
   }
 
   submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
-    });
+    if (this.processTitle == "Add New Airport") {
+      this.airportService.post(this.airportFormGroup.value).subscribe(
+        (res) => {
+          if (res) {
+            swal
+              .fire({
+                title: "Success",
+                text: "The submission has successfully created",
+                type: "success",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+              })
+              .then((result) => {
+                if (result.value) {
+                  this.modalService.dismissAll();
+                  this.getAirport();
+                }
+              });
+          }
+        },
+        (err) => {
+          console.error("err", err);
+        }
+      );
+    } else if (this.processTitle == "Edit Airport") {
+      this.airportService
+        .update(this.airportFormGroup.value.id, this.airportFormGroup.value)
+        .subscribe(
+          (res) => {
+            if (res) {
+              swal
+                .fire({
+                  title: "Success",
+                  text: "The submission has successfully updated",
+                  type: "success",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-success",
+                })
+                .then((result) => {
+                  if (result.value) {
+                    this.modalService.dismissAll();
+                    this.getAirport();
+                  }
+                });
+            }
+          },
+          (err) => {
+            console.error("err", err);
+          }
+        );
+    }
   }
 
   ngOnInit() {}

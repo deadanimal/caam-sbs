@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { 
   BsDropdownModule, 
   ProgressbarModule, 
@@ -38,6 +38,7 @@ import { ExemptionsComponent } from './exemptions/exemptions.component';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),

@@ -1,8 +1,16 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as RouteListSemenanjung from "src/app/variables/routelist-semenanjung";
 import swal from "sweetalert2";
 import * as L from "leaflet";
+
+import { RoutesService } from "src/app/shared/services/routes/routes.service";
 
 const dataMarkers = [
   {
@@ -12,7 +20,7 @@ const dataMarkers = [
     callsign: "MARITIME700",
     dep: "WSSL",
     dest: "OMDW",
-    fplno: "A6CBO"
+    fplno: "A6CBO",
   },
   {
     lat: 12.854649,
@@ -21,7 +29,7 @@ const dataMarkers = [
     callsign: "GADING TAJAM",
     dep: "LBSF",
     dest: "WIHH",
-    fplno: "ABP932"
+    fplno: "ABP932",
   },
   {
     lat: 5.922045,
@@ -30,7 +38,7 @@ const dataMarkers = [
     callsign: "ADV01",
     dep: "VTSM",
     dest: "OMDW",
-    fplno: "ABP941"
+    fplno: "ABP941",
   },
   {
     lat: 4.303311,
@@ -39,7 +47,7 @@ const dataMarkers = [
     callsign: "9MIMW",
     dep: "WSSS",
     dest: "VIDP",
-    fplno: "AOJ84K"
+    fplno: "AOJ84K",
   },
   {
     lat: 10.185187,
@@ -48,7 +56,7 @@ const dataMarkers = [
     callsign: "T7LKT",
     dep: "VTSP",
     dest: "VCBI",
-    fplno: "AXY0408"
+    fplno: "AXY0408",
   },
   {
     lat: 5.178482,
@@ -57,7 +65,7 @@ const dataMarkers = [
     callsign: "N9688R",
     dep: "WMKK",
     dest: "VANP",
-    fplno: "AZS4901"
+    fplno: "AZS4901",
   },
   {
     lat: -2.372369,
@@ -66,7 +74,7 @@ const dataMarkers = [
     callsign: "9MHCB",
     dep: "WMKK",
     dest: "M765",
-    fplno: "AZS6602"
+    fplno: "AZS6602",
   },
   {
     lat: 3.250209,
@@ -75,7 +83,7 @@ const dataMarkers = [
     callsign: "9MAUB",
     dep: "ZGGG",
     dest: "WSSS",
-    fplno: "B3277"
+    fplno: "B3277",
   },
   {
     lat: 9.102097,
@@ -84,7 +92,7 @@ const dataMarkers = [
     callsign: "FALCON110",
     dep: "VHHH",
     dest: "WMSA",
-    fplno: "B602U"
+    fplno: "B602U",
   },
   {
     lat: 8.276727,
@@ -93,7 +101,7 @@ const dataMarkers = [
     callsign: "9MLEO",
     dep: "ZSHC",
     dest: "WMKL",
-    fplno: "B7766"
+    fplno: "B7766",
   },
   {
     lat: 0.527336,
@@ -102,7 +110,7 @@ const dataMarkers = [
     callsign: "T7LKT",
     dep: "WSSL",
     dest: "VTSM",
-    fplno: "B7795"
+    fplno: "B7795",
   },
   {
     lat: -5.353521,
@@ -111,7 +119,7 @@ const dataMarkers = [
     callsign: "BAB08",
     dep: "RCSS",
     dest: "WMKL",
-    fplno: "B9998"
+    fplno: "B9998",
   },
   {
     lat: 11.953349,
@@ -120,7 +128,7 @@ const dataMarkers = [
     callsign: "MAR700",
     dep: "WSSL",
     dest: "ZUCK",
-    fplno: "BWJ083"
+    fplno: "BWJ083",
   },
   {
     lat: -11.436955,
@@ -129,7 +137,7 @@ const dataMarkers = [
     callsign: "9MAUB",
     dep: "WSSL",
     dest: "VRMM",
-    fplno: "BWJ988"
+    fplno: "BWJ988",
   },
   {
     lat: -16.045813,
@@ -138,8 +146,8 @@ const dataMarkers = [
     callsign: "N110TP",
     dep: "AYPY",
     dest: "WMSA",
-    fplno: "CGGPM"
-  }
+    fplno: "CGGPM",
+  },
 ];
 
 export enum SelectionType {
@@ -147,20 +155,20 @@ export enum SelectionType {
   multi = "multi",
   multiClick = "multiClick",
   cell = "cell",
-  checkbox = "checkbox"
+  checkbox = "checkbox",
 }
 
 @Component({
   selector: "app-routelist-semenanjung",
   templateUrl: "./routelist-semenanjung.component.html",
-  styleUrls: ["./routelist-semenanjung.component.scss"]
+  styleUrls: ["./routelist-semenanjung.component.scss"],
 })
 export class RoutelistSemenanjungComponent implements OnInit {
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = RouteListSemenanjung.RouteListSemenanjung;
+  rows = []; //RouteListSemenanjung.RouteListSemenanjung;
   SelectionType = SelectionType;
 
   leafletOptions = {
@@ -169,47 +177,70 @@ export class RoutelistSemenanjungComponent implements OnInit {
         "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
         {
           subdomains: "abcd",
-          maxZoom: 19
+          maxZoom: 19,
         }
-      )
+      ),
     ],
     zoom: 5,
-    center: L.latLng(4.2105, 101.9758)
+    center: L.latLng(4.2105, 101.9758),
   };
 
   markerLayer: L.Layer[] = [];
 
-  // formInput
-
-  formInput = {
-    rtid: "",
-    dep: "",
-    dest: "",
-    dist: "",
-    routedesc: "",
-    ctg: "",
-    tof: ""
-  };
+  // Forms
+  routeFormGroup: FormGroup;
 
   // searchInput
   searchInput = {
     dep: "",
     dest: "",
     tof: "",
-    routedesc: ""
+    routedesc: "",
   };
 
   // Modal
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private routeService: RoutesService
+  ) {
+    this.getRoute();
+
+    this.routeFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      // name: new FormControl(""),
+      description: new FormControl(""),
+      rtid: new FormControl(""),
+      distance: new FormControl(""),
+      location_departure: new FormControl(""),
+      location_destination: new FormControl(""),
+      // total_distance: new FormControl(""),
+      flight_type: new FormControl(""),
+      category_type: new FormControl(""),
+      site: new FormControl("KUL"),
     });
+  }
+
+  getRoute() {
+    this.routeService.get().subscribe(
+      (res) => {
+        this.rows = res;
+        this.temp = this.rows.map((prop, key) => {
+          return {
+            ...prop,
+            // id: key,
+            no: key,
+          };
+        });
+      },
+      (err) => {
+        console.error("err", err);
+      }
+    );
   }
 
   entriesChange($event) {
@@ -218,9 +249,14 @@ export class RoutelistSemenanjungComponent implements OnInit {
 
   filterTable($event) {
     let val = $event.target.value;
-    this.temp = this.rows.filter(function(d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
+        if (
+          d[key]
+            .toString()
+            .toLowerCase()
+            .indexOf(val.toString().toLowerCase()) !== -1
+        ) {
           return true;
         }
       }
@@ -230,7 +266,7 @@ export class RoutelistSemenanjungComponent implements OnInit {
 
   searchTable() {
     let object = this.searchInput;
-    this.temp = this.rows.filter(function(d) {
+    this.temp = this.rows.filter(function (d) {
       for (var key in object) {
         if (object[key]) {
           if (
@@ -271,14 +307,15 @@ export class RoutelistSemenanjungComponent implements OnInit {
     this.modalService
       .open(content, {
         windowClass: "modal-mini",
+        size: "lg",
         centered: true,
-        backdrop: 'static'
+        backdrop: "static",
       })
       .result.then(
-        result => {
+        (result) => {
           this.closeResult = "Closed with: $result";
         },
-        reason => {
+        (reason) => {
           this.closeResult = "Dismissed $this.getDismissReason(reason)";
         }
       );
@@ -295,24 +332,19 @@ export class RoutelistSemenanjungComponent implements OnInit {
     }
   }
 
-  createRoute(content) {
-    this.formInput.rtid = "";
-    this.formInput.dep = "";
-    this.formInput.dest = "";
-    this.formInput.dist = "";
-    this.formInput.routedesc = "";
-    this.formInput.ctg = "";
-    this.formInput.tof = "";
-
+  create(content) {
+    this.routeFormGroup.reset();
     this.open(content, "modal-mini", "sm", "Add New Route");
   }
 
-  editRoute(row, content) {
-    this.formInput = row;
+  edit(row, content) {
+    this.routeFormGroup.patchValue({
+      ...row,
+    });
     this.open(content, "modal-mini", "sm", "Edit Route");
   }
 
-  deleteRoute() {
+  delete() {
     swal
       .fire({
         title: "Are you sure?",
@@ -322,9 +354,9 @@ export class RoutelistSemenanjungComponent implements OnInit {
         buttonsStyling: false,
         confirmButtonClass: "btn btn-danger",
         confirmButtonText: "Yes, delete it!",
-        cancelButtonClass: "btn btn-secondary"
+        cancelButtonClass: "btn btn-secondary",
       })
-      .then(result => {
+      .then((result) => {
         if (result.value) {
           // Show confirmation
           swal.fire({
@@ -332,22 +364,76 @@ export class RoutelistSemenanjungComponent implements OnInit {
             text: "Your file has been deleted.",
             type: "success",
             buttonsStyling: false,
-            confirmButtonClass: "btn btn-primary"
+            confirmButtonClass: "btn btn-primary",
           });
         }
       });
   }
 
+  submit() {
+    if (this.processTitle == "Add New Route") {
+      this.routeService.post(this.routeFormGroup.value).subscribe(
+        (res) => {
+          if (res) {
+            swal
+              .fire({
+                title: "Success",
+                text: "The submission has successfully created",
+                type: "success",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+              })
+              .then((result) => {
+                if (result.value) {
+                  this.modalService.dismissAll();
+                  this.getRoute();
+                }
+              });
+          }
+        },
+        (err) => {
+          console.error("err", err);
+        }
+      );
+    } else if (this.processTitle == "Edit Route") {
+      this.routeService
+        .update(this.routeFormGroup.value.id, this.routeFormGroup.value)
+        .subscribe(
+          (res) => {
+            if (res) {
+              swal
+                .fire({
+                  title: "Success",
+                  text: "The submission has successfully updated",
+                  type: "success",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-success",
+                })
+                .then((result) => {
+                  if (result.value) {
+                    this.modalService.dismissAll();
+                    this.getRoute();
+                  }
+                });
+            }
+          },
+          (err) => {
+            console.error("err", err);
+          }
+        );
+    }
+  }
+
   loadMarkers() {
-    dataMarkers.forEach(marker => {
+    dataMarkers.forEach((marker) => {
       this.markerLayer.push(
         L.marker([marker.lat, marker.long], {
           icon: L.icon({
             iconSize: [35, 35],
             iconUrl: "assets/img/marker/plane.svg",
-            className: "plane-rotation"
-          })
-        }).on("click", function() {
+            className: "plane-rotation",
+          }),
+        }).on("click", function () {
           swal.fire({
             html:
               "Model of Aircraft: " +
@@ -363,24 +449,10 @@ export class RoutelistSemenanjungComponent implements OnInit {
             title: "Flight Detail",
             text: "",
             buttonsStyling: false,
-            confirmButtonClass: "btn btn-dark"
+            confirmButtonClass: "btn btn-dark",
           });
         })
       );
-    });
-  }
-
-  submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
     });
   }
 

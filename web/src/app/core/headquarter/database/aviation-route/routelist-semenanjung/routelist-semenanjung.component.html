@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button class="btn btn-dark" (click)="createRoute(classic1)">
+          <button class="btn btn-dark" (click)="create(classic1)">
             Add New Route
           </button>
 
@@ -49,86 +49,94 @@
                     </div>
                   </div>
                   <div class="card-body px-lg-5 py-lg-5">
-                    <form>
-                      <div class="form-group">
-                        <label class="form-control-label">RTID</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter rtid"
-                          [(ngModel)]="formInput.rtid"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
+                    <form [formGroup]="routeFormGroup">
+                      <div class="row">
+                        <div class="col-lg-4 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label">RTID</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter rtid"
+                              formControlName="rtid"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Departure</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter departure"
+                              formControlName="location_departure"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Destination</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter destination"
+                              formControlName="location_destination"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label">Distance</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="Enter distance"
+                              formControlName="distance"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">CTG</label>
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="category_type"
+                            >
+                              <option value="">Please select</option>
+                              <option value="SC1">SC1</option>
+                              <option value="SC2">SC2</option>
+                              <option value="SC3">SC3</option>
+                              <option value="SC4">SC4</option>
+                              <option value="SC4">SC5</option>
+                              <option value="ALN">ALN</option>
+                              <option value="ALS">ALS</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">TOF</label>
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="flight_type"
+                            >
+                              <option value="">Please select category</option>
+                              <option value="D">Domestic</option>
+                              <option value="I">International</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Route Description</label
+                            >
+                            <textarea
+                              rows="6"
+                              class="form-control"
+                              placeholder="Enter route description"
+                              formControlName="description"
+                            ></textarea>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-group">
-                        <label class="form-control-label">Departure</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter departure"
-                          [(ngModel)]="formInput.dep"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label">Destination</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter destination"
-                          [(ngModel)]="formInput.dest"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label">Distance</label>
-                        <input
-                          type="number"
-                          class="form-control"
-                          placeholder="Enter distance"
-                          [(ngModel)]="formInput.dist"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label"
-                          >Route Description</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Enter route description"
-                          [(ngModel)]="formInput.routedesc"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label">CTG</label>
-                        <select
-                          class="form-control"
-                          [(ngModel)]="formInput.ctg"
-                          [ngModelOptions]="{ standalone: true }"
-                        >
-                          <option value="">Please select</option>
-                          <option value="SC1">Inbound</option>
-                          <option value="SC2">Outbound</option>
-                          <option value="SC3">Overfly</option>
-                          <option value="SC4">Domestic</option>
-                          <option value="SC4">Local</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label class="form-control-label">TOF</label>
-                        <select
-                          class="form-control"
-                          [(ngModel)]="formInput.tof"
-                          [ngModelOptions]="{ standalone: true }"
-                        >
-                          <option value="">Please select category</option>
-                          <option value="D">Domestic</option>
-                          <option value="I">International</option>
-                        </select>
-                      </div>
+
                       <div class="text-center">
                         <button class="btn btn-dark" (click)="submit()">
                           Submit
@@ -251,30 +259,67 @@
             (activate)="onActivate($event)"
             [scrollbarH]="true"
           >
-            <ngx-datatable-column name="Ln" width="50"></ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>LN</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.no + 1 }}
+              </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>RTID</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.routedesc }}
+                {{ row.rtid }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Dist" width="50"></ngx-datatable-column>
-            <ngx-datatable-column name="Dep" width="50"></ngx-datatable-column>
-            <ngx-datatable-column name="Dest" width="50"></ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEP</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.location_departure }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEST</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.location_departure }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Dist</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.distance }}
+              </ng-template>
+            </ngx-datatable-column>
             <!-- <ngx-datatable-column name="Routedesc"></ngx-datatable-column> -->
-            <ngx-datatable-column name="Cs" width="50">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 CTG
               </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.category_type }}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Cat" width="50">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 TOF
               </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.flight_type }}
+              </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template ngx-datatable-header-template>
+                <span>Actions</span>
+              </ng-template>
               <ng-template
                 let-row="row"
                 let-value="value"
@@ -282,7 +327,7 @@
               >
                 <button
                   class="btn btn-dark btn-sm"
-                  (click)="editRoute(row, classic1)"
+                  (click)="edit(row, classic1)"
                 >
                   <i class="fas fa-edit"></i>
                 </button>
@@ -290,7 +335,7 @@
                   <i class="fas fa-lightbulb"></i>
                 </button> -->
 
-                <button class="btn btn-danger btn-sm" (click)="deleteRoute()">
+                <button class="btn btn-danger btn-sm" (click)="delete()">
                   <i class="fas fa-trash"></i>
                 </button>
               </ng-template>
