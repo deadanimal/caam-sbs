@@ -47,5 +47,5 @@ class Airport(models.Model): #
 
 
     def __str__(self):
-        return self.registration_num
+        return self.name
 

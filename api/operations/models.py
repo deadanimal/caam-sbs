@@ -118,9 +118,21 @@ class Route(models.Model):
         ('SC1', 'Sector 1'),
         ('SC2', 'Sector 2'),
         ('SC3', 'Sector 3'),
+        ('SC4', 'Sector 4'),
+        ('SC5', 'Sector 5'),
+        ('ALN', 'ALN'),
+        ('ALS', 'ALS'),
         ('NA', 'Not Available')
     ]
     category_type = models.CharField(max_length=3, choices=CATEGORY_TYPE, default='NA') #
+
+    SITE = [
+        ('KUL', 'Kuala Lumpur'),
+        ('KCH', 'Kuching'),
+        ('BKI', 'Kota Kinabalu'),
+        ('NA', 'Not Available')
+    ]
+    site = models.CharField(max_length=3, choices=SITE, default='NA') #
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -185,7 +197,7 @@ class FileUpload(models.Model):
     flight_rule = models.CharField(max_length=1, choices=FLIGHT_RULE, default='I')
     remarks = models.TextField(blank=True, null=True)
     touchdown = models.IntegerField(default=0, blank=True)
-    approval_permit_num = models.CharField(max_length=100)
+    approval_permit_num = models.CharField(max_length=100, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
