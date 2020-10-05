@@ -13,7 +13,9 @@ from .models import (
     Callsign,
     Rate,
     Route,
-    FileUpload
+    FileUpload,
+    Fpldata,
+    FpldataHistory
 )
 
 from aircrafts.serializers import (
@@ -103,14 +105,32 @@ class FileUploadSerializer(serializers.ModelSerializer):
     
 
 class FileUploadExtendedSerializer(serializers.ModelSerializer):
-    route = RouteExtendedSerializer(read_only=True)
-    operator = OrganisationSerializer(read_only=True)
-    aircraft = AircraftExtendedSerializer(read_only=True)
-    charge = ChargeExtendedSerializer(read_only=True)
     uploaded_by = CustomUserSerializer(read_only=True)
 
     class Meta:
         model = FileUpload
         fields = '__all__'
         read_only_fields = ['id']
+
+class FpldataSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Fpldata
+        fields = '__all__'
+        read_only_fields = ['id']
     
+class FpldataHistorySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = FpldataHistory
+        fields = '__all__'
+        read_only_fields = ['id']
+
+class FpldataHistoryExtendedSerializer(serializers.ModelSerializer):
+    user = CustomUserSerializer(read_only=True)
+    master_data_id = FpldataSerializer(read_only=True)
+
+    class Meta:
+        model = FpldataHistory
+        fields = '__all__'
+        read_only_fields = ['id']

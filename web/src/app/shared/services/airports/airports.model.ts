@@ -1,5 +1,6 @@
 export class AirportsModel {
   public id: string;
+  public aid: string;
   public name: string;
   public icao_code: string;
   public iata_code: string;
@@ -17,6 +18,7 @@ export class AirportsModel {
 
   constructor(
     id: string,
+    aid: string,
     name: string,
     icao_code: string,
     iata_code: string,
@@ -33,6 +35,7 @@ export class AirportsModel {
     modified_at: any
   ) {
     this.id = id;
+    this.aid = aid;
     this.name = name;
     this.icao_code = icao_code;
     this.iata_code = iata_code;

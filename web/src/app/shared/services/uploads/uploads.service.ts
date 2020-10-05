@@ -19,11 +19,7 @@ export class UploadsService {
   constructor(private http: HttpClient) {}
 
   post(body): Observable<UploadsModel> {
-    let headers = new HttpHeaders({
-      "Content-Type": "multipart/form-data",
-    });
-    let options = { headers: headers };
-    return this.http.post<any>(this.url, body, options).pipe(
+    return this.http.post<any>(this.url, body).pipe(
       tap((res) => {
         console.log("UploadsModel", res);
       })
@@ -72,5 +68,32 @@ export class UploadsService {
         console.log("UploadsModel", res);
       })
     );
+  }
+
+  upload(body): Observable<any> {
+    let url = this.url + "upload/";
+    return this.http.post<any>(url, body).pipe(
+      tap((res) => {
+        // console.log("UploadsModel", res);
+      })
+    );
+  }
+
+  extended(field: string): Observable<UploadsModel[]> {
+    let urlExtended = this.url + "extended/?" + field;
+    return this.http.get<UploadsModel[]>(urlExtended).pipe(
+      tap((res) => {
+        console.log("UploadsModel", res);
+      })
+    );
+  }
+
+  statuses() {
+    return [
+      { value: "FIL0", name: "Draf" },
+      { value: "FIL1", name: "Processing" },
+      { value: "FIL2", name: "Checked" },
+      { value: "FIL3", name: "Approved" },
+    ];
   }
 }

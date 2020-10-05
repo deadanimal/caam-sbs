@@ -1,0 +1,210 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Exemptions List
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >User able to view and update the exemption list.</small
+            >
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="mb-0">Exemptions List</h3>
+            </div>
+            <div class="col-auto">
+              <div class="mr-1 dropdown" dropdown>
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                >
+                  Export
+                </button>
+                <div
+                  aria-labelledby="dropdownMenuButton"
+                  *dropdownMenu
+                  class="dropdown-menu"
+                >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as PDF</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Excel</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Report</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)">Print</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Type" width="50"></ngx-datatable-column>
+            <ngx-datatable-column name="Callsign" width="100"></ngx-datatable-column>
+            <ngx-datatable-column name="Description"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editExemption(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #classic1 let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body p-0">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-dark">
+          <div class="text-muted text-center mb-3">
+            <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+          </div>
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+          <form>
+            <div class="form-group">
+              <label class="form-control-label">Type</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter type"
+                [(ngModel)]="formInput.type"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Callsign</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter callsign"
+                [(ngModel)]="formInput.callsign"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Description</label>
+              <textarea
+                rows="5"
+                class="form-control"
+                placeholder="Enter description"
+                [(ngModel)]="formInput.description"
+                [ngModelOptions]="{ standalone: true }"
+              ></textarea>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-dark" (click)="submit()">
+                Submit
+              </button>
+              <button
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                (click)="c('Close click')"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

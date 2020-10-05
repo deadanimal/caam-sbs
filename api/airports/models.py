@@ -19,6 +19,7 @@ from users.models import (
 class Airport(models.Model): #
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
+    aid = models.CharField(max_length=4, default='NA')
     name = models.CharField(max_length=100, default='NA') #
     icao_code = models.CharField(max_length=100, default='NA') #
     iata_code = models.CharField(max_length=100, default='NA') #
@@ -39,8 +40,8 @@ class Airport(models.Model): #
     pic_num = models.CharField(max_length=11, default='NA') #
     is_active = models.BooleanField(default=True) #
 
-    created_at = models.DateTimeField(auto_now_add=True) #
-    modified_at = models.DateTimeField(auto_now=True) #
+    created_at = models.DateTimeField(auto_now_add=True, null=True) #
+    modified_at = models.DateTimeField(auto_now=True, null=True) #
 
     class Meta:
         ordering = ['-created_at']

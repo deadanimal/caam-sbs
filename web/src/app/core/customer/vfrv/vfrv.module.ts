@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { 
-  BsDropdownModule, 
-  ProgressbarModule, 
-  TooltipModule, 
-  BsDatepickerModule,
-  PaginationModule
-} from 'ngx-bootstrap';
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { ProgressbarModule } from "ngx-bootstrap/progressbar";
+import { TooltipModule } from "ngx-bootstrap/tooltip";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";

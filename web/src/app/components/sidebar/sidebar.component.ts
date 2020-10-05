@@ -1,12 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ROUTES } from '../../shared/menu/menu-items';
+import { AIRPORTROUTES, HODROUTES, OPERATIONROUTES, ROUTES } from '../../shared/menu/menu-items';
 import { CUSTOMERROUTES } from '../../shared/menu/customer-menu-items';
 
 var misc: any = {
   sidebar_mini_active: true
 };
-
 
 @Component({
   selector: "app-sidebar",
@@ -26,6 +25,15 @@ export class SidebarComponent implements OnInit {
     }
     else if (this.router.url.includes("customer")) {
       this.menuItems = CUSTOMERROUTES.filter(menuItem => menuItem);
+    }
+    else if (this.router.url.includes("airport")) {
+      this.menuItems = AIRPORTROUTES.filter(menuItem => menuItem);
+    }
+    else if (this.router.url.includes("hod")) {
+      this.menuItems = HODROUTES.filter(menuItem => menuItem);
+    }
+    else if (this.router.url.includes("operation")) {
+      this.menuItems = OPERATIONROUTES.filter(menuItem => menuItem);
     }
     
     this.router.events.subscribe(event => {

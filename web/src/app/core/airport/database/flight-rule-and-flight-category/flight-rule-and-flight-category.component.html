@@ -1,0 +1,489 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Database - Rate List
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button
+            class="btn btn-dark"
+            (click)="open(classic1, 'modal_mini', 'sm', 'Add New Rate')"
+          >
+            Add New Rate List
+          </button>
+
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-header bg-dark">
+                    <div class="text-muted text-center mb-3">
+                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    </div>
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <form>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter ln"
+                          [(ngModel)]="formInput.ln"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter rate id"
+                          [(ngModel)]="formInput.rateid"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter lower weight limit"
+                          [(ngModel)]="formInput.lowerweightlimit"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter upper weight limit"
+                          [(ngModel)]="formInput.upperweightlimit"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          placeholder="Enter rate RM"
+                          [(ngModel)]="formInput.raterm"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-dark">
+                          Submit
+                        </button>
+                        <button
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="c('Close click')"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <!-- <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header text-muted text-uppercase">
+                  Number of patients according to triage ({{ todaydate }})
+                </div>
+                <div class="card-body">
+                  <div id="chartdiv" style="width: 100%; height: 400px"></div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Rate List</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Ln"></ngx-datatable-column>
+            <ngx-datatable-column name="Rateid"></ngx-datatable-column>
+            <ngx-datatable-column
+              name="Lowerweightlimit"
+            ></ngx-datatable-column>
+            <ngx-datatable-column
+              name="Upperweightlimit"
+            ></ngx-datatable-column>
+            <ngx-datatable-column name="Raterm"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editRateList(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-warning">
+                  <i class="fas fa-lightbulb"></i>
+                </button>
+
+                <!-- <button
+                      class="btn btn-danger btn-sm"
+                      (click)="deleteRateList(value)"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button> -->
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Status">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <label class="custom-toggle">
+                  <input type="checkbox" checked="" />
+                  <span
+                    class="custom-toggle-slider rounded-circle"
+                    data-label-off="No"
+                    data-label-on="Yes"
+                  ></span>
+                </label>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Database - Airport List
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button
+            class="btn btn-dark"
+            (click)="open(classic1, 'modal_mini', 'sm', 'Add New Airport')"
+          >
+            Add New Airport List
+          </button>
+
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-header bg-dark">
+                    <div class="text-muted text-center mb-3">
+                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    </div>
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <form>
+                      <div class="form-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="airportFormInput.category"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option value="">Please select category</option>
+                          <option value="D">D</option>
+                          <option value="I">I</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter ICAO code"
+                          [(ngModel)]="airportFormInput.icaocode"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter airport name"
+                          [(ngModel)]="airportFormInput.airportname"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-control"
+                          [(ngModel)]="airportFormInput.country"
+                          [ngModelOptions]="{ standalone: true }"
+                        >
+                          <option value="">Please select country</option>
+                          <option value="Malaysia">Malaysia</option>
+                          <option value="United Arab Emirates"
+                            >United Arab Emirates</option
+                          >
+                          <option value="Solomon Islands"
+                            >Solomon Islands</option
+                          >
+                          <option value="Papua New Guinea"
+                            >Papua New Guinea</option
+                          >
+                          <option value="Unknown">Unknown</option>
+                          <option value="Nigeria">Nigeria</option>
+                          <option value="Germany">Germany</option>
+                          <option value="Finland">Finland</option>
+                          <option value="United Kingdom">United Kingdom</option>
+                          <option value="Netherlands">Netherlands</option>
+                          <option value="Luxembourg">Luxembourg</option>
+                          <option value="Poland">Poland</option>
+                          <option value="Sweden">Sweden</option>
+                          <option value="Latvia">Latvia</option>
+                          <option value="South Africa">South Africa</option>
+                          <option value="Swaziland">Swaziland</option>
+                          <option value="Mauritius">Mauritius</option>
+                          <option value="Madagascar">Madagascar</option>
+                          <option value="Ethiopia">Ethiopia</option>
+                          <option value="Egypt">Egypt</option>
+                          <option value="Kenya">Kenya</option>
+                          <option value="Tanzania">Tanzania</option>
+                          <option value="Cyprus">Cyprus</option>
+                          <option value="Spain">Spain</option>
+                          <option value="France">France</option>
+                          <option value="Italy">Italy</option>
+                          <option value="Austria">Austria</option>
+                          <option value="Romania">Romania</option>
+                          <option value="Turkey">Turkey</option>
+                          <option value="Afghanistan">Afghanistan</option>
+                          <option value="Saudi Arabia">Saudi Arabia</option>
+                          <option value="Iran">Iran</option>
+                          <option value="Jordan">Jordan</option>
+                          <option value="Kuwait">Kuwait</option>
+                          <option value="Pakistan">Pakistan</option>
+                          <option value="Iraq">Iraq</option>
+                          <option value="Qatar">Qatar</option>
+                          <option value="United States of America"
+                            >United States of America</option
+                          >
+                          <option value="Japan">Japan</option>
+                          <option value="South Korea">South Korea</option>
+                          <option value="Republic of korea"
+                            >Republic of korea</option
+                          >
+                          <option value="Philippines">Philippines</option>
+                        </select>
+                      </div>
+                      <div class="text-center">
+                        <button class="btn btn-dark">
+                          Submit
+                        </button>
+                        <button
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="c('Close click')"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <!-- <div class="row">
+              <div class="col">
+                <div class="card">
+                  <div class="card-header text-muted text-uppercase">
+                    Number of patients according to triage ({{ todaydate }})
+                  </div>
+                  <div class="card-body">
+                    <div id="chartdiv" style="width: 100%; height: 400px"></div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Airport List</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="airportTemp"
+            (activate)="onAirportActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="Category"></ngx-datatable-column>
+            <ngx-datatable-column name="Icaocode"></ngx-datatable-column>
+            <ngx-datatable-column name="Airportname"></ngx-datatable-column>
+            <ngx-datatable-column name="Country"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="editAirportList(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-warning">
+                  <i class="fas fa-lightbulb"></i>
+                </button>
+
+                <!-- <button
+                        class="btn btn-danger btn-sm"
+                        (click)="deleteAirportList(value)"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button> -->
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Status">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <label class="custom-toggle">
+                  <input type="checkbox" checked="" />
+                  <span
+                    class="custom-toggle-slider rounded-circle"
+                    data-label-off="No"
+                    data-label-on="Yes"
+                  ></span>
+                </label>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

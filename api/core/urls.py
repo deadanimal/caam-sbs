@@ -40,13 +40,24 @@ airports_router = router.register(
     'airports', AirportViewSet
 )
 
+# Approvals app
+from approvals.views import (
+    ApprovalViewSet
+)
+
+approvals_router = router.register(
+    'approvals', ApprovalViewSet
+)
+
 # Operations app
 from operations.views import (
     ChargeViewSet,
     CallsignViewSet,
     RateViewSet,
     RouteViewSet,
-    FileUploadViewSet
+    FileUploadViewSet,
+    FpldataViewSet,
+    FpldataHistoryViewSet
 )
 
 charges_router = router.register (
@@ -67,6 +78,14 @@ routes_router = router.register(
 
 file_uploads_router = router.register(
     'file-uploads', FileUploadViewSet
+)
+
+fpldata_router = router.register(
+    'fpldatas', FpldataViewSet
+)
+
+fpldatahistory_router = router.register(
+    'fpldatas-history', FpldataHistoryViewSet
 )
 
 # Organisations app
@@ -118,6 +137,15 @@ from countries.views import (
 
 countries_router = router.register(
     'countries', CountryViewSet
+)
+
+# Audit Trails app
+from audittrails.views import (
+    AuditTrailViewSet
+)
+
+audittrails_router = router.register(
+    'audit-trails', AuditTrailViewSet
 )
 
 urlpatterns = [

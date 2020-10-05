@@ -1,89 +1,125 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Form } from '@angular/forms';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { map, tap, catchError } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs';
-//import environment from 'src/environments'
-
-/* Tambah baseURL dalam environment */
+import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { TokenResponse } from "./auth.model";
+import { Form } from "@angular/forms";
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { tap } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { JwtService } from "../../handler/jwt/jwt.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
+  // URL
+  public urlRegister: string = environment.baseUrl + "auth/registration/";
+  public urlPasswordChange: string =
+    environment.baseUrl + "auth/password/change/";
+  public urlPasswordReset: string = environment.baseUrl + "auth/password/reset";
+  public urlTokenObtain: string = environment.baseUrl + "auth/obtain/";
+  public urlTokenRefresh: string = environment.baseUrl + "auth/refresh/";
+  public urlTokenVerify: string = environment.baseUrl + "auth/verify/";
+  public urlUser: string = environment.baseUrl + "v1/users/";
 
-  public authObtainTokenURL: string = ''
-  
-  public userEmail: string = null
-  public userUsername: string = null
-  public userID: string = null
-  public userType: string = null
+  // Data
+  public token: TokenResponse;
+  public tokenAccess: string;
+  public tokenRefresh: string;
+  public email: string;
+  public userID: string;
+  public username: string;
+  public userType: string;
+  public userRole: string;
 
-  public retrievedToken: Object
-  public retrievedTokenAccess: string
-  public retrievedTokenRefresh: string
+  // Temp
+  userDetail: any;
+  retrievedUsers: any = [];
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private jwtService: JwtService, private http: HttpClient) {}
 
-  createHeader() {
-    if (this.retrievedTokenAccess){
-      let headers = new HttpHeaders(
-        {
-          'Content-Type': 'application/json',
-          'Accept': '*/*',
-          'Authorization': 'Bearer ' + this.retrievedTokenAccess
-        }
-      )
-      return headers
-    }
-    else {
-      let headers = new HttpHeaders(
-        {
-          'Content-Type': 'application/json',
-          'Accept': '*/*'
-        }
-      )
-      return headers
-    }
-  }
-
-  private handleError(error: any) {
-    console.log('error', error);
-    return throwError(error);
-  }
-
-  retrieveToken(credentials: Form): Observable<any> {
-    let headers = this.createHeader()
-    let jwtHelper: JwtHelperService = new JwtHelperService()
-    return this.http.post<any>(this.authObtainTokenURL, credentials, {headers: headers}).pipe(
+  register(body: Form): Observable<any> {
+    return this.http.post<any>(this.urlRegister, body).pipe(
       tap((res) => {
-        this.retrievedToken = res
-        this.retrievedTokenRefresh = res.refresh
-        this.retrievedTokenAccess = res.access
-
-        let decodedToken = jwtHelper.decodeToken(this.retrievedTokenAccess)
-        this.userEmail = decodedToken.email
-        this.userUsername = decodedToken.username
-        this.userID = decodedToken.user_id
-        this.userType = decodedToken.user_type
-        //console.log('Decoded token: ', decodedToken)
-        //console.log('Post response: ', res)
-        //console.log('Retrieved token refresh', this.retrievedTokenRefresh)
-        //console.log('Retrieved token access', this.retrievedTokenAccess)
-        //console.log('Retrieved token: ', this.retrievedToken)
-        //console.log('Email: ', this.email)
-        //console.log('Username: ', this.username)
-        //console.log('User ID: ', this.userID)
-        //console.log('User type: ', this.userType)
-        //this.isLoginSuccessful = true
-        //this.retrieveSelfInformation(this.userID)
-      }),
-      catchError(this.handleError)
-    )
+        console.log("Registration: ", res);
+      })
+    );
   }
 
+  changePassword(body: Form): Observable<any> {
+    return this.http.post<any>(this.urlPasswordChange, body).pipe(
+      tap((res) => {
+        console.log("Change password: ", res);
+      })
+    );
+  }
+
+  resetPassword(body: Form): Observable<any> {
+    return this.http.post<any>(this.urlPasswordReset, body).pipe(
+      tap((res) => {
+        console.log("Reset password: ", res);
+      })
+    );
+  }
+
+  obtainToken(body: Form): Observable<any> {
+    let jwtHelper: JwtHelperService = new JwtHelperService();
+    return this.http.post<any>(this.urlTokenObtain, body).pipe(
+      tap((res) => {
+        this.token = res;
+        this.tokenRefresh = res.refresh;
+        this.tokenAccess = res.access;
+
+        let decodedToken = jwtHelper.decodeToken(this.tokenAccess);
+        this.email = decodedToken.email;
+        this.username = decodedToken.username;
+        this.userID = decodedToken.user_id;
+        this.userType = decodedToken.user_type;
+        // console.log('Decoded token: ', decodedToken)
+        // console.log('Post response: ', res)
+        // console.log('Refresh token', this.tokenRefresh)
+        // console.log('Access token', this.tokenAccess)
+        // console.log('Token: ', this.token)
+        // console.log('Email: ', this.email)
+        // console.log('Username: ', this.username)
+        // console.log('User ID: ', this.userID)
+        // console.log('User type: ', this.userType)
+        this.jwtService.saveToken("accessToken", this.tokenAccess);
+        this.jwtService.saveToken("refreshToken", this.tokenRefresh);
+      })
+    );
+  }
+
+  refreshToken(): Observable<any> {
+    let refreshToken = this.jwtService.getToken("refreshToken");
+    let body = {
+      refresh: refreshToken,
+    };
+    return this.http.post<any>(this.urlTokenRefresh, body).pipe(
+      tap((res) => {
+        console.log("Token refresh: ", res);
+      })
+    );
+  }
+
+  verifyToken(body: Form): Observable<any> {
+    return this.http.post<any>(this.urlTokenVerify, body).pipe(
+      tap((res) => {
+        console.log("Token verify: ", res);
+      })
+    );
+  }
+
+  decodedToken() {
+    let accessToken = localStorage.getItem("accessToken");
+    let jwtHelper: JwtHelperService = new JwtHelperService();
+    let decodedToken = jwtHelper.decodeToken(accessToken);
+    let user_obj = {
+      user_id: decodedToken.user_id,
+      username: decodedToken.username,
+      email: decodedToken.email,
+      user_type: decodedToken.user_type,
+    };
+    return user_obj;
+  }
 }

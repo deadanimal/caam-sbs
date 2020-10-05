@@ -16,7 +16,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from "@angular/router";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { DxVectorMapModule } from "devextreme-angular";
-import { BsDropdownModule } from "ngx-bootstrap";
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { BreadcrumbModule } from "primeng/breadcrumb";
 
 @NgModule({

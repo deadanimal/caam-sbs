@@ -7,7 +7,7 @@
             <div class="client-logo-area">
               <img class="client-logo" src="assets/img/logo/caam-logo.png" />
             </div>
-            <form role="form">
+            <form [formGroup]="loginFormGroup">
               <div
                 class="form-group mb-3"
                 [ngClass]="{ focused: focus === true }"
@@ -15,17 +15,16 @@
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-primary">
-                      <i class="ni ni-email-83 text-white"></i>
+                      <i class="fas fa-user text-white"></i>
                     </span>
                   </div>
                   <input
                     class="form-control text-dark"
-                    placeholder="Email"
-                    type="email"
+                    placeholder="Username"
+                    type="text"
                     (focus)="focus = true"
                     (blur)="focus = false"
-                    [(ngModel)]="email"
-                    [ngModelOptions]="{ standalone: true }"
+                    formControlName="username"
                   />
                 </div>
               </div>
@@ -33,7 +32,7 @@
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-primary">
-                      <i class="ni ni-lock-circle-open text-white"></i>
+                      <i class="fas fa-lock text-white"></i>
                     </span>
                   </div>
                   <input
@@ -42,8 +41,7 @@
                     type="password"
                     (focus)="focus1 = true"
                     (blur)="focus1 = false"
-                    [(ngModel)]="password"
-                    [ngModelOptions]="{ standalone: true }"
+                    formControlName="password"
                   />
                 </div>
               </div>
@@ -73,12 +71,14 @@
               <div class="text-center">
                 <button
                   type="button"
+                  (click)="login()"
                   class="btn btn-primary btn-block my-4"
                 >
                   Sign in
                 </button>
               </div>
-              <!-- <div class="">
+            </form>
+            <!-- <div class="">
                 <button
                   type="button"
                   class="btn btn-outline-primary btn-block my-2"
@@ -87,25 +87,35 @@
                   Register
                 </button>
               </div> -->
-              <hr />
-              <div class="row">
-                <div class="col">
-                  <button class="btn btn-sm btn-warning btn-block" (click)="login('headquarter')">
-                    Admin
-                  </button>
-                </div>
-                <div class="col">
-                  <button class="btn btn-sm btn-default btn-block" disabled (click)="login('staff')">
-                    Staff
-                  </button>
-                </div>
-                <div class="col">
-                  <button class="btn btn-sm btn-info btn-block" disabled (click)="login('customer')">
-                    Customer
-                  </button>
-                </div>
+            <hr />
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btn btn-sm btn-warning btn-block"
+                  (click)="loginOld('headquarter')"
+                >
+                  Admin
+                </button>
               </div>
-            </form>
+              <div class="col">
+                <button
+                  class="btn btn-sm btn-default btn-block"
+                  disabled
+                  (click)="loginOld('staff')"
+                >
+                  Staff
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  class="btn btn-sm btn-info btn-block"
+                  disabled
+                  (click)="loginOld('customer')"
+                >
+                  Customer
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
