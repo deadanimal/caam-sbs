@@ -1,4 +1,4 @@
-SECRET_KEY = BroNakBurgerMcChickenSatuSosLebih
+SECRET_KEY = BroNakBurgerMcChickenSatuSosLebihIceKurang
 DATABASE_URL = postgresql://api:uhhxlcjuscps90wf@project-do-user-812878-0.a.db.ondigitalocean.com:25060/caam-sbs?sslmode=require
 BUILD_WITH_GEO_LIBRARIES = 1
 DISABLE_COLLECTSTATIC = 1
@@ -14,4 +14,4 @@ CELERY_BROKER_URL=redis://h:PCSu4gZwNtk6iMjNft96W6BGpie7cZjY@redis-16759.c52.us-
 CELERY_RESULT_BACKEND=redis://h:PCSu4gZwNtk6iMjNft96W6BGpie7cZjY@redis-16759.c52.us-east-1-4.ec2.cloud.redislabs.com:16759
 ONE_SIGNAL_APP_ID=17c555e4-a398-41a6-a5f8-9e502585ff35
 ONE_SINGAL_APP_KEY=YTA0NzE3NDQtZjA3NS00MTlmLTgzMzgtYmZkMThmOTI5N2Rj
-SENDGRID_API_KEY=SG.N5Z8Yf_hSrSK4KosRqDu0w.29d3qLPikvcfhv35LQY5D3UE8xgFh1tgVYdMbdirTesse
+SENDGRID_API_KEY=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
