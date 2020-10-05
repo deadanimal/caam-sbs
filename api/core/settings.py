@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.postgres',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -53,7 +54,10 @@ INSTALLED_APPS = [
     'operations',
     'organisations',
     'payments',
-    'users'
+    'users',
+    'countries',
+    'approvals',
+    'audittrails',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +72,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
 ]
+# 'approvals.middleware.ApprovalMiddleware',
 
 ROOT_URLCONF = 'core.urls'
 
@@ -91,13 +96,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',#'django_multitenant.backends.postgresql',#'django.contrib.gis.db.backends.postgis',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'DISABLE_SERVER_SIDE_CURSORS': True
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'caam-sbs-dev',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 import dj_database_url

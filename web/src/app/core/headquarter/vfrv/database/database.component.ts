@@ -1,7 +1,16 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgxSpinnerService } from "ngx-spinner";
 import * as FromAirports from "src/app/variables/from-airports";
 import swal from "sweetalert2";
+
+import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
 
 export enum SelectionType {
   single = "single",
@@ -21,34 +30,18 @@ export class DatabaseComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = FromAirports.FromAirports;
+  rows = []; // FromAirports.FromAirports;
   SelectionType = SelectionType;
+  datas = [];
+  dataErrors = [];
+  toggleDataError: boolean = false;
 
-  // formInput
-  formInput = {
-    callsign: "",
-    registration: "",
-    groundhandler: "",
-    altmod: "",
-    model: "",
-    toa: "",
-    dep: "",
-    arrovf: "",
-    operator: "",
-    from: "",
-    ata: "",
-    to: "",
-    atd: "",
-    fr: "",
-    tof: "",
-    cl: "",
-    total: "",
-    remarks: "",
-    error: "",
-    maximum: 0,
-    distance: 0,
-    dateofflight: 0,
-  };
+  // FormGroup
+  vfrtflFormGroup: FormGroup;
+
+  // Totals
+  vfrTotal: number = 0;
+  tflTotal: number = 0;
 
   // searchInput
   searchInput = {
@@ -61,13 +54,60 @@ export class DatabaseComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService,
+    private fpldataService: FpldatasService
+  ) {
+    this.getVfrTflData();
+
+    this.vfrtflFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      cid: new FormControl(""),
+      fpl_date: new FormControl(""),
+      fpl_no: new FormControl(""),
+      aircraft_model: new FormControl(""),
+      dep: new FormControl(""),
+      dest: new FormControl(""),
+      ctg: new FormControl(""),
+      dist: new FormControl(""),
+      route: new FormControl(""),
+      uploaded_by: new FormControl("2141400f-1734-4a3e-add5-53ca260714e3"),
+      error_remark: new FormControl(""),
     });
+  }
+
+  getVfrTflData() {
+    this.fpldataService
+      .filter("uploaded_by=&submitted_at=")
+      .subscribe((res) => {
+        // console.log("res", res);
+        this.rows = res;
+        this.temp = this.rows.map((prop, key) => {
+          return {
+            ...prop,
+            // id: key
+            no: key,
+          };
+        });
+
+        this.getTotalTfl();
+        this.getTotalVfr();
+      });
+  }
+
+  getTotalTfl() {
+    for (let i = 0; i < this.rows.length; i++) {
+      if (this.rows[i].fpl_type == "TFL") this.tflTotal++;
+    }
+  }
+
+  getTotalVfr() {
+    for (let i = 0; i < this.rows.length; i++) {
+      if (this.rows[i].fpl_type == "VFR") this.vfrTotal++;
+    }
   }
 
   entriesChange($event) {
@@ -78,8 +118,15 @@ export class DatabaseComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
-          return true;
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
         }
       }
       return false;
@@ -129,8 +176,8 @@ export class DatabaseComponent implements OnInit {
       .open(content, {
         windowClass: "modal-mini",
         centered: true,
-        backdrop: 'static',
-        size: 'lg'
+        backdrop: "static",
+        size: "lg",
       })
       .result.then(
         (result) => {
@@ -154,7 +201,9 @@ export class DatabaseComponent implements OnInit {
   }
 
   editDatabase(row, content) {
-    this.formInput = row;
+    this.vfrtflFormGroup.patchValue({
+      ...row,
+    });
     this.open(content, "modal-mini", "sm", "View VFR/TFL Data");
   }
 

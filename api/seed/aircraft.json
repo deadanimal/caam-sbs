@@ -1,0 +1,8432 @@
+[
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A109",
+      "weight_category": "L",
+      "weight": 1590,
+      "rate": 0.1,
+      "description": "Augusta 109/109A/109AII"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A119",
+      "weight_category": "L",
+      "weight": 2720,
+      "rate": 0.2,
+      "description": "AgustaWestland"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A124",
+      "weight_category": "H",
+      "weight": 175000,
+      "rate": 0.6,
+      "description": "Antonov AN-124 Ruslan"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A139",
+      "weight_category": "L",
+      "weight": 4400,
+      "rate": 0.2,
+      "description": "Agusta AW-139"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A189",
+      "weight_category": "H",
+      "weight": 7983,
+      "rate": 0.3,
+      "description": "AUGUSTA 189"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A204",
+      "weight_category": "L",
+      "weight": 4300,
+      "rate": 0.2,
+      "description": "Agusta AB 204/B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A20N",
+      "weight_category": "M",
+      "weight": 79016,
+      "rate": 0.4,
+      "description": "AIRBUS 320 NEO"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A212",
+      "weight_category": "L",
+      "weight": 5080,
+      "rate": 0.2,
+      "description": "Agusta AB212"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A21N",
+      "weight_category": "M",
+      "weight": 96978,
+      "rate": 0.5,
+      "description": "AIRBUS 321 NEO"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A220",
+      "weight_category": "M",
+      "weight": 69000,
+      "rate": 0.4,
+      "description": "Airbus A220"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A22J",
+      "weight_category": "L",
+      "weight": 1255,
+      "rate": 0.2,
+      "description": "Agusta C22J"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A26",
+      "weight_category": "M",
+      "weight": 15876,
+      "rate": 0.2,
+      "description": "Marksman Mcdonnell-Douglas"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A300",
+      "weight_category": "H",
+      "weight": 170859,
+      "rate": 0.6,
+      "description": "Airbus A300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A306",
+      "weight_category": "H",
+      "weight": 170859,
+      "rate": 0.6,
+      "description": "A300B4/600R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A30B",
+      "weight_category": "H",
+      "weight": 170859,
+      "rate": 0.6,
+      "description": "A300 ECX. BLW"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A310",
+      "weight_category": "H",
+      "weight": 150314,
+      "rate": 0.6,
+      "description": "Airbus A310"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A318",
+      "weight_category": "M",
+      "weight": 59000,
+      "rate": 0.4,
+      "description": "Airbus A318"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A319",
+      "weight_category": "M",
+      "weight": 75000,
+      "rate": 0.4,
+      "description": "Airbus A319"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A320",
+      "weight_category": "M",
+      "weight": 77000,
+      "rate": 0.4,
+      "description": "Airbus A320"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A321",
+      "weight_category": "M",
+      "weight": 89000,
+      "rate": 0.4,
+      "description": "Airbus A321"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A322",
+      "weight_category": "M",
+      "weight": 83000,
+      "rate": 0.4,
+      "description": "A322"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A323",
+      "weight_category": "M",
+      "weight": 83000,
+      "rate": 0.4,
+      "description": "A323"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A327",
+      "weight_category": "M",
+      "weight": 78000,
+      "rate": 0.4,
+      "description": "A320-700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A329",
+      "weight_category": "M",
+      "weight": 68000,
+      "rate": 0.4,
+      "description": "A320-900"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A330",
+      "weight_category": "H",
+      "weight": 230482,
+      "rate": 0.6,
+      "description": "Airbus A330"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A332",
+      "weight_category": "H",
+      "weight": 233000,
+      "rate": 0.6,
+      "description": "Airbus A330"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A333",
+      "weight_category": "H",
+      "weight": 217000,
+      "rate": 0.6,
+      "description": "Airbus A330"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A339",
+      "weight_category": "H",
+      "weight": 251000,
+      "rate": 0.6,
+      "description": "AIRBUS A330-900 NEO"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A340",
+      "weight_category": "H",
+      "weight": 275000,
+      "rate": 0.6,
+      "description": "Airbus A340"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A342",
+      "weight_category": "H",
+      "weight": 260000,
+      "rate": 0.6,
+      "description": "airbus 342"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A343",
+      "weight_category": "H",
+      "weight": 275000,
+      "rate": 0.6,
+      "description": "Airbus 340 300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A344",
+      "weight_category": "H",
+      "weight": 380000,
+      "rate": 0.6,
+      "description": "A344"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A345",
+      "weight_category": "H",
+      "weight": 365000,
+      "rate": 0.6,
+      "description": "airbus"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A346",
+      "weight_category": "H",
+      "weight": 365000,
+      "rate": 0.6,
+      "description": "airbus 346"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A359",
+      "weight_category": "H",
+      "weight": 268000,
+      "rate": 0.6,
+      "description": "Airbus A350 XWB"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A35K",
+      "weight_category": "H",
+      "weight": 316000,
+      "rate": 0.6,
+      "description": "Airbus A350-1000"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A37",
+      "weight_category": "L",
+      "weight": 6350,
+      "rate": 0.2,
+      "description": "Dragonfly 318E Cessna"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A380",
+      "weight_category": "H",
+      "weight": 590000,
+      "rate": 0.6,
+      "description": "airbus"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A388",
+      "weight_category": "H",
+      "weight": 590000,
+      "rate": 0.6,
+      "description": "airbus"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A3ST",
+      "weight_category": "L",
+      "weight": 155000,
+      "rate": 0.3,
+      "description": "A3ST"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A400",
+      "weight_category": "H",
+      "weight": 141000,
+      "rate": 0.6,
+      "description": "AIRBUS A400M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A400M",
+      "weight_category": "H",
+      "weight": 141000,
+      "rate": 0.6,
+      "description": "Airbus A400M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A5",
+      "weight_category": "M",
+      "weight": 28615,
+      "rate": 0.2,
+      "description": "Vigilante Rockwell"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "A6",
+      "weight_category": "M",
+      "weight": 27397,
+      "rate": 0.3,
+      "description": "Intruder Grumman"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AA1",
+      "weight_category": "L",
+      "weight": 721,
+      "rate": 0.1,
+      "description": "Yankee AA-1B/C Grumman"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AA5",
+      "weight_category": "L",
+      "weight": 752,
+      "rate": 0.1,
+      "description": "Cheetah AA-5/A/B Grumman"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AA5A",
+      "weight_category": "L",
+      "weight": 5670,
+      "rate": 0.2,
+      "description": "like skyvan"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC10",
+      "weight_category": "L",
+      "weight": 1021,
+      "rate": 0.2,
+      "description": "Darter 100/150"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC12",
+      "weight_category": "L",
+      "weight": 1470,
+      "rate": 0.2,
+      "description": "Aero Commander 112"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC14",
+      "weight_category": "L",
+      "weight": 1474,
+      "rate": 0.2,
+      "description": "Commander 114"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC20",
+      "weight_category": "L",
+      "weight": 1364,
+      "rate": 0.2,
+      "description": "Commander 200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC21",
+      "weight_category": "M",
+      "weight": 10660,
+      "rate": 0.3,
+      "description": "Jet Commander"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC2A",
+      "weight_category": "M",
+      "weight": 1202,
+      "rate": 0.3,
+      "description": "Commander 112A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC2T",
+      "weight_category": "M",
+      "weight": 1338,
+      "rate": 0.3,
+      "description": "Commander 112TC"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC50",
+      "weight_category": "M",
+      "weight": 3062,
+      "rate": 0.3,
+      "description": "Commander 500"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC52",
+      "weight_category": "M",
+      "weight": 3062,
+      "rate": 0.3,
+      "description": "Commander 520"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC56",
+      "weight_category": "M",
+      "weight": 3062,
+      "rate": 0.3,
+      "description": "Commander 560"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC60",
+      "weight_category": "M",
+      "weight": 3062,
+      "rate": 0.3,
+      "description": "Grand Commander 680"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC68",
+      "weight_category": "M",
+      "weight": 5000,
+      "rate": 0.3,
+      "description": "Super Commander 680S"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC69",
+      "weight_category": "M",
+      "weight": 5080,
+      "rate": 0.3,
+      "description": "Jet Prop Commander"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC6T",
+      "weight_category": "M",
+      "weight": 4683,
+      "rate": 0.3,
+      "description": "Turbo Commander 690 C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC72",
+      "weight_category": "M",
+      "weight": 4536,
+      "rate": 0.3,
+      "description": "Air Cruiser"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC80",
+      "weight_category": "M",
+      "weight": 5000,
+      "rate": 0.3,
+      "description": "commander 800"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC84",
+      "weight_category": "M",
+      "weight": 4683,
+      "rate": 0.3,
+      "description": "Jet Commander 840/980/1000"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC85",
+      "weight_category": "M",
+      "weight": 4082,
+      "rate": 0.3,
+      "description": "Aero Commander 685"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC90",
+      "weight_category": "M",
+      "weight": 4649,
+      "rate": 0.3,
+      "description": "ROCKWELL JetProp Commander 690/840"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AC95",
+      "weight_category": "M",
+      "weight": 5330,
+      "rate": 0.3,
+      "description": "Aero Commander 695"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AE34",
+      "weight_category": "M",
+      "weight": 430,
+      "rate": 0.3,
+      "description": "AE34"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AE5T",
+      "weight_category": "M",
+      "weight": 25000,
+      "rate": 0.3,
+      "description": "AE5T"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AG306",
+      "weight_category": "L",
+      "weight": 2600,
+      "rate": 0.2,
+      "description": "AUGUSTA A306"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AJ25",
+      "weight_category": "M",
+      "weight": 11839,
+      "rate": 0.3,
+      "description": "IAI 1125 Astra"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AL30",
+      "weight_category": "M",
+      "weight": 30000,
+      "rate": 0.3,
+      "description": "AL30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN12",
+      "weight_category": "M",
+      "weight": 61000,
+      "rate": 0.4,
+      "description": "AN-12/AB-12BP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN2",
+      "weight_category": "M",
+      "weight": 5500,
+      "rate": 0.3,
+      "description": "AN-2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN22",
+      "weight_category": "M",
+      "weight": 113398,
+      "rate": 0.4,
+      "description": "AN-22 Antheus"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN225",
+      "weight_category": "H",
+      "weight": 640000,
+      "rate": 0.6,
+      "description": "Antonov An-225 Mriya"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN24",
+      "weight_category": "M",
+      "weight": 21045,
+      "rate": 0.3,
+      "description": "AN-24"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN26",
+      "weight_category": "M",
+      "weight": 24000,
+      "rate": 0.3,
+      "description": "AN-26"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN28",
+      "weight_category": "M",
+      "weight": 3402,
+      "rate": 0.4,
+      "description": "Antonov AN-28/PZL MielEC M-28 Skytruck"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN32",
+      "weight_category": "M",
+      "weight": 12247,
+      "rate": 0.4,
+      "description": "Antonov AN-32"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN38",
+      "weight_category": "M",
+      "weight": 4309,
+      "rate": 0.4,
+      "description": "Antonov AN-38"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN39",
+      "weight_category": "M",
+      "weight": 50000,
+      "rate": 0.4,
+      "description": "AN39"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AN74",
+      "weight_category": "M",
+      "weight": 20000,
+      "rate": 0.3,
+      "description": "Antonov An-74"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AP306",
+      "weight_category": "L",
+      "weight": 900,
+      "rate": 0.1,
+      "description": "AP306"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AP332",
+      "weight_category": "M",
+      "weight": 5000,
+      "rate": 0.3,
+      "description": "HELICOPTER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AQ11",
+      "weight_category": "L",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "AQUILLA 11"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS32",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "PKDAI"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS33",
+      "weight_category": "L",
+      "weight": 2540,
+      "rate": 0.2,
+      "description": "AS33"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS35",
+      "weight_category": "L",
+      "weight": 1655,
+      "rate": 0.1,
+      "description": "AS35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS36",
+      "weight_category": "H",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "AS36"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS38",
+      "weight_category": "NA",
+      "weight": 77000,
+      "rate": 0.2,
+      "description": "AS38"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS61",
+      "weight_category": "L",
+      "weight": 1500,
+      "rate": 0.1,
+      "description": "AS61"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AS70",
+      "weight_category": "L",
+      "weight": 317,
+      "rate": 0.1,
+      "description": "AS70"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "ASTR",
+      "weight_category": "M",
+      "weight": 10600,
+      "rate": 0.3,
+      "description": "ASTR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AT26",
+      "weight_category": "M",
+      "weight": 3765,
+      "rate": 0.3,
+      "description": "Xavante EMB-326 GB"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AT42",
+      "weight_category": "M",
+      "weight": 14932,
+      "rate": 0.3,
+      "description": "ATR42"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AT43",
+      "weight_category": "M",
+      "weight": 16900,
+      "rate": 0.3,
+      "description": "ATR42-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AT45",
+      "weight_category": "M",
+      "weight": 18600,
+      "rate": 0.3,
+      "description": "AT45"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AT72",
+      "weight_category": "M",
+      "weight": 22500,
+      "rate": 0.3,
+      "description": "ATR72"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "ATLA",
+      "weight_category": "M",
+      "weight": 46200,
+      "rate": 0.3,
+      "description": "Atlantic 1150"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "ATR",
+      "weight_category": "M",
+      "weight": 18600,
+      "rate": 0.3,
+      "description": "ATR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AU23",
+      "weight_category": "L",
+      "weight": 2767,
+      "rate": 0.2,
+      "description": "Heliporter/Peacemaker"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AU24",
+      "weight_category": "L",
+      "weight": 2313,
+      "rate": 0.2,
+      "description": "H-550/A Stallion"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AV23",
+      "weight_category": "L",
+      "weight": 2800,
+      "rate": 0.2,
+      "description": "Pilatus/Peacemaker"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "AW13",
+      "weight_category": "L",
+      "weight": 5000,
+      "rate": 0.2,
+      "description": "AUGUSTA WESTLAND 139"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B0105",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "N787RC"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B1",
+      "weight_category": "H",
+      "weight": 216400,
+      "rate": 0.2,
+      "description": "Lancer"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B105",
+      "weight_category": "L",
+      "weight": 2500,
+      "rate": 0.2,
+      "description": "Messerschmitt-Bölkow-Blohm Bo 105"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B109",
+      "weight_category": "L",
+      "weight": 2500,
+      "rate": 0.1,
+      "description": "B109"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B120",
+      "weight_category": "M",
+      "weight": 11200,
+      "rate": 0.3,
+      "description": "B120"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B150",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "B150 BEECHCRAFT"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B15R",
+      "weight_category": "NA",
+      "weight": 8000,
+      "rate": 0.3,
+      "description": "B15R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B190",
+      "weight_category": "M",
+      "weight": 7766,
+      "rate": 0.3,
+      "description": "BEECHCRAFT  B190"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B19D",
+      "weight_category": "NA",
+      "weight": 7000,
+      "rate": 0.3,
+      "description": "B19D"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B200",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "B200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B206",
+      "weight_category": "L",
+      "weight": 1451,
+      "rate": 0.1,
+      "description": "B206"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B20T",
+      "weight_category": "L",
+      "weight": 700,
+      "rate": 0.1,
+      "description": "B20T"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B214",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "P2MBH"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B22",
+      "weight_category": "M",
+      "weight": 27400,
+      "rate": 0.3,
+      "description": "b22"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B25",
+      "weight_category": "M",
+      "weight": 15910,
+      "rate": 0.3,
+      "description": "Mitchell"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B26",
+      "weight_category": "M",
+      "weight": 15900,
+      "rate": 0.3,
+      "description": "Invader"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B300",
+      "weight_category": "M",
+      "weight": 6300,
+      "rate": 0.3,
+      "description": "B300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B350",
+      "weight_category": "NA",
+      "weight": 6800,
+      "rate": 0.3,
+      "description": "B350"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B358",
+      "weight_category": "M",
+      "weight": 5400,
+      "rate": 0.3,
+      "description": "like bn"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B38M",
+      "weight_category": "H",
+      "weight": 63000,
+      "rate": 0.4,
+      "description": "B737-800 MAX"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B40",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "WING OVER ASIA"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B407",
+      "weight_category": "NA",
+      "weight": 2722,
+      "rate": 0.1,
+      "description": "B407"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B412",
+      "weight_category": "M",
+      "weight": 5400,
+      "rate": 0.3,
+      "description": "BELL 412 HELICOPTER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B429",
+      "weight_category": "L",
+      "weight": 3175,
+      "rate": 0.2,
+      "description": "BELL429"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B430",
+      "weight_category": "L",
+      "weight": 4038,
+      "rate": 0.2,
+      "description": "BELL 430"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B463",
+      "weight_category": "M",
+      "weight": 38101,
+      "rate": 0.3,
+      "description": "BAE 146-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B505",
+      "weight_category": "L",
+      "weight": 2030,
+      "rate": 0.1,
+      "description": "BELL 505 JET RANGER X"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B52",
+      "weight_category": "H",
+      "weight": 220000,
+      "rate": 0.6,
+      "description": "Stratofortress"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B703",
+      "weight_category": "H",
+      "weight": 150800,
+      "rate": 0.6,
+      "description": "B707-300 Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B707",
+      "weight_category": "H",
+      "weight": 148636,
+      "rate": 0.6,
+      "description": "707-100/200 Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B712",
+      "weight_category": "M",
+      "weight": 54885,
+      "rate": 0.4,
+      "description": "B712"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B717",
+      "weight_category": "H",
+      "weight": 55000,
+      "rate": 0.4,
+      "description": "B717"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B720",
+      "weight_category": "H",
+      "weight": 106500,
+      "rate": 0.5,
+      "description": "Stratoliner 720"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B721",
+      "weight_category": "M",
+      "weight": 106140,
+      "rate": 0.5,
+      "description": "B721"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B722",
+      "weight_category": "M",
+      "weight": 95030,
+      "rate": 0.5,
+      "description": 727
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B723",
+      "weight_category": "M",
+      "weight": 77000,
+      "rate": 0.4,
+      "description": "B723"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B724",
+      "weight_category": "M",
+      "weight": 78000,
+      "rate": 0.4,
+      "description": "B724"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B727",
+      "weight_category": "M",
+      "weight": 72727,
+      "rate": 0.4,
+      "description": "727 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B72H",
+      "weight_category": "H",
+      "weight": 92273,
+      "rate": 0.5,
+      "description": "B72H"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B72S",
+      "weight_category": "H",
+      "weight": 92273,
+      "rate": 0.5,
+      "description": "720B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B731",
+      "weight_category": "M",
+      "weight": 46818,
+      "rate": 0.4,
+      "description": "Boeing 737-100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B732",
+      "weight_category": "M",
+      "weight": 78636,
+      "rate": 0.4,
+      "description": "Boeing 737-200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B733",
+      "weight_category": "M",
+      "weight": 62823,
+      "rate": 0.4,
+      "description": "Boeing 737-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B734",
+      "weight_category": "M",
+      "weight": 68040,
+      "rate": 0.4,
+      "description": "Boeing 737-400"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B735",
+      "weight_category": "M",
+      "weight": 60555,
+      "rate": 0.4,
+      "description": "Boeing 737-500"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B736",
+      "weight_category": "M",
+      "weight": 52273,
+      "rate": 0.4,
+      "description": "B736"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B737",
+      "weight_category": "M",
+      "weight": 58740,
+      "rate": 0.4,
+      "description": "Boeing 737-100/200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B738",
+      "weight_category": "M",
+      "weight": 79015,
+      "rate": 0.4,
+      "description": "Boeing 738-800"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B739",
+      "weight_category": "M",
+      "weight": 79015,
+      "rate": 0.4,
+      "description": "Boeing 737-900"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73A",
+      "weight_category": "M",
+      "weight": 58227,
+      "rate": 0.4,
+      "description": "Boeing 737-100/200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73B",
+      "weight_category": "M",
+      "weight": 56591,
+      "rate": 0.4,
+      "description": "Boeing 737-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73C",
+      "weight_category": "M",
+      "weight": 53182,
+      "rate": 0.4,
+      "description": "B73C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73D",
+      "weight_category": "M",
+      "weight": 64727,
+      "rate": 0.4,
+      "description": "B73D"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73F",
+      "weight_category": "M",
+      "weight": 64727,
+      "rate": 0.4,
+      "description": "Boeing 737-400"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73S",
+      "weight_category": "M",
+      "weight": 56591,
+      "rate": 0.4,
+      "description": "Boeing 737-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B73V",
+      "weight_category": "M",
+      "weight": 52273,
+      "rate": 0.4,
+      "description": "Boeing 737-500"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74",
+      "weight_category": "H",
+      "weight": 363636,
+      "rate": 0.6,
+      "description": ""
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B741",
+      "weight_category": "H",
+      "weight": 322727,
+      "rate": 0.6,
+      "description": "Boeing 747-100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B742",
+      "weight_category": "H",
+      "weight": 363636,
+      "rate": 0.6,
+      "description": "Boeing 747-200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B743",
+      "weight_category": "H",
+      "weight": 378818,
+      "rate": 0.6,
+      "description": "Boeing 747-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B744",
+      "weight_category": "H",
+      "weight": 412770,
+      "rate": 0.6,
+      "description": "Boeing 747-400 (INT)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B745",
+      "weight_category": "H",
+      "weight": 395455,
+      "rate": 0.6,
+      "description": "B745"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B747",
+      "weight_category": "H",
+      "weight": 378818,
+      "rate": 0.6,
+      "description": "747-100/200/300/400 Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B748",
+      "weight_category": "H",
+      "weight": 448000,
+      "rate": 0.6,
+      "description": "B748"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74A",
+      "weight_category": "H",
+      "weight": 322818,
+      "rate": 0.6,
+      "description": "B747"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74B",
+      "weight_category": "H",
+      "weight": 395455,
+      "rate": 0.6,
+      "description": "747-400"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74D",
+      "weight_category": "H",
+      "weight": 395455,
+      "rate": 0.6,
+      "description": "Boeing 747-400 (DOM)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74F",
+      "weight_category": "H",
+      "weight": 395455,
+      "rate": 0.6,
+      "description": "747-400"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74R",
+      "weight_category": "H",
+      "weight": 236364,
+      "rate": 0.6,
+      "description": "Boeing 747-SR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B74S",
+      "weight_category": "H",
+      "weight": 319682,
+      "rate": 0.6,
+      "description": "747 SP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B75",
+      "weight_category": "H",
+      "weight": 115909,
+      "rate": 0.5,
+      "description": "Stearman"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B750",
+      "weight_category": "H",
+      "weight": 115909,
+      "rate": 0.5,
+      "description": "STEARMAN"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B751",
+      "weight_category": "H",
+      "weight": 100000,
+      "rate": 0.5,
+      "description": ""
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B752",
+      "weight_category": "H",
+      "weight": 115660,
+      "rate": 0.5,
+      "description": 757
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B753",
+      "weight_category": "H",
+      "weight": 115895,
+      "rate": 0.5,
+      "description": "B752"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B754",
+      "weight_category": "H",
+      "weight": 100000,
+      "rate": 0.5,
+      "description": "B754"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B757",
+      "weight_category": "H",
+      "weight": 100000,
+      "rate": 0.5,
+      "description": "757 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B762",
+      "weight_category": "H",
+      "weight": 136364,
+      "rate": 0.6,
+      "description": "Boeing 767-200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B763",
+      "weight_category": "H",
+      "weight": 181890,
+      "rate": 0.6,
+      "description": "Boeing 767-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B765",
+      "weight_category": "H",
+      "weight": 175909,
+      "rate": 0.6,
+      "description": "B765"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B767",
+      "weight_category": "H",
+      "weight": 136364,
+      "rate": 0.6,
+      "description": "767 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B768",
+      "weight_category": "H",
+      "weight": 136364,
+      "rate": 0.6,
+      "description": "B768"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B76E",
+      "weight_category": "H",
+      "weight": 136364,
+      "rate": 0.6,
+      "description": "B76E"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B770",
+      "weight_category": "H",
+      "weight": 230273,
+      "rate": 0.6,
+      "description": "B770"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B771",
+      "weight_category": "H",
+      "weight": 230273,
+      "rate": 0.6,
+      "description": "B771"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B772",
+      "weight_category": "H",
+      "weight": 341105,
+      "rate": 0.6,
+      "description": "Boeing 777-200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B773",
+      "weight_category": "H",
+      "weight": 299380,
+      "rate": 0.6,
+      "description": "Boeing 777-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B774",
+      "weight_category": "H",
+      "weight": 300000,
+      "rate": 0.6,
+      "description": "B774"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B777",
+      "weight_category": "H",
+      "weight": 347800,
+      "rate": 0.6,
+      "description": "Boeing 777"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B778",
+      "weight_category": "H",
+      "weight": 300000,
+      "rate": 0.6,
+      "description": "B778"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B77J",
+      "weight_category": "H",
+      "weight": 300000,
+      "rate": 0.6,
+      "description": "B777"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B77L",
+      "weight_category": "H",
+      "weight": 347800,
+      "rate": 0.6,
+      "description": "B777"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B77W",
+      "weight_category": "H",
+      "weight": 351500,
+      "rate": 0.6,
+      "description": "b777"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B783",
+      "weight_category": "H",
+      "weight": 300000,
+      "rate": 0.6,
+      "description": ""
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B787",
+      "weight_category": "H",
+      "weight": 228000,
+      "rate": 0.6,
+      "description": "BOEING 787 DREAMLINER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B788",
+      "weight_category": "H",
+      "weight": 228000,
+      "rate": 0.6,
+      "description": "Boeing 787 Dreamliner"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B789",
+      "weight_category": "H",
+      "weight": 253000,
+      "rate": 0.6,
+      "description": "BOEING 787 DREAMLINER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "B78X",
+      "weight_category": "H",
+      "weight": 253000,
+      "rate": 0.6,
+      "description": "BOEING 787-10 DREAMLINER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA10",
+      "weight_category": "M",
+      "weight": 47500,
+      "rate": 0.4,
+      "description": "Bae 125 Series 1000"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA11",
+      "weight_category": "M",
+      "weight": 47500,
+      "rate": 0.4,
+      "description": "One-Eleven All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA30",
+      "weight_category": "M",
+      "weight": 44273,
+      "rate": 0.3,
+      "description": "BA30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA31",
+      "weight_category": "M",
+      "weight": 6950,
+      "rate": 0.3,
+      "description": "Jetstream 31"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA32",
+      "weight_category": "M",
+      "weight": 7350,
+      "rate": 0.3,
+      "description": "Jetstream 32"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA41",
+      "weight_category": "M",
+      "weight": 10886,
+      "rate": 0.3,
+      "description": "Jetstream 41"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BA46",
+      "weight_category": "M",
+      "weight": 23216,
+      "rate": 0.3,
+      "description": "Bae 146-100/200/300 RJ SE"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BACI",
+      "weight_category": "M",
+      "weight": 35909,
+      "rate": 0.3,
+      "description": "BAC1"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BAE",
+      "weight_category": "M",
+      "weight": 42184,
+      "rate": 0.3,
+      "description": "BAe 146-200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BCS1",
+      "weight_category": "M",
+      "weight": 60781,
+      "rate": 0.4,
+      "description": "BOMBARDIER CSERIES"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BD10",
+      "weight_category": "M",
+      "weight": 17622,
+      "rate": 0.3,
+      "description": "bombardier bd 100 1a10"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BD19",
+      "weight_category": "M",
+      "weight": 50000,
+      "rate": 0.3,
+      "description": "BD19"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BD70",
+      "weight_category": "M",
+      "weight": 44452,
+      "rate": 0.3,
+      "description": "BD70"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE02",
+      "weight_category": "M",
+      "weight": 7700,
+      "rate": 0.3,
+      "description": "Beech 1900/C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE10",
+      "weight_category": "M",
+      "weight": 5352,
+      "rate": 0.3,
+      "description": "Beech King Air 100A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE17",
+      "weight_category": "M",
+      "weight": 1928,
+      "rate": 0.1,
+      "description": "Stagger Wing 17"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE18",
+      "weight_category": "M",
+      "weight": 3959,
+      "rate": 0.3,
+      "description": "Twin Beech 18"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE19",
+      "weight_category": "M",
+      "weight": 7000,
+      "rate": 0.3,
+      "description": "Sport 19"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE1B",
+      "weight_category": "M",
+      "weight": 5352,
+      "rate": 0.3,
+      "description": "King Air 100 B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE20",
+      "weight_category": "L",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "Super King Air 200 Huron"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE23",
+      "weight_category": "M",
+      "weight": 1110,
+      "rate": 0.3,
+      "description": "Sundowner 23 Musketeer 23"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE24",
+      "weight_category": "M",
+      "weight": 1247,
+      "rate": 0.1,
+      "description": "Sierra24"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE2H",
+      "weight_category": "M",
+      "weight": 5693,
+      "rate": 0.3,
+      "description": "Super King Air 200HDC"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE30",
+      "weight_category": "M",
+      "weight": 6804,
+      "rate": 0.3,
+      "description": "Super King Air 300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE33",
+      "weight_category": "M",
+      "weight": 1542,
+      "rate": 0.1,
+      "description": "Bonanza 33"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE35",
+      "weight_category": "M",
+      "weight": 1535,
+      "rate": 0.1,
+      "description": "Bonanza 35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE36",
+      "weight_category": "M",
+      "weight": 1656,
+      "rate": 0.1,
+      "description": "Bonanza 36"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE3B",
+      "weight_category": "M",
+      "weight": 6087,
+      "rate": 0.3,
+      "description": "Super King Air 350"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE3L",
+      "weight_category": "M",
+      "weight": 5700,
+      "rate": 0.3,
+      "description": "Super King Air 300LW"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE40",
+      "weight_category": "M",
+      "weight": 7303,
+      "rate": 0.3,
+      "description": "BE40"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE42",
+      "weight_category": "M",
+      "weight": 86000,
+      "rate": 0.4,
+      "description": "BE42"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE50",
+      "weight_category": "M",
+      "weight": 3175,
+      "rate": 0.3,
+      "description": "Twin Bonanza D50"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE55",
+      "weight_category": "M",
+      "weight": 2300,
+      "rate": 0.1,
+      "description": "Baron 55/Cochise"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE56",
+      "weight_category": "M",
+      "weight": 2717,
+      "rate": 0.3,
+      "description": "BARON 56"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE58",
+      "weight_category": "M",
+      "weight": 2495,
+      "rate": 0.3,
+      "description": "Baron 58"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE60",
+      "weight_category": "M",
+      "weight": 3073,
+      "rate": 0.3,
+      "description": "Duke 60"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE65",
+      "weight_category": "M",
+      "weight": 3493,
+      "rate": 0.2,
+      "description": "Queen Air 65/70"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE76",
+      "weight_category": "M",
+      "weight": 1772,
+      "rate": 0.3,
+      "description": "Duchess 76"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE77",
+      "weight_category": "M",
+      "weight": 760,
+      "rate": 0.3,
+      "description": "Skipper 77"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE80",
+      "weight_category": "M",
+      "weight": 3992,
+      "rate": 0.3,
+      "description": "Queen Air 80"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE90",
+      "weight_category": "M",
+      "weight": 4756,
+      "rate": 0.3,
+      "description": "King Air C90 E90"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE99",
+      "weight_category": "M",
+      "weight": 4727,
+      "rate": 0.3,
+      "description": "Airliner C99"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE9L",
+      "weight_category": "L",
+      "weight": 4944,
+      "rate": 0.2,
+      "description": "BE9L"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BE9T",
+      "weight_category": "M",
+      "weight": 4900,
+      "rate": 0.2,
+      "description": "BE9T"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BEST",
+      "weight_category": "L",
+      "weight": 1859,
+      "rate": 0.3,
+      "description": "N2000S"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH04",
+      "weight_category": "L",
+      "weight": 4309,
+      "rate": 0.2,
+      "description": "Iroquois 204"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH05",
+      "weight_category": "L",
+      "weight": 4309,
+      "rate": 0.2,
+      "description": "Iroquois 205"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH06",
+      "weight_category": "L",
+      "weight": 1451,
+      "rate": 0.1,
+      "description": "Jet Ranger/Long Ranger/Sea"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH09",
+      "weight_category": "L",
+      "weight": 6690,
+      "rate": 0.3,
+      "description": "Huey Cobra 209"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH12",
+      "weight_category": "L",
+      "weight": 4762,
+      "rate": 0.2,
+      "description": "Iroquois 212"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH14",
+      "weight_category": "L",
+      "weight": 6260,
+      "rate": 0.3,
+      "description": "Biglifter"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH22",
+      "weight_category": "L",
+      "weight": 900,
+      "rate": 0.1,
+      "description": "Model 222"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH23",
+      "weight_category": "L",
+      "weight": 2720,
+      "rate": 0.2,
+      "description": "Bell Helicopter Textron"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH41",
+      "weight_category": "L",
+      "weight": 5347,
+      "rate": 0.3,
+      "description": "Model412"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BH47",
+      "weight_category": "L",
+      "weight": 1338,
+      "rate": 0.1,
+      "description": "Sioux/Trooper 47G/47J"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BL8",
+      "weight_category": "L",
+      "weight": 975,
+      "rate": 0.1,
+      "description": "8GCBC Scout"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BN2",
+      "weight_category": "M",
+      "weight": 2900,
+      "rate": 0.2,
+      "description": "BN-2A/B Islander/Defender"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BN20",
+      "weight_category": "M",
+      "weight": 2900,
+      "rate": 0.2,
+      "description": "BN20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BN2A",
+      "weight_category": "M",
+      "weight": 2900,
+      "rate": 0.2,
+      "description": "BN2A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BN2B",
+      "weight_category": "M",
+      "weight": 2900,
+      "rate": 0.2,
+      "description": "BN2B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "BN2T",
+      "weight_category": "M",
+      "weight": 2900,
+      "rate": 0.2,
+      "description": "BN-2T Turbine Islander"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C117",
+      "weight_category": "M",
+      "weight": 13607,
+      "rate": 0.3,
+      "description": "Super DC-3"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C118",
+      "weight_category": "M",
+      "weight": 44100,
+      "rate": 0.3,
+      "description": "DC-6/B Liftmaster"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C12",
+      "weight_category": "L",
+      "weight": 5800,
+      "rate": 0.2,
+      "description": "Super King Air 200 Huron"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C125",
+      "weight_category": "M",
+      "weight": 27215,
+      "rate": 0.3,
+      "description": "C125"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C12F",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "C12F"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C130",
+      "weight_category": "M",
+      "weight": 62000,
+      "rate": 0.4,
+      "description": "Hercules"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C135",
+      "weight_category": "M",
+      "weight": 146284,
+      "rate": 0.6,
+      "description": "C135"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C137",
+      "weight_category": "M",
+      "weight": 148325,
+      "rate": 0.6,
+      "description": "Boeing VC137"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C139",
+      "weight_category": "M",
+      "weight": 19505,
+      "rate": 0.3,
+      "description": "C139"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C140",
+      "weight_category": "M",
+      "weight": 19050,
+      "rate": 0.3,
+      "description": "Jetstar"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C141",
+      "weight_category": "M",
+      "weight": 147000,
+      "rate": 0.6,
+      "description": "Starlifter"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C150",
+      "weight_category": "L",
+      "weight": 726,
+      "rate": 0.1,
+      "description": "Cessna 150"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C152",
+      "weight_category": "L",
+      "weight": 757,
+      "rate": 0.1,
+      "description": "Cessna 152"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C160",
+      "weight_category": "M",
+      "weight": 51000,
+      "rate": 0.4,
+      "description": "TRANSALL C160"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C17",
+      "weight_category": "M",
+      "weight": 265350,
+      "rate": 0.6,
+      "description": "C17"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C170",
+      "weight_category": "L",
+      "weight": 998,
+      "rate": 0.1,
+      "description": "Cessna 170"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C172",
+      "weight_category": "L",
+      "weight": 1100,
+      "rate": 0.1,
+      "description": "Skyhawk 172/Cutlass/Mescal"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C175",
+      "weight_category": "M",
+      "weight": 1066,
+      "rate": 0.3,
+      "description": "Skylark 175"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C177",
+      "weight_category": "M",
+      "weight": 1100,
+      "rate": 0.3,
+      "description": "Cardinal 177"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C17A",
+      "weight_category": "M",
+      "weight": 265000,
+      "rate": 0.6,
+      "description": "C17A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C180",
+      "weight_category": "M",
+      "weight": 1270,
+      "rate": 0.3,
+      "description": "Skywagon 180"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C182",
+      "weight_category": "M",
+      "weight": 1460,
+      "rate": 0.1,
+      "description": "Skylane 182/RG Turbo Skylark"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C185",
+      "weight_category": "M",
+      "weight": 1520,
+      "rate": 0.1,
+      "description": "Skywagon 185"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C190",
+      "weight_category": "M",
+      "weight": 1520,
+      "rate": 0.1,
+      "description": "Cessna 190"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C195",
+      "weight_category": "M",
+      "weight": 1520,
+      "rate": 0.1,
+      "description": "Cessna 195"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C2",
+      "weight_category": "M",
+      "weight": 27216,
+      "rate": 0.3,
+      "description": "GREYHOUND"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C204",
+      "weight_category": "L",
+      "weight": 1650,
+      "rate": 0.1,
+      "description": "C204"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C205",
+      "weight_category": "L",
+      "weight": 1633,
+      "rate": 0.2,
+      "description": "Super Skywagon/Super Skylark"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C206",
+      "weight_category": "L",
+      "weight": 1632,
+      "rate": 0.1,
+      "description": "Stationair 6/Turbo Station"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C207",
+      "weight_category": "L",
+      "weight": 1600,
+      "rate": 0.1,
+      "description": "Stationair/Turbo Stationai"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C208",
+      "weight_category": "L",
+      "weight": 4000,
+      "rate": 0.2,
+      "description": "Caravan I"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C20A",
+      "weight_category": "M",
+      "weight": 31909,
+      "rate": 0.3,
+      "description": "Gulfstream III"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C210",
+      "weight_category": "L",
+      "weight": 1800,
+      "rate": 0.1,
+      "description": "Centurion/II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C212",
+      "weight_category": "M",
+      "weight": 7716,
+      "rate": 0.3,
+      "description": "Aviocar"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C235",
+      "weight_category": "M",
+      "weight": 16500,
+      "rate": 0.3,
+      "description": "C235"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C25A",
+      "weight_category": "M",
+      "weight": 5500,
+      "rate": 0.3,
+      "description": "C25A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C25B",
+      "weight_category": "L",
+      "weight": 6291,
+      "rate": 0.3,
+      "description": "CESSNA CITATION CJ3"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C25C",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "Cessna CitationJet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C27J",
+      "weight_category": "M",
+      "weight": 30500,
+      "rate": 0.3,
+      "description": "C-27J Spartan"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C295",
+      "weight_category": "M",
+      "weight": 23200,
+      "rate": 0.15,
+      "description": "EADS CASA C-295"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C2A",
+      "weight_category": "NA",
+      "weight": 24706,
+      "rate": 0.3,
+      "description": "Greyhound"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C303",
+      "weight_category": "L",
+      "weight": 2341,
+      "rate": 0.1,
+      "description": "Crusader 303"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C305",
+      "weight_category": "L",
+      "weight": 1089,
+      "rate": 0.1,
+      "description": "Bird Dog 305/321"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C30J",
+      "weight_category": "M",
+      "weight": 79300,
+      "rate": 0.4,
+      "description": "C30J"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C310",
+      "weight_category": "L",
+      "weight": 2087,
+      "rate": 0.1,
+      "description": "Cessna 310/T310"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C335",
+      "weight_category": "L",
+      "weight": 2853,
+      "rate": 0.2,
+      "description": "Cessna 335"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C337",
+      "weight_category": "L",
+      "weight": 2200,
+      "rate": 0.1,
+      "description": "Super Skymaster 337"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C340",
+      "weight_category": "L",
+      "weight": 2719,
+      "rate": 0.2,
+      "description": "Cessna 340"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C350",
+      "weight_category": "L",
+      "weight": 1500,
+      "rate": 0.1,
+      "description": "Cessna 350 Corvalis (FORMERLY KNOWN COLUMBIA 350)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C40",
+      "weight_category": "NA",
+      "weight": 77564,
+      "rate": 0.4,
+      "description": "C40"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C400",
+      "weight_category": "L",
+      "weight": 1500,
+      "rate": 0.1,
+      "description": "CESSNA 400 (FORMERLY KNOWN COLUMBIA 400)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C401",
+      "weight_category": "L",
+      "weight": 3107,
+      "rate": 0.2,
+      "description": "Cessna 401"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C402",
+      "weight_category": "L",
+      "weight": 3107,
+      "rate": 0.2,
+      "description": "Cessna 402"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C404",
+      "weight_category": "L",
+      "weight": 3830,
+      "rate": 0.2,
+      "description": "Titan 404"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C40A",
+      "weight_category": "NA",
+      "weight": 77564,
+      "rate": 0.4,
+      "description": "C40A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C411",
+      "weight_category": "L",
+      "weight": 2948,
+      "rate": 0.2,
+      "description": "Cessna 411"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C414",
+      "weight_category": "L",
+      "weight": 3068,
+      "rate": 0.2,
+      "description": "Chancellor 414"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C421",
+      "weight_category": "L",
+      "weight": 3386,
+      "rate": 0.2,
+      "description": "Golden Eagle 421"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C425",
+      "weight_category": "L",
+      "weight": 3900,
+      "rate": 0.2,
+      "description": "Corsair/Conquest I-425"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C441",
+      "weight_category": "L",
+      "weight": 4467,
+      "rate": 0.2,
+      "description": "Conquest II-441"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C5",
+      "weight_category": "NA",
+      "weight": 33100,
+      "rate": 0.3,
+      "description": "C5"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C500",
+      "weight_category": "M",
+      "weight": 5386,
+      "rate": 0.3,
+      "description": "Citation I"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C501",
+      "weight_category": "L",
+      "weight": 5375,
+      "rate": 0.3,
+      "description": "Citation I-SP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C510",
+      "weight_category": "M",
+      "weight": 3930,
+      "rate": 0.2,
+      "description": "CESSNA 510"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C525",
+      "weight_category": "M",
+      "weight": 4853,
+      "rate": 0.3,
+      "description": "Citationjet 525"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C550",
+      "weight_category": "M",
+      "weight": 6849,
+      "rate": 0.3,
+      "description": "Citation- IIS2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C551",
+      "weight_category": "M",
+      "weight": 5682,
+      "rate": 0.3,
+      "description": "Citation II-SP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C560",
+      "weight_category": "M",
+      "weight": 7394,
+      "rate": 0.3,
+      "description": "C560"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C56X",
+      "weight_category": "M",
+      "weight": 24000,
+      "rate": 0.3,
+      "description": "C56X"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C5A",
+      "weight_category": "H",
+      "weight": 348820,
+      "rate": 0.6,
+      "description": "Galaxy"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C650",
+      "weight_category": "M",
+      "weight": 10136,
+      "rate": 0.3,
+      "description": "Citation III"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C680",
+      "weight_category": "L",
+      "weight": 13600,
+      "rate": 0.3,
+      "description": "PAN NORTHERN AIR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "C750",
+      "weight_category": "M",
+      "weight": 16193,
+      "rate": 0.3,
+      "description": "C750"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CAT",
+      "weight_category": "L",
+      "weight": 1429,
+      "rate": 0.1,
+      "description": "AIRCAT"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CE20",
+      "weight_category": "M",
+      "weight": 11000,
+      "rate": 0.3,
+      "description": "CE20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CE50",
+      "weight_category": "M",
+      "weight": 25000,
+      "rate": 0.3,
+      "description": "CE50"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CE55",
+      "weight_category": "M",
+      "weight": 6849,
+      "rate": 0.3,
+      "description": "CE55"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CE68",
+      "weight_category": "M",
+      "weight": 13971,
+      "rate": 0.3,
+      "description": "ce68"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CH35",
+      "weight_category": "M",
+      "weight": 33300,
+      "rate": 0.3,
+      "description": "CH35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CH53",
+      "weight_category": "M",
+      "weight": 33409,
+      "rate": 0.3,
+      "description": "CH53E-53D Super Stallion"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CH601",
+      "weight_category": "L",
+      "weight": 599,
+      "rate": 0.1,
+      "description": "Chopra"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CJ27J",
+      "weight_category": "M",
+      "weight": 30500,
+      "rate": 0.3,
+      "description": "The Alenia C-27J Spartan"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL30",
+      "weight_category": "M",
+      "weight": 19425,
+      "rate": 0.3,
+      "description": "challenger 300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL35",
+      "weight_category": "M",
+      "weight": 38000,
+      "rate": 0.3,
+      "description": "Bombardier Challenger 350"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL350",
+      "weight_category": "M",
+      "weight": 38000,
+      "rate": 0.3,
+      "description": "Bombardier Challenger 350"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL41",
+      "weight_category": "M",
+      "weight": 3532,
+      "rate": 0.2,
+      "description": "CL41"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL415",
+      "weight_category": "M",
+      "weight": 19890,
+      "rate": 0.3,
+      "description": "CANADAIR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL60",
+      "weight_category": "M",
+      "weight": 18864,
+      "rate": 0.3,
+      "description": "Challenger Cl600/601"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL600",
+      "weight_category": "L",
+      "weight": 19550,
+      "rate": 0.3,
+      "description": "Bombardier Challenger 600 series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL61",
+      "weight_category": "M",
+      "weight": 19545,
+      "rate": 0.3,
+      "description": "Challenger Cl600/601"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL64",
+      "weight_category": "M",
+      "weight": 21863,
+      "rate": 0.3,
+      "description": "challenger"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL65",
+      "weight_category": "M",
+      "weight": 21568,
+      "rate": 0.3,
+      "description": "Regional Jet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL680",
+      "weight_category": "M",
+      "weight": 24040,
+      "rate": 0.3,
+      "description": "Cessna Citation Sovereign"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CL85",
+      "weight_category": "M",
+      "weight": 24040,
+      "rate": 0.3,
+      "description": "CHALLENGER 850"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CN21",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Casa/Nurtanio"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CN22",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Casa/Nurtanio"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CN23",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Casa/Nurtanio"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CN25",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Casa/Nurtanio"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CN35",
+      "weight_category": "M",
+      "weight": 16100,
+      "rate": 0.3,
+      "description": "Casa/Nurtanio"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "COL3",
+      "weight_category": "L",
+      "weight": 1500,
+      "rate": 0.1,
+      "description": "Cessna 350 Corvalis (FORMERLY KNOWN COLUMBIA 350)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CONC",
+      "weight_category": "H",
+      "weight": 185409,
+      "rate": 0.6,
+      "description": "Concorde"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CP10",
+      "weight_category": "L",
+      "weight": 830,
+      "rate": 0.1,
+      "description": "Cap 10/10B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CP20",
+      "weight_category": "L",
+      "weight": 620,
+      "rate": 0.1,
+      "description": "Cap 20/20L"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CP21",
+      "weight_category": "L",
+      "weight": 620,
+      "rate": 0.1,
+      "description": "Cap 21"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CP23",
+      "weight_category": "L",
+      "weight": 820,
+      "rate": 0.1,
+      "description": "Cap 230"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CR80",
+      "weight_category": "M",
+      "weight": 12000,
+      "rate": 0.3,
+      "description": "Cresso (Crop Spraying Aircaraft)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CRJ1",
+      "weight_category": "M",
+      "weight": 23133,
+      "rate": 0.3,
+      "description": "Canadair Regional Jet CRJ-100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CRJ2",
+      "weight_category": "M",
+      "weight": 24041,
+      "rate": 0.3,
+      "description": "CANADAIR CRJ-200 Regional Jet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CRJ7",
+      "weight_category": "M",
+      "weight": 34019,
+      "rate": 0.3,
+      "description": "CANADAIR REGIONAL JET"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CRJ9",
+      "weight_category": "M",
+      "weight": 38330,
+      "rate": 0.3,
+      "description": "CRJ9"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CRJX",
+      "weight_category": "M",
+      "weight": 41640,
+      "rate": 0.3,
+      "description": "Bombardier CRJ1000 series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CS12",
+      "weight_category": "M",
+      "weight": 7716,
+      "rate": 0.3,
+      "description": "Casa 212/200 Aviocar"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CS300",
+      "weight_category": "M",
+      "weight": 60781,
+      "rate": 0.4,
+      "description": "C Series CS300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CV44",
+      "weight_category": "M",
+      "weight": 22364,
+      "rate": 0.3,
+      "description": "Convair 440"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CV58",
+      "weight_category": "M",
+      "weight": 24273,
+      "rate": 0.3,
+      "description": "Convair 580"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CV88",
+      "weight_category": "M",
+      "weight": 84091,
+      "rate": 0.4,
+      "description": "Convair 880"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "CV99",
+      "weight_category": "H",
+      "weight": 115000,
+      "rate": 0.5,
+      "description": "Coronado 990"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "D128",
+      "weight_category": "M",
+      "weight": 4015,
+      "rate": 0.2,
+      "description": "Dornier 128-6"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "D228",
+      "weight_category": "M",
+      "weight": 5712,
+      "rate": 0.3,
+      "description": "Dornier 228-100/200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "D238",
+      "weight_category": "M",
+      "weight": 9000,
+      "rate": 0.3,
+      "description": "donier"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "D28",
+      "weight_category": "M",
+      "weight": 5993,
+      "rate": 0.3,
+      "description": "Dornier 228"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "D328",
+      "weight_category": "M",
+      "weight": 13990,
+      "rate": 0.3,
+      "description": "Dornier D328-120"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA10",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Falcon 10"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA20",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Falcon 20FJF/20C/20D/20E/2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA21",
+      "weight_category": "M",
+      "weight": 14000,
+      "rate": 0.3,
+      "description": "Falcon 20G/20GF Mystere FA"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA40",
+      "weight_category": "L",
+      "weight": 1150,
+      "rate": 0.1,
+      "description": "DIAMOND 40 DIAMOND STAR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA42",
+      "weight_category": "L",
+      "weight": 1650,
+      "rate": 0.1,
+      "description": "DIAMOND DA42 TWIN STAR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA50",
+      "weight_category": "M",
+      "weight": 18545,
+      "rate": 0.3,
+      "description": "Falcon 50"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA62",
+      "weight_category": "L",
+      "weight": 2300,
+      "rate": 0.1,
+      "description": "Diamond DA62"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA7",
+      "weight_category": "M",
+      "weight": 20677,
+      "rate": 0.3,
+      "description": "FALCON 700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DA90",
+      "weight_category": "M",
+      "weight": 20677,
+      "rate": 0.3,
+      "description": "Falcon 900"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC08",
+      "weight_category": "H",
+      "weight": 143182,
+      "rate": 0.6,
+      "description": "DC08"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC10",
+      "weight_category": "H",
+      "weight": 252273,
+      "rate": 0.6,
+      "description": "DC-10 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC3",
+      "weight_category": "M",
+      "weight": 12227,
+      "rate": 0.3,
+      "description": "DC-3/Dakota/Skytrain"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC4",
+      "weight_category": "M",
+      "weight": 33182,
+      "rate": 0.3,
+      "description": "Skymaster"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC6",
+      "weight_category": "M",
+      "weight": 56455,
+      "rate": 0.4,
+      "description": "DC-6/B Liftmaster"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC7",
+      "weight_category": "M",
+      "weight": 56455,
+      "rate": 0.4,
+      "description": "DC-7/7B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC8",
+      "weight_category": "H",
+      "weight": 161364,
+      "rate": 0.6,
+      "description": "DC-8 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC83",
+      "weight_category": "H",
+      "weight": 125455,
+      "rate": 0.5,
+      "description": "DC83"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC85",
+      "weight_category": "H",
+      "weight": 125455,
+      "rate": 0.5,
+      "description": "DC85"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC86",
+      "weight_category": "H",
+      "weight": 125455,
+      "rate": 0.5,
+      "description": "DC86"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC87",
+      "weight_category": "H",
+      "weight": 125455,
+      "rate": 0.5,
+      "description": "DC87"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC8C",
+      "weight_category": "H",
+      "weight": 125455,
+      "rate": 0.5,
+      "description": "DC8C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC8S",
+      "weight_category": "H",
+      "weight": 125455,
+      "rate": 0.5,
+      "description": "Super DC-8 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC9",
+      "weight_category": "M",
+      "weight": 55091,
+      "rate": 0.4,
+      "description": "DC-9-20/30/40/50/Nightingale"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DC98",
+      "weight_category": "M",
+      "weight": 55091,
+      "rate": 0.4,
+      "description": "DC98"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DCB6",
+      "weight_category": "NA",
+      "weight": 55091,
+      "rate": 0.4,
+      "description": ""
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DH6",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "Twin Otter DHC-6 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DH7",
+      "weight_category": "M",
+      "weight": 19773,
+      "rate": 0.3,
+      "description": "Dash 7 DHC-7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DH8",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "De Havilland Canada Dash 8 DHC-8"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DH8A",
+      "weight_category": "M",
+      "weight": 15682,
+      "rate": 0.3,
+      "description": "De Havilland Canada Dash 8-100A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DH8B",
+      "weight_category": "M",
+      "weight": 16500,
+      "rate": 0.3,
+      "description": "De Havilland Canada Dash 8-100B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DH8D",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "DASH"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DHC6",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "DHC6"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DHC7",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "DHC7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DHC8",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "DHC8"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DO27",
+      "weight_category": "M",
+      "weight": 1848,
+      "rate": 0.1,
+      "description": "DO 27 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DO28",
+      "weight_category": "M",
+      "weight": 2670,
+      "rate": 0.2,
+      "description": "DO 28 A B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DR25",
+      "weight_category": "NA",
+      "weight": 19300,
+      "rate": 0.3,
+      "description": "DR25"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "DVON",
+      "weight_category": "L",
+      "weight": 3855,
+      "rate": 0.2,
+      "description": "Dove 104"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E110",
+      "weight_category": "L",
+      "weight": 5900,
+      "rate": 0.2,
+      "description": "Bandeirante EMB-110/A/B/B1"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E111",
+      "weight_category": "L",
+      "weight": 7000,
+      "rate": 0.2,
+      "description": "Bandeirante EMB-111/A/As/M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E120",
+      "weight_category": "L",
+      "weight": 11500,
+      "rate": 0.2,
+      "description": "Brasilia EMB-120/Hh/Rt"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E121",
+      "weight_category": "L",
+      "weight": 5670,
+      "rate": 0.2,
+      "description": "Xingu EMB-121/A/A1"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E135",
+      "weight_category": "L",
+      "weight": 18990,
+      "rate": 0.3,
+      "description": "ERJ135"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E145",
+      "weight_category": "L",
+      "weight": 38600,
+      "rate": 0.3,
+      "description": "Embraer Jet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E150",
+      "weight_category": "M",
+      "weight": 650,
+      "rate": 0.1,
+      "description": "E150"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E150B",
+      "weight_category": "L",
+      "weight": 650,
+      "rate": 0.1,
+      "description": "EAGLE 150B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E155",
+      "weight_category": "L",
+      "weight": 4920,
+      "rate": 0.2,
+      "description": "E155"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E170",
+      "weight_category": "M",
+      "weight": 38600,
+      "rate": 0.3,
+      "description": "eagle"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E190",
+      "weight_category": "M",
+      "weight": 47790,
+      "rate": 0.4,
+      "description": "ERJ190-100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E200",
+      "weight_category": "L",
+      "weight": 850,
+      "rate": 0.1,
+      "description": "EXTRA AIRCRAFT E200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E314",
+      "weight_category": "M",
+      "weight": 5400,
+      "rate": 0.3,
+      "description": "EMBRAER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E35L",
+      "weight_category": "M",
+      "weight": 22500,
+      "rate": 0.3,
+      "description": "EMBRAER LEGACY 35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E3A",
+      "weight_category": "H",
+      "weight": 157397,
+      "rate": 0.5,
+      "description": "Boeing Sentry (AWACS) - A3A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E450",
+      "weight_category": "M",
+      "weight": 16000,
+      "rate": 0.3,
+      "description": "EMBRAER LEGACY 450"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E4A",
+      "weight_category": "H",
+      "weight": 317514,
+      "rate": 0.6,
+      "description": "747-100/200/300 Series - A4A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E50P",
+      "weight_category": "L",
+      "weight": 4750,
+      "rate": 0.2,
+      "description": "EMBRAER Phenom 100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E540",
+      "weight_category": "L",
+      "weight": 816,
+      "rate": 0.1,
+      "description": "Zivko Edge 540"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E550",
+      "weight_category": "M",
+      "weight": 17400,
+      "rate": 0.3,
+      "description": "EMBRAER LEGACY 500"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E550P",
+      "weight_category": "M",
+      "weight": 42858,
+      "rate": 0.3,
+      "description": "Embraer Legacy 550P"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E55P",
+      "weight_category": "M",
+      "weight": 7951,
+      "rate": 0.3,
+      "description": "EMBRAER 505 PHENOM 300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "E737",
+      "weight_category": "M",
+      "weight": 58740,
+      "rate": 0.4,
+      "description": "Boeing 737 AEW&C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA2",
+      "weight_category": "L",
+      "weight": 463,
+      "rate": 0.1,
+      "description": "Aviat Eagle II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA30",
+      "weight_category": "H",
+      "weight": 170859,
+      "rate": 0.6,
+      "description": "Airbus A300 - A30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA300L",
+      "weight_category": "L",
+      "weight": 952,
+      "rate": 0.1,
+      "description": "Extra EA-300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA31",
+      "weight_category": "H",
+      "weight": 150314,
+      "rate": 0.6,
+      "description": "Airbus A310 - A31"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA32",
+      "weight_category": "M",
+      "weight": 74164,
+      "rate": 0.4,
+      "description": "Airbus A320 - A32"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA33",
+      "weight_category": "H",
+      "weight": 230482,
+      "rate": 0.6,
+      "description": "Airbus A330 - A33"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA34",
+      "weight_category": "H",
+      "weight": 257727,
+      "rate": 0.6,
+      "description": "Airbus A340 - A34"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EA50",
+      "weight_category": "L",
+      "weight": 2699,
+      "rate": 0.2,
+      "description": "ECLIPSE 500"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC12",
+      "weight_category": "H",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "RC12"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC13",
+      "weight_category": "L",
+      "weight": 2910,
+      "rate": 0.2,
+      "description": "Eurocopter (now Airbus Helicopters) EC135"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC145",
+      "weight_category": "L",
+      "weight": 3585,
+      "rate": 0.2,
+      "description": "EUROCOPTER EC145"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC15",
+      "weight_category": "L",
+      "weight": 4950,
+      "rate": 0.2,
+      "description": "EC15"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC170",
+      "weight_category": "M",
+      "weight": 7000,
+      "rate": 0.3,
+      "description": "EUROCOPTER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC175",
+      "weight_category": "M",
+      "weight": 7500,
+      "rate": 0.3,
+      "description": "Eurocopter EC175"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC20",
+      "weight_category": "H",
+      "weight": 1715,
+      "rate": 0.1,
+      "description": "HELISTAR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC225",
+      "weight_category": "L",
+      "weight": 11200,
+      "rate": 0.3,
+      "description": "Eurocopter EC-225 Super Puma"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC25",
+      "weight_category": "L",
+      "weight": 11000,
+      "rate": 0.3,
+      "description": "EUROCOPTER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC30",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "ZKIEM"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC45",
+      "weight_category": "L",
+      "weight": 3585,
+      "rate": 0.2,
+      "description": "Eurocopter EC145"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC55",
+      "weight_category": "L",
+      "weight": 4800,
+      "rate": 0.2,
+      "description": "EC55"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EC725",
+      "weight_category": "M",
+      "weight": 11000,
+      "rate": 0.3,
+      "description": "Eurocopter EC 725 Caracal"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EGRT",
+      "weight_category": "L",
+      "weight": 4700,
+      "rate": 0.2,
+      "description": "Grob G 520"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EN28",
+      "weight_category": "L",
+      "weight": 1179,
+      "rate": 0.1,
+      "description": "Enstrom Helicopter Corporation"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EP3",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "N666DM"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "EUFI",
+      "weight_category": "L",
+      "weight": 23500,
+      "rate": 0.3,
+      "description": "Eurofighter EF 2000 Typhoon"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F100",
+      "weight_category": "M",
+      "weight": 43182,
+      "rate": 0.3,
+      "description": "Fokker F100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F111",
+      "weight_category": "M",
+      "weight": 45300,
+      "rate": 0.3,
+      "description": "F111"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F15",
+      "weight_category": "M",
+      "weight": 30700,
+      "rate": 0.3,
+      "description": "MC DOUGLES F-15 EAGLE"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F16",
+      "weight_category": "M",
+      "weight": 17045,
+      "rate": 0.3,
+      "description": "Northrup"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F18",
+      "weight_category": "M",
+      "weight": 23541,
+      "rate": 0.3,
+      "description": "F18"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F27",
+      "weight_category": "M",
+      "weight": 19773,
+      "rate": 0.3,
+      "description": "Fokker Friendship F27 MK - FK27"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F270",
+      "weight_category": "M",
+      "weight": 19773,
+      "rate": 0.3,
+      "description": "Fokker Friendship F27 MK  - FK270"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F27T",
+      "weight_category": "M",
+      "weight": 19773,
+      "rate": 0.3,
+      "description": "Fokker Friendship F27 MK  - FK27T"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F28",
+      "weight_category": "M",
+      "weight": 33182,
+      "rate": 0.3,
+      "description": "Fokker Fellowship F28 MK - FK28"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F280",
+      "weight_category": "M",
+      "weight": 33182,
+      "rate": 0.3,
+      "description": "Fokker Fellowship F28 MK - FK280"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F2TH",
+      "weight_category": "M",
+      "weight": 9405,
+      "rate": 0.3,
+      "description": "FALCON 2000"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F406",
+      "weight_category": "L",
+      "weight": 5300,
+      "rate": 0.3,
+      "description": "Cessna F406 Caravan II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F5",
+      "weight_category": "NA",
+      "weight": 11214,
+      "rate": 0.3,
+      "description": "F-5"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F50",
+      "weight_category": "M",
+      "weight": 21045,
+      "rate": 0.3,
+      "description": "Fokker Jet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F5E",
+      "weight_category": "NA",
+      "weight": 11214,
+      "rate": 0.3,
+      "description": "F-5E/F Tiger II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F5F",
+      "weight_category": "NA",
+      "weight": 11100,
+      "rate": 0.3,
+      "description": "F-5E/F Tiger II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F5ST",
+      "weight_category": "NA",
+      "weight": 11100,
+      "rate": 0.3,
+      "description": "F-5E/F Tiger II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F70",
+      "weight_category": "M",
+      "weight": 33100,
+      "rate": 0.3,
+      "description": "Fokker Fellowship F70 (F28 MK - FK280)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "F900",
+      "weight_category": "NA",
+      "weight": 20640,
+      "rate": 0.3,
+      "description": "F900"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA18",
+      "weight_category": "M",
+      "weight": 23541,
+      "rate": 0.3,
+      "description": "FA18"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA20",
+      "weight_category": "M",
+      "weight": 13000,
+      "rate": 0.3,
+      "description": "FA20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA27",
+      "weight_category": "M",
+      "weight": 19773,
+      "rate": 0.3,
+      "description": "Friendship F27"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA28",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "FA28"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA34",
+      "weight_category": "NA",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "FA34"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA50",
+      "weight_category": "M",
+      "weight": 17600,
+      "rate": 0.3,
+      "description": "FA50"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA7X",
+      "weight_category": "M",
+      "weight": 31750,
+      "rate": 0.3,
+      "description": "FALCON 7X"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA8X",
+      "weight_category": "M",
+      "weight": 33000,
+      "rate": 0.3,
+      "description": "Dassault Falcon 7X"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FA90",
+      "weight_category": "M",
+      "weight": 20000,
+      "rate": 0.3,
+      "description": "FA90"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK10",
+      "weight_category": "M",
+      "weight": 45810,
+      "rate": 0.3,
+      "description": "Fokker 100 (F28 MK.0100)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK20",
+      "weight_category": "M",
+      "weight": 20000,
+      "rate": 0.3,
+      "description": "FK20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK23",
+      "weight_category": "M",
+      "weight": 600,
+      "rate": 0.1,
+      "description": "FK23"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK27",
+      "weight_category": "M",
+      "weight": 18409,
+      "rate": 0.3,
+      "description": "Friendship F27"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK28",
+      "weight_category": "M",
+      "weight": 33182,
+      "rate": 0.3,
+      "description": "Fellowship F28"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK50",
+      "weight_category": "M",
+      "weight": 21045,
+      "rate": 0.3,
+      "description": "Fokker 50 (F.27 MK.050) M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK60",
+      "weight_category": "M",
+      "weight": 21045,
+      "rate": 0.3,
+      "description": "Fokker 60 (F.27 MK.060)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "FK90",
+      "weight_category": "M",
+      "weight": 21045,
+      "rate": 0.3,
+      "description": "FK90"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G120",
+      "weight_category": "L",
+      "weight": 1590,
+      "rate": 0.1,
+      "description": "Grob G 120TP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G12T",
+      "weight_category": "L",
+      "weight": 1590,
+      "rate": 0.1,
+      "description": "Grob G 120TP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G150",
+      "weight_category": "M",
+      "weight": 11839,
+      "rate": 0.3,
+      "description": "GULFSTREAM G150"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G159",
+      "weight_category": "M",
+      "weight": 15955,
+      "rate": 0.3,
+      "description": "Gulfstream I"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G164",
+      "weight_category": "L",
+      "weight": 3184,
+      "rate": 0.1,
+      "description": "Grumman G-164 Ag-Cat B (AIRCAT)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G2",
+      "weight_category": "M",
+      "weight": 28182,
+      "rate": 0.3,
+      "description": "Gulfstream II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G200",
+      "weight_category": "M",
+      "weight": 16000,
+      "rate": 0.3,
+      "description": "Gulfstream G200"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G202",
+      "weight_category": "L",
+      "weight": 726,
+      "rate": 0.1,
+      "description": "GILES 202"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G280",
+      "weight_category": "L",
+      "weight": 17962,
+      "rate": 0.3,
+      "description": "GULFSTREAM G280"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G2CA",
+      "weight_category": "L",
+      "weight": 1500,
+      "rate": 0.1,
+      "description": "Guimbal Cabri G2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G3",
+      "weight_category": "M",
+      "weight": 31000,
+      "rate": 0.3,
+      "description": "Gulfstream III"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G4",
+      "weight_category": "M",
+      "weight": 33273,
+      "rate": 0.3,
+      "description": "Gulfstream IV"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G450",
+      "weight_category": "M",
+      "weight": 33500,
+      "rate": 0.3,
+      "description": "GULFSTREAM IV"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G5",
+      "weight_category": "M",
+      "weight": 41136,
+      "rate": 0.3,
+      "description": "Gulfstream V"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G520",
+      "weight_category": "L",
+      "weight": 4700,
+      "rate": 0.2,
+      "description": "Grob G 520"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G650",
+      "weight_category": "M",
+      "weight": 45200,
+      "rate": 0.4,
+      "description": "Gulfstream G650"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "G750",
+      "weight_category": "M",
+      "weight": 52096,
+      "rate": 0.4,
+      "description": "Bombardier Global 7500"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GA8",
+      "weight_category": "L",
+      "weight": 1814,
+      "rate": 0.1,
+      "description": "GIPPSAERO GA8 AIRVAN"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GF4",
+      "weight_category": "M",
+      "weight": 4177,
+      "rate": 0.2,
+      "description": "GF4"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GGEX",
+      "weight_category": "NA",
+      "weight": 78245,
+      "rate": 0.4,
+      "description": "GGEX"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GL4",
+      "weight_category": "M",
+      "weight": 41050,
+      "rate": 0.3,
+      "description": "GL4"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GL5T",
+      "weight_category": "M",
+      "weight": 40200,
+      "rate": 0.3,
+      "description": "Bombardier BD-700-1A11 Global 5000"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLAX",
+      "weight_category": "M",
+      "weight": 15100,
+      "rate": 0.3,
+      "description": "GLAX"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLEX",
+      "weight_category": "M",
+      "weight": 41500,
+      "rate": 0.3,
+      "description": "Global Express"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLF2",
+      "weight_category": "M",
+      "weight": 28100,
+      "rate": 0.3,
+      "description": "GLF2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLF3",
+      "weight_category": "M",
+      "weight": 30900,
+      "rate": 0.3,
+      "description": "GLF3"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLF4",
+      "weight_category": "M",
+      "weight": 33200,
+      "rate": 0.3,
+      "description": "GLF4"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLF5",
+      "weight_category": "M",
+      "weight": 41100,
+      "rate": 0.3,
+      "description": "GLF5"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GLF6",
+      "weight_category": "M",
+      "weight": 45200,
+      "rate": 0.4,
+      "description": "GULFSTREAM G650"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GR09",
+      "weight_category": "L",
+      "weight": 908,
+      "rate": 0.1,
+      "description": "Grob G109/109B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GR15",
+      "weight_category": "L",
+      "weight": 990,
+      "rate": 0.1,
+      "description": "Grob G115/115A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "GULF",
+      "weight_category": "M",
+      "weight": 45000,
+      "rate": 0.3,
+      "description": "GULF"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H125",
+      "weight_category": "L",
+      "weight": 2370,
+      "rate": 0.1,
+      "description": "Airbus Helicopter Ecureuil H125"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H130",
+      "weight_category": "H",
+      "weight": 2500,
+      "rate": 0.2,
+      "description": "AIRBUS HELICOPTER"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H25",
+      "weight_category": "M",
+      "weight": 12700,
+      "rate": 0.3,
+      "description": "H25"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H25B",
+      "weight_category": "L",
+      "weight": 7108,
+      "rate": 0.2,
+      "description": "H25B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H25C",
+      "weight_category": "M",
+      "weight": 14060,
+      "rate": 0.3,
+      "description": "h25c"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H3",
+      "weight_category": "L",
+      "weight": 8620,
+      "rate": 0.3,
+      "description": "S-61A/B/R/Sea King"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H325",
+      "weight_category": "M",
+      "weight": 15000,
+      "rate": 0.3,
+      "description": "H325"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H500",
+      "weight_category": "L",
+      "weight": 2250,
+      "rate": 0.1,
+      "description": "MD Helicopters MD 500 series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "H525",
+      "weight_category": "M",
+      "weight": 41730,
+      "rate": 0.3,
+      "description": "H525"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HA420",
+      "weight_category": "M",
+      "weight": 4808,
+      "rate": 0.2,
+      "description": "Honda HA-420 HondaJet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HA4T",
+      "weight_category": "M",
+      "weight": 17917,
+      "rate": 0.3,
+      "description": "HAWKER 4000"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HAWK",
+      "weight_category": "M",
+      "weight": 9100,
+      "rate": 0.3,
+      "description": "HAWKHAWK"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HF20",
+      "weight_category": "M",
+      "weight": 9218,
+      "rate": 0.3,
+      "description": "HFB 320 Hansa Jet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HP7",
+      "weight_category": "M",
+      "weight": 19818,
+      "rate": 0.3,
+      "description": "Herald HPR-7-200/7-400"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HS04",
+      "weight_category": "L",
+      "weight": 3992,
+      "rate": 0.3,
+      "description": "Dove 104"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HS14",
+      "weight_category": "L",
+      "weight": 5894,
+      "rate": 0.3,
+      "description": "Heron 114"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HS25",
+      "weight_category": "M",
+      "weight": 10569,
+      "rate": 0.3,
+      "description": "HS 125 Series 400/600/700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HS74",
+      "weight_category": "M",
+      "weight": 21092,
+      "rate": 0.3,
+      "description": "HS 748/2B Andover"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HS8",
+      "weight_category": "L",
+      "weight": 2494,
+      "rate": 0.1,
+      "description": "Rapide 89"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HS82",
+      "weight_category": "NA",
+      "weight": 9101,
+      "rate": 0.3,
+      "description": "HS82"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HU30",
+      "weight_category": "H",
+      "weight": 242000,
+      "rate": 0.6,
+      "description": "Model 300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HU50",
+      "weight_category": "H",
+      "weight": 137000,
+      "rate": 0.6,
+      "description": "Model 500/C/D/E/M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "HU53",
+      "weight_category": "H",
+      "weight": 138000,
+      "rate": 0.6,
+      "description": "Model 530F/M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL14",
+      "weight_category": "M",
+      "weight": 17545,
+      "rate": 0.3,
+      "description": "IL-14"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL18",
+      "weight_category": "M",
+      "weight": 64136,
+      "rate": 0.4,
+      "description": "IL-18"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL62",
+      "weight_category": "H",
+      "weight": 162341,
+      "rate": 0.6,
+      "description": "IL-62/IL-62M/MK"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL72",
+      "weight_category": "H",
+      "weight": 190409,
+      "rate": 0.6,
+      "description": "IL72"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL76",
+      "weight_category": "H",
+      "weight": 190409,
+      "rate": 0.6,
+      "description": "IL-76/IL-76M/MD/T/TD"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL78",
+      "weight_category": "H",
+      "weight": 190409,
+      "rate": 0.6,
+      "description": "IL78"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL86",
+      "weight_category": "H",
+      "weight": 190398,
+      "rate": 0.6,
+      "description": "IL-86"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "IL96",
+      "weight_category": "H",
+      "weight": 216455,
+      "rate": 0.6,
+      "description": "IL-96"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "ILL4",
+      "weight_category": "M",
+      "weight": 17545,
+      "rate": 0.3,
+      "description": "IL-114"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "JC21",
+      "weight_category": "M",
+      "weight": 7200,
+      "rate": 0.3,
+      "description": "IAI 1121 Jetcommander"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "JE2",
+      "weight_category": "L",
+      "weight": 680,
+      "rate": 0.1,
+      "description": "McCulloch J-2 GYROPLANE"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "JS28",
+      "weight_category": "M",
+      "weight": 10886,
+      "rate": 0.3,
+      "description": "js28"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "JS32",
+      "weight_category": "M",
+      "weight": 6950,
+      "rate": 0.3,
+      "description": "British Aerospace JetStream"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "JS41",
+      "weight_category": "M",
+      "weight": 10886,
+      "rate": 0.3,
+      "description": "JS41"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "JU52",
+      "weight_category": "M",
+      "weight": 10990,
+      "rate": 0.3,
+      "description": "Junkers JU 52/3M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "K135",
+      "weight_category": "M",
+      "weight": 40000,
+      "rate": 0.3,
+      "description": "K135"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "K32R",
+      "weight_category": "M",
+      "weight": 40000,
+      "rate": 0.3,
+      "description": "K32R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "K35",
+      "weight_category": "M",
+      "weight": 2700,
+      "rate": 0.3,
+      "description": "K35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "K35E",
+      "weight_category": "M",
+      "weight": 44000,
+      "rate": 0.3,
+      "description": "K35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "K35R",
+      "weight_category": "M",
+      "weight": 44000,
+      "rate": 0.3,
+      "description": "K35R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "K35T",
+      "weight_category": "M",
+      "weight": 44000,
+      "rate": 0.3,
+      "description": "K35T"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KA25",
+      "weight_category": "L",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "BEECHCRAFT SUPER KING AIR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KA32",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "ARTIC GROUP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KA35",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "Beechcraft Super King Air"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KC13",
+      "weight_category": "NA",
+      "weight": 146000,
+      "rate": 0.6,
+      "description": "Boeing StRAtotanker KC 135"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KC35",
+      "weight_category": "H",
+      "weight": 146000,
+      "rate": 0.6,
+      "description": "Boeing StRAtotanker KC 135"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KC97",
+      "weight_category": "H",
+      "weight": 79379,
+      "rate": 0.6,
+      "description": "Stratofreighter"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KF70",
+      "weight_category": "M",
+      "weight": 29545,
+      "rate": 0.3,
+      "description": "Fokker 70 (F.28 MK.070)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KODI",
+      "weight_category": "L",
+      "weight": 3290,
+      "rate": 0.2,
+      "description": "Quest Kodiak"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "KR35",
+      "weight_category": "H",
+      "weight": 146000,
+      "rate": 0.6,
+      "description": "Boeing Stratotanker KC135R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L101",
+      "weight_category": "H",
+      "weight": 200000,
+      "rate": 0.6,
+      "description": "Tri-Star All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L188",
+      "weight_category": "M",
+      "weight": 51636,
+      "rate": 0.4,
+      "description": "Lockheed Electra"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L300",
+      "weight_category": "NA",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "L300"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L329",
+      "weight_category": "M",
+      "weight": 19050,
+      "rate": 0.3,
+      "description": "Jetstar"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L35",
+      "weight_category": "NA",
+      "weight": 8165,
+      "rate": 0.3,
+      "description": "LEARJET35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L380",
+      "weight_category": "NA",
+      "weight": 2430,
+      "rate": 0.1,
+      "description": "L380"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L382",
+      "weight_category": "M",
+      "weight": 70455,
+      "rate": 0.4,
+      "description": "Hercules"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L39",
+      "weight_category": "L",
+      "weight": 4700,
+      "rate": 0.2,
+      "description": "Aero L-39 Albatros"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "L410",
+      "weight_category": "M",
+      "weight": 6400,
+      "rate": 0.3,
+      "description": "Let L-410 Turbolet"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LC30",
+      "weight_category": "M",
+      "weight": 35000,
+      "rate": 0.3,
+      "description": "LC30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LC40",
+      "weight_category": "M",
+      "weight": 1542,
+      "rate": 0.1,
+      "description": "LC40"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LG-E2",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "AFJETS"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ31",
+      "weight_category": "M",
+      "weight": 7031,
+      "rate": 0.3,
+      "description": "LJ31"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ35",
+      "weight_category": "M",
+      "weight": 8165,
+      "rate": 0.3,
+      "description": "LJ35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ36",
+      "weight_category": "NA",
+      "weight": 8301,
+      "rate": 0.3,
+      "description": "LJ36"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ45",
+      "weight_category": "M",
+      "weight": 9752,
+      "rate": 0.3,
+      "description": "LJ45"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ55",
+      "weight_category": "M",
+      "weight": 9752,
+      "rate": 0.3,
+      "description": "LJ55"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ60",
+      "weight_category": "M",
+      "weight": 10660,
+      "rate": 0.3,
+      "description": "LJ60"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LJ90",
+      "weight_category": "M",
+      "weight": 15195,
+      "rate": 0.3,
+      "description": "LJ90"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LONGEZ",
+      "weight_category": "L",
+      "weight": 601,
+      "rate": 0.1,
+      "description": "Rutan Model 61 Long-EZ"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR23",
+      "weight_category": "M",
+      "weight": 5669,
+      "rate": 0.3,
+      "description": "Learjet 23"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR24",
+      "weight_category": "M",
+      "weight": 6123,
+      "rate": 0.3,
+      "description": "Learjet 24"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR25",
+      "weight_category": "M",
+      "weight": 6804,
+      "rate": 0.3,
+      "description": "Learjet 25"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR28",
+      "weight_category": "M",
+      "weight": 6804,
+      "rate": 0.3,
+      "description": "Learjet 28"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR29",
+      "weight_category": "M",
+      "weight": 6804,
+      "rate": 0.3,
+      "description": "Learjet 29"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR31",
+      "weight_category": "M",
+      "weight": 7031,
+      "rate": 0.3,
+      "description": "Learjet 31"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR32",
+      "weight_category": "M",
+      "weight": 13000,
+      "rate": 0.3,
+      "description": "LR32"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR35",
+      "weight_category": "M",
+      "weight": 8165,
+      "rate": 0.3,
+      "description": "Learjet 35"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR36",
+      "weight_category": "M",
+      "weight": 8301,
+      "rate": 0.3,
+      "description": "Learjet 36"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR45",
+      "weight_category": "M",
+      "weight": 9745,
+      "rate": 0.3,
+      "description": "LR45"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR54",
+      "weight_category": "M",
+      "weight": 9752,
+      "rate": 0.3,
+      "description": "Learjet 54"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR55",
+      "weight_category": "M",
+      "weight": 9752,
+      "rate": 0.3,
+      "description": "Learjet 55"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR60",
+      "weight_category": "M",
+      "weight": 10660,
+      "rate": 0.3,
+      "description": "Learjet 60"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "LR65",
+      "weight_category": "M",
+      "weight": 10659,
+      "rate": 0.3,
+      "description": "LR65"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "M18",
+      "weight_category": "M",
+      "weight": 9259,
+      "rate": 0.3,
+      "description": "PZL-Mielec M-18 Dromader"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "M20P",
+      "weight_category": "L",
+      "weight": 1451,
+      "rate": 0.1,
+      "description": "M20P"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "M20R",
+      "weight_category": "L",
+      "weight": 1451,
+      "rate": 0.1,
+      "description": "M20R OVATION"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "M20T",
+      "weight_category": "L",
+      "weight": 1528,
+      "rate": 0.1,
+      "description": "M20T PREDATOR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "M339",
+      "weight_category": "L",
+      "weight": 5897,
+      "rate": 0.2,
+      "description": "AERMACCHI MB-339"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MA60",
+      "weight_category": "M",
+      "weight": 21800,
+      "rate": 0.3,
+      "description": "MA-60 TURBOPROP"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MB08",
+      "weight_category": "L",
+      "weight": 624,
+      "rate": 0.1,
+      "description": "Boelkow Junior"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MB09",
+      "weight_category": "L",
+      "weight": 820,
+      "rate": 0.1,
+      "description": "BO 209 S Monsun"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MB33",
+      "weight_category": "M",
+      "weight": 5000,
+      "rate": 0.2,
+      "description": "MB33"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD10",
+      "weight_category": "H",
+      "weight": 273864,
+      "rate": 0.6,
+      "description": "MD10"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD11",
+      "weight_category": "H",
+      "weight": 273864,
+      "rate": 0.6,
+      "description": "McDonnell Douglas MD11"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD13",
+      "weight_category": "NA",
+      "weight": 273864,
+      "rate": 0.6,
+      "description": ""
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD3",
+      "weight_category": "L",
+      "weight": 650,
+      "rate": 0.1,
+      "description": "Eagle XTS"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD600N",
+      "weight_category": "L",
+      "weight": 1860,
+      "rate": 0.1,
+      "description": "McDonnell Douglas Helicopter Systems"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD80",
+      "weight_category": "M",
+      "weight": 63636,
+      "rate": 0.4,
+      "description": "MD-80/81/82/83/87/88"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD81",
+      "weight_category": "M",
+      "weight": 66818,
+      "rate": 0.4,
+      "description": "McDonnell Douglas MD81"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD82",
+      "weight_category": "M",
+      "weight": 66818,
+      "rate": 0.4,
+      "description": "McDonnell Douglas MD82"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD83",
+      "weight_category": "M",
+      "weight": 72727,
+      "rate": 0.4,
+      "description": "McDonnell Douglas MD83"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD87",
+      "weight_category": "M",
+      "weight": 67800,
+      "rate": 0.4,
+      "description": "McDonnell Douglas MD87"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD88",
+      "weight_category": "M",
+      "weight": 67955,
+      "rate": 0.4,
+      "description": "McDonnell Douglas MD88"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD89",
+      "weight_category": "M",
+      "weight": 72600,
+      "rate": 0.4,
+      "description": "MD89"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD9",
+      "weight_category": "M",
+      "weight": 70760,
+      "rate": 0.4,
+      "description": "md90"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MD90",
+      "weight_category": "M",
+      "weight": 70909,
+      "rate": 0.4,
+      "description": "McDonnell Douglas MD90"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MF15",
+      "weight_category": "L",
+      "weight": 1200,
+      "rate": 0.1,
+      "description": "Saab MFI 15 Safari"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MF9",
+      "weight_category": "L",
+      "weight": 575,
+      "rate": 0.1,
+      "description": "Saab MFI 9/9B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MG29",
+      "weight_category": "M",
+      "weight": 20000,
+      "rate": 0.3,
+      "description": "MIG29"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MI17",
+      "weight_category": "NA",
+      "weight": 12118,
+      "rate": 0.3,
+      "description": "Hip/Mil"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MI8",
+      "weight_category": "L",
+      "weight": 13000,
+      "rate": 0.3,
+      "description": "Mil Mi-8"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MO20",
+      "weight_category": "L",
+      "weight": 1168,
+      "rate": 0.1,
+      "description": "Mooney Mark 20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MO21",
+      "weight_category": "L",
+      "weight": 1168,
+      "rate": 0.1,
+      "description": "Mooney Mark 21/Ranger"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MO2J",
+      "weight_category": "L",
+      "weight": 1168,
+      "rate": 0.1,
+      "description": "Mooney 201/M20J"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MO2K",
+      "weight_category": "L",
+      "weight": 1315,
+      "rate": 0.1,
+      "description": "Mooney 231/M20K"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MU2",
+      "weight_category": "L",
+      "weight": 5250,
+      "rate": 0.3,
+      "description": "Mitsubishi MU-2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "MYS4",
+      "weight_category": "L",
+      "weight": 9500,
+      "rate": 0.3,
+      "description": "Mystere IV"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N22",
+      "weight_category": "NA",
+      "weight": 3846,
+      "rate": 0.2,
+      "description": "NOMAD"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N220",
+      "weight_category": "NA",
+      "weight": 6000,
+      "rate": 0.3,
+      "description": "N220"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N22B",
+      "weight_category": "L",
+      "weight": 3855,
+      "rate": 0.2,
+      "description": "N22B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N22C",
+      "weight_category": "L",
+      "weight": 4105,
+      "rate": 0.2,
+      "description": "N22C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N24",
+      "weight_category": "L",
+      "weight": 3855,
+      "rate": 0.2,
+      "description": "NOMAD N24"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N25B",
+      "weight_category": "L",
+      "weight": 3855,
+      "rate": 0.2,
+      "description": "NOMAD N25B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "N265",
+      "weight_category": "M",
+      "weight": 9100,
+      "rate": 0.3,
+      "description": "Sabreliner 265"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "ND16",
+      "weight_category": "M",
+      "weight": 51000,
+      "rate": 0.4,
+      "description": "Transall C160"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "ND26",
+      "weight_category": "M",
+      "weight": 10300,
+      "rate": 0.3,
+      "description": "Nord 262/A/B/C/D Super BR"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "NOMA",
+      "weight_category": "L",
+      "weight": 3855,
+      "rate": 0.2,
+      "description": "N22B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P149",
+      "weight_category": "L",
+      "weight": 1680,
+      "rate": 0.1,
+      "description": "Piaggio P149"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P180",
+      "weight_category": "M",
+      "weight": 5239,
+      "rate": 0.3,
+      "description": "PIAGGIO P180 AVANTI"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P2",
+      "weight_category": "M",
+      "weight": 35240,
+      "rate": 0.3,
+      "description": "Lockheed Neptune"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P3",
+      "weight_category": "M",
+      "weight": 64400,
+      "rate": 0.4,
+      "description": "Lockheed Orion"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P30",
+      "weight_category": "NA",
+      "weight": 1690,
+      "rate": 0.1,
+      "description": "PIPER P30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P34",
+      "weight_category": "M",
+      "weight": 2155,
+      "rate": 0.1,
+      "description": "P34"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P3C",
+      "weight_category": "M",
+      "weight": 64400,
+      "rate": 0.4,
+      "description": "P3C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P3L",
+      "weight_category": "M",
+      "weight": 2950,
+      "rate": 0.2,
+      "description": "P3L"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P434",
+      "weight_category": "L",
+      "weight": 2155,
+      "rate": 0.1,
+      "description": "PIPER P34"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P46T",
+      "weight_category": "L",
+      "weight": 2310,
+      "rate": 0.1,
+      "description": "P46T PIPER MERIDIAN"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P68",
+      "weight_category": "L",
+      "weight": 1990,
+      "rate": 0.1,
+      "description": "PARTENAVIA"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P68C",
+      "weight_category": "L",
+      "weight": 2064,
+      "rate": 0.1,
+      "description": "Vulcanair P-68R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P7",
+      "weight_category": "M",
+      "weight": 2700,
+      "rate": 0.2,
+      "description": "P7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P750",
+      "weight_category": "M",
+      "weight": 3395,
+      "rate": 0.2,
+      "description": "PAC 750 XL"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "P8",
+      "weight_category": "M",
+      "weight": 85820,
+      "rate": 0.2,
+      "description": "Boeing P-8 Poseidon"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA18",
+      "weight_category": "L",
+      "weight": 794,
+      "rate": 0.1,
+      "description": "Super Cub"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA2",
+      "weight_category": "L",
+      "weight": 794,
+      "rate": 0.1,
+      "description": "Cub Trainer"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA20",
+      "weight_category": "L",
+      "weight": 907,
+      "rate": 0.1,
+      "description": "Pacer"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA21",
+      "weight_category": "L",
+      "weight": 975,
+      "rate": 0.1,
+      "description": "PA21"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA22",
+      "weight_category": "L",
+      "weight": 908,
+      "rate": 0.1,
+      "description": "Tri-Pacer Colt"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA23",
+      "weight_category": "L",
+      "weight": 2359,
+      "rate": 0.1,
+      "description": "Apache"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA24",
+      "weight_category": "L",
+      "weight": 1451,
+      "rate": 0.1,
+      "description": "Comanche"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA25",
+      "weight_category": "L",
+      "weight": 1317,
+      "rate": 0.1,
+      "description": "Pawnee"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA28",
+      "weight_category": "L",
+      "weight": 1364,
+      "rate": 0.1,
+      "description": "Cherokee Archer Dakota"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA3",
+      "weight_category": "L",
+      "weight": 550,
+      "rate": 0.1,
+      "description": "Cub Trainer 3"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA30",
+      "weight_category": "L",
+      "weight": 1690,
+      "rate": 0.2,
+      "description": "Twin Comanche"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA31",
+      "weight_category": "L",
+      "weight": 2955,
+      "rate": 0.2,
+      "description": "Chieftain Mojave Navajo"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA32",
+      "weight_category": "L",
+      "weight": 1636,
+      "rate": 0.1,
+      "description": "Cherokee Six Lance Sarat"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA34",
+      "weight_category": "L",
+      "weight": 2159,
+      "rate": 0.1,
+      "description": "Seneca III PA34-220T"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA36",
+      "weight_category": "L",
+      "weight": 2177,
+      "rate": 0.1,
+      "description": "Brave"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA38",
+      "weight_category": "L",
+      "weight": 759,
+      "rate": 0.1,
+      "description": "Tomahawk II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA41",
+      "weight_category": "L",
+      "weight": 5500,
+      "rate": 0.3,
+      "description": "Cheyenne I 400"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA42",
+      "weight_category": "M",
+      "weight": 5091,
+      "rate": 0.3,
+      "description": "Cheyenne III/IV 400Sl"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA44",
+      "weight_category": "L",
+      "weight": 1784,
+      "rate": 0.1,
+      "description": "Seminole"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA46",
+      "weight_category": "L",
+      "weight": 2310,
+      "rate": 0.1,
+      "description": "Malibu"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA5",
+      "weight_category": "L",
+      "weight": 600,
+      "rate": 0.1,
+      "description": "Cruiser"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PA60",
+      "weight_category": "L",
+      "weight": 2500,
+      "rate": 0.2,
+      "description": "Aero Star 600/700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PARO",
+      "weight_category": "L",
+      "weight": 1247,
+      "rate": 0.1,
+      "description": "Cherokee Arrow IV"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PASE",
+      "weight_category": "L",
+      "weight": 2155,
+      "rate": 0.1,
+      "description": "Seneca"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PAYE",
+      "weight_category": "L",
+      "weight": 4082,
+      "rate": 0.2,
+      "description": "Cheyenne II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PAZT",
+      "weight_category": "L",
+      "weight": 2360,
+      "rate": 0.1,
+      "description": "Aztec"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PC12",
+      "weight_category": "L",
+      "weight": 4009,
+      "rate": 0.2,
+      "description": "PilatusB-N"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PC21",
+      "weight_category": "L",
+      "weight": 4250,
+      "rate": 0.2,
+      "description": "Pilatus PC-21"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PC3",
+      "weight_category": "L",
+      "weight": 27900,
+      "rate": 0.3,
+      "description": "PC3"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PC6",
+      "weight_category": "L",
+      "weight": 2700,
+      "rate": 0.2,
+      "description": "PC6"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PC6T",
+      "weight_category": "M",
+      "weight": 5000,
+      "rate": 0.3,
+      "description": "PILATUS CHIRICAHUA"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PC7",
+      "weight_category": "L",
+      "weight": 2700,
+      "rate": 0.2,
+      "description": "PC7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PISI",
+      "weight_category": "L",
+      "weight": 450,
+      "rate": 0.1,
+      "description": "PIPISTREL SINUS"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PL2",
+      "weight_category": "NA",
+      "weight": 700,
+      "rate": 0.1,
+      "description": "PL2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PL6",
+      "weight_category": "NA",
+      "weight": 2800,
+      "rate": 0.1,
+      "description": "PL6"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PL6B",
+      "weight_category": "L",
+      "weight": 2800,
+      "rate": 0.3,
+      "description": "Pilatus Turbo Porter PC-6/B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PL6C",
+      "weight_category": "L",
+      "weight": 2800,
+      "rate": 0.2,
+      "description": "Pilatus Turbo Porter PC-6/C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PL7",
+      "weight_category": "NA",
+      "weight": 2268,
+      "rate": 0.1,
+      "description": "PL7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PN66",
+      "weight_category": "L",
+      "weight": 2600,
+      "rate": 0.2,
+      "description": "Partenavia P66B-Oscar 100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PN68",
+      "weight_category": "L",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "Partenavia P68B/P68C/P68C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "PRM1",
+      "weight_category": "M",
+      "weight": 9000,
+      "rate": 0.3,
+      "description": "PRM"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "R2160A",
+      "weight_category": "L",
+      "weight": 900,
+      "rate": 0.1,
+      "description": "Robin R2160A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "R22",
+      "weight_category": "L",
+      "weight": 635,
+      "rate": 0.1,
+      "description": "ROBINSON R22"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "R400",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "INCREW"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "R44",
+      "weight_category": "L",
+      "weight": 1088,
+      "rate": 0.1,
+      "description": "ROBINSON R44"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "R66",
+      "weight_category": "L",
+      "weight": 1225,
+      "rate": 0.1,
+      "description": "ROBINSON R66"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "R722",
+      "weight_category": "M",
+      "weight": 77000,
+      "rate": 0.4,
+      "description": "Boeing 727-100RE Super 27 (tri-jet)"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RA06",
+      "weight_category": "L",
+      "weight": 4246,
+      "rate": 0.3,
+      "description": "F406 Reims Aviation"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RA39",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "RAYTHEON R390 PREMIER 1"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RA77",
+      "weight_category": "L",
+      "weight": 1200,
+      "rate": 0.1,
+      "description": "Reims F177RG"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RF6B",
+      "weight_category": "L",
+      "weight": 350,
+      "rate": 0.1,
+      "description": "Fournier RF6B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RF9",
+      "weight_category": "L",
+      "weight": 750,
+      "rate": 0.1,
+      "description": "Fournier RF9"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RH22",
+      "weight_category": "L",
+      "weight": 622,
+      "rate": 0.1,
+      "description": "Robinson R22"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RJ10",
+      "weight_category": "L",
+      "weight": 42190,
+      "rate": 0.3,
+      "description": "Avro regional Jet RJ10"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RJ100",
+      "weight_category": "M",
+      "weight": 44000,
+      "rate": 0.3,
+      "description": "British Aerospace 146"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RJ85",
+      "weight_category": "M",
+      "weight": 42273,
+      "rate": 0.3,
+      "description": "Avro Int'l Aero"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RV10",
+      "weight_category": "H",
+      "weight": 0,
+      "rate": 0,
+      "description": "ZUIHF"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RV39",
+      "weight_category": "L",
+      "weight": 3500,
+      "rate": 0.2,
+      "description": "PRM1"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RV6",
+      "weight_category": "L",
+      "weight": 724,
+      "rate": 0.1,
+      "description": "RV6"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "RV9",
+      "weight_category": "M",
+      "weight": 794,
+      "rate": 0.1,
+      "description": "VANS AIRCRAFT RV9A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S210",
+      "weight_category": "M",
+      "weight": 46000,
+      "rate": 0.4,
+      "description": "Caravelle III/VI/10/11/12"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S235",
+      "weight_category": "L",
+      "weight": 4050,
+      "rate": 0.1,
+      "description": "Rallye 235"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S2B",
+      "weight_category": "L",
+      "weight": 771,
+      "rate": 0.1,
+      "description": "Pitts Special S2B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S313",
+      "weight_category": "L",
+      "weight": 1600,
+      "rate": 0.1,
+      "description": "Alouette II Se 313/3130"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S316",
+      "weight_category": "L",
+      "weight": 2200,
+      "rate": 0.1,
+      "description": "Alouette III Se 316/3160"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S318",
+      "weight_category": "L",
+      "weight": 1600,
+      "rate": 0.1,
+      "description": "Alouette Astazou SA 318C"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S330",
+      "weight_category": "L",
+      "weight": 7000,
+      "rate": 0.3,
+      "description": "Puma SA 330/SA 332"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S332",
+      "weight_category": "L",
+      "weight": 9150,
+      "rate": 0.3,
+      "description": "Super Puma AS332"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S342",
+      "weight_category": "L",
+      "weight": 1800,
+      "rate": 0.1,
+      "description": "Gazelle SA 341/342"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S350",
+      "weight_category": "L",
+      "weight": 2250,
+      "rate": 0.1,
+      "description": "Ecureuil AS 350"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S351",
+      "weight_category": "L",
+      "weight": 2250,
+      "rate": 0.1,
+      "description": "Ecureuil AS 351"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S355",
+      "weight_category": "L",
+      "weight": 2250,
+      "rate": 0.1,
+      "description": "Ecureuil AS 351"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S360",
+      "weight_category": "L",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "Dauphin SA 360"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S365",
+      "weight_category": "L",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "S365"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S366",
+      "weight_category": "L",
+      "weight": 4300,
+      "rate": 0.2,
+      "description": "Dauphin SA 365/SA 366"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S550",
+      "weight_category": "NA",
+      "weight": 6849,
+      "rate": 0.3,
+      "description": "Cessna Citation II"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S601",
+      "weight_category": "L",
+      "weight": 6600,
+      "rate": 0.3,
+      "description": "SN 601 Corvette"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S61N",
+      "weight_category": "L",
+      "weight": 9980,
+      "rate": 0.3,
+      "description": "S61N"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S70",
+      "weight_category": "M",
+      "weight": 10442,
+      "rate": 0.3,
+      "description": "UH60L Blackhawk"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S700",
+      "weight_category": "L",
+      "weight": 9000,
+      "rate": 0.3,
+      "description": "S700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S70A",
+      "weight_category": "L",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "S70A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S880",
+      "weight_category": "L",
+      "weight": 1050,
+      "rate": 0.1,
+      "description": "Rallye MS880/881/883/887"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S885",
+      "weight_category": "L",
+      "weight": 770,
+      "rate": 0.1,
+      "description": "Super Rallye MS 885/886/88"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S890",
+      "weight_category": "L",
+      "weight": 1050,
+      "rate": 0.1,
+      "description": "Rallye 180T/180T-D/180TS"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S892",
+      "weight_category": "L",
+      "weight": 1200,
+      "rate": 0.1,
+      "description": "Rallye Commodore Ms 982 R"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S893",
+      "weight_category": "L",
+      "weight": 1050,
+      "rate": 0.1,
+      "description": "Rallye 893"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S894",
+      "weight_category": "L",
+      "weight": 980,
+      "rate": 0.1,
+      "description": "Rallye Minerva MS 894"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S89B",
+      "weight_category": "L",
+      "weight": 1050,
+      "rate": 0.1,
+      "description": "Rallye Minerva MS 894"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "S92",
+      "weight_category": "L",
+      "weight": 12000,
+      "rate": 0.3,
+      "description": "Sikorsky S-92"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SB39",
+      "weight_category": "M",
+      "weight": 24500,
+      "rate": 0.3,
+      "description": "Dassault Rafale"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SB91",
+      "weight_category": "L",
+      "weight": 1000,
+      "rate": 0.1,
+      "description": "Saab 91 Safir"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SBR1",
+      "weight_category": "NA",
+      "weight": 8056,
+      "rate": 0.3,
+      "description": "North American Sabreliner"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SC7",
+      "weight_category": "M",
+      "weight": 5700,
+      "rate": 0.3,
+      "description": "SC7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SF34",
+      "weight_category": "M",
+      "weight": 12409,
+      "rate": 0.3,
+      "description": "Saab SF 340"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SH33",
+      "weight_category": "M",
+      "weight": 10387,
+      "rate": 0.3,
+      "description": "Shorts 330-200/Utt/Sherpa"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SH36",
+      "weight_category": "M",
+      "weight": 12292,
+      "rate": 0.3,
+      "description": "Shorts 360"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SH7",
+      "weight_category": "L",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "Shorts SC7 Skyvan 3/3M"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK52",
+      "weight_category": "L",
+      "weight": 1225,
+      "rate": 0.1,
+      "description": "Sikorsky S-52"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK60",
+      "weight_category": "M",
+      "weight": 4635,
+      "rate": 0.2,
+      "description": "Saab 105"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK61",
+      "weight_category": "L",
+      "weight": 8620,
+      "rate": 0.3,
+      "description": "S-61A/B/R Sea King"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK62",
+      "weight_category": "L",
+      "weight": 8620,
+      "rate": 0.3,
+      "description": "S-62"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK64",
+      "weight_category": "M",
+      "weight": 19050,
+      "rate": 0.3,
+      "description": "S-64 Skycrane"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK65",
+      "weight_category": "L",
+      "weight": 19050,
+      "rate": 0.3,
+      "description": "S-65 Sea Stallion/Super ST"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK70",
+      "weight_category": "L",
+      "weight": 7000,
+      "rate": 0.3,
+      "description": "SK70"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SK76",
+      "weight_category": "L",
+      "weight": 5306,
+      "rate": 0.2,
+      "description": "Sikorsky Aircraft Division"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SM20",
+      "weight_category": "L",
+      "weight": 2600,
+      "rate": 0.2,
+      "description": "Agusta F260/B/C/D"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SM26",
+      "weight_category": "L",
+      "weight": 1200,
+      "rate": 0.2,
+      "description": "Agusta SF 260 All Series"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SPLS",
+      "weight_category": "L",
+      "weight": 250,
+      "rate": 0.1,
+      "description": "Super Petrel LS"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SR20",
+      "weight_category": "L",
+      "weight": 2500,
+      "rate": 0.2,
+      "description": "SR20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SR22",
+      "weight_category": "L",
+      "weight": 1700,
+      "rate": 0.1,
+      "description": "SR22"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SU100",
+      "weight_category": "M",
+      "weight": 49450,
+      "rate": 0.4,
+      "description": "SUKHOI SUPERJET 100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SU27",
+      "weight_category": "M",
+      "weight": 30450,
+      "rate": 0.3,
+      "description": "SU27"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SU30",
+      "weight_category": "M",
+      "weight": 24900,
+      "rate": 0.3,
+      "description": "SU30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SU80",
+      "weight_category": "L",
+      "weight": 14200,
+      "rate": 0.3,
+      "description": "Sukhoi Su-80"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SW2",
+      "weight_category": "L",
+      "weight": 6001,
+      "rate": 0.3,
+      "description": "Merlin IIA/B III/B/C IVA"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SW3",
+      "weight_category": "M",
+      "weight": 6577,
+      "rate": 0.3,
+      "description": "Merlin IVC Metro III"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "SW4",
+      "weight_category": "L",
+      "weight": 7484,
+      "rate": 0.3,
+      "description": "Metro II/A"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "T12",
+      "weight_category": "M",
+      "weight": 7700,
+      "rate": 0.3,
+      "description": "Casa 212/200 Aviocar"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "T154",
+      "weight_category": "H",
+      "weight": 102000,
+      "rate": 0.5,
+      "description": "TU-154"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "T204",
+      "weight_category": "H",
+      "weight": 110750,
+      "rate": 0.5,
+      "description": "TU20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB07",
+      "weight_category": "L",
+      "weight": 900,
+      "rate": 0.1,
+      "description": "TB07"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB09",
+      "weight_category": "L",
+      "weight": 1060,
+      "rate": 0.1,
+      "description": "Tampico TB-9"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB10",
+      "weight_category": "L",
+      "weight": 1150,
+      "rate": 0.1,
+      "description": "Tobago TB-10"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB20",
+      "weight_category": "L",
+      "weight": 1400,
+      "rate": 0.1,
+      "description": "Trinidad TB-20"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB21",
+      "weight_category": "L",
+      "weight": 1400,
+      "rate": 0.1,
+      "description": "Trinidad TB-21"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB30",
+      "weight_category": "L",
+      "weight": 1265,
+      "rate": 0.1,
+      "description": "Epsilon TB-30"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TB7",
+      "weight_category": "L",
+      "weight": 35000,
+      "rate": 0.3,
+      "description": "TB7"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TBM7",
+      "weight_category": "L",
+      "weight": 3000,
+      "rate": 0.2,
+      "description": "TBM 700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TBM850",
+      "weight_category": "L",
+      "weight": 3354,
+      "rate": 0.2,
+      "description": "SOCATA TBM 850"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TEX2",
+      "weight_category": "L",
+      "weight": 2948,
+      "rate": 0.2,
+      "description": "Beechcraft T-6 Texan 2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TU15",
+      "weight_category": "H",
+      "weight": 100227,
+      "rate": 0.5,
+      "description": "Tupolev TU"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TU34",
+      "weight_category": "M",
+      "weight": 47091,
+      "rate": 0.4,
+      "description": "Tupolev TU-134/134A/B"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "TU54",
+      "weight_category": "H",
+      "weight": 94198,
+      "rate": 0.5,
+      "description": "Tupolev TU-154/154/A/B/B2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "UC12",
+      "weight_category": "M",
+      "weight": 5670,
+      "rate": 0.3,
+      "description": "UC12"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "UH1",
+      "weight_category": "L",
+      "weight": 4309,
+      "rate": 0.2,
+      "description": "Bell Iroquois 205"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "UH1N",
+      "weight_category": "L",
+      "weight": 4763,
+      "rate": 0.1,
+      "description": "Bell Iroquois 212"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "UP3",
+      "weight_category": "M",
+      "weight": 64400,
+      "rate": 0.4,
+      "description": "Lockheed P-3 Orion"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "UP3T",
+      "weight_category": "M",
+      "weight": 64400,
+      "rate": 0.4,
+      "description": "Lockheed P-3 Orion"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "VC10",
+      "weight_category": "M",
+      "weight": 15455,
+      "rate": 0.3,
+      "description": "VC10-1100"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "VC7",
+      "weight_category": "M",
+      "weight": 28591,
+      "rate": 0.3,
+      "description": "Viscount VC2-700"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "VC8",
+      "weight_category": "M",
+      "weight": 29364,
+      "rate": 0.3,
+      "description": "Viscount VC2-800"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "VC86",
+      "weight_category": "M",
+      "weight": 28591,
+      "rate": 0.3,
+      "description": "Viscount"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "VF14",
+      "weight_category": "H",
+      "weight": 19958,
+      "rate": 0.4,
+      "description": "VFW 614"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "VZ10",
+      "weight_category": "L",
+      "weight": 601,
+      "rate": 0.1,
+      "description": "Vari EZE/Long EZ"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WLL",
+      "weight_category": "L",
+      "weight": 5330,
+      "rate": 0.3,
+      "description": "Lynx All Marks"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WLSC",
+      "weight_category": "L",
+      "weight": 2268,
+      "rate": 0.1,
+      "description": "Scout A.H. MK I"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WLSK",
+      "weight_category": "L",
+      "weight": 9707,
+      "rate": 0.3,
+      "description": "Sea King H.A.S. All Marks"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WLWP",
+      "weight_category": "L",
+      "weight": 2500,
+      "rate": 0.1,
+      "description": "Wasp H.A.S. MK I"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WT9",
+      "weight_category": "M",
+      "weight": 26000,
+      "rate": 0.3,
+      "description": "WT9 DYNAMIC"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WW23",
+      "weight_category": "M",
+      "weight": 10660,
+      "rate": 0.3,
+      "description": "IAI 1123 Westwind"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "WW24",
+      "weight_category": "M",
+      "weight": 10660,
+      "rate": 0.3,
+      "description": "IAI 1124/1124A Westwind"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "XL2",
+      "weight_category": "L",
+      "weight": 794,
+      "rate": 0.2,
+      "description": "LIBERTY XL-2"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "YK42",
+      "weight_category": "M",
+      "weight": 52109,
+      "rate": 0.4,
+      "description": "YAK-42"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "YK50",
+      "weight_category": "M",
+      "weight": 910,
+      "rate": 0.1,
+      "description": "YAK-50"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "YK52",
+      "weight_category": "M",
+      "weight": 1305,
+      "rate": 0.1,
+      "description": "YAK-52"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "YS11",
+      "weight_category": "M",
+      "weight": 10659,
+      "rate": 0.4,
+      "description": "NAMC YS-11"
+    }
+  },
+  {
+    "model": "aircrafts.aircraft",
+    "fields": {
+      "model": "Z601",
+      "weight_category": "L",
+      "weight": 600,
+      "rate": 0.1,
+      "description": "Zodiac"
+    }
+  }
+]

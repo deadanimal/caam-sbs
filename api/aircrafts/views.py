@@ -28,8 +28,7 @@ class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         'manufacturer', 
         'aircraft_type',
         'weight_category',
-        'min_weight',
-        'max_weight',
+        'weight',
         'operator',
         'is_active',
         'created_at'

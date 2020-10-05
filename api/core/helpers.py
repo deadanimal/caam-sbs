@@ -12,9 +12,9 @@ class PathAndRename(object):
         self.path = sub_path
 
     def __call__(self, instance, filename):
-        ext = filename.split('.')[-1]
+        # ext = filename.split('.')[-1]
         # set filename as random string
-        filename_ = datetime.datetime.utcnow().strftime("%s") + uuid.uuid4().hex
-        filename = '{}.{}'.format(filename_, ext)
+        # filename_ = datetime.datetime.utcnow().strftime("%s") + uuid.uuid4().hex
+        # filename = '{}.{}'.format(filename_, ext)
         # return the whole path to the file
         return os.path.join(self.path, filename)

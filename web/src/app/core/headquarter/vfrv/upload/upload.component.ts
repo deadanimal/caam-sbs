@@ -1,9 +1,17 @@
 import { Component, OnInit, NgZone } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgxSpinnerService } from "ngx-spinner";
 import * as FromAirports from "src/app/variables/from-airports";
 import swal from "sweetalert2";
-import Dropzone from "dropzone";
-Dropzone.autoDiscover = false;
+
+import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
+import { UploadsService } from "src/app/shared/services/uploads/uploads.service";
 
 export enum SelectionType {
   single = "single",
@@ -23,35 +31,15 @@ export class UploadComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = FromAirports.FromAirports;
+  rows = []; // FromAirports.FromAirports;
   SelectionType = SelectionType;
+  datas = [];
+  dataErrors = [];
+  toggleDataError: boolean = false;
 
-  // formInput
-  formInput = {
-    callsign: "",
-    registration: "",
-    groundhandler: "",
-    altmod: "",
-    model: "",
-    toa: "",
-    dep: "",
-    arrovf: "",
-    operator: "",
-    from: "",
-    ata: "",
-    to: "",
-    atd: "",
-    fr: "",
-    tof: "",
-    cl: "",
-    total: "",
-    remarks: "",
-    error: "",
-    maximum: 0,
-    distance: 0,
-    dateofflight: 0,
-    routelist: "",
-  };
+  // FormGroup
+  fileuploadFormGroup: FormGroup;
+  vfrtflFormGroup: FormGroup;
 
   // searchInput
   searchInput = {
@@ -64,13 +52,71 @@ export class UploadComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    // this.temp = this.rows.map((prop, key) => {
-    //   return {
-    //     ...prop,
-    //     id: key
-    //   };
-    // });
+  constructor(
+    public formBuilder: FormBuilder,
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService,
+    private fpldataService: FpldatasService,
+    private fileuploadService: UploadsService
+  ) {
+    this.getVfrTflData();
+
+    this.fileuploadFormGroup = this.formBuilder.group({
+      id: [""],
+      data_file_link: [""],
+      data_type: [""],
+      name: [""],
+    });
+
+    this.vfrtflFormGroup = this.formBuilder.group({
+      id: new FormControl(""),
+      cid: new FormControl(""),
+      fpl_date: new FormControl(""),
+      fpl_no: new FormControl(""),
+      aircraft_model: new FormControl(""),
+      dep: new FormControl(""),
+      dest: new FormControl(""),
+      ctg: new FormControl(""),
+      dist: new FormControl(""),
+      route: new FormControl(""),
+      uploaded_by: new FormControl("1d66abaa-4907-4a66-a7f2-903f7b5c36a3"),
+      error_remark: new FormControl(""),
+    });
+  }
+
+  getVfrTflData() {
+    this.fpldataService
+      .filter(
+        "uploaded_by=" +
+          "1d66abaa-4907-4a66-a7f2-903f7b5c36a3" +
+          "&submitted_at="
+      )
+      .subscribe((res) => {
+        // console.log("res", res);
+        this.datas = res;
+        this.rows = res;
+        this.temp = this.rows.map((prop, key) => {
+          return {
+            ...prop,
+            // id: key
+            no: key,
+          };
+        });
+
+        this.calculateErrorData(this.rows);
+      });
+  }
+
+  calculateErrorData(rows) {
+    if (rows.length > 0) {
+      for (let i = 0; i < rows.length; i++) {
+        if (rows[i].error_remark != "") this.dataErrors.push(rows[i]);
+      }
+    } else {
+      this.dataErrors.length = 0;
+      this.toggleDataError = false;
+    }
   }
 
   entriesChange($event) {
@@ -81,8 +127,15 @@ export class UploadComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
-          return true;
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
         }
       }
       return false;
@@ -157,94 +210,186 @@ export class UploadComponent implements OnInit {
   }
 
   editUpload(row, content) {
-    this.formInput = row;
+    this.vfrtflFormGroup.patchValue({
+      ...row,
+    });
     this.open(content, "modal-mini", "sm", "Edit VFR/TFL Data");
   }
 
-  deleteWatchTower() {
-    swal
-      .fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        type: "warning",
-        showCancelButton: true,
-        buttonsStyling: false,
-        confirmButtonClass: "btn btn-danger",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonClass: "btn btn-secondary",
-      })
-      .then((result) => {
-        if (result.value) {
-          // Show confirmation
-          swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            type: "success",
-            buttonsStyling: false,
-            confirmButtonClass: "btn btn-primary",
-          });
-        }
-      });
+  ngOnInit() {}
+
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.fileuploadFormGroup.get("data_file_link").setValue(file);
+      this.fileuploadFormGroup.get("name").setValue(file.name);
+    }
   }
 
-  ngOnInit() {
-    let currentSingleFile = undefined;
-    // single dropzone file - accepts only images
-    new Dropzone(document.getElementsByClassName("dropzone-single")[0], {
-      url: "/",
-      thumbnailWidth: null,
-      thumbnailHeight: null,
-      previewsContainer: document.getElementsByClassName(
-        "dz-preview-single"
-      )[0],
-      previewTemplate: document.getElementsByClassName("dz-preview-single")[0]
-        .innerHTML,
-      maxFiles: 1,
-      acceptedFiles: "image/*",
-      init: function () {
-        this.on("addedfile", function (file) {
-          if (currentSingleFile) {
-            this.removeFile(currentSingleFile);
+  upload() {
+    const formData = new FormData();
+    formData.append(
+      "data_file_link",
+      this.fileuploadFormGroup.get("data_file_link").value
+    );
+    formData.append(
+      "data_type",
+      this.fileuploadFormGroup.get("data_type").value
+    );
+    formData.append("name", this.fileuploadFormGroup.get("name").value);
+    formData.append("uploaded_by", "1d66abaa-4907-4a66-a7f2-903f7b5c36a3");
+    this.spinner.show();
+
+    this.fileuploadService.post(formData).subscribe(
+      (res) => {
+        console.log("res", res);
+        formData.append("id", res.id);
+
+        this.fileuploadService.upload(formData).subscribe(
+          (res) => {
+            if (res) {
+              // console.log("res", res);
+              this.spinner.hide();
+              if (res === 400) {
+                swal.fire({
+                  title: "Warning",
+                  text:
+                    "There are errors in uploading your file. Please try again.",
+                  type: "warning",
+                  buttonsStyling: false,
+                  confirmButtonClass: "btn btn-warning",
+                });
+              } else {
+                swal
+                  .fire({
+                    title: "Success",
+                    text: "The submission has successfully recorded",
+                    type: "success",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                  })
+                  .then((result) => {
+                    if (result.value) {
+                      this.getVfrTflData();
+                    }
+                  });
+              }
+            }
+          },
+          (err) => {
+            console.error("err", err);
+            this.spinner.hide();
           }
-          currentSingleFile = file;
-        });
+        );
       },
-    });
-    document.getElementsByClassName("dz-preview-single")[0].innerHTML = "";
+      (err) => {
+        this.spinner.hide();
+        console.error("err", err);
+      }
+    );
+
+    
   }
 
-  swalDistributed() {
-    swal
-      .fire({
-        title: "Warning",
-        text: "The data contain errors. Please rectify",
-        type: "warning",
-        buttonsStyling: false,
-        confirmButtonClass: "btn btn-warning",
-      })
-      .then((result) => {
-        if (result.value) {
-          this.temp = this.rows.map((prop, key) => {
-            return {
-              ...prop,
-              id: key,
-            };
-          });
+  update() {
+    this.fpldataService
+      .update(this.vfrtflFormGroup.value.id, this.vfrtflFormGroup.value)
+      .subscribe(
+        (res) => {
+          console.log("res", res);
+          swal
+            .fire({
+              title: "Success",
+              text: "The submission has successfully recorded",
+              type: "success",
+              buttonsStyling: false,
+              confirmButtonClass: "btn btn-success",
+            })
+            .then((result) => {
+              if (result.value) {
+                this.modalService.dismissAll();
+                this.getVfrTflData();
+              }
+            });
+        },
+        (err) => {
+          console.error("err", err);
         }
-      });
+      );
   }
 
   submit() {
-    swal.fire({
-      title: "Success",
-      text: "The submission has successfully recorded",
-      type: "success",
-      buttonsStyling: false,
-      confirmButtonClass: "btn btn-success",
-    }).then(result => {
-      if (result.value) {
-        this.modalService.dismissAll();
-      }
-    });
+    swal
+      .fire({
+        title: "Submit",
+        text: "Are you want submit this VFR/TFL data into database?",
+        type: "question",
+        showCancelButton: true,
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-dark",
+        confirmButtonText: "Yes, submit it",
+        cancelButtonClass: "btn btn-secondary",
+        cancelButtonText: "No",
+      })
+      .then((result) => {
+        if (result.value) {
+          this.spinner.show();
+          this.fpldataService
+            .submit({ uploaded_by: "1d66abaa-4907-4a66-a7f2-903f7b5c36a3" })
+            .subscribe(
+              (res) => {
+                console.log("res", res);
+                this.spinner.hide();
+                swal
+                  .fire({
+                    title: "Success",
+                    text: "The submission has successfully recorded",
+                    type: "success",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                  })
+                  .then((result) => {
+                    if (result.value) {
+                      this.modalService.dismissAll();
+                      this.getVfrTflData();
+                    }
+                  });
+              },
+              (err) => {
+                console.error("err", err);
+                this.spinner.hide();
+              }
+            );
+        }
+      });
+  }
+
+  // getRowClass = (row) => {
+  //   return {
+  //     "row-color": row.error_remark != ""
+  //   };
+  // };
+
+  showDataError() {
+    if (this.toggleDataError) {
+      this.rows = this.dataErrors;
+      this.temp = this.rows.map((prop, key) => {
+        return {
+          ...prop,
+          // id: key
+          no: key,
+        };
+      });
+    } else {
+      this.rows = this.datas;
+      this.temp = this.rows.map((prop, key) => {
+        return {
+          ...prop,
+          // id: key
+          no: key,
+        };
+      });
+    }
+    console.log("toggleDataError", this.toggleDataError);
   }
 }

@@ -1,7 +1,15 @@
 import { Component, OnInit, NgZone, ViewChild } from "@angular/core";
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as InvoiceDatabases from "src/app/variables/invoice-database";
 import swal from "sweetalert2";
+
+import { ApprovalsService } from "src/app/shared/services/approvals/approvals.service";
 
 export enum SelectionType {
   single = "single",
@@ -23,20 +31,57 @@ export class InvoiceDatabaseApprovalComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = InvoiceDatabases.InvoiceDatabases;
+  rows = []; //InvoiceDatabases.InvoiceDatabases;
   SelectionType = SelectionType;
+
+  // Dropdowns
+  types = [
+    { value: "RA", name: "Rate" },
+    { value: "AL", name: "Airline" },
+    { value: "CS", name: "Callsign" },
+    { value: "AC", name: "Aircraft" },
+    { value: "AP", name: "Airport" },
+    { value: "RO", name: "Route" },
+    { value: "EX", name: "Exemptions" },
+    { value: "NA", name: "Not Available" },
+  ];
+  statuses = [
+    { value: "AP", name: "Approve" },
+    { value: "RE", name: "Reject" },
+    { value: "NA", name: "Pending" },
+  ];
 
   // Modal
   closeResult: string;
   processTitle: string;
 
-  constructor(public zone: NgZone, private modalService: NgbModal) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
-    });
+  constructor(
+    public zone: NgZone,
+    private modalService: NgbModal,
+    private approvalService: ApprovalsService
+  ) {
+    this.getApproval();
+  }
+
+  getApproval() {
+    this.approvalService.get().subscribe(
+      (res) => {
+        if (res) {
+          // console.log("res", res);
+          this.rows = res;
+          this.temp = this.rows.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+        }
+      },
+      (err) => {
+        console.error("err", err);
+      }
+    );
   }
 
   entriesChange($event) {
@@ -47,7 +92,12 @@ export class InvoiceDatabaseApprovalComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toLowerCase().indexOf(val) !== -1) {
+        if (
+          d[key]
+            .toString()
+            .toLowerCase()
+            .indexOf(val.toString().toLowerCase()) !== -1
+        ) {
           return true;
         }
       }
@@ -100,15 +150,17 @@ export class InvoiceDatabaseApprovalComponent implements OnInit {
   }
 
   toggleExpandRow(row) {
-    console.log("Toggled Expand Row!", row);
+    // console.log("Toggled Expand Row!", row);
     this.table.rowDetail.toggleExpandRow(row);
   }
 
   onDetailToggle(event) {
-    console.log("Detail Toggled", event);
+    // console.log("Detail Toggled", event);
   }
 
   approve() {
+    console.log(this.selected);
+
     swal
       .fire({
         title: "Are you want to approve?",
@@ -122,19 +174,38 @@ export class InvoiceDatabaseApprovalComponent implements OnInit {
       })
       .then((result) => {
         if (result.value) {
-          // Show confirmation
-          swal.fire({
-            title: "Success",
-            text: "The submission has successfully recorded",
-            type: "success",
-            buttonsStyling: false,
-            confirmButtonClass: "btn btn-success",
-          });
+          for (let i = 0; i < this.selected.length; i++) {
+            this.approvalService
+              .approval(this.selected[i].id, {}, "approve")
+              .subscribe(
+                (res) => {
+                  if (res) {
+                    // console.log("res", res);
+
+                    // Show confirmation
+                    swal
+                      .fire({
+                        title: "Success",
+                        text: "The submission has successfully recorded",
+                        type: "success",
+                        buttonsStyling: false,
+                        confirmButtonClass: "btn btn-success",
+                      })
+                      .then((result) => {
+                        if (result.value) this.getApproval();
+                      });
+                  }
+                },
+                (err) => {
+                  console.error("err", err);
+                }
+              );
+          }
         }
       });
   }
 
-  reject() {
+  reject(id: string) {
     swal
       .fire({
         title: "Are you sure want to reject?",
@@ -148,16 +219,51 @@ export class InvoiceDatabaseApprovalComponent implements OnInit {
       })
       .then((result) => {
         if (result.value) {
-          // Show confirmation
-          swal.fire({
-            title: "Success",
-            text: "The submission has successfully recorded",
-            type: "success",
-            buttonsStyling: false,
-            confirmButtonClass: "btn btn-success",
-          });
+          this.approvalService.approval(id, {}, "reject").subscribe(
+            (res) => {
+              if (res) {
+                // console.log("res", res);
+
+                // Show confirmation
+                swal
+                  .fire({
+                    title: "Success",
+                    text: "The submission has successfully recorded",
+                    type: "success",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                  })
+                  .then((result) => {
+                    if (result.value) this.getApproval();
+                  });
+              }
+            },
+            (err) => {
+              console.error("err", err);
+            }
+          );
         }
       });
+  }
+
+  getType(value: string) {
+    let result = this.types.find((obj) => {
+      return obj.value == value;
+    });
+    return result.name;
+  }
+
+  getStatus(value: string) {
+    let result = this.statuses.find((obj) => {
+      return obj.value == value;
+    });
+    return result.name;
+  }
+
+  getStatusBadge(value: string) {
+    if (value == "AP") return "badge badge-success";
+    if (value == "RE") return "badge badge-danger";
+    if (value == "NA") return "badge badge-default";
   }
 
   ngOnInit() {}

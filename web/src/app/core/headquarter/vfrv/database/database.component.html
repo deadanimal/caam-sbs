@@ -47,13 +47,18 @@
                   <h5 class="card-title text-uppercase text-muted mb-0">
                     Total Vfr Data
                   </h5>
-                  <span class="h2 font-weight-bold mb-0"> 20,414 </span>
+                  <span class="h1 font-weight-bold mb-0">
+                    <ng9-odometer
+                      [number]="vfrTotal"
+                      [config]="{}"
+                    ></ng9-odometer>
+                  </span>
                 </div>
                 <div class="col-auto">
                   <div
                     class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"
                   >
-                    <i class="ni ni-active-40"></i>
+                    <i class="fas fa-plane"></i>
                   </div>
                 </div>
               </div>
@@ -68,13 +73,18 @@
                   <h5 class="card-title text-uppercase text-muted mb-0">
                     Total Tfl Data
                   </h5>
-                  <span class="h2 font-weight-bold mb-0"> 42,146 </span>
+                  <span class="h1 font-weight-bold mb-0">
+                    <ng9-odometer
+                      [number]="tflTotal"
+                      [config]="{}"
+                    ></ng9-odometer>
+                  </span>
                 </div>
                 <div class="col-auto">
                   <div
                     class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
                   >
-                    <i class="ni ni-chart-pie-35"></i>
+                    <i class="fas fa-plane"></i>
                   </div>
                 </div>
               </div>
@@ -95,7 +105,7 @@
                   <div
                     class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"
                   >
-                    <i class="ni ni-money-coins"></i>
+                    <i class="fas fa-check-circle"></i>
                   </div>
                 </div>
               </div>
@@ -116,7 +126,7 @@
                   <div
                     class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"
                   >
-                    <i class="ni ni-chart-bar-32"></i>
+                    <i class="fas fa-times-circle"></i>
                   </div>
                 </div>
               </div>
@@ -132,6 +142,22 @@
   <div class="row">
     <div class="col">
       <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="mb-0">List of Flight Plan Data</h3>
+            </div>
+            <div class="col-auto">
+              <h3 class="text-danger" *ngIf="dataErrors.length > 0">
+                <ng9-odometer
+                  [number]="dataErrors.length"
+                  [config]="{}"
+                ></ng9-odometer>
+                errors occured
+              </h3>
+            </div>
+          </div>
+        </div>
         <div class="card-body">
           <div class="row">
             <div class="col-lg-4 col-xs-12">
@@ -178,6 +204,17 @@
                 </div>
               </div>
             </div>
+            <div
+              class="col-lg-4 col-xs-12"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <button class="btn btn-primary">Search</button>
+              <button class="btn btn-secondary">Reset</button>
+            </div>
           </div>
         </div>
         <div class="dataTables_wrapper py-4">
@@ -196,7 +233,7 @@
                     <option value="10" [selected]="entries == 10">10</option>
                     <option value="25" [selected]="entries == 25">25</option>
                     <option value="50" [selected]="entries == 50">50</option>
-                    <option value="-1" [selected]="entries == -1">All</option>
+                    <!-- <option value="-1" [selected]="entries == -1">All</option> -->
                   </select>
                   entries
                 </label>
@@ -228,37 +265,86 @@
             (activate)="onActivate($event)"
             [scrollbarH]="true"
           >
-            <ngx-datatable-column name="Callsign"></ngx-datatable-column>
-            <ngx-datatable-column name="Operator"></ngx-datatable-column>
-            <ngx-datatable-column name="Dep"></ngx-datatable-column>
-            <ngx-datatable-column name="Arrovf">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <div class="ngxdtheader">ARR/OVF</div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Ataatd">
-              <ng-template ngx-datatable-header-template>
-                <div class="ngxdtheader">ATA/ATD</div>
+                <span>Active Time</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.ata }} / {{ row.atd }}
+                {{ row.fpl_date }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Dateofflight">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <div class="ngxdtheader">DATE OF FLIGHT</div>
+                <span>Callsign</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.fpl_no }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Distance"></ngx-datatable-column>
-            <ngx-datatable-column name="Status">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Cid</span>
+              </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.status }}
-                <button
-                  *ngIf="row.status == 'Error'"
-                  class="btn btn-warning btn-sm"
-                >
-                  <i class="fas fa-lightbulb"></i>
-                </button>
+                {{ row.cid }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>AC Type</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.aircraft_model }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEP</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.dep }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEST</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.dest }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>CTG</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.ctg }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Dist</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.dist | number: "1.0-0" }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Route</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.route }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Remarks</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <small class="text-danger font-weight-bold">{{
+                  row.error_remark
+                }}</small>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">

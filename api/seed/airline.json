@@ -1,0 +1,5102 @@
+[
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1009,
+      "name": "AEROFLOT RUSSIAN AIRLINES",
+      "email_1": "cmr@aeroflot.ru",
+      "office_num": "+7(499)500-7501",
+      "address_line_1": "1,Arbat St. Moscow, 119002 Russia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1015,
+      "name": "Aeronautical Radio of Thailand Ltd.",
+      "email_1": "hopefriend@aerothai.co.th",
+      "office_num": "",
+      "address_line_1": "102 Soi Ngaduplee, ThungmahamekSathorn, Bangkok 10120Thailand",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1021,
+      "name": "AIR ALSIE ASIA PACIFIC",
+      "email_1": "op@alsie.com",
+      "office_num": "+4574429888",
+      "address_line_1": "Lufthavnsvej 3 Box 240 6400 Sonderborg, DENMARK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1025,
+      "name": "AIRASIA SDN BHD",
+      "email_1": "maa_finance_ap_inv@airasia.com",
+      "office_num": 60386604070,
+      "address_line_1": "REDQ, JALAN PEKELILING 5, KUALA LUMPUR INTERNATIONAL AIRPORT (KLIA2), 64000 SEPANG, SELANGOR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1027,
+      "name": "AIR CALEDONIE INTERNATIONAL",
+      "email_1": "caroline.ruiz@aircalin.nc",
+      "office_num": "",
+      "address_line_1": "BP 3736, 98846 Noumea Cedex New Caledonia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1029,
+      "name": "AIR CANADA",
+      "email_1": "carlo.bautista@aircanada.ca",
+      "office_num": "(204) 941-2514",
+      "address_line_1": "P&E Accounting Nav Fees 355 Portage Avenue Winnipeg, MB, Canada, R3B 2C3",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1035,
+      "name": "SOCIETE AIR FRANCE",
+      "email_1": "kulfinance@klm.com",
+      "office_num": "+65 67155009",
+      "address_line_1": "E-13A-05, Menara Suezcap 2 No.2 Jalan Kerinchi, KL Gateway Gerbang Kerinchi Lestari 59200 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1038,
+      "name": "AHK AIR HONG KONG LTD",
+      "email_1": "amy.chiu@airhongkong.com.hk",
+      "office_num": "+852 2761 8588",
+      "address_line_1": "2/F, Cathay Dragon House 11 Tung Fai Road, HK International Airport Lantau,  HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1039,
+      "name": "AIR INDIA LIMITED",
+      "email_1": "ai.overflt@airindia.in",
+      "office_num": "+65 6337 2272",
+      "address_line_1": "Air India Limited c/o Jetspeed Travel Pte. Ltd. Coleman Street, #03-07/08 Peninsula Shopping Centre Singapore 179804 Tel: +65 6337 8868",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1046,
+      "name": "AIR MAURITIUS",
+      "email_1": "rvijayakumar@airmauritius.com",
+      "office_num": "+603 2142 9161",
+      "address_line_1": "Suite 2201, 22nd Floor Central Plaza 34 Jalan Sultan Ismail 50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1047,
+      "name": "AIR NEW ZEALAND LTD",
+      "email_1": "ATong@spireflight.com",
+      "office_num": "+65-6215-6868",
+      "address_line_1": "Air New Zealand  c/o World Fuel Services ( SINGAPORE ) PTE LTD 238 A Thomson Road 08-01/10Novena Square Tower A Singapore 307684",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1051,
+      "name": "ARINC DIRECT LLC",
+      "email_1": "FSBillingSupport@rockwellcollins.com",
+      "office_num": "713 430  7170",
+      "address_line_1": "(formerly known as Air Routing International/ROCKWELL COLLINS FLIGHT SERVICES) 2925 Briarpark Drive, 7th Floor, Houston Texas 77042-3715, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1057,
+      "name": "AIR TRANSPORT INTERNATIONAL INC",
+      "email_1": "payables.ati@atsginc.com",
+      "office_num": "",
+      "address_line_1": "PO BOX 192 WILMINGTON, OHIO 45177 UNITED STATES OF AMERICA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1060,
+      "name": "VIETNAM AIRLINES JSC",
+      "email_1": "ngalv@vietnamairlines.com",
+      "office_num": "0320311555",
+      "address_line_1": "5-50, Letter Box No. 60, Level 5 Menara Hap Seng, Jalan P. Ramlee 50250, Kuala Lumpur, Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1062,
+      "name": "Airbus S.A.S",
+      "email_1": "fabrice.lussan@airbus.com",
+      "office_num": "+33 561931279",
+      "address_line_1": "2 Rond Point Emile Dewoitine 31700 Blagnac, FRANCE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1067,
+      "name": "AIROD SDN BHD",
+      "email_1": "amir.syazwan@airod.com.my",
+      "office_num": "03-78465112 ext 213",
+      "address_line_1": "Sultan Abdul Aziz Shah Airport, Jalan TUDM Subang, 47200 Subang, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1071,
+      "name": "ALL NIPPON AIRWAYS CO LTD",
+      "email_1": "cathywee@ana.co.jp",
+      "office_num": "03-2032 5393",
+      "address_line_1": "Suite 11.01, 11th Floor, Wisma Goldhill No. 67 Jalan Raja Chulan 50200 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1092,
+      "name": "ANTONOV COMPANY c/o Antonov Airlines",
+      "email_1": "accounts@antonov.kiev.ua",
+      "office_num": "+380 044 4542881",
+      "address_line_1": "No 1, Academician Tupolev Str. 03062 Kiev, UKRAINE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1101,
+      "name": "ASIANA AIRLINES",
+      "email_1": "ozopschrg@flyasiana.com",
+      "office_num": "82 2 2669 5179",
+      "address_line_1": "443-83, Ojeong-ro, Gangseo-gu Seoul 07505, Korea",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1127,
+      "name": "BANGKOK AIRWAYS PCL",
+      "email_1": "pratan@bangkokair.com",
+      "office_num": "+66 2265 5964",
+      "address_line_1": "99 Moo 14 Vibhavadee Rangsit Road Chom Phon, Chatuchak Bangkok, 10900 THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1129,
+      "name": "Baseops Asia (World Fuel Services)",
+      "email_1": "singaporeaviationbilling@wfscorp.com",
+      "office_num": "02-6215 6920/22",
+      "address_line_1": "238A Thomson RoadNo. 08-01/10 Novena Square Tower ASingapore 307684",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1130,
+      "name": "BASEOPS EUROPE LIMITED",
+      "email_1": "ITPSAP_Dept@wfscorp.com",
+      "office_num": "+44 1293 400777",
+      "address_line_1": "Kingfisher House, Northwood Park Gatwick Rd, Crawley, West Sussex RH10 2XN United Kingdom",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1131,
+      "name": "Baseops International Inc.",
+      "email_1": "LSchwem@wfscorp.com",
+      "office_num": "281 556 2440",
+      "address_line_1": "300 FLINT RIDGE ROAD,WEBSTER, TEXAS 77598,USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1136,
+      "name": "Belair Airlines",
+      "email_1": "ronald.boehlen@belair-airlines.com",
+      "office_num": "+41432118128",
+      "address_line_1": "Sagereistrasse 20,Ch-8152 GlattbruggSwitzerland",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1137,
+      "name": "BELL HELICOPTER ASIA (PTE) LIMITED",
+      "email_1": "singapore@bellflight.com",
+      "office_num": "65-6542 2422",
+      "address_line_1": "6 SELETAR AEROSPACE HEIGHTS,SELETAR AIRPORT, SINGAPORE 797545.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1138,
+      "name": "BERJAYA AIR SDN BHD",
+      "email_1": "accountpayable@berjaya-air.com",
+      "office_num": "03 78471338",
+      "address_line_1": "Lot AM1, Skypark Terminal Sultan Abdul Aziz Shah Airport 47200 Subang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1139,
+      "name": "BIMAN BANGLADESH AIRLINES LTD",
+      "email_1": "kulab@bdbiman.com",
+      "office_num": "03-21646270",
+      "address_line_1": "13th Floor, Menara Naluri 161B Jalan Ampang 50450 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1150,
+      "name": "BRITISH AIRWAYS PLC",
+      "email_1": "kuladm@ba.com",
+      "office_num": "603 87766162",
+      "address_line_1": "Lot S28, Kuala Lumpur International Airport, Level 4, Main Terminal Building, 64000 Sepang, Selangor",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1159,
+      "name": "Cargolux Airlines International SA",
+      "email_1": "nor.hamezan@cargolux.com",
+      "office_num": "03-87873343",
+      "address_line_1": "Lot GFM 001, MAS Advanced Cargo Center, KLIA, 64000 Sepang,Selangor.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1160,
+      "name": "CATHAY PACIFIC AIRWAYS LIMITED",
+      "email_1": "george_g_chan@cathaypacific.com",
+      "office_num": "03-87766123",
+      "address_line_1": "C10-12, Mezzanine LevelMain Terminal Building, KLIA64000 Sepang, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1161,
+      "name": "Cathay Pacific Cargo",
+      "email_1": "tristen_ooi@cathaypacific.com",
+      "office_num": "03-87788983",
+      "address_line_1": "Lot 108 1st Floor, Customer Service CentreKLAS Cargo Complex, Southern Support Zone64000 KLIA, Sepang, Selangor",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1162,
+      "name": "CEBU PACIFIC AIR",
+      "email_1": "cebopssupportbilling@cebupacificair.com",
+      "office_num": "+632 802 7000 3526",
+      "address_line_1": "Operations Support, Ground Floor Cebu Pacific Air Building Domestic Road, Baranggay 191, Zone 20 Pasay City, 1301 PHILIPPINES",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1166,
+      "name": "CHINA AIRLINES",
+      "email_1": "phoebe.neo@china-airlines.com",
+      "office_num": "03-21489584",
+      "address_line_1": "Unit 15.01, 15th floor Amoda Building, 22 Jalan Imbi 55100 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1167,
+      "name": "CHINA AIRLINES LIMITED (WMKP)",
+      "email_1": "sou-cheng.chong@china-airlines.com",
+      "office_num": "04-2269573",
+      "address_line_1": "Unit 9.04, Level 9, Menara PSCI 39 Jalan Sultan Ahmad Shah 10050 Penang, Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1178,
+      "name": "CONDOR FLUGDIENST GMBH",
+      "email_1": "doc-invoices@condor.com",
+      "office_num": "+4906107939 7424",
+      "address_line_1": "FRA HK/KR Condor Platz60549 Frankfurt AM MainGERMANY",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1179,
+      "name": "KALITTA AIR LLC c/o United Aviation Services",
+      "email_1": "mhomsi@uas.aero",
+      "office_num": "+1 734 544 7012",
+      "address_line_1": "818 Willow Run Airport Ypsilanti, Michigan 48198 United States of America",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1186,
+      "name": "CROWN MELBOURNE Ltd",
+      "email_1": "flightaccounts@crownmelbourne.com.au",
+      "office_num": "+610392924879",
+      "address_line_1": "P. O BOX 1559, TULLMARINE VICTORIA 3043, AUSTRALIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1191,
+      "name": "AIR CHINA",
+      "email_1": "airchinafinance@gmail.com",
+      "office_num": "00861064513486",
+      "address_line_1": "Accounting Centre Of China Aviation 12 Building Xi Ba He Bei Li, Chao Yang District P.O. Box 5402, Beijing, 100028 PR China",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1193,
+      "name": "CHINA EASTERN",
+      "email_1": "navservice@acca.com.cn",
+      "office_num": "0086-010-64513486",
+      "address_line_1": "Accounting Centre Of China Aviation 12 Building Xi Ba He Bei Li, Chao Yang District PO Box 5402, Beijing, 100028 PR China",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1195,
+      "name": "CHINA SOUTHERN AIRLINES",
+      "email_1": "kulapcz@yahoo.com",
+      "office_num": "03-87872858/68",
+      "address_line_1": "Lot N5, Level 4, Main Terminal Building KLIA-Sepang, 64000 Sepang, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1202,
+      "name": "DASNAIR SA",
+      "email_1": "contact@dasnair.ch",
+      "office_num": "+41 (0)22 717 82 00",
+      "address_line_1": "Cargo Building 1 PO Box 1023 1211 Geneva 5 Airport SWITZERLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1209,
+      "name": "AEROHANDLERS SDN BHD",
+      "email_1": "ops@sapura-aero.com",
+      "office_num": "03-77347924",
+      "address_line_1": "Old Cargo Complex SAAS International Airport 47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1215,
+      "name": "DUBAI AIR WING",
+      "email_1": "finance@daw.ae",
+      "office_num": "",
+      "address_line_1": "P.O. Box 11097 Dubai UNITED ARAB EMIRATES",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1226,
+      "name": "ETHIOPIAN AIRLINES",
+      "email_1": "HenokGt@ethiopianairlines.com",
+      "office_num": "03-2142 2060",
+      "address_line_1": "SUITE 1603, 16th WISMA  CHUANG, 34 JALAN SULTAN ISMAIL 50250 KUALA LUMPUR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1229,
+      "name": "AIRBUS HELICOPTER MALAYSIA SDN BHD",
+      "email_1": "nor-saadah.darmawi@airbus.com",
+      "office_num": "03-78487642",
+      "address_line_1": "Helicopter Centre, Malaysia International  Aerospace Center (MIAC) Sulatan Abdul Aziz Shah Airport,47200 Subang, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1234,
+      "name": "EVA AIRWAYS CORPORATION",
+      "email_1": "joeyyap@evaair.com",
+      "office_num": "03-87766172",
+      "address_line_1": "S33 Mezzanine Level 4 Main Terminal Building, KLIA 64000 Sepang, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1244,
+      "name": "EXTRA FRUITFUL RESOURCES SDN BHD",
+      "email_1": "jocelyncmk399@gmail.com",
+      "office_num": "012-250 1861",
+      "address_line_1": "No. 5 Jalan PJU 1A/36D, Ara Damansara  47301 Petaling Jaya, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1245,
+      "name": "FAI RENT-A-JET AG",
+      "email_1": "lena.boehm@fai.ag",
+      "office_num": "+4991136009227",
+      "address_line_1": "Flughafenstr 100 90411 Nuernberg Germany",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1251,
+      "name": "FEDERAL EXPRESS CORPORATION",
+      "email_1": "lmang@fedex.com",
+      "office_num": "03-87781830",
+      "address_line_1": "Lot F1-01 Forwarders Building POS Aviation Cargo Complex A 64000 SEPANG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1253,
+      "name": "FINNAIR OYJ",
+      "email_1": "ACteam@finnair.com",
+      "office_num": "+358 9 818 8351",
+      "address_line_1": "Aviation Charges Team HEL-AGS/5 01053 Finnair, FINLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1259,
+      "name": "Franklin Templeton Travel Inc",
+      "email_1": "LMatsum@frk.com",
+      "office_num": "00 916 463 2068",
+      "address_line_1": "Financial Operations Customer Service One Franklin Parkway, San Mateo California, 94403-1906, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1267,
+      "name": "PT GARUDA INDONESIA (PERSERO) TBK",
+      "email_1": "razak@garuda-indonesia.com.my",
+      "office_num": "0321634848",
+      "address_line_1": "Finance Department, Garuda City Center, 2nd Floor  Soekarno-Hatta International Airport, PO Box 1004 Bush 19120, Cengkareng, Jakarta, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1269,
+      "name": "GAZPROMAVIA",
+      "email_1": "gazpromavia@gazprom.ru",
+      "office_num": "7 0957191094",
+      "address_line_1": "16 Nameotkin Street 117884 Moscow, RUSSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1279,
+      "name": "Gulfstream Aerospace U.S.A",
+      "email_1": "",
+      "office_num": "",
+      "address_line_1": "500 Gulfstream RoadSavannah, Georgia31407 USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1283,
+      "name": "HAINAN AIRLINES LTD",
+      "email_1": "wenh.song@hnair.com",
+      "office_num": "86 898 66739640",
+      "address_line_1": "10F New HNA Plaza No. 7 Guoxing Road Haikou City, Hainan Province 570203 PR of CHINA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1287,
+      "name": "HASRAT ASIA SDN BHD",
+      "email_1": "ops@hasratasia.com",
+      "office_num": "78591288/79545487",
+      "address_line_1": "Hangar B, Light Aircraft Apron Lapangan Terbang Sultan Abdul Aziz Shah 47200 Subang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1288,
+      "name": "HAWKER PACIFIC (M) SDN BHD",
+      "email_1": "",
+      "office_num": "03-78421043",
+      "address_line_1": "Skypark Regional Aviation Centre, Hangar AJalan Riyal U3/36, Bukit Jelutong Industrial Park40150 Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1293,
+      "name": "HM THE SULTANS FLIGHT",
+      "email_1": "Sallehuddin.Umar@hmsf.gov.bn",
+      "office_num": "244036/3",
+      "address_line_1": "Istana Heliport, Istana Nurul ImanBandar Seri Begawan BA2112Negara Brunei Darussalam",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1295,
+      "name": "HONEYWELL INTERNATIONAL INC",
+      "email_1": "Eugene.Tan@Honeywell.com",
+      "office_num": "",
+      "address_line_1": "20 Airport Road, Morristown New Jersey 07960, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1296,
+      "name": "HONG KONG DRAGON AIRLINES",
+      "email_1": "khim_yap@cathaypacific.com",
+      "office_num": "03-20352613",
+      "address_line_1": "Suite 6.2 level 6 , Menara IMC 8 , Jalan Sultan Ismail 50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1298,
+      "name": "HORNBILL SKYWAYS SDN BHD",
+      "email_1": "finance@hornbillskyways.com",
+      "office_num": "082 412 737",
+      "address_line_1": "TINGKAT 2, BANGUNAN YAYASAN SARAWAK, JALAN MASJID, 93400 KUCHING, SARAWAK.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1310,
+      "name": "VIKRAMJIT S.HORA",
+      "email_1": "surya.suboh@ytygroup.com.my",
+      "office_num": "+65 9232 7502",
+      "address_line_1": "5 Jervois Hill, Singapore  247710 Singapore",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1316,
+      "name": "JAPAN AIRLINES CO. LTD.",
+      "email_1": "adrian.srxm@jal.com",
+      "office_num": "03-2287-6888",
+      "address_line_1": "A-35-2, Level 35, Tower A Menara UOA Bangsar No. 5 Jalan Bangsar Utama 1 59000 Kuala Lumpur, Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1321,
+      "name": "JEPPESEN DATAPLAN ACCOUNTING",
+      "email_1": "itpbilling@jeppesen.com",
+      "office_num": "+1 408 961 2129",
+      "address_line_1": "1731 Technology Drive Suite #1700 San Jose, CA 95110-1393 USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1323,
+      "name": "JEPPESEN UK LTD",
+      "email_1": "ifs_eur@jeppesen.com",
+      "office_num": "44-1293- 842403",
+      "address_line_1": "Purchase Ledger Department Alteon House, Crawley Business Quarter Manor Royal, Crawley, West Sussex  RH10 9AD UNITED KINGDOM",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1325,
+      "name": "JET AVIATION BUSINESS JETS AG",
+      "email_1": "esin.naas@jetaviation.com",
+      "office_num": "+4158 158 8738",
+      "address_line_1": "P.O. Box 232, CH-8058 Zurich Airport, Switzerland.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1337,
+      "name": "KLM ROYAL DUTCH AIRLINES",
+      "email_1": "kulfinance@klm.com",
+      "office_num": "+65 67155009",
+      "address_line_1": "E-13A-05, Menara Suezcap 2 No.2 Jalan Kerinchi, KL Gateway Gerbang Kerinchi Lestari 59200 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1339,
+      "name": "KOREAN AIRLINES",
+      "email_1": "kulkk@koreanair.com",
+      "office_num": "03-8787 3466",
+      "address_line_1": "6th Floor, Menara Hap Seng Jalan P. Ramlee 50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1342,
+      "name": "KUWAIT AIRWAYS CORPORATION",
+      "email_1": "dekskl@deksair.com.my",
+      "office_num": "03-87871187",
+      "address_line_1": "PO Box 207, Lot N8, 4th Floor Mezzenine LevelMain Terminal Building, KLIA64000 Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1345,
+      "name": "LAO AIRLINES",
+      "email_1": "vilaichid@laoairlines.com",
+      "office_num": "+8562055567986",
+      "address_line_1": "Lao Airlines  Wattay International Airport, Vientiane, Lao PDR  Tel: (+85621 513 251), Fax: +85621 512 002, Mobile : (85620 5556 7986) Email : vilaichid",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1346,
+      "name": "Layang Layang Aerospace Sdn Bhd",
+      "email_1": "chan_sk87@hotmail.com",
+      "office_num": "085-435168/435668",
+      "address_line_1": "Layang Layang Hangar, 1st Floor, Terminal 2, Miri Airport, PO Box 88 Morsjaya, 98000, Miri, Sarawak.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1350,
+      "name": "LION AIRLINES KUL",
+      "email_1": "kulaa@lionair.co.id",
+      "office_num": "603-20356699",
+      "address_line_1": "Meritus @ Oasis Corporate Park B2-1-01, Block B, 2 Jalan PJU 1A/2  Ara Damansara, 47301 Petaling Jaya SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1353,
+      "name": "LOT POLISH AIRLINES",
+      "email_1": "ops.support@lot.pl",
+      "office_num": "48 22 630 5621",
+      "address_line_1": "LOT Polish Airlines, 43, Komitetu Obrony Robotnik�w Str., 02-146 Warsaw, POLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1355,
+      "name": "LUFTHANSA GERMAN AIRLINES",
+      "email_1": "Lufthansa@pdf.invoice.lufthansagroup.com",
+      "office_num": "+65 68355923",
+      "address_line_1": "18.02 Level18 Kenanga International Building 26 Jalan Sultan Ismail 50250, Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1356,
+      "name": "LUFTHANSA CARGO",
+      "email_1": "LHCargo@pdf.invoice.lufthansagroup.com",
+      "office_num": "",
+      "address_line_1": "c/o 3rd Floor, Pernas InternationalJalan Sultan Ismail50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1357,
+      "name": "DEUTSCHE LUFTHANSA AG",
+      "email_1": "LHCargo@pdf.invoice.lufthansagroup.com",
+      "office_num": "",
+      "address_line_1": "SHARED SERVICES INTERNATIONAL, ACCOUNTS PAYABLE ATC CGN RA/P-A, VON-GABLENZ-STR. 2-6,D-50679 KOLN,  GERMANY.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1359,
+      "name": "LYNDEN AIR CARGO LLC",
+      "email_1": "charters@lynden.com",
+      "office_num": "00 907 2494126",
+      "address_line_1": "6441 South Airpark Place Anchorage, AK 99502, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1363,
+      "name": "MIHAN TRAVEL & TOURISM SDN BHD",
+      "email_1": "account@mihantravel.com.my",
+      "office_num": "0321667977",
+      "address_line_1": "C-LG-1, Lower Ground Floor Block C Megan Avenue2, No. 12, Jalan Yap Kwan Seng 50450 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1365,
+      "name": "MAJU HOLDINGS SDN BHD",
+      "email_1": "zuraimi@maju.com.my",
+      "office_num": "03-27728888",
+      "address_line_1": "Level 21, Maju Tower 1001 Jalan Sultan Ismail 50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1366,
+      "name": "MALAYSIA AIRLINES BERHAD",
+      "email_1": "siewlee.yong@malaysiaairlines.com",
+      "office_num": "+603 87776067",
+      "address_line_1": "Accounts Payable (Invoice Processing) Level 3, Administration Building Southern Support Zone (SSZ), KLIA 64000 Sepang, Selangor, Darul Ehsan",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1379,
+      "name": "METROJET LIMITED",
+      "email_1": "apple.kan@metrojet.com",
+      "office_num": "852 2215 3677",
+      "address_line_1": "Suite 1303-06, One Citygate 20 Tat Tung Road, Tung Chung HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1381,
+      "name": "MALAYSIAN FLYING ACADEMY SDN BHD",
+      "email_1": "treasury@mfa.edu.my",
+      "office_num": "06-337 9033",
+      "address_line_1": "No. 13617-1, Off Lapangan Terbang  Batu Berendam, 75350 MELAKA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1382,
+      "name": "MHS AVIATION BERHAD",
+      "email_1": "rafeah@mhsaviation.com",
+      "office_num": "0192932646",
+      "address_line_1": "No 18, Block H, Jalan PJU 1A/3 Taipan 2  Damansara, Ara Damansara 47301 Petaling Jaya, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1393,
+      "name": "Motor Sich JSC Airlines",
+      "email_1": "motor@motorsich.com",
+      "office_num": "+38(0612)139150, 51",
+      "address_line_1": "G. Maslov - Director of Motor Sich JSC Airlines No. 15, 8th of Marta Str., Zaporozhye 69068, UKRAINE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1394,
+      "name": "MYANMAR AIRWAYS INTERNATIONAL CO LTD",
+      "email_1": "admin.fltops@maiair.com",
+      "office_num": "951-533207",
+      "address_line_1": "Room-B25, Terminal 1, Yangon International Airport",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1395,
+      "name": "SUNCLASS AIRLINES APS",
+      "email_1": "accounts@sunclass.dk",
+      "office_num": "45 32.47.72.00",
+      "address_line_1": "Accounts Department Copenhagen Airport South DK-2791 Dragoer, DENMARK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1402,
+      "name": "NIPPON CARGO AIRLINES CO LTD",
+      "email_1": "tyooekz@nca.aero",
+      "office_num": "+81-476-32-9746",
+      "address_line_1": "NCA Line Maintenance Hangar Narita International Airport Narita, Chiba 282-0011 JAPAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1404,
+      "name": "DELTA AIR LINES",
+      "email_1": "candy.tham@delta.com",
+      "office_num": "65 6542 4487",
+      "address_line_1": "Delta Air Lines Inc. c/o ST Engineering Aerospace Services Co Pte Ltd 8 Changi North Way Singapore 499611",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1406,
+      "name": "NUSANTARA AVIATION SERVICES SDN BHD",
+      "email_1": "finance@nusantara-aviation.com",
+      "office_num": "603-78436845",
+      "address_line_1": "No. G-1-2 & G-2-2, Block G Jalan PJU 1A/3, Taipan 2, Ara Damansara 47301 Petaling Jaya, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1409,
+      "name": "OMAN AIR",
+      "email_1": "Muhammad.Ajiz@omanair.com",
+      "office_num": "0162610692",
+      "address_line_1": "Lot C1, Level 4, Main Terminal Building Kuala Lumpur International Airport 64000, Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1410,
+      "name": "OMNI AIR INTERNATIONAL INC",
+      "email_1": "sales@oai.aero",
+      "office_num": "918-836-5393",
+      "address_line_1": "PO Box 582527 3303 N Sheridan Road, Hangar 19 Tulsa, OK  74158, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1417,
+      "name": "OXYSKY FLIGHT SUPPORT",
+      "email_1": "oxysky_logistics@yahoo.com",
+      "office_num": "03-55699500",
+      "address_line_1": "No. 28-1, Jalan Presiden F U1/F, Section 1 Accentra Glenmarie Business Park 40150 Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1420,
+      "name": "JETSTAR PACIFIC AIRLINES JOINT STOCK AVN COMPANY",
+      "email_1": "oanh.doan@jetstarpacific.com.vn",
+      "office_num": "84 (028) 38451908",
+      "address_line_1": "3rd Floor, Vietnam Airlines Building Tan Son Nhat Airport, Ho Chi Minh City 7000 VIETNAM",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1424,
+      "name": "PACIFIC FLIGHT SERVICES PTE LTD",
+      "email_1": "pfsops@stengg.com",
+      "office_num": "65 64813059",
+      "address_line_1": "St. Aerospace Eng. Building 600 West Camp Road, Seletar Airport SINGAPORE 797654",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1425,
+      "name": "PAKISTAN INTERNATIONAL AIRLINES",
+      "email_1": "kulabpk@piac.aero",
+      "office_num": "03-21425444",
+      "address_line_1": "18th Floor, Suite 1801 Central Plaza, Jalan Sultan Ismail 50250 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1430,
+      "name": "PT Pelita Air Service",
+      "email_1": "sales-jakarta@pelita-air.com",
+      "office_num": "62-21 740 1633",
+      "address_line_1": "Jalan Abdul Muis No. 52-65 Jakarta 10160, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1434,
+      "name": "PHILIPPINE AIRLINES INC",
+      "email_1": "badrul_nayan@pal.com.ph",
+      "office_num": "+6017-2310079",
+      "address_line_1": "LOT S43, AIRLINES OFFICE, LEVEL 4 MEZZANINE FLOOR, MAIN TERMINAL BUILDING KLIA, 64000 SEPANG,  SELANGOR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1438,
+      "name": "PLUS HELICOPTER SERVICES SDN BHD",
+      "email_1": "finance@pheli.com.my",
+      "office_num": "+60378313480",
+      "address_line_1": "Lot 3, Plus Hangar Helicopter Centre, MIAC Sultan Abdul Aziz Shah Airport 47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1449,
+      "name": "PT EASTINDO",
+      "email_1": "dwiromaika_wati@eastindo.com",
+      "office_num": "6221-3100250 ext 512",
+      "address_line_1": "PT Eastindo Services Jl. MH Thamrin,  No 31 Kebon Melati Tanah Abang Jakarta - 10230",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1450,
+      "name": "PT EKSPRESS TRANSPORTASI",
+      "email_1": "sales@flypremiair.com",
+      "office_num": "",
+      "address_line_1": "Halim Perdanakusuma Airport Terminal Building Ground Floor Jakarta 13610, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1453,
+      "name": "QANTAS c/o H Travel Sdn Bhd",
+      "email_1": "wykok@holidaytours.net",
+      "office_num": "03-27133910",
+      "address_line_1": "Unit 8.02, Level 8, Amoda 22 Jalan Imbi 55100 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1454,
+      "name": "QATAR AIRWAYS",
+      "email_1": "cfchen@my.qatarairways.com",
+      "office_num": "03-2118 6000",
+      "address_line_1": "G01 Ground Floor Central Plaza 34 Jalan Sultan Ismail 50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1455,
+      "name": "QATAR AMIRI FLIGHT - DIWAN AMIRI",
+      "email_1": "sjali@qatarairways.com.qa",
+      "office_num": "+974 4231350",
+      "address_line_1": "Room No. 130, 1st Floor Regus Business Centre PO Box 3320, Doha, QATAR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1457,
+      "name": "RAMJET AVIATION",
+      "email_1": "acc@ramjet.aero",
+      "office_num": "+971 7 227 8808",
+      "address_line_1": "104A Business Park PO Box 11487, Ras Al Khamiah United Arab Emirates",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1470,
+      "name": "ROYAL BRUNEI AIRLINES",
+      "email_1": "kulnasiro@rba.com.bn",
+      "office_num": "03-87873662/3664",
+      "address_line_1": "(993441-X) Lot N2, N3, Mezzanine FloorMain Terminal Building, KLIA64000 KLIA Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1471,
+      "name": "ROYAL JORDANIAN AIRLINES",
+      "email_1": "kulkzrj@rj.com",
+      "office_num": "03-8776 3673/3676 /0",
+      "address_line_1": "PO Box 247 Lot S15, 4th Floor Mezz Level Main Terminal Building KLIA 64000 Sepang, Selangor, Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1473,
+      "name": "NEPAL AIRLINES CORPORATION",
+      "email_1": "nac_kul@nac.com.np",
+      "office_num": "03-2698 7933",
+      "address_line_1": "Suite 6.05, 6th Floor Semua House, Jalan Bunus 6 50100 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1475,
+      "name": "SABAH AIR AVIATION SDN BHD",
+      "email_1": "enquiry@sabahair.com.my",
+      "office_num": "+6088484733",
+      "address_line_1": "Sabah Air Building, Jalan Johor Off Jalan Selangor, Tanjung Aru 88100, Kota Kinabalu, Sabah, MALAYSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1477,
+      "name": "Safair Pty. Ltd. c/o AIROD SDN. BHD",
+      "email_1": "rafidah@airod.com.my",
+      "office_num": "03-78465112",
+      "address_line_1": "Jalan TUDM Subang 47500 Subang, Selangor, DE (Attn: International/Domestic Program)",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1485,
+      "name": "SAUDI ARABIAN AIRLINES",
+      "email_1": "ssalleh@saudia.com",
+      "office_num": "03-87766327",
+      "address_line_1": "S39-42 Satellite Bldg KLIA Sepang, Selangor, DE  1kul@saudia.com",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1494,
+      "name": "SIAM LAND FLYING CO LTD",
+      "email_1": "moky.ali@bizjetsasia.com.my",
+      "office_num": "+6625356784-5",
+      "address_line_1": "222  Donmueang International Airport Moo 10, Viphavadee-Rangsit Road Donmueang Bangkok 10210, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1495,
+      "name": "SILKAIR (SINGAPORE) PTE LTD",
+      "email_1": "Xueting_Chen@singaporeair.com.sg",
+      "office_num": "04-2620450",
+      "address_line_1": "Suite 12.08, 12th Floor MWE Plaza No. 8 Lebuh Farquhar, 10200 Penang 10200 PENANG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1496,
+      "name": "GLOBAL JET LUXEMBOURG",
+      "email_1": "invoice@globaljetlux.com",
+      "office_num": "+352 49 80 89",
+      "address_line_1": "BP 3087 L-1030 Luxembourg LUXEMBOURG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1497,
+      "name": "SIMCO AIR SERVICE PTE LTD",
+      "email_1": "finance@simcoair.com.sg",
+      "office_num": "(65) 6482 5110",
+      "address_line_1": "GENERAL AVIATION CENTRE 80 SELETAR AEROSPACE VIEW,#01-01 SINGAPORE 797563",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1498,
+      "name": "SINGAPORE AIRLINES LIMITED",
+      "email_1": "ANS_Charges@singaporeair.com.sg",
+      "office_num": "+65 6548 1535",
+      "address_line_1": "SIA Training Centre, 720 Upper Changi Road East, Singapore 486852",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1500,
+      "name": "SKY AIRWAYS SDN BHD",
+      "email_1": "ngpc@sunway.com.my",
+      "office_num": "019-3316911",
+      "address_line_1": "Level B2A, Menara Sunway Jalan Lagoon Timur, Sunway City 47500 Subang Jaya, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1506,
+      "name": "Potash Corporation Of Saskatchewan",
+      "email_1": "sales@skyplan.com",
+      "office_num": "",
+      "address_line_1": "Suite 104, 7777 - 10th St. N.E. Calgary, AB, CANADA T2E 8 X2",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1509,
+      "name": "SMOOTH ROUTE SDN BHD",
+      "email_1": "azlin@smoothroute.com",
+      "office_num": "03-7846 2788",
+      "address_line_1": "Taiko Hangar, LTSAAS 47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1512,
+      "name": "CEMPAKA HELICOPTER CORPORATION SDN BHD",
+      "email_1": "mohd.zaidi@cempaka.com.my",
+      "office_num": "011-21369840",
+      "address_line_1": "Solaire Hangar, Terminal 3Sultan Abdul Aziz Shah Airport47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1513,
+      "name": "SOUTH AFRICAN AIRWAYS",
+      "email_1": "charleneseethal@flysaa.com",
+      "office_num": "+27 11 978 3180",
+      "address_line_1": "Room 409G, Block G, Airways Park Jones Road 2, Private Bag X13 OR Tambo International Airport 1627 Republic of South Africa",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1518,
+      "name": "Southern Cross Aviation, Inc.",
+      "email_1": "ryan@southernx.com",
+      "office_num": "1 503 472 3080",
+      "address_line_1": "2266 NE McDaniel Ln. McMinnville, OR 97128 USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1521,
+      "name": "SRI LANKAN AIRLINES LTD",
+      "email_1": "ul_kulacc@srilankan.com",
+      "office_num": "03-26972100",
+      "address_line_1": "Unit 15.01, 15th Floor, Menara Multi Purpose No.8, Jalan Munshi Abdullah 50100 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1527,
+      "name": "Swiss International Air Lines Ltd",
+      "email_1": "lucrezia.schoder@swiss.com",
+      "office_num": "+41 44 564 90 66",
+      "address_line_1": "SB Operational Charges Economics & Comm. Airport Infrastructure Ground Operations SWISS   Swiss International Air Lines Ltd.  P. O. Box, ZRH S/GE/CZS",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1528,
+      "name": "SWISS AIR AMBULANCE",
+      "email_1": "accounts@rega.ch",
+      "office_num": "+41 44 654 33 18",
+      "address_line_1": "PO Box 1414 CH-8058 Zurich Airport SWITZERLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1530,
+      "name": "SYSTEMATIC AVIATION SERVICES SDN BHD",
+      "email_1": "syakirinadnin@sassb.com.my",
+      "office_num": "03-78469015",
+      "address_line_1": "DCA Hangar B&C LT/SAAS 47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1531,
+      "name": "TAG AVIATION SA (Geneva)",
+      "email_1": "aandrey@tagaviation.ch",
+      "office_num": "+41 22 717 01 86",
+      "address_line_1": "PO Box 36, 1215 Geneva 15 Airport SWITZERLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1539,
+      "name": "THAI FLYING SERVICE CO. LTD.",
+      "email_1": "thaifly@thaiflying.co.th",
+      "office_num": "662 535 4936/38",
+      "address_line_1": "222 Moo 10 ,Vibhadirangsit Road Kwang Sikan, Khet Donmuang Bangkok 10210, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1540,
+      "name": "THAI INTERNATIONAL INTERNATIONAL PUBLIC CO LTD",
+      "email_1": "michael.l@thaiairways.com.my",
+      "office_num": "03-87873522",
+      "address_line_1": "Ailrines Office, C6-C9, Mezzanine Level Main Terminal Building, KLIA, Sepang",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1547,
+      "name": "RAYA AIRWAYS SDN BHD",
+      "email_1": "ainiy@rayaairways.com",
+      "office_num": "03-78849817",
+      "address_line_1": "Raya Complex, Sultan Abdul Aziz Shah Airport 47200 Subang, Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1549,
+      "name": "PT TRAVIRA AIR c/o Graha Paramita",
+      "email_1": "rachma.yuniastuti@travira-air.com",
+      "office_num": "62 21 526 5320",
+      "address_line_1": "Jalan Denpasar Raya, Blok D-2 Kav. 8Kuningan, Jakarta 12940INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1552,
+      "name": "TURKISH AIRLINES",
+      "email_1": "kulops@thy.com",
+      "office_num": "+60387764527",
+      "address_line_1": "S16-S18, Airline Offices Level 4 Main Terminal Building, KLIA 64000 Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1553,
+      "name": "TURKMENISTAN AIRLINES",
+      "email_1": "t5.headfinans@outlook.com",
+      "office_num": "+99312235442",
+      "address_line_1": "FINANCE DEPARTMENT, ASHGABAT AIRPORT, TURKMENISTAN, 744008.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1556,
+      "name": "U.A. Emirates",
+      "email_1": "ekoflinv@emirates.com",
+      "office_num": "603-20585995",
+      "address_line_1": "LOT 9.03.01, LEVEL 9, PAVILION K.L,168 JALAN BUKIT BINTANG, 55100, KUALA LUMPUR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1559,
+      "name": "UNITED AIRLINES",
+      "email_1": "use@united.com.sg",
+      "office_num": "03-2611433",
+      "address_line_1": "16 Raffles Quay No. 44-02 Hong Leong Building SINGAPORE 048581",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1561,
+      "name": "UNITED AVIATION SERVICES",
+      "email_1": "mhomsi@uas.aero",
+      "office_num": "+97142996633",
+      "address_line_1": "P.O.Box 54482  DAFZA (Dubai Airport Free Zone Authority) Dubai, United Arab Emirates.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1562,
+      "name": "UNITED PARCEL SERVICE AIRLINES",
+      "email_1": "ltf5kmf@ups.com",
+      "office_num": "03-87779970",
+      "address_line_1": "Lots CTB 06-09, Pos Aviation Cargo Terminal New Warehouse Building Pos Aviation Cargo Complex KLIA 64000 Sepang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1564,
+      "name": "UNIVERSAL WEATHER AND AVIATION INC",
+      "email_1": "yinoue@universalaviation.aero",
+      "office_num": "00 713 944 1440",
+      "address_line_1": "1150, Gemini Street Houston, Texas 77058-2708 USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1565,
+      "name": "UNIVERSAL SINGAPORE - Asia Permit Office",
+      "email_1": "yinoue@universalaviation.aero",
+      "office_num": "(65)64844065",
+      "address_line_1": "313 OLD BIRDCAGE WALK #01-15 SINGAPORE 798486",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1567,
+      "name": "URAL AIRLINES",
+      "email_1": "z.labetskaya@u6.ru",
+      "office_num": "(3432) 268625",
+      "address_line_1": "620025 Ekaterinburg 1G Utrenniy Pereulok Russian Federation",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1569,
+      "name": "UZBEKISTAN AIRWAYS",
+      "email_1": "kul@uzairways.com",
+      "office_num": "+603-21644766",
+      "address_line_1": "Suite 23.01B, Level 23 Menara Haw Par, Jalan Sultan Ismail 50250 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1573,
+      "name": "VIRGIN AUSTRALIA HOLDINGS Ltd",
+      "email_1": "apinvoices@virginaustralia.com",
+      "office_num": "617 3295 3131",
+      "address_line_1": "Flight Administration Manager P.O. Box 1034, Spring Hill Qld 4004, Australia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1576,
+      "name": "VOLGA-DNEPR AIRLINES",
+      "email_1": "purchase@volga-dnepr.com",
+      "office_num": "7 (8422) 204997",
+      "address_line_1": "14, Karbysheva St. 432072 Ulyanovsk RUSSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1581,
+      "name": "WESTSTAR AVIATION SERVICES SDN BHD",
+      "email_1": "hazwani.pettry@weststar-aviation.aero",
+      "office_num": "03-4102 2379",
+      "address_line_1": "Level 7, Menara Weststar Dataran Weststar, Jalan Lingkaran Tengah 2 68000, Ampang Selangor",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1587,
+      "name": "XIAMEN AIRLINES",
+      "email_1": "cost_cbc@xiamenair.com",
+      "office_num": "+86 0592 6573 9982",
+      "address_line_1": "XIamen Headquarter 22 Dailiao Road, Xiamen, China",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1593,
+      "name": "ISLAND AIR SDN BHD",
+      "email_1": "iasbadmin@islandair.com.my",
+      "office_num": "03-78464006",
+      "address_line_1": "YTL (Nusantara) Hangar Sultan Abdul Aziz Shah Airport 47200 Subang, Selangor D.E.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1597,
+      "name": "ROSSIYA AIRLINES JSC",
+      "email_1": "A.Ezhova@rossiya-airlines.com",
+      "office_num": "7 812 633 999",
+      "address_line_1": "Pilotov St. 18/4, Saint-Petersburg Russian Federation, 196210 RUSSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1599,
+      "name": "SINGAPORE AIRLINES CARGO PTE LTD",
+      "email_1": "ANS_Charges@singaporeair.com.sg",
+      "office_num": "+65 6548 1535",
+      "address_line_1": "SIA Training Centre 720 Upper Changi Road East SINGAPORE 486852",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1607,
+      "name": "JOHOR FLYING CLUB",
+      "email_1": "jfcpresident@gmail.com",
+      "office_num": "07-5991255",
+      "address_line_1": "AO-20, Airline Office, Senai Cargo Centre Senai International Airport 81250, Senai,Johor Bharu JOHOR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1610,
+      "name": "Iceland Air",
+      "email_1": "icelandair@discover-kul.com",
+      "office_num": "+354 5050 700",
+      "address_line_1": "101 Reykjavik Airport Reykjavik, ICELAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1619,
+      "name": "ASIA TENGGARA AVIATION SERVICES SDN BHD",
+      "email_1": "general@ataviationservices.com",
+      "office_num": "03-74922190",
+      "address_line_1": "Lot 10, Helicopter Centre Malaysia Intl. Aerospace Centre Sultan Abdul Aziz Shah Airport 47200 Subang, Selangor, MALAYSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1667,
+      "name": "PT TRI-MG INTRA ASIA AIRLINES",
+      "email_1": "fuad@trimgairlines.com",
+      "office_num": "03-21631999",
+      "address_line_1": "Rio De Gibbraello Building Jalan Kemang Utara Raya,  No. 43 Mampang Prapatan-jakarta Selatan 12730, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1682,
+      "name": "CLOUDERA AVIATION SERVICES SDN BHD",
+      "email_1": "susilawati@cloudera-aviation.com",
+      "office_num": "03-78319440",
+      "address_line_1": "C-5-16, CENTRUM@OASIS CORPORATE PARK, NO. 2, JALAN PJU 1A/2 ARA DAMANSARA, 47301 PETALING JAYA, SELANGOR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1683,
+      "name": "INSAN AIRPORT SERVICES",
+      "email_1": "insanairport@gmail.com",
+      "office_num": "0168872579",
+      "address_line_1": "No. 200, Ground Level, Joo Ann Garden Matang Road, Petra Jaya 93050 Kuching, SARAWAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1686,
+      "name": "NETJETS TRANSPORTERS AEREOS SA",
+      "email_1": "lis-accecho@netjets.com",
+      "office_num": "+351 21446 84 00",
+      "address_line_1": "Account Payable Department - Team Echo Rua Calvet Magalhaes 245, Block B 2744-550 Paco De Arcos, PORTUGAL",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1689,
+      "name": "PT TRANSWISATA AIR",
+      "email_1": "oxyskyops@yahoo.com",
+      "office_num": "",
+      "address_line_1": "No. 225, 2nd Floor, Terminal Building Halim Perdana Kusuma Airport Jakarta 13610, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1697,
+      "name": "Jet Aviation Business Jets (Hong Kong) Ltd",
+      "email_1": "jbjh.admin@jetaviation.com.hk",
+      "office_num": "(852) 22153833",
+      "address_line_1": "Suite 801-804, One City Gate 20 Tat Tung Road Tung Chung, HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1708,
+      "name": "Shandong Airlines",
+      "email_1": "maj9@sda.cn",
+      "office_num": "86-531-85698852",
+      "address_line_1": "F/11 Financial Department, Shanhang Building, 5746 Erhuan-EA St Road, Jinan, Shandong Province, P.R. Of China, 250014.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1716,
+      "name": "SILK WAY AIRLINES",
+      "email_1": "cs.kul@silkwaywest.com",
+      "office_num": "+994124972699 4117",
+      "address_line_1": "HEYDAR ALIYEV INTERNATIONAL AIRPORT,  AZ 1044, BAKU,  AZERBAIJAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1717,
+      "name": "PT TRANSWISATA c/o OXYSKY FLIGHT SUPPORT",
+      "email_1": "oxyskyadm@yahoo.com.my",
+      "office_num": "03-55699500",
+      "address_line_1": "No. 28-1, Jalan Presiden F U1/F Accentra Glenmarie Business Park 40150 Shah Alam,  SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1722,
+      "name": "SYARIKAT SAMLING TIMBER SDN BHD",
+      "email_1": "",
+      "office_num": "60-85-614599",
+      "address_line_1": "LOT 296, WISMA SAMLING, JALAN TEMENGGUNG DATUK OYONG LAWAI JAU 98007 MIRI, SARAWAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1729,
+      "name": "EAA MALAYSIA",
+      "email_1": "eaa1090@yahoo.com",
+      "office_num": "0123302070",
+      "address_line_1": "29, Jalan Kemuning Palma 33/37D, Kemuning Utama, 40460 Shah Alam, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1739,
+      "name": "Direction Financiere Air Madagascar",
+      "email_1": "fournisseurs@airmadagascar.com",
+      "office_num": "261 2022 219-74",
+      "address_line_1": "No. 31 Avenue De I'independence B. P. 431-antananarivo 101 MADAGASCAR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1747,
+      "name": "JETSTAR AIRWAYS",
+      "email_1": "ap.priorityinvoices@jetstar.com",
+      "office_num": "+61386283117",
+      "address_line_1": "Level 4, 222 Bourke StreetMelbourne, Victoria 3000AUSTRALIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1749,
+      "name": "SCOOT TIGERAIR PTE. LTD.",
+      "email_1": "payable@flyscoot.com",
+      "office_num": "(65) 6422 2200",
+      "address_line_1": "Attn: Finance Department 65 Airport Boulevard Changi Airport Terminal 3 No. B1-17 Singapore 819663",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1752,
+      "name": "UKRAINE AIR ALLIANCE AIRLINES",
+      "email_1": "denis@uaa-avia.com",
+      "office_num": "+380442908599",
+      "address_line_1": "No. 02154, 21 Vozziednania Ave. Letter A, Kiev, UKRAINE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1753,
+      "name": "JETSTAR ASIA AIRWAYS PTE LTD",
+      "email_1": "JSA.APPriority@jetstarasia.com",
+      "office_num": "(+65) 63180865",
+      "address_line_1": "Singapore Changi Airport Terminal 1 PO Box 115, SINGAPORE 918144",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1764,
+      "name": "TAG AVIATION (UK) LTD",
+      "email_1": "ops@tagfarnborough.com",
+      "office_num": "+44 (0) 1252379025",
+      "address_line_1": "Farnborough Airport, Hampshire GU14 6XA United Kingdom",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1768,
+      "name": "BAHRAIN ROYAL FLIGHT",
+      "email_1": "Mohan@royalflight.gov.bh",
+      "office_num": "+97317321350",
+      "address_line_1": "PO Box 22394, Muharraq Kingdom Of Bahrain",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1772,
+      "name": "JET AIRWAYS (INDIA) LIMITED",
+      "email_1": "dbora@jetairways.com",
+      "office_num": "00 91 22 6121 1706",
+      "address_line_1": "Jet Airways (India) Limited. Finance Department, Siroya Centre, Ground Floor, Sahar Airport Road, Andheri East, Mumbai 400 099. Maharashtra, INDIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1778,
+      "name": "YUZMASHAVIA",
+      "email_1": "cac@cargoairchartering.aero",
+      "office_num": "+3804424356",
+      "address_line_1": "1 KRIVOROZHSKAYA STR,  DNIEPROPETROVSK, 49008,  UKRAINE.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1790,
+      "name": "SHENZHEN AIRLINES",
+      "email_1": "airchinafinance@gmail.com",
+      "office_num": "03-21661999",
+      "address_line_1": "6th Floor, Financial Department Shenzhen Airlines Co. Ltd. Fourth Hangzhan Road Baoan International Airport Shenzhen, Guangdong, P.R. of CHINA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1793,
+      "name": "JAYA TIASA AVIATION SDN BHD",
+      "email_1": "ann_helitech@yahoo.com.my",
+      "office_num": "+6084213255",
+      "address_line_1": "No. 1-9 Pusat Suria Permata, Jalan Upper Lanang No. 11 Mission Road, 96000 Sibu, SARAWAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1800,
+      "name": "ORIENT GLOBAL AVIATION LIMITED",
+      "email_1": "jazz.goh@orientglobal.com",
+      "office_num": "006581260070",
+      "address_line_1": "UOB Plaza 1 80 Raffles Place SINGAPORE 048624",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1808,
+      "name": "SHELL AIRCRAFT LTD",
+      "email_1": "GBC8-invoices@shell.com",
+      "office_num": "",
+      "address_line_1": "Tasco Europe, P.O.Box 25007 Glasgow, G1 3WD, United Kingdom",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1813,
+      "name": "DRF STIFTUNG LUFTRETTUNG GEMEINNUTZIGE AG",
+      "email_1": "leila.rothmund@drf-luftrettung.de",
+      "office_num": "+49 711 7007 3200",
+      "address_line_1": "Rita-Maiburg-Strasse 270794 Filderstadt, GERMANY",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1814,
+      "name": "ARINCDIRECT FLIGHT SUPPORT SERVICES",
+      "email_1": "BMORA@arinc.com",
+      "office_num": 4102664301,
+      "address_line_1": "2925 Briarpark Drive, 7th Floor, MS437-100,Houston, Texas 77042-3790, USA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1815,
+      "name": "ETIHAD AIRWAYS",
+      "email_1": "eyaembi@etihad.ae",
+      "office_num": "03-87874161/63",
+      "address_line_1": "S19 & S20, Mezzanine Floor Main Terminal Building, KLIA 64000 Sepang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1819,
+      "name": "TYROLEAN JET SERVICE NFG. GMBH & CO KG",
+      "email_1": "patricia.plhak@tjs.at",
+      "office_num": "+43512225770",
+      "address_line_1": "F�rstenweg 180 6020 Innsbruck AUSTRIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1823,
+      "name": "JETEX FLIGHT SUPPORT",
+      "email_1": "invoices@jetex.com",
+      "office_num": "+971 4 212 4000",
+      "address_line_1": "PO Box 54678 Dubai, UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1827,
+      "name": "ROYAL JET",
+      "email_1": "sales@royaljetgroup.com",
+      "office_num": "+97125757000",
+      "address_line_1": "Finance Department, PO Box 60666 Abu Dhabi,  United Arab Emirates",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1842,
+      "name": "CAT AVIATION AG",
+      "email_1": "accounting@cat-aviation.com",
+      "office_num": "+41448140066",
+      "address_line_1": "PO Box 2223, CH-8060 Zurich Airport SWITZERLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1852,
+      "name": "POS ASIA CARGO EXPRESS Sdn Bhd",
+      "email_1": "anis.amin@pos.com.my",
+      "office_num": "03-87874940",
+      "address_line_1": "Pos Malaysia International Hub Jalan KLIA S1,64000, Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1853,
+      "name": "SAMONAS TRAINING INC",
+      "email_1": "POAasia@samonas.com",
+      "office_num": "+65 3112 5000",
+      "address_line_1": "3 Shenton Way, Unit 09-09A Shenton House SINGAPORE 068805",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1856,
+      "name": "MATRIKMAS AVIATION SDN BHD",
+      "email_1": "benyamin@matrikmas.com.my",
+      "office_num": "+603-42525851/5921",
+      "address_line_1": "332A-13, 13th Floor, Plaza Ampang City,  Jalan Ampang, 50450 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1857,
+      "name": "EUROATLANTIC AIRWAYS",
+      "email_1": "lucia.duarte@euroatlantic.com",
+      "office_num": "+351219247300",
+      "address_line_1": "Rua Salgueiro Maia Nbr18 2685-374 Prior Velho Loures Portugal",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1860,
+      "name": "SRIWIJAYA AIR",
+      "email_1": "sriwiair@indosat.net.id",
+      "office_num": "6221-6396006",
+      "address_line_1": "Jalan Pangeran Jayakarta No. 68 Block C15-16, Jakarta Pusat 10730 INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1864,
+      "name": "AIR INDIA CHARTERS LTD",
+      "email_1": "acctsmgr@airindiasin.com.sg",
+      "office_num": "+65 6337 2272",
+      "address_line_1": "Air India Limited c/o Jetspeed Travel Pte Ltd. Coleman Street, #03-07/08 Peninsula Shopping Centre Singapore 179804 Tel: +65 6337 8868",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1865,
+      "name": "K-MILE AIR CO LTD",
+      "email_1": "Thanatat.d@k-mile.com",
+      "office_num": "662 134 2595",
+      "address_line_1": "Room 308-310, 3rd Floor, B-FZ  Building Suvarnabhumi Airport, No. 999, MOO7, Racha Thewa Bang Phli, Samut Prakan 10540, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1872,
+      "name": "FLYFIREFLY SDN BHD",
+      "email_1": "INVFY@malaysiaairlines.com",
+      "office_num": "603-78404241",
+      "address_line_1": "1st Floor, Admin Bldg 1, Mas Complex A Sultan Abdul Aziz Shah Airport 47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1877,
+      "name": "TUI AIRWAYS",
+      "email_1": "Invoice.processing@tui.co.uk",
+      "office_num": "+44 1582 648 248",
+      "address_line_1": "Wigmore House, wigmore place, Wigmore Lane,Luton, LU2 9TN United Kingdom",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1886,
+      "name": "BAA JET MANAGEMENT LTD",
+      "email_1": "vendor@baasia.com",
+      "office_num": "+86 (755) 29777331",
+      "address_line_1": "Room 1011, New World Tower 1 16-18 Queen's Road Central HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1888,
+      "name": "AVIATION SERVICES MANAGEMENT FZE (ASM)",
+      "email_1": "ops@asm.aero",
+      "office_num": "+971 44097733",
+      "address_line_1": "Unit 217, Building 8W, Block B Dafza, Dubai, UAE PO Box 293684",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1894,
+      "name": "HADID INTERNATIONAL AVN SERVICES",
+      "email_1": "NavigationAccounting@hadid.aero",
+      "office_num": "+971 4299 7777",
+      "address_line_1": "HADID International Services  Dubai World Headquarters PO Box 54508, Free Zone Dubai, UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1895,
+      "name": "AIR ASTANA",
+      "email_1": "atina.bukanova@airastana.com",
+      "office_num": "+77272584135",
+      "address_line_1": "Air Astana, 4A Zakarpatskaya Str Almaty, 050039 KAZAKHSTAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1896,
+      "name": "Palm Aviation FZ Co",
+      "email_1": "billing@palmaviation.aero",
+      "office_num": "+971 4 2993100",
+      "address_line_1": "P.O Box. 293711,Dubai Airport Free Zone - G-23Dubai - UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1897,
+      "name": "AEROTREE DEFENCE & SERVICES SDN BHD",
+      "email_1": "nurulhafizahzulkepli@yahoo.com",
+      "office_num": "03-26931200",
+      "address_line_1": "No. 5 Lorong Gurney Off Jalan Semarak 54100 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1899,
+      "name": "CONTINENTAL JET SERVICES",
+      "email_1": "invoices@continentaljet.aero",
+      "office_num": "+009716 5573170",
+      "address_line_1": "PO Box 9220 Sharjah, UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1911,
+      "name": "ADMAL SDN BHD",
+      "email_1": "naziatul@admal.com.my",
+      "office_num": "016-3234786",
+      "address_line_1": "No. 24 to 34, BBST Business Park Jalan 2 Medan 120, Bandar Baru Salak Tinggi 43900 Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1912,
+      "name": "HONG KONG EXPRESS",
+      "email_1": "",
+      "office_num": "(852) 3151 1888",
+      "address_line_1": "7th Floor, One Citygate, 20 Tat Tung Road, Tung Chung, Lantau,  Hong Kong",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1914,
+      "name": "INDEPENDENT AVIATION SDN BHD",
+      "email_1": "noraidah@mbfh.com.my",
+      "office_num": "603 -2167 8165",
+      "address_line_1": "Level 12, Menara MBF Jalan Sultan Ismail 50250 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1920,
+      "name": "H.S AVIATION CO., LTD. (HEAD OFFICE)",
+      "email_1": "accounts@hsavia.aero",
+      "office_num": "+668 9925 5941",
+      "address_line_1": "No. 279/89-90, Vibhavadi-Rangsit Road Sanambin, Don Mueang Bangkok 10210, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1925,
+      "name": "COLT INTERNATIONAL",
+      "email_1": "tsaaccounting@wfscorp.com",
+      "office_num": "+281 280 2100",
+      "address_line_1": "300 Flint Ridge Road, Webster Texas 77598, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1927,
+      "name": "JET PREMIER ONE (M) SDN BHD",
+      "email_1": "mazly@jetpremierone.com.my",
+      "office_num": "03 7859 9319",
+      "address_line_1": "Level 3, Aerotree Hangar, 1210 Jalan Lapangan Terbang Subang, 47200 Subang, Selangor Darul Ehsan",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1930,
+      "name": "FRAS FLYING CLUB JOHOR",
+      "email_1": "amyra@fras.com.my",
+      "office_num": "07-5995290",
+      "address_line_1": "Lot AO 15/16, Cargo Airlines Office Senai Cargo Centre, Senai International Airport 81250 Senai, JOHOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1933,
+      "name": "ATLAS AIR INC",
+      "email_1": "Acis.Tiew@AtlasAir.com",
+      "office_num": "012-4211292",
+      "address_line_1": "Suite 605-607, One City Gate20 Tat Tung Rd, Tung ChungLantau, HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1935,
+      "name": "AIRASIA X BERHAD",
+      "email_1": "aax_fltopsinvoice@airasia.com",
+      "office_num": "03-86604600",
+      "address_line_1": "REDQ, Jalan Pekeliling 5 Kuala Lumpur International Airport (KLIA2)  64000 KLIA, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1939,
+      "name": "AVJET ROUTING",
+      "email_1": "acct@avjetrouting.com",
+      "office_num": "+971 6 518 0050",
+      "address_line_1": "PO Box 9730, SAIF-Zone Sharjah, U.A.E.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1940,
+      "name": "HONG KONG AIRLINES",
+      "email_1": "karen.liu@hkairlines.com",
+      "office_num": "+852 3151 1800",
+      "address_line_1": "7th Floor, One Citygate, 20 Tat Tung RoadTung Chung, Lantau, HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1942,
+      "name": "JSC STREAMLINE OPS",
+      "email_1": "ops@stln.aero",
+      "office_num": "+7 (495) 363 6565 in",
+      "address_line_1": "Maly Kakovinsky Per. 4 Moscow 121099 RUSSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1948,
+      "name": "AIR ADVENTURE FLYING CLUB",
+      "email_1": "finance@airadventureflying.com",
+      "office_num": "0164968581",
+      "address_line_1": "WIRAKRIS HANGAR, LAPANGAN TERBANG SULTAN ABDUL AZIZ SHAH, 47200 SUBANG, SELANGOR DARUL EHSAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1962,
+      "name": "MASWINGS SDN BHD",
+      "email_1": "fuiling.so@malaysiaairlines.com",
+      "office_num": "088 515248",
+      "address_line_1": "Expenditure Accountant,MAS Administration Bldg 1st Floor, Kota Kinabalu International Airport PO Box 10194, 88802 Kota Kinabalu Sabah",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1984,
+      "name": "SOUTHERN CROSS INTERNATIONAL, BV",
+      "email_1": "office@southernx.aero",
+      "office_num": "+31 40 2 516 616",
+      "address_line_1": "Bredasebaan 2 4744RZ Bosschenhoofd THE NETHERLANDS",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1986,
+      "name": "PERFECT AVIATION SDN BHD",
+      "email_1": "perfect_aviation@yahoo.com",
+      "office_num": "03-78423240",
+      "address_line_1": "Lot 6059 Kaw Perusahaan Kg BatuBatu 5, Jalan Ipoh68100 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1987,
+      "name": "ASL AIRLINES BELGIUM SA",
+      "email_1": "AccountingASLB@aslairlines.com",
+      "office_num": "+32 4 239 3000",
+      "address_line_1": "Aeroport De Liege Rue De Laeroport, Building 101 4460, Grace Hollogne, BELGIUM",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1988,
+      "name": "NOK AIR",
+      "email_1": "solutioncenter@nokair.com",
+      "office_num": "+66 2627 2000",
+      "address_line_1": "183 Rajanakarn Building 17th Floor, South Sathorn Rd Yannawa Sathorn Bangkok 10120, Thailand",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1989,
+      "name": "DANGA BAY SDN BHD",
+      "email_1": "dangabaysb@gmail.com",
+      "office_num": "03 - 40247679",
+      "address_line_1": "Wisma Ekovest no 118 Jalan Desa Gombak 53000 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1990,
+      "name": "PT SRIWIJAYA AIR",
+      "email_1": "ashabi.latif@sriwijayaair.co.id",
+      "office_num": "+6221-80637888",
+      "address_line_1": "Sriwijaya Air Tower, Jalan Atang Sanjaya  No. 21 Tangerang Banten, INDONESIA 15125",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1991,
+      "name": "SKYPARK FBO MALAYSIA SDN BHD",
+      "email_1": "finance.hr@skyparkfbomy.com",
+      "office_num": "03-78451717",
+      "address_line_1": "Terminal 3, Sultan Abdul Aziz Shah Airport 47200 Subang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1996,
+      "name": "VISTAJET LIMITED",
+      "email_1": "accounting@vistajet.com",
+      "office_num": "+43 (0) 662 - 640 20",
+      "address_line_1": "Skyparks Business Centre Malta International Airport Luqa LQA 4000 MALTA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 1998,
+      "name": "TAG AVIATION ASIA LTD",
+      "email_1": "accounts@tagaviation.asia",
+      "office_num": "+852 3141 2030",
+      "address_line_1": "24/F Harcourt House 39 Gloucester Road, Wanchai HONG KONG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2002,
+      "name": "TH INDO INDUSTRIES SDN BHD",
+      "email_1": "",
+      "office_num": "03-26876666",
+      "address_line_1": "26th Floor, TH Selborne Building 153 Jalan Tun Razak 50400 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2007,
+      "name": "UNITED PLANTATION BERHAD",
+      "email_1": "bdahlen@gmail.com",
+      "office_num": "05-6411411",
+      "address_line_1": "Jenderata Estate 36009 Teluk Intan, PERAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2008,
+      "name": "MJETS LIMITED",
+      "email_1": "dispatch@mjets.com",
+      "office_num": "+6623657781",
+      "address_line_1": "18th Floor, Berli Jucker Building 99 Soi Rubia, Sukhumvit 42 Road Bangkok 10110,  THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2011,
+      "name": "HELISTAR RESOURCES SDN BHD",
+      "email_1": "azieuj@gmail.com",
+      "office_num": "03-78326003",
+      "address_line_1": "c/o Mycopter Aviation Services Sdn Bhd Helicopter Centre, MIAC Sultan Abdul Aziz Shah Airport 47200 Subang, SELANGOR DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2012,
+      "name": "NAVIATOR SDN BHD",
+      "email_1": "yfyang@rovski.com.my",
+      "office_num": "03-56332908",
+      "address_line_1": "Lot 561, Jalan Subang 3 Subang Jaya Industrial Park 47610 Subang Jaya, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2014,
+      "name": "WORLD FUEL SERVICES (SINGAPORE) PTE LTD",
+      "email_1": "ITPSAP_Dept@wfscorp.com",
+      "office_num": "+13035663131",
+      "address_line_1": "238A THOMSON ROAD #08-01/10 NOVENA SQUARE TOWER A, SINGAPORE 307684",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2016,
+      "name": "PT PENERBANGAN ANGKASA SEMESTA",
+      "email_1": "mini.ong@musimmas.com",
+      "office_num": "061-6615511",
+      "address_line_1": "Spring Tower, 05-52, Jalan KL Yos Sudarso Tanjung Mulia, Medan 20241, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2017,
+      "name": "HALLIN AVIATION INC",
+      "email_1": "john.g@hallin.com.sg",
+      "office_num": "+6564814950",
+      "address_line_1": "37 PUNGGOL 24th AVENUE, SINGAPORE, 829500.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2018,
+      "name": "EXECUTIVE JETS ASIA SDN BHD",
+      "email_1": "prosky.ops@yahoo.com",
+      "office_num": "07-5984360",
+      "address_line_1": "Lot AP8, Senai Aviation Park Senai International Airport 81250 Senai, JOHOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2019,
+      "name": "LAS VEGAS SANDS CORP LLC (Universal Singapore)",
+      "email_1": "prosky.ops@yahoo.com",
+      "office_num": "03-80206663",
+      "address_line_1": "C/O Pro Auto Resources  No. 21-2, E-Boulevard Jalan Elektron J U1B/J, Denai Alam 40160 Shah Alam, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2020,
+      "name": "AIR MOLDOVA",
+      "email_1": "info@airmoldova.md",
+      "office_num": "+37369959922",
+      "address_line_1": "Chisinau International Airport Chisinau Md 2026 Moldova Republic Of Nationality, Moldova",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2025,
+      "name": "AEROLOGIC GMBH",
+      "email_1": "accounting@aerologic.aero",
+      "office_num": "+49 (0) 34 204 / 443",
+      "address_line_1": "Industriestrasse 70 04435 Schkeuditz GERMANY",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2026,
+      "name": "AFJETS SDN BHD",
+      "email_1": "zaini@afjets.com",
+      "office_num": "1-800-88-5387",
+      "address_line_1": "HANGAR D, SKYPARK REGIONAL AVIATION CENTRE, SULTAN ABDUL AZIZ SHAH AIRPORT, JALAN RIYAL U3/36, BUKIT JELUTONG INDUSTRIAL PARK, 40150 SHAH ALAM, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2031,
+      "name": "NEPTUNE AIR SDN BHD",
+      "email_1": "wishva@neptuneair.com",
+      "office_num": "03-7842 6044",
+      "address_line_1": "C-1-25 & C-2-25, Block C Jalan PJU 1A/3 Taipan 2, Ara Damansara Subang 46301 SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2035,
+      "name": "SUBANG FLYING CLUB",
+      "email_1": "ojsalim@gmail.com",
+      "office_num": 60122975457,
+      "address_line_1": "Lot H2-F07 & F08 Hangar 2 Old Cargo Complex LTSAAS 47200 Subang Selangor",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2039,
+      "name": "GREGORY ANG",
+      "email_1": "gregoryangth@gmail.com",
+      "office_num": "6596955845 (HP)",
+      "address_line_1": "Blk 50, Monks Hill Road No. 03-52, Singapore 228576",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2040,
+      "name": "SINGAPORE YOUTH FLYING CLUB",
+      "email_1": "schedulers@syfc.sg",
+      "office_num": "+65 64818031",
+      "address_line_1": "515 West Camp Road, Singapore 797695",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2044,
+      "name": "ANTHONY KHOO",
+      "email_1": "lisa.hezila@yr.com",
+      "office_num": 6593683481,
+      "address_line_1": "72 Hythe Road Singapore 557561, SINGAPORE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2045,
+      "name": "YEOW MENG NG",
+      "email_1": "ym_ng@hotmail.com",
+      "office_num": "65 9686 3777",
+      "address_line_1": "Block 237, Bishan Street 22 No. 05-176, Singapore 570237 SINGAPORE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2046,
+      "name": "JAMES TENG",
+      "email_1": "jtaia@yahoo.com",
+      "office_num": "02 6373 8811",
+      "address_line_1": "49 Thomson Green Singapore 574925",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2049,
+      "name": "DISCOVERY FLYING CLUB",
+      "email_1": "info@majaviation.com.sg",
+      "office_num": "+6564837470",
+      "address_line_1": "C/O Maj Aviation Pte Ltd  80 Seletar Aerospace View No. 01-01, Seletar Airport Singapore 797563.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2050,
+      "name": "MIXJET FLIGHT SUPPORT",
+      "email_1": "acc.navigation@mixjet.aero",
+      "office_num": "+971 6 552 9577",
+      "address_line_1": "Mob: +971 56 11 81 903   SITA: DXBMX7X ; AFTN: KANPAYZX P.O Box: 9178 ; P6-177, Free Zone Sharjah - UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2055,
+      "name": "DRUK AIR CORPORATION LTD",
+      "email_1": "rinzind@drukair.com.bt",
+      "office_num": "+97508271856",
+      "address_line_1": "Royal Bhutan Airlines Nemeyzampa, Paro ROYAL KINGDOM OF BHUTAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2057,
+      "name": "EASTARJET CO LTD",
+      "email_1": "itsryo@eastarjet.com",
+      "office_num": "",
+      "address_line_1": "Attn: ESROCC  7F Yangseo building, Yangcheon-ro 34, Gangseo-gu, Seoul Republic of Korea",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2058,
+      "name": "HM AEROSPACE SDN BHD",
+      "email_1": "izie@hmaerospace.com",
+      "office_num": "(604)-953 2000",
+      "address_line_1": "Jalan Kuala Muda, Padang Matsirat 07100 Langkawi, Kedah Darul Aman",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2059,
+      "name": "REDLAND AVIATION SERVICES SDN BHD",
+      "email_1": "operations.redlandaviation@gmail.com",
+      "office_num": "03-7845 6660 / 6661",
+      "address_line_1": "Redland Terminal Centre & Hangar Complex Lot 1060, Sultan Abd Aziz Shah Airport 47200 Subang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2060,
+      "name": "MR. EDUARDO LOIGORRI",
+      "email_1": "eduardo@flying-ed.com",
+      "office_num": "+66862829182",
+      "address_line_1": "Chiangmai Riverside Condo, Apt 1202 324/11 Chiangmai-Lamphun Road Watket, Chiangmai 50000 Thailand",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2063,
+      "name": "MARKUS WALTHER",
+      "email_1": "markus.walther@escatec.com",
+      "office_num": "604 8900343",
+      "address_line_1": "No 17 Changkat Ria, Mount Pleasure11100 Batu Ferringhi, PenangMALAYSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2064,
+      "name": "JAMES GROVES",
+      "email_1": "jamesgroves@btinternet.com",
+      "office_num": "+6592984335",
+      "address_line_1": "5 Thomson LaneSky@Eleven No. 2802SINGAPORE 297724",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2065,
+      "name": "TAY YONG SENG JONATHAN",
+      "email_1": "tayysj@hotmail.com",
+      "office_num": "+6565852407",
+      "address_line_1": "29 Yarrow Gardens Singapore 455033",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2066,
+      "name": "MATHEW CHENG",
+      "email_1": "mathewcheng@gmail.com",
+      "office_num": "+6597599009",
+      "address_line_1": "11 Farrer Park Road No. 30-07 Singapore 210011",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2068,
+      "name": "ELITE JETS SDN BHD",
+      "email_1": "accounts@elitejets.com.my",
+      "office_num": "03-78315074",
+      "address_line_1": "No. 31B, 1ST Floor Jalan Dinar U3/B, Subang Perdana 40150 Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2072,
+      "name": "PAUL JANSEN c/o JOHOR FLYING CLUB",
+      "email_1": "jfcpresident@gmail.com",
+      "office_num": "+6596830725",
+      "address_line_1": "Lot AO-20, Cargo Airline Office Senai International Airport 81250 Senai, Johor Bharu, Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2073,
+      "name": "YEO HIOK HYEN",
+      "email_1": "yeohiokhyen@hotmail.com",
+      "office_num": "+65 98753106",
+      "address_line_1": "Block 7,  No. 05-48, Rivervale Link Singapore 545125",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2074,
+      "name": "Arrow Aviation Services",
+      "email_1": "account@arrowavia.aero",
+      "office_num": "+97143208838",
+      "address_line_1": "Dubai SIlicon Oasis Dubai, United Arab Emirates",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2078,
+      "name": "INDIGO",
+      "email_1": "Deepti.Bali@goindigo.in",
+      "office_num": "+91 0 1244352500",
+      "address_line_1": "Level 4, Tower D, Global Business Park MG Road, Gurgaon Haryana 122002, INDIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2079,
+      "name": "ARISE SERVICES PTE LTD",
+      "email_1": "edmund@arise.com.sg",
+      "office_num": "+65-69080726",
+      "address_line_1": "45 Jalan PemimpinNo. 09-00 SINGAPORE 577197",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2081,
+      "name": "ESB AERO CLUB",
+      "email_1": "wanannuar@me.com",
+      "office_num": "03-7846 4733",
+      "address_line_1": "Annex Hangar 1, Kawasan Pesawat Ringan Lapangan Tebang Sultan Abdul Aziz Shah 47200 Subang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2082,
+      "name": "SELETAR FLYING CLUB",
+      "email_1": "flying.club.xsp@gmail.com",
+      "office_num": "+65 64831573",
+      "address_line_1": "700 West Camp Road No. 06-05 Business Aviation Complex Singapore 797649",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2084,
+      "name": "FLY AVIATION SERVICES JLT",
+      "email_1": "accounts@flyaviation.aero",
+      "office_num": "+97143995699",
+      "address_line_1": "PO Box 54634, 2702 Swiss Tower Cluster Y, Jumeirah Lakes Towers Dubai, UNITED ARAB EMIRATES",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2085,
+      "name": "BASS AERO PTE LTD",
+      "email_1": "finance@bass.aero",
+      "office_num": "+6562574208",
+      "address_line_1": "690, West Camp Road #09-11, JTC Aviation Two@ Seletar Aerospace Park, Singapore 797523",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2086,
+      "name": "AVIATION ONE PTE LTD",
+      "email_1": "finance@aone.aero",
+      "office_num": "+6567159830",
+      "address_line_1": "7030 Ang Mo Kio Avenue No. 09-96 Northstar @ AMK Singapore 569880",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2087,
+      "name": "HELITECH AVIATION SERVICES SDN BHD",
+      "email_1": "capt.arifstephen@yahoo.com",
+      "office_num": "084803002",
+      "address_line_1": "General Aviation Hangar, Lapangan Terbang SibuJalan Durin, 96000 Sibu, SARAWAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2089,
+      "name": "SAFEEN SERVICES SDN BHD",
+      "email_1": "azniezura@gmail.com",
+      "office_num": "03-21711454",
+      "address_line_1": "A-1-5, Block A, Megan Avenue 1 No. 189 Jalan Tun Razak 50400 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2090,
+      "name": "WINGS OVER ASIA PTE LTD",
+      "email_1": "anita.ratnayanti@wingsoverasia.com",
+      "office_num": "+6566596225",
+      "address_line_1": "66 Seletar Aerospace View #03-01 Singapore 797509",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2091,
+      "name": "SCOOT PTE LTD",
+      "email_1": "fin_payment_queries@flyscoot.com",
+      "office_num": "+65 654423333",
+      "address_line_1": "Changi Airport Post Office PO Box 89, Singapore 918143",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2092,
+      "name": "PT CITILINK INDONESIA",
+      "email_1": "maulana.hafidz@citilink.co.id",
+      "office_num": "",
+      "address_line_1": "Pt Citilink Indonesia Management support building 1st floor, Garuda City Center, Soekarno Hatta International Airport, Tangerang Indonesia Po Box 1004 TNG",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2093,
+      "name": "LIM KUAN GIN",
+      "email_1": "limkuangin@gmail.com",
+      "office_num": "0123317939",
+      "address_line_1": "Level 11, Kenanga Tower, 237, Jalan Tun Razak, 50400 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2094,
+      "name": "BUSINESS AVIATION AIRASIA BERHAD",
+      "email_1": "puraneitannasi@airasia.com",
+      "office_num": "603-20825888",
+      "address_line_1": "Red Q, Jalan Pekeliling 5 Kuala Lumpur International Airport 64000 Sepang, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2095,
+      "name": "SKYPLAN FZC",
+      "email_1": "fahad@skyplan.com",
+      "office_num": "+971 42 999 316",
+      "address_line_1": "5WA-618 Dubai Airport Free Zone PO Box 293750, Dubai, U.A.E.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2096,
+      "name": "ZEST AVIATION PVT LTD",
+      "email_1": "gurbirnagi@aerotechfms.com",
+      "office_num": "+91 79 65100630",
+      "address_line_1": "No. 16 Pariseema, CG Road, Navrangpura,Ahmedabad, 380006 Gujarat, INDIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2098,
+      "name": "HI FLY S.A.",
+      "email_1": "accountspayable@hifly.aero",
+      "office_num": "+351211143500",
+      "address_line_1": "Rua Latino Coelho, Nr 1 - Hi Fly Building 1050-132 Lisbon, PORTUGAL",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2099,
+      "name": "BB AIRWAYS PVT LTD",
+      "email_1": "suresh.gurung129@gmail.com",
+      "office_num": "03-2261 4030",
+      "address_line_1": "IMT Express Sdn BhdSuite 2B-11-2, Block 2B, Level 11Plaza Sentral, jalan Sentral 550470 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2101,
+      "name": "FORTUNA JET AVIATION COMPANY Ltd",
+      "email_1": "alexwong@fortunajet.com",
+      "office_num": 85388998752,
+      "address_line_1": "c/o TAG AVIATION ASIA ltd. 1150, Gemini Street, Houston Texas 77058-2708, USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2103,
+      "name": "AZERBAIJAN AIRLINES",
+      "email_1": "",
+      "office_num": "+994 12 493 40 04",
+      "address_line_1": "11 Azadlig Avenue, 1000 Baku, AZERBAIJAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2104,
+      "name": "PHILIPPINES AIRASIA INC.",
+      "email_1": "joelchua@airasia.com",
+      "office_num": "+639985437253",
+      "address_line_1": "Building 4, Unit 1, Salem Complex Domestic Road, Pasay City 1300 PHILIPPINES",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2107,
+      "name": "MALINDO AIR",
+      "email_1": "anfc_mxd@malindoair.com",
+      "office_num": "019-9691742",
+      "address_line_1": "Meritus @ Oasis Corporate Park, B2-2-01, Block B, No 2, Jalan PJU 1A/2, Ara Damansara, 47301, Petaling Jaya, Selangor Darul Ehsan",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2108,
+      "name": "ASA Aero Services Asia Malaysia Sdn Bhd",
+      "email_1": "billie.tan@asag.aero",
+      "office_num": "03 79324097",
+      "address_line_1": "Suite 702, 7th Floor, Wisma Hangsam Jalan Hang Lekir, 50000 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2110,
+      "name": "GOLDEN MYANMAR AIRLINES",
+      "email_1": "richardchan@gmairlines.com",
+      "office_num": "65-65425197",
+      "address_line_1": "80 Airport Boulevard, Unit # 04-18 Changi Airport Terminal 1, Singapore 81964280",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2111,
+      "name": "AIR TASKING SERVICE DORTMUND GMBH",
+      "email_1": "invoice@atsd.aero",
+      "office_num": "",
+      "address_line_1": "Rhenus Platz 2,  59439 Holzwickede, GERMANY",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2113,
+      "name": "ASIA PACIFIC JETS PTE LTD",
+      "email_1": "katharine@asiapacificjets.com",
+      "office_num": "+65 6694 3633",
+      "address_line_1": "80 SELETAR AEROSPACE VIEW #01-01 SINGAPORE 797563",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2114,
+      "name": "GOLDEN FALCON AVIATION",
+      "email_1": "ops@gfaviation.com",
+      "office_num": "+965 24610196",
+      "address_line_1": "Shuwaikh Free Trade ZonePO Box 713, Safat 13008 KUWAIT",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2115,
+      "name": "ACCESS FLIGHT SUPPORT",
+      "email_1": "finance@access.aero",
+      "office_num": "+971 4 451 8077",
+      "address_line_1": "PO Box 95027, Dubai , JLT Cluster T Unit 1202 Fortune Executive Tower DUBAI",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2116,
+      "name": "ALBINATI AERONAUTICS SA",
+      "email_1": "info@albinati.aero",
+      "office_num": "+41223061060",
+      "address_line_1": "PO Box 44 Geneva Airport Geneva, SWITZERLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2118,
+      "name": "MOONJET",
+      "email_1": "handling.acc@moonjet.aero",
+      "office_num": "+962  65  863 600",
+      "address_line_1": "Jordan - Amman PO Box 850004 Amman 11185 JORDAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2119,
+      "name": "SKYBLUE AERO PVT LTD",
+      "email_1": "ops@skyblue.aero",
+      "office_num": "",
+      "address_line_1": "B5, 2nd Floor, KLJ Tower North District Centre, Netaji Subash Palace Pitampura, Delhi, 110034 INDIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2121,
+      "name": "LEOPAD AVIATION SDN BHD",
+      "email_1": "jega@leopad.com",
+      "office_num": "03-2260 0200",
+      "address_line_1": "2nd Floor, Wisma Leopad No. 5 Jalan Tun Sambanthan Brickfields, 50470 Kuala Lumpur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2122,
+      "name": "SICHUAN AIRLINES",
+      "email_1": "yuhaotang813@163.com",
+      "office_num": "",
+      "address_line_1": "7/F, Sichuan Airlines Building Shuangliu International Airport Chengdu 610202, P.R. Of CHINA scal_yunkong@126.com fuwu@sichuanair.com",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2124,
+      "name": "SIAM AIRNET CO LTD",
+      "email_1": "jureeporn@siamairnet.com",
+      "office_num": "+662 996 8130",
+      "address_line_1": "174/8 Soi Viphavadee-Rangsit 78 Sanambin, Donmuang, Bangkok 10210 THAILAND.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2126,
+      "name": "SPRING AIRLINES CO LTD",
+      "email_1": "xujiali@ch.com",
+      "office_num": "+86 21 2235 2643",
+      "address_line_1": "2nd Floor, TSO Office of AOC Dept.Bldg. No.2 Homeyo HotelNo. 528 Kong Gang 1 Road200335 Shanghai, PR of CHINA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2127,
+      "name": "MR. HENRIK SAHLHOLT",
+      "email_1": "hs@os.dk",
+      "office_num": "+6598151685",
+      "address_line_1": "9 Tong Watt Road 02-05 SINGAPORE 238004",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2129,
+      "name": "REGENT AIRWAYS",
+      "email_1": "sushil.ray@flyregent.com",
+      "office_num": "",
+      "address_line_1": "Siaam Tower, 15 Dhaka Mymensingh Highway Sector #3, Uttara, Dhaka 1230, BANGLADESH",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2132,
+      "name": "AURORA AVIATION SA",
+      "email_1": "accounts@aurora-aviation.aero",
+      "office_num": "+97145235888",
+      "address_line_1": "PO Box 346077, U.A.E.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2134,
+      "name": "IRAQI AIRWAYS c/o SPIN1 TRAVEL & TOURS SDN BHD",
+      "email_1": "raadalmudares@spin1tours.com",
+      "office_num": "0122327772",
+      "address_line_1": "Lot 07-17, 7th Floor, Berjaya Times Square No. 1 Jalan Imbi, 55100 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2138,
+      "name": "SHANGHAI AIRLINES CO LTD",
+      "email_1": "yangyanhua@ceair.com",
+      "office_num": "0086-010-64513486",
+      "address_line_1": "Accounting Centre of China Aviation 12 Building Xi Ba He Bei Li, Chao Yang District PO Box 5402, Beijing, 100028 PR of CHINA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2139,
+      "name": "PT TRAVEL EXPRESS AVIATION SERVICES",
+      "email_1": "accountspayable@expressair.co.id",
+      "office_num": "+622129407777",
+      "address_line_1": "Chase Plaza, 1st Floor (Lobby) Jalan Jendral Sudirman Kav. 21 Jakarta 12920, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2140,
+      "name": "THAI LION MENTARI CO LTD",
+      "email_1": "os@lionairthai.com",
+      "office_num": "+66 (0)2535 3711",
+      "address_line_1": "89/46 Vibhavadi Rangsit Road, Sanambin Subdistrict Don Mueang District, Bangkok 10210, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2141,
+      "name": "THOMAS COOK AIRLINES",
+      "email_1": "TC.Airline@thomascook.com",
+      "office_num": "01614987434",
+      "address_line_1": "Hangar 1, Western Maintenance Area Runger Lane, Manchester Airport Manchester M90 3FL, United Kingdom",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2142,
+      "name": "BRUCESON MINING SDN BHD",
+      "email_1": "brucesonmining9883@gmail.com",
+      "office_num": "09-5672760",
+      "address_line_1": "A-4370 Jalan Telok Sisek, 25000 Kuantan Pahang Darul Makmur",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2143,
+      "name": "APOGEE FZCO",
+      "email_1": "acc-billing@apogee.aero",
+      "office_num": "+97142954041",
+      "address_line_1": "PO Box 293584 Dubai, U.A.E. Dubai Airport Free Zone Office 331 Building 4E, Block A, Dubai, U.A.E.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2144,
+      "name": "Executive Jet Management Inc.",
+      "email_1": "intlinvoices@netjets.com",
+      "office_num": "513-9796038",
+      "address_line_1": "4556 Airport Road Cincinnati, OH 45226 USA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2146,
+      "name": "JET AVIATION BUSINESS JETS SINGAPORE PTE LTD",
+      "email_1": "ops.sin@jetaviation.com",
+      "office_num": "",
+      "address_line_1": "720 West Camp Road Seletar Aerospace Park  797520 Singapore",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2147,
+      "name": "AEROTECH FMS PVT LTD",
+      "email_1": "gurbirnagi@aerotechfms.com",
+      "office_num": "+911146000533",
+      "address_line_1": "TF-10C, Vasant Square Mall Vasant Kunj, New Delhi 110070 INDIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2148,
+      "name": "CLARENCE WEE",
+      "email_1": "crosswind77@gmail.com",
+      "office_num": "+65 62889020",
+      "address_line_1": "33 CHARLTON LANE, SINGAPORE 539669",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2149,
+      "name": "VIETJET AVIATION JOINT STOCK COMPANY",
+      "email_1": "thangnguyenvi@vietjetair.com",
+      "office_num": "+84835471866-603",
+      "address_line_1": "8th Floor, CT Plaza Building, 60 A Truong Son, Tan Binh District Ho Chi Minh City, VIETNAM",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2150,
+      "name": "MR. JONATHAN SEARCY",
+      "email_1": "searcy@searcy.com.au",
+      "office_num": "6012-3837717",
+      "address_line_1": "12-10-4, SERI RAJA CHULAN CONDOMINIUM, 12, CHANGKAT RAJA CHULAN, 50200 KUALA LUMPUR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2151,
+      "name": "FLYNAS MALAYSIA",
+      "email_1": "RKhan@flynas.com",
+      "office_num": "+966114078622",
+      "address_line_1": "No. 167 Jalan Lavender Height 4 70450 Senawang, NEGERI SEMBILAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2152,
+      "name": "BIZJETS ASIA ENTERPRISE",
+      "email_1": "operations@bizjetsasia.com.my",
+      "office_num": "03-78321184",
+      "address_line_1": "C306, Jalan Suria U5/104 Bandar Pinggiran Subang 2 40170 Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2155,
+      "name": "AERIAL POWER LINES SDN BHD",
+      "email_1": "tracyas@sarawakcable.com",
+      "office_num": "082434311",
+      "address_line_1": "Lot 767, Block 8, Muara Tebas Land District Demak Laut Industrial Estate Phase 111 Jalan Bako, 93050, Kuching SARAWAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2157,
+      "name": "TIGERAIR TAIWAN CO LTD",
+      "email_1": "miranda.yeh@tigerairtw.com",
+      "office_num": "+886277356914",
+      "address_line_1": "No. 3, Alley 123, Lane 405 Tunghwa N. Road, Songshan District Taipei, 10548 TAIWAN",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2159,
+      "name": "MEGA MALDIVES AIRLINES",
+      "email_1": "megapayable@megamaldivesair.com",
+      "office_num": "+9607671705",
+      "address_line_1": "5th Floor, H. Sakeena ManzilMedhuziyarah MaguMale 20127, MALDIVES",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2161,
+      "name": "ASIA ATLANTIC AIRLINES",
+      "email_1": "info@asiaatlanticairlines.com",
+      "office_num": "+66 026 355 895",
+      "address_line_1": "No. 246, 11th Floor, Times Square Building Sukhumvit Road Between Soi, 12-14 Klongtoey Bangkok 10110 THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2162,
+      "name": "FLYJETS SDN BHD",
+      "email_1": "haniff@flyjets.co",
+      "office_num": "0192990724/ 03 78325",
+      "address_line_1": "Hangar B1, Skypark Regional Aviation Centre U3/36, Jalan Riyal Subang, Seksyen U3 40150 Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2163,
+      "name": "DJETOPS LTD",
+      "email_1": "ops@djetops.aero",
+      "office_num": "",
+      "address_line_1": "European Trade Centre, Building CFloor 1, 115 L Tsarigradsko Shosse Blvd1784 Sofia, BULGARIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2164,
+      "name": "LIONAIR INCORPORATED PHLIPPINES",
+      "email_1": "prosky.ops@yahoo.com",
+      "office_num": "07-5984360",
+      "address_line_1": "c/o Executive Jets Asia Sdn Bhd Lot AP8, Senai Aviation Park Senai International Airport 81250 Senai, JOHOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2165,
+      "name": "JIN AIR Co Ltd",
+      "email_1": "hsyou@jinair.com",
+      "office_num": "+6014 2014 889",
+      "address_line_1": "LOT GL19-2, Public Concourse Passenger Terminal Building Senai International Airport 81250 Johor Bahru, MALAYSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2166,
+      "name": "TEO WEI CHONG",
+      "email_1": "twc_design@hotmail.com",
+      "office_num": "07-8639177",
+      "address_line_1": "No. 33 Jalan Tegap 7, Taman Gaya, Ulu Tiram 81800 Johor Bahru, JOHOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2167,
+      "name": "HEVILIFT (M) SDN BHD",
+      "email_1": "k.dahlan@heviliftgroup.com",
+      "office_num": "03-78327101/7102",
+      "address_line_1": "D-09-15, Block D, No. 2 Jalan PJU 1A/7A, Oasis Ara Damansara 47301 Petaling Jaya, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2168,
+      "name": "NAM AIR c/o SRIWIJAYA AIR",
+      "email_1": "sabila.amalina@sriwijaya.co.id",
+      "office_num": "+604 646 6384",
+      "address_line_1": "Lot 7 New Wing Departure Hall Concourse Penang International Airport Bayan Lepas, Penang, Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2169,
+      "name": "HEBEI ZHIYUAN GENERAL AVIATION Co Ltd",
+      "email_1": "Jaden@flyejm.com.cn",
+      "office_num": "+8618321120846",
+      "address_line_1": "10F-H, KAILI MANSION, NO. 432 HUAIHAI RD,CHANGNING DIST, SHANGHAI,CHINA, 200052",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2170,
+      "name": "WHITE ROSE AVIATION",
+      "email_1": "ops@whiteroseaviation.co.uk",
+      "office_num": "+4401347811679",
+      "address_line_1": "1 HORNER AVENUE, HUBY, NORTH YORKS, YO61 1YD, UNITED KINGDOM.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2171,
+      "name": "NOKSCOOT AIRLINES CO LTD",
+      "email_1": "Gavelin.Dis@nokscoot.com",
+      "office_num": "",
+      "address_line_1": "No. 222, Don Mueang International Airport 2nd Floor, Central Block Building, Viphaavadee-Rangsit Rd Don Mueang, Bangkok 10210, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2172,
+      "name": "THAI AIRASIA X CO LTD",
+      "email_1": "tax_accounting@airasia.com",
+      "office_num": "",
+      "address_line_1": "No. 222 Don Mueang International Airport Pax Terminal 1, 4th Floor, Room 4307 Vibhavadi-Rangsit Rd, Sanambin, Donmueang, Bangkok 10210, THAILAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2173,
+      "name": "MYANMAR NATIONAL AIRLINES",
+      "email_1": "MiChoCho.Min@flymna.com",
+      "office_num": "+95 1 378 603",
+      "address_line_1": "104 Kanna Road Kayauktada Township Yangoon, MYANMAR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2174,
+      "name": "INDONESIA AIRASIA EXTRA",
+      "email_1": "edwin@airasia.com",
+      "office_num": "+622129850888",
+      "address_line_1": "Jalan Marsekal Suryadharma (M1) No. 1 Kelurahan Selapajang Jaya, Kecamatan Neglasari Kota Tangerang, Provinsi Banten 15127 INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2175,
+      "name": "PACIFIC EAGLE AVIATION LTD",
+      "email_1": "kok_hong@rgei.com",
+      "office_num": "",
+      "address_line_1": "C/O Raffles Place, #50-01 #50-01 UOB Plaza 1, SINGAPORE 048624.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2177,
+      "name": "EDELWEISS AIR AG",
+      "email_1": "invoice@flyedelweiss.com",
+      "office_num": "+41434565555",
+      "address_line_1": "P.O. Box CH-8058Zurich AirportSWITZERLAND",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2179,
+      "name": "SILK WAY WEST AIRLINES LLC",
+      "email_1": "silkwaywest@silkwaywest.com",
+      "office_num": "+994124374763",
+      "address_line_1": "HEYDAR ALIYEV INTERNATIONAL AIRPORT, AZ1044, BAKU, AZERBAIJAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2181,
+      "name": "WEST AIR CO. LTD.",
+      "email_1": "zhao-liang1@hnair.com",
+      "office_num": 862381397907,
+      "address_line_1": "West Air Operation Base Chongqing Jiangbei International Airport 401120 P.R. of CHINA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2184,
+      "name": "EAGLEMAX STAR SDN BHD",
+      "email_1": "r.manpreet@hotmail.com",
+      "office_num": "+60127633331",
+      "address_line_1": "605 Block E, Pusat Dagangan Phileo Damansara 1 Jalan 16/11, Seksyen 16 46350 Petaling Jaya Selangor Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2187,
+      "name": "THAI SMILE AIRWAYS COMPANY LIMITED",
+      "email_1": "accountpayable@thaismileair.com",
+      "office_num": "+6621178800",
+      "address_line_1": "Building 9, 1st-2nd Floor 89  Vibhavadi Rangsit Road, Jomphon, Chatuchak, Bangkok 10900 Thailand",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2188,
+      "name": "JEJU AIR",
+      "email_1": "rayner@jejuair.net",
+      "office_num": "",
+      "address_line_1": "366 International Cargo Terminal 150 Gonghang-dong, Gangseu-gu Seoul, KOREA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2189,
+      "name": "LUCKY AIR c/o AURORA AVIATION SA",
+      "email_1": "accounts@aurora-aviation.aero",
+      "office_num": "+971 4 523 5888",
+      "address_line_1": "Room 2002, The Dome Tower, Jumeirah Lakes Tower, Dubai, UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2190,
+      "name": "PRIMA AIR SDN BHD",
+      "email_1": "zura@primaair.com.my",
+      "office_num": "04-9532010",
+      "address_line_1": "Jalan Kuala Muda Mukim Padang Mat Sirat 07100 Langkawi, KEDAH",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2191,
+      "name": "JET TEAM LTD",
+      "email_1": "accounts@jet-team.co.uk",
+      "office_num": "+442036330750",
+      "address_line_1": "71-75 Shelton Street London WC2H 9JQ UNITED KINGDOM",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2192,
+      "name": "SUASA AIRLINES SDN BHD",
+      "email_1": "razak@suasaair.com",
+      "office_num": "03-78597742/7743",
+      "address_line_1": "C-1-28 & C-2-28, Block C, Jakan PJU 1A/3KTaipan 1, Ara Damansara47301 Petaling Jaya, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2193,
+      "name": "MR. AJAY A/L VIJAYAN",
+      "email_1": "s.prabu@rensteel.com",
+      "office_num": "0162181428",
+      "address_line_1": "No 59, Jalan Johan 1/4 Kawasan Perindustrian Pengkalan 2 31550 Pusing, PERAK",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2194,
+      "name": "UNI-TOP AIRLINES CO LTD c/o A TOP CARGO SERVICE",
+      "email_1": "jerry.li@uni-top.com",
+      "office_num": "60387871876 / 012-37",
+      "address_line_1": "Lot GFM 03, Malaysia Airlines Advance Cargo Centre KLIA Free Commercial Zone, KLIA Cargo Village KLIA 64000 Sepang, SELANGOR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2195,
+      "name": "FAS UDARA FLYING CLUB",
+      "email_1": "wati@alaris-group.com",
+      "office_num": "+01151517199",
+      "address_line_1": "121 Block A, Kelana Centre Point S7/19 Petaling Jaya, 47301Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2196,
+      "name": "ZAWARA SDN BHD",
+      "email_1": "fizal@zawara.com",
+      "office_num": "03-55244855",
+      "address_line_1": "No. 13 Jalan Plumbum P7/P, Seksyen 7 40000 Shah Alam, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2197,
+      "name": "US - BANGLA AIRLINES LIMITED",
+      "email_1": "atikur.rahman@usbair.com",
+      "office_num": "+88 02 9884818",
+      "address_line_1": "Lot 3.01, 3rd Floor No 22 Medan Pasar 50050 KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2198,
+      "name": "HIMALAYA AIRLINES PVT LTD",
+      "email_1": "iocc@himalaya-airlines.com",
+      "office_num": "0320707055",
+      "address_line_1": "Integrated Operations Control Center Wisma Paradise, 63, Jalan Ampang 50450, KUALA LUMPUR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2200,
+      "name": "JC (CAMBODIA) INTERNATIONAL AIRLINES",
+      "email_1": "info@jcairlines.com",
+      "office_num": "+855 23882228",
+      "address_line_1": "8-9th Floor, Suntown Plaza Corner Russian Blvd & Northbridge, Sangkat Tek Thlar Khan Sen Sok, Phnom Penh, CAMBODIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2201,
+      "name": "AIR SEOUL",
+      "email_1": "",
+      "office_num": "",
+      "address_line_1": "Suite 7-7E, 7th Floor, Menara MAA No. 6 Lorong Api-api 1 88000 Kota Kinabalu, SABAH",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2202,
+      "name": "MNM AVIATION SERVICES SDN BHD",
+      "email_1": "Info@mnmaviationservices.com.my",
+      "office_num": "0193049501",
+      "address_line_1": "D-9-3A, Capital 4 No. 2, Jalan PJU 1A/7A, Oasis Ara Damansara 47301 Petaling Jaya, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2204,
+      "name": "PROSKY SERVICES SDN BHD",
+      "email_1": "proskyservices@gmail.com",
+      "office_num": "017-6968327",
+      "address_line_1": "No 16A Jalan Astaka LU8/L Seksyen U8 Bukit Jelutong Business And Technology Centre 40150 Shah Alam, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2205,
+      "name": "BIDARI KEKAL SDN BHD",
+      "email_1": "hirman_salleh@yahoo.com",
+      "office_num": "07-2315122",
+      "address_line_1": "No. 22-01 Jalan Padi Emas 1/4 UDA Business Centre 81200 JOHOR BAHRU",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2206,
+      "name": "SS MEDITECH SDN BHD",
+      "email_1": "ssmeditechsb@gmail.com",
+      "office_num": "0146265311",
+      "address_line_1": "No. 999, Lot10434 Kg. Jawa Batu Empat Setengah 42450 Klang, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2207,
+      "name": "N&H TEGUH",
+      "email_1": "nzenterprise17@yahoo.com",
+      "office_num": "+60122606962",
+      "address_line_1": "No. 18 Jalan Tanjung Sauh 30/23 Seksyen 30, 40460 Shah Alam Selangor, Darul Ehsan",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2208,
+      "name": "TRANSASIA SERVICES SDN BHD",
+      "email_1": "yusoff@transasia-aero.com",
+      "office_num": "0196508142",
+      "address_line_1": "No. 7-1, 1st Floor, Jalan Putra Mahkota 7/6C Putra Heights, 47650, Subang Jaya, SELANGOR, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2209,
+      "name": "HEBEI AIRLINES LTD",
+      "email_1": "hbhkykb@126.com",
+      "office_num": "86-311-85177438",
+      "address_line_1": "Airline Operations Control, Dept Of Hebei Airlines Zhengding Airport, Shijiazhuang City Hebei Province, 050802 PR OF CHINA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2210,
+      "name": "FLAT CIRCLE SDN BHD",
+      "email_1": "flatcircleops@gmail.com",
+      "office_num": "+60377347749",
+      "address_line_1": "No. 11-3 Jalan Dinar GU3/G Taman Subang Perdana, Seksyen U3 40150 Shah Alam, Selangor, DE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2211,
+      "name": "HONG KONG AIR CARGO CARRIER LTD",
+      "email_1": "martin.wong@hkaircargo.com",
+      "office_num": "",
+      "address_line_1": "Room 201-207, 2/f, Terminal 1 Asia Airfreight Terminal 10 Chun Ping Road, Hong Kong International Airport Lantau, Hong Kong",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2212,
+      "name": "PT BATIK AIR INDONESIA",
+      "email_1": "oe@batikair.com",
+      "office_num": "+62213505555",
+      "address_line_1": "JI. A.M. Sangaji No. 17 P, Kelurahan Petojo Utara Kecamatan Gambir, Jakarta Pusat Postal Code 10130, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2213,
+      "name": "AIRBUS HELICOPTER SOUTH EAST ASIA Pte Ltd",
+      "email_1": "contact.info.ahsa@airbus.com",
+      "office_num": "+6565927110",
+      "address_line_1": "110 Seletar Aerospace View SINGAPORE 797562",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2214,
+      "name": "MALAYSIAN DIE-CASTING INDUSTRIES SDN. BHD.",
+      "email_1": "ehteoh1@yahoo.com",
+      "office_num": "0123331255",
+      "address_line_1": "56 JALAN IJUK 26/5, 40000 SHAH ALAM, SELANGOR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2215,
+      "name": "AEROSOLUTION SERVICES (M) PLT",
+      "email_1": "ops@aerosolutionservices.com",
+      "office_num": "+0197573531",
+      "address_line_1": "A1-03A, Suria Jelutong 40150, Shah Alam, Selangor Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2216,
+      "name": "TASHI AIR PVT LTD (BHUTAN AIRLINES)",
+      "email_1": "pema.choki@bhutanairlines.bt",
+      "office_num": "+9752334052",
+      "address_line_1": "OPP TAJ HOTEL, TASHI MALL, SAMTEN LAM, BHUTAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2217,
+      "name": "CLICK AVIATION NETWORK",
+      "email_1": "payables@click.aero",
+      "office_num": "+971 (04) 2766209",
+      "address_line_1": "1506-1510 Jumairah Bay Towers X2-X Cluster, JLT, Dubai PO Box 337171",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2218,
+      "name": "SMALL PLANET AIRLINES",
+      "email_1": "j.miskinis@smallplanet.aero",
+      "office_num": "+37068229624",
+      "address_line_1": "Vattanac Capital Tower, Level 17 Unit 366, Monivong Boulevard, Sangkat Wat Phnom Khan Daun Penh, Phnom Penh Cambodia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2219,
+      "name": "SUCCESS AVIATION SERVICES",
+      "email_1": "accounts@success.aero",
+      "office_num": "+97165619898",
+      "address_line_1": "Shj International Airport Free Zone L1-16 PO Box 513630, UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2220,
+      "name": "FLIGHTWORX AVIATION LTD",
+      "email_1": "accounts@flightworx.aero",
+      "office_num": "+4401279668004",
+      "address_line_1": "4-8 Cambridge Road Stansted, Essex, CM24 8BZ United Kingdom",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2221,
+      "name": "DRUK AIR CHARTER FLIGHT",
+      "email_1": "chonyingwdorji@drukair.com.bt",
+      "office_num": "+97508272722",
+      "address_line_1": "PO Box 1219, Nemeyzampa Paro, Kingdom Of Bhutan",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2222,
+      "name": "AEG AVIATION",
+      "email_1": "accountspay@aegfuels.com",
+      "office_num": "+12813647260",
+      "address_line_1": "HOUSTON US 25025 INTERSTATE 45, SUITE 550 THE WOODLANDS, TX77380.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2223,
+      "name": "FACILIPACK INDUSTRIES SDN BHD",
+      "email_1": "harun.majithu@gmail.com",
+      "office_num": "019915448",
+      "address_line_1": "LOT 1, SOLOK SULTAN HISHAMUDDIN 1,  KAWASAN 20, BANDAR SULTAN SULAIMAN, 42000 PELABUHAN KLANG, SELANGOR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2224,
+      "name": "I JET GLOBAL DMCC",
+      "email_1": "ap@ijet.aero",
+      "office_num": "",
+      "address_line_1": "JBC2, Plot No. JLT-PH2-V1A Jumeirah Lakes Towers Dubai, UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2225,
+      "name": "SAFEAIR TECHNICAL SDN BHD",
+      "email_1": "suandra@safeairtechnical.com",
+      "office_num": "03-87760590",
+      "address_line_1": "B06, GF CONTACT PIER, MAIN TERMINAL BUILDING, KLI INTERNATIONAL AIRPORT, 64000 SEPANG, SELANGOR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2226,
+      "name": "EXECUTIVE AVIATION TAIWAN CORP",
+      "email_1": "info@eatc.com.tw",
+      "office_num": "",
+      "address_line_1": "NO. 3, ALY 123, LN. 405 DUNHUA N ROAD, TAIPEI CITY, 10548,  TAIWAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2227,
+      "name": "AVIMAXX W.L.L.",
+      "email_1": "accounts@avimaxx.aero",
+      "office_num": "0097336125777",
+      "address_line_1": "OFFICE 11, BUILDING 136,  ROAD 503 MUHARRAQ 203, BAHRAIN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2228,
+      "name": "MSN FLYING & LEISURE CLUB",
+      "email_1": "secretary@msnflight.com.my",
+      "office_num": "+60189002103",
+      "address_line_1": "G19/G20 AERODROME HANGAR 2, OLD CARGO COMPLEX, SULTAN ABDUL AZIZ SHAH AIRPORT, 47200 SUBANG, SELANGOR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2229,
+      "name": "AERODASH SERVICES",
+      "email_1": "finance.aerodash@gmail.com",
+      "office_num": "+603 7832 3290",
+      "address_line_1": "No 15-A, 1st Floor, Jalan Dinar B U3/B, Seksyn U3, 40150 Shah Alam, Selangor Darul Ehsan",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2230,
+      "name": "AVIASTAR-TU",
+      "email_1": "finance@aviastartu.ru",
+      "office_num": "+74957831056",
+      "address_line_1": "OFFICE 17, H.5, BLD. 7,  LENINGRADSKIY PROSPECT, MOSCOW 125040, RUSSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2231,
+      "name": "INTERNATIONAL AERO TRAINING ACADEMY SDN BHD",
+      "email_1": "info@iatac.edu.my",
+      "office_num": "06-3192181",
+      "address_line_1": "NO. 14179, OFF JALAN M44, TAMAN MERDEKA 75350 BATU BERENDAM, MELAKA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2232,
+      "name": "UTARA GROUND SUPPORT & SERVICES SDN BHD",
+      "email_1": "mosmandurasit8@hotmail.com",
+      "office_num": "+6019-8519524",
+      "address_line_1": "LOT 15, FRIENDSHIP GARDEN PHASE 1, PETAGAS 88200 KOTA KINABALU, SABAH. (POSTAL ADDRESS)",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2233,
+      "name": "GUANGXI BEIBU GULF AIRLINES",
+      "email_1": "rongj.wu@hnair.com",
+      "office_num": "",
+      "address_line_1": "",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2234,
+      "name": "POS AVIATION",
+      "email_1": "azham.attan@pos.com.my",
+      "office_num": "03-87788040",
+      "address_line_1": "JALAN KLIA S6, SOUTHERN SUPPORT ZONE, KUALA LUMPUR INT'L AIRPORT, 64000, SEPANG SELANGOR D. E.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2235,
+      "name": "S & S FLYZ SERVICES",
+      "email_1": "Myusoff@ss-flyz.com.co",
+      "office_num": "+60196508142",
+      "address_line_1": "Kompleks CAAM Pulau Pinang LTAB Bayan Lepas 11900 Pulau Pinang",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2236,
+      "name": "ASIA JET PARTNERS MALAYSIA",
+      "email_1": "focc@asiajet.com.my",
+      "office_num": "+603-78451888",
+      "address_line_1": "Lot AM 1, Skypark Subang Terminal, Lapangan Terbang Sultan Abdul Aziz Shah, 47200 Subang, Selangor, Malaysia.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2237,
+      "name": "AIR BUSAN",
+      "email_1": "adamkim@airbusan.com",
+      "office_num": "0143512676",
+      "address_line_1": "1RO 57 BEONGA-GIL, GANGSEO-GU, 46721, BUSAN, KOREA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2238,
+      "name": "SAKURAI AVIATION LIMITED",
+      "email_1": "sakuraioperations@gmail.com",
+      "office_num": "+94112623310",
+      "address_line_1": "NO. 228/1/1, GALLE ROAD, RATMALANA, SRI LANKA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2239,
+      "name": "AEROTRANSCARGO SRL",
+      "email_1": "finance@atc-md.aero",
+      "office_num": "+97165741744",
+      "address_line_1": "FINANCE DEPARTMENT, BUILDING NO. Q4, OFFICE NO. 174, SAIF ZONE, P. O. BOX 122487, SHARJAH, UAE.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2240,
+      "name": "CHINA SHANGHAI JUNEYAO AIRLINES",
+      "email_1": "zhouluyi@juneyaoair.com",
+      "office_num": "008618016074918",
+      "address_line_1": "ROOM 588, NO. 80 HONG XIANG 3 ROAD, MINHANG DISTRICT, SHANGHAI 200336, CHINA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2241,
+      "name": "SOLAIRE SDN BHD",
+      "email_1": "rchan826@gmail.com",
+      "office_num": "+60163607850",
+      "address_line_1": "Terminal 3, Sultan Abdul Aziz Shah Airport, Lapangan Terbang Sultan Abdul Aziz Shah Subang, Selangor 47200 Malaysia",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2242,
+      "name": "HELANG FLYING ACADEMY",
+      "email_1": "sairuz@helangflyingacademy.com",
+      "office_num": "+6075955279",
+      "address_line_1": "SAPURA AERO HANGARS, SENAI AIRPORT AVIATION PARK, 81250 JOHOR BAHRU, JOHOR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2243,
+      "name": "RUSSIAN A/C 'NORDAVIA RA'",
+      "email_1": "oop@nordavia.ru",
+      "office_num": "+78182631550",
+      "address_line_1": "163053 RUSSIA ARKHANGELSK AIRPORT, 4/1, RUSSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2244,
+      "name": "URUMUQI AIRLINES",
+      "email_1": "Qingy-zhang@hnair.com",
+      "office_num": "",
+      "address_line_1": "URUMUQI AIRLINE BASE, AIRPORT SOUTH AREA, NO. 1341 YINGBIN ROAD, XINJIANG PROVINCE, 830000, CHINA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2245,
+      "name": "ELITE FLYING CLUB",
+      "email_1": "lawfonkee@hotmail.com",
+      "office_num": "",
+      "address_line_1": "123, JALAN SEROJA 39, TAMAN JOHOR JAYA, 81100 JOHOR, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2246,
+      "name": "EXECUJET HANDLING SERVICES",
+      "email_1": "acpayables@execujet-mro.com",
+      "office_num": "+60378421330",
+      "address_line_1": "UNIT 3-3A, LEVEL 3, BLOCK A, DATARAN PHB, SAUJANA RESORT, SECTION U2, 40150 SHAH ALAM, MALAYSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2247,
+      "name": "M JETS INTERNATIONAL",
+      "email_1": "mdsani@mjetsinternational.com",
+      "office_num": "+6046118778",
+      "address_line_1": "SOLARIA RESIDENCE, 2-1-7, MEDAN RAJAWALI, SUNGAI ARA, 11900 BAYAN LEPAS, PULAU PINANG, MALAYSIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2248,
+      "name": "CHONGQING AIRLINES",
+      "email_1": "hebo@csair.com",
+      "office_num": "02388358035",
+      "address_line_1": "NO. 6, LINGANG ROAD, LIANGLU ROAD, YUBEI DISTRICT, CHONGQING, CHINA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2249,
+      "name": "COBHAM AVIATION SERVICES AUSTRALIA",
+      "email_1": "udhana.abeysekera@cobham.com",
+      "office_num": "",
+      "address_line_1": "NATIONAL DRIVE, ADELAIDE AIRPORT, ADELAIDE SA 5950, AUSTRALIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2250,
+      "name": "AIR ARABIA",
+      "email_1": "anvijayan@airarabia.com",
+      "office_num": "+97165088834",
+      "address_line_1": "AIR ARABIA HEAD OFFICE, 1ST FLOOR, FREIGHT CENTRE, SHARJAH INT'L AIRPORT, P. O. BOX 132, SHARJAH, UNITED ARAB EMIRATES.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2251,
+      "name": "PT WINGS ABADI AIRLINES",
+      "email_1": "sumarthia.suby@malindoair.com",
+      "office_num": "082-575820",
+      "address_line_1": "JL AM SANGAJI NO. 17P, KELURAHAN PETOJO UTARA, KECAMATAN GAMBIR, JAKARTA PUSAT-10130, INDONESIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2252,
+      "name": "STARLUX AIRLINES",
+      "email_1": "ritafu@starlux-airlines.com",
+      "office_num": "+886 227911000 #7301",
+      "address_line_1": "382, SEC. 6, NANJING E.RD.,  NEIHU DISTRICT, TAIPEI CITY,  TAIWAN 11470.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2253,
+      "name": "SELETAR JET CHARTER",
+      "email_1": "ops@seletarjet.com",
+      "office_num": "+6591520777",
+      "address_line_1": "10 SELETAR AEROSPACE HEIGHTS, SINGAPORE 797546.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2254,
+      "name": "JET AVIATION BUSINESS JETS",
+      "email_1": "happy.sebastian@jetaviation.com",
+      "office_num": "+97142994433",
+      "address_line_1": "DUBAI AIRPORT FREE ZONE, SUITE NO. 3E-109, P. O. BOX 54552, DUBAI, UAE.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2255,
+      "name": "(VISTARA) TATA SIA AIRLINES LTD",
+      "email_1": "inder.singh@airvistara.com",
+      "office_num": "+911244515151",
+      "address_line_1": "10TH FLOOR ONE HORIZON CENTRE GOLF COURSE, ROAD SECTOR 43, DLF PHASE-V, GURGAON HARYANA, INDIA 122 003",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2256,
+      "name": "CARGO AIR CHARTERING FZE",
+      "email_1": "cac@cargoairchartering.aero",
+      "office_num": "",
+      "address_line_1": "X1-05, SAIF ZONE, SHARJAH, P. O. BOX 8404,  UAE",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2257,
+      "name": "ACM AIR",
+      "email_1": "Occ.acm@acmair.com",
+      "office_num": "+90 (212) 411 04 00",
+      "address_line_1": "BESYOL MAH., AKASYA SK. NO:27,  K.�EKMECE, ISTANBUL, TURKEY",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2258,
+      "name": "GLOBAL SERVICE SOLUTION",
+      "email_1": "accounts@gss.aero",
+      "office_num": "",
+      "address_line_1": "F103-02, DUBAI SILICON OASIS,  P. O. BOX 341205, DUBAI,  UNITED ARAB EMIRATES.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2259,
+      "name": "PT GENESA DIRGANTARA (ACADEMY)",
+      "email_1": "info@genesaacademy.com",
+      "office_num": "",
+      "address_line_1": "KOMPLEK PURI SENTRA NIAGA JI, WIRALOKA BLOK D 54, KALIMALANG13620, INDONESIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2260,
+      "name": "ELANG LINTAS",
+      "email_1": "johanes@elang-indonesia.com",
+      "office_num": "",
+      "address_line_1": "ALAM SUTERA, RUKO DYNASTY WALK BLOCK 29 C/1,  JL. JALUR SUTERA, PAKUALAM, KEC. SERPONG UTARA,  KOTA TANGERANG SELATAN, BANTEN 15325, INDONESIA",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2261,
+      "name": "QATAR EXECUTIVE",
+      "email_1": "accountspayable@qatarairways.com.qa",
+      "office_num": "+97440221542",
+      "address_line_1": "QATAR AIRWAYS TOWER 3, 3rd FLOOR, OFFICE NO. 301, P. O. BOX 22550, DOHA, QATAR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2262,
+      "name": "FLYEASY AERO",
+      "email_1": "billing@flyeasy.aero",
+      "office_num": "+41 22 57 52 57 3",
+      "address_line_1": "RUE DU LAC WINDERMERE, BLOC A,  LES BERGES DE LAC, TUNIS 1053,  TUNISIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2263,
+      "name": "JHONLIN AIR TRANSPORT",
+      "email_1": "th@jhonlinair.com",
+      "office_num": "",
+      "address_line_1": "JL. BANDARA SYAMSUDIN NOOR JL. ANGKASA,  LANDASAN ULIN UTARA, KEC. LIANG ANGGANG,  KOTA BANJAR BARU, KALIMANTAN SELATAN 70724, INDO",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2264,
+      "name": "VENTUS INTERNATIONAL AVIATION",
+      "email_1": "finance@simcoair.com.sg",
+      "office_num": "+1 828-393-0710",
+      "address_line_1": "1200 RIDGEFIELD BLVD #120,  ASHEVILLE, NC 28806, USA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2265,
+      "name": "FLYTAG FLIGHT SUPPORT",
+      "email_1": "ops@flytag.co",
+      "office_num": "+92300 858 7389",
+      "address_line_1": "SUITE NO. 01, 4TH FLOOR M.A HEIGHTS, PLOT # FL-1/16,  BLOCK 5 GULSHAN-E-IQBAL KARACHI, PAKISTAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2266,
+      "name": "ISLAND AVIATION SERVICES LIMITED",
+      "email_1": "accounts@iasl.aero",
+      "office_num": "+9607798757",
+      "address_line_1": "CORPORATE HEADQUARTERS, MALDIVIAN,  M. RAAVERI MAGU, MALE 20345,  REPUBLIC OF MALDIVES.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2267,
+      "name": "AIRLINK AVIATION SERVICES",
+      "email_1": "ops@airlinkaviation.aero",
+      "office_num": "+862160755878",
+      "address_line_1": "ROOM 606, NO. 333, HONGQIAO ROAD,  XUHUI DISTRICT, SHANGHAI,  PRC 201210.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2268,
+      "name": "MIAT MONGOLIAN AIRLINES",
+      "email_1": "opp@miat.com",
+      "office_num": "+976112844077",
+      "address_line_1": "MIAT BUILDING, P. O. BOX 45 BUYANT-UKHAA,  ULANBATAAR 17120,  MONGOLIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2269,
+      "name": "SKYLINE AVIATION S.R.L.",
+      "email_1": "finance@access.aero",
+      "office_num": "+971505561839",
+      "address_line_1": "FORT EXEC TWR 1202,  P. O. BOX 95027, DUBAI,  UAE.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2270,
+      "name": "JET BUSINESS SOLUTIONS (JBS)",
+      "email_1": "ops@jbs.aero",
+      "office_num": "T+97167486866",
+      "address_line_1": "AFZA, C1 - 720, PO Box 15332, UAE.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2271,
+      "name": "AIR ALLIANCE (AIR OPS INTERNATIONAL GMBH)",
+      "email_1": "ops@airopsintl.co",
+      "office_num": "",
+      "address_line_1": "POSTFACH 231522,  D-85324 MUNICH INTERNATIONAL AIRPORT,  GERMAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2272,
+      "name": "SIRIUS AERO LTD",
+      "email_1": "ops@sirius-aero.ru",
+      "office_num": "+74959896191",
+      "address_line_1": "14, BUILDING 1, BUSINESS CENTER \"PARTNER\", 121354, MOSCOW, UL. DOROGOBUZHSKAYA,  RUSSIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2273,
+      "name": "AZUR AIR UKRAINE AIRLINES",
+      "email_1": "office@azurair.ua",
+      "office_num": "+380442810901",
+      "address_line_1": "KYIV, 6 SOSURY STREET, 02090 UKRAINE.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2274,
+      "name": "LEICESTER ASSET HOLDING LIMITED",
+      "email_1": "peggy@rafulin.com",
+      "office_num": "0124931117",
+      "address_line_1": "18-1, MENARA 1MK, PREMIUM TOWER 1, JALAN KIARA, MONT KIARA, 50480 KUALA LUMPUR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2275,
+      "name": "BAMBOO AIRWAYS JOINT STOCK COMPANY",
+      "email_1": "permission.hdq@bambooairways.com",
+      "office_num": "02432333233-2005",
+      "address_line_1": "19TH FLOOR, BAMBOO AIRWAYS TOWER, 265 CAU GIAY STREET, DICH VONG WARD, CAU GIAY DISTRICT, HANOI CAPITAL, VIETNAM.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2276,
+      "name": "BEIJING STAR AVIATION SERVICES Co. Ltd.",
+      "email_1": "sugar_jun@126.com",
+      "office_num": "+8615311937187",
+      "address_line_1": "ROOM 802, UNIT 2, BUILDING 3, JIANG SHANFU, HOU SHAYU OF SHUNYI DISTRICT, BEIJING INT\"L AIRPORT, BEIJING, CHINA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2277,
+      "name": "GOZEN AIR SERVICES",
+      "email_1": "dispatch@gozenair.com",
+      "office_num": "+902126621062",
+      "address_line_1": "COBANCESME MAH. SANAYI CAD. NO:60 BAHCELIEVLER-ISTANBUL, TURKEY.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2278,
+      "name": "SKS AIRWAYS SDN BHD",
+      "email_1": "stevelee@sksairways.com",
+      "office_num": "07-3360024",
+      "address_line_1": "UNIT 3.02, LEVEL 3, PLAZA DNP, NO. 59, JALAN DATO' ABDULLAH TAHIR, 80300 JOHOR.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2279,
+      "name": "FIJI AIRWAYS",
+      "email_1": "shyamal.krishna@fijiairways.com",
+      "office_num": 6799908135,
+      "address_line_1": "FLIGHT OPERATIONS, MAINTENANCE AND ADMINISTRATION CENTRE, NASOSO, NADI, FIJI.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2280,
+      "name": "FLIGHT-ASSIST (UK) Ltd",
+      "email_1": "mike.randall@flight-assist.com",
+      "office_num": "+447323811093",
+      "address_line_1": "HOLLY COTTAGE, LEWES ROAD, LAUGHTON, EAST SUSSEX, BN8 6BL, UNITED KINGDOM.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2281,
+      "name": "LANMEI AIRLINES (CAMBODIA) Co. Ltd.",
+      "email_1": "kloung.sivly@lanmeiairlines.com",
+      "office_num": 85516899007,
+      "address_line_1": "UNIT 575 D AND E OF CALIFORNIA SOCIAL HOUSE (WEST), 571-575 RUSSIAN FEDERATION BOULEVARD, PHNOM PENH, CAMBODIA.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2282,
+      "name": "RBA VOYAGE SDN. BHD.",
+      "email_1": "ops@rbavoyage.com",
+      "office_num": "03-89289661",
+      "address_line_1": "No 10-2, JALAN PUTERI 3A/5, BANDAR PUTERI BANGI,  43000 KAJANG, SELANGOR DARUL EHSAN.",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  },
+  {
+    "model": "organisations.organisation",
+    "fields": {
+      "cid": 2283,
+      "name": "YTO CARGO AIRLINES c/o FORHAS SOUTH EAST ASIA SDN BHD",
+      "email_1": "elayne@forhas-sea.com",
+      "office_num": "+603-80115892",
+      "address_line_1": "GARDEN SHOPPE @ ONECITY A-07-02, JALAN USJ 25/1F, 47650 SUBANG JAYA, SELANGOR",
+      "is_active": true,
+      "organisation_type": "AL"
+    }
+  }
+]

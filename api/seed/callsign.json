@@ -1,0 +1,4982 @@
+[
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFL", "cid": 1009, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHTCP", "cid": 1021, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMD", "cid": 1021, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AIQ", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APG", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AWQ", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKAXD", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKAXG", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKAXR", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKAXU", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKAXW", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RPC8189", "cid": 1025, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AXM", "cid": 1025, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACI", "cid": 1027, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACA", "cid": 1029, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFR", "cid": 1035, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AHK", "cid": 1038, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AIC", "cid": 1039, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MAU", "cid": 1046, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ANZ", "cid": 1047, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DCALI", "cid": 1051, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ATN", "cid": 1057, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HVN", "cid": 1060, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AIB", "cid": 1062, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MACE", "cid": 1067, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MASB", "cid": 1067, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKYTP", "cid": 1067, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKYUZ", "cid": 1067, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKYVS", "cid": 1067, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKYVT", "cid": 1067, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AJX", "cid": 1071, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ANA", "cid": 1071, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADB", "cid": 1092, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AAR", "cid": 1101, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKP", "cid": 1127, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ132", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ165", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ167", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ301", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ302", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ303", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ305", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ306", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ320", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ396", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ505", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ513", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ516", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ555", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ556", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ557", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ560", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ561", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ562", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DER511", "cid": 1129, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BHP", "cid": 1136, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CFCPF", "cid": 1137, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CGVUN", "cid": 1137, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAA", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAG", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAH", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAK", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BVT", "cid": 1138, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAL", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAQ", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTST", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTSV", "cid": 1138, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BBC", "cid": 1139, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BAW", "cid": 1150, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CLX", "cid": 1159, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CPA", "cid": 1160, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CEB", "cid": 1162, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CAL", "cid": 1166, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CDP", "cid": 1178, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CKS", "cid": 1179, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHCCC", "cid": 1186, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHCGF", "cid": 1186, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHCRQ", "cid": 1186, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CCA", "cid": 1191, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CKK", "cid": 1193, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CES", "cid": 1193, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CSN", "cid": 1195, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBIGX", "cid": 1202, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBJSN", "cid": 1202, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSSS", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BMAU", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BMBK", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBIFQ", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBJFN", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBJKI", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MARIE", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MGFOR", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MPACF", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MYBBJ", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N529SS", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N60683", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N618KR", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N625JK", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N65TM", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N666YC", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N729LJ", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N778C", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N888YC", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N898DL", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N9401S", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N941SS", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKDHK", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PTPYV", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PTTLS", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PTTOC", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PTTOE", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PTTRT", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RPC2956", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RPC6003", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHDBT", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ZSPVX", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHMBP", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHMDH", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHOCV", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHTSL", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBEM", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBHD", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBMY", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCHL", "cid": 1209, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DUB", "cid": 1215, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ETH", "cid": 1226, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBFG", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBFL", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBFN", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBFO", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBFQ", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHBS", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMAA", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRSA", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSCG", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSOC", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSSH", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTSN", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MVIP", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VHBI", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VHBJ", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VHBV", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VHBW", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VHBX", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DHADW", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DHAWD", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FHBGD", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FWMXB", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FWTCC", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FWTCD", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FWTCS", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FWTCX", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSHBQ", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N135ZZ", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N30MM", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N323ZM", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N484RA", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBKA", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTWU", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "S2AHT", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCFF", "cid": 1229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EVA", "cid": 1234, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MXFR", "cid": 1244, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "IFA", "cid": 1245, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1FE", "cid": 1251, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FDX", "cid": 1251, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FIN", "cid": 1253, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GIA", "cid": 1267, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GZP", "cid": 1269, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GLF", "cid": 1279, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CHH", "cid": 1283, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VBOD", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VBOK", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ANO4792", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBIGH", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBJ", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N256LK", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N316MJ", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N383LJ", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N41J", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N450PG", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N475M", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N50EE", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N5PG", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N688JC", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N720AS", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N818HK", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N818KE", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N977CB", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N9999M", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "P4SKI", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SJM05", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TTF9004", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHVMX", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBMV", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBTB", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCKD", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBHO", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTSGC", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTSGG", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTSPL", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTSPM", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTTMS", "cid": 1287, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "V8-BKH", "cid": 1293, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "V8-MHB", "cid": 1293, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N966H", "cid": 1295, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N988H", "cid": 1295, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HDA", "cid": 1296, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MATM", "cid": 1298, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAVM", "cid": 1298, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAZZ", "cid": 1298, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWSB", "cid": 1298, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWSK", "cid": 1298, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CIRRUS22", "cid": 1310, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N100FF", "cid": 1310, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N158PG", "cid": 1310, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N555LK", "cid": 1310, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JAL", "cid": 1316, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BOE501", "cid": 1321, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BOE502", "cid": 1321, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N5017V", "cid": 1321, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N6664C", "cid": 1321, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EIEWE", "cid": 1323, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GCC365", "cid": 1323, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GLOBL", "cid": 1323, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N315MK", "cid": 1323, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "OEIBP", "cid": 1323, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SEDJM", "cid": 1323, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PJS", "cid": 1325, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KLM", "cid": 1337, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KAL", "cid": 1339, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KAC", "cid": 1342, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LAO", "cid": 1345, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLLA", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLLB", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLLI", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLLM", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LAY", "cid": 1346, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSSV", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LLU", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LLW", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N101AJ", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N127PT", "cid": 1346, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BTKFERY", "cid": 1350, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKLJO", "cid": 1350, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWFM", "cid": 1350, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWFQ", "cid": 1350, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LNI", "cid": 1350, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LOT", "cid": 1353, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DLH", "cid": 1355, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GEC", "cid": 1357, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LAC407", "cid": 1359, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LYB5005", "cid": 1359, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N403LC", "cid": 1359, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LYC", "cid": 1359, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "IRM", "cid": 1363, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MABU", "cid": 1365, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MAS", "cid": 1366, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKCK", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKDP", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKHK", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKMJ", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKSJ", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKTS", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKVC", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKVE", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLCK", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLCT", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLDL", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLMJ", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLOL", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLSJ", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLSS", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLSZ", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLUX", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLWW", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CFVPF", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N168RR", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCQQ", "cid": 1379, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSKI", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD06", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD08", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD09", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD10", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD12", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD14", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD15", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD16", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD17", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD26", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD471", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD321", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD4913", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5017", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5020", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5419", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5510", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5611", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5614", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5715", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5720", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5815", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5823", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACAD5916", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ACD08X", "cid": 1381, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAWS", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSNA", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSOM", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPB", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPC", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPD", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPE", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPF", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPG", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPH", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPI", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPR", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPT", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSPW", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSSW", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSSZ", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTC", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTE", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTF", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTG", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTH", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTI", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTK", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTL", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTM", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTS", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTV", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSTW", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CGIHY", "cid": 1382, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "S7ASK", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XYAGG", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XYAGI", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XYAGM", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XYAGO", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMA", "cid": 1394, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XYAIA", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XYAIB", "cid": 1394, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VKG", "cid": 1395, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NCA", "cid": 1402, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DAL", "cid": 1404, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNSP", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APWF7L", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APWF8L", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DABCD", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HZX8029", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MYFLY", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DCS803", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N18WF", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N412TX", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N506EX", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N5266EE", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7777N", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N8000E", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "OOLMG", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PEG26", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PRVDR", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "WJM13", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBRH", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBYA", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCSA", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCTH", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBHY", "cid": 1406, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "OMA", "cid": 1409, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "OAE", "cid": 1410, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "A6DEJ", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DEJ070", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GLCDH", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBIGY", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N330AG", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N8100E", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBVX", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKECD", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKECE", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKJBH", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRSA", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRSS", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SKY", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SYA", "cid": 1417, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PIC", "cid": 1420, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHPFA", "cid": 1424, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHPFJ", "cid": 1424, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHPFK", "cid": 1424, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHPFL", "cid": 1424, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHPFS", "cid": 1424, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHPFV", "cid": 1424, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PIA", "cid": 1425, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PAS", "cid": 1430, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RPC3229", "cid": 1434, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PAL", "cid": 1434, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRGA", "cid": 1449, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRGE", "cid": 1449, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRGH", "cid": 1449, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRJD", "cid": 1450, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRJI", "cid": 1450, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRJR", "cid": 1450, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRJW", "cid": 1450, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "QFA", "cid": 1453, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "QTR", "cid": 1454, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RBA", "cid": 1470, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RJA", "cid": 1471, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RNA", "cid": 1473, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAUA", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAWC", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAWD", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAXH", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAZK", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBKI", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MCMD", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MKNS", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MKSM", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MKUL", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMOH", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSAC", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N269PA", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MYHM", "cid": 1475, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SFR", "cid": 1477, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SVA", "cid": 1485, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSCPA", "cid": 1494, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSCPG", "cid": 1494, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSCPH", "cid": 1494, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSSLA", "cid": 1494, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSSLB", "cid": 1494, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSSLC", "cid": 1494, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SLK", "cid": 1495, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SVW", "cid": 1496, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SIA", "cid": 1498, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSUN", "cid": 1500, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SHY", "cid": 1500, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBAI", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N110TP", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N115MH", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N188TL", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N3099", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N338TM", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N341GC", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N485CJ", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N550TM", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N570R2", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N570RZ", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N60BY", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N988TM", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N998SR", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPJCM", "cid": 1509, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MARB", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MFLY", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MFRL", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MGAC", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIGB", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIMC", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJAA", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJAG", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLLD", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMYR", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNKV", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNKX", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNKZ", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MOUT", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRNT", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSAW", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MZAS", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GDIGA", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N105BA", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1459", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N145FL", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N168RT", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N41255", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N415FL", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N654LH", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N6614", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N66FX", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N9889N", "cid": 1512, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SAA", "cid": 1513, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SXA", "cid": 1518, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ALK", "cid": 1521, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SWR", "cid": 1527, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SAZ", "cid": 1528, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDUA", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MEAJ", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MEAX", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHCA", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHCB", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIAI", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIBA", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIBH", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIDA", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIFA", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIMI", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIMW", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MINA", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MISM", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITS", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMKZ", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CFGTI", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CFTGI", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CFTGX", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N650PR", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RDBULL", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RDBULL01", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHFOS", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHIFC", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHZCC", "cid": 1530, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBIBX", "cid": 1531, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBITG", "cid": 1531, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCIC", "cid": 1531, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FPG", "cid": 1531, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSITD", "cid": 1539, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSLNG", "cid": 1539, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "THA", "cid": 1540, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTGA", "cid": 1547, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKKAR", "cid": 1547, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RMY", "cid": 1547, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTUE", "cid": 1549, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTVE", "cid": 1549, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTVK", "cid": 1549, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTVO", "cid": 1549, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "THY", "cid": 1552, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TUA", "cid": 1553, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UAE", "cid": 1556, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UAL", "cid": 1559, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CSTFU", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CSTRH", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EJM18", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EJM410", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EJM88", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GTI", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBJGJ", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N36LG", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N410M", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N824MT", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N88ND", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TCVEL", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBVT", "cid": 1561, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UPS", "cid": 1562, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N157H", "cid": 1564, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N550GA", "cid": 1564, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N575CT", "cid": 1564, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N740BA", "cid": 1564, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7800", "cid": 1564, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N146UK", "cid": 1565, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N324HS", "cid": 1565, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N689WM", "cid": 1565, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7637M", "cid": 1565, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RPC718", "cid": 1565, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SVR", "cid": 1567, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UZB", "cid": 1569, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VOZ", "cid": 1573, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VDA", "cid": 1576, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "2TSSA", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "2YAYA", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAWM", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAZM", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MCHS", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDSA", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MISY", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLDV", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSAZ", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSBK", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAA", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAB", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAD", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAE", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAF", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAG", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAH", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAI", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAJ", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAK", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAL", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAM", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAO", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAP", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAQ", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAR", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAS", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAV", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAW", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAX", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWSS", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWST", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWTR", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N413JG", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N562SA", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N666SA", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N800AK", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N86JG", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWAB", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWAI", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBDJ", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "WSTR01", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "WSTR1", "cid": 1581, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CXA", "cid": 1587, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MYCB", "cid": 1593, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MYPG", "cid": 1593, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MYTL", "cid": 1593, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SDM", "cid": 1597, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SQC", "cid": 1599, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHMG", "cid": 1607, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJFX", "cid": 1607, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLLC", "cid": 1607, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N37345", "cid": 1607, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ICE", "cid": 1610, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBBC", "cid": 1619, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CFXQR", "cid": 1619, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHATO", "cid": 1619, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKYGZ", "cid": 1667, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N139TT", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N168KS", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N50LK", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N515KS", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N787LG", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N884RS", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N911GU", "cid": 1682, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBHN", "cid": 1683, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NJE", "cid": 1686, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTWN", "cid": 1689, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKTWX", "cid": 1689, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BHMA", "cid": 1697, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N116FE", "cid": 1697, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCEK", "cid": 1697, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBNH", "cid": 1697, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AZQ", "cid": 1716, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MEBW", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MEBX", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HATAM", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1188EH", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N118EH", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N118TL", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N264EX", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N265EX", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N403", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PETREL03", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PETREL1", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PETREL2", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PETREL3", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SINUS1", "cid": 1729, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JST", "cid": 1747, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TGW", "cid": 1749, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UKL", "cid": 1752, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JSA", "cid": 1753, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "A9CACE", "cid": 1764, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCBW", "cid": 1764, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BAH", "cid": 1768, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JAI", "cid": 1772, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UMK2402", "cid": 1778, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CSZ", "cid": 1790, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBEL", "cid": 1800, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBMM", "cid": 1800, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SHE", "cid": 1808, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBSO", "cid": 1808, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AMB", "cid": 1813, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ETD", "cid": 1815, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TJS", "cid": 1819, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DCS921", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GCGGN", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GNJ77", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GPPBA", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MJE019", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N774XJ", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBGS", "cid": 1823, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ROJ", "cid": 1827, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CAZ", "cid": 1842, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNEA", "cid": 1852, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRPH", "cid": 1852, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRPX", "cid": 1852, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CXM", "cid": 1852, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1022W", "cid": 1853, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJPB", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJPC", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTSL", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MZAA", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MZAB", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1309B", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N174TM", "cid": 1856, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMZ611P", "cid": 1857, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMZ642P", "cid": 1857, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMZ6541", "cid": 1857, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMZ6571", "cid": 1857, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMZ", "cid": 1857, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKCKP", "cid": 1860, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SJY", "cid": 1860, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AXB", "cid": 1864, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KMI", "cid": 1865, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FFM", "cid": 1872, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TOM", "cid": 1877, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XURKR", "cid": 1894, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KZR", "cid": 1895, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNOR", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AERO", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KRISAKTI", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "M10102", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "M10201", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N43CV", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N8116V", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N835MC", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RDBUL01", "cid": 1897, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AER", "cid": 1897, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GSOVA", "cid": 1899, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MMAEE", "cid": 1899, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ONG601", "cid": 1899, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAPY", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAUB", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJOY", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBYC", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBYD", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBYF", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBYG", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKDDE", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKFAO", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKFLY", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKKFS", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKMUA", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKMUC", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRTG", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRTH", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRTI", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTI", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTJ", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTK", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTL", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTM", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTO", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTP", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTQ", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTR", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTT", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTU", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWTV", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWUH", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWUI", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWUJ", "cid": 1911, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HKE", "cid": 1912, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N933MC", "cid": 1914, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N933ML", "cid": 1914, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N939ML", "cid": 1914, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBJRG", "cid": 1920, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSEMS", "cid": 1920, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "S2AHS", "cid": 1920, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GCO760", "cid": 1925, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N368AG", "cid": 1925, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N54PR", "cid": 1925, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N9253V", "cid": 1925, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TWY24", "cid": 1925, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HAWK", "cid": 1927, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNAA", "cid": 1927, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ALPHA1", "cid": 1927, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NSJ131", "cid": 1927, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NSJ132", "cid": 1927, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNAB", "cid": 1927, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MFRM", "cid": 1930, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWCF", "cid": 1930, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FRAS01", "cid": 1930, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FRAS1", "cid": 1930, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N449DY", "cid": 1930, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N9297N", "cid": 1930, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GTI", "cid": 1933, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XAX", "cid": 1935, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MJE013", "cid": 1939, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MJE024", "cid": 1939, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKHJ", "cid": 1940, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CRK", "cid": 1940, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNCU", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRBI", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV001", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV007", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV01", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV028", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV052", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV06", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV077", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV09", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV1", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV10", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV102", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV108", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV112", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV114", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV116", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV133", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV137", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV139", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV149", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV152", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV158", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV159", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV162", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV164", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV167", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV168", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV169", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV171", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV172", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV173", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV174", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV176", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV177", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV185", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV188", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV192", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV197", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV199", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV203", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV209", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV211", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV213", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV214", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV215", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV216", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV217", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV220", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV224", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV226", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV229", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV231", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV233", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV235", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV236", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV240", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV245", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV246", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV249", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV254", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV260", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV262", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV264", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV267", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV274", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV276", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV278", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV28", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV285", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV286", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV301", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV312", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV314", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV315", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV316", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV319", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV329", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV331", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV334", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV337", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV338", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV339", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV340", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV341", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV343", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV345", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV346", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV348", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV350", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV351", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV362", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV365", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV367", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV370", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV372", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV399", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV4", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV413", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV442", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV63", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV68", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV7", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV77", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV8", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV85", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV9", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADV96", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ADVCOMB", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1188U", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XU611", "cid": 1948, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMYA", "cid": 1962, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MWG", "cid": 1962, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SXI", "cid": 1984, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MANU", "cid": 1986, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MCTW", "cid": 1986, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TAY", "cid": 1987, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NOK", "cid": 1988, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDBI", "cid": 1989, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDBJ", "cid": 1989, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DCNEU", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HK4828X", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N377CJ", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N385WL", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VJS", "cid": 1991, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N554CE", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7799T", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N842WF", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N888GY", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N988AP", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHZPD", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBNX", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBPN", "cid": 1991, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HIGH", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HOPE", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVCA", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVCB", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVCC", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VJT", "cid": 1996, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFA", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFB", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFC", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFD", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFE", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFF", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFG", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVFH", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJA", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJC", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJD", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJE", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJF", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJG", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJH", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJI", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJJ", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVJL", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVTA", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVTB", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9HVTC", "cid": 1996, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLRW", "cid": 1998, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCSS", "cid": 1998, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TBJ", "cid": 1998, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N530WC", "cid": 2007, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSJAA", "cid": 2008, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSKCS", "cid": 2008, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSMCL", "cid": 2008, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSRGR", "cid": 2008, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSWEH", "cid": 2008, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBSR", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MGCW", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MPBH", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRSQ", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSJCN", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "IPRDA", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N271AL", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N272AL", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N281AL", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKDBE", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKJCH", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHLHH", "cid": 2011, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNAV", "cid": 2012, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N527CW", "cid": 2012, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKBKS", "cid": 2016, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N889JG", "cid": 2017, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BOX", "cid": 2025, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMAR", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNKT", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWIN", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET1", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET10", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET19", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET2", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET3", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET4", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET5", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET7", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET8", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AFJET9", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N1688L", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N2422Q", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N454WF", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N525BJ", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N540WA", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N98560", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RAINMKR", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RAINMKR1", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RAINMKR2", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RAINMKR3", "cid": 2026, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNEF", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNEJ", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MNEP", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GSB", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7101", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NEP", "cid": 2031, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7102", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7218", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7219", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7806", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKYGP", "cid": 2031, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MCTM", "cid": 2035, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBIG", "cid": 2039, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N490AG", "cid": 2039, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFC", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFD", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFE", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFF", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFG", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFH", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFI", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFJ", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFK", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFL", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFM", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFN", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VYFO", "cid": 2040, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAVN", "cid": 2044, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSJRZ", "cid": 2045, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHLOE", "cid": 2045, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHNXY", "cid": 2045, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N168TT", "cid": 2046, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VBON", "cid": 2049, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VBOO", "cid": 2049, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NWS", "cid": 2050, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DRK", "cid": 2055, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MAHA", "cid": 2058, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9METC", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIAE", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MVVS", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BOXER", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N120TX", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N188CY", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N212SL", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N27RX", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N510DB", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N838MA", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N936CD", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "OYNMH", "cid": 2059, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSTOM", "cid": 2060, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N30089", "cid": 2063, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N584V", "cid": 2064, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DCM", "cid": 2065, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N62SJ", "cid": 2066, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SPXENL", "cid": 2066, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N168EE", "cid": 2072, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N360TX", "cid": 2073, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "REU", "cid": 2074, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "IGO", "cid": 2078, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDSW", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIAC", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MJCA", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MWAN", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N369FF", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N450GA", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N66KX", "cid": 2081, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9VBOQ", "cid": 2082, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N990BB", "cid": 2084, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FYG", "cid": 2084, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWGL", "cid": 2085, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKWGO", "cid": 2085, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBPH", "cid": 2085, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N338TZ", "cid": 2086, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N757PL", "cid": 2086, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N8989N", "cid": 2086, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKOME", "cid": 2086, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "PKRJG", "cid": 2086, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCSR", "cid": 2086, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRSB", "cid": 2087, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N7567T", "cid": 2087, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MIAG", "cid": 2089, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N99UR", "cid": 2089, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N217PA", "cid": 2090, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N290MT", "cid": 2090, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N799DS", "cid": 2090, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N96706", "cid": 2090, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SCO", "cid": 2091, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CTV", "cid": 2092, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MARR", "cid": 2093, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MCJG", "cid": 2094, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCPP", "cid": 2094, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HFY", "cid": 2098, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BBW", "cid": 2099, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N550AU", "cid": 2101, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N888AU", "cid": 2101, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AHY", "cid": 2103, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APG", "cid": 2104, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MXD", "cid": 2107, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "GMR", "cid": 2110, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCSG", "cid": 2111, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCVX", "cid": 2111, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "WGT11X", "cid": 2111, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "WGT51L", "cid": 2111, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N907MC", "cid": 2114, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KEJ6480", "cid": 2115, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KEJ6481", "cid": 2115, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RA02857", "cid": 2115, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RSJ9651", "cid": 2115, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RSJ9652", "cid": 2115, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UPHA001", "cid": 2115, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VQBMT", "cid": 2116, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHVRE", "cid": 2118, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTAGP", "cid": 2119, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTAML", "cid": 2119, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTAPL", "cid": 2119, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLEO", "cid": 2121, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRML", "cid": 2121, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N66KL", "cid": 2121, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHVRI", "cid": 2121, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CSC", "cid": 2122, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HSRBR", "cid": 2124, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RBR", "cid": 2124, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CQH", "cid": 2126, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "RGE", "cid": 2129, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HZHR5", "cid": 2132, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "IAW", "cid": 2134, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CSH", "cid": 2138, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XAR", "cid": 2139, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TLM", "cid": 2140, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDBL", "cid": 2142, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EJM789", "cid": 2144, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N789ZZ", "cid": 2144, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EJM", "cid": 2144, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPBCC", "cid": 2147, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTRVL", "cid": 2147, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VJC", "cid": 2149, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBEW", "cid": 2150, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "KNE", "cid": 2151, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MAPL", "cid": 2155, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDRA", "cid": 2155, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MDRD", "cid": 2155, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MSCB", "cid": 2155, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MVEV", "cid": 2155, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TTW", "cid": 2157, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AAQ", "cid": 2161, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N188CF", "cid": 2162, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N368", "cid": 2162, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N888FJ", "cid": 2162, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "XPE", "cid": 2163, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JNA095D", "cid": 2165, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JNA", "cid": 2165, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHLL", "cid": 2167, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHLM", "cid": 2167, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MHLN", "cid": 2167, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NIH", "cid": 2168, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N34FM", "cid": 2170, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N53GX", "cid": 2170, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "NCT", "cid": 2171, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TAX", "cid": 2172, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UBA", "cid": 2173, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "IDX", "cid": 2174, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N899ST", "cid": 2175, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EDW", "cid": 2177, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "AZG", "cid": 2179, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CHB", "cid": 2181, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MBSS", "cid": 2184, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MLKE", "cid": 2184, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "THD", "cid": 2187, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JJA", "cid": 2188, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LKE", "cid": 2189, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MPAR", "cid": 2190, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTSA", "cid": 2190, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MSURI01", "cid": 2190, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MYSAI", "cid": 2191, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MREN", "cid": 2193, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UTP", "cid": 2194, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MFAS", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MRAF", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN08", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN1", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN101", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN102", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN103", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN106", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN107", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN108", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN109", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN110", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN126", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN132", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FALCN136", "cid": 2195, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MZWR", "cid": 2196, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UBG", "cid": 2197, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HIM", "cid": 2198, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JCC", "cid": 2200, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N666DM", "cid": 2205, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N89FC", "cid": 2205, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N2180E", "cid": 2206, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N5045B", "cid": 2206, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N5748E", "cid": 2206, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N912TP", "cid": 2206, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VHDYT", "cid": 2206, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BKTL", "cid": 2207, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BLWX", "cid": 2207, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "T7LKT", "cid": 2207, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HBH", "cid": 2209, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HKC", "cid": 2211, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BTK", "cid": 2212, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N118CY", "cid": 2214, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BTN", "cid": 2216, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "LKH", "cid": 2218, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DRK602", "cid": 2221, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DRK603", "cid": 2221, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "B1432", "cid": 2222, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "B1576", "cid": 2222, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "B1589", "cid": 2222, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "B6996", "cid": 2222, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "B7593", "cid": 2222, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N215PA", "cid": 2223, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APBNR", "cid": 2227, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APGAK", "cid": 2227, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APIGC", "cid": 2227, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "APRDR", "cid": 2227, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MMSN", "cid": 2228, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAR", "cid": 2228, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "URCIV", "cid": 2229, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "TUP", "cid": 2230, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITA", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITB", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITC", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITD", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITE", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITF", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITG", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITU", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MITV", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL153", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL158", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL160", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL167", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL3", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL4", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL6", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "EXCEL7", "cid": 2231, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CBG", "cid": 2233, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N/A", "cid": 2235, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAN", "cid": 2236, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ATG", "cid": 2239, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "DKH", "cid": 2240, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N783SH", "cid": 2241, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CUH", "cid": 2244, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MANA", "cid": 2245, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MTAT", "cid": 2245, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "CQN", "cid": 2248, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "ABY", "cid": 2250, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "SJX", "cid": 2252, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCGO", "cid": 2254, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VPCPT", "cid": 2254, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "VTI", "cid": 2255, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "QQE", "cid": 2261, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "JLB", "cid": 2263, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "UTN", "cid": 2273, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "N9688R", "cid": 2274, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "BAV", "cid": 2275, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "QDA", "cid": 2276, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "9MKIA", "cid": 2278, "callsign_type": 3 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "FJI", "cid": 2279, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "MKR", "cid": 2281, "callsign_type": 1 }
+  },
+  {
+    "model": "operations.callsign",
+    "fields": { "callsign": "HYT", "cid": 2283, "callsign_type": 1 }
+  }
+]

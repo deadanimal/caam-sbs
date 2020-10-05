@@ -3,6 +3,7 @@ import uuid
 
 from django.contrib.gis.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models import Q
 
 from simple_history.models import HistoricalRecords
 
@@ -32,11 +33,11 @@ class Rate(models.Model):
     upper_weight_limit = models.CharField(max_length=100, default='NA')
     rate = models.CharField(max_length=100, default='NA')
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    modified_at = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['name']
 
 
     def __str__(self):
@@ -59,8 +60,8 @@ class Charge(models.Model):
     charge_rate = models.FloatField(default=0)
     charge_minimum = models.FloatField(default=0)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    modified_at = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
         ordering = ['-created_at']
@@ -76,19 +77,23 @@ class Callsign(models.Model):
     callsign = models.CharField(max_length=100, default='NA') #
     cid = models.ForeignKey(
         Organisation,
-        on_delete=models.CASCADE,
-        related_name='callsign_organisation',
-        limit_choices_to={
-            'organisation_type': 'AL'
-        }
+        to_field='cid',
+        on_delete=models.CASCADE
     )
-    aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE, related_name='callsign') #
+    CALLSIGN_TYPE = [
+        ('1', 'ICAO'),
+        ('2', 'IATA'),
+        ('3', 'CALLSIGN'),
+        ('NA', 'Not Available')
+    ]
+    callsign_type = models.CharField(max_length=2, choices=CALLSIGN_TYPE, default='NA')
+    # aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE, related_name='callsign') #
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    modified_at = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['cid']
 
 
     def __str__(self):
@@ -98,14 +103,14 @@ class Callsign(models.Model):
 class Route(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) #
-    name = models.CharField(max_length=100, default='NA') #
     description = models.CharField(max_length=100, default='NA') #
     rtid = models.CharField(max_length=100, default='NA') #
     distance = models.FloatField(default=0, blank=True) #
     
-    location_departure = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='route_departure') #
-    location_destination = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='route_destination') #
-    total_distance = models.FloatField(default=0, blank=True) #
+    # departure = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='route_departure') #
+    # destination = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='route_destination') #
+    departure = models.CharField(max_length=50, default='NA')
+    destination = models.CharField(max_length=50, default='NA')
     
     FLIGHT_TYPE = [
         ('D', 'Domestic'),
@@ -114,7 +119,7 @@ class Route(models.Model):
     ]
     flight_type = models.CharField(max_length=2, choices=FLIGHT_TYPE, default='NA') #
 
-    CATEGORY_TYPE = [
+    CATEGORY = [
         ('SC1', 'Sector 1'),
         ('SC2', 'Sector 2'),
         ('SC3', 'Sector 3'),
@@ -124,7 +129,7 @@ class Route(models.Model):
         ('ALS', 'ALS'),
         ('NA', 'Not Available')
     ]
-    category_type = models.CharField(max_length=3, choices=CATEGORY_TYPE, default='NA') #
+    category = models.CharField(max_length=3, choices=CATEGORY, default='NA') #
 
     SITE = [
         ('KUL', 'Kuala Lumpur'),
@@ -134,8 +139,8 @@ class Route(models.Model):
     ]
     site = models.CharField(max_length=3, choices=SITE, default='NA') #
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    modified_at = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
         ordering = ['-created_at']
@@ -157,55 +162,188 @@ class FileUpload(models.Model):
     ]
     data_type = models.CharField(max_length=3, choices=DATA_TYPE, default='NA')
     data_file_link = models.FileField(null=True, blank=True, upload_to=PathAndRename('data_upload'))
+    file_date = models.CharField(max_length=8, default='NA')
+    total_data = models.IntegerField(default=0)
+
+    STATUSES = [
+        ('FIL0', 'Draf'),
+        ('FIL1', 'Processing'),
+        ('FIL2', 'Checked'),
+        ('FIL3', 'Approved')
+    ]
+    status = models.CharField(max_length=4, choices=STATUSES, default='FIL0')
     
-    route = models.ForeignKey(
-        Route,
-        on_delete=models.CASCADE,
-        related_name='file_upload_route'
-    )
-    operator = models.ForeignKey(
-        Organisation,
-        on_delete=models.CASCADE,
-        related_name='file_upload_operator',
-        limit_choices_to={
-            'organisation_type': 'AL'
-        }
-    )
-    aircraft = models.ForeignKey(
-        Aircraft,
-        on_delete=models.CASCADE,
-        related_name='file_upload_aircraft'
-    )
-    charge = models.ForeignKey(
-        Charge,
-        on_delete=models.CASCADE,
-        related_name='file_upload_charge'
-    )
     uploaded_by = models.ForeignKey(
         CustomUser,
         on_delete=models.CASCADE,
         related_name='file_upload_uploaded_by',
+        limit_choices_to=Q(user_type='OPS') | Q(user_type='APT')
+    )
+    checked_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='file_upload_checked_by',
         limit_choices_to={
-            'user_type': 'ST'
-        }
+            'user_type': 'OPS'
+        },
+        null=True
+    )
+    approved_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='file_upload_approved_by',
+        limit_choices_to={
+            'user_type': 'HOD'
+        },
+        null=True
     )
 
-    FLIGHT_RULE = [
-        ('I', 'Instrument'),
-        ('V', 'Visual')
-    ]
-    flight_rule = models.CharField(max_length=1, choices=FLIGHT_RULE, default='I')
-    remarks = models.TextField(blank=True, null=True)
-    touchdown = models.IntegerField(default=0, blank=True)
-    approval_permit_num = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    modified_at = models.DateTimeField(auto_now=True, null=True)
+    checked_at = models.DateTimeField(null=True)
+    approved_at = models.DateTimeField(null=True)
 
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
+
+class Fpldata(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    invoice_no = models.CharField(max_length=25, default='NA') # invoice number 
+    invoice_period = models.CharField(max_length=6, default='NA') # invoice period
+    # cid = models.CharField(max_length=5, default='NA')
+    cid = models.ForeignKey(
+        Organisation,
+        to_field='cid',
+        on_delete=models.CASCADE,
+        null=True
+    )
+
+    FPLCATEGORY = [
+        ('DOM', 'Domestic Flight'),
+        ('INB', 'Inbound Flight'),
+        ('LOC', 'Local Flight'),
+        ('OUB', 'Outbound Flight'),
+        ('OVF', 'Over Flight'),
+        ('NA', 'Not Available')
+    ]
+    ctg = models.CharField(max_length=3, choices=FPLCATEGORY, default='NA')
+
+    FRTYPE = [
+        ('I', 'Instrument'),
+        ('V', 'Visual'),
+        ('Y', 'Combination'),
+        ('NA', 'Not Available')
+    ]
+    fr = models.CharField(max_length=2, choices=FRTYPE, default='NA') # flight rule
+
+    FPLTYPE = [
+        ('VFR', 'VFR'),
+        ('TFL', 'TFL'),
+        ('SCS', 'Addon From PUMA'),
+        ('NA', 'Not Available')
+    ]
+    fpl_type = models.CharField(max_length=3, choices=FPLTYPE, default='NA')
+
+    fpl_date = models.CharField(max_length=20) 
+    fpl_no = models.CharField(max_length=10, default='NA') # refer table callsign
+    aircraft_model = models.CharField(max_length=10, default='NA') # refer table aircraft
+    dep = models.CharField(max_length=10, default='NA') # departure
+    dest = models.CharField(max_length=10, default='NA') # destination
+    route = models.CharField(max_length=100, default='NA') # route taken
+    rate = models.DecimalField(max_digits=3, decimal_places=2, default=0.00) # refer table rate
+    dist = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # formula: dist * rate = amount
+    error_remark = models.CharField(max_length=100, blank=True, null=True)
+
+    STATUSES = [
+        ('FPL0', 'Draf'),
+        ('FPL1', 'Processing'),
+        ('FPL2', 'Checked'),
+        ('FPL3', 'Archived'),
+        ('FPL4', 'Approved')
+    ]
+    status = models.CharField(max_length=4, choices=STATUSES, default='FPL0')
+
+    fileupload = models.ForeignKey(
+        FileUpload,
+        on_delete=models.CASCADE,
+        related_name='file_upload_id',
+        null=True
+    )
+
+    uploaded_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_uploaded_by',
+        limit_choices_to=Q(user_type='OPS') | Q(user_type='APT')
+    )
+    checked_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_checked_by',
+        limit_choices_to={
+            'user_type': 'OPS'
+        },
+        null=True
+    )
+    archived_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_archived_by',
+        limit_choices_to={
+            'user_type': 'OPS'
+        },
+        null=True
+    )
+    approved_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_approved_by',
+        limit_choices_to={
+            'user_type': 'HOD'
+        },
+        null=True
+    )
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+    submitted_at = models.DateTimeField(null=True)
+    checked_at = models.DateTimeField(null=True)
+    archived_at = models.DateTimeField(null=True)
+    approved_at = models.DateTimeField(null=True)
+
+    # class Meta:
+        # ordering = ['fpl_date']
+
+    def __str__(self):
+        return self.fpl_no
+
+class FpldataHistory(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_history_user'
+    )
+    master_data_id = models.ForeignKey(
+        Fpldata,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_history_master_data_id'
+    )
+    data_changes = models.CharField(max_length=300, default="NA")
+    
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['-created_at']
 
-
     def __str__(self):
-        return self.name
+        return self.data_changes
 

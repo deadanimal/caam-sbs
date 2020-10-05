@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { 
-  BsDropdownModule, 
-  ProgressbarModule, 
-  TooltipModule, 
-  BsDatepickerModule
-} from 'ngx-bootstrap';
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { ProgressbarModule } from "ngx-bootstrap/progressbar";
+import { TooltipModule } from "ngx-bootstrap/tooltip";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';

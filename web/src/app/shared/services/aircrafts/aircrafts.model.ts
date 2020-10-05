@@ -6,8 +6,8 @@ export class AircraftsModel {
   public manufacturer: string;
   public aircraft_type: string;
   public weight_category: string;
-  public min_weight: number;
-  public max_weight: number;
+  public weight: number;
+  public rate: number;
   public operator: number;
   public is_active: boolean;
   public created_at: any;
@@ -21,8 +21,8 @@ export class AircraftsModel {
     manufacturer: string,
     aircraft_type: string,
     weight_category: string,
-    min_weight: number,
-    max_weight: number,
+    weight: number,
+    rate: number,
     operator: number,
     is_active: boolean,
     created_at: any,
@@ -35,8 +35,8 @@ export class AircraftsModel {
     this.manufacturer = manufacturer;
     this.aircraft_type = aircraft_type;
     this.weight_category = weight_category;
-    this.min_weight = min_weight;
-    this.max_weight = max_weight;
+    this.weight = weight;
+    this.rate = rate;
     this.operator = operator;
     this.is_active = is_active;
     this.created_at = created_at;

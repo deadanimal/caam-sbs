@@ -1,0 +1,56 @@
+[
+  {
+    "model": "operations.rate",
+    "fields": {
+      "name": "A",
+      "lower_weight_limit": 1,
+      "upper_weight_limit": 2500,
+      "rate": 0.1
+    }
+  },
+  {
+    "model": "operations.rate",
+    "fields": {
+      "name": "B",
+      "lower_weight_limit": 2501,
+      "upper_weight_limit": 5000,
+      "rate": 0.2
+    }
+  },
+  {
+    "model": "operations.rate",
+    "fields": {
+      "name": "C",
+      "lower_weight_limit": 5001,
+      "upper_weight_limit": 45000,
+      "rate": 0.3
+    }
+  },
+  {
+    "model": "operations.rate",
+    "fields": {
+      "name": "D",
+      "lower_weight_limit": 45001,
+      "upper_weight_limit": 90000,
+      "rate": 0.4
+    }
+  },
+  {
+    "model": "operations.rate",
+    "fields": {
+      "name": "E",
+      "lower_weight_limit": 90001,
+      "upper_weight_limit": 135000,
+      "rate": 0.5
+    }
+  },
+  {
+    "model": "operations.rate",
+    "fields": {
+      "name": "F",
+      "lower_weight_limit": 135001,
+      "upper_weight_limit": 800000,
+      "rate": 0.6
+    }
+  }
+]

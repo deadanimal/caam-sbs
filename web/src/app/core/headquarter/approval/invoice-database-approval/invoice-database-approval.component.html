@@ -53,7 +53,11 @@
           </div>
           <div class="row">
             <div class="col">
-              <button class="btn btn-default" (click)="approve()" [disabled]="selected.length <= 0">
+              <button
+                class="btn btn-default"
+                (click)="approve()"
+                [disabled]="selected.length <= 0"
+              >
                 Approve
               </button>
             </div>
@@ -96,10 +100,11 @@
             </div>
           </div>
 
+          <!-- [scrollbarV]="true"
+          style="height: 500px;" -->
           <ngx-datatable
             #myTable
             class="bootstrap selection-cell"
-            style="height: 500px;"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
@@ -111,11 +116,10 @@
             [selectAllRowsOnPage]="false"
             (activate)="onActivate($event)"
             (select)="onSelect($event)"
-            [scrollbarV]="true"
             [scrollbarH]="true"
           >
             <ngx-datatable-row-detail
-              [rowHeight]="200"
+              [rowHeight]="150"
               #myDetailRow
               (toggle)="onDetailToggle($event)"
             >
@@ -125,11 +129,11 @@
                 ngx-datatable-row-detail-template
               >
                 <div
-                  style="padding-left: 35px; padding-top: 10px;"
+                  style="padding-left: 8%; padding-top: 10px;"
                   class="table-responsive"
                 >
                   <h4>List of Updates</h4>
-                  <ul
+                  <!-- <ul
                     *ngFor="let list of row.list; let i = index"
                     style="list-style-type: none;"
                   >
@@ -137,7 +141,13 @@
                       {{ i + 1 }}.
                       <a [routerLink]="list.link">{{ list.detail }}</a>
                     </li>
+                  </ul> -->
+                  <ul style="list-style-type: none;">
+                    <li>
+                      <a>{{ row.description }}</a>
+                    </li>
                   </ul>
+                  <p *ngIf="row.json_data.length > 10" class="text-wrap">Data: {{ row.json_data }}</p>
                 </div>
               </ng-template>
             </ngx-datatable-row-detail>
@@ -152,29 +162,53 @@
               [checkboxable]="true"
             ></ngx-datatable-column>
             <ngx-datatable-column name="Submissiondate">
+              <ng-template ngx-datatable-header-template>
+                <span>Submission date</span>
+              </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <div (click)="toggleExpandRow(row)">
-                  {{ row.submissiondate }}
+                  {{ row.created_at | date }}
                 </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Officername">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Officer name</span>
+              </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                <div (click)="toggleExpandRow(row)">{{ row.officername }}</div>
+                <div (click)="toggleExpandRow(row)">CAAM SBS</div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Type">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Type</span>
+              </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                <div (click)="toggleExpandRow(row)">{{ row.type }}</div>
+                <div (click)="toggleExpandRow(row)">
+                  {{ getType(row.type) }}
+                </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Status</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <div (click)="toggleExpandRow(row)">
+                  <span [ngClass]="getStatusBadge(row.status)">{{ getStatus(row.status) }}</span>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column sortable="false" prop="id">
+              <ng-template ngx-datatable-header-template>
+                <span>Actions</span>
+              </ng-template>
               <ng-template
                 let-row="row"
                 let-value="value"
                 ngx-datatable-cell-template
               >
-                <button class="btn btn-danger btn-sm" (click)="reject()">
+                <button class="btn btn-danger btn-sm" (click)="reject(row.id)">
                   Reject
                 </button>
               </ng-template>

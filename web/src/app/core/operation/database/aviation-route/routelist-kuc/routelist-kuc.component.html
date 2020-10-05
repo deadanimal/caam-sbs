@@ -1,0 +1,372 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Kuching
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
+              </li>
+            </ol>
+          </nav>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify"
+              >User able to view and update the Kuching route list.</small
+            >
+          </ng-template>
+          <button
+            class="btn btn-icon btn-sm btn-dark"
+            type="button"
+            [popover]="popTemplate"
+            placement="right"
+            [outsideClick]="true"
+          >
+            <span class="btn-inner--icon"
+              ><i class="fas fa-info-circle"></i
+            ></span>
+          </button>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button class="btn btn-dark" (click)="create(classic1)">
+            Add New Route
+          </button>
+
+          <ng-template #classic1 let-c="close" let-d="dismiss">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                  <div class="card-header bg-dark">
+                    <div class="text-muted text-center mb-3">
+                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    </div>
+                  </div>
+                  <div class="card-body px-lg-5 py-lg-5">
+                    <form [formGroup]="routeFormGroup">
+                      <div class="row">
+                        <div class="col-lg-4 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label">RTID</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter rtid"
+                              formControlName="rtid"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">Departure</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter departure"
+                              formControlName="location_departure"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Destination</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Enter destination"
+                              formControlName="location_destination"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label">Distance</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="Enter distance"
+                              formControlName="distance"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">CTG</label>
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="category_type"
+                            >
+                              <option value="">Please select</option>
+                              <option value="SC1">SC1</option>
+                              <option value="SC2">SC2</option>
+                              <option value="SC3">SC3</option>
+                              <option value="SC4">SC4</option>
+                              <option value="SC4">SC5</option>
+                              <option value="ALN">ALN</option>
+                              <option value="ALS">ALS</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label class="form-control-label">TOF</label>
+                            <select
+                              class="form-control"
+                              placeholder="Please select"
+                              formControlName="flight_type"
+                            >
+                              <option value="">Please select category</option>
+                              <option value="D">Domestic</option>
+                              <option value="I">International</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-xs-12">
+                          <div class="form-group">
+                            <label class="form-control-label"
+                              >Route Description</label
+                            >
+                            <textarea
+                              rows="6"
+                              class="form-control"
+                              placeholder="Enter route description"
+                              formControlName="description"
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="text-center">
+                        <button class="btn btn-dark" (click)="submit()">
+                          Submit
+                        </button>
+                        <button
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                          (click)="c('Close click')"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Route List</h3>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-3 col-xs-12">
+              <div class="form-group">
+                <label class="form-control-label">DEP</label>
+                <select class="form-control form-control-sm">
+                  <option value="">Please select</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xs-12">
+              <div class="form-group">
+                <label class="form-control-label">DEST</label>
+                <select class="form-control form-control-sm">
+                  <option value="">Please select</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xs-12">
+              <div class="form-group">
+                <label class="form-control-label">RTID</label>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  placeholder="Enter route ID"
+                />
+              </div>
+            </div>
+            <div
+              class="col-lg-3 col-xs-12"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <button class="btn btn-default btn-sm">Search</button>
+              <button class="btn btn-secondary btn-sm">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>LN</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.no + 1 }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>RTID</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.rtid }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEP</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.location_departure }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEST</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.location_departure }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Dist</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.distance }}
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Routedesc"></ngx-datatable-column> -->
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                CTG
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.category_type }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                TOF
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.flight_type }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template ngx-datatable-header-template>
+                <span>Actions</span>
+              </ng-template>
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="edit(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <!-- <button class="btn btn-sm btn-warning">
+                <i class="fas fa-lightbulb"></i>
+              </button> -->
+
+                <button class="btn btn-danger btn-sm" (click)="delete()">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- <ngx-datatable-column name="Status">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <label class="custom-toggle">
+                <input type="checkbox" checked="" />
+                <span
+                  class="custom-toggle-slider rounded-circle"
+                  data-label-off="No"
+                  data-label-on="Yes"
+                ></span>
+              </label>
+            </ng-template>
+          </ngx-datatable-column> -->
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div
+          class="leaflet-map"
+          leaflet
+          [leafletLayers]="markerLayer"
+          [leafletOptions]="leafletOptions"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

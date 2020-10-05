@@ -14,6 +14,9 @@ import {
   PathLocationStrategy,
 } from "@angular/common";
 
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { JwtService } from 'src/app/shared/handler/jwt/jwt.service';
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -26,33 +29,66 @@ export class NavbarComponent implements OnInit {
   sidenavOpen: boolean = true;
   username: string;
 
+  userTypes = [
+    {
+      value: "HOD",
+      display_name: "Head of Department",
+    },
+    {
+      value: "FIN",
+      display_name: "Finance",
+    },
+    {
+      value: "OPS",
+      display_name: "Operation",
+    },
+    {
+      value: "APT",
+      display_name: "Airport",
+    },
+    {
+      value: "ALN",
+      display_name: "Airline",
+    },
+    {
+      value: "SAF",
+      display_name: "SAF",
+    },
+    {
+      value: "NAV",
+      display_name: "Not Available",
+    },
+  ];
+
   notifications = [
     {
       title: "You have 10 new approval need your attention",
       description: "Yus submitted a new approval request",
       time: "2 hrs ago",
-      route: "/headquarter/approval/invoice-database-approval"
+      route: "/headquarter/approval/invoice-database-approval",
     },
     {
       title: "Late invoice payment reminder",
       description:
         "Aeronautical Radio of Thailand Ltd. has 30 days late from payment deadline",
       time: "3 hrs ago",
-      route: "/headquarter/payment/checklist"
+      route: "/headquarter/payment/checklist",
     },
     {
       title: "Late invoice payment reminder",
       description:
         "AIR CALEDONIE INTERNATIONAL has 60 days late from payment deadline",
       time: "4 hrs ago",
-      route: "/headquarter/payment/checklist"
+      route: "/headquarter/payment/checklist",
     },
   ];
 
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private jwtService: JwtService
   ) {
     this.location = location;
     this.router.events.subscribe((event: Event) => {
@@ -81,13 +117,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.listTitles = ROUTES.filter((listTitle) => listTitle);
 
-    if (this.router.url.includes("headquarter")) {
-      this.username = "Ahmad Albab (Admin)";
-    } else if (this.router.url.includes("staff")) {
-      this.username = "Siti Saleha (Staff)";
-    } else if (this.router.url.includes("customer")) {
-      this.username = "K. Rumusamy (Customer)";
-    }
+    let user_obj = this.authService.decodedToken();
+    this.username = user_obj.username;
   }
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -148,5 +179,11 @@ export class NavbarComponent implements OnInit {
       document.body.classList.remove("g-sidenav-hidden");
       this.sidenavOpen = true;
     }
+  }
+
+  logout() {
+    // routerLink="/auth/login"
+    this.jwtService.destroyToken();
+    this.router.navigate(['/auth/login']);
   }
 }

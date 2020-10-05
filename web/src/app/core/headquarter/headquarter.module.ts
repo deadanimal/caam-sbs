@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { 
-  BsDropdownModule, 
-  ProgressbarModule, 
-  TooltipModule, 
-  BsDatepickerModule,
-  PopoverModule
-} from 'ngx-bootstrap';
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import { ProgressbarModule } from "ngx-bootstrap/progressbar";
+import { TooltipModule } from "ngx-bootstrap/tooltip";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { PopoverModule } from "ngx-bootstrap/popover";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
@@ -21,7 +19,6 @@ import { ManagementComponent } from './management/management.component';
 import { OperationReportComponent } from './reporting/operation-report/operation-report.component';
 import { FinanceReportComponent } from './reporting/finance-report/finance-report.component';
 import { AnalysisComponent } from './analysis/analysis.component';
-import { VfrComponent } from './vfr/vfr.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { AirlineManagementReportComponent } from './reporting/airline-management-report/airline-management-report.component';
 import { InvoiceDatabaseApprovalComponent } from './approval/invoice-database-approval/invoice-database-approval.component';
@@ -37,7 +34,6 @@ import { PaymentSummaryReportComponent } from './payment/payment-summary-report/
     OperationReportComponent,
     FinanceReportComponent,
     AnalysisComponent,
-    VfrComponent,
     InvoiceComponent,
     AirlineManagementReportComponent,
     InvoiceDatabaseApprovalComponent,

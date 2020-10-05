@@ -24,12 +24,17 @@ class CustomUser(AbstractUser):
     position = models.CharField(blank=True, max_length=100)
     department = models.CharField(blank=True, max_length=100)
 
+    # HOD/Finance/Operation/Airport/Airline/SAF
     USER_TYPE = [
-        ('AD', 'Administrator'),
-        ('CL', 'Client'),
-        ('ST', 'Staff')
+        ('HOD', 'Head of Department'),
+        ('FIN', 'Finance'),
+        ('OPS', 'Operation'),
+        ('APT', 'Airport'),
+        ('ALN', 'Airline'),
+        ('SAF', 'SAF'),
+        ('NAV', 'Not Available')
     ]
-    user_type = models.CharField(max_length=2, choices=USER_TYPE, default='CS')
+    user_type = models.CharField(max_length=3, choices=USER_TYPE, default='NAV')
 
     organisation = models.ForeignKey(
         Organisation, 
