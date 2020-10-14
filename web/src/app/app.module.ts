@@ -41,14 +41,14 @@ import { ComponentsModule } from "./components/components.module";
     NgxSpinnerModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  providers: [
-    /* Uncomment this to use interceptor */
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpTokenInterceptor,
-      multi: true,
-    },
-  ],
+  // providers: [
+  //   /* Uncomment this to use interceptor */
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: HttpTokenInterceptor,
+  //     multi: true,
+  //   },
+  // ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
