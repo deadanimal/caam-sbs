@@ -22,230 +22,58 @@ export interface ChildrenItems2 {
   title?: string;
   type?: string;
 }
-// Menu Items
-export const ROUTES: RouteInfo[] = [
+
+
+export const AirlineRoutes: RouteInfo[] = [
   {
-    path: "/headquarter/dashboard",
+    path: "/app/dashboard",
     title: "Dashboard",
     type: "link",
     icontype: "fas fa-desktop text-red",
   },
   {
-    path: "/headquarter/database",
-    title: "Database",
-    type: "sub",
-    icontype: "fas fa-database text-red",
-    collapse: "database",
-    isCollapsed: true,
-    children: [
-      {
-        path: "rate",
-        title: "Rate",
-        type: "link",
-      },
-      {
-        path: "airline",
-        title: "Airline",
-        type: "link",
-      },
-      {
-        path: "callsign",
-        title: "Callsign",
-        type: "link",
-      },
-      {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },
-      {
-        path: "route",
-        isCollapsed: true,
-        title: "Route",
-        type: "sub",
-        collapse: "route",
-        children: [
-          { path: "semenanjung", title: "Semenanjung", type: "link" },
-          { path: "kk", title: "Kota Kinabalu", type: "link" },
-          { path: "kuc", title: "Kuching", type: "link" },
-        ],
-      },
-      {
-        path: "exemptions",
-        title: "Exemptions",
-        type: "link",
-      },
-    ],
-  },
-  {
-    path: "/headquarter/vfrv",
-    title: "Data Management",
-    type: "sub",
-    icontype: "fas fa-hdd text-orange",
-    collapse: "vfrv",
-    isCollapsed: true,
-    children: [
-      { path: "upload", title: "Upload", type: "link" },
-      { path: "history", title: "History", type: "link" },
-      { path: "database", title: "Database", type: "link" },
-      { path: "generate-invoice", title: "Generate Invoice", type: "link" },
-    ],
-  },
-  {
-    path: "/headquarter/approval",
-    title: "Approval",
-    type: "sub",
-    icontype: "fas fa-signature text-dark",
-    collapse: "approval",
-    isCollapsed: true,
-    children: [
-      {
-        path: "invoice-database-approval",
-        title: "Invoice and Database Approval",
-        type: "link",
-      },
-      {
-        path: "monthly-invoice-approval",
-        title: "Monthly Invoice Approval",
-        type: "link",
-      },
-    ],
-  },
-  {
-    path: "/headquarter/finance",
+    path: "/app/finance",
     title: "Finance",
+    icontype: "fas fa-file-invoice-dollar text-green",
     type: "sub",
-    icontype: "fas fa-dollar-sign text-green",
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoice-list", title: "Invoice List", type: "link" },
-      // { path: "register-invoice", title: "Register Invoice", type: "link" },
-      { path: "aging-invoice", title: "Aging Invoice", type: "link" },
       {
-        path: "statement-account-report",
-        title: "Statement of Account Report",
+        path: "invoices",
+        title: "Invoice",
         type: "link",
-      },
+      },    
       {
-        path: "credit-debit-note-report",
-        title: "Credit and Debit Note Report",
+        path: "notes",
+        title: "Note",
         type: "link",
-      },
-      // { path: "checklist-invoice", title: "Checklist Invoice", type: "link" },
-      // { path: "exemptions", title: "Exemptions", type: "link" },
-      // { path: "charges", title: "Charges", type: "link" }
-    ],
+      },           
+      {
+        path: "payments",
+        title: "Payment",
+        type: "link",
+      },          
+    ]
   },
   {
-    path: "/headquarter/payment",
-    title: "Payment",
-    type: "sub",
-    icontype: "fas fa-receipt text-primary",
-    collapse: "payment",
-    isCollapsed: true,
-    children: [
-      { path: "checklist", title: "Checklist", type: "link" },
-      { path: "payment-list", title: "Payment List", type: "link" },
-      {
-        path: "deposit-report-list",
-        title: "Deposit Report List",
-        type: "link",
-      },
-      {
-        path: "outstanding-payment",
-        title: "Outstanding Payment",
-        type: "link",
-      },
-    ],
-  },
-  // {
-  //   path: "/headquarter/statement-account-report",
-  //   title: "Statement of Account Report",
-  //   type: "link",
-  //   icontype: "fas fa-receipt text-primary"
-  // },
-  // {
-  //   path: "/headquarter/credit-debit-note-report",
-  //   title: "Credit and Debit Note Report",
-  //   type: "link",
-  //   icontype: "fas fa-receipt text-primary"
-  // },
-  {
-    path: "/headquarter/report",
-    title: "Reporting",
-    type: "sub",
-    icontype: "fas fa-chart-bar text-blue",
-    collapse: "reporting",
-    isCollapsed: true,
-    children: [
-      { path: "operation", title: "Operation Report", type: "link" },
-      { path: "finance", title: "Finance Report", type: "link" },
-      {
-        path: "airline-management",
-        title: "Airline Management Report",
-        type: "link",
-      },
-      {
-        path: "payment-summary",
-        title: "Payment Summary Report",
-        type: "link",
-      },
-    ],
-  },
-  {
-    path: "/headquarter/analysis",
-    title: "Big Data Analysis",
+    path: "/app/movement",
+    title: "Movement",
     type: "link",
-    icontype: "fas fa-globe-asia text-indigo",
-  },
-  {
-    path: "/headquarter/utility",
-    title: "Utility",
-    type: "sub",
-    icontype: "fas fa-tools text-info",
-    collapse: "utility",
-    isCollapsed: true,
-    children: [
-      { path: "user", title: "User", type: "link" },
-      { path: "user-privilege", title: "User Privilege", type: "link" },
-      { path: "audit-trail", title: "Audit Trail", type: "link" },
-    ],
-  },
-  // {
-  //   path: "/headquarter/management",
-  //   title: "Management",
-  //   type: "link",
-  //   icontype: "fas fa-tasks text-pink",
-  // },
-  // {
-  //   path: "/headquarter/invoice",
-  //   title: "Invoice",
-  //   type: "link",
-  //   icontype: "fas fa-file-invoice-dollar text-yellow",
-  // },
-  // {
-  //   path: "/headquarter/vfr",
-  //   title: "VFR",
-  //   type: "link",
-  //   icontype: "fas fa-hdd text-orange"
-  // },
+    icontype: "fas fa-plane text-blue",
+  },  
+
 ];
 
-export const AIRPORTROUTES: RouteInfo[] = [
+export const AirportRoutes: RouteInfo[] = [
   {
-    path: "/airport/dashboard",
+    path: "/app/dashboard",
     title: "Dashboard",
     type: "link",
     icontype: "fas fa-desktop text-red",
   },
   {
-    path: "/airport/database",
+    path: "/app/database",
     title: "Database",
     type: "sub",
     icontype: "fas fa-database text-red",
@@ -253,51 +81,56 @@ export const AIRPORTROUTES: RouteInfo[] = [
     isCollapsed: true,
     children: [
       {
-        path: "rate",
-        title: "Rate",
+        path: "aircraft",
+        title: "Aircraft",
         type: "link",
-      },
+      },      
       {
         path: "airline",
         title: "Airline",
         type: "link",
       },
       {
+        path: "airport",
+        title: "Airport",
+        type: "link",
+      },      
+      {
         path: "callsign",
         title: "Callsign",
         type: "link",
       },
       {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },
-      {
-        path: "route",
-        isCollapsed: true,
-        title: "Route",
-        type: "sub",
-        collapse: "route",
-        children: [
-          { path: "semenanjung", title: "Semenanjung", type: "link" },
-          { path: "kk", title: "Kota Kinabalu", type: "link" },
-          { path: "kuc", title: "Kuching", type: "link" },
-        ],
-      },
-      {
         path: "exemptions",
         title: "Exemptions",
         type: "link",
-      },
+      },      
+      {
+        path: "rate",
+        title: "Rate",
+        type: "link",
+      },   
+      {
+        path: "route",
+        title: "Route",
+        type: "link",
+      },            
+      // {
+      //   path: "route",
+      //   isCollapsed: true,
+      //   title: "Route",
+      //   type: "sub",
+      //   collapse: "route",
+      //   children: [
+      //     { path: "semenanjung", title: "Semenanjung", type: "link" },
+      //     { path: "kk", title: "Kota Kinabalu", type: "link" },
+      //     { path: "kuc", title: "Kuching", type: "link" },
+      //   ],
+      // },
     ],
   },
   {
-    path: "/airport/tflvfr",
+    path: "/app/tflvfr",
     title: "TFL / VFR",
     type: "link",
     icontype: "fas fa-hdd text-orange",
@@ -310,15 +143,15 @@ export const AIRPORTROUTES: RouteInfo[] = [
   },
 ];
 
-export const OPERATIONROUTES: RouteInfo[] = [
+export const OperationRoutes: RouteInfo[] = [
   {
-    path: "/operation/dashboard",
+    path: "/app/dashboard",
     title: "Dashboard",
     type: "link",
     icontype: "fas fa-desktop text-red",
   },
   {
-    path: "/operation/database",
+    path: "/app/database",
     title: "Database",
     type: "sub",
     icontype: "fas fa-database text-red",
@@ -326,51 +159,56 @@ export const OPERATIONROUTES: RouteInfo[] = [
     isCollapsed: true,
     children: [
       {
-        path: "rate",
-        title: "Rate",
+        path: "aircraft",
+        title: "Aircraft",
         type: "link",
-      },
+      },      
       {
         path: "airline",
         title: "Airline",
         type: "link",
       },
       {
+        path: "airport",
+        title: "Airport",
+        type: "link",
+      },      
+      {
         path: "callsign",
         title: "Callsign",
         type: "link",
       },
       {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },
-      {
-        path: "route",
-        isCollapsed: true,
-        title: "Route",
-        type: "sub",
-        collapse: "route",
-        children: [
-          { path: "semenanjung", title: "Semenanjung", type: "link" },
-          { path: "kk", title: "Kota Kinabalu", type: "link" },
-          { path: "kuc", title: "Kuching", type: "link" },
-        ],
-      },
-      {
         path: "exemptions",
         title: "Exemptions",
         type: "link",
-      },
+      },      
+      {
+        path: "rate",
+        title: "Rate",
+        type: "link",
+      },   
+      {
+        path: "route",
+        title: "Route",
+        type: "link",
+      },            
+      // {
+      //   path: "route",
+      //   isCollapsed: true,
+      //   title: "Route",
+      //   type: "sub",
+      //   collapse: "route",
+      //   children: [
+      //     { path: "semenanjung", title: "Semenanjung", type: "link" },
+      //     { path: "kk", title: "Kota Kinabalu", type: "link" },
+      //     { path: "kuc", title: "Kuching", type: "link" },
+      //   ],
+      // },
     ],
   },
   {
-    path: "/operation/task",
+    path: "/app/task",
     title: "Task",
     type: "sub",
     icontype: "fas fa-hdd text-orange",
@@ -383,15 +221,25 @@ export const OPERATIONROUTES: RouteInfo[] = [
   },
 ];
 
-export const HODROUTES: RouteInfo[] = [
+export const SafRoutes: RouteInfo[] = [
   {
-    path: "/hod/dashboard",
+    path: "/app/dashboard",
+    title: "Dashboard",
+    type: "link",
+    icontype: "fas fa-desktop text-red",
+  },
+
+];
+
+export const HodRoutes: RouteInfo[] = [
+  {
+    path: "/app/dashboard",
     title: "Dashboard",
     type: "link",
     icontype: "fas fa-desktop text-red",
   },
   {
-    path: "/hod/database",
+    path: "/app/database",
     title: "Database",
     type: "sub",
     icontype: "fas fa-database text-red",
@@ -399,51 +247,123 @@ export const HODROUTES: RouteInfo[] = [
     isCollapsed: true,
     children: [
       {
-        path: "rate",
-        title: "Rate",
+        path: "aircraft",
+        title: "Aircraft",
         type: "link",
-      },
+      },      
       {
         path: "airline",
         title: "Airline",
         type: "link",
       },
       {
+        path: "airport",
+        title: "Airport",
+        type: "link",
+      },      
+      {
         path: "callsign",
         title: "Callsign",
         type: "link",
       },
       {
+        path: "exemptions",
+        title: "Exemptions",
+        type: "link",
+      },      
+      {
+        path: "rate",
+        title: "Rate",
+        type: "link",
+      },   
+      {
+        path: "route",
+        title: "Route",
+        type: "link",
+      },            
+      // {
+      //   path: "route",
+      //   isCollapsed: true,
+      //   title: "Route",
+      //   type: "sub",
+      //   collapse: "route",
+      //   children: [
+      //     { path: "semenanjung", title: "Semenanjung", type: "link" },
+      //     { path: "kk", title: "Kota Kinabalu", type: "link" },
+      //     { path: "kuc", title: "Kuching", type: "link" },
+      //   ],
+      // },
+    ],
+  },
+  {
+    path: "/app/task",
+    title: "Task",
+    type: "sub",
+    icontype: "fas fa-hdd text-orange",
+    collapse: "task",
+    isCollapsed: true,
+    children: [
+      { path: "invoice", title: "Invoice", type: "link" },
+      { path: "dispute", title: "Dispute", type: "link" },
+      { path: "history", title: "History", type: "link" },
+    ],
+  },
+];
+
+export const FinanceRoutes: RouteInfo[] = [
+  {
+    path: "/app/dashboard",
+    title: "Dashboard",
+    type: "link",
+    icontype: "fas fa-desktop text-red",
+  },
+  {
+    path: "/app/database",
+    title: "Database",
+    type: "sub",
+    icontype: "fas fa-database text-red",
+    collapse: "database",
+    isCollapsed: true,
+    children: [
+      {
         path: "aircraft",
         title: "Aircraft",
+        type: "link",
+      },      
+      {
+        path: "airline",
+        title: "Airline",
         type: "link",
       },
       {
         path: "airport",
         title: "Airport",
         type: "link",
-      },
+      },      
       {
-        path: "route",
-        isCollapsed: true,
-        title: "Route",
-        type: "sub",
-        collapse: "route",
-        children: [
-          { path: "semenanjung", title: "Semenanjung", type: "link" },
-          { path: "kk", title: "Kota Kinabalu", type: "link" },
-          { path: "kuc", title: "Kuching", type: "link" },
-        ],
+        path: "callsign",
+        title: "Callsign",
+        type: "link",
       },
       {
         path: "exemptions",
         title: "Exemptions",
         type: "link",
-      },
+      },      
+      {
+        path: "rate",
+        title: "Rate",
+        type: "link",
+      },   
+      {
+        path: "route",
+        title: "Route",
+        type: "link",
+      },            
     ],
   },
   {
-    path: "/hod/task",
+    path: "/app/task",
     title: "Task",
     type: "sub",
     icontype: "fas fa-hdd text-orange",

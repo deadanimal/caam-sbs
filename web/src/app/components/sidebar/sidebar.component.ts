@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { AIRPORTROUTES, HODROUTES, OPERATIONROUTES, ROUTES } from '../../shared/menu/menu-items';
-import { CUSTOMERROUTES } from '../../shared/menu/customer-menu-items';
+import { AirportRoutes, FinanceRoutes, HodRoutes, OperationRoutes, AirlineRoutes, SafRoutes } from '../../shared/menu/menu-items';
+//import { CUSTOMERROUTES } from '../shared/menu/customer-menu-items';
+import { UsersService } from 'src/app/shared/services/users/users.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 var misc: any = {
   sidebar_mini_active: true
@@ -16,29 +18,40 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private userService: UsersService
+    ) {}
 
   ngOnInit() {
-
-    if (this.router.url.includes("headquarter")) {
-      this.menuItems = ROUTES.filter(menuItem => menuItem);
-    }
-    else if (this.router.url.includes("customer")) {
-      this.menuItems = CUSTOMERROUTES.filter(menuItem => menuItem);
-    }
-    else if (this.router.url.includes("airport")) {
-      this.menuItems = AIRPORTROUTES.filter(menuItem => menuItem);
-    }
-    else if (this.router.url.includes("hod")) {
-      this.menuItems = HODROUTES.filter(menuItem => menuItem);
-    }
-    else if (this.router.url.includes("operation")) {
-      this.menuItems = OPERATIONROUTES.filter(menuItem => menuItem);
-    }
     
-    this.router.events.subscribe(event => {
-      this.isCollapsed = true;
-    });
+    let currentUser = this.authService.decodedToken();
+    let role = currentUser.user_type;
+
+    if (role == "APT") {
+      this.menuItems = AirportRoutes.filter(menuItem => menuItem);
+    }
+    if (role == "OPS") {
+      this.menuItems = OperationRoutes.filter(menuItem => menuItem);
+    }
+    if (role == "HOD") {
+      this.menuItems = HodRoutes.filter(menuItem => menuItem);
+    }
+    if (role == "FIN") {
+      this.menuItems = FinanceRoutes.filter(menuItem => menuItem);    
+    }
+    if (role == "ALN") {
+      this.menuItems = AirlineRoutes.filter(menuItem => menuItem);  
+    }
+    if (role == "SAF") {
+      this.menuItems = SafRoutes.filter(menuItem => menuItem);      
+    }
+
+    console.log(role)
+    console.log(this.menuItems)
+    
+
   }
   onMouseEnterSidenav() {
     if (!document.body.classList.contains("g-sidenav-pinned")) {

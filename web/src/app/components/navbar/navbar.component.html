@@ -9,7 +9,7 @@
         class="navbar-search navbar-search-light form-inline mr-sm-3"
         id="navbar-search-main"
       >
-        <div class="form-group mb-0" [ngClass]="{ focused: focus === true }">
+        <!-- <div class="form-group mb-0" [ngClass]="{ focused: focus === true }">
           <div class="input-group input-group-alternative input-group-merge">
             <div class="input-group-prepend">
               <span class="input-group-text"
@@ -24,7 +24,7 @@
               (blur)="focus = false"
             />
           </div>
-        </div>
+        </div> -->
         <button
           type="button"
           class="close"
@@ -137,7 +137,7 @@
             </div>
             <a
               routerLinkActive="active"
-              [routerLink]="['/user-profile']"
+              [routerLink]="['/app/profile']"
               class="dropdown-item"
             >
               <i class="fas fa-user"></i> <span>My profile</span>

@@ -10,6 +10,7 @@ from django.utils.timezone import now
 
 from .models import (
     Invoice,
+    InvoiceItem,
     Payment,
     Receipt,
     Reminder
@@ -34,9 +35,16 @@ class InvoiceSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['id']
 
+class InvoiceItemSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = InvoiceItem
+        fields = '__all__'
+        read_only_fields = ['id']
+
 
 class InvoiceExtendedSerializer(serializers.ModelSerializer):
-    uploaded_data = FileUploadSerializer(read_only=True)
+    #uploaded_data = FileUploadSerializer(read_only=True)
 
     class Meta:
         model = Invoice

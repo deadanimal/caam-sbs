@@ -20,6 +20,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 
+import { CookieService } from 'ngx-cookie-service';
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -41,14 +44,15 @@ import { ComponentsModule } from "./components/components.module";
     NgxSpinnerModule,
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  // providers: [
-  //   /* Uncomment this to use interceptor */
+  providers: [
+    CookieService,
   //   {
   //     provide: HTTP_INTERCEPTORS,
   //     useClass: HttpTokenInterceptor,
   //     multi: true,
-  //   },
-  // ],
+  //   },    
+  ],
+
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -7,6 +7,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { tap } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { JwtService } from "../../handler/jwt/jwt.service";
+import { UsersService } from '../users/users.service';
 
 @Injectable({
   providedIn: "root",
@@ -14,8 +15,7 @@ import { JwtService } from "../../handler/jwt/jwt.service";
 export class AuthService {
   // URL
   public urlRegister: string = environment.baseUrl + "auth/registration/";
-  public urlPasswordChange: string =
-    environment.baseUrl + "auth/password/change/";
+  public urlPasswordChange: string = environment.baseUrl + "auth/password/change/";
   public urlPasswordReset: string = environment.baseUrl + "auth/password/reset";
   public urlTokenObtain: string = environment.baseUrl + "auth/obtain/";
   public urlTokenRefresh: string = environment.baseUrl + "auth/refresh/";
@@ -36,7 +36,7 @@ export class AuthService {
   userDetail: any;
   retrievedUsers: any = [];
 
-  constructor(private jwtService: JwtService, private http: HttpClient) {}
+  constructor(private jwtService: JwtService, private http: HttpClient, private userService: UsersService) {}
 
   register(body: Form): Observable<any> {
     return this.http.post<any>(this.urlRegister, body).pipe(
@@ -75,6 +75,14 @@ export class AuthService {
         this.username = decodedToken.username;
         this.userID = decodedToken.user_id;
         this.userType = decodedToken.user_type;
+
+        let user_obj = {
+          user_id: decodedToken.user_id,
+          username: decodedToken.username,
+          email: decodedToken.email,
+          user_type: decodedToken.user_type,
+        };
+        this.userService.currentUser = user_obj
         // console.log('Decoded token: ', decodedToken)
         // console.log('Post response: ', res)
         // console.log('Refresh token', this.tokenRefresh)

@@ -50,21 +50,6 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     
     def get_queryset(self):
         queryset = Invoice.objects.all()
-
-        """
-        if self.request.user.is_anonymous:
-            queryset = Company.objects.none()
-
-        else:
-            user = self.request.user
-            company_employee = CompanyEmployee.objects.filter(employee=user)
-            company = company_employee[0].company
-            
-            if company.company_type == 'AD':
-                queryset = Invoice.objects.all()
-            else:
-                queryset = Invoice.objects.filter(company=company.id)
-        """
         return queryset    
 
 

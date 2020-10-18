@@ -77,8 +77,8 @@ class Callsign(models.Model):
     callsign = models.CharField(max_length=100, default='NA') #
     cid = models.ForeignKey(
         Organisation,
-        to_field='cid',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
     CALLSIGN_TYPE = [
         ('1', 'ICAO'),
@@ -91,10 +91,6 @@ class Callsign(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     modified_at = models.DateTimeField(auto_now=True, null=True)
-
-    class Meta:
-        ordering = ['cid']
-
 
     def __str__(self):
         return self.callsign

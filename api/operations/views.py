@@ -141,7 +141,8 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def extended(self, request, *args, **kwargs):
         
         queryset = Callsign.objects.all()
-        serializer_class = CallsignExtendedSerializer(queryset, many=True)
+        serializer_class = CallsignSerializer(queryset, many=True)
+        #serializer_class = CallsignExtendedSerializer(queryset, many=True)
         
         return Response(serializer_class.data)
  
