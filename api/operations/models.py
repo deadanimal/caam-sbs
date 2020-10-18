@@ -77,6 +77,7 @@ class Callsign(models.Model):
     callsign = models.CharField(max_length=100, default='NA') #
     cid = models.ForeignKey(
         Organisation,
+        to_field='cid',
         on_delete=models.CASCADE,
         null=True
     )
