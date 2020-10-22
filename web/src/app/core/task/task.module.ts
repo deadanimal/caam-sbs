@@ -21,17 +21,21 @@ import { RouterModule } from "@angular/router";
 import { TaskRoute } from "./task.routing";
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
-import { HistoryViewComponent } from './tflvfr/history-view/history-view.component';
-import { HistoryComponent } from './tflvfr/history/history.component';
-import { UploadComponent } from './tflvfr/upload/upload.component';
+import { HistoryViewComponent } from './history-view/history-view.component';
+import { HistoryComponent } from './history/history.component';
+import { UploadComponent } from './upload/upload.component';
+
+let pages = [
+  InvoiceComponent,
+  InvoiceViewComponent,
+  UploadComponent,
+  HistoryComponent,
+  HistoryViewComponent, 
+]
 
 @NgModule({
   declarations: [
-    InvoiceComponent,
-    InvoiceViewComponent,
-    UploadComponent,
-    HistoryComponent,
-    HistoryViewComponent,    
+    pages   
   ],
   imports: [
     CommonModule,

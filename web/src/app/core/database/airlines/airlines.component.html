@@ -568,8 +568,15 @@
             [rows]="temp"
             [rowClass]="getRowClass"
             (activate)="onActivate($event)"
-            [scrollbarH]="true"
-          >
+            [scrollbarH]="true">
+          <ngx-datatable-column>
+            <ng-template ngx-datatable-header-template>
+              <span>No.</span>
+            </ng-template>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{ row.no + 1 }}
+            </ng-template>
+          </ngx-datatable-column>          
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Company Name</span>

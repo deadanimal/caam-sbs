@@ -10,8 +10,7 @@
             <form [formGroup]="loginFormGroup">
               <div
                 class="form-group mb-3"
-                [ngClass]="{ focused: focus === true }"
-              >
+                [ngClass]="{ focused: focus === true }">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-primary">
@@ -24,8 +23,7 @@
                     type="text"
                     (focus)="focus = true"
                     (blur)="focus = false"
-                    formControlName="username"
-                  />
+                    formControlName="username"/>
                 </div>
               </div>
               <div class="form-group" [ngClass]="{ focused: focus1 === true }">
@@ -41,20 +39,16 @@
                     type="password"
                     (focus)="focus1 = true"
                     (blur)="focus1 = false"
-                    formControlName="password"
-                  />
+                    formControlName="password"/>
                 </div>
               </div>
               <div class="row">
                 <div class="col-6">
-                  <div
-                    class="custom-control custom-control-alternative custom-checkbox"
-                  >
+                  <div class="custom-control custom-control-alternative custom-checkbox">
                     <input
                       class="custom-control-input"
                       id=" customCheckLogin"
-                      type="checkbox"
-                    />
+                      type="checkbox"/>
                     <label class="custom-control-label" for=" customCheckLogin">
                       <span>Remember me?</span>
                     </label>
@@ -72,8 +66,7 @@
                 <button
                   type="button"
                   (click)="login()"
-                  class="btn btn-primary btn-block my-4"
-                >
+                  class="btn btn-primary btn-block my-4">
                   Sign in
                 </button>
               </div>
@@ -87,35 +80,54 @@
                   Register
                 </button>
               </div> -->
-            <!-- <hr />
+            <hr /> 
+            <p>Easier access to login...</p>
             <div class="row">
               <div class="col">
                 <button
-                  class="btn btn-sm btn-warning btn-block"
-                  (click)="loginOld('headquarter')"
-                >
-                  Admin
+                  class="btn btn-sm btn-block"
+                  (click)="loginOld('Airport')">
+                  Airport
                 </button>
               </div>
               <div class="col">
                 <button
-                  class="btn btn-sm btn-default btn-block"
-                  disabled
-                  (click)="loginOld('staff')"
-                >
-                  Staff
+                  class="btn btn-sm btn-block"                  
+                  (click)="loginOld('Airline')">
+                  Airline
                 </button>
               </div>
               <div class="col">
                 <button
-                  class="btn btn-sm btn-info btn-block"
-                  disabled
-                  (click)="loginOld('customer')"
-                >
-                  Customer
+                  class="btn btn-sm btn-block"                  
+                  (click)="loginOld('Operation')">
+                  Operation
                 </button>
               </div>
-            </div> -->
+            </div>
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btn btn-sm btn-block"
+                  (click)="loginOld('HOD')">
+                  HOD
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  class="btn btn-sm btn-block"                  
+                  (click)="loginOld('Finance')">
+                  Finance
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  class="btn btn-sm btn-block"                  
+                  (click)="loginOld('SAF')">
+                  SAF
+                </button>
+              </div>
+            </div>            
           </div>
         </div>
       </div>

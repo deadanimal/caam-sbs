@@ -12,16 +12,16 @@ export enum SelectionType {
 }
 
 @Component({
-  selector: "app-exemptions",
-  templateUrl: "./exemptions.component.html",
-  styleUrls: ["./exemptions.component.scss"],
+  selector: "app-invoices",
+  templateUrl: "./invoices.component.html",
+  styleUrls: ["./invoices.component.scss"],
 })
-export class ExemptionsComponent implements OnInit {
+export class InvoicesComponent implements OnInit {
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = Exemptions.Exemptions;
+  rows = []//Exemptions.Exemptions;
   SelectionType = SelectionType;
 
   // formInput
@@ -69,7 +69,7 @@ export class ExemptionsComponent implements OnInit {
     this.activeRow = event.row;
   }
 
-  // Modal Add New Customer
+  // Modal Add New 
   open(content, type, modalDimension, processTitle) {
     this.processTitle = processTitle;
     // if (modalDimension === "sm" && type === "modal_mini") {

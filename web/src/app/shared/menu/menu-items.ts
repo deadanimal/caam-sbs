@@ -39,30 +39,11 @@ export const AirlineRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      {
-        path: "invoices",
-        title: "Invoice",
-        type: "link",
-      },    
-      {
-        path: "notes",
-        title: "Note",
-        type: "link",
-      },           
-      {
-        path: "payments",
-        title: "Payment",
-        type: "link",
-      },          
+      { path: "invoices", title: "Invoice", type: "link" },    
+      { path: "notes", title: "Credit & Debit Note", type: "link" },           
+      { path: "payments", title: "Payment", type: "link" },          
     ]
   },
-  {
-    path: "/app/movement",
-    title: "Movement",
-    type: "link",
-    icontype: "fas fa-plane text-blue",
-  },  
-
 ];
 
 export const AirportRoutes: RouteInfo[] = [
@@ -76,71 +57,30 @@ export const AirportRoutes: RouteInfo[] = [
     path: "/app/database",
     title: "Database",
     type: "sub",
-    icontype: "fas fa-database text-red",
+    icontype: "fas fa-database text-black",
     collapse: "database",
     isCollapsed: true,
     children: [
-      {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },      
-      {
-        path: "airline",
-        title: "Airline",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },      
-      {
-        path: "callsign",
-        title: "Callsign",
-        type: "link",
-      },
-      {
-        path: "exemptions",
-        title: "Exemptions",
-        type: "link",
-      },      
-      {
-        path: "rate",
-        title: "Rate",
-        type: "link",
-      },   
-      {
-        path: "route",
-        title: "Route",
-        type: "link",
-      },            
-      // {
-      //   path: "route",
-      //   isCollapsed: true,
-      //   title: "Route",
-      //   type: "sub",
-      //   collapse: "route",
-      //   children: [
-      //     { path: "semenanjung", title: "Semenanjung", type: "link" },
-      //     { path: "kk", title: "Kota Kinabalu", type: "link" },
-      //     { path: "kuc", title: "Kuching", type: "link" },
-      //   ],
-      // },
+      { path: "aircraft", title: "Aircraft", type: "link", },      
+      { path: "airline", title: "Airline", type: "link", },
+      { path: "airport", title: "Airport", type: "link", },      
+      { path: "callsign", title: "Callsign", type: "link", },   
+      { path: "rate", title: "Rate", type: "link", },   
+      { path: "route", title: "Route", type: "link", },            
     ],
   },
   {
-    path: "/app/tflvfr",
-    title: "TFL / VFR",
-    type: "link",
-    icontype: "fas fa-hdd text-orange",
-    // collapse: "tflvfr",
-    // isCollapsed: true,
-    // children: [
-    //   { path: "upload", title: "Upload", type: "link" },
-    //   { path: "history", title: "History", type: "link" },
-    // ],
-  },
+    path: "/app/task",
+    title: "Task",
+    type: "sub",
+    icontype: "fas fa-hdd text-blue",
+    collapse: "task",
+    isCollapsed: true,
+    children: [
+        { path: "data-upload", title: "Upload", type: "link" },
+        { path: "data-history", title: "History", type: "link" },    
+    ],
+  },  
 ];
 
 export const OperationRoutes: RouteInfo[] = [
@@ -158,53 +98,13 @@ export const OperationRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },      
-      {
-        path: "airline",
-        title: "Airline",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },      
-      {
-        path: "callsign",
-        title: "Callsign",
-        type: "link",
-      },
-      {
-        path: "exemptions",
-        title: "Exemptions",
-        type: "link",
-      },      
-      {
-        path: "rate",
-        title: "Rate",
-        type: "link",
-      },   
-      {
-        path: "route",
-        title: "Route",
-        type: "link",
-      },            
-      // {
-      //   path: "route",
-      //   isCollapsed: true,
-      //   title: "Route",
-      //   type: "sub",
-      //   collapse: "route",
-      //   children: [
-      //     { path: "semenanjung", title: "Semenanjung", type: "link" },
-      //     { path: "kk", title: "Kota Kinabalu", type: "link" },
-      //     { path: "kuc", title: "Kuching", type: "link" },
-      //   ],
-      // },
+      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "airline", title: "Airline", type: "link" },
+      { path: "airport", title: "Airport", type: "link" },      
+      { path: "callsign", title: "Callsign", type: "link" },
+      { path: "exemptions", title: "Exemptions", type: "link" },      
+      { path: "rate", title: "Rate", type: "link" },   
+      { path: "route", title: "Route", type: "link" },            
     ],
   },
   {
@@ -228,6 +128,37 @@ export const SafRoutes: RouteInfo[] = [
     type: "link",
     icontype: "fas fa-desktop text-red",
   },
+  {
+    path: "/app/database",
+    title: "Database",
+    type: "sub",
+    icontype: "fas fa-database text-red",
+    collapse: "database",
+    isCollapsed: true,
+    children: [
+      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "airline", title: "Airline", type: "link" },
+      { path: "airport", title: "Airport", type: "link" },      
+      { path: "callsign", title: "Callsign", type: "link" },
+      { path: "exemptions", title: "Exemptions", type: "link" },      
+      { path: "rate", title: "Rate", type: "link" },   
+      { path: "route", title: "Route", type: "link" },            
+    ],
+  },  
+  {
+    path: "/app/finance",
+    title: "Finance",
+    icontype: "fas fa-file-invoice-dollar text-green",
+    type: "sub",
+    collapse: "finance",
+    isCollapsed: true,
+    children: [
+      { path: "invoices", title: "Invoice", type: "link" },    
+      { path: "notes", title: "Credit & Debit Note", type: "link" },           
+      { path: "payments", title: "Payment", type: "link" },          
+      { path: "others", title: "Other", type: "link" },  
+    ]
+  },  
 
 ];
 
@@ -246,53 +177,13 @@ export const HodRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },      
-      {
-        path: "airline",
-        title: "Airline",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },      
-      {
-        path: "callsign",
-        title: "Callsign",
-        type: "link",
-      },
-      {
-        path: "exemptions",
-        title: "Exemptions",
-        type: "link",
-      },      
-      {
-        path: "rate",
-        title: "Rate",
-        type: "link",
-      },   
-      {
-        path: "route",
-        title: "Route",
-        type: "link",
-      },            
-      // {
-      //   path: "route",
-      //   isCollapsed: true,
-      //   title: "Route",
-      //   type: "sub",
-      //   collapse: "route",
-      //   children: [
-      //     { path: "semenanjung", title: "Semenanjung", type: "link" },
-      //     { path: "kk", title: "Kota Kinabalu", type: "link" },
-      //     { path: "kuc", title: "Kuching", type: "link" },
-      //   ],
-      // },
+      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "airline", title: "Airline", type: "link" },
+      { path: "airport", title: "Airport", type: "link" },      
+      { path: "callsign", title: "Callsign", type: "link" },
+      { path: "exemptions", title: "Exemptions", type: "link" },      
+      { path: "rate", title: "Rate", type: "link" },   
+      { path: "route", title: "Route", type: "link" },            
     ],
   },
   {
@@ -308,6 +199,20 @@ export const HodRoutes: RouteInfo[] = [
       { path: "history", title: "History", type: "link" },
     ],
   },
+  {
+    path: "/app/finance",
+    title: "Finance",
+    icontype: "fas fa-file-invoice-dollar text-green",
+    type: "sub",
+    collapse: "finance",
+    isCollapsed: true,
+    children: [
+      { path: "invoices", title: "Invoice", type: "link" },    
+      { path: "notes", title: "Credit & Debit Note", type: "link" },           
+      { path: "payments", title: "Payment", type: "link" },          
+      { path: "others", title: "Other", type: "link" },  
+    ]
+  },  
 ];
 
 export const FinanceRoutes: RouteInfo[] = [
@@ -325,54 +230,27 @@ export const FinanceRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      {
-        path: "aircraft",
-        title: "Aircraft",
-        type: "link",
-      },      
-      {
-        path: "airline",
-        title: "Airline",
-        type: "link",
-      },
-      {
-        path: "airport",
-        title: "Airport",
-        type: "link",
-      },      
-      {
-        path: "callsign",
-        title: "Callsign",
-        type: "link",
-      },
-      {
-        path: "exemptions",
-        title: "Exemptions",
-        type: "link",
-      },      
-      {
-        path: "rate",
-        title: "Rate",
-        type: "link",
-      },   
-      {
-        path: "route",
-        title: "Route",
-        type: "link",
-      },            
+      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "airline", title: "Airline", type: "link" },
+      { path: "airport", title: "Airport", type: "link" },      
+      { path: "callsign", title: "Callsign", type: "link" },
+      { path: "exemptions", title: "Exemptions", type: "link" },      
+      { path: "rate", title: "Rate", type: "link" },   
+      { path: "route", title: "Route", type: "link" },            
     ],
   },
   {
-    path: "/app/task",
-    title: "Task",
+    path: "/app/finance",
+    title: "Finance",
+    icontype: "fas fa-file-invoice-dollar text-green",
     type: "sub",
-    icontype: "fas fa-hdd text-orange",
-    collapse: "task",
+    collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoice", title: "Invoice", type: "link" },
-      { path: "dispute", title: "Dispute", type: "link" },
-      { path: "history", title: "History", type: "link" },
-    ],
+      { path: "invoices", title: "Invoice", type: "link" },    
+      { path: "notes", title: "Credit & Debit Note", type: "link" },           
+      { path: "payments", title: "Payment", type: "link" },          
+      { path: "others", title: "Other", type: "link" },  
+    ]
   },
 ];

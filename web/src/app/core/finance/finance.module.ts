@@ -15,10 +15,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FinanceRoute } from './finance.routing';
 
+let pages = [
+
+]
 
 @NgModule({
   declarations: [
-    
+    pages
   ],
   imports: [
     CommonModule,
