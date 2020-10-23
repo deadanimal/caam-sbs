@@ -1,15 +1,17 @@
+import { chartPieData } from './../../../variables/charts';
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
-import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance";
-import { InvoicesService } from 'src/app/shared/services/invoice/invoices.service';
-import { Invoice } from 'src/app/shared/services/invoice/invoices.model';
+import { CreditDebitService } from 'src/app/shared/services/credit-and-debit/credit-and-debit.service';
+import { CreditDebit } from 'src/app/shared/services/credit-and-debit/credit-and-debit.model';
 
 @Component({
-  selector: "app-invoices",
-  templateUrl: "./invoices.component.html",
-  styleUrls: ["./invoices.component.scss"],
+  selector: 'app-credit-debit-note',
+  templateUrl: './credit-debit-note.component.html',
+  styleUrls: ['./credit-debit-note.component.scss']
 })
-export class InvoicesComponent implements OnInit {
+export class CreditDebitNoteComponent implements OnInit {
+
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -17,13 +19,12 @@ export class InvoicesComponent implements OnInit {
   rows = dummylist.dummylist;
 
   // Data
-  invoices: Invoice[] = [];
+  creditDebits: CreditDebit[] = [];
 
-   // View Data
-   companyname: string;
-   invoicenumber: string;
-   invoicedate:string;
-
+  // View Data
+  companyname: string;
+  transactionnumber: string;
+  transactiondate: string;
 
   // searchInput
   searchInput = {
@@ -36,14 +37,14 @@ export class InvoicesComponent implements OnInit {
   showModal: boolean;
   modalConfig = {
     keyboard: true,
-    class: "modal-lg",
+    class: "modal-lg"
   };
 
   constructor(
-    public zone: NgZone, 
+    public zone: NgZone,
     private modalService: BsModalService,
-    private invoiceService: InvoicesService,
-    ) {
+    private creditDebitService: CreditDebitService,
+  ) {
     this.temp = this.rows.map((prop, key) => {
       return {
         ...prop,
@@ -53,9 +54,9 @@ export class InvoicesComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.invoiceService.get().subscribe(
+    this.creditDebitService.get().subscribe(
       data => {
-        this.invoices = data;
+        this.creditDebits = data;
       },
       error => {
         console.log(error)
@@ -103,14 +104,13 @@ export class InvoicesComponent implements OnInit {
 
   viewData(row){
     this.companyname = row.companyname;
-    this.invoicenumber = row.invoicenumber;
-    this.invoicedate = row.invoicedate;
+    this.transactiondate = row.transactiondate;
+    this.transactionnumber = row.transactionnumber;
   }
 
   openModal(modalRef: TemplateRef<any>, row) {
     this.viewData(row);
     this.modal = this.modalService.show(modalRef, this.modalConfig);
-
   }
 
   closeModal() {
@@ -125,4 +125,5 @@ export class InvoicesComponent implements OnInit {
     if (status == "Partial") return "badge badge-primary";
     if (status == "Paid") return "badge badge-success";
   }
+
 }

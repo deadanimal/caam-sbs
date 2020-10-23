@@ -31,19 +31,19 @@ export const AirlineRoutes: RouteInfo[] = [
     type: "link",
     icontype: "fas fa-desktop text-red",
   },
-  {
-    path: "/app/finance",
-    title: "Finance",
-    icontype: "fas fa-file-invoice-dollar text-green",
-    type: "sub",
-    collapse: "finance",
-    isCollapsed: true,
-    children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-    ]
-  },
+  // {
+  //   path: "/app/finance",
+  //   title: "Finance",
+  //   icontype: "fas fa-file-invoice-dollar text-green",
+  //   type: "sub",
+  //   collapse: "finance",
+  //   isCollapsed: true,
+  //   children: [
+  //     { path: "invoices", title: "Invoice", type: "link" },    
+  //     { path: "notes", title: "Credit & Debit Note", type: "link" },           
+  //     { path: "payments", title: "Payment", type: "link" },          
+  //   ]
+  // },
 ];
 
 export const AirportRoutes: RouteInfo[] = [
@@ -145,20 +145,20 @@ export const SafRoutes: RouteInfo[] = [
       { path: "route", title: "Route", type: "link" },            
     ],
   },  
-  {
-    path: "/app/finance",
-    title: "Finance",
-    icontype: "fas fa-file-invoice-dollar text-green",
-    type: "sub",
-    collapse: "finance",
-    isCollapsed: true,
-    children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-      { path: "others", title: "Other", type: "link" },  
-    ]
-  },  
+  // {
+  //   path: "/app/finance",
+  //   title: "Finance",
+  //   icontype: "fas fa-file-invoice-dollar text-green",
+  //   type: "sub",
+  //   collapse: "finance",
+  //   isCollapsed: true,
+  //   children: [
+  //     { path: "invoices", title: "Invoice", type: "link" },    
+  //     { path: "notes", title: "Credit & Debit Note", type: "link" },           
+  //     { path: "payments", title: "Payment", type: "link" },          
+  //     { path: "others", title: "Other", type: "link" },  
+  //   ]
+  // },  
 
 ];
 
@@ -207,10 +207,11 @@ export const HodRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-      { path: "others", title: "Other", type: "link" },  
+      { path: "invoices", title: "Invoice List", type: "link" },    
+      { path: "aging-invoice", title: "Aging Invoice", type: "link" },           
+      { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
+      { path: "general-ledger", title: "General Ledger", type: "link" },  
+      { path: "payment", title: "Payments", type: "link" },  
     ]
   },  
 ];
@@ -247,10 +248,11 @@ export const FinanceRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-      { path: "others", title: "Other", type: "link" },  
+      {path: "invoices", title: "Invoice List", type: "link" },    
+      { path: "aging-invoice", title: "Aging Invoice", type: "link" },           
+      { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
+      { path: "general-ledger", title: "General Ledger", type: "link" },  
+      // { path: "payment", title: "Payments", type: "link" },    
     ]
   },
 ];

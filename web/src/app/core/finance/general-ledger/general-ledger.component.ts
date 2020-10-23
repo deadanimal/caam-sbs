@@ -1,15 +1,16 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
-import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance";
-import { InvoicesService } from 'src/app/shared/services/invoice/invoices.service';
-import { Invoice } from 'src/app/shared/services/invoice/invoices.model';
+import { GeneralLedgerService } from 'src/app/shared/services/general-ledger/general-ledger.service';
+import { GeneralLedger } from 'src/app/shared/services/general-ledger/general-ledger.model';
 
 @Component({
-  selector: "app-invoices",
-  templateUrl: "./invoices.component.html",
-  styleUrls: ["./invoices.component.scss"],
+  selector: 'app-general-ledger',
+  templateUrl: './general-ledger.component.html',
+  styleUrls: ['./general-ledger.component.scss']
 })
-export class InvoicesComponent implements OnInit {
+export class GeneralLedgerComponent implements OnInit {
+
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -17,12 +18,7 @@ export class InvoicesComponent implements OnInit {
   rows = dummylist.dummylist;
 
   // Data
-  invoices: Invoice[] = [];
-
-   // View Data
-   companyname: string;
-   invoicenumber: string;
-   invoicedate:string;
+  generalLedger: GeneralLedger[] = [];
 
 
   // searchInput
@@ -36,14 +32,14 @@ export class InvoicesComponent implements OnInit {
   showModal: boolean;
   modalConfig = {
     keyboard: true,
-    class: "modal-lg",
+    class: "modal-dialog"
   };
 
   constructor(
-    public zone: NgZone, 
+    public zone: NgZone,
     private modalService: BsModalService,
-    private invoiceService: InvoicesService,
-    ) {
+    private generalLedgerService: GeneralLedgerService,
+  ) {
     this.temp = this.rows.map((prop, key) => {
       return {
         ...prop,
@@ -53,9 +49,9 @@ export class InvoicesComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.invoiceService.get().subscribe(
+    this.generalLedgerService.get().subscribe(
       data => {
-        this.invoices = data;
+        this.generalLedger = data;
       },
       error => {
         console.log(error)
@@ -101,28 +97,18 @@ export class InvoicesComponent implements OnInit {
     this.activeRow = event.row;
   }
 
-  viewData(row){
-    this.companyname = row.companyname;
-    this.invoicenumber = row.invoicenumber;
-    this.invoicedate = row.invoicedate;
-  }
-
+  
   openModal(modalRef: TemplateRef<any>, row) {
-    this.viewData(row);
     this.modal = this.modalService.show(modalRef, this.modalConfig);
-
   }
 
   closeModal() {
     this.modal.hide()
   }
 
-  ngOnInit() { }
+  ngOnInit() {
 
-  statusBadge(status: string) {
-    if (status == "Overdue") return "badge badge-danger";
-    if (status == "Disputed") return "badge badge-warning";
-    if (status == "Partial") return "badge badge-primary";
-    if (status == "Paid") return "badge badge-success";
-  }
+   }
+
 }
+

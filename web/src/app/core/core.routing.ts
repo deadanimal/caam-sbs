@@ -19,6 +19,11 @@ export const CoreRoute: Routes = [
         loadChildren: () =>
           import("./task/task.module").then((m) => m.TaskModule),
       },
+      {
+        path: "finance",
+        loadChildren: () =>
+          import("./finance/finance.module").then((m) => m.FinanceModule),
+      },
     ],
   },
 ];

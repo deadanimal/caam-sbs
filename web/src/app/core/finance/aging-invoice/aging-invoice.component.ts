@@ -1,15 +1,16 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
-import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance";
-import { InvoicesService } from 'src/app/shared/services/invoice/invoices.service';
-import { Invoice } from 'src/app/shared/services/invoice/invoices.model';
+import { AgingInvoicesService } from 'src/app/shared/services/aging-invoice/aging-invoice.service';
+import { AgingInvoice } from 'src/app/shared/services/aging-invoice/aging-invoice.model';
 
 @Component({
-  selector: "app-invoices",
-  templateUrl: "./invoices.component.html",
-  styleUrls: ["./invoices.component.scss"],
+  selector: 'app-aging-invoice',
+  templateUrl: './aging-invoice.component.html',
+  styleUrls: ['./aging-invoice.component.scss']
 })
-export class InvoicesComponent implements OnInit {
+export class AgingInvoiceComponent implements OnInit {
+
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -17,12 +18,12 @@ export class InvoicesComponent implements OnInit {
   rows = dummylist.dummylist;
 
   // Data
-  invoices: Invoice[] = [];
+  agingInvoices: AgingInvoice[] = [];
 
-   // View Data
-   companyname: string;
-   invoicenumber: string;
-   invoicedate:string;
+  // View Data
+  companyname: string;
+  invoicedate: string;
+  invoicenumber: string;
 
 
   // searchInput
@@ -36,14 +37,14 @@ export class InvoicesComponent implements OnInit {
   showModal: boolean;
   modalConfig = {
     keyboard: true,
-    class: "modal-lg",
+    class: "modal-lg"
   };
 
   constructor(
-    public zone: NgZone, 
+    public zone: NgZone,
     private modalService: BsModalService,
-    private invoiceService: InvoicesService,
-    ) {
+    private agingInvoiceService: AgingInvoicesService,
+  ) {
     this.temp = this.rows.map((prop, key) => {
       return {
         ...prop,
@@ -53,9 +54,9 @@ export class InvoicesComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.invoiceService.get().subscribe(
+    this.agingInvoiceService.get().subscribe(
       data => {
-        this.invoices = data;
+        this.agingInvoices = data;
       },
       error => {
         console.log(error)
@@ -103,26 +104,21 @@ export class InvoicesComponent implements OnInit {
 
   viewData(row){
     this.companyname = row.companyname;
-    this.invoicenumber = row.invoicenumber;
     this.invoicedate = row.invoicedate;
+    this.invoicenumber = row.invoicenumber;
   }
-
+  
   openModal(modalRef: TemplateRef<any>, row) {
     this.viewData(row);
     this.modal = this.modalService.show(modalRef, this.modalConfig);
-
   }
 
   closeModal() {
     this.modal.hide()
   }
 
-  ngOnInit() { }
+  ngOnInit() {
 
-  statusBadge(status: string) {
-    if (status == "Overdue") return "badge badge-danger";
-    if (status == "Disputed") return "badge badge-warning";
-    if (status == "Partial") return "badge badge-primary";
-    if (status == "Paid") return "badge badge-success";
-  }
+   }
+
 }
