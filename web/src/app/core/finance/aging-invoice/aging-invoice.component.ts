@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import * as dummylist from "src/app/variables/finance";
+import * as dummylist from "src/app/variables/finance/aging-invoice";
 import { AgingInvoicesService } from 'src/app/shared/services/aging-invoice/aging-invoice.service';
 import { AgingInvoice } from 'src/app/shared/services/aging-invoice/aging-invoice.model';
 
@@ -15,7 +15,7 @@ export class AgingInvoiceComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = dummylist.dummylist;
+  rows = dummylist.aginginvoicelist;
 
   // Data
   agingInvoices: AgingInvoice[] = [];

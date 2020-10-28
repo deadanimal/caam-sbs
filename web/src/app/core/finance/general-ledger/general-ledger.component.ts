@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import * as dummylist from "src/app/variables/finance";
+import * as dummylist from "src/app/variables/finance/general-ledger";
 import { GeneralLedgerService } from 'src/app/shared/services/general-ledger/general-ledger.service';
 import { GeneralLedger } from 'src/app/shared/services/general-ledger/general-ledger.model';
 
@@ -15,7 +15,7 @@ export class GeneralLedgerComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = dummylist.dummylist;
+  rows = dummylist.generalledgerlist;
 
   // Data
   generalLedger: GeneralLedger[] = [];

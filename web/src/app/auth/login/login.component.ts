@@ -64,27 +64,27 @@ export class LoginComponent implements OnInit {
 
   loginOld(role) {
     if (role == "Airline") {
-      this.loginFormGroup.controls.username.setValue('airline@sbs.pipe.my')
+      this.loginFormGroup.controls.username.setValue('airline')
       this.loginFormGroup.controls.password.setValue('PabloEscobar')
       
     } else if (role == "Airport") {
-      this.loginFormGroup.controls.username.setValue('airport@sbs.pipe.my')
+      this.loginFormGroup.controls.username.setValue('airport')
       this.loginFormGroup.controls.password.setValue('PabloEscobar')
       
     } else if (role == "Operation") {
-      this.loginFormGroup.controls.username.setValue('operation@sbs.pipe.my')
+      this.loginFormGroup.controls.username.setValue('operation')
       this.loginFormGroup.controls.password.setValue('PabloEscobar')
       
     } else if (role == "HOD") {
-      this.loginFormGroup.controls.username.setValue('HOD@sbs.pipe.my')
+      this.loginFormGroup.controls.username.setValue('hod')
       this.loginFormGroup.controls.password.setValue('PabloEscobar')
       
     } else if (role == "SAF") {
-      this.loginFormGroup.controls.username.setValue('SAF@sbs.pipe.my')
+      this.loginFormGroup.controls.username.setValue('saf')
       this.loginFormGroup.controls.password.setValue('PabloEscobar')
       
     } else if (role == "Finance") {
-      this.loginFormGroup.controls.username.setValue('finance@sbs.pipe.my')
+      this.loginFormGroup.controls.username.setValue('finance')
       this.loginFormGroup.controls.password.setValue('PabloEscobar')
       
     } 

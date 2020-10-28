@@ -94,7 +94,7 @@
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
             [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
-            <ngx-datatable-column name="Invoicenumber">
+            <ngx-datatable-column name="invoicenumber">
               <ng-template ngx-datatable-header-template>
                 <span>Invoice Number</span>
               </ng-template>
@@ -131,11 +131,11 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <button class="btn btn-neutral btn-sm" (click)="openModal(view,row)" title="click to view">
-                  <i class="fa fa-eye text-dark" aria-hidden="true"></i>
+                <button class="btn btn-dark btn-sm" (click)="openModal(view,row)" title="click to view">
+                  <i class="fa fa-eye text-white" aria-hidden="true"></i>
                 </button>&nbsp; &nbsp;
-                <button class="btn btn-neutral btn-sm" title="click to download">
-                  <i class="fa fa-download text-dark" aria-hidden="true"></i>
+                <button class="btn btn-primary btn-sm" title="click to download">
+                  <i class="fa fa-download text-white" aria-hidden="true"></i>
                 </button>
               </ng-template>
             </ngx-datatable-column>

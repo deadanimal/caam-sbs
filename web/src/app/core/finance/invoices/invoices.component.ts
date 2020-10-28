@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
-import * as dummylist from "src/app/variables/finance";
+import * as dummylist from "src/app/variables/finance/invoice";
 import { InvoicesService } from 'src/app/shared/services/invoice/invoices.service';
 import { Invoice } from 'src/app/shared/services/invoice/invoices.model';
 
@@ -14,10 +14,11 @@ export class InvoicesComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = dummylist.dummylist;
+  rows = dummylist.invoicelist;
 
   // Data
   invoices: Invoice[] = [];
+
 
    // View Data
    companyname: string;
@@ -117,7 +118,9 @@ export class InvoicesComponent implements OnInit {
     this.modal.hide()
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log(this.rows)
+  }
 
   statusBadge(status: string) {
     if (status == "Overdue") return "badge badge-danger";

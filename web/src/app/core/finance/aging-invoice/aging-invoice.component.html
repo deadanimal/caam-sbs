@@ -29,7 +29,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+<div class="container-fluid mt--6 ">
   <div class="row">
     <div class="col">
       <div class="card mb-4">
@@ -103,42 +103,44 @@
             </thead>
             <tbody *ngFor="let row of rows | filter:searchText" >
               <thead class=" thead-light">
-                <tr>
-                  <td colspan="13" ><b>{{row.companyname}}</b></td>
+                <tr >
+                  <td colspan="13"><b>{{row.companyname}}</b></td>
                 </tr>
               </thead>
-              <tr>
-                <td>{{row.cid}}</td>
-                <td>{{row.invoiceperiod}}</td>
-                <td>{{row.invoicenumber}}</td>
-                <td>{{row.invoicedate}}</td>
-                <td>{{row.invoicetotal}}</td>
-                <td>{{row.month1}}</td>
-                <td>{{row.month2}}</td>
-                <td>{{row.month3}}</td>
-                <td>{{row.month4}}</td>
-                <td>{{row.month5}}</td>
-                <td>{{row.month6}}</td>
-                <td>{{row.month7}}</td>
-                <td> <button class="btn btn-neutral btn-sm" (click)="openModal(view, row)" title="click to view">
-                    <i class="fa fa-eye text-dark" aria-hidden="true"></i>
-                  </button>&nbsp; &nbsp;
-                  <button class="btn btn-neutral btn-sm" title="click to download">
-                    <i class="fa fa-download text-dark" aria-hidden="true"></i>
+              <tr *ngFor="let secondrow of row.invoice">
+                <td>{{secondrow.cid}}</td>
+                <td>{{secondrow.invoiceperiod}}</td>
+                <td>{{secondrow.invoicenumber}}</td>
+                <td>{{secondrow.invoicedate}}</td>
+                <td>{{secondrow.invoicetotal}}</td>
+                <td>{{secondrow.month0to1}}</td>
+                <td>{{secondrow.month1to3}}</td>
+                <td>{{secondrow.month4to6}}</td>
+                <td>{{secondrow.month7to12}}</td>
+                <td>{{secondrow.month13to36}}</td>
+                <td>{{secondrow.month36to72}}</td>
+                <td>{{secondrow.month72}}</td>
+                <td> <button class="btn btn-sm btn-dark" (click)="openModal(view, secondrow)" title="click to view">
+                    <i class="fa fa-eye text-white" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn btn-sm btn-primary" title="click to download">
+                    <i class="fa fa-download text-white" aria-hidden="true"></i>
                   </button>
                 </td>
               </tr>
-              <tr>
+              <tr >
                 <td colspan="4">Sub Total:</td>
-                <td>{{row.invoicetotal}}</td>
-                <td>{{row.month1}}</td>
-                <td>{{row.month2}}</td>
-                <td>{{row.month3}}</td>
-                <td>{{row.month4}}</td>
-                <td>{{row.month5}}</td>
-                <td>{{row.month6}}</td>
-                <td>{{row.month7}}</td>
-              </tr>
+                <td>{{row.subtotalinvoice}}</td>
+                <td>{{row.subtotalmonth0to1}}</td>
+                <td>{{row.subtotalmonth1to3}}</td>
+                <td>{{row.subtotalmonth4to6}}</td>
+                <td>{{row.subtotalmonth7to12}}</td>
+                <td>{{row.subtotalmonth13to36}}</td>
+                <td>{{row.subtotalmonth36to72}}</td>
+                <td>{{row.subtotalmonth72}}</td> 
+                <td></td>
+              </tr >
+
             </tbody>
           </table>
         </div>

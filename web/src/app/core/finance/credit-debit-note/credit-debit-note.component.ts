@@ -1,7 +1,7 @@
 import { chartPieData } from './../../../variables/charts';
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import * as dummylist from "src/app/variables/finance";
+import * as dummylist from "src/app/variables/finance/credit-debit-note";
 import { CreditDebitService } from 'src/app/shared/services/credit-and-debit/credit-and-debit.service';
 import { CreditDebit } from 'src/app/shared/services/credit-and-debit/credit-and-debit.model';
 
@@ -16,7 +16,7 @@ export class CreditDebitNoteComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = dummylist.dummylist;
+  rows = dummylist.creditdebitlist;
 
   // Data
   creditDebits: CreditDebit[] = [];
