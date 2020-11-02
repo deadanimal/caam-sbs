@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 import swal from "sweetalert2";
 
 import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { UsersService } from 'src/app/shared/services/users/users.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: "app-login",
@@ -21,13 +23,14 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  // FormGroup
   loginFormGroup: FormGroup;
 
   constructor(
     public formBuilder: FormBuilder,
     public router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UsersService,
+    private cookieService: CookieService
   ) {
     this.loginFormGroup = this.formBuilder.group({
       username: new FormControl("", [Validators.required, Validators.email]),
@@ -40,12 +43,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.obtainToken(this.loginFormGroup.value).subscribe(
       (res) => {
-        // console.log("res", res);
-        let user_obj = this.authService.decodedToken();
-        this.loginAs(user_obj.user_type);
+        let currentUser = this.authService.decodedToken();
+        
+        this.userService.currentUser = currentUser;
+
+        this.router.navigate(["/app/dashboard"]);
       },
       (err) => {
-        // console.error("err", err);
         swal.fire({
           title: "Warning",
           text:
@@ -58,50 +62,35 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  loginAs(role: string) {
-    // data from database
-    /*
-    ('HOD', 'Head of Department'),
-    ('FIN', 'Finance'),
-    ('OPS', 'Operation'),
-    ('APT', 'Airport'),
-    ('ALN', 'Airline'),
-    ('SAF', 'SAF'),
-    ('NAV', 'Not Available')
-    */
-    switch (role) {
-      case "APT":
-        this.router.navigate(["/airport/dashboard"]);
-        break;
-      case "OPS":
-        this.router.navigate(["/operation/dashboard"]);
-        break;
-      case "HOD":
-        this.router.navigate(["/hod/dashboard"]);
-    }
-  }
-
   loginOld(role) {
-    if (role == "staff") {
-      alert("There are error on this role. Sorry for the inconvenience");
-    } else this.router.navigate(["/" + role + "/dashboard"]);
+    if (role == "Airline") {
+      this.loginFormGroup.controls.username.setValue('airline@sbs.pipe.my')
+      this.loginFormGroup.controls.password.setValue('PabloEscobar')
+      
+    } else if (role == "Airport") {
+      this.loginFormGroup.controls.username.setValue('airport@sbs.pipe.my')
+      this.loginFormGroup.controls.password.setValue('PabloEscobar')
+      
+    } else if (role == "Operation") {
+      this.loginFormGroup.controls.username.setValue('operation@sbs.pipe.my')
+      this.loginFormGroup.controls.password.setValue('PabloEscobar')
+      
+    } else if (role == "HOD") {
+      this.loginFormGroup.controls.username.setValue('HOD@sbs.pipe.my')
+      this.loginFormGroup.controls.password.setValue('PabloEscobar')
+      
+    } else if (role == "SAF") {
+      this.loginFormGroup.controls.username.setValue('SAF@sbs.pipe.my')
+      this.loginFormGroup.controls.password.setValue('PabloEscobar')
+      
+    } else if (role == "Finance") {
+      this.loginFormGroup.controls.username.setValue('finance@sbs.pipe.my')
+      this.loginFormGroup.controls.password.setValue('PabloEscobar')
+      
+    } 
 
-    /* if (this.email && this.password) {
-      // Admin
-      if (this.email == "admin" && this.password == "admin") {
-        this.router.navigate(['/headquarter/dashboard']);
-      }
-      // Staff
-      else if (this.email == "staff" && this.password == "staff") {
-        this.router.navigate(['/staff/dashboard']);
-      }
-      // Customer
-      else if (this.email == "customer" && this.password == "customer") {
-        this.router.navigate(['/customer/dashboard']);
-      }
-      else alert("Wrong email or password. Please try again");
-    } else {
-      alert('Please input email and password.');
-    } */
+    this.login();
+
   }
+
 }

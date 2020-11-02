@@ -17,35 +17,8 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
       {
-        path: "admin",
-        loadChildren: "./core/admin/admin.module#AdminModule",
-      },
-      {
-        path: "airport",
-        loadChildren: "./core/airport/airport.module#AirportModule",
-      },
-      {
-        path: "operation",
-        loadChildren: "./core/operation/operation.module#OperationModule",
-      },
-      {
-        path: "hod",
-        loadChildren: "./core/hod/hod.module#HodModule",
-      },
-      // HQ
-      {
-        path: "headquarter",
-        loadChildren: "./core/headquarter/headquarter.module#HeadquarterModule",
-      },
-      // Branch
-      {
-        path: "branch",
-        loadChildren: "./core/branch/branch.module#BranchModule",
-      },
-      // Customer
-      {
-        path: "customer",
-        loadChildren: "./core/customer/customer.module#CustomerModule",
+        path: "app",
+        loadChildren: "./core/core.module#CoreModule",
       },
     ],
   },

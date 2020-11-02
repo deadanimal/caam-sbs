@@ -62,6 +62,9 @@ class ChargeExtendedSerializer(serializers.ModelSerializer):
 
 class CallsignSerializer(serializers.ModelSerializer):
 
+    cid = OrganisationSerializer(read_only=True)
+    aircraft = AircraftExtendedSerializer(read_only=True)
+
     class Meta:
         model = Callsign
         fields = '__all__'

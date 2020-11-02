@@ -16,6 +16,8 @@ export class UsersService {
   public umodels: UsersModel[] = [];
   public umodel: UsersModel;
 
+  public currentUser: any;
+
   constructor(private http: HttpClient) {}
 
   post(body): Observable<UsersModel> {
@@ -69,4 +71,6 @@ export class UsersService {
       })
     );
   }
+
+
 }

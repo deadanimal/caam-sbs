@@ -21,22 +21,51 @@ from users.models import (
 )
 
 from operations.models import (
-    FileUpload
+    FileUpload, 
+    Fpldata
 )
 
 class Invoice(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    uploaded_data = models.ForeignKey(
-        FileUpload,
+    amount = models.IntegerField(default=0, blank=True)
+    organisation = models.ForeignKey(
+        Organisation,
         on_delete=models.CASCADE,
-        related_name='invoice_uploaded_data',
+        null=True
+        # related_name='reminder_operator',
+        # limit_choices_to={
+        #     'organisation_type': 'AL'
+        # }
+    )
+    STATUS = [
+        ('CR', 'Created'),
+        ('PD', 'Paid'),
+
+        ('NA', 'Not Available'),
+    ]
+    status = models.CharField(max_length=2, choices=STATUS, default='NA')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+
+    def __str__(self):
+        return self.amount
+
+class InvoiceItem(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    
+    amount = models.IntegerField(default=0, blank=True)
+    item = models.ForeignKey(
+        Fpldata,
+        on_delete=models.CASCADE,
         null=True
     )
-    amount = models.FloatField(default=0, blank=True)
-    debit_note = models.FloatField(default=0, blank=True)
-    credit_note = models.FloatField(default=0, blank=True)
-    total_amount = models.FloatField(default=0, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
