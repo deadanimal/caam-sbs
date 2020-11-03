@@ -29,21 +29,45 @@ export const AirlineRoutes: RouteInfo[] = [
     path: "/app/dashboard",
     title: "Dashboard",
     type: "link",
-    icontype: "fas fa-desktop text-red",
+    icontype: "fas fa-desktop text-blue",
   },
-  // {
-  //   path: "/app/finance",
-  //   title: "Finance",
-  //   icontype: "fas fa-file-invoice-dollar text-green",
-  //   type: "sub",
-  //   collapse: "finance",
-  //   isCollapsed: true,
-  //   children: [
-  //     { path: "invoices", title: "Invoice", type: "link" },    
-  //     { path: "notes", title: "Credit & Debit Note", type: "link" },           
-  //     { path: "payments", title: "Payment", type: "link" },          
-  //   ]
-  // },
+  {
+    path: "/app/movement-report",
+    title: "Movement Report",
+    type: "link",
+    icontype: "fas fa-file text-black",
+  },
+  {
+    path: "/app/dispute",
+    title: "Dispute",
+    type: "link",
+    icontype: "fas fa-thumbs-down text-red",
+  },
+  {
+    path: "/app/billing",
+    title: "Billing",
+    icontype: "fas fa-file-invoice-dollar text-green",
+    type: "sub",
+    collapse: "billing",
+    isCollapsed: true,
+    children: [
+      { path: "invoice", title: "Invoice", type: "link" },    
+      { path: "credit-note", title: "Credit Note", type: "link" },           
+      { path: "debit-note", title: "Debit Note", type: "link" },          
+    ]
+  },
+  {
+    path: "/app/payment",
+    title: "Payment",
+    icontype: "fas fa-credit-card text-yellow",
+    type: "sub",
+    collapse: "payment",
+    isCollapsed: true,
+    children: [
+      { path: "payment", title: "Payment", type: "link" },    
+      { path: "statement-account", title: "Statement of Account", type: "link" },            
+    ]
+  },
 ];
 
 export const AirportRoutes: RouteInfo[] = [

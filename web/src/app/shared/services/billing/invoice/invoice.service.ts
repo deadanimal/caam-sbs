@@ -4,13 +4,13 @@ import { HttpClient } from "@angular/common/http";
 import { Form } from "@angular/forms";
 import { tap } from "rxjs/operators";
 import { Observable } from "rxjs";
-import { Invoice } from './invoices.model';
+import { Invoice } from './invoice.model';
 
 @Injectable({
   providedIn: "root",
 })
-export class InvoicesService {
-  url: string = environment.baseUrl + "v1/invoices/";
+export class InvoiceService {
+  url: string = environment.baseUrl + "v1/billing-invoice/";
 
   // Data
   public invoice: Invoice
@@ -61,8 +61,8 @@ export class InvoicesService {
     );
   }
 
-  filter(field: string): Observable<Invoice[]> {
-    let urlFilter = this.url + "?" + field;
+  filter(byfield: string, field: string): Observable<Invoice[]> {
+    let urlFilter = this.url + "?by=" + byfield + "&field=" + field;
     return this.http.get<Invoice[]>(urlFilter).pipe(
       tap((res) => {
         console.log("Invoice", res);

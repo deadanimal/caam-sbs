@@ -1,19 +1,12 @@
+<div class="header background-theme">
 <div class="header pb-6">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            Aging Invoice
+          <h6 class="h2 text-white d-inline-block mb-0">
+            Aging Invoice &nbsp;
           </h6>
-
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
-              </li>
-            </ol>
-          </nav>
 
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
@@ -28,13 +21,14 @@
     </div>
   </div>
 </div>
+</div>
 
-<div class="container-fluid mt--6 ">
+<div class="container-fluid mt--8 ">
   <div class="row">
     <div class="col">
       <div class="card mb-4">
         <div class="card-header bg-secondary">
-          <h3 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h3>
+          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
         </div>
         <div class="card-body">
           <div class="row">
@@ -101,9 +95,10 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody *ngFor="let row of rows | filter:searchText" >
+            <tbody
+              *ngFor="let row of rows | filter:searchText ">
               <thead class=" thead-light">
-                <tr >
+                <tr>
                   <td colspan="13"><b>{{row.companyname}}</b></td>
                 </tr>
               </thead>
@@ -120,15 +115,15 @@
                 <td>{{secondrow.month13to36}}</td>
                 <td>{{secondrow.month36to72}}</td>
                 <td>{{secondrow.month72}}</td>
-                <td> <button class="btn btn-sm btn-dark" (click)="openModal(view, secondrow)" title="click to view">
-                    <i class="fa fa-eye text-white" aria-hidden="true"></i>
-                  </button>
-                  <button class="btn btn-sm btn-primary" title="click to download">
-                    <i class="fa fa-download text-white" aria-hidden="true"></i>
-                  </button>
+                <td> <a href="javascript:void(0)" (click)="openModal(view,secondrow)" title="click to view">
+                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>
+                </a>
                 </td>
               </tr>
-              <tr >
+              <tr>
                 <td colspan="4">Sub Total:</td>
                 <td>{{row.subtotalinvoice}}</td>
                 <td>{{row.subtotalmonth0to1}}</td>
@@ -137,9 +132,9 @@
                 <td>{{row.subtotalmonth7to12}}</td>
                 <td>{{row.subtotalmonth13to36}}</td>
                 <td>{{row.subtotalmonth36to72}}</td>
-                <td>{{row.subtotalmonth72}}</td> 
+                <td>{{row.subtotalmonth72}}</td>
                 <td></td>
-              </tr >
+              </tr>
 
             </tbody>
           </table>
@@ -147,6 +142,117 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="row">
+    <div class="col">
+      <div class="card">
+
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp.invoice | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="cid">
+              <ng-template ngx-datatable-header-template>
+                <span>CID</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="invoiceperiod">
+              <ng-template ngx-datatable-header-template>
+                <span>Invoice Period</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="invoicenumber">
+              <ng-template ngx-datatable-header-template>
+                <span>Invoice Number</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="invoicedate">
+              <ng-template ngx-datatable-header-template>
+                <span>Invoice Date</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month0to1">
+              <ng-template ngx-datatable-header-template>
+                <span>0-1 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month1to3">
+              <ng-template ngx-datatable-header-template>
+                <span>1-3 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month4to6">
+              <ng-template ngx-datatable-header-template>
+                <span>4-6 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month7to12">
+              <ng-template ngx-datatable-header-template>
+                <span>7-12 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month13to36">
+              <ng-template ngx-datatable-header-template>
+                <span>13-36 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month36to72">
+              <ng-template ngx-datatable-header-template>
+                <span>36-72 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="month72">
+              <ng-template ngx-datatable-header-template>
+                <span>>72 Months</span>
+              </ng-template>
+            </ngx-datatable-column>
+           
+
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <button class="btn btn-dark btn-sm view" (click)="openModal(view,row)" title="click to view">
+                  <i class="fa fa-eye text-white" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-primary btn-sm" title="click to download" (click)='download(row.file)'>
+                  <i class="fa fa-download text-white" aria-hidden="true"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
 </div>
 
 

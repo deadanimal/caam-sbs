@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/general-ledger";
-import { GeneralLedgerService } from 'src/app/shared/services/general-ledger/general-ledger.service';
-import { GeneralLedger } from 'src/app/shared/services/general-ledger/general-ledger.model';
+import { GeneralLedgerService } from 'src/app/shared/services/finance/general-ledger/general-ledger.service';
+import { GeneralLedger } from 'src/app/shared/services/finance/general-ledger/general-ledger.model';
 
 @Component({
   selector: 'app-general-ledger',

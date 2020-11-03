@@ -1,23 +1,26 @@
-<div class="header pb-6">
-  <div class="container-fluid">
-    <div class="header-body">
-      <div class="row align-items-center py-4">
-        <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            General Ledger
-          </h6>
+<div class="header background-theme">
+  <div class="header pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">
+              General Ledger
+            </h6>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+
+<div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
       <div class="card mb-4">
         <div class="card-header bg-secondary">
-          <h3 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h3>
+          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
         </div>
         <div class="card-body">
           <div class="row">
@@ -73,6 +76,16 @@
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
             [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column name="activitydate">
               <ng-template ngx-datatable-header-template>
                 <span>ACTIVITY DATE</span>
@@ -103,24 +116,36 @@
                 <span>TRANSACTION ACCOUNT</span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="amount">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>AMOUNT</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.amount | currency: "MYR"}}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="debit">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>DEBIT</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.debit | currency: "MYR"}}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="credit">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>CREDIT</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.credit | currency: "MYR"}}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="total">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>TOTAL</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.total | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

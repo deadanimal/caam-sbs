@@ -8,6 +8,7 @@ export const generalledgerlist: any = [
         activity: 'Journal entries',
         transactioncode: 'T-001',
         transactionaccount: 'Credit transactions',
+        amount:8000,
         credit: 400.00,
         debit: 2300.00, 
         total: 2345.70
@@ -22,6 +23,7 @@ export const generalledgerlist: any = [
         activity: 'Income Statement',
         transactioncode: 'T-002',
         transactionaccount: 'Non-cash transactions',
+        amount:8000,
         credit: 4040.00,
         debit: 2321.00, 
         total: 2005.70
@@ -35,6 +37,7 @@ export const generalledgerlist: any = [
         activity: 'Reinforcement Activity',
         transactioncode: 'T-003',
         transactionaccount: 'Cash transactions',
+        amount:8000,
         credit: 5000.00,
         debit: 1002.00, 
         total: 4029.00
@@ -48,7 +51,8 @@ export const generalledgerlist: any = [
         activitydate: '10/07/2020',
         activity: 'Reinforcement Activity',
         transactioncode: 'T-004',
-        transactionaccount: 'Cash transactions',
+        transactionaccount: 'Cash transactions', 
+        amount:8000,
         credit: 4595.00,
         debit: 300.00, 
         total: 1003.00
@@ -62,6 +66,7 @@ export const generalledgerlist: any = [
         activity: 'Activity Report',
         transactioncode: 'T-005',
         transactionaccount: 'Credit Transaction',
+        amount:8000,
         credit: 1200.00,
         debit: 200.00, 
         total: 100.00
@@ -75,6 +80,7 @@ export const generalledgerlist: any = [
         activity: 'Activity Report',
         transactioncode: 'T-006',
         transactionaccount: 'Credit Transaction',
+        amount:8000,
         credit: 8001.00,
         debit: 348.00, 
         total: 456.00

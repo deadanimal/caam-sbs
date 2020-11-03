@@ -15,6 +15,7 @@ export const aginginvoicelist: any = [
             month13to36: 3455.00,
             month36to72: 5555.00,
             month72: 6900.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         {
             invoiceperiod: "1 months",
@@ -28,6 +29,7 @@ export const aginginvoicelist: any = [
             month13to36: 3000.00,
             month36to72: 8000.00,
             month72: 6900.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         {
             invoiceperiod: "4 months",
@@ -41,6 +43,7 @@ export const aginginvoicelist: any = [
             month13to36: 6778.00,
             month36to72: 6789.00,
             month72: 2133.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         }
         ],
         subtotalinvoice: 123455.00,
@@ -51,6 +54,7 @@ export const aginginvoicelist: any = [
         subtotalmonth13to36: 7900.00,
         subtotalmonth36to72: 8900.00,
         subtotalmonth72: 89088.00,
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     {
         id: '2',
@@ -68,6 +72,7 @@ export const aginginvoicelist: any = [
             month13to36: 100.00,
             month36to72: 3450.00,
             month72: 3400.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         {
             invoiceperiod: "7 months",
@@ -81,6 +86,7 @@ export const aginginvoicelist: any = [
             month13to36: 100.00,
             month36to72: 2300.00,
             month72: 3400.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         }
         ],
         subtotalinvoice: 46889.00,
@@ -108,6 +114,7 @@ export const aginginvoicelist: any = [
             month13to36: 56789.00,
             month36to72: 3450.00,
             month72: 4560.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         ],
         subtotalinvoice: 46889.00,
@@ -135,6 +142,7 @@ export const aginginvoicelist: any = [
             month13to36: 56789.00,
             month36to72: 3450.00,
             month72: 4560.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         ],
         subtotalinvoice: 46889.00,
@@ -145,6 +153,7 @@ export const aginginvoicelist: any = [
         subtotalmonth13to36: 4500.00,
         subtotalmonth36to72: 4500.00,
         subtotalmonth72: 45698.00,
+        
     },
     {
         id: '5',
@@ -162,6 +171,7 @@ export const aginginvoicelist: any = [
             month13to36: 56789.00,
             month36to72: 3450.00,
             month72: 4560.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         ],
         subtotalinvoice: 46889.00,
@@ -189,6 +199,7 @@ export const aginginvoicelist: any = [
             month13to36: 56789.00,
             month36to72: 3450.00,
             month72: 4560.00,
+            file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         },
         ],
         subtotalinvoice: 46889.00,

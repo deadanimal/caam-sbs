@@ -1,19 +1,11 @@
-<div class="header pb-6">
+<div class="header background-theme">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            Invoice List
+          <h6 class="h2 text-white d-inline-block mb-0">
+            Invoice List &nbsp;
           </h6>
-
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)"> <i class="fas fa-file-invoice-dollar"> </i> </a>
-              </li>
-            </ol>
-          </nav>
 
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
@@ -29,12 +21,13 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+
+<div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
       <div class="card mb-4">
         <div class="card-header bg-secondary">
-          <h3 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h3>
+          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
         </div>
         <div class="card-body">
           <div class="row">
@@ -94,6 +87,16 @@
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
             [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column name="invoicenumber">
               <ng-template ngx-datatable-header-template>
                 <span>Invoice Number</span>
@@ -114,9 +117,12 @@
                 <span>Invoice Date</span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="amount">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Amount</span>
+                <span>AMOUNT</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.amount | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -130,13 +136,14 @@
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
-              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <button class="btn btn-dark btn-sm" (click)="openModal(view,row)" title="click to view">
-                  <i class="fa fa-eye text-white" aria-hidden="true"></i>
-                </button>&nbsp; &nbsp;
-                <button class="btn btn-primary btn-sm" title="click to download">
-                  <i class="fa fa-download text-white" aria-hidden="true"></i>
-                </button>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <a href="javascript:void(0)" (click)="openModal(view,row)" title="click to view">
+                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>
+                </a>
+
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

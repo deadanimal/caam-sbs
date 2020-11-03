@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { MovementReportComponent } from './movement-report/movement-report.component';
+import { DisputeComponent } from './dispute/dispute.component';
 
 export const CoreRoute: Routes = [
   {
@@ -23,6 +25,24 @@ export const CoreRoute: Routes = [
         path: "finance",
         loadChildren: () =>
           import("./finance/finance.module").then((m) => m.FinanceModule),
+      },
+      {
+        path: "movement-report",
+        component: MovementReportComponent,
+      },
+      {
+        path: "dispute",
+        component: DisputeComponent,
+      },
+      {
+        path: "billing",
+        loadChildren: () =>
+          import("./billing/billing.module").then((m) => m.BillingModule),
+      },
+      {
+        path: "payment",
+        loadChildren: () =>
+          import("./payment/payment.module").then((m) => m.PaymentModule),
       },
     ],
   },

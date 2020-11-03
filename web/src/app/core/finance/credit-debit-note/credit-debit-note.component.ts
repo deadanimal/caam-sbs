@@ -2,8 +2,8 @@ import { chartPieData } from './../../../variables/charts';
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/credit-debit-note";
-import { CreditDebitService } from 'src/app/shared/services/credit-and-debit/credit-and-debit.service';
-import { CreditDebit } from 'src/app/shared/services/credit-and-debit/credit-and-debit.model';
+import { CreditDebitService } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.service';
+import { CreditDebit } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.model';
 
 @Component({
   selector: 'app-credit-debit-note',
@@ -51,6 +51,11 @@ export class CreditDebitNoteComponent implements OnInit {
         id: key,
       };
     });
+  }
+
+  download(url: string): void {
+    console.log(url);
+    window.open(url, '_blank');
   }
 
   getAllData = () => {

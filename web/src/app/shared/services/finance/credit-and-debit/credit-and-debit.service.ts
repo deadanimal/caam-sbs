@@ -61,8 +61,8 @@ export class CreditDebitService {
     );
   }
 
-  filter(field: string): Observable<CreditDebit[]> {
-    let urlFilter = this.url + "?" + field;
+  filter(byfield: string, field: string): Observable<CreditDebit[]> {
+    let urlFilter = this.url + "?by=" + byfield + "&field=" + field;
     return this.http.get<CreditDebit[]>(urlFilter).pipe(
       tap((res) => {
         console.log("CreditDebit", res);

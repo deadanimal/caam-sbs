@@ -61,8 +61,8 @@ export class GeneralLedgerService {
     );
   }
 
-  filter(field: string): Observable<GeneralLedger[]> {
-    let urlFilter = this.url + "?" + field;
+  filter(byfield: string, field: string): Observable<GeneralLedger[]> {
+    let urlFilter = this.url + "?by=" + byfield + "&field=" + field;
     return this.http.get<GeneralLedger[]>(urlFilter).pipe(
       tap((res) => {
         console.log("GeneralLedger", res);

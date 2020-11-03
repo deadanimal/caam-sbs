@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/aging-invoice";
-import { AgingInvoicesService } from 'src/app/shared/services/aging-invoice/aging-invoice.service';
-import { AgingInvoice } from 'src/app/shared/services/aging-invoice/aging-invoice.model';
+import { AgingInvoicesService } from 'src/app/shared/services/finance/aging-invoice/aging-invoice.service';
+import { AgingInvoice } from 'src/app/shared/services/finance/aging-invoice/aging-invoice.model';
 
 @Component({
   selector: 'app-aging-invoice',
@@ -10,6 +10,8 @@ import { AgingInvoice } from 'src/app/shared/services/aging-invoice/aging-invoic
   styleUrls: ['./aging-invoice.component.scss']
 })
 export class AgingInvoiceComponent implements OnInit {
+
+  page=1;
 
   entries: number = 5;
   selected: any[] = [];
@@ -51,6 +53,15 @@ export class AgingInvoiceComponent implements OnInit {
         id: key,
       };
     });
+  }
+
+  ngOnInit() {
+
+  }
+
+  download(url: string): void {
+    console.log(url);
+    window.open(url, '_blank');
   }
 
   getAllData = () => {
@@ -102,12 +113,12 @@ export class AgingInvoiceComponent implements OnInit {
     this.activeRow = event.row;
   }
 
-  viewData(row){
+  viewData(row) {
     this.companyname = row.companyname;
     this.invoicedate = row.invoicedate;
     this.invoicenumber = row.invoicenumber;
   }
-  
+
   openModal(modalRef: TemplateRef<any>, row) {
     this.viewData(row);
     this.modal = this.modalService.show(modalRef, this.modalConfig);
@@ -117,8 +128,6 @@ export class AgingInvoiceComponent implements OnInit {
     this.modal.hide()
   }
 
-  ngOnInit() {
 
-   }
 
 }

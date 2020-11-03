@@ -7,7 +7,8 @@ export const creditdebitlist: any = [
         amount: 206.7,
         transaction: 230.00,
         transactionnumber: '0022',
-        transactiondate: '29/01/2020'
+        transactiondate: '29/01/2020',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         
     },
     {
@@ -18,7 +19,8 @@ export const creditdebitlist: any = [
         amount: 349.01,
         transaction: 350.00,
         transactionnumber: '0023',
-        transactiondate: '10/03/2020'
+        transactiondate: '10/03/2020',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     {
         id: '3',
@@ -28,7 +30,8 @@ export const creditdebitlist: any = [
         amount: 1230.40,
         transaction: 1300.00,
         transactionnumber: '0024',
-        transactiondate: '10/03/2020'
+        transactiondate: '10/03/2020',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     }, 
     {
         id: '4',
@@ -38,7 +41,8 @@ export const creditdebitlist: any = [
         amount: 300.00,
         transaction: 300.00,
         transactionnumber: '0025',
-        transactiondate: '09/12/2020'
+        transactiondate: '09/12/2020',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     {
         id:'5',
@@ -48,7 +52,8 @@ export const creditdebitlist: any = [
         amount: 988.20,
         transaction: 1000.00,
         transactionnumber: '0026',
-        transactiondate: '08/10/2020'
+        transactiondate: '08/10/2020',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
       },
       {
         id:'6',
@@ -58,7 +63,8 @@ export const creditdebitlist: any = [
         amount: 120.40,
         transaction: 50.00,
         transactionnumber: '0027',
-        transactiondate: '28/11/2020'
+        transactiondate: '28/11/2020',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
       },
 
 ]

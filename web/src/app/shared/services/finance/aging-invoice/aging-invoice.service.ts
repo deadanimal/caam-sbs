@@ -10,7 +10,7 @@ import { AgingInvoice } from './aging-invoice.model';
   providedIn: "root",
 })
 export class AgingInvoicesService {
-  url: string = environment.baseUrl + "v1/invoices/";
+  url: string = environment.baseUrl + "v1/aging-invoices/";
 
   // Data
   public agingInvoice: AgingInvoice
@@ -61,8 +61,8 @@ export class AgingInvoicesService {
     );
   }
 
-  filter(field: string): Observable<AgingInvoice[]> {
-    let urlFilter = this.url + "?" + field;
+  filter(byfield: string, field: string): Observable<AgingInvoice[]> {
+    let urlFilter = this.url + "?by=" + byfield + "&field=" + field;
     return this.http.get<AgingInvoice[]>(urlFilter).pipe(
       tap((res) => {
         console.log("AgingInvoice", res);

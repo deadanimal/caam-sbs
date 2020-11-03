@@ -22,7 +22,7 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { AgingInvoiceComponent } from './aging-invoice/aging-invoice.component';
 import { CreditDebitNoteComponent } from './credit-debit-note/credit-debit-note.component';
 import { GeneralLedgerComponent } from './general-ledger/general-ledger.component';
-import { PaymentComponent } from './payment/payment.component';
+
 
 
 
@@ -31,7 +31,6 @@ let pages = [
   AgingInvoiceComponent,
   CreditDebitNoteComponent,
   GeneralLedgerComponent,
-  PaymentComponent
 ]
 
 @NgModule({

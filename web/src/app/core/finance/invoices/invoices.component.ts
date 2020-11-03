@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/invoice";
-import { InvoicesService } from 'src/app/shared/services/invoice/invoices.service';
-import { Invoice } from 'src/app/shared/services/invoice/invoices.model';
+import { InvoicesService } from 'src/app/shared/services/finance/invoice/invoices.service';
+import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model';
 
 @Component({
   selector: "app-invoices",
@@ -51,6 +51,11 @@ export class InvoicesComponent implements OnInit {
         id: key,
       };
     });
+  }
+
+  download(url: string): void {
+    console.log(url);
+    window.open(url, '_blank');
   }
 
   getAllData = () => {

@@ -7,6 +7,7 @@ export const invoicelist: any = [
         invoicedate: '28/01/2020',
         amount: 206.7,
         status: 'Overdue',  
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     {
         id: '2',
@@ -16,6 +17,7 @@ export const invoicelist: any = [
         invoicedate: '04/03/2020',
         amount: 349.01,
         status: 'Paid',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     {
         id: '3',
@@ -25,6 +27,7 @@ export const invoicelist: any = [
         invoicedate: '15/03/2020',
         amount: 1230.40,
         status: 'Paid',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     
     {
@@ -35,6 +38,7 @@ export const invoicelist: any = [
         invoicedate: '21/02/2020',
         amount: 300.00,
         status: 'Disputed',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
     {
         id:'5',
@@ -44,6 +48,7 @@ export const invoicelist: any = [
         invoicedate: '09/09/2020',
         amount: 988.20,
         status: 'Partial',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
       },
       {
         id:'6',
@@ -53,6 +58,7 @@ export const invoicelist: any = [
         invoicedate: '26/11/2020',
         amount: 120.40,
         status: 'Overdue',
+        file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
       }
 
 ]
