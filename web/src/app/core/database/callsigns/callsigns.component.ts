@@ -9,9 +9,10 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as MultipleCallsigns from "src/app/variables/multiple-callsigns";
 import swal from "sweetalert2";
 
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { CallsignsService } from "src/app/shared/services/callsigns/callsigns.service";
-import { OrganisationsService } from 'src/app/shared/services/organisations/organisations.service';
-import { UsersService } from 'src/app/shared/services/users/users.service';
+import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
+import { UsersService } from "src/app/shared/services/users/users.service";
 
 export enum SelectionType {
   single = "single",
@@ -51,19 +52,15 @@ export class CallsignsComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  currentUser: any;
-
   constructor(
     public formBuilder: FormBuilder,
     public zone: NgZone,
     private modalService: NgbModal,
+    public authService: AuthService,
     private callsignService: CallsignsService,
     private organisationService: OrganisationsService,
     private userService: UsersService
   ) {
-
-    this.currentUser = this.userService.currentUser;
-    
     this.getCallsign();
 
     this.callsignFormGroup = this.formBuilder.group({
@@ -74,14 +71,18 @@ export class CallsignsComponent implements OnInit {
     });
 
     this.organisationService.filter("organisation_type=AL").subscribe(
-      (res) => { this.airlines = res; console.log(this.airlines) },
-      (err) => { console.error("err", err); }
+      (res) => {
+        this.airlines = res;
+        console.log(this.airlines);
+      },
+      (err) => {
+        console.error("err", err);
+      }
     );
   }
 
   getCallsign() {
-
-    console.log('THIS')
+    console.log("THIS");
 
     this.callsignService.get().subscribe(
       (res) => {

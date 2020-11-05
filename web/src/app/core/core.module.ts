@@ -18,10 +18,12 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from "@angular/router";
 import { CoreRoute } from "./core.routing";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { MasterDataComponent } from './master-data/master-data.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    MasterDataComponent,
   ],
   imports: [
     CommonModule,

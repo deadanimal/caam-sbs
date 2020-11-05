@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { MasterDataComponent } from "./master-data/master-data.component";
 
 export const CoreRoute: Routes = [
   {
@@ -18,6 +19,10 @@ export const CoreRoute: Routes = [
         path: "task",
         loadChildren: () =>
           import("./task/task.module").then((m) => m.TaskModule),
+      },
+      {
+        path: "master-data",
+        component: MasterDataComponent,
       },
     ],
   },

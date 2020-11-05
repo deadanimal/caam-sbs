@@ -3,9 +3,7 @@
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            Upload
-          </h6>
+          <h6 class="h2 text-dark d-inline-block mb-0">Master Data</h6>
 
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
@@ -18,13 +16,8 @@
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
             <small class="text-justify"
-              >User able to upload VFR and TFL data in this module. This system
-              will automatically check for error, calculate the invoice and
-              generate invoice.<br />
-              User will need to update the error data in order to generate
-              invoice.<br />
-              After cleaning the data, user will need to press submit button in
-              order to save into database.</small
+              >Enable the user to find the uploaded flight plan data in the
+              system.</small
             >
           </ng-template>
           <button
@@ -45,95 +38,54 @@
 </div>
 
 <div class="container-fluid mt--6">
-  <ngx-spinner
-    bdColor="rgba(0, 0, 0, 0.8)"
-    size="medium"
-    color="#fff"
-    type="timer"
-    [fullScreen]="true"
-    ><p style="color: white;">Loading, Please wait a moment...</p></ngx-spinner
-  >
   <div class="row">
-    <div class="col-lg-6 col-xs-12">
+    <div class="col">
       <div class="card">
         <div class="card-header">
-          <h4 class="m-0">Upload VFR and TFL Data</h4>
+          <h3 class="mb-0">Filter</h3>
         </div>
-        <div class="card-body" style="height: 230px;">
-          <form [formGroup]="fileuploadFormGroup" (ngSubmit)="upload()">
-            <div>
-              <label class="form-control-label" for="data_file_link"
-                >Select file</label
+        <div class="card-body">
+          <form [formGroup]="searchFormGroup">
+            <div class="row">
+              <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                  <label class="form-control-label">Filter By</label>
+                  <select class="form-control" formControlName="select">
+                    <option value="" selected>Please select</option>
+                    <option value="fpl_no">Callsign</option>
+                    <option value="aircraft_model">AC Type</option>
+                    <option value="dep">Departure</option>
+                    <option value="dest">Destination</option>
+                    <option value="ctg">Category</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                  <label class="form-control-label">Keyword</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="keyword"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center"
               >
-              <input
-                class="form-control"
-                type="file"
-                name="data_file_link"
-                (change)="onFileChange($event)"
-              />
-              <!-- formControlName="data_file_link" -->
-            </div>
-            <div class="pt-3">
-              <label class="form-control-label mr-3">File Type</label>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="tfl"
-                  name="data_type"
-                  formControlName="data_type"
-                  class="custom-control-input"
-                  value="TFL"
-                />
-                <label class="custom-control-label" for="tfl">TFL</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="vfr"
-                  name="data_type"
-                  formControlName="data_type"
-                  class="custom-control-input"
-                  value="VFR"
-                />
-                <label class="custom-control-label" for="vfr">VFR</label>
+                <button
+                  class="btn btn-primary"
+                  (click)="searchTable()"
+                  [disabled]="!searchFormGroup.valid"
+                >
+                  Search
+                </button>
+                <button class="btn btn-secondary" (click)="resetTable()">
+                  Reset
+                </button>
               </div>
             </div>
-            <button
-              type="submit"
-              [disabled]="!fileuploadFormGroup"
-              class="btn btn-sm btn-default mt-3"
-            >
-              Upload
-            </button>
           </form>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 col-xs-12">
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col">
-              <h4 class="m-0">VFR Excel Template</h4>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-info-circle fa-lg text-danger"></i>
-            </div>
-          </div>
-        </div>
-        <div class="card-body" style="height: 228px;">
-          <small>
-            Please click <a href="#" download><strong>HERE</strong></a> to
-            download the VFR Excel template to upload your flight plan data.
-          </small>
-          <div class="p-2"></div>
-          <div class="alert alert-danger" role="alert">
-            <h5>Note</h5>
-            <small>
-              Please note that the data inputted in the VFR Excel template must
-              be accurate for easier the invoice process.
-            </small>
-          </div>
         </div>
       </div>
     </div>
@@ -144,22 +96,24 @@
         <div class="card-header">
           <div class="row">
             <div class="col">
-              <h3 class="mb-0">List of VFR and TFL Data</h3>
+              <h3 class="mb-0">List of Master Data</h3>
             </div>
-            <div class="col-auto">
-              <h3 class="text-danger" *ngIf="dataErrors.length > 0">
-                <ng9-odometer
-                  [number]="dataErrors.length"
-                  [config]="{}"
-                ></ng9-odometer>
-                errors occured
-              </h3>
-            </div>
+            <!-- <div class="col-auto">
+              <span>
+                <h3 class="text-danger" *ngIf="dataErrors.length > 0">
+                  <ng9-odometer
+                    [number]="dataErrors.length"
+                    [config]="{}"
+                  ></ng9-odometer>
+                  errors occured
+                </h3>
+              </span>
+            </div> -->
           </div>
         </div>
         <div class="dataTables_wrapper py-4">
           <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6">
               <div class="dataTables_length" id="datatable_length">
                 <label>
                   Show
@@ -179,7 +133,7 @@
                 </label>
               </div>
             </div>
-            <div
+            <!-- <div
               class="col-sm-12 col-md-4"
               style="
                 display: flex;
@@ -202,8 +156,8 @@
                   data-label-on="Yes"
                 ></span>
               </label>
-            </div>
-            <div class="col-sm-12 col-md-4">
+            </div> -->
+            <!-- <div class="col-sm-12 col-md-6">
               <div id="datatable_filter" class="dataTables_filter">
                 <label>
                   <input
@@ -215,7 +169,7 @@
                   />
                 </label>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <ngx-datatable
@@ -224,6 +178,7 @@
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="'auto'"
+            [rowClass]="getRowClass"
             [limit]="entries != -1 ? entries : undefined"
             [rows]="temp"
             (activate)="onActivate($event)"
@@ -231,7 +186,7 @@
           >
             <!-- <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>LN</span>
+                <span>No</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
                 {{ row.no + 1 }}
@@ -301,7 +256,7 @@
                 {{ row.route }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column>
+            <!-- <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Remarks</span>
               </ng-template>
@@ -310,50 +265,32 @@
                   row.error_remark
                 }}</small>
               </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+            </ngx-datatable-column> -->
+            <!-- <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template
                 let-row="row"
                 let-value="value"
                 ngx-datatable-cell-template
               >
                 <button
-                  class="btn btn-primary btn-sm"
-                  (click)="editUpload(row, classic1)"
+                  class="btn btn-warning btn-sm"
+                  (click)="edit(row, vfrtflModal)"
                 >
                   <i class="fas fa-edit"></i>
                 </button>
-                <button
-                  class="btn btn-danger btn-sm"
-                  (click)="archiveUpload(row)"
-                >
-                  <i class="fas fa-archive"></i>
+                <button class="btn btn-danger btn-sm" (click)="delete(value)">
+                  <i class="fas fa-trash"></i>
                 </button>
               </ng-template>
-            </ngx-datatable-column>
+            </ngx-datatable-column> -->
           </ngx-datatable>
-          <div class="text-center" *ngIf="temp.length > 0">
-            <button
-              class="btn btn-dark"
-              (click)="submit()"
-              *ngIf="dataErrors > 0"
-            >
-              Submit
-            </button>
-            <button class="btn btn-warning" (click)="draft()">
-              Save as draft
-            </button>
-            <button class="btn btn-danger" (click)="cancel()">
-              Cancel
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #classic1 let-c="close" let-d="dismiss">
+<ng-template #vfrtflModal let-c="close" let-d="dismiss">
   <div class="modal-content">
     <div class="modal-body p-0">
       <div class="card bg-secondary shadow border-0">
@@ -375,32 +312,32 @@
             <div class="row">
               <div class="col-lg-6 col-xs-12">
                 <!-- <div class="form-group">
-                  <label class="form-control-label">RTID</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter rtid"
-                    formControlName="RTID"
-                  />
-                </div> -->
+                    <label class="form-control-label">RTID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter rtid"
+                      formControlName="RTID"
+                    />
+                  </div> -->
                 <!-- <div class="form-group">
-                  <label class="form-control-label">Registration</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter registration"
-                    formControlName="REGISTRATION"
-                  />
-                </div> -->
+                    <label class="form-control-label">Registration</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter registration"
+                      formControlName="REGISTRATION"
+                    />
+                  </div> -->
                 <!-- <div class="form-group">
-                  <label class="form-control-label">Ground Handler</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter groundhandler"
-                    formControlName="GROUNDHANDLER"
-                  />
-                </div> -->
+                    <label class="form-control-label">Ground Handler</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter groundhandler"
+                      formControlName="GROUNDHANDLER"
+                    />
+                  </div> -->
                 <div class="form-group">
                   <label class="form-control-label">A/C Type (Model)</label>
                   <input
@@ -423,6 +360,7 @@
                   <label class="form-control-label">Active Time</label>
                   <input
                     type="text"
+                    readonly
                     class="form-control"
                     placeholder="Enter active time"
                     formControlName="fpl_date"
@@ -432,6 +370,7 @@
                   <label class="form-control-label">CTG</label>
                   <input
                     type="text"
+                    readonly
                     class="form-control"
                     placeholder="Enter ctg"
                     formControlName="ctg"
@@ -444,20 +383,21 @@
                   <label class="form-control-label">Callsign</label>
                   <input
                     type="text"
+                    readonly
                     class="form-control"
                     placeholder="Enter callsign"
                     formControlName="fpl_no"
                   />
                 </div>
                 <!-- <div class="form-group">
-                  <label class="form-control-label">Operator</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter operator"
-                    formControlName="OPERATOR"
-                  />
-                </div> -->
+                    <label class="form-control-label">Operator</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter operator"
+                      formControlName="OPERATOR"
+                    />
+                  </div> -->
                 <div class="form-group">
                   <label class="form-control-label">Dep</label>
                   <input
@@ -468,14 +408,14 @@
                   />
                 </div>
                 <!-- <div class="form-group">
-                  <label class="form-control-label">Date of Flight</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter date of flight"
-                    formControlName="DATEOFFLIGHT"
-                  />
-                </div> -->
+                    <label class="form-control-label">Date of Flight</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter date of flight"
+                      formControlName="DATEOFFLIGHT"
+                    />
+                  </div> -->
                 <div class="form-group">
                   <label class="form-control-label">Distance</label>
                   <input
@@ -497,10 +437,11 @@
               </div>
             </div>
             <div class="text-center">
-              <button class="btn btn-dark" (click)="update()">
+              <button type="button" class="btn btn-dark" (click)="update()">
                 Update
               </button>
               <button
+                type="button"
                 class="btn btn-secondary"
                 data-dismiss="modal"
                 (click)="c('Close click')"
@@ -514,3 +455,12 @@
     </div>
   </div>
 </ng-template>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="timer"
+  [fullScreen]="true"
+  ><p style="color: white">Loading, Please wait a moment...</p></ngx-spinner
+>
