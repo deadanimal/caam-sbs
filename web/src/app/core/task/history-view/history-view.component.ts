@@ -185,7 +185,7 @@ export class HistoryViewComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(["airport/tflvfr"]);
+    this.router.navigate(["/app/task/data"]);
   }
 
   edit(row, content) {

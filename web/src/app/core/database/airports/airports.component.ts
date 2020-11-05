@@ -10,7 +10,8 @@ import * as AirportLists from "src/app/variables/airport-lists";
 import swal from "sweetalert2";
 
 import { AirportsService } from "src/app/shared/services/airports/airports.service";
-import { UsersService } from 'src/app/shared/services/users/users.service';
+import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { UsersService } from "src/app/shared/services/users/users.service";
 
 export enum SelectionType {
   single = "single",
@@ -48,18 +49,14 @@ export class AirportsComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  currentUser:any;
-
   constructor(
     public formBuilder: FormBuilder,
     public zone: NgZone,
     private modalService: NgbModal,
     private airportService: AirportsService,
+    public authService: AuthService,
     private userService: UsersService
   ) {
-
-    this.currentUser = this.userService.currentUser;
-
     this.getAirport();
 
     this.airportFormGroup = this.formBuilder.group({
@@ -81,18 +78,21 @@ export class AirportsComponent implements OnInit {
   }
 
   getAirport() {
-    this.airportService.get().subscribe((res) => {
-      this.rows = res;
-      this.temp = this.rows.map((prop, key) => {
-        return {
-          ...prop,
-          // id: key,
-          no: key,
-        };
-      });
-    }, (err) => {
-      console.error("err", err);
-    });
+    this.airportService.get().subscribe(
+      (res) => {
+        this.rows = res;
+        this.temp = this.rows.map((prop, key) => {
+          return {
+            ...prop,
+            // id: key,
+            no: key,
+          };
+        });
+      },
+      (err) => {
+        console.error("err", err);
+      }
+    );
   }
 
   entriesChange($event) {

@@ -1,11 +1,9 @@
-<div class="header pb-6" >
+<div class="header pb-6">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            Aircraft
-          </h6>
+          <h6 class="h2 text-dark d-inline-block mb-0">Aircraft</h6>
 
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
@@ -35,7 +33,11 @@
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button class="btn btn-dark" (click)="create(classic1)"  *ngIf="currentUser.user_type == 'OPS'">
+          <button
+            class="btn btn-dark"
+            (click)="create(classic1)"
+            *ngIf="authService.decodedToken().user_type == 'OPS'"
+          >
             Add New Aircraft
           </button>
 
@@ -102,8 +104,9 @@
                               <option
                                 [value]="manufacturer.id"
                                 *ngFor="let manufacturer of manufacturers"
-                                >{{ manufacturer.name }}</option
                               >
+                                {{ manufacturer.name }}
+                              </option>
                             </select>
                           </div>
                           <div class="form-group">
@@ -117,8 +120,9 @@
                               <option
                                 [value]="operator.id"
                                 *ngFor="let operator of operators"
-                                >{{ operator.name }}</option
                               >
+                                {{ operator.name }}
+                              </option>
                             </select>
                           </div>
                         </div>
@@ -170,9 +174,7 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >MTOW (kg)</label
-                            >
+                            <label class="form-control-label">MTOW (kg)</label>
                             <input
                               type="number"
                               class="form-control"
@@ -186,9 +188,9 @@
                               class="form-control"
                               formControlName="is_active"
                             >
-                              <option value="" selected
-                                >Please select status</option
-                              >
+                              <option value="" selected>
+                                Please select status
+                              </option>
                               <option value="true">Active</option>
                               <option value="false">Not Active</option>
                             </select>
@@ -273,17 +275,17 @@
             [limit]="entries != -1 ? entries : undefined"
             [rows]="temp"
             (activate)="onActivate($event)"
-            [scrollbarH]="true">
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.no + 1 }}
+              </ng-template>
+            </ngx-datatable-column>
 
-          <ngx-datatable-column>
-            <ng-template ngx-datatable-header-template>
-              <span>No.</span>
-            </ng-template>
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              {{ row.no + 1 }}
-            </ng-template>
-          </ngx-datatable-column>          
-          
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Aircraft Model</span>
@@ -316,7 +318,12 @@
                 {{ row.weight }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Actions" sortable="false" prop="id" *ngIf="currentUser.user_type == 'OPS'">
+            <ngx-datatable-column
+              name="Actions"
+              sortable="false"
+              prop="id"
+              *ngIf="authService.decodedToken().user_type == 'OPS'"
+            >
               <ng-template ngx-datatable-header-template>
                 <span>Actions</span>
               </ng-template>

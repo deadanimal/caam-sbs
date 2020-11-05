@@ -194,7 +194,7 @@ export class HistoryComponent implements OnInit {
         fileupload_status: row.status
       },
     };
-    this.router.navigate(["airport/tflvfr/view"], navigationExtras);
+    this.router.navigate(["/app/task/data-history"], navigationExtras);
   }
 
   delete(value) {

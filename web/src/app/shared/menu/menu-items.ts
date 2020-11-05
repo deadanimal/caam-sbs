@@ -23,7 +23,6 @@ export interface ChildrenItems2 {
   type?: string;
 }
 
-
 export const AirlineRoutes: RouteInfo[] = [
   {
     path: "/app/dashboard",
@@ -39,10 +38,10 @@ export const AirlineRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-    ]
+      { path: "invoices", title: "Invoice", type: "link" },
+      { path: "notes", title: "Credit & Debit Note", type: "link" },
+      { path: "payments", title: "Payment", type: "link" },
+    ],
   },
 ];
 
@@ -61,12 +60,12 @@ export const AirportRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link", },      
-      { path: "airline", title: "Airline", type: "link", },
-      { path: "airport", title: "Airport", type: "link", },      
-      { path: "callsign", title: "Callsign", type: "link", },   
-      { path: "rate", title: "Rate", type: "link", },   
-      { path: "route", title: "Route", type: "link", },            
+      { path: "aircraft", title: "Aircraft", type: "link" },
+      { path: "airline", title: "Airline", type: "link" },
+      { path: "airport", title: "Airport", type: "link" },
+      { path: "callsign", title: "Callsign", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -77,10 +76,16 @@ export const AirportRoutes: RouteInfo[] = [
     collapse: "task",
     isCollapsed: true,
     children: [
-        { path: "data-upload", title: "Upload", type: "link" },
-        { path: "data-history", title: "History", type: "link" },    
+      { path: "data-upload", title: "Upload", type: "link" },
+      { path: "data", title: "History", type: "link" },
     ],
-  },  
+  },
+  {
+    path: "/app/master-data",
+    title: "Master Data",
+    type: "link",
+    icontype: "fas fa-server text-success",
+  },
 ];
 
 export const OperationRoutes: RouteInfo[] = [
@@ -98,13 +103,13 @@ export const OperationRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -115,9 +120,16 @@ export const OperationRoutes: RouteInfo[] = [
     collapse: "task",
     isCollapsed: true,
     children: [
-      { path: "tflvfr", title: "TFL/VFR", type: "link" },
+      { path: "data-upload", title: "Upload", type: "link" },
+      { path: "data", title: "History", type: "link" },
       { path: "dispute", title: "Dispute", type: "link" },
     ],
+  },
+  {
+    path: "/app/master-data",
+    title: "Master Data",
+    type: "link",
+    icontype: "fas fa-server text-success",
   },
 ];
 
@@ -136,15 +148,15 @@ export const SafRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
-  },  
+  },
   {
     path: "/app/finance",
     title: "Finance",
@@ -153,13 +165,12 @@ export const SafRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-      { path: "others", title: "Other", type: "link" },  
-    ]
-  },  
-
+      { path: "invoices", title: "Invoice", type: "link" },
+      { path: "notes", title: "Credit & Debit Note", type: "link" },
+      { path: "payments", title: "Payment", type: "link" },
+      { path: "others", title: "Other", type: "link" },
+    ],
+  },
 ];
 
 export const HodRoutes: RouteInfo[] = [
@@ -177,13 +188,13 @@ export const HodRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -207,12 +218,12 @@ export const HodRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-      { path: "others", title: "Other", type: "link" },  
-    ]
-  },  
+      { path: "invoices", title: "Invoice", type: "link" },
+      { path: "notes", title: "Credit & Debit Note", type: "link" },
+      { path: "payments", title: "Payment", type: "link" },
+      { path: "others", title: "Other", type: "link" },
+    ],
+  },
 ];
 
 export const FinanceRoutes: RouteInfo[] = [
@@ -230,13 +241,13 @@ export const FinanceRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -247,10 +258,10 @@ export const FinanceRoutes: RouteInfo[] = [
     collapse: "finance",
     isCollapsed: true,
     children: [
-      { path: "invoices", title: "Invoice", type: "link" },    
-      { path: "notes", title: "Credit & Debit Note", type: "link" },           
-      { path: "payments", title: "Payment", type: "link" },          
-      { path: "others", title: "Other", type: "link" },  
-    ]
+      { path: "invoices", title: "Invoice", type: "link" },
+      { path: "notes", title: "Credit & Debit Note", type: "link" },
+      { path: "payments", title: "Payment", type: "link" },
+      { path: "others", title: "Other", type: "link" },
+    ],
   },
 ];
