@@ -12,11 +12,11 @@ export enum SelectionType {
 }
 
 @Component({
-  selector: "app-exemptions",
-  templateUrl: "./exemptions.component.html",
-  styleUrls: ["./exemptions.component.scss"],
+  selector: "app-notes",
+  templateUrl: "./notes.component.html",
+  styleUrls: ["./notes.component.scss"],
 })
-export class ExemptionsComponent implements OnInit {
+export class NotesComponent implements OnInit {
   entries: number = 5;
   selected: any[] = [];
   temp = [];
