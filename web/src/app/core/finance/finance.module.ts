@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
 import { FinanceRoute } from './finance.routing';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { NotesComponent } from './notes/notes.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 let pages = [
 
@@ -21,7 +24,9 @@ let pages = [
 
 @NgModule({
   declarations: [
-    pages
+    InvoicesComponent,
+    NotesComponent,
+    PaymentsComponent
   ],
   imports: [
     CommonModule,

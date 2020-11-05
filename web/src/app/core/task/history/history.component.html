@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-lg-6 text-right">
-          <button class="btn btn-primary" (click)="open(uploadModal)">
+          <button class="btn btn-primary">
             Upload
           </button>
         </div>
@@ -113,7 +113,6 @@
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="'auto'"
-            [rowClass]="getRowClass"
             [limit]="entries != -1 ? entries : undefined"
             [rows]="temp"
             (activate)="onActivate($event)"
