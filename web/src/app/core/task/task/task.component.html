@@ -128,7 +128,7 @@
           </div>
 
           <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-            [rowHeight]="'auto'" [rowClass]="getRowClass" [limit]="entries != -1 ? entries : undefined"
+            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
             [rows]="tempFileUpload | filter: searchText" (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="40">
               <ng-template ngx-datatable-header-template>

@@ -137,6 +137,12 @@ export class UploadComponent implements OnInit {
     this.statuses = this.fileuploadService.statuses();
   }
 
+  getRowClass = (row) => {
+    return {
+      "row-color": row.error_remark != ""
+    };
+  };
+
 getFplData(user_obj) {
 
   this.fpldataService

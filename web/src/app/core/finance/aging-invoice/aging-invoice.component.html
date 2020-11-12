@@ -208,7 +208,7 @@
             [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true"
             [groupExpansionDefault]="true" [groupRowsBy]="'companyname'">
 
-            <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader (toggle)="onDetailToggle($event)">
+            <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader >
               <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
                 <div style="padding: 10px 20px;" class="mt-4">
                   <div href="javascript:void(0)">
