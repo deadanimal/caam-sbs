@@ -9,6 +9,7 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as Companies from "src/app/variables/companies";
 import swal from "sweetalert2";
 
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 import { UsersService } from 'src/app/shared/services/users/users.service';
 
@@ -47,17 +48,14 @@ export class AirlinesComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  currentUser: any;
-
   constructor(
     public formBuilder: FormBuilder,
     public zone: NgZone,
     private modalService: NgbModal,
+    public authService: AuthService,
     private organisationService: OrganisationsService,
     private userService: UsersService
   ) {
-
-    this.currentUser = this.userService.currentUser;
     this.getAirline();
 
     this.airlineFormGroup = this.formBuilder.group({

@@ -19,11 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FinanceRoute } from './finance.routing';
 import { InvoicesComponent } from './invoices/invoices.component';
+<<<<<<< HEAD
 import { AgingInvoiceComponent } from './aging-invoice/aging-invoice.component';
 import { CreditDebitNoteComponent } from './credit-debit-note/credit-debit-note.component';
 import { GeneralLedgerComponent } from './general-ledger/general-ledger.component';
 import {MatDatepickerModule} from '@angular/material';
 import { DatePipe } from '@angular/common';
+=======
+import { NotesComponent } from './notes/notes.component';
+import { PaymentsComponent } from './payments/payments.component';
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
 
 let pages = [
   InvoicesComponent,
@@ -34,7 +39,9 @@ let pages = [
 
 @NgModule({
   declarations: [
-    pages
+    InvoicesComponent,
+    NotesComponent,
+    PaymentsComponent
   ],
   imports: [
     CommonModule,

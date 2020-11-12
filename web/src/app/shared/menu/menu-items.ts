@@ -23,7 +23,6 @@ export interface ChildrenItems2 {
   type?: string;
 }
 
-
 export const AirlineRoutes: RouteInfo[] = [
   {
     path: "/app/dashboard",
@@ -79,12 +78,12 @@ export const AirportRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link", },      
-      { path: "airline", title: "Airline", type: "link", },
-      { path: "airport", title: "Airport", type: "link", },      
-      { path: "callsign", title: "Callsign", type: "link", },   
-      { path: "rate", title: "Rate", type: "link", },   
-      { path: "route", title: "Route", type: "link", },            
+      { path: "aircraft", title: "Aircraft", type: "link" },
+      { path: "airline", title: "Airline", type: "link" },
+      { path: "airport", title: "Airport", type: "link" },
+      { path: "callsign", title: "Callsign", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -129,13 +128,13 @@ export const OperationRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -151,6 +150,12 @@ export const OperationRoutes: RouteInfo[] = [
       { path: "upload", title: "TFL/VFR", type: "link" },  
       { path: "task", title: "Task", type: "link" }, 
     ],
+  },
+  {
+    path: "/app/master-data",
+    title: "Master Data",
+    type: "link",
+    icontype: "fas fa-server text-success",
   },
 ];
 
@@ -169,13 +174,13 @@ export const SafRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },    
 
@@ -196,13 +201,13 @@ export const HodRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {
@@ -250,13 +255,13 @@ export const FinanceRoutes: RouteInfo[] = [
     collapse: "database",
     isCollapsed: true,
     children: [
-      { path: "aircraft", title: "Aircraft", type: "link" },      
+      { path: "aircraft", title: "Aircraft", type: "link" },
       { path: "airline", title: "Airline", type: "link" },
-      { path: "airport", title: "Airport", type: "link" },      
+      { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },      
-      { path: "rate", title: "Rate", type: "link" },   
-      { path: "route", title: "Route", type: "link" },            
+      { path: "exemptions", title: "Exemptions", type: "link" },
+      { path: "rate", title: "Rate", type: "link" },
+      { path: "route", title: "Route", type: "link" },
     ],
   },
   {

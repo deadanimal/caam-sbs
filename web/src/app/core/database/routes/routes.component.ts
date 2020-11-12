@@ -10,9 +10,9 @@ import * as RouteListSemenanjung from "src/app/variables/routelist-semenanjung";
 import swal from "sweetalert2";
 import * as L from "leaflet";
 
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { RoutesService } from "src/app/shared/services/routes/routes.service";
-import { User } from 'src/app/shared/services/auth/auth.model';
-import { UsersService } from 'src/app/shared/services/users/users.service';
+import { UsersService } from "src/app/shared/services/users/users.service";
 
 const dataMarkers = [
   {
@@ -204,17 +204,14 @@ export class RoutesComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  currentUser: any;
-
   constructor(
     public formBuilder: FormBuilder,
     public zone: NgZone,
     private modalService: NgbModal,
+    public authService: AuthService,
     private routeService: RoutesService,
-    private userService: UsersService,
+    private userService: UsersService
   ) {
-    this.currentUser = this.userService.currentUser;
-
     this.getRoute();
 
     this.routeFormGroup = this.formBuilder.group({

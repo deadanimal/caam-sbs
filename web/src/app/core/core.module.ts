@@ -18,17 +18,25 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from "@angular/router";
 import { CoreRoute } from "./core.routing";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+<<<<<<< HEAD
 import { MovementReportComponent } from './movement-report/movement-report.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalModule,} from 'ngx-bootstrap/modal';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 
 
+=======
+import { MasterDataComponent } from './master-data/master-data.component';
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
 
 @NgModule({
   declarations: [
     DashboardComponent,
+<<<<<<< HEAD
     MovementReportComponent,
+=======
+    MasterDataComponent,
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
   ],
   imports: [
     CommonModule,

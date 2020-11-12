@@ -147,10 +147,25 @@
             </div>
           </div>
 
+<<<<<<< HEAD
           <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
             [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
             [rows]="tempFileUpload" (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="40">
+=======
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+            [scrollbarH]="true"
+          >
+            <!-- <ngx-datatable-column>
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
@@ -227,6 +242,24 @@
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
+<<<<<<< HEAD
+=======
+          <div class="text-center" *ngIf="temp.length > 0">
+            <button
+              class="btn btn-dark"
+              (click)="submit()"
+              *ngIf="dataErrors > 0"
+            >
+              Submit
+            </button>
+            <button class="btn btn-warning" (click)="draft()">
+              Save as draft
+            </button>
+            <button class="btn btn-danger" (click)="cancel()">
+              Cancel
+            </button>
+          </div>
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
         </div>
       </div>
     </div>

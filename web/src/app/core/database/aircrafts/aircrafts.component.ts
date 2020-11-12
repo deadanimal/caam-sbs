@@ -10,6 +10,7 @@ import * as AircraftTypes from "src/app/variables/aircraft-types";
 import swal from "sweetalert2";
 
 import { AircraftsService } from "src/app/shared/services/aircrafts/aircrafts.service";
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 import { UsersService } from 'src/app/shared/services/users/users.service';
 
@@ -53,20 +54,15 @@ export class AircraftsComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  currentUser:any;
-
   constructor(
     public formBuilder: FormBuilder,
     public zone: NgZone,
     private modalService: NgbModal,
     private aircraftService: AircraftsService,
+    public authService: AuthService,
     private organisationService: OrganisationsService,
     private userService: UsersService,
   ) {
-
-    this.currentUser = this.userService.currentUser;
-    console.log(this.currentUser)
-    
     this.getAircraft();
 
     this.aircraftFormGroup = this.formBuilder.group({

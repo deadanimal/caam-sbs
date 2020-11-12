@@ -3,9 +3,7 @@
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            Airline
-          </h6>
+          <h6 class="h2 text-dark d-inline-block mb-0">Airline</h6>
 
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
@@ -37,7 +35,11 @@
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button class="btn btn-dark" (click)="create(classic1)"  *ngIf="currentUser.user_type == 'OPS'">
+          <button
+            class="btn btn-dark"
+            (click)="create(classic1)"
+            *ngIf="authService.decodedToken().user_type == 'OPS'"
+          >
             Add New Airline
           </button>
 
@@ -436,9 +438,9 @@
                           class="form-control"
                           formControlName="is_active"
                         >
-                          <option value="" selected
-                            >Please select status</option
-                          >
+                          <option value="" selected>
+                            Please select status
+                          </option>
                           <option value="true">Active</option>
                           <option value="false">Not Active</option>
                         </select>
@@ -568,15 +570,16 @@
             [rows]="temp"
             [rowClass]="getRowClass"
             (activate)="onActivate($event)"
-            [scrollbarH]="true">
-          <ngx-datatable-column>
-            <ng-template ngx-datatable-header-template>
-              <span>No.</span>
-            </ng-template>
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              {{ row.no + 1 }}
-            </ng-template>
-          </ngx-datatable-column>          
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.no + 1 }}
+              </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Company Name</span>
@@ -623,11 +626,19 @@
                 <span>Status</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                <span *ngIf="row.is_active" class="badge badge-success">Aktif</span>
-                <span *ngIf="!row.is_active" class="badge badge-danger">Tidak Aktif</span>
+                <span *ngIf="row.is_active" class="badge badge-success"
+                  >Aktif</span
+                >
+                <span *ngIf="!row.is_active" class="badge badge-danger"
+                  >Tidak Aktif</span
+                >
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column sortable="false" prop="id" *ngIf="currentUser.user_type == 'OPS'">
+            <ngx-datatable-column
+              sortable="false"
+              prop="id"
+              *ngIf="authService.decodedToken().user_type == 'OPS'"
+            >
               <ng-template ngx-datatable-header-template>
                 <span>Action</span>
               </ng-template>

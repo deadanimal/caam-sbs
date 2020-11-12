@@ -9,8 +9,9 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import * as RateLists from "src/app/variables/rate-lists";
 import swal from "sweetalert2";
 
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { RatesService } from "src/app/shared/services/rates/rates.service";
-import { UsersService } from 'src/app/shared/services/users/users.service';
+import { UsersService } from "src/app/shared/services/users/users.service";
 
 export enum SelectionType {
   single = "single",
@@ -50,18 +51,14 @@ export class RatesComponent implements OnInit {
   closeResult: string;
   processTitle: string;
 
-  currentUser:any;
-
   constructor(
     public formBuilder: FormBuilder,
     public zone: NgZone,
     private modalService: NgbModal,
+    public authService: AuthService,
     private rateService: RatesService,
     private userService: UsersService
   ) {
-
-    this.currentUser = this.userService.currentUser;
-    
     this.getRates();
 
     this.rateFormGroup = this.formBuilder.group({

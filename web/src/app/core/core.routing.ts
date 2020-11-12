@@ -1,6 +1,10 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+<<<<<<< HEAD
 import { MovementReportComponent } from './movement-report/movement-report.component';
+=======
+import { MasterDataComponent } from "./master-data/master-data.component";
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
 
 export const CoreRoute: Routes = [
   {
@@ -21,6 +25,7 @@ export const CoreRoute: Routes = [
           import("./task/task.module").then((m) => m.TaskModule),
       },
       {
+<<<<<<< HEAD
         path: "finance",
         loadChildren: () =>
           import("./finance/finance.module").then((m) => m.FinanceModule),
@@ -38,6 +43,10 @@ export const CoreRoute: Routes = [
         path: "payment",
         loadChildren: () =>
           import("./payment/payment.module").then((m) => m.PaymentModule),
+=======
+        path: "master-data",
+        component: MasterDataComponent,
+>>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
       },
     ],
   },
