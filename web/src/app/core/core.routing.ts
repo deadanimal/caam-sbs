@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { MovementReportComponent } from './movement-report/movement-report.component';
-import { DisputeComponent } from './dispute/dispute.component';
 
 export const CoreRoute: Routes = [
   {
@@ -29,10 +28,6 @@ export const CoreRoute: Routes = [
       {
         path: "movement-report",
         component: MovementReportComponent,
-      },
-      {
-        path: "dispute",
-        component: DisputeComponent,
       },
       {
         path: "billing",

@@ -45,12 +45,21 @@ export class UploadsService {
     );
   }
 
-  update(id: string, body: Form): Observable<UploadsModel> {
-    return this.http.patch<UploadsModel>(this.url + id + "/", body).pipe(
+  // update(id: string, body: Form): Observable<UploadsModel> {
+  //   return this.http.patch<UploadsModel>(this.url + id + "/", body).pipe(
+  //     tap((res) => {
+  //       console.log("UploadsModel", res);
+  //     })
+  //   );
+  // }
+
+  update(id: String, body:any): Observable<UploadsModel> {
+    let urlFlight = this.url + id + '/'
+    return this.http.put<UploadsModel>(urlFlight, body).pipe(
       tap((res) => {
-        console.log("UploadsModel", res);
+        console.log('UploadsModel', res)
       })
-    );
+    )
   }
 
   delete(id: string): Observable<any> {
@@ -63,6 +72,15 @@ export class UploadsService {
 
   filter(field: string): Observable<UploadsModel[]> {
     let urlFilter = this.url + "?" + field;
+    return this.http.get<UploadsModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("UploadsModel", res);
+      })
+    );
+  }
+
+  filterByField(byfield: string, field: string): Observable<UploadsModel[]> {
+    let urlFilter = this.url + "?" + byfield + "=" + field;
     return this.http.get<UploadsModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("UploadsModel", res);

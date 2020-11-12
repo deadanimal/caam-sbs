@@ -1,7 +1,7 @@
 export const paymentlist: any = [ 
     {
         id: '1',
-        date: '28/01/2020',
+        date: '02/01/2020',
         amount: 206.7,
         remark: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
         status: 'Overdue',  
@@ -23,7 +23,7 @@ export const paymentlist: any = [
     },
     {
         id: '3',
-        date: '15/03/2020',
+        date: '05/03/2020',
         amount: 1230.40,
         remark: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
         status: 'Failed',
@@ -35,7 +35,7 @@ export const paymentlist: any = [
     
     {
         id: '4',
-        date: '21/02/2020',
+        date: '11/02/2020',
         amount: 300.00,
         remark: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
         status: 'Pending',
@@ -57,7 +57,7 @@ export const paymentlist: any = [
       },
       {
         id:'6',
-        date: '26/11/2020',
+        date: '06/11/2020',
         amount: 120.40,
         remark: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
         status: 'Overdue',

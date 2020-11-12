@@ -4,6 +4,9 @@ from django.db.models.functions import Substr
 from django.utils import timezone
 import json, os, regex, pandas, csv
 
+from django.core import serializers
+from django.http import HttpResponse
+
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import FileUploadParser, JSONParser
 from rest_framework.response import Response
@@ -23,7 +26,8 @@ from .models import (
     Route,
     FileUpload,
     Fpldata,
-    FpldataHistory
+    FpldataHistory,
+    CustomUser
 )
 
 from .serializers import (
@@ -40,6 +44,7 @@ from .serializers import (
     FpldataHistorySerializer,
     FpldataHistoryExtendedSerializer
 )
+
 
 class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Rate.objects.all()
@@ -446,13 +451,47 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def get_queryset(self):
         # uploaded_by = self.request.query_params.get('uploaded_by')
         # submitted_at = self.request.query_params.get('submitted_at')
+        # fileupload_id = self.request.query_params.get('fileupload_id')
+
         # if submitted_at == '' and uploaded_by != '':
         #     queryset = Fpldata.objects.filter(uploaded_by=uploaded_by,submitted_at__isnull=True)
         # elif uploaded_by != '':
         #     queryset = Fpldata.objects.filter(uploaded_by=uploaded_by)
+        # elif uploaded_by != '' and fileupload_id != '':
+        #     print("masuk sini")
+        #     queryset = Fpldata.objects.filter(uploaded_by=uploaded_by, fileupload=fileupload_id)
         # else:
+        #     queryset = Fpldata.objects.all()
         queryset = Fpldata.objects.all()
         return queryset
+
+    # @action(methods=['POST'], detail=False)
+    # def data_put(self, request, *args, **kwargs, pk=None):
+    #     print("hello")
+    #     fpldata = self.get_object()
+    #     serializer = FpldataSerializer(fpldata, data=request.data, partial=True)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    @action(methods=['GET'], detail=False)
+    def file_filter(self, request, *args, **kwargs):
+        uploaded_by = self.request.query_params.get('uploaded_by')
+        # submitted_at = self.request.query_params.get('submitted_at')
+        fileupload = self.request.query_params.get('fileupload_id')
+
+        if fileupload and uploaded_by:
+            queryset = Fpldata.objects.filter(uploaded_by_id=uploaded_by, fileupload_id=fileupload).values()
+            total = Fpldata.objects.filter(uploaded_by_id=uploaded_by, fileupload_id=fileupload).count()
+        else:
+            queryset = Fpldata.objects.all().values()
+            total = Fpldata.objects.all().count()
+
+        print("Total : {}".format(total))
+        return Response(queryset)
+
 
     def partial_update(self, request, pk=None):
         fpldata = self.get_object()
@@ -547,6 +586,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         return Response(str(results.query))
 
+
 class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = FpldataHistory.objects.all()
     serializer_class = FpldataHistorySerializer
@@ -578,3 +618,18 @@ class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         serializer_class = FpldataHistoryExtendedSerializer(queryset, many=True)
         
         return Response(serializer_class.data)
+
+
+    @action(methods=['POST'], detail=False)
+    def add_history(self, request, *args, **kwargs):
+        user_id = request.data['user_id'] 
+        master_id = request.data['master_data_id']
+        remark = request.data['remark']
+        reason = request.data['reason']
+
+        user_obj = CustomUser.objects.get(id=user_id)
+        master_obj = Fpldata.objects.get(id=master_id)
+        
+        new_history = FpldataHistory.objects.create(user=user_obj, master_data_id=master_obj, reason = reason, remark=remark)
+
+        return Response(status.HTTP_200_OK)

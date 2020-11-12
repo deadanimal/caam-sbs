@@ -19,7 +19,6 @@ import { RouterModule } from "@angular/router";
 import { CoreRoute } from "./core.routing";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { MovementReportComponent } from './movement-report/movement-report.component';
-import { DisputeComponent } from './dispute/dispute.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalModule,} from 'ngx-bootstrap/modal';
 import { CurrencyMaskModule } from "ng2-currency-mask";
@@ -30,7 +29,6 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
   declarations: [
     DashboardComponent,
     MovementReportComponent,
-    DisputeComponent,
   ],
   imports: [
     CommonModule,

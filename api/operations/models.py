@@ -143,8 +143,8 @@ class Route(models.Model):
         ordering = ['-created_at']
 
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
 
 class FileUpload(models.Model):
@@ -256,6 +256,8 @@ class Fpldata(models.Model):
     dist = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # formula: dist * rate = amount
     error_remark = models.CharField(max_length=100, blank=True, null=True)
+    reason = models.CharField(max_length=300, default="NA")
+    remark = models.CharField(max_length=300, default="NA")
 
     STATUSES = [
         ('FPL0', 'Draf'),
@@ -334,6 +336,8 @@ class FpldataHistory(models.Model):
         related_name='fpl_data_history_master_data_id'
     )
     data_changes = models.CharField(max_length=300, default="NA")
+    reason = models.CharField(max_length=300, default="NA")
+    remark = models.CharField(max_length=300, default="NA")
     
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

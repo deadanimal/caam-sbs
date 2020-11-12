@@ -1,0 +1,261 @@
+.alert {
+    padding: 0.5rem 0.5rem !important;
+  }
+  
+  ::ng-deep .row-color {
+    background-color: #f5365c;
+  }
+  
+  .view{
+    width: 50px !important;
+  }
+  
+  a{
+    color: black !important;
+  }
+  
+  a:hover{
+    color: red !important;
+  }
+  
+  :host ::ng-deep .datatable-header-cell {
+    background-color: #303437 !important;
+  }
+  
+  .background-theme{
+    height: 250px;
+    background: rgb(19,53,92);
+  background: linear-gradient(90deg, rgba(19,53,92,1) 20%, rgba(46,126,159,0.9598214285714286) 100%, rgba(41,58,73,1) 100%);
+  }
+  
+  .card-header {
+    height: 50px !important;
+  }
+  
+  .modal-body-color, .modal-footer-color {
+    background-color: #f9f9fc !important;
+  }
+  
+  .viewtemplate {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    padding-right: 0%;
+    padding-left: 0%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    font-size: 12px;
+    font-family: 'Lucida Sans Regular', 'Lucida Grande', Verdana, sans-serif;
+    font-kerning: normal;
+    text-rendering: optimize-speed;
+}
+
+@media (max-width: 980px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+p {
+    -webkit-font-smoothing: subpixel-antialiased;
+    margin-top: 0px;
+}
+
+.address p span {
+    display: inline-block;
+}
+
+.main p span {
+    display: inline-block;
+}
+
+.payment p span {
+    display: inline-block;
+    font-size: 16px;
+}
+
+img {
+    float: right;
+    clear: right;
+    width: 200px;
+    height: 70px;
+}
+
+.header .left {
+    width: 50%;
+    float: left;
+}
+
+.header .right {
+    float: right;
+    width: 50%;
+    /* Change this to whatever the width of your left column is*/
+}
+
+.details {
+    border-collapse: collapse;
+    margin-top: 5%;
+    padding: 2%;
+    background-color: rgb(250, 250, 250);
+}
+
+.invoice {
+    clear: both;
+    width: 100%;
+    padding-top: 3%;
+}
+
+.footer {
+    clear: both;
+    width: 100%;
+    padding-top: 3%;
+}
+
+.footer .info {
+    margin-left: 15%;
+    font-size: 12px;
+    padding-bottom: 2%;
+}
+
+.footer .payment {
+    padding-bottom: 2%;
+}
+
+.footer .bottom_info {
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    padding-top: 2.5%;
+}
+
+.payment .info_header {
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+}
+
+.payment .title {
+    font-weight: bold;
+}
+
+.invoice .main {
+    font-size: 26px;
+    font-weight: bold;
+    padding-left: 2%;
+    display: inline-block;
+}
+
+.invoice .summary {
+    padding-top: 3%;
+}
+
+.details .left {
+    width: 40%;
+    float: left;
+    padding-left: 1%;
+}
+
+.details .right {
+    float: right;
+    width: 33%;
+    padding-right: 10px;
+
+}
+
+.left .address {
+    font-weight: bold;
+    padding-right: 40%;
+}
+
+.clear {
+    clear: both;
+}
+
+table.dataframe {
+    border-collapse: collapse;
+    border: 2px solid rgb(173, 173, 173);
+}
+
+table.dataframe td {
+    text-align: right;
+    white-space: nowrap;
+    padding: 2px;
+    padding-right: 1%;
+}
+
+table.dataframe th {
+    text-align: left;
+    width: 1%;
+    white-space: nowrap;
+    padding: 2px;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+table.footer_info {
+    border: none;
+    width: 50%;
+    text-align: left;
+
+}
+
+table.footer_info td,
+table.footer_info th {
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+table.footer_info tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+table.footer_info th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: rgb(0, 0, 0);
+}
+
+table.summary_table {
+    border: 1px solid rgb(121, 121, 121);
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+table.summary_table td,
+table.summary_table th {
+
+    padding: 2px;
+    padding-right: 1%;
+    text-align: right;
+    width: 19%;
+    white-space: nowrap;
+}
+
+table.summary_table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: right;
+    color: rgb(0, 0, 0);
+}
+
+table.summary_table td.info {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    padding-left: 0.5%;
+    width: 0.2%;
+}
+
+table.summary_table th.info {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    padding-left: 0.5%;
+    width: 0.2%;
+}

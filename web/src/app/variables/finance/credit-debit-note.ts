@@ -7,7 +7,7 @@ export const creditdebitlist: any = [
         amount: 206.7,
         transaction: 230.00,
         transactionnumber: '0022',
-        transactiondate: '29/01/2020',
+        transactiondate: '01/01/2020',
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         
     },
@@ -63,7 +63,7 @@ export const creditdebitlist: any = [
         amount: 120.40,
         transaction: 50.00,
         transactionnumber: '0027',
-        transactiondate: '28/11/2020',
+        transactiondate: '12/11/2020',
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
       },
 

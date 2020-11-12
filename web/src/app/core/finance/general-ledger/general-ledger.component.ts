@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/general-ledger";
 import { GeneralLedgerService } from 'src/app/shared/services/finance/general-ledger/general-ledger.service';
 import { GeneralLedger } from 'src/app/shared/services/finance/general-ledger/general-ledger.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-general-ledger',
@@ -11,21 +12,22 @@ import { GeneralLedger } from 'src/app/shared/services/finance/general-ledger/ge
 })
 export class GeneralLedgerComponent implements OnInit {
 
+  // Table
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
   rows = dummylist.generalledgerlist;
 
+  // Search Filter
+  fromDate: Date;
+  toDate: Date;
+  filterby: String;
+  searchText: String;
+
   // Data
   generalLedger: GeneralLedger[] = [];
 
-
-  // searchInput
-  searchInput = {
-    invoicenumber: "",
-    companyname: "",
-  };
 
   // Modal
   modal: BsModalRef;
@@ -39,13 +41,14 @@ export class GeneralLedgerComponent implements OnInit {
     public zone: NgZone,
     private modalService: BsModalService,
     private generalLedgerService: GeneralLedgerService,
+    private datePipe: DatePipe
   ) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
-    });
+    this.filterby = "all";
+    this.searchText = "";
+  }
+
+  ngOnInit() {
+    this.FilterTable(this.filterby);
   }
 
   getAllData = () => {
@@ -63,41 +66,60 @@ export class GeneralLedgerComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
-  filterTable($event) {
-    let val = $event.target.value;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-          return true;
-        }
+  FilterTable(field) {
+    let search = field.toLocaleLowerCase();
+    let tempAll =[];
+    
+
+    if (this.filterby == 'all') {
+      for (let i = 0; i < 15; i++) {
+        if(this.rows[i] != null)
+        {tempAll[i] = this.rows[i];}
       }
-      return false;
-    });
+
+      return this.temp = tempAll;
+       
+    }
+    else if (this.filterby == 'companyname') {
+      this.temp = this.rows.filter(function (d) {
+        return d.companyname.toLocaleLowerCase().includes(search);
+      })
+    }
+    else if (this.filterby == 'transactioncode') {
+      this.temp = this.rows.filter(function (d) {
+        return d.transactioncode.toLocaleLowerCase().includes(search);
+      })
+    }
   }
 
-  searchTable() {
-    let object = this.searchInput;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in object) {
-        if (object[key]) {
-          if (
-            d[key]
-              .toString()
-              .toLowerCase()
-              .indexOf(object[key].toString().toLowerCase()) !== -1
-          )
-            return true;
+  // FilterDate() {
+  //   let fromdate = this.fromDate
+  //   let todate = this.toDate
+
+  //   if (fromdate && todate) {
+  //     this.temp = this.rows.filter(function (d) {
+  //       return new Date(d.activitydate) >= fromdate && new Date(d.activitydate) <= todate;
+  //     })
+  //   }
+  // }
+
+  FilterDate() {
+    let date:any = this.fromDate
+    date = this.datePipe.transform(date, 'MM/dd/yyyy');
+    console.log(date + " " + typeof(date))
+
+    if (date) {
+          this.temp = this.rows.filter(function (d) {
+            return d.activitydate == date
+          })
         }
-      }
-      return false;
-    });
   }
 
   onActivate(event) {
     this.activeRow = event.row;
   }
 
-  
+
   openModal(modalRef: TemplateRef<any>, row) {
     this.modal = this.modalService.show(modalRef, this.modalConfig);
   }
@@ -106,9 +128,7 @@ export class GeneralLedgerComponent implements OnInit {
     this.modal.hide()
   }
 
-  ngOnInit() {
 
-   }
 
 }
 

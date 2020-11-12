@@ -3,7 +3,7 @@ export const creditnotelist: any = [
         id: '1',
         creditnumber: '0012',
         invoicenumber: "#000132",
-        issuedate: '28/01/2020',
+        issuedate: '02/01/2020',
         amount: 206.7,
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
@@ -19,7 +19,7 @@ export const creditnotelist: any = [
         id: '3',
         creditnumber: '0014',
         invoicenumber: "#000134",
-        issuedate: '15/03/2020',
+        issuedate: '05/03/2020',
         amount: 1230.40,
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
@@ -28,7 +28,7 @@ export const creditnotelist: any = [
         id: '4',
         creditnumber: '0015',
         invoicenumber: "#000135",
-        issuedate: '21/02/2020',
+        issuedate: '03/02/2020',
         amount: 300.00,
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
     },
@@ -44,7 +44,7 @@ export const creditnotelist: any = [
         id:'6',
         creditnumber: '0017',
         invoicenumber:"#000137",
-        issuedate: '26/11/2020',
+        issuedate: '06/11/2020',
         amount: 120.40,
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
       }

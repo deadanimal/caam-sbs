@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="header-body">
         <div class="row align-items-center py-4">
-          <div class="col-lg-6 col-7">
+          <div class="col-md-6 col-7">
             <h6 class="h2 text-white d-inline-block mb-0">
               Credit and Debit Note &nbsp;
             </h6>
@@ -36,21 +36,66 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Filter By</label>
-                <select class="form-control" id="filterby">
-                  <option hidden selected>Select filter</option>
-                  <option [value]="date">Date</option>
-                  <option [value]="companyname">Company</option>
-                  <option [value]="transactionnumber">Transaction No.</option>
-                  <option [value]="transaction">Transaction</option>
+                <select class="form-control" [(ngModel)]="filterby" id="filterby">
+                  <option value="all">-Select Filter By-</option>
+                  <option value="date">Date</option>
+                  <option value="companyname">Company</option>
+                  <option value="transactionnumber">Transaction No.</option>
+                  <option value="transaction">Transaction</option>
                 </select>
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="filterby==='companyname'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" id="search" placeholder="Enter keyword"
-                  [(ngModel)]="searchText">
+                <input type="text" class="form-control" placeholder="Search Company Name"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='transaction'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Transaction"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='transactionnumber'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Transaction Number"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate">
+                </div>
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker"
+                    placeholder="Enter End Date" bsDatepicker [(ngModel)]="toDate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col clearfix">
+                  <button class="btn btn-warning float-right" (click)="FilterDate()">Search</button>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-12 col-md-12 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate" (ngModelChange)="FilterDate()">
+                </div>
               </div>
             </div>
 
@@ -81,11 +126,12 @@
                 </label>
               </div>
             </div>
+
           </div>
 
           <ngx-datatable class="bootstrap selection-cell table-responsive " [columnMode]="'force'" [headerHeight]="50"
-            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+            (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>

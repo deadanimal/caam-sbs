@@ -1,3 +1,6 @@
+import { TaskComponent } from './task/task.component';
+
+import { UploadComponent } from './upload/upload.component';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -16,21 +19,37 @@ import { HttpClientModule } from "@angular/common/http";
 import { Ng9OdometerModule } from 'ng9-odometer';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CurrencyMaskModule } from 'ngx-currency-mask';
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ngx-currency-mask/src/currency-mask.config';
 
 import { RouterModule } from "@angular/router";
 import { TaskRoute } from "./task.routing";
-import { InvoiceComponent } from './invoice/invoice.component';
-import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
-import { HistoryViewComponent } from './history-view/history-view.component';
+import { DisputeComponent } from './dispute/dispute.component';
+import { TflVfrComponent } from './tfl-vfr/tfl-vfr.component';
 import { HistoryComponent } from './history/history.component';
-import { UploadComponent } from './upload/upload.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { DatePipe } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: 'right',
+  allowNegative: true,
+  allowZero: true,
+  decimal: '.',
+  precision: 2,
+  prefix: '',
+  suffix: '',
+  thousands: ',',
+  currency: 'MYR'
+};
 
 let pages = [
-  InvoiceComponent,
-  InvoiceViewComponent,
+  DisputeComponent,
+  TflVfrComponent,
   UploadComponent,
   HistoryComponent,
-  HistoryViewComponent, 
+  InvoiceComponent,
+  TaskComponent
 ]
 
 @NgModule({
@@ -55,7 +74,13 @@ let pages = [
     TabsModule.forRoot(),
     Ng9OdometerModule.forRoot(),
     NgxQRCodeModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    CurrencyMaskModule,
+    Ng2SearchPipeModule
   ],
+  providers: [
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
+    DatePipe,
+  ]
 })
 export class TaskModule {}

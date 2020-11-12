@@ -62,10 +62,10 @@ export class PaymentService {
   }
 
   filter(byfield: string, field: string): Observable<Payment[]> {
-    let urlFilter = this.url + "?by=" + byfield + "&field=" + field;
+    let urlFilter = this.url + "?" + byfield + "=" + field;
     return this.http.get<Payment[]>(urlFilter).pipe(
       tap((res) => {
-        console.log("Invoice", res);
+        console.log("Payment", res);
       })
     );
   }

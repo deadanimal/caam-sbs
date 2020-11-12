@@ -4,6 +4,7 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/billing/credit-note";
 import { CreditNoteService } from 'src/app/shared/services/billing/credit-note/credit-note.service';
 import { CreditNote } from 'src/app/shared/services/billing/credit-note/credit-note.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-credit-note',
@@ -11,6 +12,8 @@ import { CreditNote } from 'src/app/shared/services/billing/credit-note/credit-n
   styleUrls: ['./credit-note.component.scss']
 })
 export class CreditNoteComponent implements OnInit {
+
+  // Table
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -20,11 +23,11 @@ export class CreditNoteComponent implements OnInit {
   // Data
   creditNotes: CreditNote[] = [];
 
-  // searchInput
-  searchInput = {
-    invoicenumber: "",
-    companyname: "",
-  };
+  // Search Filter
+  fromDate: Date;
+  toDate: Date;
+  filterby: String;
+  searchText: String;
 
   // Modal
   modal: BsModalRef;
@@ -35,16 +38,17 @@ export class CreditNoteComponent implements OnInit {
   };
 
   constructor(
-    public zone: NgZone, 
+    public zone: NgZone,
     private modalService: BsModalService,
     private creditNoteService: CreditNoteService,
-    ) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
-    });
+    private datePipe: DatePipe
+  ) {
+    this.filterby = "all";
+    this.searchText = "";
+  }
+
+  ngOnInit() {
+    this.FilterTable(this.filterby);
   }
 
   download(url: string): void {
@@ -63,38 +67,56 @@ export class CreditNoteComponent implements OnInit {
     )
   }
 
+  FilterTable(field) {
+    let search = field.toLocaleLowerCase();
+    let tempAll = [];
+
+
+    if (this.filterby == 'all') {
+      for (let i = 0; i < 15; i++) {
+        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
+      }
+
+      return this.temp = tempAll;
+
+    }
+    else if (this.filterby == 'invoicenumber') {
+      this.temp = this.rows.filter(function (d) {
+        return d.invoicenumber.toLocaleLowerCase().includes(search);
+      })
+    }
+    else if (this.filterby == 'creditnumber') {
+      this.temp = this.rows.filter(function (d) {
+        return d.creditnumber.toLocaleLowerCase().includes(search);
+      })
+    }
+  }
+
+  // FilterDate() {
+  //   let fromdate = this.fromDate
+  //   let todate = this.toDate
+
+  //   if (fromdate && todate) {
+  //     this.temp = this.rows.filter(function (d) {
+  //       return new Date(d.issuedate) >= fromdate && new Date(d.issuedate) <= todate;
+  //     })
+  //   }
+  // }
+
+  FilterDate() {
+    let date:any = this.fromDate
+    date = this.datePipe.transform(date, 'MM/dd/yyyy');
+    console.log(date + " " + typeof(date))
+
+    if (date) {
+          this.temp = this.rows.filter(function (d) {
+            return d.issuedate == date
+          })
+        }
+  }
+
   entriesChange($event) {
     this.entries = $event.target.value;
-  }
-
-  filterTable($event) {
-    let val = $event.target.value;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  searchTable() {
-    let object = this.searchInput;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in object) {
-        if (object[key]) {
-          if (
-            d[key]
-              .toString()
-              .toLowerCase()
-              .indexOf(object[key].toString().toLowerCase()) !== -1
-          )
-            return true;
-        }
-      }
-      return false;
-    });
   }
 
   onActivate(event) {
@@ -109,9 +131,4 @@ export class CreditNoteComponent implements OnInit {
   closeModal() {
     this.modal.hide()
   }
-
-  ngOnInit() { 
-    console.log(this.rows)
-  }
-
 }

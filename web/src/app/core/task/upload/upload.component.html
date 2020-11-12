@@ -1,42 +1,25 @@
-<div class="header pb-6">
+<div class="header pb-6 background-theme">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
-            Upload
+          <h6 class="h2 text-white d-inline-block mb-0">
+            TFL/VFR &nbsp;
           </h6>
-
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
-              </li>
-            </ol>
-          </nav>
 
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
-            <small class="text-justify"
-              >User able to upload VFR and TFL data in this module. This system
+            <small class="text-justify">User able to upload VFR and TFL data in this module. This system
               will automatically check for error, calculate the invoice and
               generate invoice.<br />
               User will need to update the error data in order to generate
               invoice.<br />
               After cleaning the data, user will need to press submit button in
-              order to save into database.</small
-            >
+              order to save into database.</small>
           </ng-template>
-          <button
-            class="btn btn-icon btn-sm btn-dark"
-            type="button"
-            [popover]="popTemplate"
-            placement="right"
-            [outsideClick]="true"
-          >
-            <span class="btn-inner--icon"
-              ><i class="fas fa-info-circle"></i
-            ></span>
+          <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+            [outsideClick]="true">
+            <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
           </button>
         </div>
       </div>
@@ -44,15 +27,10 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
-  <ngx-spinner
-    bdColor="rgba(0, 0, 0, 0.8)"
-    size="medium"
-    color="#fff"
-    type="timer"
-    [fullScreen]="true"
-    ><p style="color: white;">Loading, Please wait a moment...</p></ngx-spinner
-  >
+<div class="container-fluid mt--8">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Loading, Please wait a moment...</p>
+  </ngx-spinner>
   <div class="row">
     <div class="col-lg-6 col-xs-12">
       <div class="card">
@@ -62,53 +40,44 @@
         <div class="card-body" style="height: 230px;">
           <form [formGroup]="fileuploadFormGroup" (ngSubmit)="upload()">
             <div>
-              <label class="form-control-label" for="data_file_link"
-                >Select file</label
-              >
-              <input
-                class="form-control"
-                type="file"
-                name="data_file_link"
-                (change)="onFileChange($event)"
-              />
+              <label class="form-control-label" for="data_file_link">Select file</label>
+              <input class="form-control" type="file" name="data_file_link" (change)="onFileChange($event)" />
               <!-- formControlName="data_file_link" -->
             </div>
-            <div class="pt-3">
+            <div class="pt-3 clearfix">
               <label class="form-control-label mr-3">File Type</label>
               <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="tfl"
-                  name="data_type"
-                  formControlName="data_type"
-                  class="custom-control-input"
-                  value="TFL"
-                />
+                <input type="radio" id="tfl" name="data_type" formControlName="data_type" class="custom-control-input"
+                  value="TFL"/>
                 <label class="custom-control-label" for="tfl">TFL</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="vfr"
-                  name="data_type"
-                  formControlName="data_type"
-                  class="custom-control-input"
-                  value="VFR"
-                />
+                <input type="radio" id="vfr" name="data_type" formControlName="data_type" class="custom-control-input"
+                  value="VFR"/>
                 <label class="custom-control-label" for="vfr">VFR</label>
               </div>
+              <!-- <ng-container *ngFor="let message of uploadMessages.data_type">
+                <div *ngIf="
+                fileuploadFormGroup.get('data_type').hasError(message.data_type) &&
+                        (fileuploadFormGroup.get('data_type').dirty ||
+                        fileuploadFormGroup.get('data_type').touched)
+                      ">
+                  <p class="error-message">
+                    <span>{{ message.message }}</span>
+                  </p>
+                </div>
+              </ng-container> -->
             </div>
-            <button
-              type="submit"
-              [disabled]="!fileuploadFormGroup"
-              class="btn btn-sm btn-default mt-3"
-            >
+            <button type="submit"  class="btn btn-sm btn-default mt-3 float-right"
+              >
               Upload
             </button>
+            <!-- [disabled]="!fileuploadFormGroup.valid" -->
           </form>
         </div>
       </div>
     </div>
+
     <div class="col-lg-6 col-xs-12">
       <div class="card">
         <div class="card-header">
@@ -138,37 +107,26 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col">
       <div class="card">
         <div class="card-header">
           <div class="row">
             <div class="col">
-              <h3 class="mb-0">List of VFR and TFL Data</h3>
+              <h4 class="mb-0">List of Uploaded VFR and TFL File</h4>
             </div>
-            <div class="col-auto">
-              <h3 class="text-danger" *ngIf="dataErrors.length > 0">
-                <ng9-odometer
-                  [number]="dataErrors.length"
-                  [config]="{}"
-                ></ng9-odometer>
-                errors occured
-              </h3>
-            </div>
+            <div class="col-auto"></div>
           </div>
         </div>
         <div class="dataTables_wrapper py-4">
           <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6">
               <div class="dataTables_length" id="datatable_length">
                 <label>
                   Show
-                  <select
-                    name="datatable_length"
-                    aria-controls="datatable"
-                    class="form-control form-control-sm"
-                    (change)="entriesChange($event)"
-                  >
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
                     <option value="5" [selected]="entries == 5">5</option>
                     <option value="10" [selected]="entries == 10">10</option>
                     <option value="25" [selected]="entries == 25">25</option>
@@ -179,339 +137,743 @@
                 </label>
               </div>
             </div>
-            <div
-              class="col-sm-12 col-md-4"
-              style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              "
-            >
-              <span class="text-danger pr-3">Show error data(s) only</span>
-              <label class="custom-toggle">
-                <input
-                  type="checkbox"
-                  checked=""
-                  [(ngModel)]="toggleDataError"
-                  [ngModelOptions]="{ standalone: true }"
-                  (change)="showDataError()"
-                />
-                <span
-                  class="custom-toggle-slider rounded-circle"
-                  data-label-off="No"
-                  data-label-on="Yes"
-                ></span>
-              </label>
-            </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6">
               <div id="datatable_filter" class="dataTables_filter">
                 <label>
-                  <input
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search records"
-                    aria-controls="datatable"
-                    (keyup)="filterTable($event)"
-                  />
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTableUpload($event)" />
                 </label>
               </div>
             </div>
           </div>
 
-          <ngx-datatable
-            class="bootstrap selection-cell"
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [rowHeight]="'auto'"
-            [rowClass]="getRowClass"
-            [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp"
-            (activate)="onActivate($event)"
-            [scrollbarH]="true"
-          >
-            <!-- <ngx-datatable-column>
+          <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="'auto'" [rowClass]="getRowClass" [limit]="entries != -1 ? entries : undefined"
+            [rows]="tempFileUpload" (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="40">
               <ng-template ngx-datatable-header-template>
-                <span>LN</span>
+                <span>No.</span>
               </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.no + 1 }}
-              </ng-template>
-            </ngx-datatable-column> -->
-            <ngx-datatable-column>
-              <ng-template ngx-datatable-header-template>
-                <span>Active Time</span>
-              </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.fpl_date }}
+              <ng-template let-row="tempFileUpload" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Callsign</span>
+                <span>Upload Date</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.fpl_no }}
+                {{ row.created_at | date }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>AC Type</span>
+                <span>File Name</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.aircraft_model }}
+                {{ row.name }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>DEP</span>
+                <span>File Type</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.dep }}
+                {{ row.data_type }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>DEST</span>
+                <span>File Date</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.dest }}
+                {{ row.file_date }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>CTG</span>
+                <span>Upload By</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.ctg }}
+                {{ row.uploaded_by.full_name }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Dist</span>
+                <span>Total Data</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.dist | number: "1.0-0" }}
+                {{ row.total_data | number }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Route</span>
+                <span>Status</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.route }}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column>
-              <ng-template ngx-datatable-header-template>
-                <span>Remarks</span>
-              </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                <small class="text-danger font-weight-bold">{{
-                  row.error_remark
-                }}</small>
+                <span [ngClass]="getStatusBadge(row.status)">{{ getStatus(row.status) }}</span>
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
-              <ng-template
-                let-row="row"
-                let-value="value"
-                ngx-datatable-cell-template
-              >
-                <button
-                  class="btn btn-primary btn-sm"
-                  (click)="editUpload(row, classic1)"
-                >
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button
-                  class="btn btn-danger btn-sm"
-                  (click)="archiveUpload(row)"
-                >
-                  <i class="fas fa-archive"></i>
-                </button>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <a  *ngIf="row.status === 'FIL0'" href="javascript:void(0)" title="click to view" (click)="openModal(draft, row)">
+                  <i class="fas fa-eye"></i> 
+                </a>
+                <a *ngIf="row.status === 'FIL1'" href="javascript:void(0)" title="click to view" (click)="openModal(proccessing, row)">
+                  <i class="fas fa-eye"></i> 
+                </a>
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
-          <div class="text-center" *ngIf="temp.length > 0">
-            <button
-              class="btn btn-dark"
-              (click)="submit()"
-              *ngIf="dataErrors > 0"
-            >
-              Submit
-            </button>
-            <button class="btn btn-warning" (click)="draf()">
-              Save as draft
-            </button>
-            <button class="btn btn-danger" (click)="cancel()">
-              Cancel
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
 
-<ng-template #classic1 let-c="close" let-d="dismiss">
-  <div class="modal-content">
-    <div class="modal-body p-0">
-      <div class="card bg-secondary shadow border-0">
-        <div class="card-header bg-dark">
-          <div class="text-muted text-center mb-3">
-            <h2 class="mb-0 text-white">{{ processTitle }}</h2>
-          </div>
-        </div>
-        <div class="card-body px-lg-5 py-lg-5">
-          <form [formGroup]="vfrtflFormGroup">
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="vfrtflFormGroup.value.error_remark"
-            >
-              <h3>Error</h3>
-              <p>{{ vfrtflFormGroup.value.error_remark }}</p>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 col-xs-12">
-                <!-- <div class="form-group">
-                  <label class="form-control-label">RTID</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter rtid"
-                    formControlName="RTID"
-                  />
-                </div> -->
-                <!-- <div class="form-group">
-                  <label class="form-control-label">Registration</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter registration"
-                    formControlName="REGISTRATION"
-                  />
-                </div> -->
-                <!-- <div class="form-group">
-                  <label class="form-control-label">Ground Handler</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter groundhandler"
-                    formControlName="GROUNDHANDLER"
-                  />
-                </div> -->
-                <div class="form-group">
-                  <label class="form-control-label">A/C Type (Model)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter A/C type (model)"
-                    formControlName="aircraft_model"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-control-label">Dest</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter dest"
-                    formControlName="dest"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-control-label">Active Time</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter active time"
-                    formControlName="fpl_date"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-control-label">CTG</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter ctg"
-                    formControlName="ctg"
-                  />
-                </div>
-              </div>
+<!-- open modal flight -->
 
-              <div class="col-lg-6 col-xs-12">
-                <div class="form-group">
-                  <label class="form-control-label">Callsign</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter callsign"
-                    formControlName="fpl_no"
-                  />
+<!-- proccessing modal -->
+
+<ng-template #proccessing>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Flight Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body modal-body-color">
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- <div class="card-header">
+            <div class="row">
+              <div class="col">
+                <h3 class="mb-0">List of VFR and TFL Data</h3>
+              </div>
+              <div class="col-auto">
+                <h3 class="text-danger" *ngIf="dataErrors.length > 0">
+                  <ng9-odometer [number]="dataErrors.length" [config]="{}"></ng9-odometer>
+                  errors occured
+                </h3>
+              </div>
+            </div>
+          </div> -->
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-4">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                      (change)="entriesChange($event)">
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <!-- <option value="-1" [selected]="entries == -1">All</option> -->
+                    </select>
+                    entries
+                  </label>
                 </div>
-                <!-- <div class="form-group">
-                  <label class="form-control-label">Operator</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter operator"
-                    formControlName="OPERATOR"
-                  />
-                </div> -->
-                <div class="form-group">
-                  <label class="form-control-label">Dep</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter dep"
-                    formControlName="dep"
-                  />
-                </div>
-                <!-- <div class="form-group">
-                  <label class="form-control-label">Date of Flight</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter date of flight"
-                    formControlName="DATEOFFLIGHT"
-                  />
-                </div> -->
-                <div class="form-group">
-                  <label class="form-control-label">Distance</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter distance"
-                    formControlName="dist"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-control-label">Route List</label>
-                  <textarea
-                    rows="3"
-                    class="form-control"
-                    placeholder="Enter route list"
-                    formControlName="route"
-                  ></textarea>
+              </div>
+              <div class="col-sm-12 col-md-4" style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                ">
+                <!-- <span class="text-danger pr-3">Show error data(s) only</span> -->
+                <!-- <label class="custom-toggle">
+                  <input type="checkbox" checked="" [(ngModel)]="toggleDataError"
+                    [ngModelOptions]="{ standalone: true }" (change)="showDataError()" />
+                  <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                </label> -->
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                      aria-controls="datatable" (keyup)="filterTableFlight($event)" />
+                  </label>
                 </div>
               </div>
             </div>
-            <div class="text-center">
-              <button class="btn btn-dark" (click)="update()">
-                Update
-              </button>
-              <button
-                class="btn btn-secondary"
-                data-dismiss="modal"
-                (click)="c('Close click')"
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
+
+            <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [rowClass]="getRowClass"
+              [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightDataProcess" (activate)="onActivate($event)"
+              [scrollbarH]="true">
+              <ngx-datatable-column [width]="40">
+                <ng-template ngx-datatable-header-template>
+                  <span>No.</span>
+                </ng-template>
+                <ng-template let-row="tempFlightDataProcess" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{
+                    rowIndex +1
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Active Time</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.fpl_date }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Callsign</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.fpl_no }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>AC Type</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.aircraft_model }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DEP</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dep }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DEST</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dest }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.ctg }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Dist</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dist | number: "1.0-0" }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Route</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.route }}
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="modal-footer modal-footer-color">
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Ok
+    </button>
+  </div>
+</ng-template>
+
+
+<!-- draft modal -->
+
+<ng-template #draft>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Flight Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body modal-body-color">
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <!-- <div class="col">
+                <h3 class="mb-0">List of VFR and TFL Data</h3>
+              </div> -->
+              <div class="col-auto">
+                <h3 class="text-danger" *ngIf="dataErrors.length > 0">
+                  <ng9-odometer [number]="dataErrors.length" [config]="{}"></ng9-odometer>
+                  errors occured
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-4">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                      (change)="entriesChange($event)">
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <!-- <option value="-1" [selected]="entries == -1">All</option> -->
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4" style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                ">
+                <!-- <span class="text-danger pr-3">Show error data(s) only</span> -->
+                <!-- <label class="custom-toggle">
+                  <input type="checkbox" checked="" [(ngModel)]="toggleDataError"
+                    [ngModelOptions]="{ standalone: true }" (change)="showDataError()" />
+                  <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+                </label> -->
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                      aria-controls="datatable" (keyup)="filterTableFlight($event)" />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [rowClass]="getRowClass"
+              [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightData" (activate)="onActivate($event)"
+              [scrollbarH]="true">
+              <ngx-datatable-column [width]="40">
+                <ng-template ngx-datatable-header-template>
+                  <span>No.</span>
+                </ng-template>
+                <ng-template let-row="tempFlightData" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{
+                    rowIndex +1
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Active Time</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.fpl_date }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Callsign</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.fpl_no }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>AC Type</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.aircraft_model }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DEP</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dep }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DEST</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dest }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.ctg }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Dist</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dist | number: "1.0-0" }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Route</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.route }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column [width]="400">
+                <ng-template ngx-datatable-header-template>
+                  <span>Remarks</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <small class="text-danger font-weight-bold">{{
+                    row.error_remark
+                  }}</small>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" sortable="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                  <a href="javascript:void(0)" title="click to edit" (click)="openModalModal(edit, row)">
+                    <i class="fa fa-edit text-black" aria-hidden="true"></i>
+                  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="javascript:void(0)" title="click to delete" (click)="openModalModal(delete, row)">
+                    <i class="fa fa-trash text-black" aria-hidden="true"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h4>Archive Data</h4>
+        <div class="card">
+
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                      (change)="entriesChange($event)">
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                      aria-controls="datatable" (keyup)="filterTableFlightHistory($event)" />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [rowClass]="getRowClass"
+              [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightDataHistory"
+              (activate)="onActivate($event)" [scrollbarH]="true">
+              <ngx-datatable-column [width]="40">
+                <ng-template ngx-datatable-header-template>
+                  <span>No.</span>
+                </ng-template>
+                <ng-template let-row="tempFlightDataHistory" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{
+                    rowIndex +1
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Active Time</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.fpl_date }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Callsign</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.fpl_no }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>AC Type</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.aircraft_model }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DEP</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dep }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DEST</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dest }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.ctg }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Dist</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.dist | number: "1.0-0" }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Route</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.route }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>Reason</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.reason }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column [width]="200">
+                <ng-template ngx-datatable-header-template>
+                  <span>Remark</span>
+                </ng-template>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{
+                    row.remark
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" sortable="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                  <a href="javascript:void(0)" title="click to undo" (click)="undoArchive(row)">
+                    <i class="fa fa-undo text-black" aria-hidden="true"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer modal-footer-color">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
+      Cancel
+    </button>
+    <div class="ml-auto">
+      <button class="btn btn-success" (click)="submit()" *ngIf="!dataErrors">
+        Submit
+      </button>
+      <button class="btn btn-dark" (click)="saveDraft()" *ngIf="dataErrors">
+        Save as draft
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+
+<!-- edit modal -->
+<ng-template #edit>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Edit Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModalModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-control-label">Date/Time</label>
+          <input class="form-control" [(ngModel)]="selectedRow.fpl_date" [ngModelOptions]="{standalone: true}"
+            type="text" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Type</label>
+          <input class="form-control" [(ngModel)]="selectedRow.aircraft_model" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Destination</label>
+          <input class="form-control" [(ngModel)]="selectedRow.dest" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Distance</label>
+          <input class="form-control" placeholder="selectedRow.dist | number" [(ngModel)]="selectedRow.dist"
+            [ngModelOptions]="{standalone: true}" type="text" disabled>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-control-label">Callsign</label>
+          <input class="form-control" [(ngModel)]="selectedRow.fpl_no" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Departure</label>
+          <input class="form-control" [(ngModel)]="selectedRow.dep" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">CTG</label>
+          <input class="form-control" [(ngModel)]="selectedRow.ctg" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Route</label>
+          <input class="form-control" [(ngModel)]="selectedRow.route" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModalModal()">
+      Cancel
+    </button>
+    <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="updateData()">
+      Save
+    </button>
+  </div>
+
+</ng-template>
+
+<!-- modal delete -->
+<ng-template #delete>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Message
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModalModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="createForm" (ngSubmit)="delete()">
+          <div class="form-group">
+            <label class="form-control-label">Reason</label>
+            <input class="form-control" placeholder="Enter Reason" formControlName="reason" type="text">
+
+            <ng-container *ngFor="let message of registerFormMessages.reason">
+              <div *ngIf="
+                createForm.get('reason').hasError(message.type) &&
+                      (createForm.get('reason').dirty ||
+                      createForm.get('reason').touched)
+                    ">
+                <p class="error-message">
+                  <span>{{ message.message }}</span>
+                </p>
+              </div>
+            </ng-container>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Remark</label>
+            <textarea class=" form-control" placeholder="Enter Remark" rows="5" formControlName="remark"></textarea>
+
+            <ng-container *ngFor="let message of registerFormMessages.remark">
+              <div *ngIf="
+              createForm.get('remark').hasError(message.type) &&
+                    (createForm.get('remark').dirty ||
+                    createForm.get('remark').touched)
+                  ">
+                <p class="error-message">
+                  <span>{{ message.message }}</span>
+                </p>
+              </div>
+            </ng-container>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModalModal()">
+      Cancel
+    </button>
+    <button class="btn btn-danger ml-auto" data-dismiss="modal" type="button" (click)="deleteData()" type="submit"
+      [disabled]="createForm.invalid">
+      Delete
+    </button>
+  </div>
+
 </ng-template>

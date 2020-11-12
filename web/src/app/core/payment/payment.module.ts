@@ -1,3 +1,4 @@
+import { OutstandingPaymentComponent } from './outstanding-payment/outstanding-payment.component';
 import { PaymentRoutes } from './payment.routing';
 
 import { PaymentComponent } from './payment/payment.component';
@@ -22,6 +23,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyMaskModule } from 'ngx-currency-mask';
 import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ngx-currency-mask/src/currency-mask.config';
+import { DatePipe } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 
@@ -63,10 +65,12 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   ],
   declarations: [
     PaymentComponent,
-    StatementAccountComponent
+    StatementAccountComponent,
+    OutstandingPaymentComponent
   ],
   providers: [
-    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
+    DatePipe,
   ]
 })
 export class PaymentModule { }

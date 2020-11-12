@@ -1,7 +1,7 @@
 export const movementreportlist: any = [ 
     {
         id: '1',
-        datetime: '29/01/2020',
+        datetime: '03/01/2020',
         callsign: "Redwood",
         type:"Physical",
         departure: "Kuala Lumpur",

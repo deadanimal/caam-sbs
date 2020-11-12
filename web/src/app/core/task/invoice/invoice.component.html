@@ -1,23 +1,23 @@
-<div class="header pb-6">
+<div class="header pb-6 background-theme">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">
+          <h6 class="h2 text-white  d-inline-block mb-0">
             Invoice
           </h6>
 
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+          <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item">
                 <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
               </li>
             </ol>
-          </nav>
+          </nav> -->
 
-          <ng-template #popTemplate>
+          <!-- <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
-            <!-- <small class="text-justify"
+            <small class="text-justify"
                 >User able to upload VFR and TFL data in this module. This system
                 will automatically check for error, calculate the invoice and
                 generate invoice.<br />
@@ -25,9 +25,9 @@
                 invoice.<br />
                 After cleaning the data, user will need to press submit button in
                 order to save into database.</small
-              > -->
-          </ng-template>
-          <button
+              >
+          </ng-template> -->
+          <!-- <button
             class="btn btn-icon btn-sm btn-dark"
             type="button"
             [popover]="popTemplate"
@@ -37,12 +37,12 @@
             <span class="btn-inner--icon"
               ><i class="fas fa-info-circle"></i
             ></span>
-          </button>
+          </button> -->
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-primary">
+        <div class="col-xl-3 col-md-8">
+          <div class="card bg-gradient-primary" style="height: 120px !important;">
             <div class="card-body">
               <div class="row">
                 <div class="col">
@@ -68,7 +68,7 @@
         </div>
 
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-primary">
+          <div class="card bg-gradient-danger" style="height: 120px !important;">
             <div class="card-body">
               <div class="row">
                 <div class="col">
@@ -94,7 +94,7 @@
         </div>
 
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-primary">
+          <div class="card bg-gradient-success" style="height: 120px !important;">
             <div class="card-body">
               <div class="row">
                 <div class="col">
@@ -120,7 +120,7 @@
         </div>
 
         <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-primary">
+          <div class="card bg-gradient-warning" style="height: 120px !important;">
             <div class="card-body">
               <div class="row">
                 <div class="col">
@@ -149,7 +149,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+<div class="container-fluid mt-4">
   <div class="row">
     <div class="col">
       <div class="card">
@@ -210,14 +210,16 @@
             (activate)="onActivate($event)"
             [scrollbarH]="true"
           >
-            <ngx-datatable-column>
-              <ng-template ngx-datatable-header-template>
-                <span>No</span>
-              </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.no + 1 }}
-              </ng-template>
-            </ngx-datatable-column>
+          <ngx-datatable-column [width]="40">
+            <ng-template ngx-datatable-header-template>
+              <span>No.</span>
+            </ng-template>
+            <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+              {{
+                rowIndex +1
+              }}
+            </ng-template>
+          </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Airline</span>
@@ -256,12 +258,12 @@
                 let-value="value"
                 ngx-datatable-cell-template
               >
-                <button class="btn btn-primary btn-sm" (click)="view(row)">
-                  <i class="fas fa-eye"></i>
-                </button>
-                <button class="btn btn-success btn-sm" (click)="generate(row)">
-                  <i class="fas fa-file-invoice-dollar"></i>
-                </button>
+                <a href="javascript:void(0)" title="click to view" (click)="view(row)">
+                  <i class="fas fa-eye"></i> 
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" title="click to view" (click)="generate(row)">
+                  <i class="fas fa-download"></i> 
+                </a>
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
@@ -377,3 +379,6 @@
   [fullScreen]="true"
   ><p style="color: white;">Loading, Please wait a moment...</p></ngx-spinner
 >
+
+
+

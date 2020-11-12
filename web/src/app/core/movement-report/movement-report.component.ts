@@ -14,11 +14,18 @@ import { MovementReport } from 'src/app/shared/services/movement-report/movement
 
 export class MovementReportComponent implements OnInit {
 
+  // Table
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
   rows = dummylist.movementreportlist;
+
+  // Search Filter
+  fromDate: Date;
+  toDate: Date;
+  filterby: String;
+  searchText: String;
 
   // Data
   movementReports: MovementReport[] = [];
@@ -37,17 +44,53 @@ export class MovementReportComponent implements OnInit {
     private modalService: BsModalService,
     private movementReportService: MovementReportService,
   ) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
-    });
+    this.filterby = "all";
+    this.searchText = "";
+  }
+
+  ngOnInit() {
+    this.FilterTable(this.filterby);
   }
 
   download(url: string): void {
     console.log(url);
     window.open(url, '_blank');
+  }
+
+  FilterTable(field) {
+    let search = field.toLocaleLowerCase();
+    let tempAll = [];
+
+
+    if (this.filterby == 'all') {
+      for (let i = 0; i < 15; i++) {
+        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
+      }
+
+      return this.temp = tempAll;
+
+    }
+    else if (this.filterby == 'departure') {
+      this.temp = this.rows.filter(function (d) {
+        return d.departure.toLocaleLowerCase().includes(search);
+      })
+    }
+    else if (this.filterby == 'destination') {
+      this.temp = this.rows.filter(function (d) {
+        return d.destination.toLocaleLowerCase().includes(search);
+      })
+    }
+  }
+
+  FilterDate() {
+    let fromdate = this.fromDate
+    let todate = this.toDate
+
+    if (fromdate && todate) {
+      this.temp = this.rows.filter(function (d) {
+        return new Date(d.datetime) >= fromdate && new Date(d.datetime) <= todate;
+      })
+    }
   }
 
   getAllData = () => {
@@ -65,17 +108,6 @@ export class MovementReportComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
-  filterTable($event) {
-    let val = $event.target.value;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
 
 
   onActivate(event) {
@@ -90,10 +122,6 @@ export class MovementReportComponent implements OnInit {
   closeModal() {
     this.modal.hide()
   }
-
-  ngOnInit() {
-  }
-
 
 
 }

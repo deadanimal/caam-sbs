@@ -4,6 +4,7 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/billing/invoice";
 import { InvoiceService } from 'src/app/shared/services/billing/invoice/invoice.service';
 import { Invoice } from 'src/app/shared/services/billing/invoice/invoice.model';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -12,11 +13,19 @@ import { Invoice } from 'src/app/shared/services/billing/invoice/invoice.model';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
+
+  // Table
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
   rows = dummylist.invoicelist;
+
+  // Search Filter
+  fromDate: Date;
+  toDate: Date;
+  filterby: String;
+  searchText: String;
 
   // Data
   invoices: Invoice[] = [];
@@ -36,21 +45,71 @@ export class InvoiceComponent implements OnInit {
   };
 
   constructor(
-    public zone: NgZone, 
+    public zone: NgZone,
     private modalService: BsModalService,
     private invoiceService: InvoiceService,
-    ) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
-    });
+    private datePipe: DatePipe
+  ) {
+    this.filterby = "all";
+    this.searchText = "";
   }
 
   download(url: string): void {
     console.log(url);
     window.open(url, '_blank');
+  }
+
+  ngOnInit() {
+    this.FilterTable(this.filterby);
+  }
+
+
+  FilterTable(field) {
+    let search = field.toLocaleLowerCase();
+    let tempAll = [];
+
+
+    if (this.filterby == 'all') {
+      for (let i = 0; i < 15; i++) {
+        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
+      }
+
+      return this.temp = tempAll;
+
+    }
+    else if (this.filterby == 'invoicenumber') {
+      this.temp = this.rows.filter(function (d) {
+        return d.invoicenumber.toLocaleLowerCase().includes(search);
+      })
+    }
+    else if (this.filterby == 'status') {
+      this.temp = this.rows.filter(function (d) {
+        return d.status.toLocaleLowerCase().includes(search);
+      })
+    }
+  }
+
+  // FilterDate() {
+  //   let fromdate = this.fromDate
+  //   let todate = this.toDate
+
+  //   if (fromdate && todate) {
+  //     this.temp = this.rows.filter(function (d) {
+  //       return new Date(d.invoicedate) >= fromdate && new Date(d.invoicedate) <= todate;
+  //     })
+  //   }
+  // }
+
+  FilterDate() {
+    let date:any = this.fromDate
+    date = this.datePipe.transform(date, 'MM/dd/yyyy');
+    console.log(date + " " + typeof(date))
+
+    if (date) {
+          this.temp = this.rows.filter(function (d) {
+            return d.invoicedate == date
+          })
+        }
   }
 
   getAllData = () => {
@@ -109,10 +168,6 @@ export class InvoiceComponent implements OnInit {
 
   closeModal() {
     this.modal.hide()
-  }
-
-  ngOnInit() { 
-    console.log(this.rows)
   }
 
   statusBadge(status: string) {

@@ -38,12 +38,6 @@ export const AirlineRoutes: RouteInfo[] = [
     icontype: "fas fa-file text-black",
   },
   {
-    path: "/app/dispute",
-    title: "Dispute",
-    type: "link",
-    icontype: "fas fa-thumbs-down text-red",
-  },
-  {
     path: "/app/billing",
     title: "Billing",
     icontype: "fas fa-file-invoice-dollar text-green",
@@ -101,9 +95,22 @@ export const AirportRoutes: RouteInfo[] = [
     collapse: "task",
     isCollapsed: true,
     children: [
-        { path: "data-upload", title: "Upload", type: "link" },
-        { path: "data-history", title: "History", type: "link" },    
+        // { path: "dispute", title: "Dispute", type: "link" },
+        // { path: "tfl-vfr", title: "TFL/VFR", type: "link" },  
+        { path: "upload", title: "TFL/VFR", type: "link" },  
+        // { path: "data", title: "History", type: "link" },   
     ],
+  },
+  {
+    path: "/app/payment",
+    title: "Payment",
+    icontype: "fas fa-credit-card text-yellow",
+    type: "sub",
+    collapse: "payment",
+    isCollapsed: true,
+    children: [
+      { path: "outstanding-payment", title: "Outstanding Payment", type: "link" },              
+    ]
   },  
 ];
 
@@ -139,8 +146,10 @@ export const OperationRoutes: RouteInfo[] = [
     collapse: "task",
     isCollapsed: true,
     children: [
-      { path: "tflvfr", title: "TFL/VFR", type: "link" },
-      { path: "dispute", title: "Dispute", type: "link" },
+      // { path: "tflvfr", title: "TFL/VFR", type: "link" },
+      // { path: "dispute", title: "Dispute", type: "link" },
+      { path: "upload", title: "TFL/VFR", type: "link" },  
+      { path: "task", title: "Task", type: "link" }, 
     ],
   },
 ];
@@ -168,21 +177,7 @@ export const SafRoutes: RouteInfo[] = [
       { path: "rate", title: "Rate", type: "link" },   
       { path: "route", title: "Route", type: "link" },            
     ],
-  },  
-  // {
-  //   path: "/app/finance",
-  //   title: "Finance",
-  //   icontype: "fas fa-file-invoice-dollar text-green",
-  //   type: "sub",
-  //   collapse: "finance",
-  //   isCollapsed: true,
-  //   children: [
-  //     { path: "invoices", title: "Invoice", type: "link" },    
-  //     { path: "notes", title: "Credit & Debit Note", type: "link" },           
-  //     { path: "payments", title: "Payment", type: "link" },          
-  //     { path: "others", title: "Other", type: "link" },  
-  //   ]
-  // },  
+  },    
 
 ];
 
@@ -218,9 +213,9 @@ export const HodRoutes: RouteInfo[] = [
     collapse: "task",
     isCollapsed: true,
     children: [
-      { path: "invoice", title: "Invoice", type: "link" },
-      { path: "dispute", title: "Dispute", type: "link" },
-      { path: "history", title: "History", type: "link" },
+      { path: "generate-invoice", title: "Generate Invoice", type: "link" },
+      // { path: "dispute", title: "Dispute", type: "link" },
+      // { path: "history", title: "History", type: "link" },
     ],
   },
   {

@@ -6,6 +6,7 @@ export class Payment {
   public status: string;
   public summary: number;
   public remark: string;
+  public paymentmethod: string;
   public attachment: any;
 
 
@@ -16,6 +17,7 @@ export class Payment {
     status: string,
     summary: number,
     remark: string,
+    paymentmethod: string,
     attachment: any,
   ) {
     this.id = id;
@@ -24,6 +26,7 @@ export class Payment {
     this.status = status;
     this.summary = summary;
     this.remark = remark;
+    this.paymentmethod = paymentmethod;
     this.attachment = attachment;
   }
 }

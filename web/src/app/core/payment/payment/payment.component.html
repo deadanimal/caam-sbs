@@ -43,19 +43,57 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Filter By</label>
-                <select class="form-control" id="filterby">
-                  <option hidden selected>Select filter</option>
-                  <option [value]="date">Date</option>
-                  <option [value]="invoicenumber">Status</option>
+                <select class="form-control" [(ngModel)]="filterby" id="filterby">
+                  <option value="all">-Select Filter By-</option>
+                  <option value="date">Date</option>
+                  <option value="paymenttype">Payment Type</option>
+                  <option value="status">Status</option>
                 </select>
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="filterby==='paymenttype'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" id="search" placeholder="Enter keyword"
-                  [(ngModel)]="searchText">
+                <input type="text" class="form-control" placeholder="Search Payment Type" [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='status'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Status" [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate">
+                </div>
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker"
+                    placeholder="Enter End Date" bsDatepicker [(ngModel)]="toDate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col clearfix">
+                  <button class="btn btn-warning float-right" (click)="FilterDate()">Search</button>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-12 col-md-12 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate" (ngModelChange)="FilterDate()">
+                </div>
               </div>
             </div>
 
@@ -137,12 +175,12 @@
 
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" title="click to view">
+                <a href="javascript:void(0)" title="click to view" (click)="openModal(view, row)">
                   <i class="fa fa-eye text-black" aria-hidden="true"></i>
                 </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                <!-- <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
                   <i class="fa fa-download text-black" aria-hidden="true"></i>
-                </a>
+                </a> -->
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
@@ -158,7 +196,7 @@
       New Payment
     </h6>
 
-    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="confirm()">
       <span aria-hidden="true" class="text-white my-auto"> × </span>
     </button>
   </div>
@@ -175,16 +213,39 @@
                 <label class="form-control-label">
                   Amount
                 </label>
-                  <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
-                    (focus)="focus = true" (blur)="focus = false" formControlName="amount" />
+                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount" />
+                <ng-container *ngFor="let message of registerManualFormMessages.amount">
+                  <div *ngIf="
+                    createManualForm.get('amount').hasError(message.type) &&
+                          (createManualForm.get('amount').dirty ||
+                          createManualForm.get('amount').touched)
+                        ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
               </div>
+
 
               <div class="form-group">
                 <label class="form-control-label">
                   Remark
                 </label>
-                  <input class="form-control text-dark" currencyMask placeholder="remark" type="text"
-                    (focus)="focus = true" (blur)="focus = false" formControlName="remark" />
+                <input class="form-control text-dark" placeholder="remark" type="text" (focus)="focus = true"
+                  (blur)="focus = false" formControlName="remark" />
+                <ng-container *ngFor="let message of registerManualFormMessages.remark">
+                  <div *ngIf="
+                    createManualForm.get('remark').hasError(message.type) &&
+                          (createManualForm.get('remark').dirty ||
+                          createManualForm.get('remark').touched)
+                        ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
               </div>
 
               <div class="form-group">
@@ -199,13 +260,25 @@
                     </div>
                   </div>
                 </div>
+                <ng-container *ngFor="let message of registerManualFormMessages.attachment">
+                  <div *ngIf="
+                    createManualForm.get('attachment').hasError(message.type) &&
+                          (createManualForm.get('attachment').dirty ||
+                          createManualForm.get('attachment').touched)
+                        ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
               </div>
               <div class="row">
                 <div class="col clearfix">
-                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
+                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
                     Cancel
                   </button>
-                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit">
+                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit"
+                    [disabled]="createManualForm.invalid">
                     Submit
                   </button>
                 </div>
@@ -225,32 +298,54 @@
                 <label class="form-control-label">
                   Amount
                 </label>
-                  <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
-                    (focus)="focus = true" (blur)="focus = false" formControlName="amount" />
+                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount" />
+                <ng-container *ngFor="let message of registerOnlineFormMessages.amount">
+                  <div *ngIf="
+                    createOnlineForm.get('amount').hasError(message.type) &&
+                            (createOnlineForm.get('amount').dirty ||
+                            createOnlineForm.get('amount').touched)
+                          ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
               </div>
 
               <div class="form-group">
                 <label class="form-control-label" for="paymentmethod"> Payment Method</label>
                 <select class="form-control" id="paymentmethod" formControlName="paymentmethod">
                   <option hidden selected>Select Payment Method</option>
-                  <option value="FPX">FPX</option>
-                  <option value="Credit/Debit">"Credit/Debit"</option>
+                  <option *ngFor="let bank of banks" value={{bank.code}}>{{bank.name}}</option>
                 </select>
+                <ng-container *ngFor="let message of registerOnlineFormMessages.paymentmethod">
+                  <div *ngIf="
+                  createOnlineForm.get('paymentmethod').hasError(message.type) &&
+                          (createOnlineForm.get('paymentmethod').dirty ||
+                          createOnlineForm.get('paymentmethod').touched)
+                        ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="form-control-label">
                   Summary (RM)
                 </label>
-                  <input class="form-control text-dark" currencyMask  placeholder="summary" type="text" (focus)="focus = true"
-                    (blur)="focus = false" formControlName="summary" />
-              </div>
+                <input class="form-control text-dark" currencyMask placeholder="summary" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="summary" />
+              </div> -->
               <div class="row">
                 <div class="col clearfix">
-                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
+                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
                     Cancel
                   </button>
-                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit">
+                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit"
+                    [disabled]="createOnlineForm.invalid">
                     Submit
                   </button>
                 </div>
@@ -268,4 +363,68 @@
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
   </div>
+</ng-template>
+
+
+<ng-template #view>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Payment Detail
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+
+      <div class="col-md-6 col-xs-6">
+        <div class=" form-group">
+            <label class="form-control-label">Payment Method</label>
+            <input type="text" class="form-control" placeholder={{viewData.paymentmethod}} disabled>
+        </div>
+
+        <div class=" form-group">
+            <label class="form-control-label">Payment Amount</label>
+            <input type="text" class="form-control" placeholder={{viewData.amount}} disabled>
+        </div>
+
+        <div class=" form-group">
+            <label class="form-control-label">Attachment</label>
+            <div class="form-group">
+                <button class=" btn btn-outline-secondary" type="button" title="click to download" (click)='download(viewData.attachment)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>&nbsp;Attached File
+                </button>&nbsp;&nbsp;&nbsp;
+                <button class=" btn btn-outline-secondary" type="button" (click)='download(viewData.attachment)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>&nbsp;Receipt
+                </button>
+            </div>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-xs-6">
+        <div class=" form-group">
+            <label class="form-control-label">Date</label>
+            <input type="text" class="form-control" placeholder={{viewData.date}} disabled>
+        </div>
+
+        <div class=" form-group">
+            <label class=" form-control-label">
+              Remark
+            </label>
+            <textarea class=" form-control" placeholder={{viewData.remark}} rows="5" disabled></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Ok
+    </button>
+  </div>
+
 </ng-template>

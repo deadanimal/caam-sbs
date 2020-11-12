@@ -1,0 +1,574 @@
+<div class="header background-theme">
+  <div class="header pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">
+              TFL-VFR &nbsp;
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--8">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h4>Upload VFR and TFL Data</h4>
+        </div>
+        <div class="card-body">
+          <div class="form-group col-md-6">
+            <label class="form-control-label">
+              Choose File
+            </label>
+            <div class="dropzone dropzone-single mb-3" data-toggle="dropzone" data-dropzone-url="http://">
+              <div class="fallback">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="attachment" [(ngModel)]="attachment" type="file"
+                    name="data_file_link" (change)="onFileChange($event)" (click)="upload()">
+                  <label class="custom-file-label" for="attachment">Choose file</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="rows "
+            (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="uploaddate">
+              <ng-template ngx-datatable-header-template>
+                <span>UPLOAD DATE</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="filename">
+              <ng-template ngx-datatable-header-template>
+                <span>FILE NAME</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="filedate">
+              <ng-template ngx-datatable-header-template>
+                <span>FILE DATE</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>TOTAL DATA</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.totaldata | currency: "MYR"}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>STATUS</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span [ngClass]="statusBadge(row.status)">{{
+                  row.status
+                }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Actions" sortable="false">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <a *ngIf="row.status==='Draft'" href="javascript:void(0)" title="click to view"
+                  (click)="openModal(draft)">
+                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="row.status==='Process'" href="javascript:void(0)" title="click to view"
+                  (click)="openModal(process)">
+                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #draft>
+
+  <div class="modal-header bg-default viewtemplate" >
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Flight Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body modal-body-color">
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                      (change)="entriesChange($event)">
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+              [rows]="flightDataDraft " (activate)="onActivate($event)" [scrollbarH]="true">
+              <ngx-datatable-column [width]="30">
+                <ng-template ngx-datatable-header-template>
+                  <span>No.</span>
+                </ng-template>
+                <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{
+                    rowIndex +1
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="datetime">
+                <ng-template ngx-datatable-header-template>
+                  <span>DATE/TIME</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="callsign">
+                <ng-template ngx-datatable-header-template>
+                  <span>CALLSIGN</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="type">
+                <ng-template ngx-datatable-header-template>
+                  <span>TYPE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="departure">
+                <ng-template ngx-datatable-header-template>
+                  <span>DEPARTURE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="destination">
+                <ng-template ngx-datatable-header-template>
+                  <span>DESTINATION</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="ctg">
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DISTANCE</span>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  {{row.distance | number}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="route">
+                <ng-template ngx-datatable-header-template>
+                  <span>ROUTE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="haserror">
+                <ng-template ngx-datatable-header-template>
+                  <span>ERROR</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" sortable="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                  <a href="javascript:void(0)" title="click to view and edit" (click)="openModal(edit, row)">
+                    <i class="fa fa-edit text-black" aria-hidden="true"></i>
+                  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="javascript:void(0)" title="click to delete" (click)="openModal(delete)">
+                    <i class="fa fa-trash text-black" aria-hidden="true"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h4>Archieve Data</h4>
+        <div class="card">
+
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                      (change)="entriesChange($event)">
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+              [rows]="flightDataArchieve" (activate)="onActivate($event)" [scrollbarH]="true">
+              <ngx-datatable-column [width]="30">
+                <ng-template ngx-datatable-header-template>
+                  <span>No.</span>
+                </ng-template>
+                <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{
+                    rowIndex +1
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="datetime">
+                <ng-template ngx-datatable-header-template>
+                  <span>DATE/TIME</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="callsign">
+                <ng-template ngx-datatable-header-template>
+                  <span>CALLSIGN</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="type">
+                <ng-template ngx-datatable-header-template>
+                  <span>TYPE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="departure">
+                <ng-template ngx-datatable-header-template>
+                  <span>DEPARTURE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="destination">
+                <ng-template ngx-datatable-header-template>
+                  <span>DESTINATION</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="ctg">
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DISTANCE</span>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  {{row.distance | number}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="route">
+                <ng-template ngx-datatable-header-template>
+                  <span>ROUTE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="reason">
+                <ng-template ngx-datatable-header-template>
+                  <span>REASON</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="remark">
+                <ng-template ngx-datatable-header-template>
+                  <span>REMARK</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" sortable="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                  <a href="javascript:void(0)" title="click to restore" (click)="archieve(row)">
+                    <i class="fa fa-undo text-black text-center" aria-hidden="true"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer modal-footer-color">
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Ok
+    </button>
+  </div>
+
+</ng-template>
+
+
+<ng-template #process>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Flight Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body modal-body-color">
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                      (change)="entriesChange($event)">
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="25" [selected]="entries == 25">25</option>
+                      <option value="50" [selected]="entries == 50">50</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+              [rows]="flightDataProcess " (activate)="onActivate($event)" [scrollbarH]="true">
+              <ngx-datatable-column [width]="30">
+                <ng-template ngx-datatable-header-template>
+                  <span>No.</span>
+                </ng-template>
+                <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                  {{
+                    rowIndex +1
+                  }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="datetime">
+                <ng-template ngx-datatable-header-template>
+                  <span>DATE/TIME</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="callsign">
+                <ng-template ngx-datatable-header-template>
+                  <span>CALLSIGN</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="type">
+                <ng-template ngx-datatable-header-template>
+                  <span>TYPE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="departure">
+                <ng-template ngx-datatable-header-template>
+                  <span>DEPARTURE</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="destination">
+                <ng-template ngx-datatable-header-template>
+                  <span>DESTINATION</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="ctg">
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>DISTANCE</span>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-row="row">
+                  {{row.distance | number}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="route">
+                <ng-template ngx-datatable-header-template>
+                  <span>ROUTE</span>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer modal-footer-color">
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Ok
+    </button>
+  </div>
+
+</ng-template>
+
+
+<ng-template #delete>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Edit Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
+      Cancel
+    </button>
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="UpdateData()">
+      Save
+    </button>
+  </div>
+
+</ng-template>
+
+<ng-template #edit>
+
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Edit Data
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-control-label">Date/Time</label>
+          <input class="form-control" [(ngModel)]="selectedRow.datetime" [ngModelOptions]="{standalone: true}"
+            type="text" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Type</label>
+          <input class="form-control" [(ngModel)]="selectedRow.type" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Destination</label>
+          <input class="form-control" [(ngModel)]="selectedRow.destination" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Distance</label>
+          <input class="form-control" placeholder="selectedRow.distance | number" [(ngModel)]="selectedRow.distance"
+            [ngModelOptions]="{standalone: true}" type="text" disabled>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-control-label">Callsign</label>
+          <input class="form-control" [(ngModel)]="selectedRow.callsign" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Departure</label>
+          <input class="form-control" [(ngModel)]="selectedRow.departure" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">CTG</label>
+          <input class="form-control" [(ngModel)]="selectedRow.ctg" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Route</label>
+          <input class="form-control" [(ngModel)]="selectedRow.route" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
+      Cancel
+    </button>
+    <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="updateData()">
+      Save
+    </button>
+  </div>
+
+</ng-template>

@@ -6,7 +6,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
@@ -48,6 +48,9 @@ import { RouterModule } from '@angular/router';
     CreditNoteComponent,
     DebitNoteComponent,
     InvoiceComponent
+  ],
+  providers: [
+    DatePipe,
   ]
 })
 export class BillingModule { }

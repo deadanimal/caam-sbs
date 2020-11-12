@@ -22,9 +22,8 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { AgingInvoiceComponent } from './aging-invoice/aging-invoice.component';
 import { CreditDebitNoteComponent } from './credit-debit-note/credit-debit-note.component';
 import { GeneralLedgerComponent } from './general-ledger/general-ledger.component';
-
-
-
+import {MatDatepickerModule} from '@angular/material';
+import { DatePipe } from '@angular/common';
 
 let pages = [
   InvoicesComponent,
@@ -54,7 +53,11 @@ let pages = [
     NgxQRCodeModule,
     Ng2SearchPipeModule,
     NgpSortModule,
-    ModalModule.forRoot(),
+    ModalModule.forRoot(), 
+    MatDatepickerModule 
+  ],
+  providers: [
+    DatePipe,
   ]
 })
 export class FinanceModule { }

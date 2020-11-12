@@ -2,11 +2,11 @@ export const aginginvoicelist: any = [
     {
         id: '1',
         companyname: "AEROFLOT RUSSIAN AIRLINES",
-        cid: "",
+        cid: "1",
         invoice: [{
-            invoiceperiod: "2 months",
+            invoiceperiod: "NA",
             invoicenumber: "#000132",
-            invoicedate: "28/01/2020",
+            invoicedate: "01/01/2020",
             invoicetotal: 235467.00,
             month0to1: 3568.00,
             month1to3: 6000.00,
@@ -59,11 +59,11 @@ export const aginginvoicelist: any = [
     {
         id: '2',
         companyname: "AHK AIR HONG KONG LTD",
-        cid: "",
+        cid: "2",
         invoice: [{
             invoiceperiod: "3 months",
             invoicenumber: "#000135",
-            invoicedate: "14/01/2020",
+            invoicedate: "07/01/2020",
             invoicetotal: 235467.00,
             month0to1: 4567.00,
             month1to3: 8767.00,
@@ -101,11 +101,11 @@ export const aginginvoicelist: any = [
     {
         id: '3',
         companyname: "AIR ALSIE ASIA PACIFIC",
-        cid: "",
+        cid: "3",
         invoice: [{
             invoiceperiod: "11 months",
             invoicenumber: "#000135",
-            invoicedate: "16/09/2020",
+            invoicedate: "05/09/2020",
             invoicetotal: 324567.00,
             month0to1: 4567.00,
             month1to3: 5689.00,
@@ -129,11 +129,11 @@ export const aginginvoicelist: any = [
     {
         id: '4',
         companyname: "AIR CALEDONIE INTERNATIONAL",
-        cid: "",
+        cid: "4",
         invoice: [{
             invoiceperiod: "11 months",
             invoicenumber: "#000135",
-            invoicedate: "16/09/2020",
+            invoicedate: "11/09/2020",
             invoicetotal: 324567.00,
             month0to1: 4567.00,
             month1to3: 5689.00,
@@ -158,11 +158,11 @@ export const aginginvoicelist: any = [
     {
         id: '5',
         companyname: "SOCIETE AIR FRANCE",
-        cid: "",
+        cid: "5",
         invoice: [{
             invoiceperiod: "11 months",
             invoicenumber: "#000135",
-            invoicedate: "16/09/2020",
+            invoicedate: "02/09/2020",
             invoicetotal: 324567.00,
             month0to1: 4567.00,
             month1to3: 5689.00,
@@ -186,11 +186,11 @@ export const aginginvoicelist: any = [
     {
         id: '6',
         companyname: "AIR MAURITIUS",
-        cid: "",
+        cid: "6",
         invoice: [{
             invoiceperiod: "11 months",
             invoicenumber: "#000135",
-            invoicedate: "16/09/2020",
+            invoicedate: "05/09/2020",
             invoicetotal: 324567.00,
             month0to1: 4567.00,
             month1to3: 5689.00,

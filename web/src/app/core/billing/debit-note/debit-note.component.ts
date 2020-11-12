@@ -4,6 +4,7 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/billing/debit-note";
 import { DebitNoteService } from 'src/app/shared/services/billing/debit-note/debit-note.service';
 import { DebitNote } from 'src/app/shared/services/billing/debit-note/debit-note.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-debit-note',
@@ -11,11 +12,19 @@ import { DebitNote } from 'src/app/shared/services/billing/debit-note/debit-note
   styleUrls: ['./debit-note.component.scss']
 })
 export class DebitNoteComponent implements OnInit {
+
+  // Table
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
   rows = dummylist.debitnotelist;
+
+   // Search Filter
+   fromDate: Date;
+   toDate: Date;
+   filterby: String;
+   searchText: String;
 
   // Data
   debitNotes: DebitNote[] = [];
@@ -38,18 +47,67 @@ export class DebitNoteComponent implements OnInit {
     public zone: NgZone, 
     private modalService: BsModalService,
     private debitNoteService: DebitNoteService,
+    private datePipe: DatePipe
     ) {
-    this.temp = this.rows.map((prop, key) => {
-      return {
-        ...prop,
-        id: key,
-      };
-    });
+      this.filterby = "all";
+      this.searchText = "";
+  }
+
+  ngOnInit() {
+    this.FilterTable(this.filterby);
   }
 
   download(url: string): void {
     console.log(url);
     window.open(url, '_blank');
+  }
+
+  FilterTable(field) {
+    let search = field.toLocaleLowerCase();
+    let tempAll = [];
+
+
+    if (this.filterby == 'all') {
+      for (let i = 0; i < 15; i++) {
+        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
+      }
+
+      return this.temp = tempAll;
+
+    }
+    else if (this.filterby == 'invoicenumber') {
+      this.temp = this.rows.filter(function (d) {
+        return d.invoicenumber.toLocaleLowerCase().includes(search);
+      })
+    }
+    else if (this.filterby == 'debitnumber') {
+      this.temp = this.rows.filter(function (d) {
+        return d.debitnumber.toLocaleLowerCase().includes(search);
+      })
+    }
+  }
+
+  // FilterDate() {
+  //   let fromdate = this.fromDate
+  //   let todate = this.toDate
+
+  //   if (fromdate && todate) {
+  //     this.temp = this.rows.filter(function (d) {
+  //       return new Date(d.issuedate) >= fromdate && new Date(d.issuedate) <= todate;
+  //     })
+  //   }
+  // }
+
+  FilterDate() {
+    let date:any = this.fromDate
+    date = this.datePipe.transform(date, 'MM/dd/yyyy');
+    console.log(date + " " + typeof(date))
+
+    if (date) {
+          this.temp = this.rows.filter(function (d) {
+            return d.issuedate == date
+          })
+        }
   }
 
   getAllData = () => {
@@ -67,36 +125,6 @@ export class DebitNoteComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
-  filterTable($event) {
-    let val = $event.target.value;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  searchTable() {
-    let object = this.searchInput;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in object) {
-        if (object[key]) {
-          if (
-            d[key]
-              .toString()
-              .toLowerCase()
-              .indexOf(object[key].toString().toLowerCase()) !== -1
-          )
-            return true;
-        }
-      }
-      return false;
-    });
-  }
-
   onActivate(event) {
     this.activeRow = event.row;
   }
@@ -108,10 +136,6 @@ export class DebitNoteComponent implements OnInit {
 
   closeModal() {
     this.modal.hide()
-  }
-
-  ngOnInit() { 
-    console.log(this.rows)
   }
 
 }

@@ -23,3 +23,25 @@ background: linear-gradient(90deg, rgba(19,53,92,1) 20%, rgba(46,126,159,0.95982
 .card-header {
     height: 50px !important;
 }
+
+.error-message {
+    color: #f5365c;
+    text-align: right;
+    font-size: 0.8em;
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.viewtemplate {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+input[disabled], textarea[disabled]{
+    background-color: transparent !important;
+    border: 0 !important;
+    border-bottom:1px solid !important;
+    border-radius: 0 !important;
+  }

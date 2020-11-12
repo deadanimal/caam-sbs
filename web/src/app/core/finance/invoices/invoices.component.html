@@ -35,21 +35,36 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Filter By</label>
-                <select class="form-control" id="filterby">
-                  <option hidden selected>Select filter</option>
-                  <option [value]="date">Date</option>
-                  <option [value]="companyname">Company</option>
-                  <option [value]="invoicenumber">Invoice No.</option>
-                  <option [value]="status">Status</option>
+                <select class="form-control" [(ngModel)]="filterby" id="filterby">
+                  <option value="all">-Select Filter By-</option>
+                  <option value="companyname">Company</option>
+                  <option value="invoicenumber">Invoice No.</option>
+                  <option value="status">Status</option>
                 </select>
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="filterby==='companyname'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" id="search" placeholder="Enter keyword"
-                  [(ngModel)]="searchText">
+                <input type="text" class="form-control" placeholder="Search Company Name"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='invoicenumber'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Invoice No."
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='status'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Status"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
               </div>
             </div>
 
@@ -86,7 +101,7 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="temp " (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>

@@ -3,7 +3,7 @@ export const invoicelist: any = [
         id: '1',
         invoicenumber: "#000132",
         invoiceperiod: '1 month',
-        invoicedate: '28/01/2020',
+        invoicedate: '09/01/2020',
         amount: 206.7,
         status: 'Partial',
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
@@ -21,7 +21,7 @@ export const invoicelist: any = [
         id: '3',
         invoicenumber: "#000134",
         invoiceperiod: '11 month',
-        invoicedate: '15/03/2020',
+        invoicedate: '05/03/2020',
         amount: 1230.40,
         status: 'Partial',
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
@@ -31,7 +31,7 @@ export const invoicelist: any = [
         id: '4',
         invoicenumber: "#000135",
         invoiceperiod: '5 month',
-        invoicedate: '21/02/2020',
+        invoicedate: '12/02/2020',
         amount: 300.00,
         status: 'Partial',
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
@@ -49,7 +49,7 @@ export const invoicelist: any = [
         id:'6',
         invoicenumber:"#000137",
         invoiceperiod: '3 month',
-        invoicedate: '26/11/2020',
+        invoicedate: '04/24/2020',
         amount: 120.40,
         status: 'Partial',
         file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'

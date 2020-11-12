@@ -45,13 +45,24 @@ export class FpldatasService {
     );
   }
 
-  update(id: string, body: Form): Observable<FpldatasModel> {
-    return this.http.patch<FpldatasModel>(this.url + id + "/", body).pipe(
+  // update(id: string, body: Form): Observable<FpldatasModel> {
+  //   let url = this.url + "data_put/";
+  //   return this.http.post<any>(url, body).pipe(
+  //     tap((res) => {
+  //       console.log("FpldatasModel", res);
+  //     })
+  //   );
+  // }
+
+  update(id: String, body:any): Observable<FpldatasModel> {
+    let urlFlight = this.url + id + '/'
+    return this.http.put<FpldatasModel>(urlFlight, body).pipe(
       tap((res) => {
-        console.log("FpldatasModel", res);
+        console.log('FpldatasModel', res)
       })
-    );
+    )
   }
+
 
   delete(id: string): Observable<any> {
     return this.http.delete(this.url + id + "/").pipe(
@@ -62,7 +73,7 @@ export class FpldatasService {
   }
 
   filter(field: string): Observable<FpldatasModel[]> {
-    let urlFilter = this.url + "?" + field;
+    let urlFilter = this.url + "file_filter/?" + field;
     return this.http.get<FpldatasModel[]>(urlFilter).pipe(
       tap((res) => {
         console.log("FpldatasModel", res);
