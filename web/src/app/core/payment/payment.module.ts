@@ -37,7 +37,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   prefix: '',
   suffix: '',
   thousands: ',',
-  currency: 'MYR'
+  // currency: 'MYR'
 };
 
 
