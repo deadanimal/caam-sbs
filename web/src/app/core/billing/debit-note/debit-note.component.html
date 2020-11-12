@@ -1,0 +1,175 @@
+<div class="header background-theme">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">
+            Debit Note &nbsp;
+          </h6>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify">User able to view and download report of credit note.</small>
+          </ng-template>
+          <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+            [outsideClick]="true">
+            <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid mt--8">
+  <div class="row">
+    <div class="col">
+      <div class="card mb-4">
+        <div class="card-header bg-secondary">
+          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-control-label">Filter By</label>
+                <select class="form-control" [(ngModel)]="filterby" id="filterby">
+                  <option value="all">-Select Filter By-</option>
+                  <option value="date">Date</option>
+                  <option value="invoicenumber">Invoice No.</option>
+                  <option value="debitnumber">Debit Note No.</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='invoicenumber'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Invoice No." [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='debitnumber'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Debit No." [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate">
+                </div>
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker"
+                    placeholder="Enter End Date" bsDatepicker [(ngModel)]="toDate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col clearfix">
+                  <button class="btn btn-warning float-right" (click)="FilterDate()">Search</button>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-12 col-md-12 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate" (ngModelChange)="FilterDate()">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="debitnumber">
+              <ng-template ngx-datatable-header-template>
+                <span>DEBIT NOTE NO.</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="invoicenumber">
+              <ng-template ngx-datatable-header-template>
+                <span>INVOICE NO.</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="issuedate">
+              <ng-template ngx-datatable-header-template>
+                <span>ISSUE DATE</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>AMOUNT</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.amount | currency: "MYR"}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <a href="javascript:void(0)" (click)="openModal()" title="click to view">
+                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>
+                </a>
+
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

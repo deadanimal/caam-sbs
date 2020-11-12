@@ -1,0 +1,239 @@
+<div class="header background-theme">
+  <div class="header pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-md-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">
+              Credit and Debit Note &nbsp;
+            </h6>
+
+            <ng-template #popTemplate>
+              <h4 class="text-center">Information</h4>
+              <small class="text-justify">User able to view and download report of credit and debit note.</small>
+            </ng-template>
+            <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+              [outsideClick]="true">
+              <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--8">
+  <div class="row">
+    <div class="col">
+      <div class="card mb-4">
+        <div class="card-header bg-secondary">
+          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-control-label">Filter By</label>
+                <select class="form-control" [(ngModel)]="filterby" id="filterby">
+                  <option value="all">-Select Filter By-</option>
+                  <option value="date">Date</option>
+                  <option value="companyname">Company</option>
+                  <option value="transactionnumber">Transaction No.</option>
+                  <option value="transaction">Transaction</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='companyname'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Company Name"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='transaction'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Transaction"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="filterby==='transactionnumber'">
+              <div class="form-group">
+                <label class="form-control-label">Search Keyword</label>
+                <input type="text" class="form-control" placeholder="Search Transaction Number"
+                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate">
+                </div>
+                <div class="col-xs-6 col-md-6 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker"
+                    placeholder="Enter End Date" bsDatepicker [(ngModel)]="toDate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col clearfix">
+                  <button class="btn btn-warning float-right" (click)="FilterDate()">Search</button>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-6" *ngIf="filterby==='date'">
+              <h4>Search by Date</h4>
+              <div class="row">
+                <div class="col-xs-12 col-md-12 form-group">
+                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
+                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate" (ngModelChange)="FilterDate()">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <ngx-datatable class="bootstrap selection-cell table-responsive " [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+            (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="cid">
+              <ng-template ngx-datatable-header-template>
+                <span>CID</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="companyname">
+              <ng-template ngx-datatable-header-template>
+                <span>Company Name</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="transaction">
+              <ng-template ngx-datatable-header-template>
+                <span>Transaction</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="transactionnumber">
+              <ng-template ngx-datatable-header-template>
+                <span>Transaction No.</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="transactiondate">
+              <ng-template ngx-datatable-header-template>
+                <span>Transaction Date</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="invoicenumber">
+              <ng-template ngx-datatable-header-template>
+                <span>Invoice No.</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>AMOUNT</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.amount | currency: "MYR"}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <a href="javascript:void(0)" (click)="openModal(view,row)" title="click to view">
+                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #view>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Credit and Debit Note
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div class="row clearfix">
+        <div class="col">
+          <span>
+            <span class="h1">DEBIT NOTE</span><br>
+            <span class="h3">{{companyname}}</span><br>
+            {{"Transaction Date: " + transactiondate}}<br>
+            {{"Transaction Number: " + transactionnumber}}<br>
+          </span>
+        </div>
+      </div>
+      <hr>
+      <img src="../../../../../assets/img/invoice/debitcredit.jpg" style="position: relative; width: 100%;" />
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Close
+    </button>
+  </div>
+
+
+
+</ng-template>

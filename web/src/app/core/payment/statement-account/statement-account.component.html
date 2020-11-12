@@ -1,0 +1,214 @@
+<div class="header background-theme">
+    <div class="header pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">
+                            Statement of Account &nbsp;
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--8 ">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-header bg-secondary">
+                    <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Filter By</label>
+                                <select class="form-control" [(ngModel)]="filterby" id="filterby">
+                                    <option value="all">-Select Filter By-</option>
+                                    <option value="issuedate">Issue Date</option>
+                                    <option value="duedate">Due Date</option>
+                                    <option value="transaction">Transaction</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" *ngIf="filterby==='transaction'">
+                            <div class="form-group">
+                                <label class="form-control-label">Search Keyword</label>
+                                <input type="text" class="form-control" placeholder="Search Transaction"
+                                    [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" *ngIf="filterby==='issuedate'">
+                            <h4>Search by Date</h4>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 form-group">
+                                    <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate"
+                                        #dp="bsDatepicker" placeholder="Enter Date" bsDatepicker [(ngModel)]="fromDate"
+                                        (ngModelChange)="FilterDate()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" *ngIf="filterby==='duedate'">
+                            <h4>Search by Date</h4>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 form-group">
+                                    <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate"
+                                        #dp="bsDatepicker" placeholder="Enter Date" bsDatepicker [(ngModel)]="fromDate"
+                                        (ngModelChange)="FilterDate()">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+
+                <div class="dataTables_wrapper py-4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="datatable_length">
+                                <label>
+                                    Show
+                                    <select name="datatable_length" aria-controls="datatable"
+                                        class="form-control form-control-sm" (change)="entriesChange($event)">
+                                        <option value="5" [selected]="entries == 5">5</option>
+                                        <option value="10" [selected]="entries == 10">10</option>
+                                        <option value="25" [selected]="entries == 25">25</option>
+                                        <option value="50" [selected]="entries == 50">50</option>
+                                        <option value="-1" [selected]="entries == -1">All</option>
+                                    </select>
+                                    entries
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ngx-datatable class="bootstrap selection-cell " [headerHeight]="50" [columnMode]="'force'"
+                        [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+                        [rows]="temp" (activate)="onActivate($event)" [scrollbarH]="true">
+
+                        <ngx-datatable-column [width]="30">
+                            <ng-template ngx-datatable-header-template>
+                                <span>No.</span>
+                            </ng-template>
+                            <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                                {{
+                                rowIndex +1
+                              }}
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="issuedate">
+                            <ng-template ngx-datatable-header-template>
+                                <span>ISSUE DATE</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="transaction">
+                            <ng-template ngx-datatable-header-template>
+                                <span>TRANSACTION</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="transactionnumber">
+                            <ng-template ngx-datatable-header-template>
+                                <span>TRANSACTION NO.</span>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column>
+                            <ng-template ngx-datatable-header-template>
+                                <span>DEBIT</span>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.debit | currency: "MYR"}}
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column>
+                            <ng-template ngx-datatable-header-template>
+                                <span>CREDIT</span>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.credit | currency: "MYR"}}
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column>
+                            <ng-template ngx-datatable-header-template>
+                                <span>BALANCE</span>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.balance | currency: "MYR"}}
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                    </ngx-datatable>
+
+                    <ngx-datatable class="material" [rows]="temp"  [columnMode]="'force'"
+                        [footerHeight]="100" [headerHeight]="0" rowHeight="auto" >
+                        <ngx-datatable-footer *ngIf="true">
+                            <ng-template ngx-datatable-footer-template >
+                                <div style="padding: 5px 10px">
+                                    <b class="total ml-auto">BALANCE</b>
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-footer>
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #view>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Aging Invoice
+        </h6>
+
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="row clearfix">
+                <div class="col">
+                    <span>
+                        <span class="h1">AGING INVOICE</span><br>
+                        <span class="h3">{{companyname}}</span><br>
+                        {{"Invoice Date: " + invoicedate}}<br>
+                        {{"Invoice Number: " + invoicenumber}}<br>
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <img src="../../../../../assets/img/invoice/aginginvoice.jpg" style="position: relative; width: 100%;" />
+
+        </form>
+    </div>
+
+    <div class="modal-footer">
+
+        <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+            Close
+        </button>
+    </div>
+</ng-template>
