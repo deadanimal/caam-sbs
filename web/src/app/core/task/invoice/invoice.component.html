@@ -46,9 +46,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5
-                    class="card-title text-uppercase text-muted mb-0 text-white"
-                  >
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
                     Total flight data
                   </h5>
                   <span class="h2 font-weight-bold mb-0 text-white">
@@ -56,9 +54,7 @@
                   </span>
                 </div>
                 <div class="col-auto">
-                  <div
-                    class="icon icon-shape bg-white text-dark rounded-circle shadow"
-                  >
+                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
                     <i class="fas fa-plane-departure"></i>
                   </div>
                 </div>
@@ -72,9 +68,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5
-                    class="card-title text-uppercase text-muted mb-0 text-white"
-                  >
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
                     Total airlines registered
                   </h5>
                   <span class="h2 font-weight-bold mb-0 text-white">
@@ -82,9 +76,7 @@
                   </span>
                 </div>
                 <div class="col-auto">
-                  <div
-                    class="icon icon-shape bg-white text-dark rounded-circle shadow"
-                  >
+                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
                     <i class="fas fa-globe-asia"></i>
                   </div>
                 </div>
@@ -98,9 +90,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5
-                    class="card-title text-uppercase text-muted mb-0 text-white"
-                  >
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
                     Archived flight data
                   </h5>
                   <span class="h2 font-weight-bold mb-0 text-white">
@@ -108,9 +98,7 @@
                   </span>
                 </div>
                 <div class="col-auto">
-                  <div
-                    class="icon icon-shape bg-white text-dark rounded-circle shadow"
-                  >
+                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
                     <i class="fas fa-archive"></i>
                   </div>
                 </div>
@@ -124,9 +112,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5
-                    class="card-title text-uppercase text-muted mb-0 text-white"
-                  >
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
                     Errors data occured
                   </h5>
                   <span class="h2 font-weight-bold mb-0 text-white">
@@ -134,9 +120,7 @@
                   </span>
                 </div>
                 <div class="col-auto">
-                  <div
-                    class="icon icon-shape bg-white text-dark rounded-circle shadow"
-                  >
+                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
                     <i class="fas fa-exclamation-triangle"></i>
                   </div>
                 </div>
@@ -167,12 +151,8 @@
               <div class="dataTables_length" id="datatable_length">
                 <label>
                   Show
-                  <select
-                    name="datatable_length"
-                    aria-controls="datatable"
-                    class="form-control form-control-sm"
-                    (change)="entriesChange($event)"
-                  >
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
                     <option value="5" [selected]="entries == 5">5</option>
                     <option value="10" [selected]="entries == 10">10</option>
                     <option value="25" [selected]="entries == 25">25</option>
@@ -186,42 +166,26 @@
             <div class="col-sm-12 col-md-6">
               <div id="datatable_filter" class="dataTables_filter">
                 <label>
-                  <input
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search records"
-                    aria-controls="datatable"
-                    (keyup)="filterTable($event)"
-                  />
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
                 </label>
               </div>
             </div>
           </div>
 
-          <ngx-datatable
-            class="bootstrap selection-cell"
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="50"
-<<<<<<< HEAD
-            [rowHeight]="'auto'"
-=======
->>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
-            [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp"
-            (activate)="onActivate($event)"
-            [scrollbarH]="true"
-          >
-          <ngx-datatable-column [width]="40">
-            <ng-template ngx-datatable-header-template>
-              <span>No.</span>
-            </ng-template>
-            <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-              {{
+          <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+            (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="40">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
                 rowIndex +1
               }}
-            </ng-template>
-          </ngx-datatable-column>
+              </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Airline</span>
@@ -255,16 +219,12 @@
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
-              <ng-template
-                let-row="row"
-                let-value="value"
-                ngx-datatable-cell-template
-              >
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                 <a href="javascript:void(0)" title="click to view" (click)="view(row)">
-                  <i class="fas fa-eye"></i> 
+                  <i class="fas fa-eye"></i>
                 </a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="javascript:void(0)" title="click to view" (click)="generate(row)">
-                  <i class="fas fa-download"></i> 
+                  <i class="fas fa-download"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>
@@ -287,56 +247,29 @@
         <div class="card-body px-lg-5 py-lg-5">
           <form [formGroup]="fileuploadFormGroup" (ngSubmit)="upload()">
             <div>
-              <label class="form-control-label" for="data_file_link"
-                >Select file</label
-              >
-              <input
-                class="form-control"
-                type="file"
-                name="data_file_link"
-                (change)="onFileChange($event)"
-              />
+              <label class="form-control-label" for="data_file_link">Select file</label>
+              <input class="form-control" type="file" name="data_file_link" (change)="onFileChange($event)" />
               <!-- formControlName="data_file_link" -->
             </div>
             <div class="pt-3">
               <label class="form-control-label mr-3">File Type</label>
               <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="tfl"
-                  name="data_type"
-                  formControlName="data_type"
-                  class="custom-control-input"
-                  value="TFL"
-                />
+                <input type="radio" id="tfl" name="data_type" formControlName="data_type" class="custom-control-input"
+                  value="TFL" />
                 <label class="custom-control-label" for="tfl">TFL</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input
-                  type="radio"
-                  id="vfr"
-                  name="data_type"
-                  formControlName="data_type"
-                  class="custom-control-input"
-                  value="VFR"
-                />
+                <input type="radio" id="vfr" name="data_type" formControlName="data_type" class="custom-control-input"
+                  value="VFR" />
                 <label class="custom-control-label" for="vfr">VFR</label>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col text-center">
-                <button
-                  type="submit"
-                  [disabled]="!fileuploadFormGroup"
-                  class="btn btn-sm btn-primary"
-                >
+                <button type="submit" [disabled]="!fileuploadFormGroup" class="btn btn-sm btn-primary">
                   Upload
                 </button>
-                <button
-                  type="button"
-                  class="btn btn-sm btn-secondary"
-                  (click)="c('Close click')"
-                >
+                <button type="button" class="btn btn-sm btn-secondary" (click)="c('Close click')">
                   Close
                 </button>
               </div>
@@ -373,14 +306,6 @@
   </div>
 </ng-template>
 
-<ngx-spinner
-  bdColor="rgba(0, 0, 0, 0.8)"
-  size="medium"
-  color="#fff"
-  type="timer"
-  [fullScreen]="true"
-  ><p style="color: white;">Loading, Please wait a moment...</p></ngx-spinner
->
-
-
-
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+  <p style="color: white;">Loading, Please wait a moment...</p>
+</ngx-spinner>

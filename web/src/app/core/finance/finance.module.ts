@@ -10,7 +10,7 @@ import { PopoverModule } from "ngx-bootstrap/popover";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxQRCodeModule } from "ngx-qrcode2";
 import { NgpSortModule } from "ngp-sort-pipe";
-import { ModalModule,} from 'ngx-bootstrap/modal';
+import { ModalModule, } from 'ngx-bootstrap/modal';
 
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
@@ -19,29 +19,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FinanceRoute } from './finance.routing';
 import { InvoicesComponent } from './invoices/invoices.component';
-<<<<<<< HEAD
 import { AgingInvoiceComponent } from './aging-invoice/aging-invoice.component';
 import { CreditDebitNoteComponent } from './credit-debit-note/credit-debit-note.component';
 import { GeneralLedgerComponent } from './general-ledger/general-ledger.component';
-import {MatDatepickerModule} from '@angular/material';
+import { MatDatepickerModule } from '@angular/material';
 import { DatePipe } from '@angular/common';
-=======
-import { NotesComponent } from './notes/notes.component';
-import { PaymentsComponent } from './payments/payments.component';
->>>>>>> a6a9174eb1660fc70a1de52953b1ab8b6387de4e
-
-let pages = [
-  InvoicesComponent,
-  AgingInvoiceComponent,
-  CreditDebitNoteComponent,
-  GeneralLedgerComponent,
-]
 
 @NgModule({
   declarations: [
     InvoicesComponent,
-    NotesComponent,
-    PaymentsComponent
+    AgingInvoiceComponent,
+    CreditDebitNoteComponent,
+    GeneralLedgerComponent,
   ],
   imports: [
     CommonModule,
@@ -60,8 +49,8 @@ let pages = [
     NgxQRCodeModule,
     Ng2SearchPipeModule,
     NgpSortModule,
-    ModalModule.forRoot(), 
-    MatDatepickerModule 
+    ModalModule.forRoot(),
+    MatDatepickerModule
   ],
   providers: [
     DatePipe,
