@@ -106,30 +106,6 @@ users_router = router.register(
     'users', CustomUserViewSet
 )
 
-# Payments
-from payments.views import (
-    InvoiceViewSet,
-    PaymentViewSet,
-    ReceiptViewSet,
-    ReminderViewSet
-)
-
-invoice_router = router.register(
-    'invoices', InvoiceViewSet
-)
-
-payments_router = router.register(
-    'payments', PaymentViewSet
-)
-
-receipts_router = router.register(
-    'receipts', ReceiptViewSet
-)
-
-reminders_router = router.register(
-    'reminders', ReminderViewSet
-)
-
 # Countries app
 from countries.views import (
     CountryViewSet
