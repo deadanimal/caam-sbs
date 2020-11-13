@@ -649,6 +649,7 @@ deleteData() {
         this.selectedRow.status = "FPL3";
         this.selectedRow.remark = this.createForm.value.remark;
         this.selectedRow.reason = this.createForm.value.reason;
+        this.selectedRow.uploaded_by = this.uploadBy; 
         console.log("update remark")
         console.log(this.selectedRow)
         this.fpldataService.update(this.selectedRow.id, this.selectedRow).subscribe(

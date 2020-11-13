@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'airports',
     'operations',
     'organisations',
-    'payments',
     'users',
     'countries',
     'approvals',
