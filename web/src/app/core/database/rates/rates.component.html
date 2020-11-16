@@ -1,17 +1,17 @@
-<div class="header pb-6">
+<div class="header pb-6 background-theme">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">Rate</h6>
+          <h6 class="h2 text-white d-inline-block mb-0">Rate &nbsp;</h6>
 
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+          <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
               <li class="breadcrumb-item">
                 <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
               </li>
             </ol>
-          </nav>
+          </nav> -->
 
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
@@ -34,7 +34,7 @@
 
         <div class="col-lg-6 col-5 text-right">
           <button
-            class="btn btn-dark"
+            class="btn btn-sm btn-dark"
             (click)="create(classic1)"
             *ngIf="authService.decodedToken().user_type == 'OPS'"
           >
@@ -46,8 +46,8 @@
               <div class="modal-body p-0">
                 <div class="card bg-secondary shadow border-0">
                   <div class="card-header bg-dark">
-                    <div class="text-muted text-center mb-3">
-                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    <div class="text-muted mb-3">
+                      <h4 class="mb-0 text-white">{{ processTitle }}</h4>
                     </div>
                   </div>
                   <div class="card-body px-lg-5 py-lg-5">
@@ -121,17 +121,15 @@
                         </div>
                       </div>
 
-                      <div class="text-center">
-                        <button class="btn btn-dark" (click)="submit()">
-                          Submit
-                        </button>
-                        <button
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                          (click)="c('Close click')"
-                        >
-                          Cancel
-                        </button>
+                      <div class="row mt-4">
+                        <div class="col clearfix"> 
+                          <button class="btn btn-outline-danger" data-dismiss="modal" (click)="c('Close click')">
+                            Cancel
+                          </button>
+                          <button class="btn btn-dark float-right" (click)="submit()">
+                            Submit
+                          </button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -145,7 +143,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+<div class="container-fluid mt--8">
   <!-- <div class="row">
               <div class="col">
                 <div class="card">
@@ -212,14 +210,14 @@
             (activate)="onActivate($event)"
             [scrollbarH]="true"
           >
-            <ngx-datatable-column width="50">
-              <ng-template ngx-datatable-header-template>
-                <span>No.</span>
-              </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.no + 1 }}
-              </ng-template>
-            </ngx-datatable-column>
+          <ngx-datatable-column width ="30">
+            <ng-template ngx-datatable-header-template>
+              <span>No.</span>
+            </ng-template>
+            <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+              {{ rowIndex + 1 }}
+            </ng-template>
+          </ngx-datatable-column>
             <ngx-datatable-column width="50">
               <ng-template ngx-datatable-header-template>
                 <span>Rate ID</span>
@@ -270,12 +268,9 @@
                 let-value="value"
                 ngx-datatable-cell-template
               >
-                <button
-                  class="btn btn-dark btn-sm"
-                  (click)="edit(row, classic1)"
-                >
-                  <i class="fas fa-edit"></i>
-                </button>
+              <a href="javascript:void(0)" title="click to edit" (click)="edit(row, classic1)">
+                <i class="fa fa-edit text-black" aria-hidden="true"></i>
+              </a>
                 <!-- <button class="btn btn-sm btn-warning">
                   <i class="fas fa-lightbulb"></i>
                 </button> -->

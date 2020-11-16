@@ -49,7 +49,7 @@ class Aircraft(models.Model):
     ]
     weight_category = models.CharField(max_length=2, choices=WEIGHT_CATEGORY, default='NA')
     weight = models.IntegerField(blank=True, default=0)
-    rate = models.DecimalField(max_digits=3, decimal_places=2, default=0.00)
+    rate = models.DecimalField(max_digits=3, decimal_places=2, default=0.00, blank=True,)
     # min_weight = models.IntegerField(blank=True, default=0)
     # max_weight = models.IntegerField(blank=True, default=0)
 

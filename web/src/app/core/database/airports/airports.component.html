@@ -1,43 +1,24 @@
-<div class="header pb-6">
+<div class="header pb-6 background-theme">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">Airport</h6>
+          <h6 class="h2 text-white d-inline-block mb-0">Airport &nbsp;</h6>
 
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
-              </li>
-            </ol>
-          </nav>
 
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
-            <small class="text-justify"
-              >User able to view and update the airport.</small
-            >
+            <small class="text-justify">User able to view and update the airport.</small>
           </ng-template>
-          <button
-            class="btn btn-icon btn-sm btn-dark"
-            type="button"
-            [popover]="popTemplate"
-            placement="right"
-            [outsideClick]="true"
-          >
-            <span class="btn-inner--icon"
-              ><i class="fas fa-info-circle"></i
-            ></span>
+          <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+            [outsideClick]="true">
+            <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
           </button>
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button
-            class="btn btn-dark"
-            (click)="create(classic1)"
-            *ngIf="authService.decodedToken().user_type == 'OPS'"
-          >
+          <button class="btn btn-sm btn-dark" (click)="create(classic1)"
+            *ngIf="authService.decodedToken().user_type == 'OPS'">
             Add New Airport
           </button>
 
@@ -46,8 +27,8 @@
               <div class="modal-body p-0">
                 <div class="card bg-secondary shadow border-0">
                   <div class="card-header bg-dark">
-                    <div class="text-muted text-center mb-3">
-                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    <div class="text-muted mb-3">
+                      <h4 class="mb-0 text-white">{{ processTitle }}</h4>
                     </div>
                   </div>
                   <div class="card-body px-lg-5 py-lg-5">
@@ -55,31 +36,18 @@
                       <div class="row">
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Airport Name</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter airport name"
-                              formControlName="name"
-                            />
+                            <label class="form-control-label">Airport Name</label>
+                            <input type="text" class="form-control" placeholder="Enter airport name"
+                              formControlName="name" />
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Airport ID</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter airport id"
-                              formControlName="aid"
-                            />
+                            <input type="text" class="form-control" placeholder="Enter airport id"
+                              formControlName="aid" />
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Category</label>
-                            <select
-                              class="form-control"
-                              formControlName="airport_category"
-                            >
+                            <select class="form-control" formControlName="airport_category">
                               <option value="">Please select category</option>
                               <option value="D">Domestic</option>
                               <option value="I">International</option>
@@ -89,43 +57,28 @@
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
                             <label class="form-control-label">ICAO Code</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter ICAO code"
-                              formControlName="icao_code"
-                            />
+                            <input type="text" class="form-control" placeholder="Enter ICAO code"
+                              formControlName="icao_code" />
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">IATA Code</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter IATA code"
-                              formControlName="iata_code"
-                            />
+                            <input type="text" class="form-control" placeholder="Enter IATA code"
+                              formControlName="iata_code" />
                           </div>
                         </div>
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
                             <label class="form-control-label">Country</label>
-                            <select
-                              class="form-control"
-                              formControlName="country"
-                            >
-                              <option value="">Please select</option>
+                            <select class="form-control" formControlName="country">
+                              <option [value]="country.code" *ngFor="let country of countries">
+                                {{ country.name }}
+                              </option>
                             </select>
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Country Code</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter country code"
-                              formControlName="country_code"
-                            />
+                            <label class="form-control-label">Country Code</label>
+                            <input type="text" class="form-control" placeholder="Enter country code"
+                              formControlName="country_code" />
                           </div>
                         </div>
                       </div>
@@ -135,39 +88,23 @@
                       <div class="row">
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Office Number</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter office number"
-                              formControlName="office_num"
-                            />
+                            <label class="form-control-label">Office Number</label>
+                            <input type="text" class="form-control" placeholder="Enter office number"
+                              formControlName="office_num" />
                           </div>
                         </div>
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Mobile Number</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter mobile number"
-                              formControlName="mobile_num"
-                            />
+                            <label class="form-control-label">Mobile Number</label>
+                            <input type="text" class="form-control" placeholder="Enter mobile number"
+                              formControlName="mobile_num" />
                           </div>
                         </div>
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
                             <label class="form-control-label">Fax Number</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter fax number"
-                              formControlName="fax_num"
-                            />
+                            <input type="text" class="form-control" placeholder="Enter fax number"
+                              formControlName="fax_num" />
                           </div>
                         </div>
                       </div>
@@ -178,33 +115,21 @@
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
                             <label class="form-control-label">Name</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter pic name"
-                              formControlName="pic_name"
-                            />
+                            <input type="text" class="form-control" placeholder="Enter pic name"
+                              formControlName="pic_name" />
                           </div>
                         </div>
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
                             <label class="form-control-label">Number</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter pic number"
-                              formControlName="pic_num"
-                            />
+                            <input type="text" class="form-control" placeholder="Enter pic number"
+                              formControlName="pic_num" />
                           </div>
                         </div>
                         <div class="col-lg-4 col-xs-12">
                           <div class="form-group">
                             <label class="form-control-label">Status</label>
-                            <select
-                              class="form-control"
-                              placeholder="Please select"
-                              formControlName="is_active"
-                            >
+                            <select class="form-control" placeholder="Please select" formControlName="is_active">
                               <option value="">Please select</option>
                               <option value="true">Active</option>
                               <option value="false">Not Active</option>
@@ -212,17 +137,15 @@
                           </div>
                         </div>
                       </div>
-                      <div class="text-center">
-                        <button class="btn btn-dark" (click)="submit()">
-                          Submit
-                        </button>
-                        <button
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                          (click)="c('Close click')"
-                        >
-                          Cancel
-                        </button>
+                      <div class="row mt-4">
+                        <div class="col clearfix"> 
+                          <button class="btn btn-outline-danger" data-dismiss="modal" (click)="c('Close click')">
+                            Cancel
+                          </button>
+                          <button class="btn btn-dark float-right" (click)="submit()">
+                            Submit
+                          </button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -236,7 +159,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+<div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
       <div class="card">
@@ -245,7 +168,7 @@
             <div class="col">
               <h3 class="mb-0">Airport</h3>
             </div>
-            <div class="col-auto text-right">
+            <!-- <div class="col-auto text-right">
               <ng-template #popTemplate>
                 <h4 class="text-center">Category</h4>
                 <ul>
@@ -254,15 +177,10 @@
                   <li>O: Others</li>
                 </ul>
               </ng-template>
-              <button
-                class="btn btn-default btn-sm"
-                [popover]="popTemplate"
-                placement="right"
-                [outsideClick]="true"
-              >
+              <button class="btn btn-default btn-sm" [popover]="popTemplate" placement="right" [outsideClick]="true">
                 Note
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="dataTables_wrapper py-4">
@@ -271,12 +189,8 @@
               <div class="dataTables_length" id="datatable_length">
                 <label>
                   Show
-                  <select
-                    name="datatable_length"
-                    aria-controls="datatable"
-                    class="form-control form-control-sm"
-                    (change)="entriesChange($event)"
-                  >
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
                     <option value="5" [selected]="entries == 5">5</option>
                     <option value="10" [selected]="entries == 10">10</option>
                     <option value="25" [selected]="entries == 25">25</option>
@@ -290,35 +204,22 @@
             <div class="col-sm-12 col-md-6">
               <div id="datatable_filter" class="dataTables_filter">
                 <label>
-                  <input
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search records"
-                    aria-controls="datatable"
-                    (keyup)="filterTable($event)"
-                  />
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
                 </label>
               </div>
             </div>
           </div>
 
-          <ngx-datatable
-            class="bootstrap selection-cell"
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [rowHeight]="'auto'"
-            [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp"
-            (activate)="onActivate($event)"
-            [scrollbarH]="true"
-          >
+          <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+            (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.no + 1 }}
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{ rowIndex + 1 }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -353,26 +254,15 @@
                 {{ row.country }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column
-              name="Actions"
-              sortable="false"
-              prop="id"
-              *ngIf="authService.decodedToken().user_type == 'OPS'"
-            >
+            <ngx-datatable-column name="Actions" sortable="false" prop="id"
+              *ngIf="authService.decodedToken().user_type == 'OPS'">
               <ng-template ngx-datatable-header-template>
                 <span>Actions</span>
               </ng-template>
-              <ng-template
-                let-row="row"
-                let-value="value"
-                ngx-datatable-cell-template
-              >
-                <button
-                  class="btn btn-dark btn-sm"
-                  (click)="edit(row, classic1)"
-                >
-                  <i class="fas fa-edit"></i>
-                </button>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <a href="javascript:void(0)" title="click to edit" (click)="edit(row, classic1)">
+                  <i class="fa fa-edit text-black" aria-hidden="true"></i>
+                </a>
                 <!-- <button class="btn btn-sm btn-warning">
                   <i class="fas fa-lightbulb"></i>
                 </button> -->

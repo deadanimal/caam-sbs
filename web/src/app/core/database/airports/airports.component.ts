@@ -1,3 +1,4 @@
+import { Countries } from './../../../components/vector-map/vector-map.service';
 import { Component, OnInit, NgZone } from "@angular/core";
 import {
   Validators,
@@ -12,6 +13,7 @@ import swal from "sweetalert2";
 import { AirportsService } from "src/app/shared/services/airports/airports.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { UsersService } from "src/app/shared/services/users/users.service";
+import * as countrylist from "src/app/variables/country-lists";
 
 export enum SelectionType {
   single = "single",
@@ -33,6 +35,7 @@ export class AirportsComponent implements OnInit {
   activeRow: any;
   rows = AirportLists.AirportLists;
   SelectionType = SelectionType;
+  countries= countrylist.Countries
 
   // Forms
   airportFormGroup: FormGroup;
@@ -103,13 +106,15 @@ export class AirportsComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (
-          d[key]
-            .toString()
-            .toLowerCase()
-            .indexOf(val.toString().toLowerCase()) !== -1
-        ) {
-          return true;
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
         }
       }
       return false;
