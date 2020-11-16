@@ -74,7 +74,7 @@ export class AircraftsComponent implements OnInit {
       aircraft_type: new FormControl(""),
       weight_category: new FormControl(""),
       weight: new FormControl(""),
-      rate: new FormControl(""),
+      // rate: new FormControl(""),
       operator: new FormControl(""),
       is_active: new FormControl(""),
     });
@@ -114,12 +114,20 @@ export class AircraftsComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
+
   filterTable($event) {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
-          return true;
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
         }
       }
       return false;

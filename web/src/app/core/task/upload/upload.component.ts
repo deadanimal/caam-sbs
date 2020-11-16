@@ -138,11 +138,11 @@ export class UploadComponent implements OnInit {
   }
 
 
-  getRowClass = (row) => {
-    return {
-      "row-color": row.error_remark != ""
-    };
-  };
+  // getRowClass = (row) => {
+  //   return {
+  //     "row-color": row.error_remark != ""
+  //   };
+  // };
 
 
   // To get data on table FlightData

@@ -111,18 +111,21 @@ export class AirlinesComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (
-          d[key]
-            .toString()
-            .toLowerCase()
-            .indexOf(val.toString().toLowerCase()) !== -1
-        ) {
-          return true;
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
         }
       }
       return false;
     });
   }
+
 
   searchTable() {
     let object = this.searchInput;

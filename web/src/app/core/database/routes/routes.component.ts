@@ -225,7 +225,7 @@ export class RoutesComponent implements OnInit {
       // total_distance: new FormControl(""),
       flight_type: new FormControl(""),
       category_type: new FormControl(""),
-      site: new FormControl("KUL"),
+      // site: new FormControl("KUL"),
     });
   }
 
@@ -255,13 +255,15 @@ export class RoutesComponent implements OnInit {
     let val = $event.target.value;
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
-        if (
-          d[key]
-            .toString()
-            .toLowerCase()
-            .indexOf(val.toString().toLowerCase()) !== -1
-        ) {
-          return true;
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
         }
       }
       return false;

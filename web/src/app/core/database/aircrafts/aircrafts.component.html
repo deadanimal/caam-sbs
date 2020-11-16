@@ -1,43 +1,23 @@
-<div class="header pb-6">
+<div class="header pb-6 background-theme">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-dark d-inline-block mb-0">Aircraft</h6>
-
-          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)"> <i class="fas fa-home"> </i> </a>
-              </li>
-            </ol>
-          </nav>
+          <h6 class="h2 text-white d-inline-block mb-0">Aircraft &nbsp;</h6>
 
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
-            <small class="text-justify"
-              >User able to view and update the aircraft information.</small
-            >
+            <small class="text-justify">User able to view and update the aircraft information.</small>
           </ng-template>
-          <button
-            class="btn btn-icon btn-sm btn-dark"
-            type="button"
-            [popover]="popTemplate"
-            placement="right"
-            [outsideClick]="true"
-          >
-            <span class="btn-inner--icon"
-              ><i class="fas fa-info-circle"></i
-            ></span>
+          <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+            [outsideClick]="true">
+            <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
           </button>
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button
-            class="btn btn-dark"
-            (click)="create(classic1)"
-            *ngIf="authService.decodedToken().user_type == 'OPS'"
-          >
+          <button class="btn btn-sm btn-dark" (click)="create(classic1)"
+            *ngIf="authService.decodedToken().user_type == 'OPS'">
             Add New Aircraft
           </button>
 
@@ -46,8 +26,8 @@
               <div class="modal-body p-0">
                 <div class="card bg-secondary shadow border-0">
                   <div class="card-header bg-dark">
-                    <div class="text-muted text-center mb-3">
-                      <h2 class="mb-0 text-white">{{ processTitle }}</h2>
+                    <div class="text-muted mb-3">
+                      <h4 class="mb-0 text-white">{{ processTitle }}</h4>
                     </div>
                   </div>
                   <div class="card-body px-lg-5 py-lg-5">
@@ -55,36 +35,18 @@
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Registration Number</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter registration number"
-                              formControlName="registration_num"
-                            />
+                            <label class="form-control-label">Registration Number</label>
+                            <input type="text" class="form-control" placeholder="Enter registration number"
+                              formControlName="registration_num" />
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Aircraft Model</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter aircraft model"
-                              formControlName="model"
-                            />
+                            <label class="form-control-label">Aircraft Model</label>
+                            <input type="text" class="form-control" placeholder="Enter aircraft model"
+                              formControlName="model" />
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Weight Category</label
-                            >
-                            <select
-                              class="form-control"
-                              placeholder="Please select"
-                              formControlName="weight_category"
-                            >
+                            <label class="form-control-label">Weight Category</label>
+                            <select class="form-control" placeholder="Please select" formControlName="weight_category">
                               <option value="">Please select</option>
                               <option value="L">Light</option>
                               <option value="M">Medium</option>
@@ -92,35 +54,19 @@
                             </select>
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Manufacturer</label
-                            >
-                            <select
-                              class="form-control"
-                              placeholder="Please select"
-                              formControlName="manufacturer"
-                            >
+                            <label class="form-control-label">Manufacturer</label>
+                            <select class="form-control" placeholder="Please select" formControlName="manufacturer">
                               <option value="">Please select</option>
-                              <option
-                                [value]="manufacturer.id"
-                                *ngFor="let manufacturer of manufacturers"
-                              >
+                              <option [value]="manufacturer.id" *ngFor="let manufacturer of manufacturers">
                                 {{ manufacturer.name }}
                               </option>
                             </select>
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Operator</label>
-                            <select
-                              class="form-control"
-                              placeholder="Please select"
-                              formControlName="operator"
-                            >
+                            <select class="form-control" placeholder="Please select" formControlName="operator">
                               <option value="">Please select</option>
-                              <option
-                                [value]="operator.id"
-                                *ngFor="let operator of operators"
-                              >
+                              <option [value]="operator.id" *ngFor="let operator of operators">
                                 {{ operator.name }}
                               </option>
                             </select>
@@ -129,65 +75,31 @@
 
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
-                            <label class="form-control-label"
-                              >Description</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Enter description"
-                              formControlName="description"
-                            />
+                            <label class="form-control-label">Description</label>
+                            <input type="text" class="form-control" placeholder="Enter description"
+                              formControlName="description" />
                           </div>
                           <div class="form-group">
-                            <label class="form-control-label">ACFT Type</label
-                            ><br />
-                            <div
-                              class="custom-control custom-radio custom-control-inline"
-                            >
-                              <input
-                                type="radio"
-                                id="fixedwing"
-                                name="aircraft_type"
-                                formControlName="aircraft_type"
-                                class="custom-control-input"
-                              />
-                              <label
-                                class="custom-control-label"
-                                for="fixedwing"
-                                >Fixed Wing</label
-                              >
+                            <label class="form-control-label">ACFT Type</label><br />
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" value="FW" id="fixedwing" name="aircraft_type" formControlName="aircraft_type"
+                                class="custom-control-input" />
+                              <label class="custom-control-label" for="fixedwing">Fixed Wing</label>
                             </div>
-                            <div
-                              class="custom-control custom-radio custom-control-inline"
-                            >
-                              <input
-                                type="radio"
-                                id="chopper"
-                                name="aircraft_type"
-                                formControlName="aircraft_type"
-                                class="custom-control-input"
-                              />
-                              <label class="custom-control-label" for="chopper"
-                                >Chopper</label
-                              >
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" value="H" id="chopper" name="aircraft_type" formControlName="aircraft_type"
+                                class="custom-control-input" />
+                              <label class="custom-control-label" for="chopper">Chopper</label>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">MTOW (kg)</label>
-                            <input
-                              type="number"
-                              class="form-control"
-                              placeholder="Enter MTOW"
-                              formControlName="weight"
-                            />
+                            <input type="number" class="form-control" [value]="aircraftFormGroup.get('weight').value | number" placeholder="Enter MTOW"
+                              formControlName="weight" />
                           </div>
                           <div class="form-group">
                             <label class="form-control-label">Status</label>
-                            <select
-                              class="form-control"
-                              formControlName="is_active"
-                            >
+                            <select class="form-control" formControlName="is_active">
                               <option value="" selected>
                                 Please select status
                               </option>
@@ -198,17 +110,15 @@
                         </div>
                       </div>
 
-                      <div class="text-center">
-                        <button class="btn btn-dark" (click)="submit()">
-                          Submit
-                        </button>
-                        <button
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                          (click)="c('Close click')"
-                        >
-                          Cancel
-                        </button>
+                      <div class="row mt-4">
+                        <div class="col clearfix">
+                          <button class="btn btn-outline-danger " data-dismiss="modal" (click)="c('Close click')">
+                            Cancel
+                          </button>
+                          <button class="btn btn-dark float-right" (click)="submit()">
+                            Submit
+                          </button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -222,7 +132,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--6">
+<div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
       <div class="card">
@@ -235,12 +145,8 @@
               <div class="dataTables_length" id="datatable_length">
                 <label>
                   Show
-                  <select
-                    name="datatable_length"
-                    aria-controls="datatable"
-                    class="form-control form-control-sm"
-                    (change)="entriesChange($event)"
-                  >
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
                     <option value="5" [selected]="entries == 5">5</option>
                     <option value="10" [selected]="entries == 10">10</option>
                     <option value="25" [selected]="entries == 25">25</option>
@@ -254,35 +160,22 @@
             <div class="col-sm-12 col-md-6">
               <div id="datatable_filter" class="dataTables_filter">
                 <label>
-                  <input
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search records"
-                    aria-controls="datatable"
-                    (keyup)="filterTable($event)"
-                  />
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
                 </label>
               </div>
             </div>
           </div>
 
-          <ngx-datatable
-            class="bootstrap selection-cell"
-            [columnMode]="'force'"
-            [headerHeight]="50"
-            [footerHeight]="50"
-            [rowHeight]="'auto'"
-            [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp"
-            (activate)="onActivate($event)"
-            [scrollbarH]="true"
-          >
+          <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+            (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.no + 1 }}
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{ rowIndex + 1 }}
               </ng-template>
             </ngx-datatable-column>
 
@@ -318,26 +211,15 @@
                 {{ row.weight }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column
-              name="Actions"
-              sortable="false"
-              prop="id"
-              *ngIf="authService.decodedToken().user_type == 'OPS'"
-            >
+            <ngx-datatable-column name="Actions" sortable="false" prop="id"
+              *ngIf="authService.decodedToken().user_type == 'OPS'">
               <ng-template ngx-datatable-header-template>
                 <span>Actions</span>
               </ng-template>
-              <ng-template
-                let-row="row"
-                let-value="value"
-                ngx-datatable-cell-template
-              >
-                <button
-                  class="btn btn-dark btn-sm"
-                  (click)="edit(row, classic1)"
-                >
-                  <i class="fas fa-edit"></i>
-                </button>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <a href="javascript:void(0)" title="click to edit" (click)="edit(row, classic1)">
+                  <i class="fa fa-edit text-black" aria-hidden="true"></i>
+                </a>
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
