@@ -81,6 +81,24 @@ export class FpldatasService {
     );
   }
 
+  filterByCID(field: string): Observable<FpldatasModel[]> {
+    let urlFilter = this.url + "/?cid=" + field;
+    return this.http.get<FpldatasModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("FpldatasModel", res);
+      })
+    );
+  }
+
+  filter_masterdata(field: string): Observable<FpldatasModel[]> {
+    let urlFilter = this.url + "filter_masterdata/?" + field;
+    return this.http.get<FpldatasModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("FpldatasModel", res);
+      })
+    );
+  }
+  
   // To be submitted by Operation or Airport
   submit(body): Observable<any> {
     let url = this.url + "submit/";

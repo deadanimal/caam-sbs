@@ -88,6 +88,15 @@ export class UploadsService {
     );
   }
 
+  filterByUpload(field: string): Observable<UploadsModel[]> {
+    let urlFilter = this.url + "file_upload_filter?uploaded_by=" + field;
+    return this.http.get<UploadsModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("file upload id", res);
+      })
+    );
+  }
+
   upload(body): Observable<any> {
     let url = this.url + "upload/";
     return this.http.post<any>(url, body).pipe(

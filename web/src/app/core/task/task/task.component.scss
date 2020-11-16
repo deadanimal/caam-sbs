@@ -57,3 +57,13 @@ input[disabled], textarea[disabled]{
   padding-bottom: 0;
   margin-bottom: 0;
 }
+
+::ng-deep .tooltip-inner {
+  width: 400px;
+  background-color: #FFFFFF;
+  color: black;
+}
+
+.btn:disabled{
+  pointer-events: none !important;
+}

@@ -57,10 +57,13 @@ export class TaskComponent implements OnInit {
   selectedRowHistory: FpldatasHistoryModel;
   tempFileName = false;
   uploadBy: string;
+  uploadByOPS = false;
   fileId: string;
+  selectreason = '';
+  status = '';
 
   // Search Filter
-  fromDate: Date;
+  fromDate: any;
   filterby: String;
   searchText: String;
 
@@ -120,7 +123,7 @@ export class TaskComponent implements OnInit {
     this.searchText = "";
 
     this.user_obj = this.authService.decodedToken();
-    if (this.user_obj) this.getFileUpload(this.user_obj);
+    if (this.user_obj) this.getFileUpload();
 
     this.fileuploadFormGroup = this.formBuilder.group({
       id: [""],
@@ -129,26 +132,11 @@ export class TaskComponent implements OnInit {
       name: [""],
     });
 
-
-    // this.vfrtflFormGroup = this.formBuilder.group({
-    //   id: new FormControl(""),
-    //   cid: new FormControl(""),
-    //   fpl_date: new FormControl(""),
-    //   fpl_no: new FormControl(""),
-    //   aircraft_model: new FormControl(""),
-    //   dep: new FormControl(""),
-    //   dest: new FormControl(""),
-    //   ctg: new FormControl(""),
-    //   dist: new FormControl(""),
-    //   route: new FormControl(""),
-    //   uploaded_by: new FormControl(""),
-    //   error_remark: new FormControl(""),
-    // });
-
     this.statuses = this.fileuploadService.statuses();
+    this.searchText ='';
   }
 
-  getFplData(user_obj) {
+  getFplData() {
 
     this.fpldataService
       .filter("uploaded_by=" + this.uploadBy + "&fileupload_id=" + this.fileId)
@@ -160,7 +148,7 @@ export class TaskComponent implements OnInit {
         let index = 0;
 
         for (let i = 0; i < this.datas.length; i++) {
-          if (this.datas[i].status == 'FPL1') {
+          if (this.datas[i].status == 'FPL1'|| this.datas[i].status == 'FPL4') {
             this.rowsFlightDataProcess[index] = this.datas[i];
             index = index + 1
           }
@@ -179,20 +167,24 @@ export class TaskComponent implements OnInit {
       });
   }
 
-  getFileUpload(user_obj) {
+  getFileUpload() {
+    this.tempFileUpload =[];
+    this.rowsFileUpload = [];
+    let date = this.fromDate 
+    date = this.datePipe.transform(date, 'yyyy/MM/dd');
+    if(this.filterby == 'created_at' || this.filterby == 'file_date'  ){this.searchText = date}
     this.fileuploadService
-      .extended("uploaded_by=" + user_obj.user_id)
+      .extended("field_by="+this.filterby + "&" + "field=" + this.searchText)
       .subscribe((res) => {
         console.log("res", res);
         let index = 0;
 
         for (let i = 0; i < res.length; i++) {
-          if ((res[i].data_type == 'TFL' || res[i].data_type == 'VFR') && res[i].status == 'FIL1') {
+          if ((res[i].data_type == 'TFL' || res[i].data_type == 'VFR') && (res[i].status == 'FIL1' || res[i].status == 'FIL3')) {
             this.rowsFileUpload[index] = res[i];
             index = index + 1;
           }
         }
-
 
         this.tempFileUpload = this.rowsFileUpload.map((prop, key) => {
           return {
@@ -204,7 +196,7 @@ export class TaskComponent implements OnInit {
       });
   }
 
-  getFplDataHistory(user_obj) {
+  getFplDataHistory() {
     this.fpldataService
       .filter("uploaded_by=" + this.uploadBy + "&fileupload_id=" + this.fileId)
       .subscribe((res) => {
@@ -231,25 +223,6 @@ export class TaskComponent implements OnInit {
 
   entriesChange($event) {
     this.entries = $event.target.value;
-  }
-
-  filterTableUpload($event) {
-    let val = $event.target.value;
-    this.tempFileUpload = this.rowsFileUpload.filter(function (d) {
-      for (var key in d) {
-        if (d[key] != "" && d[key] != null) {
-          if (
-            d[key]
-              .toString()
-              .toLowerCase()
-              .indexOf(val.toString().toLowerCase()) !== -1
-          ) {
-            return true;
-          }
-        }
-      }
-      return false;
-    });
   }
 
   filterTableFlight($event) {
@@ -291,7 +264,6 @@ export class TaskComponent implements OnInit {
   }
 
   filterDate() {
-    this.tempFileUpload = [];
     let date: any = this.fromDate
     date = this.datePipe.transform(date, 'MM/dd/yyyy');
 
@@ -300,13 +272,8 @@ export class TaskComponent implements OnInit {
         this.rowsFileUpload[i].created_at = this.datePipe.transform(this.rowsFileUpload[i].created_at, 'MM/dd/yyyy');
       if (this.rowsFileUpload[i].file_date != 'NA') {
         this.rowsFileUpload[i].file_date = this.datePipe.transform(this.rowsFileUpload[i].file_date, 'MM/dd/yyyy');
-        console.log(this.rowsFileUpload[i].file_date)
       }
-
     }
-
-    console.log(date + " " + typeof (date))
-
     if (date) {
       this.tempFileUpload = this.rowsFileUpload.filter(function (d) {
         return d.created_at == date || d.file_date == date
@@ -326,6 +293,12 @@ export class TaskComponent implements OnInit {
   onSelect({ selected }) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
+  }
+
+  // Trigger on Select Type of reason in modal 'delete'
+  triggerSelect() {
+    this.selectreason = this.createForm.value.reason
+    console.log(this.selectreason)
   }
 
   onActivate(event) {
@@ -351,17 +324,16 @@ export class TaskComponent implements OnInit {
           console.log(error)
         })
       ;
-      console.log("file------approve")
-      console.log(this.selectedFile)
   }
 
   openModal(modalRef: TemplateRef<any>, row) {
+    this.status = row.status
     this.fileId = row.id;
     this.uploadBy = row.uploaded_by.id;
-    // console.log("fileid-----")
-    // console.log(this.fileId);
-    this.getFplData(this.user_obj);
-    this.getFplDataHistory(this.user_obj);
+    if (this.uploadBy == this.user_obj.user_id) {this.uploadByOPS = true}
+    else {this.uploadByOPS = false}
+    this.getFplData();
+    this.getFplDataHistory();
     this.getFileDataById();
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
   }
@@ -487,7 +459,7 @@ export class TaskComponent implements OnInit {
                   })
                   .then((result) => {
                     if (result.value) {
-                      this.getFplData(this.user_obj);
+                      this.getFplData();
                     }
                   });
               }
@@ -523,7 +495,7 @@ export class TaskComponent implements OnInit {
           .then((result) => {
             if (result.value) {
               this.modalmodal.hide();
-              this.getFplData(this.user_obj);
+              this.getFplData();
             }
           });
       },
@@ -533,11 +505,11 @@ export class TaskComponent implements OnInit {
     )
   }
 
-  approveData() {
+  approve() {
     swal
       .fire({
-        title: "Delete",
-        text: "Do you want to approve this record?",
+        title: "Approve",
+        text: "Are you want approve this VFR/TFL data?",
         type: "question",
         showCancelButton: true,
         buttonsStyling: false,
@@ -547,34 +519,37 @@ export class TaskComponent implements OnInit {
         cancelButtonText: "No",
       })
       .then((result) => {
-
         if (result.value) {
-          this.selectedFile.status = "FIL3";
-          this.fileuploadService.update(this.selectedFile.id, this.selectedFile).subscribe(
-            () => {
-              swal
-                .fire({
-                  title: "Success",
-                  text: "The record has been successfully approved!",
-                  type: "success",
-                  buttonsStyling: false,
-                  confirmButtonClass: "btn btn-success",
-                })
-                .then((result) => {
-                  if (result.value) {
-                    this.modal.hide();
-                  }
-                });
-            },
+          this.spinner.show();
 
-            error => {
-              console.error("err", error);
-            }
-          )
+          this.fpldataService
+            .approve({ uploaded_by: this.uploadBy, fileupload_id: this.fileId })
+            .subscribe(
+              (res) => {
+                console.log("res", res);
+                this.spinner.hide();
+                swal
+                  .fire({
+                    title: "Success",
+                    text: "The data has successfully approved",
+                    type: "success",
+                    buttonsStyling: false,
+                    confirmButtonClass: "btn btn-success",
+                  })
+                  .then((result) => {
+                    if (result.value) {
+                      this.modalService.dismissAll();
+                      this.modal.hide();
+                      window.location.reload();
+                    }
+                  });
+              },
+              (err) => {
+                console.error("err", err);
+                this.spinner.hide();
+              }
+            );
 
-          this.getFplData(this.user_obj);
-          this.getFplDataHistory(this.user_obj);
-          this.isLoading = false;
         }
       });
   }
@@ -621,8 +596,9 @@ export class TaskComponent implements OnInit {
 
                       }
                     });
-                  this.getFplData(this.user_obj);
-                  this.getFplDataHistory(this.user_obj);
+                  this.getFplData();
+                  this.getFplDataHistory();
+                  this.createForm.reset()
 
                 },
                 error => {
@@ -630,8 +606,8 @@ export class TaskComponent implements OnInit {
                 }
               )
               this.modalmodal.hide();
-              this.getFplData(this.user_obj);
-              this.getFplDataHistory(this.user_obj);
+              this.getFplData();
+              this.getFplDataHistory();
 
               this.isLoading = false;
             }
@@ -673,6 +649,6 @@ export class TaskComponent implements OnInit {
   getStatusBadge(value: string) {
     if (value == "FIL0") return "badge badge-default";
     if (value == "FIL1") return "badge badge-primary";
-    if (value == "FIL2") return "badge badge-success";
+    if (value == "FIL3") return "badge badge-success";
   }
 }

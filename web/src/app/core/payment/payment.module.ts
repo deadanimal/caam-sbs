@@ -1,4 +1,3 @@
-import { OutstandingPaymentComponent } from './outstanding-payment/outstanding-payment.component';
 import { PaymentRoutes } from './payment.routing';
 
 import { PaymentComponent } from './payment/payment.component';
@@ -26,6 +25,9 @@ import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ngx-currency-mask/src/
 import { DatePipe } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
+import { DepositListComponent } from './deposit-list/deposit-list.component';
+import { PaymentListComponent } from './payment-list/payment-list.component';
+import { OutstandingPaymentComponent } from './outstanding-list/outstanding-payment.component';
 
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
@@ -66,7 +68,9 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   declarations: [
     PaymentComponent,
     StatementAccountComponent,
-    OutstandingPaymentComponent
+    OutstandingPaymentComponent,
+    DepositListComponent,
+    PaymentListComponent
   ],
   providers: [
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },

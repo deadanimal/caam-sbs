@@ -244,11 +244,11 @@ export class PaymentComponent implements OnInit {
       text: "Are you sure want to cancel?",
       type: "info",
       buttonsStyling: false,
-      confirmButtonClass: "btn btn-dark",
+      confirmButtonClass: "btn btn-danger",
       confirmButtonText: "Confirm",
       showCancelButton: true,
-      cancelButtonClass: "btn btn-danger",
-      cancelButtonText: "Back to Page"
+      cancelButtonClass: "btn btn-dark",
+      cancelButtonText: "Back to Payment"
     }).then((result) => {
       if (result.value) {
         this.modal.hide()

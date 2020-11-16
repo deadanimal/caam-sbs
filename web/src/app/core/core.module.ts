@@ -23,6 +23,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalModule,} from 'ngx-bootstrap/modal';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MasterDataComponent } from './master-data/master-data.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -30,7 +31,7 @@ import { MasterDataComponent } from './master-data/master-data.component';
   declarations: [
     DashboardComponent,
     MovementReportComponent,
-    MasterDataComponent
+    MasterDataComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +54,9 @@ import { MasterDataComponent } from './master-data/master-data.component';
     ModalModule.forRoot(),
     CurrencyMaskModule,
   ],
+  providers: [
+    DatePipe,
+  ]
   
 })
 export class CoreModule {}

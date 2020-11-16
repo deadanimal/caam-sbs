@@ -1,14 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TflVfrService } from './tfl-vfr.service';
+import { PaymentListNewPaymentService } from './payment-list-new-payment.service';
 
 describe('PaymentService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TflVfrService = TestBed.get(TflVfrService);
+    const service: PaymentListNewPaymentService = TestBed.get(PaymentListNewPaymentService);
     expect(service).toBeTruthy();
   });
 });
-
-

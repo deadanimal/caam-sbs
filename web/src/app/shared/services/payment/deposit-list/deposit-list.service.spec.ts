@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FlightDataService } from './flight-data.service';
+import { DepositListService } from './deposit-list.service';
 
-describe('FlightDataService', () => {
+describe('PaymentService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: FlightDataService = TestBed.get(FlightDataService);
+    const service: DepositListService = TestBed.get(DepositListService);
     expect(service).toBeTruthy();
   });
 });

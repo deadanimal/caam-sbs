@@ -25,8 +25,6 @@ import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from 'ngx-currency-mask/src/
 import { RouterModule } from "@angular/router";
 import { TaskRoute } from "./task.routing";
 import { DisputeComponent } from './dispute/dispute.component';
-import { TflVfrComponent } from './tfl-vfr/tfl-vfr.component';
-// import { HistoryComponent } from './history/history.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { DatePipe } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -45,11 +43,9 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 
 let pages = [
   DisputeComponent,
-  TflVfrComponent,
   UploadComponent,
-  // HistoryComponent,
   InvoiceComponent,
-  TaskComponent
+  TaskComponent,
 ]
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { MovementReportComponent } from './movement-report/movement-report.component';
+import { MasterDataComponent } from './master-data/master-data.component';
 
 export const CoreRoute: Routes = [
   {
@@ -38,6 +39,10 @@ export const CoreRoute: Routes = [
         path: "payment",
         loadChildren: () =>
           import("./payment/payment.module").then((m) => m.PaymentModule),
+      },
+      {
+        path: "master-data",
+        component: MasterDataComponent,
       },
     ],
   },

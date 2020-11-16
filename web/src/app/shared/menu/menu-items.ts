@@ -108,7 +108,8 @@ export const AirportRoutes: RouteInfo[] = [
     collapse: "payment",
     isCollapsed: true,
     children: [
-      { path: "outstanding-payment", title: "Outstanding Payment", type: "link" },              
+      { path: "deposit-list", title: "Deposit List", type: "link" }, 
+      { path: "outstanding-payment", title: "Outstanding List", type: "link" },                
     ]
   },  
 ];
@@ -157,6 +158,17 @@ export const OperationRoutes: RouteInfo[] = [
     type: "link",
     icontype: "fas fa-server text-success",
   },
+  {
+    path: "/app/payment",
+    title: "Payment",
+    icontype: "fas fa-credit-card text-yellow",
+    type: "sub",
+    collapse: "payment",
+    isCollapsed: true,
+    children: [
+      { path: "outstanding-payment", title: "Outstanding List", type: "link" },               
+    ]
+  }, 
 ];
 
 export const SafRoutes: RouteInfo[] = [
@@ -182,7 +194,20 @@ export const SafRoutes: RouteInfo[] = [
       { path: "rate", title: "Rate", type: "link" },
       { path: "route", title: "Route", type: "link" },
     ],
-  },    
+  },  
+  {
+    path: "/app/payment",
+    title: "Payment",
+    icontype: "fas fa-credit-card text-yellow",
+    type: "sub",
+    collapse: "payment",
+    isCollapsed: true,
+    children: [
+      { path: "deposit-list", title: "Deposit List", type: "link" }, 
+      { path: "outstanding-payment", title: "Outstanding List", type: "link" },
+                      
+    ]
+  },   
 
 ];
 
@@ -219,10 +244,30 @@ export const HodRoutes: RouteInfo[] = [
     isCollapsed: true,
     children: [
       { path: "generate-invoice", title: "Generate Invoice", type: "link" },
+      // { path: "invoice-view", title: "Invoice View", type: "link" },
       // { path: "dispute", title: "Dispute", type: "link" },
       // { path: "history", title: "History", type: "link" },
     ],
   },
+  {
+    path: "/app/master-data",
+    title: "Master Data",
+    type: "link",
+    icontype: "fas fa-server text-success",
+  },
+  {
+    path: "/app/payment",
+    title: "Payment",
+    icontype: "fas fa-credit-card text-yellow",
+    type: "sub",
+    collapse: "payment",
+    isCollapsed: true,
+    children: [
+      { path: "deposit-list", title: "Deposit List", type: "link" },   
+      { path: "outstanding-payment", title: "Outstanding List", type: "link" },
+                    
+    ]
+  }, 
   {
     path: "/app/finance",
     title: "Finance",
@@ -235,7 +280,6 @@ export const HodRoutes: RouteInfo[] = [
       { path: "aging-invoice", title: "Aging Invoice", type: "link" },           
       { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
       { path: "general-ledger", title: "General Ledger", type: "link" },  
-      { path: "payment", title: "Payments", type: "link" },  
     ]
   },  
 ];
@@ -265,6 +309,19 @@ export const FinanceRoutes: RouteInfo[] = [
     ],
   },
   {
+    path: "/app/payment",
+    title: "Payment",
+    icontype: "fas fa-credit-card text-yellow",
+    type: "sub",
+    collapse: "payment",
+    isCollapsed: true,
+    children: [
+      { path: "payment-list", title: "Payment List", type: "link" },  
+      { path: "deposit-list", title: "Deposit List", type: "link" },  
+      { path: "outstanding-payment", title: "Outstanding List", type: "link" },                
+    ]
+  }, 
+  {
     path: "/app/finance",
     title: "Finance",
     icontype: "fas fa-file-invoice-dollar text-green",
@@ -275,8 +332,7 @@ export const FinanceRoutes: RouteInfo[] = [
       {path: "invoices", title: "Invoice List", type: "link" },    
       { path: "aging-invoice", title: "Aging Invoice", type: "link" },           
       { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
-      { path: "general-ledger", title: "General Ledger", type: "link" },  
-      // { path: "payment", title: "Payments", type: "link" },    
+      { path: "general-ledger", title: "General Ledger", type: "link" },   
     ]
   },
 ];

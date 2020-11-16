@@ -19,6 +19,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from aircrafts.models import Aircraft
 
+from datetime import datetime
+
 from .models import (
     Charge,
     Callsign,
@@ -44,6 +46,26 @@ from .serializers import (
     FpldataHistorySerializer,
     FpldataHistoryExtendedSerializer
 )
+
+
+def change_time_format(str_date, change_to_time=False):
+    if change_to_time:
+        split_points = [0,4,6,8]
+        date = [str_date[i:j] for i,j in zip(split_points, split_points[1:] + [None])][0:3] 
+        date = "/".join(date)
+        modifier = '%Y-%m-%dT%H:%M:%S'
+        date = change_time_modifier(str(date), modifier)
+        return date
+    else:
+        split_points = [0,4,6,8]
+        date = [str_date[i:j] for i,j in zip(split_points, split_points[1:] + [None])][0:3] 
+        date = "/".join(date)
+        return date
+
+def change_time_modifier(str_date, modifier):
+    datetime_obj = datetime.strptime(str_date, '%Y/%m/%d')
+    datetime_obj = datetime.strftime(datetime_obj, modifier)
+    return datetime_obj
 
 
 class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -214,18 +236,40 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['GET'], detail=False)
     def extended(self, request, *args, **kwargs):
-        
-        queryset = FileUpload.objects.all()
-        serializer_class = FileUploadExtendedSerializer(queryset, many=True)
-        
-        return Response(serializer_class.data) 
+        field_by = self.request.query_params.get('field_by')
+        field = self.request.query_params.get('field')
+
+        if field_by and field:
+            if field_by == 'name':
+                queryset = FileUpload.objects.filter(name__icontains=field).all()
+            elif field_by == 'created_at':
+                modifier = '%Y-%m-%d'
+                date = change_time_modifier(field, modifier)
+                queryset = FileUpload.objects.filter(created_at__date=date).all()
+            elif field_by == 'file_date':
+                modifier = '%Y-%m-%d'
+                date = change_time_modifier(field, modifier)
+                queryset = FileUpload.objects.filter(file_date_ts__date=date).all()
+            elif field_by == 'uploaded_by':
+                queryset = FileUpload.objects.filter(uploaded_by__user_type__icontains=field).all()
+
+            serializer_class = FileUploadExtendedSerializer(queryset, many=True)
+
+            return Response(serializer_class.data) 
+        else:
+            queryset = FileUpload.objects.all()
+            serializer_class = FileUploadExtendedSerializer(queryset, many=True)
+            
+            return Response(serializer_class.data) 
 
     # to upload the VFR (excel) and TFL (csv) data into database
     @action(methods=['POST'], detail=False)
     def upload(self, request, *args, **kwargs):
 
         data_type = request.data['data_type']
+        print(data_type)
         data_file_link = request.FILES['data_file_link']
+        print(data_file_link)
         fileupload_id = request.data['id']
 
         # to get file extension
@@ -247,7 +291,8 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 # for key,value in json_dict.items(): 
                 if json_dict['DATE']:
                     temp_obj = {
-                        'fpl_date': json_dict['DATE'],
+                        'fpl_date': change_time_format(json_dict['DATE']),
+                        'fpl_date_ts': change_time_format(json_dict['DATE'], change_to_time=True),
                         'fpl_no': json_dict['CALLSIGN'],
                         'fr': json_dict['FR'],
                         'aircraft_model': json_dict['TYPE'],
@@ -302,7 +347,8 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 error_remark2 = 'Please check the departure and destination.'
 
                             temp_obj = {
-                                'fpl_date': array_tfl[2],
+                                'fpl_date': change_time_format(array_tfl[2]),
+                                'fpl_date_ts': change_time_format(array_tfl[2], change_to_time=True),
                                 'fpl_no': array_tfl[3],
                                 'fr': 'I',
                                 'aircraft_model': array_tfl[7],
@@ -364,7 +410,8 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 error_remark2 = 'Please check the departure and destination.'
 
                             temp_obj = {
-                                'fpl_date': array_tfl[2],
+                                'fpl_date': change_time_format(array_tfl[2]),
+                                'fpl_date_ts': change_time_format(array_tfl[2], change_to_time=True),
                                 'fpl_no': array_tfl[3],
                                 'fr': 'I',
                                 'aircraft_model': array_tfl[8],
@@ -407,6 +454,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                         serializer = FpldataSerializer(data=temp_obj)
                         total_data += 1
                         file_date = array_tfl[2][0:8]
+                        file_date_ts = change_time_format(array_tfl[2], change_to_time=True)
 
                         if serializer.is_valid():
                             serializer.save()
@@ -415,11 +463,19 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                             error_data += 1
 
         fileupload = FileUpload.objects.filter(id=fileupload_id)
-        fileupload.update(total_data=total_data,file_date=file_date)
+        fileupload.update(total_data=total_data,file_date=file_date,file_date_ts=file_date_ts)
         if error_data > 0:
             return Response(status.HTTP_400_BAD_REQUEST)
         else:
             return Response(status.HTTP_200_OK)
+
+    @action(methods=['GET'], detail=False)
+    def file_upload_filter(self, request, *args, **kwargs):
+        uploaded_by = self.request.query_params.get('uploaded_by')
+        print(uploaded_by)
+        queryset = FileUpload.objects.filter(uploaded_by_id=uploaded_by).order_by('-created_at').values().first()
+
+        return Response(queryset)
 
 
 class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -462,7 +518,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         #     queryset = Fpldata.objects.filter(uploaded_by=uploaded_by, fileupload=fileupload_id)
         # else:
         #     queryset = Fpldata.objects.all()
-        queryset = Fpldata.objects.all()
+        queryset = Fpldata.objects.all().order_by('-created_at')
         return queryset
 
     # @action(methods=['POST'], detail=False)
@@ -479,6 +535,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['GET'], detail=False)
     def file_filter(self, request, *args, **kwargs):
         uploaded_by = self.request.query_params.get('uploaded_by')
+        print(uploaded_by)
         # submitted_at = self.request.query_params.get('submitted_at')
         fileupload = self.request.query_params.get('fileupload_id')
 
@@ -492,6 +549,56 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         print("Total : {}".format(total))
         return Response(queryset)
 
+    #  to filter table master data   
+    @action(methods=['GET'], detail=False)
+    def filter_masterdata(self, request, *args, **kwargs):
+        field_by = self.request.query_params.get('field_by')
+        field = self.request.query_params.get('field')
+        field2 = self.request.query_params.get('field2')
+
+        print(field)
+        print(field_by)
+
+        if field_by and field:
+            print("ke masuk sini")
+            if field_by == 'fpl_no':
+                queryset = Fpldata.objects.filter(Q(fpl_no__icontains=field) &(Q(status='FPL3') | Q(status='FPL4'))).all()
+            elif field_by == 'fpl_date_ts':
+                modifier = '%Y-%m-%d'
+                field = change_time_modifier(field, modifier)
+                field2 = change_time_modifier(field2, modifier)
+                queryset = Fpldata.objects.filter(fpl_date_ts__range=[field,field2]).all()
+            elif field_by == 'aircraft_model':
+                queryset = Fpldata.objects.filter(Q(aircraft_model__icontains=field) &(Q(status='FPL3') | Q(status='FPL4'))).all()
+            elif field_by == 'dept':
+                queryset = Fpldata.objects.filter(Q(dep__icontains=field) &(Q(status='FPL3') | Q(status='FPL4'))).all()
+            elif field_by == 'dest':
+                queryset = Fpldata.objects.filter(Q(dest__icontains=field) & (Q(status='FPL3') | Q(status='FPL4'))).all()
+            elif field_by == 'ctg':
+                queryset = Fpldata.objects.filter(Q (ctg__icontains=field) &(Q(status='FPL3') | Q(status='FPL4'))).all()
+
+            serializer_class = FpldataSerializer(queryset, many=True)
+            return Response(serializer_class.data) 
+
+        elif field_by:
+            if field_by == 'all':
+                queryset = Fpldata.objects.filter(Q(status='FPL3') | Q(status='FPL4')).all()
+
+            serializer_class = FpldataSerializer(queryset, many=True)
+            return Response(serializer_class.data) 
+
+        # elif field_by and field and field2:
+        #     if field_by == 'fpl_date_ts':
+        #         modifier = '%Y-%m-%d'
+        #         date = change_time_modifier(field, modifier)
+        #         queryset = Fpldata.objects.filter(fpl_date_ts__range=[field,field2]).all()
+
+        else:
+            print("masuk tak")
+            queryset = Fpldata.objects.filter(Q(status='FPL3') | Q(status='FPL4')).all()[:50]
+            serializer_class = FpldataSerializer(queryset, many=True)
+            
+            return Response(serializer_class.data) 
 
     def partial_update(self, request, pk=None):
         fpldata = self.get_object()
@@ -526,25 +633,54 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST'], detail=False)
     def submit(self, request, *args, **kwargs):
 
-        submit_fpldatas = Fpldata.objects.filter(uploaded_by=request.data['uploaded_by'],submitted_at__isnull=True,fileupload_id=request.data['fileupload_id']).values()
+        uploaded_by = request.data['uploaded_by']
+        submit_fpldatas = Fpldata.objects.filter(uploaded_by=uploaded_by,submitted_at__isnull=True,fileupload_id=request.data['fileupload_id']).values()
         for fpldata in submit_fpldatas:
-            fpldata_item = Fpldata.objects.filter(id=fpldata['id'])
+            fpldata_item = Fpldata.objects.filter(id=fpldata['id'],status='FPL0')
 
             # to find company using callsign (3 front letters)
             callsign = Callsign.objects.filter(callsign__startswith=fpldata['fpl_no'][0:3]).values()
             if len(callsign) > 0:
                 fpldata_item.update(cid=callsign[0]['cid_id'])
+            
             else:
                 if len(fpldata['error_remark']) > 0:
                     fpldata_item.update(error_remark=' '.join((fpldata['error_remark'], 'Please check callsign.')))
                 else:
                     fpldata_item.update(error_remark='Please check callsign.')
 
-            fpldata_item.update(submitted_at=timezone.now(), status='FPL1')
+            fpldata_item.update(submitted_at=timezone.now(), status='FPL1', modified_by = uploaded_by)
 
         # change the status of file upload from draft into processing
         fileupload = FileUpload.objects.filter(id=request.data['fileupload_id'])
-        fileupload.update(status='FIL1')
+        fileupload.update(status='FIL1', modified_by = uploaded_by)
+
+        return Response(status.HTTP_200_OK)
+
+    # to approve the VFR / TFL data 
+    @action(methods=['POST'], detail=False)
+    def approve(self, request, *args, **kwargs):
+
+        uploaded_by = request.data['uploaded_by']
+        fileupload_id=request.data['fileupload_id']
+        print("Uploaded by "+ str(uploaded_by))
+        print("File by "+ str(fileupload_id)) 
+
+        # approve_fpldatas = Fpldata.objects.filter(uploaded_by=uploaded_by,submitted_at__isnull=False,fileupload_id=request.data['fileupload_id']).values()
+        # for fpldata in approve_fpldatas:
+        #     print('hello1')
+        #     fpldata_item = Fpldata.objects.filter(id=fpldata['id']).filter(status='FPL1')
+        #     print('hello')
+        #     print(len(fpldata_item))
+        #     fpldata_item.update(submitted_at=timezone.now(), status='FPL4', modified_by = uploaded_by, archived_by=uploaded_by, approved_by=uploaded_by )
+        
+
+        Fpldata.objects.filter(uploaded_by=uploaded_by,fileupload_id=fileupload_id,status='FPL1').update(submitted_at=timezone.now(), status='FPL4',approved_by=uploaded_by)
+
+        # change the status of file upload from proccessing to into approved
+        fileupload = FileUpload.objects.filter(id=request.data['fileupload_id'])
+        fileupload.update(status='FIL3', modified_by = uploaded_by,approved_by=uploaded_by )
+        print(fileupload)
 
         return Response(status.HTTP_200_OK)
 
@@ -566,12 +702,31 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         response_array = []
         results = Fpldata.objects.values('cid').filter(cid__isnull=False).annotate(total_flight=Count('cid_id'), total_amount=Sum('amount'))
-        
+        results2 = Fpldata.objects.filter(cid__isnull=False).all().values()
+
         for result in results:
             temp = {
                 'cid': result['cid'],
                 'total_flight': result['total_flight'],
                 'total_amount': result['total_amount'],
+            }
+            response_array.append(temp)
+        return Response(response_array)
+
+
+    @action(methods=['GET'], detail=False)
+    def single_invoice(self, request, *args, **kwargs):
+
+        cid=self.request.query_params.get('cid') # param
+
+        response_array = []
+        results = Fpldata.objects.filter(cid=cid).all().values()
+        
+        for result in results:
+            charge = float(result['rate']) * float(result['dist'])
+            temp = {
+                'cid': result['cid_id'],
+                'charge': charge
             }
             response_array.append(temp)
 

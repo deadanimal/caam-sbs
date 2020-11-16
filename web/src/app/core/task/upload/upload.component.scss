@@ -42,12 +42,12 @@ background: linear-gradient(90deg, rgba(19,53,92,1) 20%, rgba(46,126,159,0.95982
   flex-direction: column;
 }
 
-input[disabled], textarea[disabled]{
-  background-color: transparent !important;
-  // border: 0 !important;
-  // border-bottom:1px solid !important;
-  // border-radius: 0 !important;
-}
+// input[disabled], textarea[disabled]{
+//   background-color: transparent !important;
+//   // border: 0 !important;
+//   // border-bottom:1px solid !important;
+//   // border-radius: 0 !important;
+// }
 
 .error-message {
   color: #f5365c;
@@ -56,4 +56,8 @@ input[disabled], textarea[disabled]{
   padding-top: 5px;
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+.btn:disabled{
+  pointer-events: none;
 }

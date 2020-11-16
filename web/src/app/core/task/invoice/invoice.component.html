@@ -40,90 +40,93 @@
           </button> -->
         </div>
       </div>
-      <div class="row">
-        <div class="col-xl-3 col-md-8">
-          <div class="card bg-gradient-primary" style="height: 120px !important;">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
-                    Total flight data
-                  </h5>
-                  <span class="h2 font-weight-bold mb-0 text-white">
-                    {{ fpldatas.length | number }}
-                  </span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                    <i class="fas fa-plane-departure"></i>
-                  </div>
-                </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--8">
+  <div class="row">
+    <div class="col-xl-3 col-md-8">
+      <div class="card bg-gradient-primary" style="height: 120px !important;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0 text-white">
+                Total flight data
+              </h5>
+              <span class="h2 font-weight-bold mb-0 text-white">
+                {{ fpldatas.length | number }}
+              </span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                <i class="fas fa-plane-departure"></i>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-danger" style="height: 120px !important;">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
-                    Total airlines registered
-                  </h5>
-                  <span class="h2 font-weight-bold mb-0 text-white">
-                    {{ airlines.length | number }}
-                  </span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                    <i class="fas fa-globe-asia"></i>
-                  </div>
-                </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card bg-gradient-danger" style="height: 120px !important;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0 text-white">
+                Total airlines registered
+              </h5>
+              <span class="h2 font-weight-bold mb-0 text-white">
+                {{ airlines.length | number }}
+              </span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                <i class="fas fa-globe-asia"></i>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-success" style="height: 120px !important;">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
-                    Archived flight data
-                  </h5>
-                  <span class="h2 font-weight-bold mb-0 text-white">
-                    {{ archivedfpldatas.length | number }}
-                  </span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                    <i class="fas fa-archive"></i>
-                  </div>
-                </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card bg-gradient-success" style="height: 120px !important;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0 text-white">
+                Archived flight data
+              </h5>
+              <span class="h2 font-weight-bold mb-0 text-white">
+                {{ archivedfpldatas.length | number }}
+              </span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                <i class="fas fa-archive"></i>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="col-xl-3 col-md-6">
-          <div class="card bg-gradient-warning" style="height: 120px !important;">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0 text-white">
-                    Errors data occured
-                  </h5>
-                  <span class="h2 font-weight-bold mb-0 text-white">
-                    {{ errorfpldatas.length | number }}
-                  </span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
-                    <i class="fas fa-exclamation-triangle"></i>
-                  </div>
-                </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card bg-gradient-warning" style="height: 120px !important;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0 text-white">
+                Errors data occured
+              </h5>
+              <span class="h2 font-weight-bold mb-0 text-white">
+                {{ errorfpldatas.length | number }}
+              </span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-white text-dark rounded-circle shadow">
+                <i class="fas fa-exclamation-triangle"></i>
               </div>
             </div>
           </div>
@@ -131,9 +134,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="container-fluid mt-4">
   <div class="row">
     <div class="col">
       <div class="card">
@@ -220,92 +220,102 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <a href="javascript:void(0)" title="click to view" (click)="view(row)">
+                <a href="javascript:void(0)" title="click to view" >
                   <i class="fas fa-eye"></i>
                 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" title="click to view" (click)="generate(row)">
+                <a href="javascript:void(0)" title="click to download invoice" >
                   <i class="fas fa-download"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>
-          </ngx-datatable>
+          </ngx-datatable> 
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #uploadModal let-c="close" let-d="dismiss">
-  <div class="modal-content">
-    <div class="modal-body p-0">
-      <div class="card bg-secondary shadow border-0">
-        <div class="card-header bg-dark">
-          <div class="text-muted text-center mb-3">
-            <h2 class="mb-0 text-white">Upload TFL / VFR File</h2>
-          </div>
-        </div>
-        <div class="card-body px-lg-5 py-lg-5">
-          <form [formGroup]="fileuploadFormGroup" (ngSubmit)="upload()">
-            <div>
-              <label class="form-control-label" for="data_file_link">Select file</label>
-              <input class="form-control" type="file" name="data_file_link" (change)="onFileChange($event)" />
-              <!-- formControlName="data_file_link" -->
-            </div>
-            <div class="pt-3">
-              <label class="form-control-label mr-3">File Type</label>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="tfl" name="data_type" formControlName="data_type" class="custom-control-input"
-                  value="TFL" />
-                <label class="custom-control-label" for="tfl">TFL</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="vfr" name="data_type" formControlName="data_type" class="custom-control-input"
-                  value="VFR" />
-                <label class="custom-control-label" for="vfr">VFR</label>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col text-center">
-                <button type="submit" [disabled]="!fileuploadFormGroup" class="btn btn-sm btn-primary">
-                  Upload
-                </button>
-                <button type="button" class="btn btn-sm btn-secondary" (click)="c('Close click')">
-                  Close
-                </button>
-              </div>
-            </div>
-          </form>
+<!-- edit modal -->
+<ng-template #view>
 
-          <div class="row pt-3">
-            <div class="col">
-              <h4 class="m-0">VFR Excel Template</h4>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-info-circle fa-lg text-danger"></i>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <small>
-                Please click <a href="#" download><strong>HERE</strong></a> to
-                download the VFR Excel template to upload your flight plan data.
-              </small>
-              <div class="p-2"></div>
-              <div class="alert alert-danger" role="alert">
-                <h5>Note</h5>
-                <small>
-                  Please note that the data inputted in the VFR Excel template
-                  must be accurate for easier the process of data.
-                </small>
-              </div>
-            </div>
-          </div>
+  <div class="modal-header bg-default viewtemplate">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Arline Detail
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModalModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-control-label">Invoice Period</label>
+          <input class="form-control" [(ngModel)]="selectedRow.invoice_period" [ngModelOptions]="{standalone: true}"
+            type="text" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">CID</label>
+          <input class="form-control" [(ngModel)]="selectedRow.cid" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Company Name</label>
+          <input class="form-control" [(ngModel)]="selectedRow.company_name" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Total Charges</label>
+          <input class="form-control" placeholder="total_charge | number" [(ngModel)]="selectedRow.dist"
+            [ngModelOptions]="{standalone: true}" type="text" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Total Flight</label>
+          <input class="form-control" placeholder="selectedRow.total_flight | number" [(ngModel)]="selectedRow.dist"
+            [ngModelOptions]="{standalone: true}" type="text" disabled>
         </div>
       </div>
-    </div>
-  </div>
-</ng-template>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-control-label">Domestic Flight</label>
+          <input class="form-control" [(ngModel)]="selectedRow.domestic" [ngModelOptions]="{standalone: true}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Inbound Flight</label>
+          <input class="form-control" [(ngModel)]="selectedRow.inbound" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Outbound Flight</label>
+          <input class="form-control" placeholder="selectedRow.outbound" [(ngModel)]="selectedRow.dist"
+            [ngModelOptions]="{standalone: true}" type="text" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Overflight</label>
+          <input class="form-control" [(ngModel)]="selectedRow.overflight" [ngModelOptions]="{standalone: true}" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Others</label>
+          <input class="form-control" placeholder="selectedRow.other" [(ngModel)]="selectedRow.dist"
+            [ngModelOptions]="{standalone: true}" type="text" disabled>
+        </div>
 
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
-  <p style="color: white;">Loading, Please wait a moment...</p>
-</ngx-spinner>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModalModal()">
+      Cancel
+    </button>
+    <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="updateData()">
+      Save
+    </button>
+  </div>
+
+</ng-template>
