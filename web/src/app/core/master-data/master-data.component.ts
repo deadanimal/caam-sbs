@@ -1,25 +1,14 @@
-import { Component, OnInit, NgZone } from "@angular/core";
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl,
-} from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { NgxSpinnerService } from "ngx-spinner";
+import { TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PaymentListNewPayment } from 'src/app/shared/services/payment/payment-list-new-payment/payment-list-new-payment.model';
+import { PaymentListNewPaymentService } from 'src/app/shared/services/payment/payment-list-new-payment/payment-list-new-payment.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NotifyService } from 'src/app/shared/handler/notify/notify.service';
+import { DatePipe } from '@angular/common';
 import swal from "sweetalert2";
-
-import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { NgxSpinnerService } from "ngx-spinner";
+import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
 import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
-
-export enum SelectionType {
-  single = "single",
-  multi = "multi",
-  multiClick = "multiClick",
-  cell = "cell",
-  checkbox = "checkbox",
-}
 
 @Component({
   selector: "app-master-data",
@@ -27,51 +16,80 @@ export enum SelectionType {
   styleUrls: ["./master-data.component.scss"],
 })
 export class MasterDataComponent implements OnInit {
-  entries: number = 5;
-  selected: any[] = [];
-  temp = [];
+
+  // Search Filter
+  filterby: String;
+  searchText: String;
+  searchText2: String;
+  fromDate: any;
+  toDate: any;
+
+  // Table
+  active = 1;
+  entries: number = 10;
   activeRow: any;
-  rows = []; // FromAirports.FromAirports;
-  SelectionType = SelectionType;
+
+  // Data
+  tempApprovedData = [];
+  tempArchiveData = [];
+  rowsApproveData = [];
+  rowsArchiveData = [];
   datas = [];
-  dataErrors = [];
-  toggleDataError: boolean = false;
-  user_obj: any;
-
-  // FormGroup
-  searchFormGroup: FormGroup;
-
-  // Modal
-  closeResult: string;
-  processTitle: string;
 
   constructor(
-    public formBuilder: FormBuilder,
-    public zone: NgZone,
-    private modalService: NgbModal,
-    private spinner: NgxSpinnerService,
-    private authService: AuthService,
     private fpldataService: FpldatasService,
-    private route: ActivatedRoute,
-    private router: Router
+    private spinner: NgxSpinnerService,
+    private datePipe: DatePipe
   ) {
-    this.user_obj = this.authService.decodedToken();
-    this.getVfrTflData();
-
-    this.searchFormGroup = this.formBuilder.group({
-      select: new FormControl("", Validators.required),
-      keyword: new FormControl("", Validators.required),
-    });
+    this.filterby = "";
+    this.searchText = "";
+    this.searchText2 = "";
+    this.getFplData()
   }
 
-  getVfrTflData() {
-    var rolesSeeAll = ["HOD", "FIN", "OPS"];
-    if (~rolesSeeAll.indexOf(this.authService.decodedToken().user_type)) {
-      this.fpldataService.get().subscribe((res) => {
-        // console.log("res", res);
+  ngOnInit() {
+    // this.spinner.show();
+
+    // setTimeout(() => {
+    //      this.spinner.hide();
+    // }, 10000);
+  }
+
+  // To get data on table FlightData
+  getFplData() {
+    this.spinner.show();
+    this.rowsApproveData = [];
+    this.rowsArchiveData = [];
+    let from_date = this.fromDate
+    let to_date = this.toDate
+    from_date = this.datePipe.transform(from_date, 'yyyy/MM/dd');
+    to_date = this.datePipe.transform(to_date, 'yyyy/MM/dd');
+    if (this.filterby == "fpl_date_ts") { this.searchText = from_date; this.searchText2 = to_date}
+
+    this.fpldataService
+      .filter_masterdata("field_by=" + this.filterby + "&field=" + this.searchText + "&field2=" + this.searchText2).subscribe((res) => {
+        console.log("res", res);
         this.datas = res;
-        this.rows = res;
-        this.temp = this.rows.map((prop, key) => {
+        let index = 0;
+
+        // get fpldatas status = approved
+        for (let i = 0; i < this.datas.length; i++) {
+          if (this.datas[i].status == 'FPL4') {
+            this.rowsApproveData[index] = this.datas[i];
+            index = index + 1
+          }
+        }
+
+        // get fpldatas status = archive
+        index = 0;
+        for (let i = 0; i < this.datas.length; i++) {
+          if (this.datas[i].status == 'FPL3') {
+            this.rowsArchiveData[index] = this.datas[i];
+            index = index + 1
+          }
+        }
+
+        this.tempApprovedData = this.rowsApproveData.map((prop, key) => {
           return {
             ...prop,
             // id: key
@@ -79,152 +97,43 @@ export class MasterDataComponent implements OnInit {
           };
         });
 
-        this.dataErrors.length = 0;
-        this.calculateErrorData(this.rows);
-      });
-    } else {
-      this.fpldataService
-        .filter("uploaded_by=" + this.user_obj.user_id)
-        .subscribe((res) => {
-          // console.log("res", res);
-          this.datas = res;
-          this.rows = res;
-          this.temp = this.rows.map((prop, key) => {
-            return {
-              ...prop,
-              // id: key
-              no: key,
-            };
-          });
-
-          this.dataErrors.length = 0;
-          this.calculateErrorData(this.rows);
+        this.tempArchiveData = this.rowsArchiveData.map((prop, key) => {
+          return {
+            ...prop,
+            // id: key
+            no: key,
+          };
         });
-    }
+        this.spinner.hide();
+
+      },
+        error => {
+          console.error("err", error);
+          this.spinner.hide();
+        });
   }
 
-  calculateErrorData(rows) {
-    if (rows.length > 0) {
-      for (let i = 0; i < rows.length; i++) {
-        if (rows[i].error_remark != "") this.dataErrors.push(rows[i]);
-      }
-    } else {
-      this.dataErrors.length = 0;
-      this.toggleDataError = false;
-    }
+  searchAll(){
+    this.fromDate="";
+    this.toDate="";
+    this.searchText ="";
+    this.getFplData();
+  }
+
+  resetFilter(){
+    this.fromDate="";
+    this.toDate="";
+    this.searchText ="";
+    this.filterby ="";
+    this.getFplData();
   }
 
   entriesChange($event) {
     this.entries = $event.target.value;
   }
 
-  filterTable($event) {
-    let val = $event.target.value;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in d) {
-        console.log("d[key]", d[key]);
-        if (d[key] != "" && d[key] != null) {
-          if (
-            d[key]
-              .toString()
-              .toLowerCase()
-              .indexOf(val.toString().toLowerCase()) !== -1
-          ) {
-            return true;
-          }
-        }
-      }
-      return false;
-    });
-  }
-
-  searchTable() {
-    this.temp = this.rows.filter((d) => {
-      if (
-        d[this.searchFormGroup.value.select]
-          .toString()
-          .toLowerCase()
-          .indexOf(
-            this.searchFormGroup.value.keyword.toString().toLowerCase()
-          ) !== -1
-      )
-        return true;
-
-      return false;
-    });
-  }
-
-  resetTable() {
-    this.temp = this.rows;
-    this.searchFormGroup.reset();
-  }
-
-  onSelect({ selected }) {
-    this.selected.splice(0, this.selected.length);
-    this.selected.push(...selected);
-  }
-
   onActivate(event) {
     this.activeRow = event.row;
   }
-
-  // Modal Add New Customer
-  open(content, type, modalDimension, processTitle) {
-    this.processTitle = processTitle;
-    // if (modalDimension === "sm" && type === "modal_mini") {
-    this.modalService
-      .open(content, {
-        windowClass: "modal-mini",
-        centered: true,
-        backdrop: "static",
-        size: "lg",
-      })
-      .result.then(
-        (result) => {
-          this.closeResult = "Closed with: $result";
-        },
-        (reason) => {
-          this.closeResult = "Dismissed $this.getDismissReason(reason)";
-        }
-      );
-    // }
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
-    } else {
-      return "with: $reason";
-    }
-  }
-
-  back() {
-    this.router.navigate(["/app/task/data"]);
-  }
-
-  showDataError() {
-    if (this.toggleDataError) {
-      this.rows = this.dataErrors;
-      this.temp = this.rows.map((prop, key) => {
-        return {
-          ...prop,
-          // id: key
-          no: key,
-        };
-      });
-    } else {
-      this.rows = this.datas;
-      this.temp = this.rows.map((prop, key) => {
-        return {
-          ...prop,
-          // id: key
-          no: key,
-        };
-      });
-    }
-  }
-
-  ngOnInit() {}
 }
+

@@ -160,13 +160,15 @@ class FileUpload(models.Model):
     data_type = models.CharField(max_length=3, choices=DATA_TYPE, default='NA')
     data_file_link = models.FileField(null=True, blank=True, upload_to=PathAndRename('data_upload'))
     file_date = models.CharField(max_length=8, default='NA')
+    file_date_ts = models.DateTimeField(null=True)
     total_data = models.IntegerField(default=0)
 
     STATUSES = [
-        ('FIL0', 'Draf'),
+        ('FIL0', 'Draft'),
         ('FIL1', 'Processing'),
         ('FIL2', 'Checked'),
-        ('FIL3', 'Approved')
+        ('FIL3', 'Approved'),
+        ('FIL4', 'Cancel')
     ]
     status = models.CharField(max_length=4, choices=STATUSES, default='FIL0')
     
@@ -190,8 +192,16 @@ class FileUpload(models.Model):
         on_delete=models.CASCADE,
         related_name='file_upload_approved_by',
         limit_choices_to={
-            'user_type': 'HOD'
+            'user_type': 'OPS' 
         },
+        null=True
+    )
+
+    modified_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='file_upload_modified_by',
+        limit_choices_to=Q(user_type= 'OPS') | Q(user_type= 'APT'),
         null=True
     )
 
@@ -245,7 +255,7 @@ class Fpldata(models.Model):
         ('NA', 'Not Available')
     ]
     fpl_type = models.CharField(max_length=3, choices=FPLTYPE, default='NA')
-
+    fpl_date_ts = models.DateTimeField(null=True)
     fpl_date = models.CharField(max_length=20) 
     fpl_no = models.CharField(max_length=10, default='NA') # refer table callsign
     aircraft_model = models.CharField(max_length=10, default='NA') # refer table aircraft
@@ -294,9 +304,9 @@ class Fpldata(models.Model):
         CustomUser,
         on_delete=models.CASCADE,
         related_name='fpl_data_archived_by',
-        limit_choices_to={
-            'user_type': 'OPS'
-        },
+        limit_choices_to=
+            Q(user_type= 'OPS') | Q(user_type= 'APT') 
+        ,
         null=True
     )
     approved_by = models.ForeignKey(
@@ -304,8 +314,18 @@ class Fpldata(models.Model):
         on_delete=models.CASCADE,
         related_name='fpl_data_approved_by',
         limit_choices_to={
-            'user_type': 'HOD'
+            'user_type': 'OPS'
         },
+        null=True
+    )
+
+    modified_by = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='fpl_data_modified_by',
+        limit_choices_to=
+            Q(user_type= 'OPS') | Q(user_type= 'APT') 
+        ,
         null=True
     )
     
@@ -318,6 +338,10 @@ class Fpldata(models.Model):
 
     # class Meta:
         # ordering = ['fpl_date']
+
+    @property
+    def calculate_amount(self):
+        return float(self.dist) * float(self.rate)
 
     def __str__(self):
         return self.fpl_no

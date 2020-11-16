@@ -38,7 +38,7 @@
           <h4 class="m-0">Upload VFR and TFL Data</h4>
         </div>
         <div class="card-body" style="height: 230px;">
-          <form [formGroup]="fileuploadFormGroup" (ngSubmit)="upload()">
+          <form [formGroup]="fileuploadFormGroup">
             <div>
               <label class="form-control-label" for="data_file_link">Select file</label>
               <input class="form-control" type="file" name="data_file_link" (change)="onFileChange($event)" />
@@ -48,15 +48,15 @@
               <label class="form-control-label mr-3">File Type</label>
               <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="tfl" name="data_type" formControlName="data_type" class="custom-control-input"
-                  value="TFL"/>
+                  value="TFL" />
                 <label class="custom-control-label" for="tfl">TFL</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="vfr" name="data_type" formControlName="data_type" class="custom-control-input"
-                  value="VFR"/>
+                  value="VFR" />
                 <label class="custom-control-label" for="vfr">VFR</label>
               </div>
-              <!-- <ng-container *ngFor="let message of uploadMessages.data_type">
+              <ng-container *ngFor="let message of uploadMessages.data_type">
                 <div *ngIf="
                 fileuploadFormGroup.get('data_type').hasError(message.data_type) &&
                         (fileuploadFormGroup.get('data_type').dirty ||
@@ -66,13 +66,12 @@
                     <span>{{ message.message }}</span>
                   </p>
                 </div>
-              </ng-container> -->
+              </ng-container>
             </div>
-            <button type="submit"  class="btn btn-sm btn-default mt-3 float-right"
-              >
+            <button type="submit" class="btn btn-sm btn-default mt-3 float-right" (click)=openModalUpload(draft) [disabled]="!fileuploadFormGroup.valid">
               Upload
             </button>
-            <!-- [disabled]="!fileuploadFormGroup.valid" -->
+            
           </form>
         </div>
       </div>
@@ -148,9 +147,9 @@
           </div>
 
           <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="tempFileUpload" (activate)="onActivate($event)" [scrollbarH]="true">
-            <ngx-datatable-column [width]="40">
+            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="tempFileUpload"
+            (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="80">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
@@ -189,7 +188,7 @@
                 <span>File Date</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.file_date }}
+                {{ row.file_date_ts | date }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -197,7 +196,7 @@
                 <span>Upload By</span>
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
-                {{ row.uploaded_by.full_name }}
+                {{ row.uploaded_by.user_type }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -218,11 +217,13 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <a  *ngIf="row.status === 'FIL0'" href="javascript:void(0)" title="click to view" (click)="openModal(draft, row)">
-                  <i class="fas fa-eye"></i> 
+                <a *ngIf="row.status === 'FIL0'" href="javascript:void(0)" title="click to view"
+                  (click)="openModal(draft, row)">
+                  <i class="fas fa-eye"></i>
                 </a>
-                <a *ngIf="row.status === 'FIL1'" href="javascript:void(0)" title="click to view" (click)="openModal(proccessing, row)">
-                  <i class="fas fa-eye"></i> 
+                <a *ngIf="row.status === 'FIL1'" href="javascript:void(0)" title="click to view"
+                  (click)="openModal(proccessing, row)">
+                  <i class="fas fa-eye"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>
@@ -310,9 +311,9 @@
 
             <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
               [footerHeight]="50" [rowHeight]="'auto'" [rowClass]="getRowClass"
-              [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightDataProcess" (activate)="onActivate($event)"
-              [scrollbarH]="true">
-              <ngx-datatable-column [width]="40">
+              [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightDataProcess"
+              (activate)="onActivate($event)" [scrollbarH]="true">
+              <ngx-datatable-column [width]="80">
                 <ng-template ngx-datatable-header-template>
                   <span>No.</span>
                 </ng-template>
@@ -327,7 +328,7 @@
                   <span>Active Time</span>
                 </ng-template>
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.fpl_date }}
+                  {{ row.fpl_date_ts | date}}
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column>
@@ -394,7 +395,7 @@
   </div>
 
   <div class="modal-footer modal-footer-color">
-    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+    <button class="btn btn-dark ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
       Ok
     </button>
   </div>
@@ -477,7 +478,7 @@
               [footerHeight]="50" [rowHeight]="'auto'" [rowClass]="getRowClass"
               [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightData" (activate)="onActivate($event)"
               [scrollbarH]="true">
-              <ngx-datatable-column [width]="40">
+              <ngx-datatable-column [width]="80">
                 <ng-template ngx-datatable-header-template>
                   <span>No.</span>
                 </ng-template>
@@ -492,7 +493,7 @@
                   <span>Active Time</span>
                 </ng-template>
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.fpl_date }}
+                  {{ row.fpl_date_ts | date}}
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column>
@@ -561,6 +562,12 @@
                   }}</small>
                 </ng-template>
               </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template ngx-datatable-header-template>
+                  <span>CTG</span>
+                </ng-template>
+              </ngx-datatable-column>
+
               <ngx-datatable-column name="Actions" sortable="false">
                 <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
                   <a href="javascript:void(0)" title="click to edit" (click)="openModalModal(edit, row)">
@@ -614,7 +621,7 @@
               [footerHeight]="50" [rowHeight]="'auto'" [rowClass]="getRowClass"
               [limit]="entries != -1 ? entries : undefined" [rows]="tempFlightDataHistory"
               (activate)="onActivate($event)" [scrollbarH]="true">
-              <ngx-datatable-column [width]="40">
+              <ngx-datatable-column [width]="80">
                 <ng-template ngx-datatable-header-template>
                   <span>No.</span>
                 </ng-template>
@@ -629,7 +636,7 @@
                   <span>Active Time</span>
                 </ng-template>
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.fpl_date }}
+                  {{ row.fpl_date_ts | date}}
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column>
@@ -722,8 +729,11 @@
   </div>
 
   <div class="modal-footer modal-footer-color">
-    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="cancelSubmit()" *ngIf="status!='FIL0'">
       Cancel
+    </button>
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()" *ngIf="status==='FIL0'">
+      Back
     </button>
     <div class="ml-auto">
       <button class="btn btn-success" (click)="submit()" *ngIf="!dataErrors">
@@ -786,7 +796,15 @@
         </div>
         <div class="form-group">
           <label class="form-control-label">CTG</label>
-          <input class="form-control" [(ngModel)]="selectedRow.ctg" [ngModelOptions]="{standalone: true}" type="text">
+          <select class="form-control" [(ngModel)]="selectedRow.ctg" id="ctg">
+            <option value="all">-Select CTG-</option>
+            <option value="DOM">DOM</option>
+            <option value="INB">INB</option>
+            <option value="LOC">LOC</option>
+            <option value="OUB">OUB</option>
+            <option value="OVF">OVF</option>
+            <option value="NA">NA</option>
+          </select>
         </div>
         <div class="form-group">
           <label class="form-control-label">Route</label>
@@ -831,14 +849,33 @@
         <form [formGroup]="createForm" (ngSubmit)="delete()">
           <div class="form-group">
             <label class="form-control-label">Reason</label>
-            <input class="form-control" placeholder="Enter Reason" formControlName="reason" type="text">
-
-            <ng-container *ngFor="let message of registerFormMessages.reason">
-              <div *ngIf="
+            <select class="form-control" formControlName="reason" id="reason" (change)="triggerSelect()">
+              <option value="all">-Select Reason-</option>
+              <option value="Unknown Flight">Unknown Flight</option>
+              <option value="Duplicate">Duplicate</option>
+              <option value="Other" >Other</option>
+            </select>
+              <ng-container *ngFor="let message of registerFormMessages.reason">
+                <div *ngIf="
                 createForm.get('reason').hasError(message.type) &&
                       (createForm.get('reason').dirty ||
                       createForm.get('reason').touched)
                     ">
+                  <p class="error-message">
+                    <span>{{ message.message }}</span>
+                  </p>
+                </div>
+              </ng-container>
+          </div>
+          <div class="form-group" *ngIf="selectreason === 'Other'">
+            <label class="form-control-label">State Reason</label>
+            <input class="form-control" formControlName="reason" placeholder="Enter reason" type="text">
+            <ng-container *ngFor="let message of registerFormMessages.reason">
+              <div *ngIf="
+                  createForm.get('reason').hasError(message.type) &&
+                        (createForm.get('reason').dirty ||
+                        createForm.get('reason').touched)
+                      ">
                 <p class="error-message">
                   <span>{{ message.message }}</span>
                 </p>

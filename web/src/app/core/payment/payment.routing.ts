@@ -1,7 +1,10 @@
-import { OutstandingPaymentComponent } from './outstanding-payment/outstanding-payment.component';
+import { PaymentListComponent } from './payment-list/payment-list.component';
+
 import { Routes, RouterModule } from '@angular/router';
 import { PaymentComponent } from './payment/payment.component';
 import { StatementAccountComponent } from './statement-account/statement-account.component';
+import { DepositListComponent } from './deposit-list/deposit-list.component';
+import { OutstandingPaymentComponent } from './outstanding-list/outstanding-payment.component';
 
 const routes: Routes = [
   {  },
@@ -22,6 +25,14 @@ export const PaymentRoutes: Routes = [
       {
         path: "outstanding-payment",
         component: OutstandingPaymentComponent,
+      },
+      {
+        path: "deposit-list",
+        component: DepositListComponent,
+      },
+      {
+        path: "payment-list",
+        component: PaymentListComponent,
       },
      
     ],
