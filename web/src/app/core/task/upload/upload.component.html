@@ -736,10 +736,10 @@
       Back
     </button>
     <div class="ml-auto">
-      <button class="btn btn-success" (click)="submit()" *ngIf="!dataErrors">
+      <button class="btn btn-success" (click)="submit()" *ngIf="!hasError">
         Submit
       </button>
-      <button class="btn btn-dark" (click)="saveDraft()" *ngIf="dataErrors">
+      <button class="btn btn-dark" (click)="saveDraft()" *ngIf="hasError">
         Save as draft
       </button>
     </div>
