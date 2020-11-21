@@ -23,6 +23,11 @@
 
 
 <div class="container-fluid mt--8">
+  <div>
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Loading Invoices...</p>
+  </ngx-spinner>
+</div>
   <div class="row">
     <div class="col">
       <div class="card mb-4">
@@ -47,24 +52,24 @@
             <div class="col-md-6" *ngIf="filterby==='companyname'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Company Name"
-                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+                <input type="text" class="form-control" placeholder="Search Company Name" [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
               </div>
             </div>
 
             <div class="col-md-6" *ngIf="filterby==='invoicenumber'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Invoice No."
-                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+                <input type="text" class="form-control" placeholder="Search Invoice No." [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
               </div>
             </div>
 
             <div class="col-md-6" *ngIf="filterby==='status'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Status"
-                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
+                <input type="text" class="form-control" placeholder="Search Status" [(ngModel)]="searchText"
+                  (keyup)="FilterTable(searchText)">
               </div>
             </div>
 
@@ -74,7 +79,7 @@
     </div>
   </div>
 
-
+  <!-- invoice list -->
   <div class="row">
     <div class="col">
       <div class="card">
@@ -84,7 +89,7 @@
             <div class="col-sm-12 col-md-6">
               <div class="dataTables_length" id="datatable_length">
                 <label>
-                  Show
+                  Shows
                   <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
                     (change)="entriesChange($event)">
                     <option value="5" [selected]="entries == 5">5</option>
@@ -100,36 +105,48 @@
           </div>
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
-            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp " (activate)="onActivate($event)" [scrollbarH]="true">
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="invoices "
+            (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
-              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+              <ng-template let-row="invoices" let-rowIndex="rowIndex" ngx-datatable-cell-template>
                 {{
                   rowIndex +1
                 }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="invoicenumber">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Invoice Number</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.invoice_no}}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="cid">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>CID</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.cid}}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="companyname">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Company Name</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.company_name}}
+              </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="invoicedate">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>Invoice Date</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.created_at}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -137,7 +154,7 @@
                 <span>AMOUNT</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.amount | currency: "MYR"}}
+                {{row.invoice_total | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -168,6 +185,7 @@
   </div>
 </div>
 
+<!-- invoice show by modal -->
 <ng-template #view>
   <div class="modal-header bg-default">
     <h6 class="modal-title text-white my-auto" id="modal-title-default">
@@ -182,17 +200,81 @@
   <div class="modal-body">
     <form>
       <div class="row clearfix">
-        <div class="col">
+        <div class="col-6">
           <span>
-            <span class="h1">INVOICE</span><br>
-            <span class="h3">{{companyname}}</span><br>
-            {{"Invoice Date: " + invoicedate}}<br>
-            {{"Invoice Number: " + invoicenumber}}<br>
+            <span class="h3"><b>INVPeriod: {{companyperiod}}</b></span><br>
+            <span class="h3">Invoiced To: CID {{companycid}}<br>
+              {{companyname}}<br>
+              {{companyaddress}}<br>
+              <b>Email : </b>{{companyemail}}<br>
+              <b>Tel : </b>{{companytel}}<br>
+              <b>Fax : </b>{{companyfax}}</span><br>
+          </span>
+        </div>
+        <div class="col-6" style="text-align: right;">
+          <span>
+            <span class="h3"><b>Running No: {{invoicenumber}}</b></span><br>
+            <span class="h3">Status: {{invoicestatus}}<br>
+              <b>CID </b>{{companycid}}<br>
+              <b>Invoice Date : </b>{{invoicedate}}<br>
+              <b>Due Date : </b>{{invoiceduedate}}</span><br>
           </span>
         </div>
       </div>
       <hr>
-      <img src="../../../../../assets/img/invoice/invoice.jpg" style="position: relative; width: 100%;" />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Invoice Summary</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>Item</td>
+                  <td>Amount</td>
+                </tr>
+              </thead>
+              <tbody>
+                  
+                <tr>
+                  <td class="thick-line">Domestic Flight</td>
+                  <td class="thick-line">{{domesticflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Inbound Flight</td>
+                  <td class="no-line">{{inboundflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Outbound Flight</td>
+                  <td class="no-line">{{outboundflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Over Flight</td>
+                  <td class="no-line">{{overflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Other</td>
+                  <td class="no-line">{{otherflight}}</td>
+                </tr>
+                <tr>
+                  <td class="thick-line"><strong>Subtotal</strong></td>
+                  <td class="thick-line">{{subtotal}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"><strong>Surcharge</strong></td>
+                  <td class="no-line">{{invoicesurcharge}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"><strong>Invoice Total</strong></td>
+                  <td class="no-line">{{invoicetotal}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
 
     </form>
   </div>

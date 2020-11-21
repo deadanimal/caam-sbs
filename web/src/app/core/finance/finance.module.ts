@@ -24,6 +24,7 @@ import { CreditDebitNoteComponent } from './credit-debit-note/credit-debit-note.
 import { GeneralLedgerComponent } from './general-ledger/general-ledger.component';
 import { MatDatepickerModule } from '@angular/material';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DatePipe } from '@angular/common';
     Ng2SearchPipeModule,
     NgpSortModule,
     ModalModule.forRoot(),
-    MatDatepickerModule
+    MatDatepickerModule,
+    NgxSpinnerModule
   ],
   providers: [
     DatePipe,

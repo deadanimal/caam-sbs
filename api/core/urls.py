@@ -124,6 +124,16 @@ audittrails_router = router.register(
     'audit-trails', AuditTrailViewSet
 )
 
+# Invoices app
+from invoice.views import (
+    InvoiceViewSet
+)
+
+invoice_router = router.register(
+    'invoices', InvoiceViewSet
+)
+
+
 urlpatterns = [
     url(r'v1/', include(router.urls)),
     url(r'auth/', include('rest_auth.urls')),

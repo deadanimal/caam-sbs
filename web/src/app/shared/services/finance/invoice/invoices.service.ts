@@ -5,12 +5,14 @@ import { Form } from "@angular/forms";
 import { tap } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { Invoice } from './invoices.model';
+import { Posts } from './opost';
 
 @Injectable({
   providedIn: "root",
 })
 export class InvoicesService {
-  url: string = environment.baseUrl + "v1/finance-invoices/";
+  url: string = environment.baseUrl + "v1/invoices/";
+  // url: string = "http://127.0.0.1:8000/v1/invoices/";
 
   // Data
   public invoice: Invoice
@@ -18,14 +20,15 @@ export class InvoicesService {
 
   constructor(private http: HttpClient) {}
 
-  post(body): Observable<Invoice> {
-    return this.http.post<any>(this.url, body).pipe(
-      tap((res) => {
-        console.log("Invoice", res);
-      })
-    );
-  }
+  // post(body): Observable<Invoice> {
+  //   return this.http.post<any>(this.url, body).pipe(
+  //     tap((res) => {
+  //       console.log("Invoice", res);
+  //     })
+  //   );
+  // }
 
+  // display invoice will use this connector
   get(): Observable<Invoice[]> {
     return this.http.get<any>(this.url).pipe(
       tap((res) => {
@@ -34,6 +37,12 @@ export class InvoicesService {
       })
     );
   }
+
+  // generate invoice will use this connector
+  post(opost:Posts): Observable<any> {
+    return this.http.post(this.url + "generate/", opost)
+  }
+
 
   getOne(id: string): Observable<Invoice> {
     let urlID = this.url + id + "/";
