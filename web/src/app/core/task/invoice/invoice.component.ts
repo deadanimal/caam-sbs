@@ -11,6 +11,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
 import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
+import { InvoicesService } from 'src/app/shared/services/finance/invoice/invoices.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-invoice",
@@ -18,6 +20,10 @@ import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
   styleUrls: ["./invoice.component.scss"],
 })
 export class InvoiceComponent implements OnInit {
+  opost = {
+    "cid":"all"
+  }
+  
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -48,6 +54,9 @@ export class InvoiceComponent implements OnInit {
     other:""
   }
 
+  
+
+
   // Modal
   modal: BsModalRef;
   modalmodal: BsModalRef;
@@ -62,6 +71,8 @@ export class InvoiceComponent implements OnInit {
     private fpldataService: FpldatasService,
     private organisationService: OrganisationsService,
     private modalDialogService: BsModalService,
+    private invoiceService: InvoicesService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {
@@ -88,6 +99,19 @@ export class InvoiceComponent implements OnInit {
 
   //   });
   // }
+  generateInvoice = () => {
+    this.spinner.show();
+    this.invoiceService.post(this.opost).subscribe(
+      data => {
+        console.log(data)
+        this.spinner.hide()
+      },
+      error => {
+        console.log(error)
+        this.spinner.hide()
+      }
+    )
+  }
 
 
   getInvoice() {

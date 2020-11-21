@@ -23,3 +23,15 @@ background: linear-gradient(90deg, rgba(19,53,92,1) 20%, rgba(46,126,159,0.95982
 .card-header {
     height: 50px !important;
 }
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
