@@ -45,6 +45,9 @@
 </div>
 
 <div class="container-fluid mt--8">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Generating Invoices...</p>
+  </ngx-spinner>
   <div class="row">
     <div class="col-xl-3 col-md-8">
       <div class="card bg-gradient-primary" style="height: 120px !important;">
@@ -141,6 +144,10 @@
           <div class="row">
             <div class="col">
               <h3 class="mb-0">List of Airlines</h3>
+            </div>
+            <div class="col clearfix" type="button" style="padding-right: 35px;">
+              <button (click)="generateInvoice()" class="btn btn-sm btn-dark float-right">Generate &nbsp; <i
+                  class="fa fa-file-excel text-white" aria-hidden="true"></i></button>
             </div>
             <div class="col-auto"></div>
           </div>
