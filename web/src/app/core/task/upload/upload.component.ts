@@ -74,6 +74,7 @@ export class UploadComponent implements OnInit {
 
   // Checker
   isLoading: boolean = false
+  hasError = false;
 
   // Modal
   closeResult: string;
@@ -260,6 +261,9 @@ export class UploadComponent implements OnInit {
       this.dataErrors.length = 0;
       this.toggleDataError = false;
     }
+    if( this.dataErrors.length>0){this.hasError = true}
+    else {this.hasError = false}
+    console.log("data error",this.dataErrors)
   }
 
   entriesChange($event) {
