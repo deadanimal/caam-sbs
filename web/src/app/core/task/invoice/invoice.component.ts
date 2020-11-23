@@ -21,9 +21,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class InvoiceComponent implements OnInit {
   opost = {
-    "cid":"all"
+    "cid": "all"
   }
-  
+
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -36,25 +36,25 @@ export class InvoiceComponent implements OnInit {
   errorfpldatas = [];
   invoice: any;
 
-  total_domestic =[];
-  total_inbound =[];
-  total_outbound =[]
-  total_overflight =[];
+  total_domestic = [];
+  total_inbound = [];
+  total_outbound = []
+  total_overflight = [];
   total_other = [];
-  selectedRow:{
-    invoice_period:"",
-    cid:"",
-    company_name:"",
-    total_charge:"",
-    total_flight:"",
-    domestic:"",
-    inbound:"",
-    outbound:"",
-    overflight:"",
-    other:""
+  selectedRow: {
+    invoice_period: "",
+    cid: "",
+    company_name: "",
+    total_charge: "",
+    total_flight: "",
+    domestic: "",
+    inbound: "",
+    outbound: "",
+    overflight: "",
+    other: ""
   }
 
-  
+
 
 
   // Modal
@@ -64,7 +64,7 @@ export class InvoiceComponent implements OnInit {
   modalConfig = {
     keyboard: true,
     class: "modal-xl",
-  }; 
+  };
 
   constructor(
     public zone: NgZone,
@@ -85,32 +85,54 @@ export class InvoiceComponent implements OnInit {
   // downloadAsPDF() {
   //   var data = document.getElementById('pdfTable');  //Id of the table
   //   html2canvas(data).then(canvas => {
-  //     // Few necessary setting options  
+  //     // Few necessary setting options
   //     let imgWidth = 208;
   //     let pageHeight = 295;
   //     let imgHeight = canvas.height * imgWidth / canvas.width;
   //     let heightLeft = imgHeight;
 
   //     const contentDataURL = canvas.toDataURL('image/png')
-  //     let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+  //     let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
   //     let position = 0;
   //     pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-  //     pdf.save('Invoice.pdf'); // Generated PDF   
+  //     pdf.save('Invoice.pdf'); // Generated PDF
 
   //   });
   // }
   generateInvoice = () => {
-    this.spinner.show();
-    this.invoiceService.post(this.opost).subscribe(
-      data => {
-        console.log(data)
-        this.spinner.hide()
-      },
-      error => {
-        console.log(error)
-        this.spinner.hide()
-      }
-    )
+    swal
+      .fire({
+        title: "Generate",
+        text: "Are you want to generate invoices?",
+        type: "question",
+        showCancelButton: true,
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-dark",
+        confirmButtonText: "Yes, Generate it",
+        cancelButtonClass: "btn btn-secondary",
+        cancelButtonText: "No",
+      })
+      .then((result) => {
+        if (result.value) {
+          this.spinner.show();
+          this.invoiceService.post(this.opost).subscribe(
+            data => {
+              console.log(data)
+              this.spinner.hide()
+              //  empty list after generate
+              this.temp = [];
+            },
+            error => {
+              console.log(error)
+              this.spinner.hide()
+            }
+          )
+        } else {
+          console.log("dismissed")
+        }
+
+
+      })
   }
 
 
@@ -168,7 +190,7 @@ export class InvoiceComponent implements OnInit {
     console.error("archive", this.archivedfpldatas);
   }
 
-  getFplDataByCID(){
+  getFplDataByCID() {
     this.fpldataService.filterByCID('1025').subscribe(
       (res) => {
         // console.log("res", res);
@@ -271,4 +293,5 @@ export class InvoiceComponent implements OnInit {
   closeModal() {
     this.modal.hide()
   }
+
 }

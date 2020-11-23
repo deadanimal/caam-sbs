@@ -12,7 +12,6 @@ import { Posts } from './opost';
 })
 export class InvoicesService {
   url: string = environment.baseUrl + "v1/invoices/";
-
   // Data
   public invoice: Invoice
   public invoices: Invoice[] = []
