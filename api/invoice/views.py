@@ -1,4 +1,5 @@
 import datetime, pandas, time
+from django.db.models import Count, Q, Sum
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -23,6 +24,14 @@ from operations.models import (
     Fpldata
 )
 
+from accounts.models import (
+    Statements
+)
+
+from accounts.serializers import (
+    StatementSerializer
+)
+
 class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Invoices.objects.all()
     serializer_class = InvoiceSerializer
@@ -38,43 +47,42 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Invoices.objects.all()
         return queryset
+    
 
-
-    @action(methods=['POST','GET'], detail=False)
+    @action(methods=['POST', 'GET'], detail=False)
     def generate(self, request, *args, **kwargs):
         
-        # params
-        init_running_no = 6543
         temp = {}
+        init_running_no = 6543
         ctgs = ['DOM', 'INB', 'LOC', 'OUB', 'OVF', 'NA']
-
-        orgs = Organisation.objects.all()[:10]
-        for org in orgs:
-            fpldatas = Fpldata.objects.all()
+        print(f"total_flight_with_cid: {Fpldata.objects.filter(cid__isnull=False).count()}")
+        cids = [dict(t) for t in {tuple(d.items()) for d in Fpldata.objects.values('cid').filter(cid__isnull=False)}]
+        
+        # brute force approach - can be optimize later ba
+        for c in cids:
+            org = Organisation.objects.get(cid=c["cid"])
+            fpldatas = Fpldata.objects.filter(cid=c["cid"])
+            total_flight = fpldatas.count()
             for i in ctgs:
                 temp[i] = 0
-
-            # Main Logic
-            # for fpldata in fpldatas:
-            #     for i in ctgs:
-            #         temp[i]=0
-            #         if fpldata.ctg == i:
-            #             temp[i] += round(fpldata.rate * fpldata.dist, 2) # figure out unit 
-        
+                for j in fpldatas:
+                    if j.ctg == i:
+                        temp[i] += round(j.rate * j.dist, 2)
+            
             sub_total = sum(temp.values())
             surcharge = 0
 
-            # created_at = int(time.time())
-            # due_at = created_at + 30*(86400)
-            # print(f"created_at: {datetime.datetime.fromtimestamp(created_at)}, due_at: {datetime.datetime.fromtimestamp(due_at)}")    
-        
             running_no = init_running_no + 1
             init_running_no = running_no
 
+            created_at_str = datetime.datetime.now().strftime("%d/%m/%Y")
+            due_at_str = (datetime.datetime.now() + datetime.timedelta(days=30)).strftime("%d/%m/%Y")
+
             temp_obj = {
                 "cid":org.cid,
-                # "created_at":datetime.datetime.fromtimestamp(created_at),
-                # "due_at":datetime.datetime.fromtimestamp(due_at),
+                "created_at_str":created_at_str,
+                "total_flight": total_flight,
+                "due_at_str":due_at_str,
                 "invoice_no": init_running_no+1,
                 "company_name": org.name,
                 "company_address": org.address_line_1,
@@ -92,10 +100,28 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 "invoice_total": sub_total + surcharge
             }
 
-            print(temp_obj)
             serializer = InvoiceSerializer(data=temp_obj)
             valid = serializer.is_valid(raise_exception=True)
             serializer.save()
 
+            # create statement objects
+
+            temp_obj2 = {
+                "cid": org.cid,
+                "company_name": org.name,
+                "created_at_str": created_at_str,
+                "transaction": "INVOICE",
+                "transaction_number": init_running_no+1,
+                "debit": sub_total + surcharge,
+                "credit": 0,
+                "balance": sub_total + surcharge
+            }
+
+            stmt_serializer = StatementSerializer(data=temp_obj2)
+            valid = stmt_serializer.is_valid(raise_exception=True)
+            stmt_serializer.save()
+
+        
         return Response(status.HTTP_200_OK)
+
 

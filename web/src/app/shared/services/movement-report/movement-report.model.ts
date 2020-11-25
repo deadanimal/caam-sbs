@@ -23,8 +23,6 @@ export class MovementReport{
     ctg: string,
     distance: number,
     route: string,
-
-
   ) {
     this.id = id;
     this.datetime= datetime,

@@ -2,13 +2,13 @@ import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/payment/payment";
 import * as banklist from "src/app/variables/bank-lists";
+import * as companylist from "src/app/variables/companies";
 import { Payment } from 'src/app/shared/services/payment/payment/payment.model';
 import { PaymentService } from 'src/app/shared/services/payment/payment/payment.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { NotifyService } from 'src/app/shared/handler/notify/notify.service';
 import swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
-
 
 @Component({
   selector: 'app-payment',
@@ -31,23 +31,29 @@ export class PaymentComponent implements OnInit {
   createManualForm: FormGroup
   createOnlineForm: FormGroup
   registerManualFormMessages = {
-    'amount': [
+    'amount_receive': [
       { type: 'required', message: 'Amount is required.' },
       { type: 'pattern', message: 'Enter a valid amount' }
     ],
     'remark': [
       { type: 'required', message: 'Remark is required.' },
     ],
+    'company': [
+      { type: 'required', message: 'Company is required.' }
+    ],
     'attachment': [
       { type: 'required', message: 'Attachment is required.' },
     ],
   };
   registerOnlineFormMessages = {
-    'amount': [
+    'amount_receive': [
       { type: 'required', message: 'Amount is required.' },
       { type: 'pattern', message: 'Enter a valid amount' }
     ],
-    'paymentmethod': [
+    'company': [
+      { type: 'required', message: 'Company is required.' }
+    ],
+    'payment_method': [
       { type: 'required', message: 'Please select payment method' }
     ],
   };
@@ -62,6 +68,7 @@ export class PaymentComponent implements OnInit {
   payments: Payment[] = [];
   rows = dummylist.paymentlist;
   banks= banklist.Banks;
+  company_names = companylist.Companies;
   viewData = {
     date: "",
     amount: "",
@@ -91,12 +98,17 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllData();
+    // here to change form 
     this.createManualForm = this.formBuilder.group({
-      amount: new FormControl('', Validators.compose([
+      amount_receive: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*)))(\\.\\d{1,2})?$')
       ])),
       remark: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      company: new FormControl('', Validators.compose([
         Validators.required
       ])),
       attachment: new FormControl('', Validators.compose([
@@ -104,11 +116,14 @@ export class PaymentComponent implements OnInit {
       ])),
     });
     this.createOnlineForm = this.formBuilder.group({
-      amount: new FormControl('', Validators.compose([
+      amount_receive: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*)))(\\.\\d{1,2})?$')
       ])),
-      paymentmethod: new FormControl('', Validators.compose([
+      company: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      payment_method: new FormControl('', Validators.compose([
         Validators.required
       ])),
       summary: new FormControl(),
@@ -172,10 +187,12 @@ export class PaymentComponent implements OnInit {
   submitManualForm() {
     console.log(this.createManualForm.value)
     this.isLoading = true
-    this.paymentService.post(this.createManualForm.value).subscribe(
+    this.paymentService.manual(this.createManualForm.value).subscribe(
       () => {
         // Success
         this.isLoading = false
+        this.closeModal();
+        this.getAllData();
       },
       () => {
         // Failed
@@ -191,14 +208,18 @@ export class PaymentComponent implements OnInit {
   submitOnlineForm() {
     console.log(this.createOnlineForm.value)
     this.isLoading = true
-    this.paymentService.post(this.createOnlineForm.value).subscribe(
+    this.paymentService.online(this.createOnlineForm.value).subscribe(
       () => {
         // Success
         this.isLoading = false
+        this.closeModal();
+        this.getAllData();
       },
       () => {
         // Failed
         this.isLoading = false
+        this.closeModal()
+
       },
       () => {
         // After
@@ -208,6 +229,7 @@ export class PaymentComponent implements OnInit {
   }
 
   getAllData = () => {
+    console.log("im called")
     this.paymentService.get().subscribe(
       data => {
         this.payments = data;
@@ -228,11 +250,11 @@ export class PaymentComponent implements OnInit {
   }
 
   openModal(modalRef: TemplateRef<any>, data:any) {
-    this.viewData.amount = data.amount;
+    this.viewData.amount = data.amount_receive;
     this.viewData.attachment = data.attachment;
     this.viewData.remark = data.remark;
-    this.viewData.date = data.date;
-    this.viewData.paymentmethod = data.paymentmethod;
+    this.viewData.date = data.created_at;
+    this.viewData.paymentmethod = data.payment_method;
     this.modal = this.modalService.show(modalRef, this.modalConfig);
     
 
@@ -262,10 +284,10 @@ export class PaymentComponent implements OnInit {
   }
 
   statusBadge(status: string) {
-    if (status == "Overdue") return "badge badge-warning";
-    if (status == "Pending") return "badge badge-primary";
-    if (status == "Paid") return "badge badge-success";
-    if (status == "Failed") return "badge badge-danger";
+    if (status == "UNAPPROVED") return "badge badge-warning";
+    // if (status == "Pending") return "badge badge-primary";
+    if (status == "APPROVED") return "badge badge-success";
+    // if (status == "Failed") return "badge badge-danger";
   }
 }
 

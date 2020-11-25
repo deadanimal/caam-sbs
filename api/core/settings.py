@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'approvals',
     'audittrails',
     'invoice',
+    'payments',
+    'accounts',
 ]
 
 MIDDLEWARE = [
