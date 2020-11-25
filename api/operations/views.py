@@ -365,6 +365,9 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'status': 'FPL0'
                             }
 
+                            # test
+                            print(temp_obj)
+
                             # 'num': array_tfl[1],
                             # 'fpl_date': array_tfl[2],
                             # 'fpl_no': array_tfl[3],
@@ -699,6 +702,8 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['GET'], detail=False)
     def invoice(self, request, *args, **kwargs):
+        # this goes to generate invoice task 
+        # use this on invoice app
 
         response_array = []
         results = Fpldata.objects.values('cid').filter(cid__isnull=False).annotate(total_flight=Count('cid_id'), total_amount=Sum('amount'))
@@ -707,10 +712,12 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         for result in results:
             temp = {
                 'cid': result['cid'],
-                'total_flight': result['total_flight'],
-                'total_amount': result['total_amount'],
+                'total_flight': result['total_flight'], # return non-zero
+                'total_amount': result['total_amount'], # return zero
             }
             response_array.append(temp)
+        
+        print(response_array)
         return Response(response_array)
 
 

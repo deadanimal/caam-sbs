@@ -133,6 +133,26 @@ invoice_router = router.register(
     'invoices', InvoiceViewSet
 )
 
+# Payment app
+from payments.views import (
+    PaymentViewSet
+)
+
+payment_router = router.register(
+    'payments', PaymentViewSet
+)
+
+# Account app
+
+# statement
+from accounts.views import (
+    StatementViewSet
+)
+
+statement_router = router.register(
+    'statements', StatementViewSet
+)
+
 
 urlpatterns = [
     url(r'v1/', include(router.urls)),

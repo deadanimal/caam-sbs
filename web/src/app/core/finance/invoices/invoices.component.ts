@@ -141,8 +141,8 @@ export class InvoicesComponent implements OnInit {
     this.companytel = row.office_num;
     this.companyfax = row.fax_number;
     this.invoicenumber = row.invoice_no;
-    this.invoicedate = row.created_at;
-    this.invoiceduedate = row.due_at;
+    this.invoicedate = row.created_at_str;
+    this.invoiceduedate = row.due_at_str;
     this.invoicestatus = row.status;
     this.invoicesurcharge = row.surchage;
     this.invoicetotal = row.invoice_total;

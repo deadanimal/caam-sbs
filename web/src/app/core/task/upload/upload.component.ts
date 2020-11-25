@@ -396,7 +396,7 @@ export class UploadComponent implements OnInit {
   }
 
 
-
+  // upload vfl/tfr function
   upload() {
     const formData = new FormData();
     formData.append(

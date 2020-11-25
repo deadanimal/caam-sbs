@@ -39,7 +39,9 @@ export class Invoice {
   public fax_number: string; 
   public status: string;
   public created_at: any;
+  public created_at_str: string;
   public due_at: any;
+  public due_at_str: string;
   public domestic_flight: number;
   public inbound_flight: number;
   public outbound_flight: number;
@@ -60,7 +62,9 @@ export class Invoice {
     fax_number: string, 
     status: string,
     created_at: any,
+    created_at_str: string,
     due_at: any,
+    due_at_str: string,
     domestic_flight: number,
     inbound_flight: number,
     outbound_flight: number,
@@ -80,6 +84,8 @@ export class Invoice {
     this.fax_number = fax_number; 
     this.status = status;
     this.created_at = created_at;
+    this.created_at_str = created_at_str;
+    this.due_at_str = due_at_str;
     this.due_at = due_at;
     this.domestic_flight = domestic_flight;
     this.inbound_flight = inbound_flight;
