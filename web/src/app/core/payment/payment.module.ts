@@ -29,6 +29,7 @@ import { DepositListComponent } from './deposit-list/deposit-list.component';
 import { PaymentListComponent } from './payment-list/payment-list.component';
 import { OutstandingPaymentComponent } from './outstanding-list/outstanding-payment.component';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: 'right',
@@ -54,6 +55,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     RouterModule.forChild(PaymentRoutes),
     HttpClientModule,
     NgxDatatableModule,
+    NgxSpinnerModule,
     NgbModule,
     LeafletModule,
     BsDatepickerModule.forRoot(),

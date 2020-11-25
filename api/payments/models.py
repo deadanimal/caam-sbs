@@ -7,29 +7,28 @@ from organisations.models import (
 )
 
 class Payments(models.Model):
+    
+    STATUSES = [
+        ('APPROVED', 'Approved'),
+        ('UNAPPROVED', 'Unapproved'),
+    ]
+
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    cid = models.ForeignKey(Organisation, to_field='cid', on_delete=models.CASCADE, null=True)
-    approved = models.BooleanField(default=False)
+    cid = models.ForeignKey(Organisation, to_field='cid', on_delete=models.CASCADE, null=True, blank=True)
+    company_name = models.CharField(max_length=200, default='NA', blank=True)
+    online = models.BooleanField()
+    approved = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True, null=True)
     code = models.CharField(max_length=200, default='NA', blank=True)
-    remark = models.TextField(null=True, blank=True)
-    attachment = models.FileField(null=True, blank=True, upload_to=PathAndRename('data_upload'))
+    payment_method = models.CharField(max_length=200, default='NA', blank=True)
+    remark = models.TextField(null=True, blank=True, default='No remark for online transaction')
+    attachment = models.FileField(null=True, blank=True) #, upload_to=PathAndRename('data_upload'))
     amount_receive = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    summary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    summary = models.TextField(default='NA', null=True, blank=True)
+    status = models.CharField(max_length=20, choices=STATUSES, default='UNAPPROVED')
 
     def __str__(self):
         return self.cid
-
-
-
-#   public id: string;
-#   public date: any;
-#   public amount: number;
-#   public status: string;
-#   public summary: number;
-#   public remark: string;
-#   public paymentmethod: string;
-#   public attachment: any;
 

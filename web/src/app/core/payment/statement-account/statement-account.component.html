@@ -98,7 +98,7 @@
 
                     <ngx-datatable class="bootstrap selection-cell " [headerHeight]="50" [columnMode]="'force'"
                         [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-                        [rows]="temp" (activate)="onActivate($event)" [scrollbarH]="true">
+                        [rows]="statementaccounts" (activate)="onActivate($event)" [scrollbarH]="true">
 
                         <ngx-datatable-column [width]="30">
                             <ng-template ngx-datatable-header-template>
@@ -113,7 +113,19 @@
 
                         <ngx-datatable-column name="issuedate">
                             <ng-template ngx-datatable-header-template>
+                                <span>COMPANY NAME</span>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.company_name}}
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="issuedate">
+                            <ng-template ngx-datatable-header-template>
                                 <span>ISSUE DATE</span>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.created_at_str}}
                             </ng-template>
                         </ngx-datatable-column>
 
@@ -121,11 +133,17 @@
                             <ng-template ngx-datatable-header-template>
                                 <span>TRANSACTION</span>
                             </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.transaction}}
+                            </ng-template>
                         </ngx-datatable-column>
 
                         <ngx-datatable-column name="transactionnumber">
                             <ng-template ngx-datatable-header-template>
                                 <span>TRANSACTION NO.</span>
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                {{row.transaction_number}}
                             </ng-template>
                         </ngx-datatable-column>
 
@@ -158,7 +176,7 @@
 
                     </ngx-datatable>
 
-                    <ngx-datatable class="material" [rows]="temp"  [columnMode]="'force'"
+                    <!-- <ngx-datatable class="material" [rows]="temp"  [columnMode]="'force'"
                         [footerHeight]="100" [headerHeight]="0" rowHeight="auto" >
                         <ngx-datatable-footer *ngIf="true">
                             <ng-template ngx-datatable-footer-template >
@@ -167,7 +185,7 @@
                                 </div>
                             </ng-template>
                         </ngx-datatable-footer>
-                    </ngx-datatable>
+                    </ngx-datatable> -->
                 </div>
             </div>
         </div>

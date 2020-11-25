@@ -10,7 +10,8 @@ import { StatementAccount } from "./statement-account.model";
   providedIn: "root",
 })
 export class StatementAccountService {
-  url: string = environment.baseUrl + "v1/statement-account/";
+  url: string = environment.baseUrl + "v1/statements/";
+  // url: string = "http://127.0.0.1:8000/v1/statements/";
 
   // Data
   public statementAccounts: StatementAccount[] = [];

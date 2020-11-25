@@ -127,9 +127,10 @@
             </div>
           </div>
 
+          <!-- look here to display payment objects -->
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="payments" (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -144,13 +145,24 @@
               <ng-template ngx-datatable-header-template>
                 <span>DATE</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.created_at}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Company</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.company_name}}
+              </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>AMOUNT</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.amount | currency: "MYR"}}
+                RM {{row.amount_receive}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column [width]="400">
@@ -214,12 +226,31 @@
                   Amount
                 </label>
                 <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
-                  (focus)="focus = true" (blur)="focus = false" formControlName="amount" />
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
                 <ng-container *ngFor="let message of registerManualFormMessages.amount">
                   <div *ngIf="
                     createManualForm.get('amount').hasError(message.type) &&
                           (createManualForm.get('amount').dirty ||
                           createManualForm.get('amount').touched)
+                        ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" for="company"> Company</label>
+                <select class="form-control" id="company" formControlName="company">
+                  <option hidden selected>Select Company</option>
+                  <option *ngFor="let c of company_names" value={{c.companyname}}>{{c.companyname}}</option>
+                </select>
+                <ng-container *ngFor="let message of registerOnlineFormMessages.company">
+                  <div *ngIf="
+                  createOnlineForm.get('company').hasError(message.type) &&
+                          (createOnlineForm.get('company').dirty ||
+                          createOnlineForm.get('company').touched)
                         ">
                     <p class="error-message">
                       <span>{{ message.message }}</span>
@@ -299,7 +330,7 @@
                   Amount
                 </label>
                 <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
-                  (focus)="focus = true" (blur)="focus = false" formControlName="amount" />
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
                 <ng-container *ngFor="let message of registerOnlineFormMessages.amount">
                   <div *ngIf="
                     createOnlineForm.get('amount').hasError(message.type) &&
@@ -314,8 +345,28 @@
               </div>
 
               <div class="form-group">
+                <label class="form-control-label" for="company"> Company</label>
+                <select class="form-control" id="company" formControlName="company">
+                  <option hidden selected>Select Company</option>
+                  <option *ngFor="let c of company_names" value={{c.companyname}}>{{c.companyname}}</option>
+                </select>
+                <ng-container *ngFor="let message of registerOnlineFormMessages.company">
+                  <div *ngIf="
+                  createOnlineForm.get('company').hasError(message.type) &&
+                          (createOnlineForm.get('company').dirty ||
+                          createOnlineForm.get('company').touched)
+                        ">
+                    <p class="error-message">
+                      <span>{{ message.message }}</span>
+                    </p>
+                  </div>
+                </ng-container>
+              </div>
+
+
+              <div class="form-group">
                 <label class="form-control-label" for="paymentmethod"> Payment Method</label>
-                <select class="form-control" id="paymentmethod" formControlName="paymentmethod">
+                <select class="form-control" id="paymentmethod" formControlName="payment_method">
                   <option hidden selected>Select Payment Method</option>
                   <option *ngFor="let bank of banks" value={{bank.code}}>{{bank.name}}</option>
                 </select>

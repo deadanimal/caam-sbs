@@ -19,33 +19,33 @@ export class StatementAccountComponent implements OnInit {
   // Data
   temp=[];
   statementaccounts: StatementAccount[] = [];
-  row = [
-    {
-      issuedate: "12/01/2020",
-      transaction: "invoice",
-      transactionnumber: "123",
-      debit: 345346,
-      credit: 567889,
-      balance: 9000
-    },
-    {
-      issuedate: "12/01/2020",
-      transaction: "invoice",
-      transactionnumber: "123",
-      debit: 345346,
-      credit: 567889,
-      balance: 9000
-    }
-  ]
+  // row = [
+  //   {
+  //     issuedate: "12/01/2020",
+  //     transaction: "invoice",
+  //     transactionnumber: "123",
+  //     debit: 345346,
+  //     credit: 567889,
+  //     balance: 9000
+  //   },
+  //   {
+  //     issuedate: "12/01/2020",
+  //     transaction: "invoice",
+  //     transactionnumber: "123",
+  //     debit: 345346,
+  //     credit: 567889,
+  //     balance: 9000
+  //   }
+  // ]
 
 
   constructor(
     private statementAccountService: StatementAccountService,
   ) { 
-    this.temp = this.row
   }
 
   ngOnInit() {
+    this.getAllData();
   }
 
   getAllData = () => {
