@@ -49,9 +49,16 @@ export class StatementAccountComponent implements OnInit {
   }
 
   getAllData = () => {
+    var airasia = [];
     this.statementAccountService.get().subscribe(
       data => {
-        this.statementaccounts = data;
+        // quick patch for airasia
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].company_name == "AIRASIA SDN BHD") {
+            airasia.push(data[i])
+            this.statementaccounts = airasia
+          }
+        }
       },
       error => {
         console.log(error)

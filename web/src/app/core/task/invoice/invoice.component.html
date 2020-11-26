@@ -58,7 +58,7 @@
                 Total flight data
               </h5>
               <span class="h2 font-weight-bold mb-0 text-white">
-                {{ fpldatas.length | number }}
+                <!-- {{ fpldatas.length | number }} -->
               </span>
             </div>
             <div class="col-auto">
@@ -80,7 +80,7 @@
                 Total airlines registered
               </h5>
               <span class="h2 font-weight-bold mb-0 text-white">
-                {{ airlines.length | number }}
+                <!-- {{ airlines.length | number }} -->
               </span>
             </div>
             <div class="col-auto">
@@ -102,7 +102,7 @@
                 Archived flight data
               </h5>
               <span class="h2 font-weight-bold mb-0 text-white">
-                {{ archivedfpldatas.length | number }}
+                <!-- {{ archivedfpldatas.length | number }} -->
               </span>
             </div>
             <div class="col-auto">
@@ -124,7 +124,7 @@
                 Errors data occured
               </h5>
               <span class="h2 font-weight-bold mb-0 text-white">
-                {{ errorfpldatas.length | number }}
+                <!-- {{ errorfpldatas.length | number }} -->
               </span>
             </div>
             <div class="col-auto">
@@ -227,15 +227,15 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <a href="javascript:void(0)" title="click to view" >
+                <a href="javascript:void(0)" (click)="openModal(view,row)" title="click to view">
                   <i class="fas fa-eye"></i>
                 </a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" title="click to download invoice" >
+                <a href="javascript:void(0)" title="click to download invoice">
                   <i class="fas fa-download"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>
-          </ngx-datatable> 
+          </ngx-datatable>
         </div>
       </div>
     </div>
@@ -250,7 +250,7 @@
       Arline Detail
     </h6>
 
-    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModalModal()">
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
       <span aria-hidden="true" class="text-white my-auto"> × </span>
     </button>
   </div>
@@ -261,55 +261,135 @@
       <div class="col-md-6">
         <div class="form-group">
           <label class="form-control-label">Invoice Period</label>
-          <input class="form-control" [(ngModel)]="selectedRow.invoice_period" [ngModelOptions]="{standalone: true}"
-            type="text" disabled>
+          <input class="form-control" [(ngModel)]="_invoice_period" [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">CID</label>
-          <input class="form-control" [(ngModel)]="selectedRow.cid" [ngModelOptions]="{standalone: true}"
-            type="text">
+          <input class="form-control" [(ngModel)]="_cid" [ngModelOptions]="{standalone: true}" type="text">
+
         </div>
         <div class="form-group">
           <label class="form-control-label">Company Name</label>
-          <input class="form-control" [(ngModel)]="selectedRow.company_name" [ngModelOptions]="{standalone: true}" type="text">
+          <input class="form-control" [(ngModel)]="_company_name" [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">Total Charges</label>
-          <input class="form-control" placeholder="total_charge | number" [(ngModel)]="selectedRow.dist"
-            [ngModelOptions]="{standalone: true}" type="text" disabled>
+          <input class="form-control" placeholder="_total_charge" [(ngModel)]="_total_charge"
+            [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">Total Flight</label>
-          <input class="form-control" placeholder="selectedRow.total_flight | number" [(ngModel)]="selectedRow.dist"
-            [ngModelOptions]="{standalone: true}" type="text" disabled>
+          <input class="form-control" placeholder="_total_flight" [(ngModel)]="_total_flight"
+            [ngModelOptions]="{standalone: true}" type="text">
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label class="form-control-label">Domestic Flight</label>
-          <input class="form-control" [(ngModel)]="selectedRow.domestic" [ngModelOptions]="{standalone: true}"
-            type="text">
+          <input class="form-control" [(ngModel)]="_domestic" [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">Inbound Flight</label>
-          <input class="form-control" [(ngModel)]="selectedRow.inbound" [ngModelOptions]="{standalone: true}" type="text">
+          <input class="form-control" [(ngModel)]="_inbound" [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">Outbound Flight</label>
-          <input class="form-control" placeholder="selectedRow.outbound" [(ngModel)]="selectedRow.dist"
-            [ngModelOptions]="{standalone: true}" type="text" disabled>
+          <input class="form-control" placeholder="_outbound" [(ngModel)]="_outbound"
+            [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">Overflight</label>
-          <input class="form-control" [(ngModel)]="selectedRow.overflight" [ngModelOptions]="{standalone: true}" type="text">
+          <input class="form-control" [(ngModel)]="_overflight" [ngModelOptions]="{standalone: true}" type="text">
         </div>
         <div class="form-group">
           <label class="form-control-label">Others</label>
-          <input class="form-control" placeholder="selectedRow.other" [(ngModel)]="selectedRow.dist"
-            [ngModelOptions]="{standalone: true}" type="text" disabled>
+          <input class="form-control" placeholder="selectedRow.other" [(ngModel)]="_other"
+            [ngModelOptions]="{standalone: true}" type="text">
         </div>
-
       </div>
+    </div>
+    <div>
+      <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+        [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="fpls" (activate)="onActivate($event)"
+        [scrollbarH]="true">
+        <ngx-datatable-column [width]="20">
+          <ng-template ngx-datatable-header-template>
+            <span>No.</span>
+          </ng-template>
+          <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{
+        rowIndex +1
+      }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Date/Time</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.fpl_date }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Callsign</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.fpl_no }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Departure</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.dep }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Destination</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.dest }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>CTG</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.ctg }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Distance</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.dist }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Route</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.route }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Charge(RM)</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.amount }}
+          </ng-template>
+        </ngx-datatable-column>
+
+
+      </ngx-datatable>
+
     </div>
 
 
@@ -317,11 +397,11 @@
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModalModal()">
+    <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="closeModal()">
       Cancel
     </button>
-    <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="updateData()">
-      Save
+    <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Ok
     </button>
   </div>
 

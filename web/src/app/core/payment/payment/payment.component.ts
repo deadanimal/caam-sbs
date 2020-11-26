@@ -68,7 +68,21 @@ export class PaymentComponent implements OnInit {
   payments: Payment[] = [];
   rows = dummylist.paymentlist;
   banks= banklist.Banks;
-  company_names = companylist.Companies;
+  // company_names = companylist.Companies;
+  company_names =   [{
+    cid: "1025",
+    icode: "AXM",
+    iata: "",
+    companyname: "AIRASIA SDN BHD",
+    picname: "Admin",
+    email: "maa_finance_ap_inv@airasia.com",
+    email2: "",
+    telno: "60386604070",
+    address:
+      "REDQ, JALAN PEKELILING 5, KUALA LUMPUR INTERNATIONAL AIRPORT (KLIA2), 64000 SEPANG, SELANGOR, MALAYSIA.",
+    pr: "Inactive"
+  }]
+
   viewData = {
     date: "",
     amount: "",
