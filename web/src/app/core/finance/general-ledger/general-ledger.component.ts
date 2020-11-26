@@ -4,6 +4,7 @@ import * as dummylist from "src/app/variables/finance/general-ledger";
 import { GeneralLedgerService } from 'src/app/shared/services/finance/general-ledger/general-ledger.service';
 import { GeneralLedger } from 'src/app/shared/services/finance/general-ledger/general-ledger.model';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-general-ledger',
@@ -29,6 +30,8 @@ export class GeneralLedgerComponent implements OnInit {
   generalLedger: GeneralLedger[] = [];
 
 
+
+
   // Modal
   modal: BsModalRef;
   showModal: boolean;
@@ -40,24 +43,43 @@ export class GeneralLedgerComponent implements OnInit {
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
-    private generalLedgerService: GeneralLedgerService,
-    private datePipe: DatePipe
+    private ledgerService: GeneralLedgerService,
+    private datePipe: DatePipe,
+    private spinner: NgxSpinnerService
   ) {
     this.filterby = "all";
     this.searchText = "";
   }
 
   ngOnInit() {
+    console.log(this.spinner)
     this.FilterTable(this.filterby);
+    this.updateLedger();
   }
 
   getAllData = () => {
-    this.generalLedgerService.get().subscribe(
+    this.ledgerService.get().subscribe(
       data => {
         this.generalLedger = data;
+        this.spinner.hide()
       },
       error => {
         console.log(error)
+      }
+    )
+  }
+
+  updateLedger = () => {
+    this.spinner.show()
+    this.ledgerService.update({}).subscribe(
+      data => {
+        // this.statementaccounts = data;
+        console.log(data);
+        this.getAllData();
+      },
+      error => {
+        console.log(error);
+        this.getAllData();
       }
     )
   }

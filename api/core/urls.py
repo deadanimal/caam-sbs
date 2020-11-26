@@ -153,6 +153,13 @@ statement_router = router.register(
     'statements', StatementViewSet
 )
 
+from accounts.views import (
+    LedgerViewSet
+)
+
+ledger_router = router.register(
+    'ledgers', LedgerViewSet
+)
 
 urlpatterns = [
     url(r'v1/', include(router.urls)),

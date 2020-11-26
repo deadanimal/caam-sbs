@@ -9,6 +9,10 @@ export class StatementAccount {
   public debit: number;
   public credit: number;
   public balance: number;
+  public credit_code: string; 
+  public debit_code: string; 
+  public credit_account: string; 
+  public debit_account: string; 
 
   constructor(
     id: string,
@@ -21,6 +25,11 @@ export class StatementAccount {
     debit: number,
     credit: number,
     balance: number,
+    credit_code: string, 
+    debit_code: string, 
+    credit_account: string, 
+    debit_account: string, 
+  
   ) {
     this.id = id;
     this.cid = cid;
@@ -32,5 +41,10 @@ export class StatementAccount {
     this.debit = debit;
     this.credit = credit;
     this.balance = balance;
+    this.credit_code = credit_code; 
+    this.debit_code = debit_code; 
+    this.credit_account = credit_account; 
+    this.debit_account = debit_account; 
+  
   }
 }

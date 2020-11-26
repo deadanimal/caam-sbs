@@ -90,8 +90,13 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 "transaction_number": request.data["payment_id"],
                 "debit": 0,
                 "credit": payment_obj.amount_receive,
-                "balance": payment_obj.amount_receive
+                "balance": payment_obj.amount_receive,
+                "credit_code": "3102/000",
+                "credit_account": "BANK (TERIMAAN)",
+                "debit_code": "3610/000",
+                "debit_account": "ABT URUSNIAGA PERTUKARAN",
             }
+        print(temp_obj2)
 
         stmt_serializer = StatementSerializer(data=temp_obj2)
         valid = stmt_serializer.is_valid(raise_exception=True)
