@@ -10,7 +10,9 @@ import { GeneralLedger } from './general-ledger.model';
   providedIn: "root",
 })
 export class GeneralLedgerService {
-  url: string = environment.baseUrl + "v1/general-ledger/";
+  url: string = environment.baseUrl + "v1/ledgers/";
+  // url: string = "http://127.0.0.1:8000/v1/ledgers/";
+
 
   // Data
   public generalLedger: GeneralLedger
@@ -26,6 +28,7 @@ export class GeneralLedgerService {
     );
   }
 
+  // get ledger
   get(): Observable<GeneralLedger[]> {
     return this.http.get<any>(this.url).pipe(
       tap((res) => {
@@ -45,8 +48,9 @@ export class GeneralLedgerService {
     );
   }
 
-  update(id: string, body: Form): Observable<GeneralLedger> {
-    return this.http.patch<GeneralLedger>(this.url + id + "/", body).pipe(
+  // update Ledger
+  update(body): Observable<GeneralLedger> {
+    return this.http.post<GeneralLedger>(this.url + "updateLedger/", body).pipe(
       tap((res) => {
         console.log("GeneralLedger", res);
       })

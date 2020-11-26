@@ -114,7 +114,11 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 "transaction_number": init_running_no+1,
                 "debit": sub_total + surcharge,
                 "credit": 0,
-                "balance": sub_total + surcharge
+                "balance": sub_total + surcharge,
+                "credit_code": "3610/000",
+                "credit_account": "ABT URUSNIAGA PERTUKARAN",
+                "debit_code": "8203/000",
+                "debit_account": "ANFC",
             }
 
             stmt_serializer = StatementSerializer(data=temp_obj2)

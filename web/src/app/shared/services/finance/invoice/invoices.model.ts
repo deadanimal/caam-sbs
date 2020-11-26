@@ -51,6 +51,7 @@ export class Invoice {
   public surcharge: number;
   public invoice_total: number;
   public cid: string;
+  public total_flight: number;
 
   constructor(
     id: string,
@@ -74,6 +75,7 @@ export class Invoice {
     surcharge: number,
     invoice_total: number,
     cid: string,
+    total_flight: number,
   ) {
     this.id = id;
     this.invoice_no = invoice_no;
@@ -96,5 +98,6 @@ export class Invoice {
     this.surcharge = surcharge;
     this.invoice_total = invoice_total;
     this.cid = cid;
+    this.total_flight = total_flight;
   }
 }

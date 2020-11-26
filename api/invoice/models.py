@@ -27,7 +27,7 @@ class Invoices(models.Model):
     cid = models.ForeignKey(Organisation, to_field='cid', on_delete=models.CASCADE, null=True)
     status = models.CharField(max_length=20, choices=STATUSES, default='UNPAID')
     created_at = models.DateTimeField(auto_now_add=True)
-    due_at = models.DateTimeField(default=datetime.datetime.now()+datetime.timedelta(days=30))
+    due_at = models.DateTimeField(null=True,blank=True)
     created_at_str = models.CharField(max_length=200, default='NA', blank=True, null=True)
     due_at_str = models.CharField(max_length=200, default='NA', blank=True, null=True)
     total_flight = models.IntegerField(null=True, blank=True, default=0)

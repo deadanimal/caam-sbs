@@ -23,6 +23,7 @@ export class InvoiceComponent implements OnInit {
   opost = {
     "cid": "all"
   }
+  fpls: FpldatasModel[] = [];
 
   entries: number = 5;
   selected: any[] = [];
@@ -41,18 +42,20 @@ export class InvoiceComponent implements OnInit {
   total_outbound = []
   total_overflight = [];
   total_other = [];
-  selectedRow: {
-    invoice_period: "",
-    cid: "",
-    company_name: "",
-    total_charge: "",
-    total_flight: "",
-    domestic: "",
-    inbound: "",
-    outbound: "",
-    overflight: "",
-    other: ""
-  }
+
+  // viewData
+
+  _invoice_period: string;
+  _cid: string;
+  _company_name: string;
+  _total_charge: string;
+  _total_flight: string;
+  _domestic: number;
+  _inbound: number;
+  _outbound: number;
+  _overflight: number;
+  _other: number;
+
 
 
 
@@ -172,7 +175,8 @@ export class InvoiceComponent implements OnInit {
   getFpldata() {
     this.fpldataService.get().subscribe(
       (res) => {
-        // console.log("res", res);
+        console.log("whatiwant", res);
+        this.fpls = res.slice(1,5);
         this.fpldatas = res;
 
         this.archivedfpldatas = this.fpldatas.find((obj) => {
@@ -281,11 +285,17 @@ export class InvoiceComponent implements OnInit {
 
   openModal(modalRef: TemplateRef<any>, row) {
     console.log(row)
-    // this.selectedRow.cid = row.organisation.cid
-    // this.selectedRow.company_name = row.organisation.name
-    // this.selectedRow.total_charge = row.total_amount
-    // this.selectedRow.total_flight = row.total_flight
-    // this.selectedRow.invoice_period = row.invoice_period
+    this._cid = row.cid
+    this._invoice_period = "1/11/2020 - 26/11/2020"
+    this._company_name = row.organisation.name
+    this._total_charge = row.total_amount
+    this._total_flight = row.total_flight
+    this._domestic = 2
+    this._inbound = 0
+    this._outbound = 1
+    this._overflight = 3
+    this._other = 0
+
     this.getFplDataByCID()
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
   }
