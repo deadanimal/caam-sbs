@@ -11,6 +11,8 @@ import { OrganisationsModel } from "./organisations.model";
 })
 export class OrganisationsService {
   url: string = environment.baseUrl + "v1/organisations/";
+  // url: string = "http://127.0.0.1:8000/v1/organisations/";
+
 
   // Data
   public omodels: OrganisationsModel[] = [];
@@ -20,6 +22,14 @@ export class OrganisationsService {
 
   post(body): Observable<OrganisationsModel> {
     return this.http.post<any>(this.url, body).pipe(
+      tap((res) => {
+        console.log("OrganisationsModel", res);
+      })
+    );
+  }
+
+  explicitPost(body): Observable<OrganisationsModel> {
+    return this.http.post<any>(this.url + "addairline/", body).pipe(
       tap((res) => {
         console.log("OrganisationsModel", res);
       })

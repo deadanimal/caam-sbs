@@ -27,6 +27,7 @@ export enum SelectionType {
   styleUrls: ["./airlines.component.scss"],
 })
 export class AirlinesComponent implements OnInit {
+  list_of_errors: string;
   entries: number = 5;
   selected: any[] = [];
   temp = [];
@@ -81,6 +82,9 @@ export class AirlinesComponent implements OnInit {
       city: new FormControl(""),
       state: new FormControl(""),
       country: new FormControl(""),
+      type: new FormControl(""),
+      icoa: new FormControl(""),
+      iata: new FormControl(""),      
     });
   }
 
@@ -234,8 +238,9 @@ export class AirlinesComponent implements OnInit {
   };
 
   submit() {
+    console.log(this.airlineFormGroup.value)
     if (this.processTitle == "Add New Airline") {
-      this.organisationService.post(this.airlineFormGroup.value).subscribe(
+      this.organisationService.explicitPost(this.airlineFormGroup.value).subscribe(
         (res) => {
           if (res) {
             swal
@@ -255,7 +260,18 @@ export class AirlinesComponent implements OnInit {
           }
         },
         (err) => {
-          console.error("err", err);
+          // to do : show error in the ui
+          console.error("wohoo", err.error);
+          for (let key in err.error) {
+            this.list_of_errors = key + " " + err.error[key];
+          }
+          swal
+              .fire({
+                title: "Oops",
+                type: "warning",
+                text: this.list_of_errors,
+                buttonsStyling: false,
+              })
         }
       );
     } else if (this.processTitle == "Edit Airline") {
