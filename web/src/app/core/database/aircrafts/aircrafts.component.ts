@@ -68,7 +68,7 @@ export class AircraftsComponent implements OnInit {
     this.aircraftFormGroup = this.formBuilder.group({
       id: new FormControl(""),
       description: new FormControl(""),
-      registration_num: new FormControl(""),
+      // registration_num: new FormControl(""),
       model: new FormControl(""),
       manufacturer: new FormControl(""),
       aircraft_type: new FormControl(""),
