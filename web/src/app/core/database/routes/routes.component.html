@@ -54,13 +54,14 @@
                     <form [formGroup]="routeFormGroup">
                       <div class="row">
                         <div class="col-lg-4 col-xs-12">
-                          <div class="form-group">
+                          <div class="form-group" style="display: none;">
                             <label class="form-control-label">RTID</label>
                             <input
                               type="text"
                               class="form-control"
                               placeholder="Enter rtid"
                               formControlName="rtid"
+                              value="2341"
                             />
                           </div>
                           <div class="form-group">
@@ -102,13 +103,11 @@
                               formControlName="category_type"
                             >
                               <option value="">Please select</option>
-                              <option value="SC1">SC1</option>
-                              <option value="SC2">SC2</option>
-                              <option value="SC3">SC3</option>
-                              <option value="SC4">SC4</option>
-                              <option value="SC4">SC5</option>
-                              <option value="ALN">ALN</option>
-                              <option value="ALS">ALS</option>
+                              <option value="DOM">Domestic Flight</option>
+                              <option value="INB">Inbound Flight</option>
+                              <option value="LOC">Local Flight</option>
+                              <option value="OUT">Outbound Flight</option>
+                              <option value="OVF">Over Flight</option>
                             </select>
                           </div>
                           <div class="form-group">

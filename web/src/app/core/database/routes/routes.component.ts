@@ -187,6 +187,9 @@ export class RoutesComponent implements OnInit {
     center: L.latLng(4.2105, 101.9758),
   };
 
+  // rtid default value
+  defaultRtid: string = "1234";
+
   markerLayer: L.Layer[] = [];
 
   // Forms
@@ -216,7 +219,7 @@ export class RoutesComponent implements OnInit {
 
     this.routeFormGroup = this.formBuilder.group({
       id: new FormControl(""),
-      // name: new FormControl(""),
+      name: new FormControl(""),
       description: new FormControl(""),
       rtid: new FormControl(""),
       distance: new FormControl(""),
@@ -378,6 +381,7 @@ export class RoutesComponent implements OnInit {
 
   submit() {
     if (this.processTitle == "Add New Route") {
+      this.routeFormGroup.get('rtid').setValue(this.defaultRtid)
       this.routeService.post(this.routeFormGroup.value).subscribe(
         (res) => {
           if (res) {

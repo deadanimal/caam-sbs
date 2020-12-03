@@ -37,6 +37,8 @@ export class AirportsComponent implements OnInit {
   SelectionType = SelectionType;
   countries= countrylist.Countries
 
+  default_aid: string = "abc1";
+
   // Forms
   airportFormGroup: FormGroup;
 
@@ -229,6 +231,7 @@ export class AirportsComponent implements OnInit {
 
   submit() {
     if (this.processTitle == "Add New Airport") {
+      this.airportFormGroup.get('aid').setValue(this.default_aid)
       this.airportService.post(this.airportFormGroup.value).subscribe(
         (res) => {
           if (res) {
