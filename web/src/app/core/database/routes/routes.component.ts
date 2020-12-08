@@ -13,6 +13,9 @@ import * as L from "leaflet";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { RoutesService } from "src/app/shared/services/routes/routes.service";
 import { UsersService } from "src/app/shared/services/users/users.service";
+import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 const dataMarkers = [
   {
@@ -213,7 +216,8 @@ export class RoutesComponent implements OnInit {
     private modalService: NgbModal,
     public authService: AuthService,
     private routeService: RoutesService,
-    private userService: UsersService
+    private userService: UsersService,
+    private spinner: NgxSpinnerService,
   ) {
     this.getRoute();
 
@@ -252,6 +256,23 @@ export class RoutesComponent implements OnInit {
 
   entriesChange($event) {
     this.entries = $event.target.value;
+  }
+  
+  exportPdf() {
+    this.spinner.show()
+    this.routeService.exportpdf({}).subscribe(
+      (res) => {
+        console.log("this is res")
+        console.log(res)
+        FileSaver.saveAs(res, "Routes.pdf")
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+      }
+    )
   }
 
   filterTable($event) {

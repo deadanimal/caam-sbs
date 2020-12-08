@@ -13,6 +13,10 @@ import { AircraftsService } from "src/app/shared/services/aircrafts/aircrafts.se
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 import { UsersService } from 'src/app/shared/services/users/users.service';
+import { HttpClient, HttpResponse } from "@angular/common/http";
+import { tap } from "rxjs/operators";
+import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from "ngx-spinner";
 
 export enum SelectionType {
   single = "single",
@@ -34,6 +38,7 @@ export class AircraftsComponent implements OnInit {
   activeRow: any;
   rows = AircraftTypes.AircraftTypes;
   SelectionType = SelectionType;
+  export_url = "http://127.0.0.1:8000/v1/aircrafts/downloadpdf/"
 
   // Forms
   aircraftFormGroup: FormGroup;
@@ -62,6 +67,8 @@ export class AircraftsComponent implements OnInit {
     public authService: AuthService,
     private organisationService: OrganisationsService,
     private userService: UsersService,
+    private http: HttpClient,
+    private spinner: NgxSpinnerService,
   ) {
     this.getAircraft();
 
@@ -90,6 +97,10 @@ export class AircraftsComponent implements OnInit {
     );
   }
 
+  ngOnInit() {
+
+  }
+
   getAircraft() {
     this.aircraftService.get().subscribe(
       (res) => {
@@ -109,6 +120,24 @@ export class AircraftsComponent implements OnInit {
       }
     );
   }
+
+  exportPdf() {
+    this.spinner.show()
+    this.aircraftService.exportpdf({}).subscribe(
+      (res) => {
+        console.log("this is res")
+        console.log(res)
+        FileSaver.saveAs(res, "Aircrafts.pdf")
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+      }
+    )
+  }
+
 
   entriesChange($event) {
     this.entries = $event.target.value;
@@ -293,5 +322,5 @@ export class AircraftsComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+
 }

@@ -12,6 +12,8 @@ import swal from "sweetalert2";
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { OrganisationsService } from "src/app/shared/services/organisations/organisations.service";
 import { UsersService } from 'src/app/shared/services/users/users.service';
+import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from "ngx-spinner";
 
 export enum SelectionType {
   single = "single",
@@ -55,7 +57,8 @@ export class AirlinesComponent implements OnInit {
     private modalService: NgbModal,
     public authService: AuthService,
     private organisationService: OrganisationsService,
-    private userService: UsersService
+    private userService: UsersService,
+    private spinner: NgxSpinnerService,
   ) {
     this.getAirline();
 
@@ -109,6 +112,23 @@ export class AirlinesComponent implements OnInit {
 
   entriesChange($event) {
     this.entries = $event.target.value;
+  }
+
+  exportPdf() {
+    this.spinner.show()
+    this.organisationService.exportpdf({}).subscribe(
+      (res) => {
+        console.log("this is res")
+        console.log(res)
+        FileSaver.saveAs(res, "Airlines.pdf")
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+      }
+    )
   }
 
   filterTable($event) {

@@ -21,6 +21,9 @@
             *ngIf="authService.decodedToken().user_type == 'OPS'">
             Add New Airport
           </button>
+          <button class="btn btn-sm btn-dark" (click)="exportPdf()">
+            Export
+          </button>
 
           <ng-template #classic1 let-c="close" let-d="dismiss">
             <div class="modal-content">
@@ -160,6 +163,9 @@
 </div>
 
 <div class="container-fluid mt--8">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Exporting to pdf...</p>
+  </ngx-spinner>
   <div class="row">
     <div class="col">
       <div class="card">
