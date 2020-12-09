@@ -11,6 +11,7 @@ import { RoutesModel } from "./routes.model";
 })
 export class RoutesService {
   url: string = environment.baseUrl + "v1/routes/";
+  // url: string = "http://127.0.0.1:8000/v1/routes/"
 
   // Data
   public rmodels: RoutesModel[] = [];
@@ -69,4 +70,12 @@ export class RoutesService {
       })
     );
   }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+  }
+  
 }

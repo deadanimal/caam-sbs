@@ -79,4 +79,11 @@ export class OrganisationsService {
       })
     );
   }
+  
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+  }
 }

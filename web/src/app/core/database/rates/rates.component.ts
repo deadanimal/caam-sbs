@@ -12,6 +12,8 @@ import swal from "sweetalert2";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { RatesService } from "src/app/shared/services/rates/rates.service";
 import { UsersService } from "src/app/shared/services/users/users.service";
+import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from "ngx-spinner";
 
 export enum SelectionType {
   single = "single",
@@ -57,7 +59,8 @@ export class RatesComponent implements OnInit {
     private modalService: NgbModal,
     public authService: AuthService,
     private rateService: RatesService,
-    private userService: UsersService
+    private userService: UsersService,
+    private spinner: NgxSpinnerService,
   ) {
     this.getRates();
 
@@ -111,6 +114,24 @@ export class RatesComponent implements OnInit {
       }
       return false;
     });
+  }
+
+  exportPdf() {
+    this.spinner.show()
+    this.rateService.exportpdf({}).subscribe(
+      (res) => {
+        console.log("this is res")
+        console.log(res)
+        FileSaver.saveAs(res, "Rates.pdf")
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+
+      }
+    )
   }
 
   searchTable() {

@@ -1,3 +1,4 @@
+import os
 import datetime, pandas, time
 from django.db.models import Count, Q, Sum
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -5,6 +6,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
+
+from django.core.files.storage import default_storage
+from weasyprint import HTML, CSS
+from django.template.loader import render_to_string
+from django.core.files.base import ContentFile
+
+
 
 from invoice.models import Invoices
 
@@ -128,4 +136,13 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         return Response(status.HTTP_200_OK)
 
+    @action(methods=['POST', 'GET'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        data_loaded = {}
+        html_string = render_to_string('invoice_en.html', {'data': data_loaded})
+        html = HTML(string=html_string)
+        pdf_file = html.write_pdf()
+        dirname = os.path.dirname(__file__)
+        f = open(os.path.join(dirname, 'mypdf.pdf'), 'wb')
+        f.write(pdf_file)
 

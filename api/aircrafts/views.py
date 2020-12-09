@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from django.db.models import Q
+from rest_framework_extensions.mixins import NestedViewSetMixin
+from django.http import HttpResponse
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import viewsets, status
-from rest_framework_extensions.mixins import NestedViewSetMixin
+
+from django.core.files.storage import default_storage
+from weasyprint import HTML, CSS
+from django.template.loader import render_to_string
+from django.core.files.base import ContentFile
+import os
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -70,4 +76,16 @@ class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         return Response(serializer_class.data)
  
- 
+    @action(methods=['POST', 'GET'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        report = Aircraft.objects.all().values()[:10]
+        file_name = 'AircraftsList.pdf'
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+        html_string = render_to_string('aircrafts_en.html', {'report': report})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+
+
+        
