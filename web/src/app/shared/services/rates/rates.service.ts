@@ -11,6 +11,7 @@ import { RatesModel } from "./rates.model";
 })
 export class RatesService {
   url: string = environment.baseUrl + "v1/rates/";
+  // url: string = "http://127.0.0.1:8000/v1/rates/"
 
   // Data
   public rmodels: RatesModel[] = [];
@@ -68,5 +69,12 @@ export class RatesService {
         console.log("RatesModel", res);
       })
     );
+  }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
   }
 }

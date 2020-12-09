@@ -11,6 +11,7 @@ import { CallsignsModel } from "./callsigns.model";
 })
 export class CallsignsService {
   url: string = environment.baseUrl + "v1/callsigns/";
+  // url: string = "http://127.0.0.1:8000/v1/callsigns/"
 
   // Data
   public callmodels: CallsignsModel[] = [];
@@ -68,5 +69,12 @@ export class CallsignsService {
         console.log("CallsignsModel", res);
       })
     );
+  }
+  
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
   }
 }

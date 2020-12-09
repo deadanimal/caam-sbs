@@ -15,6 +15,12 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
+from django.core.files.storage import default_storage
+from weasyprint import HTML, CSS
+from django.template.loader import render_to_string
+from django.core.files.base import ContentFile
+import os
+
 from django_filters.rest_framework import DjangoFilterBackend
 
 from aircrafts.models import Aircraft
@@ -91,6 +97,19 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Rate.objects.all()
         return queryset
+    
+    @action(methods=['POST'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        report = Rate.objects.all().values()[:10]
+        file_name = 'RatesList.pdf'
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+        html_string = render_to_string('rate_en.html', {'report': report})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+  
+ 
 
 
 class ChargeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -172,6 +191,17 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         #serializer_class = CallsignExtendedSerializer(queryset, many=True)
         
         return Response(serializer_class.data)
+
+    @action(methods=['POST'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        report = Callsign.objects.all().values()[:10]
+        file_name = 'CallsignList.pdf'
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+        html_string = render_to_string('callsign_en.html', {'report': report})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
  
  
 class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -207,6 +237,17 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         serializer_class = RouteExtendedSerializer(queryset, many=True)
         
         return Response(serializer_class.data) 
+
+    @action(methods=['POST'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        report = Route.objects.all().values()[:10]
+        file_name = 'RouteList.pdf'
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+        html_string = render_to_string('route_en.html', {'report': report})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
  
  
 class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -260,7 +301,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             queryset = FileUpload.objects.all()
             serializer_class = FileUploadExtendedSerializer(queryset, many=True)
             
-            return Response(serializer_class.data) 
+            return Response(serializer_class.data)
 
     # to upload the VFR (excel) and TFL (csv) data into database
     @action(methods=['POST'], detail=False)
@@ -318,6 +359,13 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         # if TFL, make a readable format
         elif data_type == 'TFL':
+            # make changes here
+            # todo
+            # query Route objects
+            # get tfl dest, dep, route data
+            # get distance
+            # update tfl
+
             response_array = []
             error_data = 0
             total_data = 0
@@ -355,7 +403,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'dep': array_tfl[10],
                                 'dest': array_tfl[13],
                                 'ctg': array_tfl[15],
-                                'dist': array_tfl[17],
+                                'dist': array_tfl[17], #will be changed
                                 'route': array_tfl[18],
                                 'rate': rate,
                                 'fpl_type': 'TFL',
@@ -784,7 +832,7 @@ class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['POST'], detail=False)
     def add_history(self, request, *args, **kwargs):
-        user_id = request.data['user_id'] 
+        user_id = request.data['user_id']
         master_id = request.data['master_data_id']
         remark = request.data['remark']
         reason = request.data['reason']

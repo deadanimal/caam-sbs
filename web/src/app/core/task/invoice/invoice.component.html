@@ -255,7 +255,7 @@
     </button>
   </div>
 
-  <div class="modal-body">
+  <div id="pdfTable" class="modal-body">
 
     <div class="row">
       <div class="col-md-6">
@@ -403,6 +403,13 @@
     <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
       Ok
     </button>
+    <button class="btn btn-success ml-auto" data-dismiss="modal" type="button" (click)="downloadAsPDF()">
+      getPdf()
+    </button>
+  </div>
+
+  <div class="test" id="testPdf" style="display: none;">
+    <h1>TEST</h1>
   </div>
 
 </ng-template>

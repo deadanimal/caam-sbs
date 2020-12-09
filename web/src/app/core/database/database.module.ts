@@ -23,6 +23,7 @@ import { AirportsComponent } from './airports/airports.component';
 import { CallsignsComponent } from './callsigns/callsigns.component';
 import { RatesComponent } from './rates/rates.component';
 import { RoutesComponent } from './routes/routes.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 let pages = [
   ExemptionsComponent,
@@ -52,6 +53,7 @@ let pages = [
     NgxDatatableModule,
     NgbModule,
     LeafletModule,
+    NgxSpinnerModule,
     BsDatepickerModule.forRoot(),
     PopoverModule.forRoot()
   ]

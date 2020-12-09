@@ -5,6 +5,7 @@ import {
   NgbModal,
 } from "@ng-bootstrap/ng-bootstrap";
 import swal from "sweetalert2";
+import domtoimage from 'dom-to-image';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -83,25 +84,40 @@ export class InvoiceComponent implements OnInit {
     this.getFpldata();
   }
 
-  @ViewChild('pdfTable', { static: false }) pdfTable: ElementRef;
+  // @ViewChild('pdfTable', { static: false }) pdfTable: ElementRef;
 
   // downloadAsPDF() {
-  //   var data = document.getElementById('pdfTable');  //Id of the table
+  //   var data = document.getElementById('testPdf');  //Id of the table
+  //   console.log(data)
   //   html2canvas(data).then(canvas => {
-  //     // Few necessary setting options
   //     let imgWidth = 208;
   //     let pageHeight = 295;
   //     let imgHeight = canvas.height * imgWidth / canvas.width;
   //     let heightLeft = imgHeight;
 
-  //     const contentDataURL = canvas.toDataURL('image/png')
   //     let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
   //     let position = 0;
-  //     pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-  //     pdf.save('Invoice.pdf'); // Generated PDF
+  //     setTimeout(function() {
+  //       pdf.save('Invoice.pdf'); // Generated PDF
+  //     }, 2000);
 
   //   });
   // }
+
+  downloadAsPDF() {
+    const data = document.getElementById('#pdfTable');
+    const options = { background: 'white', height: 845, width: 595 };
+    console.log(data)
+    domtoimage.toPng(data, options).then((dataUrl) => {
+      // init jspdf
+      const doc = new jsPDF('p', 'mm', 'a4');
+      setTimeout(function() {
+        doc.save('test.pdf');
+      }, 2000);
+
+    })
+
+  }
   generateInvoice = () => {
     swal
       .fire({

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Form } from "@angular/forms";
 import { tap } from "rxjs/operators";
 import { Observable } from "rxjs";
@@ -10,13 +10,14 @@ import { AircraftsModel } from "./aircrafts.model";
   providedIn: "root",
 })
 export class AircraftsService {
-  url: string = environment.baseUrl + "v1/aircrafts/";
+    url: string = environment.baseUrl + "v1/aircrafts/";
+  // url: string = "http://127.0.0.1:8000/v1/aircrafts/";
 
   // Data
   public amodels: AircraftsModel[] = [];
   public amodel: AircraftsModel;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   post(body): Observable<AircraftsModel> {
     return this.http.post<any>(this.url, body).pipe(
@@ -69,4 +70,17 @@ export class AircraftsService {
       })
     );
   }
+
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+  }
+
+
+
+
+
 }

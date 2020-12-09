@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template import Context, Template
+from django.http import HttpResponse
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -9,6 +10,12 @@ from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
+
+from django.core.files.storage import default_storage
+from weasyprint import HTML, CSS
+from django.template.loader import render_to_string
+from django.core.files.base import ContentFile
+import os
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -86,5 +93,19 @@ class OrganisationViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
+    
+    @action(methods=['POST'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        report = Organisation.objects.all().values()[:10] #filter airline orgs only
+        print(report) 
+
+        # development mode
+        file_name = 'AirlineList.pdf'
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+        html_string = render_to_string('airline_en.html', {'report': report})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
  
  

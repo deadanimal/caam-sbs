@@ -8,6 +8,13 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
+from django.core.files.storage import default_storage
+from weasyprint import HTML, CSS
+from django.template.loader import render_to_string
+from django.core.files.base import ContentFile
+from django.http import HttpResponse
+import os
+
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import (
@@ -68,6 +75,18 @@ class AirportViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             else:
                 queryset = Aircraft.objects.filter(company=company.id)
         """
-        return queryset    
+        return queryset  
+    
+    @action(methods=['POST'], detail=False)
+    def downloadpdf(self, request, *args, **kwargs):
+        report = Airport.objects.all().values()[:10]
+        file_name = 'AirportsList.pdf'
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+        html_string = render_to_string('airport_en.html', {'report': report})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+
  
  

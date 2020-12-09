@@ -14,6 +14,9 @@ import { AirportsService } from "src/app/shared/services/airports/airports.servi
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { UsersService } from "src/app/shared/services/users/users.service";
 import * as countrylist from "src/app/variables/country-lists";
+import * as FileSaver from 'file-saver';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 export enum SelectionType {
   single = "single",
@@ -60,7 +63,8 @@ export class AirportsComponent implements OnInit {
     private modalService: NgbModal,
     private airportService: AirportsService,
     public authService: AuthService,
-    private userService: UsersService
+    private userService: UsersService,
+    private spinner: NgxSpinnerService,
   ) {
     this.getAirport();
 
@@ -98,6 +102,25 @@ export class AirportsComponent implements OnInit {
         console.error("err", err);
       }
     );
+  }
+
+  exportPdf() {
+    this.spinner.show()
+    this.airportService.exportpdf({}).subscribe(
+      (res) => {
+        console.log("this is res")
+        console.log(res)
+        FileSaver.saveAs(res, "Airports.pdf")
+        this.spinner.hide()
+
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+
+      }
+    )
   }
 
   entriesChange($event) {
