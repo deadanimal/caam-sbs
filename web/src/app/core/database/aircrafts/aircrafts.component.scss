@@ -61,3 +61,7 @@
   .btn:disabled{
     pointer-events: none;
   }
+
+  select:invalid {
+    color: gray;
+  }

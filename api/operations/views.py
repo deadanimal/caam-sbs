@@ -4,8 +4,11 @@ from django.db.models.functions import Substr
 from django.utils import timezone
 import json, os, regex, pandas, csv
 
+from datetime import datetime as dt
 from django.core import serializers
 from django.http import HttpResponse
+import io
+import xlsxwriter
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import FileUploadParser, JSONParser
@@ -98,14 +101,50 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         queryset = Rate.objects.all()
         return queryset
     
-    @action(methods=['POST'], detail=False)
-    def downloadpdf(self, request, *args, **kwargs):
-        report = Rate.objects.all().values()[:10]
-        file_name = 'RatesList.pdf'
-        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
-        html_string = render_to_string('rate_en.html', {'report': report})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
-        response = HttpResponse(pdf, content_type='application/pdf')
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = Rate.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'RateList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('rate_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/RateList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
   
@@ -192,17 +231,52 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         return Response(serializer_class.data)
 
-    @action(methods=['POST'], detail=False)
-    def downloadpdf(self, request, *args, **kwargs):
-        report = Callsign.objects.all().values()[:10]
-        file_name = 'CallsignList.pdf'
-        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
-        html_string = render_to_string('callsign_en.html', {'report': report})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
-        response = HttpResponse(pdf, content_type='application/pdf')
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = Callsign.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'CallsignList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('callsign_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/CallsignList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
- 
  
 class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Route.objects.all()
@@ -238,14 +312,50 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         return Response(serializer_class.data) 
 
-    @action(methods=['POST'], detail=False)
-    def downloadpdf(self, request, *args, **kwargs):
-        report = Route.objects.all().values()[:10]
-        file_name = 'RouteList.pdf'
-        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
-        html_string = render_to_string('route_en.html', {'report': report})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
-        response = HttpResponse(pdf, content_type='application/pdf')
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = Route.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'RouteList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('route_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/RouteList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
  
@@ -685,6 +795,11 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             serializer_class = FpldataSerializer(queryset, many=True)
             
             return Response(serializer_class.data) 
+
+    @action(methods=['GET'], detail=False)
+    def movement_report(self, request, *args, **kwargs):
+        print("user", request.user)
+        return Response({})
 
     def partial_update(self, request, pk=None):
         fpldata = self.get_object()

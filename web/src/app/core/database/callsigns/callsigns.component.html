@@ -41,9 +41,11 @@
             Add New Callsign
           </button>
 
-          <button class="btn btn-sm btn-dark" (click)="exportPdf()">
-            Export
-          </button>
+          <select class="btn btn-sm btn-dark dropdown-toggle" style="background-color: black; color: white" id="selectid" (change)="exportPdf($event.target.value)">
+            <option disabled selected hidden><b>Export</b></option>
+            <option class="dropdown-item" value="PDF" style="color: white;">Export Pdf</option>
+            <option class="dropdown-item" value="XLSX" style="color: white;">Export Excel</option>
+          </select>
 
           <ng-template #classic1 let-c="close" let-d="dismiss">
             <div class="modal-content">
@@ -128,7 +130,7 @@
 
 <div class="container-fluid mt--8">
   <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
-    <p style="color: white;">Exporting to pdf...</p>
+    <p style="color: white;">Exporting...</p>
   </ngx-spinner>
   <!-- <div class="row">
             <div class="col">

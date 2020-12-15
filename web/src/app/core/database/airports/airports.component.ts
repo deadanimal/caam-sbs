@@ -104,21 +104,26 @@ export class AirportsComponent implements OnInit {
     );
   }
 
-  exportPdf() {
+  exportPdf(value: string) {
+    console.log("value", value)
     this.spinner.show()
-    this.airportService.exportpdf({}).subscribe(
+    this.airportService.exportpdf({"file_type":value}).subscribe(
       (res) => {
-        console.log("this is res")
-        console.log(res)
-        FileSaver.saveAs(res, "Airports.pdf")
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Airport.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Airport.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
         this.spinner.hide()
-
       },
       (err) => {
         console.log("this is err")
         console.log(err)
         this.spinner.hide()
-
       }
     )
   }

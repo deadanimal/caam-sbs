@@ -114,13 +114,20 @@ export class AirlinesComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
-  exportPdf() {
+  exportPdf(value: string) {
+    console.log("value", value)
     this.spinner.show()
-    this.organisationService.exportpdf({}).subscribe(
+    this.organisationService.exportpdf({"file_type":value}).subscribe(
       (res) => {
-        console.log("this is res")
-        console.log(res)
-        FileSaver.saveAs(res, "Airlines.pdf")
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Airline.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Airline.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
         this.spinner.hide()
       },
       (err) => {

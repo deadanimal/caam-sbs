@@ -75,7 +75,7 @@ export class RoutesService {
     var HTTPOptions = {
       'responseType': 'blob' as 'json'
     }
-    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
   }
   
 }
