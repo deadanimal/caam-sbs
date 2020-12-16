@@ -18,7 +18,7 @@ spec:
         app: caam-sbs-webapp
     spec:
       containers:
-      - image: syafiqpipe/caam-sbs-webapp:1.0.13
+      - image: syafiqpipe/caam-sbs-webapp:1.0.18
         imagePullPolicy: Always   
         name: caam-sbs-webapp
         resources: {}
