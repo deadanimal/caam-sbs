@@ -149,4 +149,14 @@ export class FpldatasService {
       })
     );
   }
+
+  // Get movement report
+  movement_report(): Observable<any> {
+    let url = this.url + "movement_report/";
+    return this.http.get<any>(url).pipe(
+      tap((res) => {
+        console.log("Movement Report", res);
+      })
+    );
+  }
 }

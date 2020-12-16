@@ -336,8 +336,8 @@ class Fpldata(models.Model):
     archived_at = models.DateTimeField(null=True)
     approved_at = models.DateTimeField(null=True)
 
-    # class Meta:
-        # ordering = ['fpl_date']
+    class Meta:
+        ordering = ['-error_remark']
 
     @property
     def calculate_amount(self):

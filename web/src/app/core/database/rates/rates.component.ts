@@ -116,20 +116,26 @@ export class RatesComponent implements OnInit {
     });
   }
 
-  exportPdf() {
+  exportPdf(value: string) {
+    console.log("value", value)
     this.spinner.show()
-    this.rateService.exportpdf({}).subscribe(
+    this.rateService.exportpdf({"file_type":value}).subscribe(
       (res) => {
-        console.log("this is res")
-        console.log(res)
-        FileSaver.saveAs(res, "Rates.pdf")
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Rates.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Rates.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
         this.spinner.hide()
       },
       (err) => {
         console.log("this is err")
         console.log(err)
         this.spinner.hide()
-
       }
     )
   }

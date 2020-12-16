@@ -109,13 +109,20 @@ export class CallsignsComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
-  exportPdf() {
+  exportPdf(value: string) {
+    console.log("value", value)
     this.spinner.show()
-    this.callsignService.exportpdf({}).subscribe(
+    this.callsignService.exportpdf({"file_type":value}).subscribe(
       (res) => {
-        console.log("this is res")
-        console.log(res)
-        FileSaver.saveAs(res, "Callsign.pdf")
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Callsign.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Callsign.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
         this.spinner.hide()
       },
       (err) => {

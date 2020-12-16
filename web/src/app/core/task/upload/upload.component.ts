@@ -136,6 +136,7 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getFplData();
   }
 
 
