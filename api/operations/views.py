@@ -4,8 +4,11 @@ from django.db.models.functions import Substr
 from django.utils import timezone
 import json, os, regex, pandas, csv
 
+from datetime import datetime as dt
 from django.core import serializers
 from django.http import HttpResponse
+import io
+import xlsxwriter
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import FileUploadParser, JSONParser
@@ -98,14 +101,50 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         queryset = Rate.objects.all()
         return queryset
     
-    @action(methods=['POST'], detail=False)
-    def downloadpdf(self, request, *args, **kwargs):
-        report = Rate.objects.all().values()[:10]
-        file_name = 'RatesList.pdf'
-        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
-        html_string = render_to_string('rate_en.html', {'report': report})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
-        response = HttpResponse(pdf, content_type='application/pdf')
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = Rate.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'RateList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('rate_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/RateList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
   
@@ -192,17 +231,52 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         return Response(serializer_class.data)
 
-    @action(methods=['POST'], detail=False)
-    def downloadpdf(self, request, *args, **kwargs):
-        report = Callsign.objects.all().values()[:10]
-        file_name = 'CallsignList.pdf'
-        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
-        html_string = render_to_string('callsign_en.html', {'report': report})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
-        response = HttpResponse(pdf, content_type='application/pdf')
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = Callsign.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'CallsignList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('callsign_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/CallsignList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
- 
  
 class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Route.objects.all()
@@ -238,14 +312,50 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         return Response(serializer_class.data) 
 
-    @action(methods=['POST'], detail=False)
-    def downloadpdf(self, request, *args, **kwargs):
-        report = Route.objects.all().values()[:10]
-        file_name = 'RouteList.pdf'
-        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
-        html_string = render_to_string('route_en.html', {'report': report})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
-        response = HttpResponse(pdf, content_type='application/pdf')
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = Route.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'RouteList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('route_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/RouteList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
  
@@ -323,53 +433,60 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             reader = pandas.read_csv(data_file_link)
 
         # if VFR, make a readable format
+        item_saved = 0
         if data_type == 'VFR':
             response_array = []
             error_data = 0
             total_data = 0
             file_date = ''
-            for json_dict in json.loads(reader.to_json(orient='records')):
+            loop_count = 0
+            pool_dict = [i for i in json.loads(reader.to_json(orient='records')) if i['DATETIME'] is not None]
+            for json_dict in pool_dict:
+                # print("json dict", json_dict.items())
                 # for key,value in json_dict.items(): 
-                if json_dict['DATE']:
+                #     loop_count += 1
+                if json_dict['DATETIME']:
+                    dt = str(json_dict['DATETIME'])
                     temp_obj = {
-                        'fpl_date': change_time_format(json_dict['DATE']),
-                        'fpl_date_ts': change_time_format(json_dict['DATE'], change_to_time=True),
+                        'fpl_date': change_time_format(dt),
+                        'fpl_date_ts': change_time_format(dt, change_to_time=True),
                         'fpl_no': json_dict['CALLSIGN'],
-                        'fr': json_dict['FR'],
+                        # 'fr': json_dict['FR'],
                         'aircraft_model': json_dict['TYPE'],
                         'dep': json_dict['DEP'],
                         'dest': json_dict['DEST'],
                         'ctg': json_dict['CTG'],
                         'dist': json_dict['DIST'],
+                        'route': json_dict['ROUTE'],
                         'fpl_type': 'VFR',
                         'uploaded_by': request.data['uploaded_by'],
                         'fileupload': fileupload_id,
                         'status': 'FPL0'
                     }
+
                     response_array.append(temp_obj)
 
                     serializer = FpldataSerializer(data=temp_obj)
                     total_data += 1
-                    # file_date = array_tfl[2][0:8]
+
+                    file_date_ts = change_time_format(dt, change_to_time=True)
 
                     if serializer.is_valid():
                         serializer.save()
                     else:
+                        print(serializer.errors)
                         error_data += 1
+            
+            print("loop count", loop_count)
 
         # if TFL, make a readable format
         elif data_type == 'TFL':
-            # make changes here
-            # todo
-            # query Route objects
-            # get tfl dest, dep, route data
-            # get distance
-            # update tfl
 
             response_array = []
             error_data = 0
             total_data = 0
             file_date = ''
+
             for json_dict in json.loads(reader.to_json(orient='records')):
                 for key,value in json_dict.items():
                     # print("key: {0} | value: {1}".format(key, regex.sub(' +', '|', value)))
@@ -378,21 +495,31 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                         
                         if (array_tfl[4] == 'IS'):
 
-                            error_remark1 = ""
-                            error_remark2 = ""
+                            error_remark = []
 
                             rate = 0.00
                             aircraft_exist = Aircraft.objects.filter(model=array_tfl[7]).values()
                             if len(aircraft_exist) > 0:
                                 rate =  aircraft_exist[0]['rate']
                             else:
-                                error_remark1 = 'Please check the aircraft model.'
+                                error_remark.append('PLEASE CHECK THE AIRCRAFT MODEL.')
 
                             route_exist = Route.objects.filter(departure=array_tfl[10],destination=array_tfl[13]).values()
                             if len(route_exist) > 0:
                                 distance = route_exist[0]['distance']
                             else:
-                                error_remark2 = 'Please check the departure and destination.'
+                                error_remark.append('PLEASE CHECK THE DEPARTURE AND DESTINATION.')
+                            
+                            distance = 0
+                            for i in route_exist:
+                                tt = i['description'].split(" ")
+                                for j in tt:
+                                    if j == array_tfl[18]:
+                                        distance = i['distance']
+                            
+                            # if no routes in database
+                            if distance == 0:
+                                error_remark.append('PLEASE CHECK THE ROUTE. CURRENT ROUTE IS NOT IN DATABASE')
 
                             temp_obj = {
                                 'fpl_date': change_time_format(array_tfl[2]),
@@ -403,18 +530,17 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'dep': array_tfl[10],
                                 'dest': array_tfl[13],
                                 'ctg': array_tfl[15],
-                                'dist': array_tfl[17], #will be changed
+                                'dist': distance, 
                                 'route': array_tfl[18],
                                 'rate': rate,
                                 'fpl_type': 'TFL',
                                 'uploaded_by': request.data['uploaded_by'],
-                                'error_remark': ' '.join((error_remark1, error_remark2)),
+                                'error_remark': ''.join(error_remark),
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
 
                             # test
-                            print(temp_obj)
 
                             # 'num': array_tfl[1],
                             # 'fpl_date': array_tfl[2],
@@ -438,12 +564,13 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
                         else:
                             # to concat array for get icao route
+                            error_remark = []
+
                             temp_array = []
                             for x in range(19, len(array_tfl)):
                                 temp_array.append(array_tfl[x])
 
                             icao_route = ' '.join(temp_array)
-
                             error_remark1 = "" # to find if the aircraft type/model existed
                             error_remark2 = "" # to find if the departure and destination existed
 
@@ -452,13 +579,28 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                             if len(aircraft_exist) > 0:
                                 rate =  aircraft_exist[0]['rate']
                             else:
-                                error_remark1 = 'Please check the aircraft model.'
+                                error_remark.append('PLEASE CHECK THE AIRCRAFT MODEL.')
 
                             route_exist = Route.objects.filter(departure=array_tfl[11],destination=array_tfl[14]).values()
                             if len(route_exist) > 0:
                                 distance = route_exist[0]['distance']
                             else:
-                                error_remark2 = 'Please check the departure and destination.'
+                                error_remark.append('PLEASE CHECK THE DEPARTURE AND DESTINATION.')
+                        
+                            un_match = 0
+                            distance = 0
+                            for i in route_exist:
+                                tt = i['description'].split(" ")
+                                for j in tt:
+                                    if temp_array.count(j) == 0:
+                                        un_match += 1
+
+                                if un_match == 0:
+                                    distance = i['distance']
+
+                            # if no routes in database
+                            if distance == 0:
+                                error_remark.append('PLEASE CHECK THE ROUTE. CURRENT ROUTE IS NOT IN DATABASE')
 
                             temp_obj = {
                                 'fpl_date': change_time_format(array_tfl[2]),
@@ -469,12 +611,12 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'dep': array_tfl[11],
                                 'dest': array_tfl[14],
                                 'ctg': array_tfl[16],
-                                'dist': array_tfl[18],
+                                'dist': distance,
                                 'route': icao_route,
                                 'rate': rate,
                                 'fpl_type': 'TFL',
                                 'uploaded_by': request.data['uploaded_by'],
-                                'error_remark': ' '.join((error_remark1, error_remark2)),
+                                'error_remark': ''.join(error_remark),
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
@@ -514,6 +656,8 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                             error_data += 1
 
         fileupload = FileUpload.objects.filter(id=fileupload_id)
+        print("fileupload", fileupload)
+        print("len",len(fileupload))
         fileupload.update(total_data=total_data,file_date=file_date,file_date_ts=file_date_ts)
         if error_data > 0:
             return Response(status.HTTP_400_BAD_REQUEST)
@@ -525,6 +669,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         uploaded_by = self.request.query_params.get('uploaded_by')
         print(uploaded_by)
         queryset = FileUpload.objects.filter(uploaded_by_id=uploaded_by).order_by('-created_at').values().first()
+        print("Culprit", queryset)
 
         return Response(queryset)
 
@@ -650,6 +795,11 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             serializer_class = FpldataSerializer(queryset, many=True)
             
             return Response(serializer_class.data) 
+
+    @action(methods=['GET'], detail=False)
+    def movement_report(self, request, *args, **kwargs):
+        print("user", request.user)
+        return Response({})
 
     def partial_update(self, request, pk=None):
         fpldata = self.get_object()

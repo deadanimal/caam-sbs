@@ -10,7 +10,7 @@ import { AircraftsModel } from "./aircrafts.model";
   providedIn: "root",
 })
 export class AircraftsService {
-    url: string = environment.baseUrl + "v1/aircrafts/";
+  url: string = environment.baseUrl + "v1/aircrafts/";
   // url: string = "http://127.0.0.1:8000/v1/aircrafts/";
 
   // Data
@@ -76,7 +76,7 @@ export class AircraftsService {
     var HTTPOptions = {
       'responseType': 'blob' as 'json'
     }
-    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
   }
 
 

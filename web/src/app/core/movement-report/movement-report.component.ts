@@ -2,8 +2,8 @@
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/movement-report";
-import { MovementReportService } from 'src/app/shared/services/movement-report/movement-report.service';
-import { MovementReport } from 'src/app/shared/services/movement-report/movement-report.model';
+import { FpldatasService } from 'src/app/shared/services/fpldatas/fpldatas.service';
+import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
 
 @Component({
   selector: 'app-movement-report',
@@ -28,7 +28,7 @@ export class MovementReportComponent implements OnInit {
   searchText: String;
 
   // Data
-  movementReports: MovementReport[] = [];
+  movementReports: FpldatasModel[] = [];
   // public url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
   // Modal
@@ -42,7 +42,7 @@ export class MovementReportComponent implements OnInit {
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
-    private movementReportService: MovementReportService,
+    private movementReportService: FpldatasService,
   ) {
     this.filterby = "all";
     this.searchText = "";
@@ -50,6 +50,7 @@ export class MovementReportComponent implements OnInit {
 
   ngOnInit() {
     this.FilterTable(this.filterby);
+    this.getAllData();
   }
 
   download(url: string): void {
@@ -94,9 +95,10 @@ export class MovementReportComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.movementReportService.get().subscribe(
+    this.movementReportService.movement_report().subscribe(
       data => {
         this.movementReports = data;
+        console.log("Mama", this.movementReports)
       },
       error => {
         console.log(error)

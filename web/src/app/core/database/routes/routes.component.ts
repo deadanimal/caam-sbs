@@ -258,13 +258,20 @@ export class RoutesComponent implements OnInit {
     this.entries = $event.target.value;
   }
   
-  exportPdf() {
+  exportPdf(value: string) {
+    console.log("value", value)
     this.spinner.show()
-    this.routeService.exportpdf({}).subscribe(
+    this.routeService.exportpdf({"file_type":value}).subscribe(
       (res) => {
-        console.log("this is res")
-        console.log(res)
-        FileSaver.saveAs(res, "Routes.pdf")
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Routes.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Routes.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
         this.spinner.hide()
       },
       (err) => {

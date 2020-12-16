@@ -121,13 +121,20 @@ export class AircraftsComponent implements OnInit {
     );
   }
 
-  exportPdf() {
+  exportPdf(value: string) {
+    console.log("value", value)
     this.spinner.show()
-    this.aircraftService.exportpdf({}).subscribe(
+    this.aircraftService.exportpdf({"file_type":value}).subscribe(
       (res) => {
-        console.log("this is res")
-        console.log(res)
-        FileSaver.saveAs(res, "Aircrafts.pdf")
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Aircraft.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Aircraft.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
         this.spinner.hide()
       },
       (err) => {
