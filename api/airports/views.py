@@ -83,7 +83,7 @@ class AirportViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Airport.objects.all().values()
+        report = Airport.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 

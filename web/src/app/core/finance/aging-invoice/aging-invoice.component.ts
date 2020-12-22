@@ -4,13 +4,18 @@ import * as dummylist from "src/app/variables/finance/aging-invoice";
 import { AgingInvoicesService } from 'src/app/shared/services/finance/aging-invoice/aging-invoice.service';
 import { AgingInvoice } from 'src/app/shared/services/finance/aging-invoice/aging-invoice.model';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerService } from "ngx-spinner";
 
+// invoice handler
+import { InvoicesService } from 'src/app/shared/services/finance/invoice/invoices.service';
+import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model';
 @Component({
   selector: 'app-aging-invoice',
   templateUrl: './aging-invoice.component.html',
   styleUrls: ['./aging-invoice.component.scss']
 })
 export class AgingInvoiceComponent implements OnInit {
+  invoices : Invoice[] = [];
 
   page = 1;
 
@@ -52,7 +57,9 @@ export class AgingInvoiceComponent implements OnInit {
     public zone: NgZone,
     private modalService: BsModalService,
     private agingInvoiceService: AgingInvoicesService,
-    private datePipe: DatePipe
+    private invoiceService: InvoicesService,
+    private datePipe: DatePipe,
+    private spinner: NgxSpinnerService,
   ) {
     this.filterby = "all";
     this.searchText = "";
@@ -61,6 +68,8 @@ export class AgingInvoiceComponent implements OnInit {
 
   ngOnInit() {
     this.FilterTable(this.filterby);
+    this.refreshOutstanding();
+    this.getData();
   }
   download(url: string): void {
     console.log(url);
@@ -91,6 +100,32 @@ export class AgingInvoiceComponent implements OnInit {
   //     // console.log(this.invoicenos)
   //   }
   // }
+
+  getData() {
+    this.spinner.show()
+    this.invoiceService.get_aging().subscribe(
+      data => {
+        this.invoices = data['data'];
+        console.log("wgat", this.invoices)
+        this.spinner.hide()
+      },
+      error => {
+        console.log(error)
+        this.spinner.hide()
+      }
+    )
+  }
+
+  refreshOutstanding() {
+    this.invoiceService.get_outstanding().subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
 
   FilterTable(field) {
     let search = field.toLocaleLowerCase();
