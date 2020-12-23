@@ -1,42 +1,13 @@
 
-// export class Invoice {
-//   public id: string;
-//   public invoicenumber: string;
-//   public cid: string;
-//   public companyname: string;
-//   public invoicedate: any;
-//   public amount: number;
-//   public status: string;
-
-
-//   constructor(
-//     id: string,
-//     invoicenumber: string,
-//     cid: string,
-//     companyname: string,
-//     invoicedate: any,
-//     amount: number,
-//     status: string,
-//   ) {
-//     this.id = id;
-//     this.invoicenumber = invoicenumber;
-//     this.cid = cid;
-//     this.companyname = companyname;
-//     this.invoicedate = invoicedate;
-//     this.amount = amount;
-//     this.status = status;
-    
-//   }
-// }
-
 export class Invoice {
+  public inv_period: string;
   public id: string;
   public invoice_no: string;
   public company_name: string;
   public company_address: string;
   public company_email: string;
   public office_num: string;
-  public fax_number: string; 
+  public fax_number: string;
   public status: string;
   public created_at: any;
   public created_at_str: string;
@@ -52,15 +23,23 @@ export class Invoice {
   public invoice_total: number;
   public cid: string;
   public total_flight: number;
+  public month_0_1: number;
+  public month_1_3: number;
+  public month_4_6: number;
+  public month_7_12: number;
+  public month_13_36: number;
+  public month_36_72: number;
+  public month_73: number;
 
   constructor(
+    inv_period: string,
     id: string,
     invoice_no: string,
     company_name: string,
     company_address: string,
     company_email: string,
     office_num: string,
-    fax_number: string, 
+    fax_number: string,
     status: string,
     created_at: any,
     created_at_str: string,
@@ -76,14 +55,24 @@ export class Invoice {
     invoice_total: number,
     cid: string,
     total_flight: number,
+    month_0_1: number,
+    month_1_3: number,
+    month_4_6: number,
+    month_7_12: number,
+    month_13_36: number,
+    month_36_72: number,
+    month_73: number,
+
+
   ) {
+    this.inv_period = inv_period;
     this.id = id;
     this.invoice_no = invoice_no;
     this.company_name = company_name;
     this.company_address = company_address;
     this.company_email = company_email;
     this.office_num = office_num;
-    this.fax_number = fax_number; 
+    this.fax_number = fax_number;
     this.status = status;
     this.created_at = created_at;
     this.created_at_str = created_at_str;
@@ -99,5 +88,12 @@ export class Invoice {
     this.invoice_total = invoice_total;
     this.cid = cid;
     this.total_flight = total_flight;
+    this.month_0_1 = month_0_1;
+    this.month_1_3 = month_1_3;
+    this.month_4_6 = month_4_6;
+    this.month_7_12 = month_7_12;
+    this.month_13_36 = month_13_36;
+    this.month_36_72 = month_36_72;
+    this.month_73 = month_73;
   }
 }

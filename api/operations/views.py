@@ -104,7 +104,7 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Rate.objects.all().values()
+        report = Rate.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 
@@ -234,7 +234,7 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Callsign.objects.all().values()
+        report = Callsign.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 
@@ -315,7 +315,7 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Route.objects.all().values()
+        report = Route.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 

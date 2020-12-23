@@ -170,9 +170,9 @@ export class InvoicesComponent implements OnInit {
 
   statusBadge(status: string) {
     if (status == "UNPAID") return "badge badge-danger";
-    if (status == "Disputed") return "badge badge-warning";
+    if (status == "OUTSTANDING") return "badge badge-warning";
     if (status == "Partial") return "badge badge-primary";
-    if (status == "Paid") return "badge badge-success";
+    if (status == "PAID") return "badge badge-success";
   }
 
   testSpinner() {

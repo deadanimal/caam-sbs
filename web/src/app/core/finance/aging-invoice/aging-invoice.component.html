@@ -24,6 +24,9 @@
 </div>
 
 <div class="container-fluid mt--8 ">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Updating Aging Data...</p>
+  </ngx-spinner>
   <div class="row">
     <div class="col">
       <div class="card mb-4">
@@ -205,14 +208,14 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true"
-            [groupExpansionDefault]="true" [groupRowsBy]="'companyname'">
+            [rows]="invoices | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true"
+            [groupExpansionDefault]="true" [groupRowsBy]="'company_name'">
 
             <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader >
               <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
                 <div style="padding: 10px 20px;" class="mt-4">
                   <div href="javascript:void(0)">
-                    <b>{{group.value[0].companyname}}</b>
+                    <b>{{group.value[0].company_name}}</b>
                   </div>
                 </div>
               </ng-template>
@@ -221,6 +224,18 @@
             <ngx-datatable-column name="cid" style="border-right: solid 1px black !important;">
               <ng-template ngx-datatable-header-template >
                 <span>CID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <table class="table align-items-center table-flush">
+                  <tbody>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.cid_id}}</td>
+                    </tr>
+                    <tr>
+                      <td class="hide-temporary">{{0}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </ng-template>
             </ngx-datatable-column>
 
@@ -231,8 +246,8 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.invoiceperiod}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.inv_period}}</td>
                     </tr>
                     <tr>
                       <td class="hide-temporary">{{0}}</td>
@@ -250,12 +265,12 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.invoicenumber}}</td>
-                    </tr>
-                    <tr>
-                      <td class="hide-temporary">{{0}}</td>
-                    </tr>
+                   <tr *ngFor="let i of row.invoices">
+                     <td>{{i.invoice_no}}</td>
+                   </tr>
+                   <tr>
+                     <td class="hide-temporary">{{0}}</td>
+                   </tr>
                   </tbody>
                 </table>
               </ng-template>
@@ -268,11 +283,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.invoicedate}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.created_at_str}}</td>
                     </tr>
                     <tr>
-                      <td class="total">SUBTOTAL</td>
+                      <td class="total"><b>SUBTOTAL</b></td>
                     </tr>
                   </tbody>
                 </table>
@@ -286,11 +301,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.invoicetotal | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.invoice_total | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalinvoice | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_invoice | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -312,11 +327,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month0to1 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_0_1 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth0to1 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_0_1 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -330,11 +345,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month1to3 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_1_3 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth1to3 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_1_3 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -348,11 +363,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month4to6 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_4_6 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth4to6 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_4_6 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -366,11 +381,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month7to12 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_7_12 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth7to12 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_7_12 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -384,11 +399,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month13to36 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_13_36 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth13to36 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_13_36 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -402,11 +417,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month36to72 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_37_72 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth36to72 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_37_72 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -420,11 +435,11 @@
               <ng-template ngx-datatable-cell-template let-row="row">
                 <table class=" table align-items-center table-flush">
                   <tbody>
-                    <tr *ngFor="let secondrow of row.invoice">
-                      <td>{{secondrow.month72 | currency: "MYR"}}</td>
+                    <tr *ngFor="let i of row.invoices">
+                      <td>{{i.month_73 | currency: "MYR"}}</td>
                     </tr>
                     <tr>
-                      <td class="total">{{row.subtotalmonth72 | currency: "MYR"}}</td>
+                      <td class="total">{{row.subtotal_month_73 | currency: "MYR"}}</td>
                     </tr>
                   </tbody>
                 </table>

@@ -65,7 +65,6 @@ export class CallsignsComponent implements OnInit {
     private spinner: NgxSpinnerService,
   ) {
     this.getCallsign();
-
     this.callsignFormGroup = this.formBuilder.group({
       id: new FormControl(""),
       callsign: new FormControl(""),
@@ -85,11 +84,9 @@ export class CallsignsComponent implements OnInit {
   }
 
   getCallsign() {
-    console.log("THIS");
-
     this.callsignService.get().subscribe(
       (res) => {
-        console.log("res", res);
+        console.log("callsign", res);
         this.rows = res;
         this.temp = this.rows.map((prop, key) => {
           return {
@@ -309,5 +306,7 @@ export class CallsignsComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCallsign();
+  }
 }

@@ -38,9 +38,27 @@ export class InvoicesService {
     );
   }
 
+  // get aging
+  get_aging(): Observable<Invoice[]> {
+    return this.http.get<any>(this.url + "aging/").pipe(
+      tap((res)=> {
+        console.log("aging", res)
+      })
+    )
+  }
+
   // generate invoice will use this connector
   post(opost:Posts): Observable<any> {
     return this.http.post(this.url + "generate/", opost)
+  }
+
+  // process outstanding invoices
+  get_outstanding(): Observable<Invoice[]> {
+    return this.http.get<any>(this.url + "check_outstanding/").pipe(
+      tap((res) => {
+        console.log("Outstanding", res)
+      })
+    )
   }
 
 
