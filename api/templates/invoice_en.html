@@ -11,12 +11,8 @@
         @charset "UTF-8";
 
         @page {
-            /* padding: 2cm; */
-            /* size: A4; Change from the default size of A4 */
-            /* padding: 2.0cm; Set margin on each page */
             size: A4 portait;
 
-            /* margin: 4.01cm 2.48cm 3.34cm 2.48cm; */
             @top-right {
                 content: "Page "counter(page) " of "counter(pages);
             }
@@ -87,56 +83,118 @@
 <body>
     <div class="container">
         <div class="card">
-            <div class="card-header">
+            <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6" style="float: left;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 text-align-center-left">
+                        <h5>Date: {{current_date}}</h5><br>
+                        <h5><b>CIVIL AVIATION AUTHORITY OF MALAYSIA</b><br>
+                            ANFC Unit, Air Traffic Management Centre<br>
+                            Level 4, Podium Block B, Lot 4G4, Precinct 4<br>
+                            No. 27, Persiaran Perdana<br>
+                            62618 Putrajaya, MALAYSIA<br>
+                            Email : anfc.abs@gmail.com<br>
+                            Tel No : +603 8871 4000<br>
+                            Fax No : +603 8881 0520<br>
+                        </h5><br>
                         <h5>
-                            <b>Department of Civil Aviation - Malaysia</b>
+                            INVPeriod : {{invoice.inv_period}}<br>
+                            Invoiced To : CID {{invoice.cid_id}}<br>
+                            {{invoice.company_name}}<br>
+                            {{invoice.company_address}}<br>
+                            Email : {{invoice.company_email}}<br>
+                            Tel : {{invoice.office_num}}<br>
+                            Fax : {{invoice.fax_number}}<br>
                         </h5>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 text-right">
+                        <h5>INVOICE: {{invoice.running_no}}</h5><br>
+                        <img src="/static/caam.png" width="100" height="100"><br><br>
                         <h5>
-                            Air Navigation Facilities Charges System
+                            <b>INVOICE</b><br>
+                            <b># {{invoice.invoice_no}}</b><br>
+                            <b>Status: {{invoice.status}}</b><br><br>
+                            <b>CID {{invoice.cid_id}}</b><br>
+                            Invoice Date: {{invoice.created_at_str}}<br>
+                            Due Date: {{invoice.due_at_str}}<br>
                         </h5>
-                        <h5>List of Aircrafts</h5>
-                        <h5>Date: {{ ctime }} <input type="text" id="demo" /></h5>
+                    </div>
+                </div>
+                <div class="" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <table class="table" cellspacing="0" style="border: solid 0.1px; border-color: whitesmoke;">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Flight</th>
+                                        <th style="width: 25%;">Amt (MYR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i,j in first_table %}
+                                    <tr>
+                                        <td>
+                                            <h5>{{i}}</h5>
+                                        </td>
+                                        <td>
+                                            <h5>{{j}}</h5>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-8">
+                            <table class="table" cellspacing="0" style="border: solid 0.1px; border-color: whitesmoke;">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 55%;">Item</th>
+                                        <th style="width: 15%;">Amount (MYR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i,j in second_table %}
+                                    <tr>
+                                        <td>
+                                            <h5>{{i}}</h5>
+                                        </td>
+                                        <td>
+                                            <h5>{{j}}</h5>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                        <div class="">
+                            <h5>
+                                You are required to pay the amount stated in the invoice in full in
+                                MALAYSIA RINGGIT or equivalent USD amount. If you have paid,
+                                please email to us about your payment indicating your Company,
+                                Invoice NO, Invoice Period, Paid Amount, Cheque/Bank Draft/TT
+                                reference number and date.<br><br>
+                                BANK INFORMATION<br><br>
+                                In favor of: Civil Aviation Authority of Malaysia<br><br>
+                                Account No.: 3811340215<br><br>
+                                Account Name: CAAM<br><br>
+                                Bank Name: Public Islamic Bank<br><br>
+                                Swift Code: PBBR MYKL XXX<br><br>
+                                Bank Address: No. 66, Jalan Diplomatik, Presint 15, 62050, Putrajaya<br><br>
+                                All Telegraphic Transfer/Bank Charges shall be borne by the customer. This invoice is
+                                considered correct if no queries are received within 14 days from the date of its
+                                issuance. Please direct your inquiries to the contact information in this invoice.
+                                Please quote the Invoice No. for any correspondence.
+                            </h5>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <table class="table" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">Aircraft Model</th>
-                            <th style="width: 25%;">Description</th>
-                            <th style="width: 25%;">Weight Category</th>
-                            <th style="width: 25%;">Weight (Ton)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for i in report %}
-                        <tr>
-                            <td>
-                                <h5>{{i.registration_num}}</h5>
-                            </td>
-                            <td>
-                                <h5>{{i.description}}</h5>
-                            </td>
-                            <td>
-                                <h5>{{i.weight_category}}</h5>
-                            </td>
-                            <td>
-                                <h5>{{i.weight}}</h5>
-                            </td>
-                        </tr>
-                        {% endfor %}
+            <script>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <script>
-
-    </script>
+            </script>
 </body>
 
 <footer>

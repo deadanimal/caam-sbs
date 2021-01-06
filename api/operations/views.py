@@ -486,7 +486,10 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             error_data = 0
             total_data = 0
             file_date = ''
+            FplObjs = []
 
+            print(reader)
+            print("len data: ", len(reader))
             for json_dict in json.loads(reader.to_json(orient='records')):
                 for key,value in json_dict.items():
                     # print("key: {0} | value: {1}".format(key, regex.sub(' +', '|', value)))
@@ -539,6 +542,26 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
+
+                            FplObjs.append(Fpldata(
+                                fpl_date = change_time_format(array_tfl[2]),
+                                fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
+                                fpl_no = array_tfl[3],
+                                fr = 'I',
+                                aircraft_model = array_tfl[7],
+                                dep = array_tfl[10],
+                                dest = array_tfl[13],
+                                ctg = array_tfl[15],
+                                dist = distance, 
+                                route = array_tfl[18],
+                                rate = rate,
+                                fpl_type = 'TFL',
+                                uploaded_by = CustomUser(id=request.data['uploaded_by']),
+                                error_remark = ''.join(error_remark),
+                                fileupload = FileUpload(id=fileupload_id),
+                                status = 'FPL0'
+
+                            ))
 
                             # test
 
@@ -620,6 +643,27 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
+                            FplObjs.append(Fpldata(
+                                fpl_date = change_time_format(array_tfl[2]),
+                                fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
+                                fpl_no = array_tfl[3],
+                                fr = 'I',
+                                aircraft_model = array_tfl[7],
+                                dep = array_tfl[10],
+                                dest = array_tfl[13],
+                                ctg = array_tfl[15],
+                                dist = distance, 
+                                route = array_tfl[18],
+                                rate = rate,
+                                fpl_type = 'TFL',
+                                uploaded_by = CustomUser(id=request.data['uploaded_by']),
+                                error_remark = ''.join(error_remark),
+                                fileupload = FileUpload(id=fileupload_id),
+                                status = 'FPL0'
+
+                            ))
+
+                            print(temp_obj)
 
                             # 'num': array_tfl[1],
                             # 'fpl_date': array_tfl[2],
@@ -644,16 +688,30 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                         response_array.append(temp_obj)
                         # print('response_array: ', response_array)
 
+                        ### starts here
+                        ### ends here
+
                         serializer = FpldataSerializer(data=temp_obj)
                         total_data += 1
                         file_date = array_tfl[2][0:8]
                         file_date_ts = change_time_format(array_tfl[2], change_to_time=True)
 
+
+
+                        """
                         if serializer.is_valid():
                             serializer.save()
                         else:
                             print(serializer.errors)
                             error_data += 1
+                        """
+
+        # to do :
+        # bulk create
+
+        print(FplObjs)
+        bulkCreate_status = Fpldata.objects.bulk_create(FplObjs)
+        #print("bulkCreate", bulkCreate_status)
 
         fileupload = FileUpload.objects.filter(id=fileupload_id)
         print("fileupload", fileupload)

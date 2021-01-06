@@ -256,18 +256,18 @@ class Fpldata(models.Model):
     ]
     fpl_type = models.CharField(max_length=3, choices=FPLTYPE, default='NA')
     fpl_date_ts = models.DateTimeField(null=True)
-    fpl_date = models.CharField(max_length=20) 
-    fpl_no = models.CharField(max_length=10, default='NA') # refer table callsign
-    aircraft_model = models.CharField(max_length=10, default='NA') # refer table aircraft
-    dep = models.CharField(max_length=10, default='NA') # departure
-    dest = models.CharField(max_length=10, default='NA') # destination
-    route = models.CharField(max_length=100, default='NA') # route taken
+    fpl_date = models.TextField(max_length=255) 
+    fpl_no = models.TextField(max_length=10, default='NA') # refer table callsign
+    aircraft_model = models.TextField(max_length=10, default='NA') # refer table aircraft
+    dep = models.TextField(max_length=10, default='NA') # departure
+    dest = models.TextField(max_length=10, default='NA') # destination
+    route = models.TextField(max_length=100, default='NA') # route taken
     rate = models.DecimalField(max_digits=3, decimal_places=2, default=0.00) # refer table rate
     dist = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # formula: dist * rate = amount
     error_remark = models.CharField(max_length=100, blank=True, null=True)
-    reason = models.CharField(max_length=300, default="NA")
-    remark = models.CharField(max_length=300, default="NA")
+    reason = models.TextField(max_length=300, default="NA")
+    remark = models.TextField(max_length=300, default="NA")
 
     STATUSES = [
         ('FPL0', 'Draf'),
@@ -276,7 +276,7 @@ class Fpldata(models.Model):
         ('FPL3', 'Archived'),
         ('FPL4', 'Approved')
     ]
-    status = models.CharField(max_length=4, choices=STATUSES, default='FPL0')
+    status = models.TextField(max_length=4, choices=STATUSES, default='FPL0')
 
     fileupload = models.ForeignKey(
         FileUpload,

@@ -176,6 +176,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     // this.loadMarkers();
+    // to do : add 
     this.initChart();
     this.initChart1();
   }

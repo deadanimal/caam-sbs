@@ -11,8 +11,8 @@ import { Posts } from './opost';
   providedIn: "root",
 })
 export class InvoicesService {
-  url: string = environment.baseUrl + "v1/invoices/";
-  // url: string = "http://127.0.0.1:8000/v1/invoices/";
+  // url: string = environment.baseUrl + "v1/invoices/";
+  url: string = "http://.0.0.1:8000/v1/invoices/";
 
   // Data
   public invoice: Invoice
@@ -95,5 +95,12 @@ export class InvoicesService {
         console.log("Invoice", res);
       })
     );
+  }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
   }
 }
