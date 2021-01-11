@@ -111,9 +111,14 @@
     <div class="col">
       <div class="card">
         <div class="card-header">
-          <div class="row">
+          <div class="row" style='margin-bottom: 10px;'>
             <div class="col">
-              <h4 class="mb-0">List of Uploaded VFR and TFL File</h4>
+              <h4 class="mb-0" style="float: left;">List of Uploaded VFR and TFL File</h4>
+              <select class="btn btn-sm btn-dark dropdown-toggle" style="background-color: black; color: white; float: right;" id="selectid" (change)="exportPdf($event.target.value)">
+                <option disabled selected hidden><b>Export</b></option>
+                <option class="dropdown-item" value="PDF" style="color: white;">Export Pdf</option>
+                <option class="dropdown-item" value="XLSX" style="color: white;">Export Excel</option>
+              </select>
             </div>
             <div class="col-auto"></div>
           </div>
@@ -197,6 +202,14 @@
               </ng-template>
               <ng-template let-row="row" ngx-datatable-cell-template>
                 {{ row.uploaded_by.user_type }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Last Modified By</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.uploaded_by.user_type}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>

@@ -11,7 +11,7 @@ import { FpldatasModel } from "./fpldatas.model";
 })
 export class FpldatasService {
   url: string = environment.baseUrl + "v1/fpldatas/";
-  // url: string = "http://.0.0.1:8000/v1/fpldatas/";
+  // url: string = "http://127.0.0.1:8000/v1/fpldatas/";
 
   // Data
   public fpldmodels: FpldatasModel[] = [];
@@ -99,6 +99,15 @@ export class FpldatasService {
       })
     );
   }
+
+  get_masterdata(): Observable<FpldatasModel[]> {
+    let urlFilter = this.url + "get_masterdata/";
+    return this.http.get<FpldatasModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("masterdata", res);
+      })
+    );
+  }
   
   // To be submitted by Operation or Airport
   submit(body): Observable<any> {
@@ -159,4 +168,13 @@ export class FpldatasService {
       })
     );
   }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
+  }
+
+
 }

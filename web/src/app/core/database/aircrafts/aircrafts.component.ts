@@ -153,6 +153,7 @@ export class AircraftsComponent implements OnInit {
 
   filterTable($event) {
     let val = $event.target.value;
+    console.log(this.rows)
     this.temp = this.rows.filter(function (d) {
       for (var key in d) {
         if (d[key] != "" && d[key] != null) {

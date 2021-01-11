@@ -290,7 +290,7 @@ export class DashboardComponent implements OnInit {
     categoryAxis.renderer.minGridDistance = 30;
 
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.title.text = "Total";
+    valueAxis.title.text = "Total Invoice";
     valueAxis.renderer.labels.template.adapter.add("text", function (text) {
       return text + "%";
     });

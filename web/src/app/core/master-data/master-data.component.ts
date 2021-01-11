@@ -9,6 +9,7 @@ import swal from "sweetalert2";
 import { NgxSpinnerService } from "ngx-spinner";
 import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
 import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
+import { WriteKeyExpr } from '@angular/compiler';
 
 @Component({
   selector: "app-master-data",
@@ -41,62 +42,36 @@ export class MasterDataComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private datePipe: DatePipe
   ) {
-    this.filterby = "";
-    this.searchText = "";
-    this.searchText2 = "";
-    this.getFplData()
   }
 
   ngOnInit() {
-    // this.spinner.show();
-
-    // setTimeout(() => {
-    //      this.spinner.hide();
-    // }, 10000);
+    this.getFplDataNew();
   }
 
-  // To get data on table FlightData
-  getFplData() {
+  getFplDataNew() {
     this.spinner.show();
-    this.rowsApproveData = [];
-    this.rowsArchiveData = [];
-    let from_date = this.fromDate
-    let to_date = this.toDate
-    from_date = this.datePipe.transform(from_date, 'yyyy/MM/dd');
-    to_date = this.datePipe.transform(to_date, 'yyyy/MM/dd');
-    if (this.filterby == "fpl_date_ts") { this.searchText = from_date; this.searchText2 = to_date}
+    this.fpldataService.get_masterdata().subscribe(
+      (res) => {
 
-    this.fpldataService
-      .filter_masterdata("field_by=" + this.filterby + "&field=" + this.searchText + "&field2=" + this.searchText2).subscribe((res) => {
-        console.log("res", res);
-        this.datas = res;
+        // approved filter
         let index = 0;
-
-        // get fpldatas status = approved
-        for (let i = 0; i < this.datas.length; i++) {
-          if (this.datas[i].status == 'FPL4') {
-            this.rowsApproveData[index] = this.datas[i];
-            index = index + 1
+        for (let i=0; i < res.length; i++) {
+          if (res[i].status=='FPL4') {
+            this.rowsApproveData[index] = res[i];
+            index++;
           }
         }
 
-        // get fpldatas status = archive
+        // archived filter
         index = 0;
-        for (let i = 0; i < this.datas.length; i++) {
-          if (this.datas[i].status == 'FPL3') {
-            this.rowsArchiveData[index] = this.datas[i];
-            index = index + 1
+        for (let i=0; i<res.length; i++) {
+          if (res[i].status=='FPL3') {
+            this.rowsArchiveData[index] = res[i];
+            index++;
           }
-        }
+        } 
 
-        this.tempApprovedData = this.rowsApproveData.map((prop, key) => {
-          return {
-            ...prop,
-            // id: key
-            no: key,
-          };
-        });
-
+        // map to temp variable
         this.tempArchiveData = this.rowsArchiveData.map((prop, key) => {
           return {
             ...prop,
@@ -104,28 +79,21 @@ export class MasterDataComponent implements OnInit {
             no: key,
           };
         });
-        this.spinner.hide();
 
-      },
-        error => {
-          console.error("err", error);
-          this.spinner.hide();
+        this.tempApprovedData = this.rowsApproveData.map((prop, key) => {
+          return {
+            ...prop,
+            no: key,
+          };
+
         });
-  }
-
-  searchAll(){
-    this.fromDate="";
-    this.toDate="";
-    this.searchText ="";
-    this.getFplData();
-  }
-
-  resetFilter(){
-    this.fromDate="";
-    this.toDate="";
-    this.searchText ="";
-    this.filterby ="";
-    this.getFplData();
+        this.spinner.hide();
+      },
+      (err) => {
+        console.log(err);
+        this.spinner.hide();
+      }
+    );
   }
 
   entriesChange($event) {
@@ -134,6 +102,23 @@ export class MasterDataComponent implements OnInit {
 
   onActivate(event) {
     this.activeRow = event.row;
+  }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    console.log(val);
+    // to do : filter and update tempApproved and tempArchived
+    this.tempArchiveData = this.rowsArchiveData.filter(function (d) {
+      for (var key in d) {
+        if (d[key]!="" && d[key]!=null) {
+          if (d[key].toString().toLowerCase().indexOf(val.toString().toLowerCase()) != -1) {
+            return true;
+          }
+        } 
+      }
+      return false;
+    });
+    
   }
 }
 
