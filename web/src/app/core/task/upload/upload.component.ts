@@ -14,6 +14,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as FromAirports from "src/app/variables/from-airports";
 import swal from "sweetalert2";
 
+import * as FileSaver from 'file-saver';
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
 import { UploadsService } from "src/app/shared/services/uploads/uploads.service";
@@ -138,6 +139,31 @@ export class UploadComponent implements OnInit {
   ngOnInit() {
     this.getFplData();
   }
+
+  exportPdf(value: string) {
+    console.log("value", value)
+    this.spinner.show()
+    this.fpldataService.exportpdf({"file_type":value}).subscribe(
+      (res) => {
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Upload.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Upload.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+      }
+    )
+  }
+
 
 
   // getRowClass = (row) => {

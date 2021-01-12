@@ -99,6 +99,15 @@ export class FpldatasService {
       })
     );
   }
+
+  get_masterdata(): Observable<FpldatasModel[]> {
+    let urlFilter = this.url + "get_masterdata/";
+    return this.http.get<FpldatasModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("masterdata", res);
+      })
+    );
+  }
   
   // To be submitted by Operation or Airport
   submit(body): Observable<any> {
@@ -159,4 +168,13 @@ export class FpldatasService {
       })
     );
   }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
+  }
+
+
 }

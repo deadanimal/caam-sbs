@@ -12,7 +12,7 @@ from django.core.files.storage import default_storage
 from weasyprint import HTML, CSS
 from django.template.loader import render_to_string
 from django.core.files.base import ContentFile
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import pandas
 import json
 
@@ -157,18 +157,40 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 valid = stmt_serializer.is_valid(raise_exception=True)
                 stmt_serializer.save()
 
-        
         return Response(status.HTTP_200_OK)
 
     @action(methods=['POST', 'GET'], detail=False)
     def downloadpdf(self, request, *args, **kwargs):
+        # to do 
+        # - ??frontend pass invoice data
+        # - frontend pass id , fetch invoice data that match with id
+        # - update payment table 
+        # - update invoice
+
+        print(request.data)
+
+        invoice_data = Invoices.objects.filter(id = request.data['id']).values()[0]   
+        print(invoice_data)
+
+        file_name = "invoice.pdf"
         data_loaded = {}
-        html_string = render_to_string('invoice_en.html', {'data': data_loaded})
-        html = HTML(string=html_string)
-        pdf_file = html.write_pdf()
-        dirname = os.path.dirname(__file__)
-        f = open(os.path.join(dirname, 'mypdf.pdf'), 'wb')
-        f.write(pdf_file)
+        css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css' 
+        
+        flight_type = ["Domestic Flight", "Inbound Flight", "Outbound Flight", "Over Flight", "Others"]
+        flight_amount = [invoice_data['domestic_flight'], invoice_data['inbound_flight'], invoice_data['outbound_flight'], invoice_data['over_flight'], invoice_data['other_flight']]
+        total_type = ["", "Sub Total", "Invoice Total", "Surcharge Amount", "Invoice Total"]
+        first_table = zip(flight_type, flight_amount)
+
+        item = ["" for i in range(3)]
+        item[0] = f"Bill for Invoice Period: {invoice_data['inv_period']}"
+        amount = [f"Subtotal: {invoice_data['sub_total']}", f"Surcharge: {invoice_data['surchage']}", f"Invoice Total: {invoice_data['invoice_total']}"]
+        second_table = zip(item, amount)
+
+        html_string = render_to_string('invoice_en.html', {'first_table':first_table, 'second_table':second_table, 'invoice':invoice_data})
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')])
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
 
     @action(methods=['GET'], detail=False)
     def aging(self, request, *args, **kwargs):

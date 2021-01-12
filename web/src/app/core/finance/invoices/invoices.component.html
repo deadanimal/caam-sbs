@@ -169,10 +169,10 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" (click)="openModal(view,row)" title="click to view">
+                <a (click)="openModal(view,row)" title="click to view">
                   <i class="fa fa-eye text-black" aria-hidden="true"></i>
                 </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                <a title="click to download" (click)='download(row.id, row.company_name)'>
                   <i class="fa fa-download text-black" aria-hidden="true"></i>
                 </a>
 

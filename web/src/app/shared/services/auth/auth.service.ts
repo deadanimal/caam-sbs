@@ -23,13 +23,13 @@ export class AuthService {
   public urlUser: string = environment.baseUrl + "v1/users/";
 
   // Local
-  // public urlRegister: string = "http://127.0.0.1:8000/auth/registration/";
-  // public urlPasswordChange: string = "http://127.0.0.1:8000/auth/password/change/";
-  // public urlPasswordReset: string = "http://127.0.0.1:8000/auth/password/reset";
-  // public urlTokenObtain: string = "http://127.0.0.1:8000/auth/obtain/";
-  // public urlTokenRefresh: string = "http://127.0.0.1:8000/auth/refresh/";
-  // public urlTokenVerify: string = "http://127.0.0.1:8000/auth/verify/";
-  // public urlUser: string = "http://127.0.0.1:8000/v1/users/";
+  // public urlRegister: string = "http://.0.0.1:8000/auth/registration/";
+  // public urlPasswordChange: string = "http://.0.0.1:8000/auth/password/change/";
+  // public urlPasswordReset: string = "http://.0.0.1:8000/auth/password/reset";
+  // public urlTokenObtain: string = "http://.0.0.1:8000/auth/obtain/";
+  // public urlTokenRefresh: string = "http://.0.0.1:8000/auth/refresh/";
+  // public urlTokenVerify: string = "http://.0.0.1:8000/auth/verify/";
+  // public urlUser: string = "http://.0.0.1:8000/v1/users/";
 
   // Data
   public token: TokenResponse;

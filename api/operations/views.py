@@ -481,12 +481,14 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         # if TFL, make a readable format
         elif data_type == 'TFL':
-
             response_array = []
             error_data = 0
             total_data = 0
             file_date = ''
+            FplObjs = []
 
+            print(reader)
+            print("len data: ", len(reader))
             for json_dict in json.loads(reader.to_json(orient='records')):
                 for key,value in json_dict.items():
                     # print("key: {0} | value: {1}".format(key, regex.sub(' +', '|', value)))
@@ -521,46 +523,24 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                             if distance == 0:
                                 error_remark.append('PLEASE CHECK THE ROUTE. CURRENT ROUTE IS NOT IN DATABASE')
 
-                            temp_obj = {
-                                'fpl_date': change_time_format(array_tfl[2]),
-                                'fpl_date_ts': change_time_format(array_tfl[2], change_to_time=True),
-                                'fpl_no': array_tfl[3],
-                                'fr': 'I',
-                                'aircraft_model': array_tfl[7],
-                                'dep': array_tfl[10],
-                                'dest': array_tfl[13],
-                                'ctg': array_tfl[15],
-                                'dist': distance, 
-                                'route': array_tfl[18],
-                                'rate': rate,
-                                'fpl_type': 'TFL',
-                                'uploaded_by': request.data['uploaded_by'],
-                                'error_remark': ''.join(error_remark),
-                                'fileupload': fileupload_id,
-                                'status': 'FPL0'
-                            }
-
-                            # test
-
-                            # 'num': array_tfl[1],
-                            # 'fpl_date': array_tfl[2],
-                            # 'fpl_no': array_tfl[3],
-                            # 'ssr': '',
-                            # 'fr': array_tfl[4],
-                            # 'f': array_tfl[5],
-                            # 't': array_tfl[6],
-                            # 'aircraft_model': array_tfl[7],
-                            # 'rlv': array_tfl[8],
-                            # 'plv': array_tfl[9],
-                            # 'dep': array_tfl[10],
-                            # 'drw': array_tfl[11],
-                            # 'off_blow_time': array_tfl[12],
-                            # 'dest': array_tfl[13],
-                            # 'arw': array_tfl[14],
-                            # 'ctg': array_tfl[15],
-                            # 'dur': array_tfl[16],
-                            # 'dist': array_tfl[17],
-                            # 'route': array_tfl[18]
+                            FplObjs.append(Fpldata(
+                                fpl_date = change_time_format(array_tfl[2]),
+                                fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
+                                fpl_no = array_tfl[3],
+                                fr = 'I',
+                                aircraft_model = array_tfl[7],
+                                dep = array_tfl[10],
+                                dest = array_tfl[13],
+                                ctg = array_tfl[15],
+                                dist = distance, 
+                                route = array_tfl[18],
+                                rate = rate,
+                                fpl_type = 'TFL',
+                                uploaded_by = CustomUser(id=request.data['uploaded_by']),
+                                error_remark = ''.join(error_remark),
+                                fileupload = FileUpload(id=fileupload_id),
+                                status = 'FPL0'
+                            ))
 
                         else:
                             # to concat array for get icao route
@@ -598,7 +578,6 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 if un_match == 0:
                                     distance = i['distance']
 
-                            # if no routes in database
                             if distance == 0:
                                 error_remark.append('PLEASE CHECK THE ROUTE. CURRENT ROUTE IS NOT IN DATABASE')
 
@@ -620,40 +599,33 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
+                            FplObjs.append(Fpldata(
+                                fpl_date = change_time_format(array_tfl[2]),
+                                fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
+                                fpl_no = array_tfl[3],
+                                fr = 'I',
+                                aircraft_model = array_tfl[7],
+                                dep = array_tfl[10],
+                                dest = array_tfl[13],
+                                ctg = array_tfl[15],
+                                dist = distance, 
+                                route = array_tfl[18],
+                                rate = rate,
+                                fpl_type = 'TFL',
+                                uploaded_by = CustomUser(id=request.data['uploaded_by']),
+                                error_remark = ''.join(error_remark),
+                                fileupload = FileUpload(id=fileupload_id),
+                                status = 'FPL0'
+                            ))
 
-                            # 'num': array_tfl[1],
-                            # 'fpl_date': array_tfl[2],
-                            # 'fpl_no': array_tfl[3],
-                            # 'ssr': array_tfl[4],
-                            # 'fr': array_tfl[5],
-                            # 'f': array_tfl[6],
-                            # 't': array_tfl[7],
-                            # 'aircraft_model': array_tfl[8],
-                            # 'rlv': array_tfl[9],
-                            # 'plv': array_tfl[10],
-                            # 'dep': array_tfl[11],
-                            # 'drw': array_tfl[12],
-                            # 'off_blow_time': array_tfl[13],
-                            # 'dest': array_tfl[14],
-                            # 'arw': array_tfl[15],
-                            # 'ctg': array_tfl[16],
-                            # 'dur': array_tfl[17],
-                            # 'dist': array_tfl[18],
-                            # 'route': icao_route
-                        
                         response_array.append(temp_obj)
-                        # print('response_array: ', response_array)
 
                         serializer = FpldataSerializer(data=temp_obj)
                         total_data += 1
                         file_date = array_tfl[2][0:8]
                         file_date_ts = change_time_format(array_tfl[2], change_to_time=True)
 
-                        if serializer.is_valid():
-                            serializer.save()
-                        else:
-                            print(serializer.errors)
-                            error_data += 1
+        bulkCreate_status = Fpldata.objects.bulk_create(FplObjs)
 
         fileupload = FileUpload.objects.filter(id=fileupload_id)
         print("fileupload", fileupload)
@@ -945,6 +917,62 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         print(str(results.query))
 
         return Response(str(results.query))
+
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = FileUpload.objects.all().values()[:50]
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'FileUpload.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('route_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/RouteList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def get_masterdata(self, request, *args, **kwargs):
+        queryset = Fpldata.objects.filter(Q(status='FPL3') | Q(status='FPL4')).all()
+        serializer_class = FpldataSerializer(queryset, many=True)
+        return Response(serializer_class.data)
+
+
 
 
 class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
