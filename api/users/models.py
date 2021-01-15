@@ -18,8 +18,9 @@ from organisations.models import (
 class CustomUser(AbstractUser):
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    full_name = models.CharField(blank=True, max_length=255)
     mobile = models.CharField(blank=True, max_length=100)
+    full_name = models.CharField(blank=True, max_length=255)
+    email = models.CharField(max_length=100, default='NA')
 
     position = models.CharField(blank=True, max_length=100)
     department = models.CharField(blank=True, max_length=100)
@@ -43,6 +44,10 @@ class CustomUser(AbstractUser):
         blank=True,
         null=True
     )
+
+
+    company_name = models.CharField(max_length=200, default='NA', blank=True, null=True)
+    office_num = models.CharField(max_length=200, default='NA', blank=True, null=True)
 
     profile_picture = models.ImageField(null=True, upload_to=PathAndRename('images'))
 

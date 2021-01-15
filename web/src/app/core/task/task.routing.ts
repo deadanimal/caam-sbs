@@ -4,6 +4,7 @@ import { Routes } from "@angular/router";
 import { DisputeComponent } from './dispute/dispute.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { TaskComponent } from './task/task.component';
+import { UsersComponent } from  './users/users.component';
 
 export const TaskRoute: Routes = [
   {
@@ -13,6 +14,7 @@ export const TaskRoute: Routes = [
       { path: "upload", component: UploadComponent },  
       { path: "task", component: TaskComponent }, 
       { path: "generate-invoice", component: InvoiceComponent },         
+      { path: "users", component: UsersComponent }, 
     ],
   },
 ];

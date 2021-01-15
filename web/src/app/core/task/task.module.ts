@@ -28,6 +28,7 @@ import { DisputeComponent } from './dispute/dispute.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { DatePipe } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { UsersComponent } from './users/users.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: 'right',
@@ -50,7 +51,8 @@ let pages = [
 
 @NgModule({
   declarations: [
-    pages   
+    pages,
+    UsersComponent   
   ],
   imports: [
     CommonModule,

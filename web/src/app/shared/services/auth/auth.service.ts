@@ -47,7 +47,7 @@ export class AuthService {
 
   constructor(private jwtService: JwtService, private http: HttpClient, private userService: UsersService) {}
 
-  register(body: Form): Observable<any> {
+  registerAccount(body: Form): Observable<any> {
     return this.http.post<any>(this.urlRegister, body).pipe(
       tap((res) => {
         console.log("Registration: ", res);
@@ -66,7 +66,7 @@ export class AuthService {
   resetPassword(body: Form): Observable<any> {
     return this.http.post<any>(this.urlPasswordReset, body).pipe(
       tap((res) => {
-        console.log("Reset password: ", res);
+	    console.log("Reset password: ", res);
       })
     );
   }

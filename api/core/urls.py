@@ -164,7 +164,7 @@ ledger_router = router.register(
 urlpatterns = [
     url(r'v1/', include(router.urls)),
     url(r'auth/', include('rest_auth.urls')),
-    url(r'auth/registration/', include('rest_auth.registration.urls')),
+    url(r'auth/registration/', include('rest_auth.registration.urls')),#reg
 
     url('auth/obtain/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     url('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

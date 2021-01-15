@@ -1,0 +1,343 @@
+<div class="header pb-6 background-theme">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">User Management &nbsp;</h6>
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify">HOD able to search specific users and view in detail.</small>
+          </ng-template>
+          <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+            [outsideClick]="true">
+            <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
+          </button>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+          <button class="btn btn-sm btn-dark" (click)="create(classic1)">
+            Add New User
+          </button>
+          <select class="btn btn-sm btn-dark dropdown-toggle" style="background-color: black; color: white" id="selectid" (change)="exportPdf($event.target.value)">
+            <option disabled selected hidden><b>Export</b></option>
+            <option class="dropdown-item" value="PDF" style="color: white;">Export Pdf</option>
+            <option class="dropdown-item" value="XLSX" style="color: white;">Export Excel</option>
+          </select>
+
+		<ng-template #classic1 let-c="close" let-d="dismiss">
+		  <div class="modal-content">
+		    <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0">
+                <div class="card-header bg-dark">
+				  <div class="text-muted mb-3">
+                    <h4 class="mb-0 text-white">
+                      {{ processTitle }}
+                    </h4>                
+                  </div>
+			    </div>
+                <div class="card-body">
+                  <form [formGroup]="userFormGroup">
+				    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Username" formControlName="username" />
+                    </div>
+					<div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email" formControlName="email" />
+                    </div>
+					<div class="form-group">
+                      <input type="tel" class="form-control" placeholder="Mobile Number" formControlName="mobile" />
+                    </div>
+					<div class="form-group">
+                      <input type="text" class="form-control" placeholder="Position" formControlName="position" />
+                    </div>
+					<div class="form-group">
+                      <input type="text" class="form-control" placeholder="Department" formControlName="department" />
+                    </div>
+					<div class="form-group">
+					  <select class="form-control" formControlName="user_type">
+						<option disabled selected hidden><b>Role</b></option>
+					    <option value="FIN" selected>Finance</option>
+						<option value="OPS">Operation</option>
+						<option value="APT">Airport</option>
+						<option value="ALN">Airline</option>
+						<option value="SAF">SAF</option>
+						<option value="HOD">Head of Department</option>
+					  </select>
+                    </div>
+					<div class="form-group">
+					  <select class="form-control" formControlName="is_active">
+						<option disabled selected hidden><b>Status</b></option>
+					    <option value="true" selected>Active</option>
+    				    <option value="false">Not Active</option>
+					  </select>
+                    </div>
+					<div class="row mt-4">
+					  <div class="col clearfix">
+					    <button class="btn btn-outline-danger" data-dismiss="modal" (click)="c('Close click')">
+						  Cancel
+						</button>
+						<button class="btn btn-dark float-right" (click)="submit()">
+						  Submit
+						</button>
+  					  </div>
+					</div>
+				  </form>
+                </div>
+    		  </div>
+            </div>
+		  </div>
+		</ng-template>
+		
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--8">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Exporting</p>
+  </ngx-spinner>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="mb-0">List of Users</h3>
+            </div>
+            <div class="col-auto">
+              <!-- <div class="mr-1 dropdown" dropdown>
+                <button
+                  class="btn btn-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                >
+                  Export
+                </button>
+                <div
+                  aria-labelledby="dropdownMenuButton"
+                  *dropdownMenu
+                  class="dropdown-menu"
+                >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Download</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as PDF</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Excel</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)"
+                    >Export as Report</a
+                  >
+                  <a class="dropdown-item" href="javascript:void(0)">Print</a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="tempUsers" [rowClass]="getRowClass"
+            (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{ rowIndex + 1 }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>username</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.full_name }}
+              </ng-template>
+              <!-- <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                </button>
+              </ng-template> -->
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>mobile</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.mobile }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>position</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.position }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>department</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.department}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>user type</span>
+              </ng-template>
+			  <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row.user_type}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>company</span>
+              </ng-template>
+			  <ng-template ngx-datatable-header-template>
+                <span>{{ row.organisation }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column sortable="false" prop="id" *ngIf="authService.decodedToken().user_type == 'OPS'">
+              <ng-template ngx-datatable-header-template>
+                <span>Action</span>
+              </ng-template>
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <a href="javascript:void(0)" title="click to edit" (click)="edit(row, classic1)">
+                  <i class="fa fa-edit text-black" aria-hidden="true"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Detail View -->
+  <!-- <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Companies List</h3>
+        </div>
+        <div class="dataTables_wrapper py-4">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select
+                    name="datatable_length"
+                    aria-controls="datatable"
+                    class="form-control form-control-sm"
+                    (change)="entriesChange($event)"
+                  >
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input
+                    type="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search records"
+                    aria-controls="datatable"
+                    (keyup)="filterTable($event)"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+          <ngx-datatable
+            class="bootstrap selection-cell"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="entries != -1 ? entries : undefined"
+            [rows]="temp"
+            (activate)="onActivate($event)"
+          >
+            <ngx-datatable-column name="Cid"></ngx-datatable-column>
+            <ngx-datatable-column name="Icode"></ngx-datatable-column>
+            <ngx-datatable-column name="Iata"></ngx-datatable-column>
+            <ngx-datatable-column name="Companyname">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                {{ value }} <br/><button class="btn btn-sm btn-primary">View</button>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Picname"></ngx-datatable-column>
+            <ngx-datatable-column name="Email"></ngx-datatable-column>
+            <ngx-datatable-column name="Email2"></ngx-datatable-column>
+            <ngx-datatable-column name="Telno"></ngx-datatable-column>
+            <ngx-datatable-column name="Address"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <button
+                  class="btn btn-dark btn-sm"
+                  (click)="edit(row, classic1)"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="delete(value)"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

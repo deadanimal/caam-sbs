@@ -11,7 +11,7 @@ import { UsersModel } from "./users.model";
 })
 export class UsersService {
   url: string = environment.baseUrl + "v1/users/";
-  // url: string = "http://.0.0.1:8000/v1/users/"
+  // url: string = "http://127.0.0.1:8000/v1/users/"
 
   // Data
   public umodels: UsersModel[] = [];
@@ -38,10 +38,19 @@ export class UsersService {
     );
   }
 
-  getOne(id: string): Observable<UsersModel> {
+  getFiltered(): Observable<UsersModel[]> {
+    return this.http.get<any>(this.url + "getFiltered/").pipe(
+      tap((res) => {
+        console.log("UsersModel", res);
+        this.umodels = res;
+      })
+    );
+  }
+
+  getOne(id: string): Observable<UsersModel[]> {
     let urlID = this.url + id + "/";
-    return this.http.get<UsersModel>(urlID).pipe(
-      tap((res: UsersModel) => {
+    return this.http.get<any>(urlID).pipe(
+      tap((res) => {
         console.log("UsersModel", res);
         this.umodel = res;
       })
@@ -71,6 +80,16 @@ export class UsersService {
         console.log("UsersModel", res);
       })
     );
+  }
+
+  notification(body: any): Observable<any> {
+    return this.http.post<any>(this.url + "notification/", body).pipe(
+	  tap(
+	    (res) => {
+	      console.log("notifications", res);
+      })
+    );
+
   }
 
 

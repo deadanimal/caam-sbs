@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { MovementReportComponent } from './movement-report/movement-report.component';
 import { MasterDataComponent } from './master-data/master-data.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const CoreRoute: Routes = [
   {
@@ -44,6 +45,10 @@ export const CoreRoute: Routes = [
         path: "master-data",
         component: MasterDataComponent,
       },
+	  {
+		path: "profile",
+		component: ProfileComponent,
+	  },
     ],
   },
 ];

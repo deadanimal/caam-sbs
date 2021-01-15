@@ -26,8 +26,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'position',
             'department',
             'user_type',
-            'organisation',
             'profile_picture',
+            'organisation',
+            'company_name',
+            'office_num',
             'is_active',
             'date_joined'
         )
