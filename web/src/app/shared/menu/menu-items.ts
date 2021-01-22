@@ -96,6 +96,8 @@ export const AirportRoutes: RouteInfo[] = [
     children: [
         // { path: "dispute", title: "Dispute", type: "link" },
         // { path: "tfl-vfr", title: "TFL/VFR", type: "link" },  
+        { path: "dispute", title: "Dispute", type: "link" },
+        { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
         { path: "upload", title: "TFL/VFR", type: "link" },  
         // { path: "data", title: "History", type: "link" },   
     ],
@@ -148,8 +150,12 @@ export const OperationRoutes: RouteInfo[] = [
     children: [
       // { path: "tflvfr", title: "TFL/VFR", type: "link" },
       // { path: "dispute", title: "Dispute", type: "link" },
-      { path: "upload", title: "TFL/VFR", type: "link" },  
       { path: "task", title: "Task", type: "link" }, 
+      { path: "upload", title: "TFL/VFR", type: "link" },  
+      { path: "dispute", title: "Dispute", type: "link" },
+      { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
+
+
     ],
   },
   {
@@ -245,9 +251,8 @@ export const HodRoutes: RouteInfo[] = [
     children: [
       { path: "generate-invoice", title: "Generate Invoice", type: "link" },
       { path: "users", title: "User Management", type: "link" }, // add new path for user management component
-
+      { path: "dispute", title: "Dispute", type: "link" },
       // { path: "invoice-view", title: "Invoice View", type: "link" },
-      // { path: "dispute", title: "Dispute", type: "link" },
       // { path: "history", title: "History", type: "link" },
     ],
   },

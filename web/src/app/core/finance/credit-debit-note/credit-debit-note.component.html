@@ -44,6 +44,7 @@
                   <option value="transaction">Transaction</option>
                 </select>
               </div>
+              
             </div>
 
             <div class="col-md-6" *ngIf="filterby==='companyname'">
@@ -97,6 +98,20 @@
                     placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate" (ngModelChange)="FilterDate()">
                 </div>
               </div>
+            </div>
+            <div class="col-lg-6 text-right">
+              <button class="btn btn-sm btn-dark" (click)="openModal(note)"
+                *ngIf="authService.decodedToken().user_type == 'OPS' || authService.decodedToken().user_type == 'APT'">
+                Add New Note
+              </button>
+              <!-- <button class="btn btn-sm btn-dark" (click)="exportPdf()">
+                Export
+              </button> -->
+              <select class="btn btn-sm btn-dark dropdown-toggle" style="background-color: black; color: white" id="selectid" (change)="exportPdf($event.target.value)">
+                <option disabled selected hidden><b>Export</b></option>
+                <option class="dropdown-item" value="PDF" style="color: white;">Export Pdf</option>
+                <option class="dropdown-item" value="XLSX" style="color: white;">Export Excel</option>
+              </select>
             </div>
 
           </div>
@@ -198,42 +213,110 @@
   </div>
 </div>
 
-<ng-template #view>
+
+<ng-template #note>
   <div class="modal-header bg-default">
     <h6 class="modal-title text-white my-auto" id="modal-title-default">
-      Credit and Debit Note
+      New Note
     </h6>
 
-    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="confirm()">
       <span aria-hidden="true" class="text-white my-auto"> × </span>
     </button>
   </div>
 
   <div class="modal-body">
-    <form>
-      <div class="row clearfix">
-        <div class="col">
-          <span>
-            <span class="h1">DEBIT NOTE</span><br>
-            <span class="h3">{{companyname}}</span><br>
-            {{"Transaction Date: " + transactiondate}}<br>
-            {{"Transaction Number: " + transactionnumber}}<br>
-          </span>
-        </div>
-      </div>
-      <hr>
-      <img src="../../../../../assets/img/invoice/debitcredit.jpg" style="position: relative; width: 100%;" />
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>Credit</a>
+        <ng-template ngbNavContent>
+          <div class="mt-4">
+            <form [formGroup]="createManualForm" (ngSubmit)="submitManualForm()">
 
-    </form>
+              <div class="form-group">
+                <label class="form-control-label">
+                  Amount
+                </label>
+                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label">
+                  Remark
+                </label>
+                <input class="form-control text-dark" placeholder="remark" type="text" (focus)="focus = true"
+                  (blur)="focus = false" formControlName="remark" />
+              </div>
+
+              <div class="row">
+                <div class="col clearfix">
+                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
+                    Cancel
+                  </button>
+                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit"
+                    [disabled]="createManualForm.invalid">
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>Debit</a>
+        <ng-template ngbNavContent>
+          <div class="mt-4">
+            <form [formGroup]="createOnlineForm" (ngSubmit)="submitOnlineForm()">
+
+              <div class="form-group">
+                <label class="form-control-label">
+                  Amount
+                </label>
+                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label">
+                  Amount
+                </label>
+                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
+              </div>
+
+<!-- <div class="form-group">
+                <label class="form-control-label">
+                  Summary (RM)
+                </label>
+                <input class="form-control text-dark" currencyMask placeholder="summary" type="text"
+                  (focus)="focus = true" (blur)="focus = false" formControlName="summary" />
+              </div> -->
+              <div class="row">
+                <div class="col clearfix">
+                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
+                    Cancel
+                  </button>
+                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit"
+                    [disabled]="createOnlineForm.invalid">
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </ng-template>
+
+      </li>
+
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
   </div>
-
-  <div class="modal-footer">
-
-    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
-      Close
-    </button>
-  </div>
-
-
-
 </ng-template>
+
+

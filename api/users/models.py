@@ -38,15 +38,15 @@ class CustomUser(AbstractUser):
     user_type = models.CharField(max_length=3, choices=USER_TYPE, default='NAV')
 
     organisation = models.ForeignKey(
-        Organisation, 
-        on_delete=models.SET_NULL,
-        related_name='user_organisation',
-        blank=True,
-        null=True
-    )
-
+            Organisation,
+            on_delete=models.SET_NULL,
+            related_name='user_organisation',
+            blank=True,
+            null=True
+        )
 
     company_name = models.CharField(max_length=200, default='NA', blank=True, null=True)
+    cid_id = models.CharField(max_length=200, default='NA', blank=True, null=True)
     office_num = models.CharField(max_length=200, default='NA', blank=True, null=True)
 
     profile_picture = models.ImageField(null=True, upload_to=PathAndRename('images'))

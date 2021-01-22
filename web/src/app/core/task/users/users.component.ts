@@ -46,7 +46,8 @@ export class UsersComponent implements OnInit {
       position: new FormControl(""), 
       department: new FormControl(""),
       user_type: new FormControl(""),
-      organisation: new FormControl(""),
+      company_name: new FormControl(""),
+      cid_id: new FormControl(""),
       is_active:  new FormControl(""),
     })	
   }
@@ -61,6 +62,7 @@ export class UsersComponent implements OnInit {
 	this.tempForm.password1 = "abc123def",
 	this.tempForm.password2 = "abc123def",
 	this.tempForm.full_name = this.userFormGroup.value['username'],
+                  
 	this.authService.registerAccount(this.tempForm).subscribe(
 	(res) => {
 	  if(res) {

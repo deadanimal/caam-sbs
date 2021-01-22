@@ -1,4 +1,5 @@
 import { TaskComponent } from './task/task.component';
+import { CreditDebitNoteComponent } from 'src/app/core/finance/credit-debit-note/credit-debit-note.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { NgModule } from "@angular/core";
@@ -47,6 +48,7 @@ let pages = [
   UploadComponent,
   InvoiceComponent,
   TaskComponent,
+  CreditDebitNoteComponent,
 ]
 
 @NgModule({

@@ -138,6 +138,20 @@ from payments.views import (
     PaymentViewSet
 )
 
+# Dispute app
+from dispute.views import (
+    DisputeViewSet
+)
+
+dispute_router = router.register(
+    'dispute', DisputeViewSet
+)
+
+# Payment app
+from payments.views import (
+    PaymentViewSet
+)
+
 payment_router = router.register(
     'payments', PaymentViewSet
 )

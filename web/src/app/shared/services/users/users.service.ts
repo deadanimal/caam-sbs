@@ -10,8 +10,8 @@ import { UsersModel } from "./users.model";
   providedIn: "root",
 })
 export class UsersService {
-  url: string = environment.baseUrl + "v1/users/";
-  // url: string = "http://127.0.0.1:8000/v1/users/"
+  // url: string = environment.baseUrl + "v1/users/";
+  url: string = "http://127.0.0.1:8000/v1/users/"
 
   // Data
   public umodels: UsersModel[] = [];
@@ -47,12 +47,11 @@ export class UsersService {
     );
   }
 
-  getOne(id: string): Observable<UsersModel[]> {
+  getOne(id: string): Observable<any> {
     let urlID = this.url + id + "/";
     return this.http.get<any>(urlID).pipe(
       tap((res) => {
         console.log("UsersModel", res);
-        this.umodel = res;
       })
     );
   }

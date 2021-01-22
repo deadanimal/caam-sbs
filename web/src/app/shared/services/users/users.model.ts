@@ -1,6 +1,7 @@
 export class UsersModel {
-  public id: string;
   public full_name: string;
+  public id: string;
+  public cid_id: string;
   public email: string;
   public mobile: string;
   public position: string;
@@ -15,6 +16,7 @@ export class UsersModel {
 
   constructor(
     id: string,
+    cid_id: string,
     full_name: string,
     email: string,
     mobile: string,
@@ -29,6 +31,7 @@ export class UsersModel {
     date_joined: any,
   ) {
     this.id = id;
+    this.cid_id = id;
     this.full_name = full_name;
     this.email = email;
     this.mobile = mobile;

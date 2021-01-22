@@ -1,11 +1,15 @@
-
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { UsersService } from 'src/app/shared/services/users/users.service';
+import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
+import { FpldatasService } from 'src/app/shared/services/fpldatas/fpldatas.service';
+import { DisputeService } from 'src/app/shared/services/dispute/dispute.service';
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/billing/invoice";
-import { InvoiceService } from 'src/app/shared/services/billing/invoice/invoice.service';
-import { Invoice } from 'src/app/shared/services/billing/invoice/invoice.model';
+import { InvoicesService} from 'src/app/shared/services/finance/invoice/invoices.service';
+import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model';
 import { DatePipe } from '@angular/common';
-
+import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-invoice',
@@ -13,6 +17,16 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./invoice.component.scss']
 })
 export class InvoiceComponent implements OnInit {
+
+  isValid: boolean;
+  movementreport : FpldatasModel[] = [];
+  movementreportStaged : FpldatasModel[] = [];
+  remarkForm: FormGroup;
+
+  cid_id:string;
+  disputeStage: boolean = false;
+  fplToDispute: any[] = [];
+  disputeBody: any;
 
   // Table
   entries: number = 5;
@@ -28,7 +42,7 @@ export class InvoiceComponent implements OnInit {
   searchText: String;
 
   // Data
-  invoices: Invoice[] = [];
+  invoices: any;
 
   // searchInput
   searchInput = {
@@ -47,11 +61,19 @@ export class InvoiceComponent implements OnInit {
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
-    private invoiceService: InvoiceService,
-    private datePipe: DatePipe
+    private invoiceService: InvoicesService,
+    private disputeService: DisputeService,
+    private datePipe: DatePipe,
+    private authService: AuthService,
+    private userService: UsersService,
+    private fplService: FpldatasService,
+    private formBuilder: FormBuilder,
   ) {
     this.filterby = "all";
     this.searchText = "";
+    this.remarkForm = this.formBuilder.group({
+      remark: new FormControl(""),     
+    });
   }
 
   download(url: string): void {
@@ -61,8 +83,57 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit() {
     this.FilterTable(this.filterby);
+    this.getFpls();
+    this.unstageDispute();
   }
 
+  stagingDispute() {
+    this.disputeStage = true;
+  }
+
+  unstageDispute() {
+    this.disputeStage = false;
+    this.fplToDispute = [];
+    this.fplService.unstage().subscribe(
+      (res) => {
+        this.getFpls();
+        console.log(res);
+      }, 
+      (err) => {
+        console.log(err);
+    });
+  }
+
+  submit() {
+    this.disputeStage = false;
+    this.disputeBody = {
+      'cid': this.cid_id,  
+      'remarks': this.remarkForm.value['remark'],
+      'fpl_ids': this.fplToDispute,
+    }
+
+    console.log(this.disputeBody);
+
+      this.disputeService.submit(this.disputeBody).subscribe(
+      (res) => {
+        this.unstageDispute();
+      },
+      (err) => {});
+  }
+
+  archive(id) {
+    this.fplService.stage({'id':id}).subscribe(
+      (res) => {
+        this.fplToDispute.push(id);
+        console.log(this.fplToDispute);
+        this.getFpls();
+      },
+      (err) => {
+        console.log(err);
+    });
+  }
+
+  
 
   FilterTable(field) {
     let search = field.toLocaleLowerCase();
@@ -111,50 +182,56 @@ export class InvoiceComponent implements OnInit {
           })
         }
   }
+  // user specific invoice 
+  // obtainToken -> user_id -> get extended user fields -> usercid -> flter invoice using cid
+  getFpls() {
+    let userObj = this.authService.decodedToken();
+    let userId = userObj.user_id
+    this.userService.getOne(userId).subscribe(
+      (res) => {
+        this.cid_id = res.cid_id
+        this.getInvoices();
+        let postFilter = {
+            'cid_id':this.cid_id
+          }
+        this.fplService.getFilteredMonthly(postFilter).subscribe(
+          (res) => {
+            var temp = [];
+            this.movementreport = res;
+            for (var i=0; i < res.length; i++) {
+              if (res[i].staged == true) {
+                temp.push(res[i]);
+              }
+            }
+            this.movementreportStaged = temp;
+            console.log("staged", this.movementreportStaged);
+          },
+          (err) => {
+            console.log(err)
+        });
 
-  getAllData = () => {
-    this.invoiceService.get().subscribe(
-      data => {
-        this.invoices = data;
       },
-      error => {
-        console.log(error)
-      }
-    )
+      (err) => {
+        console.log("err", err)
+    });
+
   }
+
+  getInvoices() {
+    this.invoiceService.getfilteredCID({'cid_id':this.cid_id}).subscribe(
+    (res) => {
+      this.invoices = res;
+      console.log(this.invoices);
+    },
+    (err) => {
+      console.log(err);
+    });
+  }
+
+
 
   entriesChange($event) {
     this.entries = $event.target.value;
-  }
-
-  filterTable($event) {
-    let val = $event.target.value;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in d) {
-        if (d[key].toString().toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-
-  searchTable() {
-    let object = this.searchInput;
-    this.temp = this.rows.filter(function (d) {
-      for (var key in object) {
-        if (object[key]) {
-          if (
-            d[key]
-              .toString()
-              .toLowerCase()
-              .indexOf(object[key].toString().toLowerCase()) !== -1
-          )
-            return true;
-        }
-      }
-      return false;
-    });
   }
 
   onActivate(event) {

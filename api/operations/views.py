@@ -27,6 +27,7 @@ import os
 from django_filters.rest_framework import DjangoFilterBackend
 
 from aircrafts.models import Aircraft
+from organisations.models import Organisation
 
 from datetime import datetime
 
@@ -38,7 +39,7 @@ from .models import (
     FileUpload,
     Fpldata,
     FpldataHistory,
-    CustomUser
+    CustomUser,
 )
 
 from .serializers import (
@@ -599,17 +600,22 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
+                            print(f"distance: {distance}")
+
+                            print(f"arraytfl[13]: {array_tfl[13]}")
+                            print(f"arraytfl[14]: {array_tfl[14]}")
+
                             FplObjs.append(Fpldata(
                                 fpl_date = change_time_format(array_tfl[2]),
                                 fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
                                 fpl_no = array_tfl[3],
                                 fr = 'I',
-                                aircraft_model = array_tfl[7],
-                                dep = array_tfl[10],
-                                dest = array_tfl[13],
-                                ctg = array_tfl[15],
+                                aircraft_model = array_tfl[8],
+                                dep = array_tfl[11],
+                                dest = array_tfl[14],
+                                ctg = array_tfl[16],
                                 dist = distance, 
-                                route = array_tfl[18],
+                                route = icao_route, 
                                 rate = rate,
                                 fpl_type = 'TFL',
                                 uploaded_by = CustomUser(id=request.data['uploaded_by']),
@@ -699,11 +705,27 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     #         return Response(serializer.data)
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['POST'], detail=False)
+    def staged(self, request, *args, **kwargs):
+        fpl = Fpldata.objects.get(id=request.data['id'])
+        updateStaged = True if fpl.staged == False else False
+        Fpldata.objects.filter(id=request.data['id']).update(staged=updateStaged)
+        return Response({'status':status.HTTP_200_OK})
+    
+    @action(methods=['GET'], detail=False)
+    def unstaged(self, request, *args, **kwargs):
+        queryset = Fpldata.objects.filter(staged=True)
+        print(queryset)
+        for q in queryset:
+            q.staged = False
+            q.save()
+        return Response({'status':status.HTTP_200_OK})
+
 
     @action(methods=['GET'], detail=False)
     def file_filter(self, request, *args, **kwargs):
         uploaded_by = self.request.query_params.get('uploaded_by')
-        print(uploaded_by)
+        print("UPLOADED", uploaded_by)
         # submitted_at = self.request.query_params.get('submitted_at')
         fileupload = self.request.query_params.get('fileupload_id')
 
@@ -768,11 +790,21 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             
             return Response(serializer_class.data) 
 
-    @action(methods=['GET'], detail=False)
-    def movement_report(self, request, *args, **kwargs):
-        print("user", request.user)
-        return Response({})
+    @action(methods=['POST'], detail=False)
+    def getfiltered(self, request, *args, **kwargs):
+        cid_id = request.data['cid_id']
+        queryset = Fpldata.objects.filter(cid=cid_id)
+        serializer_class = FpldataSerializer(queryset, many=True)
+        return Response(serializer_class.data)
 
+    @action(methods=['POST'], detail=False)
+    def getfilteredmonthly(self, request, *args, **kwargs):
+        cid_id = request.data['cid_id']
+        # add monthly filter
+        queryset = Fpldata.objects.filter(cid=cid_id)
+        serializer_class = FpldataSerializer(queryset, many=True)
+        return Response(serializer_class.data)
+        
     def partial_update(self, request, pk=None):
         fpldata = self.get_object()
         serializer = FpldataSerializer(fpldata, data=request.data, partial=True)
@@ -827,6 +859,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         # change the status of file upload from draft into processing
         fileupload = FileUpload.objects.filter(id=request.data['fileupload_id'])
         fileupload.update(status='FIL1', modified_by = uploaded_by)
+        print("fileupload_id",request.data['fileupload_id'])
 
         return Response(status.HTTP_200_OK)
 
