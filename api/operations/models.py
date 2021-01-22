@@ -265,7 +265,7 @@ class Fpldata(models.Model):
     rate = models.DecimalField(max_digits=3, decimal_places=2, default=0.00) # refer table rate
     dist = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # formula: dist * rate = amount
-    error_remark = models.CharField(max_length=100, blank=True, null=True)
+    error_remark = models.TextField(blank=True, null=True)
     reason = models.TextField(max_length=300, default="NA")
     remark = models.TextField(max_length=300, default="NA")
 
@@ -277,6 +277,10 @@ class Fpldata(models.Model):
         ('FPL4', 'Approved')
     ]
     status = models.TextField(max_length=4, choices=STATUSES, default='FPL0')
+
+    # dispute
+    staged = models.BooleanField(default=False)
+    disputed = models.BooleanField(default=False)
 
     fileupload = models.ForeignKey(
         FileUpload,

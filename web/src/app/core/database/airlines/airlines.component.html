@@ -248,7 +248,7 @@
                             <input type="text" class="form-control" placeholder="company name" formControlName="name" />
                           </div>
                           <div class="form-group">
-                            <input type="text" class="form-control" placeholder="cid" formControlName="cid" />
+                            <input type="text" class="form-control" placeholder="cid" formControlName="cid_id" />
                           </div>
                           <div class="form-group">
                             <input type="email" class="form-control" placeholder="first email"
@@ -296,12 +296,26 @@
                             <input type="tel" class="form-control" placeholder="pic name"
                               formControlName="pic_name" />
                           </div>
-                        </div>
-                        <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <input type="tel" class="form-control" placeholder="pic number"
                               formControlName="pic_num" />
                           </div>
+                          <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="pic email"
+                              formControlName="pic_email" />
+                          </div>
+
+                        </div>
+                        <div class="col-lg-6 col-xs-12">
+                          <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="pic position"
+                              formControlName="pic_position" />
+                          </div>
+                          <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="pic department"
+                              formControlName="pic_department" />
+                          </div>
+
                         </div>
                       </div>
 
@@ -396,7 +410,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--8">
+<div class="container-fluid mt--9">
   <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
     <p style="color: white;">Exporting</p>
   </ngx-spinner>

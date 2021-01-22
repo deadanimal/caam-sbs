@@ -590,7 +590,7 @@ export class UploadComponent implements OnInit {
                       this.modalService.dismissAll();
                       this.getFplData();
                       this.modal.hide();
-                      window.location.reload();
+                      // window.location.reload();
                     }
                   });
               },
@@ -619,7 +619,7 @@ export class UploadComponent implements OnInit {
       .then((result) => {
         if (result.value) {
           this.modal.hide();
-          window.location.reload();
+          // window.location.reload();
         }
       });
   }

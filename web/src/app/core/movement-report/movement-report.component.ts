@@ -4,6 +4,8 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/movement-report";
 import { FpldatasService } from 'src/app/shared/services/fpldatas/fpldatas.service';
 import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { UsersService } from 'src/app/shared/services/users/users.service';
 
 @Component({
   selector: 'app-movement-report',
@@ -19,7 +21,11 @@ export class MovementReportComponent implements OnInit {
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = dummylist.movementreportlist;
+
+  movementreport : FpldatasModel[] = [];
+
+  cid_id:string;
+  
 
   // Search Filter
   fromDate: Date;
@@ -42,14 +48,15 @@ export class MovementReportComponent implements OnInit {
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
-    private movementReportService: FpldatasService,
+    private fplService: FpldatasService,
+    private authService: AuthService,
+    private userService: UsersService,
   ) {
     this.filterby = "all";
     this.searchText = "";
   }
 
   ngOnInit() {
-    this.FilterTable(this.filterby);
     this.getAllData();
   }
 
@@ -57,53 +64,35 @@ export class MovementReportComponent implements OnInit {
     console.log(url);
     window.open(url, '_blank');
   }
-
-  FilterTable(field) {
-    let search = field.toLocaleLowerCase();
-    let tempAll = [];
-
-
-    if (this.filterby == 'all') {
-      for (let i = 0; i < 15; i++) {
-        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
-      }
-
-      return this.temp = tempAll;
-
-    }
-    else if (this.filterby == 'departure') {
-      this.temp = this.rows.filter(function (d) {
-        return d.departure.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'destination') {
-      this.temp = this.rows.filter(function (d) {
-        return d.destination.toLocaleLowerCase().includes(search);
-      })
-    }
-  }
-
-  FilterDate() {
-    let fromdate = this.fromDate
-    let todate = this.toDate
-
-    if (fromdate && todate) {
-      this.temp = this.rows.filter(function (d) {
-        return new Date(d.datetime) >= fromdate && new Date(d.datetime) <= todate;
-      })
-    }
-  }
-
   getAllData = () => {
-    this.movementReportService.movement_report().subscribe(
-      data => {
-        this.movementReports = data;
-        console.log("Mama", this.movementReports)
+    // to do: 
+    // get current user cid_id
+    // use cid_id as body -> post
+    // display specific user fpl data
+    let userObj = this.authService.decodedToken();
+    let userId = userObj.user_id
+    this.userService.getOne(userId).subscribe(
+      (res) => {
+        this.cid_id = res.cid_id
+        let postFilter = {
+            'cid_id':this.cid_id
+          }
+        this.fplService.getFiltered(postFilter).subscribe(
+          (res) => {
+            this.movementreport = res;
+            console.log(this.movementreport)
+          },
+          (err) => {
+            console.log(err)
+        });
+
       },
-      error => {
-        console.log(error)
-      }
-    )
+      (err) => {
+        console.log("err", err)
+    });
+
+    console.log(userObj)
+    
   }
 
   entriesChange($event) {

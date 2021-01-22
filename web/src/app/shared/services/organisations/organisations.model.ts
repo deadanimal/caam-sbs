@@ -14,6 +14,9 @@ export class OrganisationsModel {
   public fax_number: string;
   public pic_name: string;
   public pic_num: string;
+  public pic_email: string;
+  public pic_position: string;
+  public pic_department: string;
   public address_line_1: string;
   public address_line_2: string;
   public address_line_3: string;
@@ -40,6 +43,9 @@ export class OrganisationsModel {
     fax_number: string,
     pic_name: string,
     pic_num: string,
+    pic_email: string,
+    pic_position: string,
+    pic_department: string,
     address_line_1: string,
     address_line_2: string,
     address_line_3: string,
@@ -65,6 +71,9 @@ export class OrganisationsModel {
     this.fax_number = fax_number;
     this.pic_name = pic_name;
     this.pic_num = pic_num;
+    this.pic_email = pic_email,
+    this.pic_position = pic_position,
+    this.pic_department = pic_department,
     this.address_line_1 = address_line_1;
     this.address_line_2 = address_line_2;
     this.address_line_3 = address_line_3;
