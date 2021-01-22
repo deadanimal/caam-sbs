@@ -1,0 +1,127 @@
+<div class="header pb-6 background-theme">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Profile &nbsp;</h6>
+
+
+          <ng-template #popTemplate>
+            <h4 class="text-center">Information</h4>
+            <small class="text-justify">User able to view and update the profile.</small>
+          </ng-template>
+          <button class="btn btn-icon btn-sm btn-dark" type="button" [popover]="popTemplate" placement="right"
+            [outsideClick]="true">
+            <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
+          </button>
+        </div>
+
+        <div class="col-lg-6 col-5 text-right">
+		<ng-template #classic1 let-c="close" let-d="dismiss">
+		  <div class="modal-content">
+		    <div class="modal-body p-0">
+              <div class="card bg-secondary shadow border-0">
+                <div class="card-header bg-dark">
+				  <div class="text-muted mb-3">
+                    <h4 class="mb-0 text-white">
+                      {{ processTitle }}
+                    </h4>                
+                  </div>
+			    </div>
+                <div class="card-body">
+                  <form [formGroup]="userFormGroup">
+				    <div class="form-group">
+                      <input type="email" class="form-control" [(ngModel)]="users.email" placeholder="Email" formControlName="email" />
+                    </div>
+					<div class="form-group">
+                      <input type="tel" class="form-control" [(ngModel)]="users.mobile" placeholder="Mobile Number" formControlName="mobile" />
+                    </div>
+					<div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="users.position" placeholder="Position" formControlName="position" />
+                    </div>
+					<div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="users.department" placeholder="Department" formControlName="department" />
+                    </div>
+					<div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="users.company_name" placeholder="Company" formControlName="company_name" />
+                    </div>
+					<div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="users.office_num" placeholder="Office num" formControlName="office_num" />
+                    </div>
+
+
+					<div class="row mt-4">
+					  <div class="col clearfix">
+					    <button class="btn btn-outline-danger" data-dismiss="modal" (click)="c('Close click')">
+						  Cancel
+						</button>
+						<button class="btn btn-dark float-right" (click)="submit()">
+						  Submit
+						</button>
+  					  </div>
+					</div>
+				  </form>
+                </div>
+    		  </div>
+            </div>
+		  </div>
+           </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--9">
+ <div class="card">
+   <div class="card-body">
+     <div class="row">
+     <div class="col-xl-2">
+       <img alt="Image placeholder" src="assets/img/icons/common/boss.svg" style="float: left;"  height="70%" width="70%">
+     </div>
+     <div class="col-xl-6 text-left">
+	   <h1>{{users.full_name}}</h1>
+       <h5>Position: {{users.position}}</h5>
+       <h5>Role: {{users.user_type}}</h5>
+     </div>
+     <div class="col-xl-4">
+	   <button class="btn btn-sm btn-dark" style="float: right;" (click)="create(classic1)">
+         Edit Profile
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+
+  <div class="card">
+  <div class="card-header">
+	<h3 class="mb-0">Additional Information</h3>
+  </div>
+  <div class="card-body">
+	<div class="row">
+	 <div class="col-xl-6">
+	   <label class="form-control-label">Full Name</label>
+       <input class="form-control" [(ngModel)]="users.full_name" [ngModelOptions]="{standalone: true}" type="text" readonly>
+	   <label class="form-control-label">Position</label>
+       <input class="form-control" [(ngModel)]="users.position" [ngModelOptions]="{standalone: true}" type="text" readonly>
+	   <label class="form-control-label">Department</label>
+       <input class="form-control" [(ngModel)]="users.department" [ngModelOptions]="{standalone: true}" type="text" readonly>
+	   <label class="form-control-label">Organisation</label>
+       <input class="form-control" [(ngModel)]="users.company_name" [ngModelOptions]="{standalone: true}" type="text" readonly>
+
+	 </div>
+	 <div class="col-xl-6">
+	   <label class="form-control-label">Role</label>
+       <input class="form-control" [(ngModel)]="users.user_type" [ngModelOptions]="{standalone: true}" type="text" readonly>
+	   <label class="form-control-label">Office Number</label>
+       <input class="form-control" [(ngModel)]="users.office_num" [ngModelOptions]="{standalone: true}" type="text" readonly>
+	   <label class="form-control-label">Mobile Number</label>
+       <input class="form-control" [(ngModel)]="users.mobile" [ngModelOptions]="{standalone: true}" type="text" readonly>
+	   <label class="form-control-label">Email</label>
+       <input class="form-control" [(ngModel)]="users.email" [ngModelOptions]="{standalone: true}" type="text" readonly>
+
+	 </div>
+	</div>
+  </div>
+</div>
+</div>

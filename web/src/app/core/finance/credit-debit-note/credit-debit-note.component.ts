@@ -1,10 +1,12 @@
-
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/credit-debit-note";
 import { CreditDebitService } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.service';
 import { CreditDebit } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.model';
 import { DatePipe } from '@angular/common';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -21,6 +23,10 @@ export class CreditDebitNoteComponent implements OnInit {
   activeRow: any;
   rows = dummylist.creditdebitlist;
 
+  createManualForm: FormGroup
+  createOnlineForm: FormGroup
+
+
   // Search Filter
   fromDate: Date;
   toDate: Date;
@@ -31,9 +37,6 @@ export class CreditDebitNoteComponent implements OnInit {
   creditDebits: CreditDebit[] = [];
 
   // View Data
-  companyname: string;
-  transactionnumber: string;
-  transactiondate: string;
 
   // Modal
   modal: BsModalRef;
@@ -49,11 +52,43 @@ export class CreditDebitNoteComponent implements OnInit {
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
+    private authService: AuthService,
     private creditDebitService: CreditDebitService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private formBuilder: FormBuilder,
+
   ) {
     this.filterby = "all";
     this.searchText = "";
+    this.createManualForm = this.formBuilder.group({
+      amount_receive: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*)))(\\.\\d{1,2})?$')
+      ])),
+      remark: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      company: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      attachment: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+    });
+    this.createOnlineForm = this.formBuilder.group({
+      amount_receive: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*)))(\\.\\d{1,2})?$')
+      ])),
+      company: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      payment_method: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      summary: new FormControl(),
+    });
+
   }
 
   ngOnInit() {
@@ -128,14 +163,18 @@ export class CreditDebitNoteComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.creditDebitService.get().subscribe(
-      data => {
-        this.creditDebits = data;
-      },
-      error => {
-        console.log(error)
-      }
-    )
+    // obtainToken
+    // get userid
+    // get extended user fields (request to v1/users/userid)
+    // conditional get
+    // if cuser_type=ALN
+      // get user cid_id
+      // post request with cid_id to Note route getFIlteredCID
+    // elif cuser_type=HOD
+      // basic get
+    // elif cuser_type=APT, OPS
+      // get by assignto
+      // post request with assign_to Note route getFilteredAssignTo
   }
 
   entriesChange($event) {
@@ -147,9 +186,6 @@ export class CreditDebitNoteComponent implements OnInit {
   }
 
   viewData(row) {
-    this.companyname = row.companyname;
-    this.transactiondate = row.transactiondate;
-    this.transactionnumber = row.transactionnumber;
   }
 
   openModal(modalRef: TemplateRef<any>, row) {

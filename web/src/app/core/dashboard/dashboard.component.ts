@@ -8,144 +8,6 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_animated);
 //import * as AirportRoutes from "../../../variables/airport-routes";
 
-const dataMarkers = [
-  {
-    lat: 12.854649,
-    long: 96.240234,
-    acmodel: "A109",
-    callsign: "MARITIME700",
-    dep: "WSSL",
-    dest: "OMDW",
-    fplno: "A6CBO",
-  },
-  {
-    lat: 12.854649,
-    long: 96.240234,
-    acmodel: "A319",
-    callsign: "GADING TAJAM",
-    dep: "LBSF",
-    dest: "WIHH",
-    fplno: "ABP932",
-  },
-  {
-    lat: 5.922045,
-    long: 106.875,
-    acmodel: "A320",
-    callsign: "ADV01",
-    dep: "VTSM",
-    dest: "OMDW",
-    fplno: "ABP941",
-  },
-  {
-    lat: 4.303311,
-    long: 93.47168,
-    acmodel: "A321",
-    callsign: "9MIMW",
-    dep: "WSSS",
-    dest: "VIDP",
-    fplno: "AOJ84K",
-  },
-  {
-    lat: 10.185187,
-    long: 88.725586,
-    acmodel: "A330",
-    callsign: "T7LKT",
-    dep: "VTSP",
-    dest: "VCBI",
-    fplno: "AXY0408",
-  },
-  {
-    lat: 5.178482,
-    long: 101.293945,
-    acmodel: "AT402",
-    callsign: "N9688R",
-    dep: "WMKK",
-    dest: "VANP",
-    fplno: "AZS4901",
-  },
-  {
-    lat: -2.372369,
-    long: 102.788086,
-    acmodel: "AW139",
-    callsign: "9MHCB",
-    dep: "WMKK",
-    dest: "M765",
-    fplno: "AZS6602",
-  },
-  {
-    lat: 3.250209,
-    long: 101.655182,
-    acmodel: "B722",
-    callsign: "9MAUB",
-    dep: "ZGGG",
-    dest: "WSSS",
-    fplno: "B3277",
-  },
-  {
-    lat: 9.102097,
-    long: 103.183594,
-    acmodel: "B732",
-    callsign: "FALCON110",
-    dep: "VHHH",
-    dest: "WMSA",
-    fplno: "B602U",
-  },
-  {
-    lat: 8.276727,
-    long: 94.394531,
-    acmodel: "B742",
-    callsign: "9MLEO",
-    dep: "ZSHC",
-    dest: "WMKL",
-    fplno: "B7766",
-  },
-  {
-    lat: 0.527336,
-    long: 100.458984,
-    acmodel: "B772",
-    callsign: "T7LKT",
-    dep: "WSSL",
-    dest: "VTSM",
-    fplno: "B7795",
-  },
-  {
-    lat: -5.353521,
-    long: 103.623047,
-    acmodel: "BE19",
-    callsign: "BAB08",
-    dep: "RCSS",
-    dest: "WMKL",
-    fplno: "B9998",
-  },
-  {
-    lat: 11.953349,
-    long: 114.169922,
-    acmodel: "BH206",
-    callsign: "MAR700",
-    dep: "WSSL",
-    dest: "ZUCK",
-    fplno: "BWJ083",
-  },
-  {
-    lat: -11.436955,
-    long: 112.148438,
-    acmodel: "BH407",
-    callsign: "9MAUB",
-    dep: "WSSL",
-    dest: "VRMM",
-    fplno: "BWJ988",
-  },
-  {
-    lat: -16.045813,
-    long: 99.140625,
-    acmodel: "C12",
-    callsign: "N110TP",
-    dep: "AYPY",
-    dest: "WMSA",
-    fplno: "CGGPM",
-  },
-];
-
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -175,213 +37,275 @@ export class DashboardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // this.loadMarkers();
-    // to do : add 
     this.initChart();
-    this.initChart1();
+    this.initChart2();
+	this.initChart3();
   }
-
-  loadMarkers() {
-    dataMarkers.forEach((marker) => {
-      this.markerLayer.push(
-        L.marker([marker.lat, marker.long], {
-          icon: L.icon({
-            iconSize: [35, 35],
-            iconUrl: "assets/img/marker/plane.svg",
-            className: "plane-rotation",
-          }),
-        }).on("click", function () {
-          swal.fire({
-            html:
-              "Model of Aircraft: " +
-              marker.acmodel +
-              "<br/>Callsign: " +
-              marker.callsign +
-              "<br/>DEP: " +
-              marker.dep +
-              "<br/>DEST: " +
-              marker.dest +
-              "<br/>FPL NO: " +
-              marker.fplno,
-            title: "Flight Detail",
-            text: "",
-            buttonsStyling: false,
-            confirmButtonClass: "btn btn-dark",
-          });
-        })
-      );
-    });
-  }
-
-  onMapReady(map) {
-    for (let i = 0; i < this.airportList.length; i++) {
-      var pointA = new L.LatLng(this.airportList[i].pointAlat, this.airportList[i].pointAlong);
-      var pointB = new L.LatLng(this.airportList[i].pointBlat, this.airportList[i].pointBlong);
-      var pointList = [pointA, pointB];
-
-      var polyline = new L.Polyline(pointList, {
-        color: "red",
-        weight: 2,
-        opacity: 0.5,
-        smoothFactor: 1,
-        
-      });
-      polyline.bindTooltip(this.airportList[i].desc);
-      polyline.addTo(map);
-    }
-  }
-
+ 
   initChart() {
-    let chart = am4core.create("chartdiv", am4charts.XYChart3D);
+    let chart = am4core.create("finance", am4charts.XYChart);
+	
 
-    // Add data
-    chart.data = [
-      {
-        month: "Jan",
-        year2018: 351,
-        year2019: 421,
-      },
-      {
-        country: "Feb",
-        year2018: 171,
-        year2019: 311,
-      },
-      {
-        country: "Mar",
-        year2018: 281,
-        year2019: 291,
-      },
-      {
-        country: "Apr",
-        year2018: 216,
-        year2019: 231,
-      },
-      {
-        country: "May",
-        year2018: 141,
-        year2019: 211,
-      },
-      {
-        country: "Jun",
-        year2018: 261,
-        year2019: 491,
-      },
-      {
-        country: "Jul",
-        year2018: 641,
-        year2019: 721,
-      },
-      {
-        month: "Aug",
-        year2018: 821,
-        year2019: 711,
-      },
-      {
-        month: "Sep",
-        year2018: 991,
-        year2019: 1011,
-      },
-    ];
+    // legend
+	chart.legend = new am4charts.Legend();
+	chart.legend.useDefaultMarker = true;
+	let marker = chart.legend.markers.template.children.getIndex(0);
+	marker.strokeWidth = 2;
+	marker.strokeOpacity = 1;
+	marker.stroke = am4core.color("#ccc");
+	chart.data = [
+	  {
+	    category: "Jan",
+	    total_invoice: 1200,
+	    paid: 590,
+	  },
+	  {
+	    category: "Feb",
+	    total_invoice: 2500,
+	    paid: 1500,
+	  },
+	  {
+	    category: "March",
+	    total_invoice: 3300,
+	    paid: 1400,
+	  },
+	  {
+	    category: "April",
+	    total_invoice: 2500,
+	    paid: 1500,
+	  },
+	  {
+	    category: "May",
+	    total_invoice: 5400,
+	    paid: 4500,
+	  },
+	  {
+	    category: "June",
+	    total_invoice: 4300,
+	    paid: 3800,
+	  },
+	  {
+	    category: "July",
+	    total_invoice: 1509,
+	    paid: 800,
+	  },
+	  {
+	    category: "Aug",
+	    total_invoice: 4300,
+	    paid: 3800,
+	  },
+	  {
+	    category: "Sept",
+	    total_invoice: 5400,
+	    paid: 3800,
+	  },
+	  {
+	    category: "Oct",
+	    total_invoice: 4300,
+	    paid: 3800,
+	  },
+	];
+	
+	chart.colors.step = 2;
+	
+	var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+	categoryAxis.renderer.grid.template.disabled = true;
 
-    // Create axes
-    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "month";
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.minGridDistance = 30;
+	categoryAxis.dataFields.category = "category";
+	categoryAxis.renderer.grid.template.location = 0;
+	categoryAxis.renderer.line.strokeOpacity = 1;
+	categoryAxis.renderer.minGridDistance = 30;
+	
+	categoryAxis.renderer.cellStartLocation = 0.2;
+	categoryAxis.renderer.cellEndLocation = 0.8;
+	
+	var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());  
+	//valueAxis.title.text = "Amount (MYR)";
+	
+	var series1 = chart.series.push(new am4charts.ColumnSeries());
+	series1.columns.template.width = am4core.percent(100);
+	series1.columns.template.tooltipText = "{name}: {valueY.value}";
+	series1.columns.template.strokeWidth = 0;
+	series1.name = "Total Invoice";
+	series1.dataFields.categoryX = "category";
+	series1.dataFields.valueY = "total_invoice";
+	
+	var series2 = chart.series.push(new am4charts.ColumnSeries());
+	series2.columns.template.width = am4core.percent(100);
+	series2.columns.template.tooltipText = "{name}: {valueY.value}";
+	series2.columns.template.strokeWidth = 0;
+	series2.name = "Paid Invoice";
+	series2.dataFields.categoryX = "category";
+	series2.dataFields.valueY = "paid";
+	}
 
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.title.text = "Total Invoice";
-    valueAxis.renderer.labels.template.adapter.add("text", function (text) {
-      return text + "%";
-    });
+  initChart2() {
+	let chart = am4core.create("finance2", am4charts.PieChart);
 
-    // Create series
-    let series = chart.series.push(new am4charts.ColumnSeries3D());
-    series.dataFields.valueY = "year2018";
-    series.dataFields.categoryX = "month";
-    series.name = "Year 2018";
-    series.clustered = false;
-    series.columns.template.tooltipText =
-      "Total flight in {category} (2018): [bold]{valueY}[/]";
-    series.columns.template.fillOpacity = 0.9;
+	
+	// Let's cut a hole in our Pie chart the size of 40% the radius
+	chart.innerRadius = am4core.percent(25);
+	chart.radius = am4core.percent(40);	
+	
+	// Add and configure Series
+	let pieSeries = chart.series.push(new am4charts.PieSeries());
+	pieSeries.dataFields.value = "value";
+	pieSeries.dataFields.category = "category";
+	pieSeries.slices.template.stroke = am4core.color("#fff");
+	pieSeries.innerRadius = 5;
+	pieSeries.slices.template.fillOpacity = 0.5;
+	
+	pieSeries.slices.template.propertyFields.disabled = "labelDisabled";
+	pieSeries.labels.template.propertyFields.disabled = "labelDisabled";
+	pieSeries.ticks.template.propertyFields.disabled = "labelDisabled";
+	
+	
+	// Add data
+	pieSeries.data = [{
+	  "category": "",
+	  "value": 60
+	}, {
+	  "category": "",
+	  "value": 30,
+	  "labelDisabled":true
+	}];
+	
+	// Disable sliding out of slices
+	pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+	pieSeries.slices.template.states.getKey("hover").properties.scale = 1;
+	
+	pieSeries.labels.template.text = "{category}";
+	pieSeries.labels.template.fontSize = 5;
 
-    let series2 = chart.series.push(new am4charts.ColumnSeries3D());
-    series2.dataFields.valueY = "year2019";
-    series2.dataFields.categoryX = "month";
-    series2.name = "Year 2019";
-    series2.clustered = false;
-    series2.columns.template.tooltipText =
-      "Total flight in {category} (2019): [bold]{valueY}[/]";
+	// Add second series
+	let pieSeries2 = chart.series.push(new am4charts.PieSeries());
+	pieSeries2.dataFields.value = "value";
+	pieSeries2.dataFields.category = "category";
+	pieSeries2.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+	pieSeries2.slices.template.states.getKey("hover").properties.scale = 1;
+	pieSeries2.slices.template.propertyFields.fill = "fill";
+	pieSeries2.labels.template.fontSize = 10;
+	
+	// Add data
+	pieSeries2.data = [{
+	  "category": "Paid",
+	  "value": 35
+	}, {
+	  "category": "Partial",
+	  "value": 40
+	}, {
+	  "category": "Unpaid",
+	  "value": 25,
+	  "fill":"#dedede"
+	}];
+	
+	
+	pieSeries.adapter.add("innerRadius", function(innerRadius, target){
+	  return am4core.percent(40);
+	})
+	
+	pieSeries2.adapter.add("innerRadius", function(innerRadius, target){
+	  return am4core.percent(60);
+	})
+	
+	pieSeries.adapter.add("radius", function(innerRadius, target){
+	  return am4core.percent(100);
+	})
+	
+	pieSeries2.adapter.add("radius", function(innerRadius, target){
+	  return am4core.percent(80);
+	})
   }
+	
+  initChart3() {
+	// show different type of flight
+	let chart = am4core.create("flight", am4charts.XYChart);
+	chart.legend = new am4charts.Legend();
+	chart.legend.useDefaultMarker = true;
+	let marker = chart.legend.markers.template.children.getIndex(0);
+	marker.strokeWidth = 2;
+	marker.strokeOpacity = 1;
+	marker.stroke = am4core.color("#ccc");
 
-  initChart1() {
-    let chart = am4core.create("chartdiv1", am4charts.XYChart);
+	// Add data
+	chart.data = [
+	  {date:new Date(2019,5,12), value1:50, value2:48, value3:32, value4:46, value5:23, previousDate:new Date(2019, 5, 5)},
+	  {date:new Date(2019,5,13), value1:53, value2:51, value3:53, value4:26, value5:26, previousDate:new Date(2019, 5, 6)},
+	  {date:new Date(2019,5,14), value1:56, value2:58, value3:23, value4:36, value5:33, previousDate:new Date(2019, 5, 7)},
+	  {date:new Date(2019,5,15), value1:52, value2:53, value3:42, value4:36, value5:43, previousDate:new Date(2019, 5, 8)},
+	  {date:new Date(2019,5,16), value1:48, value2:44, value3:35, value4:26, value5:23, previousDate:new Date(2019, 5, 9)},
+	  {date:new Date(2019,5,17), value1:47, value2:42, value3:39, value4:36, value5:13, previousDate:new Date(2019, 5, 10)},
+	  {date:new Date(2019,5,18), value1:59, value2:55, value3:34, value4:56, value5:23, previousDate:new Date(2019, 5, 11)},
+	  {date:new Date(2019,5,19), value1:50, value2:48, value3:32, value4:46, value5:23, previousDate:new Date(2019, 5, 12)},
+	  {date:new Date(2019,5,20), value1:53, value2:51, value3:53, value4:26, value5:26, previousDate:new Date(2019, 5, 13)},
+	  {date:new Date(2019,5,21), value1:56, value2:58, value3:23, value4:36, value5:33, previousDate:new Date(2019, 5, 14)},
+	  {date:new Date(2019,5,22), value1:52, value2:53, value3:42, value4:36, value5:43, previousDate:new Date(2019, 5, 15)},
+	  {date:new Date(2019,5,23), value1:48, value2:44, value3:35, value4:26, value5:23, previousDate:new Date(2019, 5, 16)},
+	  {date:new Date(2019,5,24), value1:47, value2:42, value3:39, value4:36, value5:13, previousDate:new Date(2019, 5, 17)},
+	  {date:new Date(2019,5,25), value1:59, value2:55, value3:34, value4:56, value5:23, previousDate:new Date(2019, 5, 18)}
 
-    chart.data = [
-      {
-        month: "Jan",
-        active: 23.5,
-        delayed: 18.1,
-      },
-      {
-        month: "Feb",
-        active: 26.2,
-        delayed: 22.8,
-      },
-      {
-        month: "Mar",
-        active: 30.1,
-        delayed: 23.9,
-      },
-      {
-        month: "Apr",
-        active: 29.5,
-        delayed: 25.1,
-      },
-      {
-        month: "May",
-        active: 24.6,
-        delayed: 25,
-      },
-    ];
+	]
+	
+	// Create axes
+	let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+	dateAxis.renderer.minGridDistance = 50;
+	dateAxis.renderer.grid.template.disabled = true;
+	
+	let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+	
+	// Create series
+	let series = chart.series.push(new am4charts.LineSeries());
+	series.dataFields.valueY = "value1";
+	series.dataFields.dateX = "date";
+	series.strokeWidth = 0.5;
+	series.minBulletDistance = 10;
+	series.tensionX = 0.77;
+	series.name = "Inbound";
+	series.tooltipText = "[bold]{date.formatDate()}:[/] {value1}\n[bold]{previousDate.formatDate()}:[/] {value2}";
+	series.tooltip.pointerOrientation = "vertical";
+	
+	// Create series
+	let series2 = chart.series.push(new am4charts.LineSeries());
+	series2.dataFields.valueY = "value2";
+	series2.dataFields.dateX = "date";
+	series2.strokeWidth = 0.5;
+	series2.tensionX = 0.77;
+	series2.name = "Outbound";
 
-    //create category axis for months
-    let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "month";
-    categoryAxis.renderer.inversed = true;
-    categoryAxis.renderer.grid.template.location = 0;
+	series2.stroke = am4core.color("#f2bf05");
 
-    //create value axis for active and delayed
-    let valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-    valueAxis.renderer.opposite = true;
+	// Create series
+	let series3 = chart.series.push(new am4charts.LineSeries());
+	series3.dataFields.valueY = "value3";
+	series3.dataFields.dateX = "date";
+	series3.strokeWidth = 0.5;
+	series3.stroke = series.stroke;
+	series3.tensionX = 0.77;
+	series3.stroke = am4core.color("#cc07eb");
+	series3.name = "Domestic";
+	// Create series
 
-    //create columns
-    let series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.categoryY = "month";
-    series.dataFields.valueX = "active";
-    series.name = "Active flight";
-    series.columns.template.fillOpacity = 0.5;
-    series.columns.template.strokeOpacity = 0;
-    series.tooltipText = "Active flights in {categoryY}: {valueX.value}";
-
-    //create line
-    let lineSeries = chart.series.push(new am4charts.LineSeries());
-    lineSeries.dataFields.categoryY = "year";
-    lineSeries.dataFields.valueX = "delayed";
-    lineSeries.name = "Delayed flight";
-    lineSeries.strokeWidth = 3;
-    lineSeries.tooltipText = "Delayed flights in {categoryY}: {valueX.value}";
-
-    //add bullets
-    let circleBullet = lineSeries.bullets.push(new am4charts.CircleBullet());
-    circleBullet.circle.fill = am4core.color("#fff");
-    circleBullet.circle.strokeWidth = 2;
-
-    //add chart cursor
-    chart.cursor = new am4charts.XYCursor();
-    chart.cursor.behavior = "zoomY";
-
-    //add legend
-    chart.legend = new am4charts.Legend();
+	let series4 = chart.series.push(new am4charts.LineSeries());
+	series4.dataFields.valueY = "value4";
+	series4.dataFields.dateX = "date";
+	series4.strokeWidth = 0.5;
+	series4.tensionX = 0.77;
+	series4.stroke = series.stroke;
+	series4.stroke = am4core.color("#0b68e0");
+	series4.name = "Overflight";
+	
+	// Create series
+	let series5 = chart.series.push(new am4charts.LineSeries());
+	series5.dataFields.valueY = "value5";
+	series5.dataFields.dateX = "date";
+	series5.strokeWidth = 0.5;
+	series5.tensionX = 0.77;
+	series5.stroke = series.stroke;
+	series5.stroke = am4core.color("#23de33");
+	series5.name = "Other";
+	
+	// Add cursor
+	chart.cursor = new am4charts.XYCursor();
+	chart.cursor.xAxis = dateAxis;
   }
 }

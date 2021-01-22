@@ -16,6 +16,8 @@ from django.http import JsonResponse, HttpResponse
 import pandas
 import json
 
+# import settings
+from core.settings import BASE_DIR 
 
 from invoice.models import Invoices
 
@@ -161,12 +163,6 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['POST', 'GET'], detail=False)
     def downloadpdf(self, request, *args, **kwargs):
-        # to do 
-        # - ??frontend pass invoice data
-        # - frontend pass id , fetch invoice data that match with id
-        # - update payment table 
-        # - update invoice
-
         print(request.data)
 
         invoice_data = Invoices.objects.filter(id = request.data['id']).values()[0]   
@@ -187,7 +183,7 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         second_table = zip(item, amount)
 
         html_string = render_to_string('invoice_en.html', {'first_table':first_table, 'second_table':second_table, 'invoice':invoice_data})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')])
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[BASE_DIR + '/staticfiles/rest_framework/css/bootstrap.min.css'])
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
@@ -316,3 +312,12 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                         print(i['cid'])
         
         return Response({"tinky winky"})
+
+    @action(methods=['POST'], detail=False)
+    def getfilteredcid(self, request, *args, **kwargs):
+        cid_id = request.data['cid_id']
+        queryset = Invoices.objects.filter(cid=cid_id).values()
+        serializer_class = InvoiceSerializer(queryset, many=True)
+        print(queryset)
+        return Response(serializer_class.data)
+

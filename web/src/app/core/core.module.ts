@@ -24,6 +24,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MasterDataComponent } from './master-data/master-data.component';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -32,6 +33,7 @@ import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
     DashboardComponent,
     MovementReportComponent,
     MasterDataComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

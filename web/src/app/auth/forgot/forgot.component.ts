@@ -16,7 +16,7 @@ export class ForgotComponent implements OnInit {
   }
 
   doResetPassword(){
-
+	window.location.href = 'https://caam-sbs.pipe.my/#/auth/login'
   }
   
 }

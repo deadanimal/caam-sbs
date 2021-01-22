@@ -36,6 +36,7 @@ export class AirlinesComponent implements OnInit {
   activeRow: any;
   rows = []; //Companies.Companies;
   SelectionType = SelectionType;
+  createUserForm: any;
 
   airlineFormGroup: FormGroup;
 
@@ -62,11 +63,13 @@ export class AirlinesComponent implements OnInit {
   ) {
     this.getAirline();
 
+    // update form - to suport user creation & airline creation
+
     this.airlineFormGroup = this.formBuilder.group({
       id: new FormControl(""),
       name: new FormControl(""),
       shortname: new FormControl(""),
-      cid: new FormControl(""),
+      cid_id: new FormControl(""),
       is_active: new FormControl(""),
       organisation_type: new FormControl("AL"),
       email_1: new FormControl(""),
@@ -78,6 +81,9 @@ export class AirlinesComponent implements OnInit {
       fax_number: new FormControl(""),
       pic_name: new FormControl(""),
       pic_num: new FormControl(""),
+      pic_email: new FormControl(""),
+      pic_position: new FormControl(""),
+      pic_department: new FormControl(""),
       address_line_1: new FormControl(""),
       address_line_2: new FormControl(""),
       address_line_3: new FormControl(""),
@@ -89,6 +95,72 @@ export class AirlinesComponent implements OnInit {
       icoa: new FormControl(""),
       iata: new FormControl(""),      
     });
+  }
+
+  ngOnInit() {}
+
+  submit() {
+    // patch role value == "ALN" into temp formgroup var
+    // todo -> register user throught auth/registration
+          // reconstruct post body to match with user registration
+          // reconstruct post body to match with updateUser
+    // notify user (email)
+    // updateUser  
+    // extra call another API -> to create new airline using the same form
+
+    this.createUserForm = this.airlineFormGroup.value
+    this.createUserForm.email = this.airlineFormGroup.value.pic_email
+    this.createUserForm.username = this.airlineFormGroup.value.pic_name
+    this.createUserForm.full_name = this.airlineFormGroup.value.pic_name
+    this.createUserForm.mobile = this.airlineFormGroup.value.pic_num
+    this.createUserForm.position = this.airlineFormGroup.value.position
+    this.createUserForm.department = this.airlineFormGroup.value.department
+    this.createUserForm.user_type = 'ALN'
+    this.createUserForm.company_name = this.airlineFormGroup.value.name
+    this.createUserForm.password1 = "abc123def"
+    this.createUserForm.password2 = "abc123def"
+
+    this.authService.registerAccount(this.createUserForm).subscribe(
+    (res) => {
+      if(res) {
+        // notify user when registered succesfully
+        this.notifyUsers(res); 
+
+        // update user field
+        this.userService.update(res.user.pk, this.createUserForm).subscribe(
+          (res) => {
+            console.log(res)
+          },
+          (err) => {
+            console.log("extended user field not updated", err) 
+          });
+
+        // create new airline object
+        this.organisationService.post(this.airlineFormGroup.value).subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (err) => {
+            console.log("airline not created", err);
+          });
+
+        this.modalService.dismissAll();
+      }
+    },
+    (err) => {
+        console.log("user not created", err)
+    });
+  }
+
+  notifyUsers(res) {
+    console.log("notify data",res)
+    this.userService.notification(res).subscribe(
+      (res) => {
+        console.log("notification success", res);
+      }, 
+      (err) => {
+        console.log("notification error", err);
+      });
   }
 
   getAirline() {
@@ -264,71 +336,4 @@ export class AirlinesComponent implements OnInit {
     };
   };
 
-  submit() {
-    console.log(this.airlineFormGroup.value)
-    if (this.processTitle == "Add New Airline") {
-      this.organisationService.explicitPost(this.airlineFormGroup.value).subscribe(
-        (res) => {
-          if (res) {
-            swal
-              .fire({
-                title: "Success",
-                text: "The submission has successfully created",
-                type: "success",
-                buttonsStyling: false,
-                confirmButtonClass: "btn btn-success",
-              })
-              .then((result) => {
-                if (result.value) {
-                  this.modalService.dismissAll();
-                  this.getAirline();
-                }
-              });
-          }
-        },
-        (err) => {
-          // to do : show error in the ui
-          console.error("wohoo", err.error);
-          for (let key in err.error) {
-            this.list_of_errors = key + " " + err.error[key];
-          }
-          swal
-              .fire({
-                title: "Oops",
-                type: "warning",
-                text: this.list_of_errors,
-                buttonsStyling: false,
-              })
-        }
-      );
-    } else if (this.processTitle == "Edit Airline") {
-      this.organisationService
-        .update(this.airlineFormGroup.value.id, this.airlineFormGroup.value)
-        .subscribe(
-          (res) => {
-            if (res) {
-              swal
-                .fire({
-                  title: "Success",
-                  text: "The submission has successfully updated",
-                  type: "success",
-                  buttonsStyling: false,
-                  confirmButtonClass: "btn btn-success",
-                })
-                .then((result) => {
-                  if (result.value) {
-                    this.modalService.dismissAll();
-                    this.getAirline();
-                  }
-                });
-            }
-          },
-          (err) => {
-            console.error("err", err);
-          }
-        );
-    }
-  }
-
-  ngOnInit() {}
 }

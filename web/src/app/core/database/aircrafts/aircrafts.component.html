@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-lg-6 col-5 text-right">
-          <button class="btn btn-sm btn-dark" (click)="create(classic1)"
+          <button class="btn btn-sm btn-dark" style="background-color: black; color: white" (click)="create(classic1)"
             *ngIf="authService.decodedToken().user_type == 'OPS'">
             Add New Aircraft
           </button>
@@ -140,7 +140,7 @@
   </div>
 </div>
 
-<div class="container-fluid mt--8">
+<div class="container-fluid mt--9">
   <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
     <p style="color: white;">Exporting...</p>
   </ngx-spinner>
