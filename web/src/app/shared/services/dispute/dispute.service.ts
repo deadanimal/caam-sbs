@@ -17,6 +17,14 @@ export class DisputeService {
 
   constructor(private http: HttpClient) { }
 
+  assignUser(body): Observable<any> {
+    return this.http.post<any>(this.url + "assignDispute/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
   submit(body): Observable<any> {
     return this.http.post<any>(this.url + "submit/", body).pipe(
       tap((res) => {
@@ -40,6 +48,16 @@ export class DisputeService {
       })
     );
   }
+        
+  getFilter(body): Observable<any> {
+    return this.http.post<any>(this.url + "getfilter/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
+
 
 
   get(): Observable<any> {

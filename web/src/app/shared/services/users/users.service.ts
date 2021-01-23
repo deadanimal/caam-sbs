@@ -38,6 +38,15 @@ export class UsersService {
     );
   }
 
+  getExplicit(): Observable<UsersModel[]> {
+    return this.http.get<any>(this.url + "getExplicit/").pipe(
+      tap((res) => {
+        console.log("UsersModel", res);
+        this.umodels = res;
+      })
+    );
+  }
+
   getFiltered(): Observable<UsersModel[]> {
     return this.http.get<any>(this.url + "getFiltered/").pipe(
       tap((res) => {
