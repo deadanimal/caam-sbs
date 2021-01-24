@@ -73,6 +73,13 @@ class CustomUserViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         print(queryset)
         serializer_class = CustomUserSerializer(queryset, many=True)
         return Response(serializer_class.data)
+    
+    @action(methods=['GET'], detail=False)
+    def getExplicit(self, request, *args, **kwargs):
+        queryset = CustomUser.objects.filter(Q(user_type='OPS') | Q(user_type='APT'))
+        print(queryset)
+        serializer_class = CustomUserSerializer(queryset, many=True)
+        return Response(serializer_class.data)
 
     @action(methods=['POST'], detail=False)
     def notification(self, request, *args, **kwargs):

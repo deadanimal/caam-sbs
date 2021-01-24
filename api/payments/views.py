@@ -12,6 +12,10 @@ from payments.serializers import (
     PaymentSerializer
 )
 
+from organisations.models import Organisation
+
+from users.models import CustomUser
+
 from accounts.models import Statements
 
 from accounts.serializers import (
@@ -34,16 +38,26 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         queryset = Payments.objects.all()
         return queryset
 
+    @action(methods=['POST'], detail=False)
+    def getFilteredCID(self, request):
+        queryset = Payments.objects.filter(company_id=request.data['cid'])
+        serializer_class = PaymentSerializer(queryset, many=True)
+        return Response(serializer_class.data)
+
 
     @action(methods=['POST'], detail=False)
     def manual(self, request, *args, **kwargs):
         print(request.data)
         # this boy will deal with attachment
+        cid_id = CustomUser.objects.filter(id=request.data['cid']).values()[0]['cid_id']
+        orgs = Organisation.objects.filter(cid_id=cid_id)
+        print(orgs)
         temp_obj = {
             "online":False,
             "amount_receive":request.data["amount_receive"],
             "remark": request.data["remark"],
-            "company_name": request.data["company"],
+            "company_id": request.data["cid"],
+            "company_name": orgs.values()[0]['name'],
             "approved":False
         }
 
@@ -81,9 +95,12 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         payment_obj.status = "APPROVED"
         payment_obj.save()
 
+        # update invoice
+        # 
+
         # create statement for payment
         temp_obj2 = {
-                "cid": payment_obj.cid,
+                "cid": payment_obj.company_id,
                 "company_name": payment_obj.company_name,
                 "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
                 "transaction": "PAYMENT",

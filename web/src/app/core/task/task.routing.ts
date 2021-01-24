@@ -16,10 +16,10 @@ export const TaskRoute: Routes = [
       { path: "task", component: TaskComponent }, 
       { path: "generate-invoice", component: InvoiceComponent },         
       { path: "users", component: UsersComponent }, 
-      {
-        path: "credit-debit-note",
-        component: CreditDebitNoteComponent,
-      },
+      //{
+    //    path: "credit-debit-note",
+    //    component: CreditDebitNoteComponent,
+    //  },
  
     ],
   },

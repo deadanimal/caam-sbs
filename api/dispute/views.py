@@ -72,11 +72,6 @@ class DisputeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         serializer_class = DisputeSerializer(queryset, many=True)
         return Response(serializer_class.data)
     
-    # filter using assign_to (for ops and airport)
-    @action(methods=['POST', 'GET'], detail=False)
-    def getFilteredAssignTo(self, request, *args, **kwargs):
-        pass
-
     # show dispute-specific fpl data
     @action(methods=['POST', 'GET'], detail=False)
     def getdisputedfpls(self, request, *args, **kwargs):
@@ -89,6 +84,25 @@ class DisputeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def updateFpls(self, request, *args, **kwargs):
         # get fpls using ids of of disputed
         pass
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def assignDispute(self, request, *args, **kwargs):
+        queryset = Dispute.objects.filter(id = request.data['id'])
+        queryset.update(assign_to = request.data['user'], status = "PROCESSED")
+        return Response(status.HTTP_200_OK)
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def getfilter(self, request, *args, **kwargs):
+        utype = request.data['type']
+        queryset = []
+        if utype == 'ops':
+            queryset = Dispute.objects.filter(assign_to = request.data['email'])
+    
+        elif utype == 'aln':
+            queryset = Dispute.objects.filter(cid = request.data['cid'])
+        
+        serializer_class = DisputeSerializer(queryset, many = True)
+        return Response(serializer_class.data)
 
 
      

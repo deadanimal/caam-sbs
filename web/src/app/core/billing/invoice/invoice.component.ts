@@ -10,6 +10,7 @@ import { InvoicesService} from 'src/app/shared/services/finance/invoice/invoices
 import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-invoice',
@@ -44,6 +45,27 @@ export class InvoiceComponent implements OnInit {
   // Data
   invoices: any;
 
+  // Modal View
+
+  companyperiod: string;
+  companycid: any;
+  companyname: string;
+  companyaddress: string;
+  companyemail: string;
+  companytel: string;
+  invoicenumber: string;
+  invoicestatus: string;
+  invoiceduedate: string;
+  domesticflight: string;
+  inboundflight: string;
+  outboundflight: string;
+  overflight: string;
+  otherflight: string;
+  subtotal: string;
+  invoicesurcharge: string;
+  invoicetotal: string;
+  companyfax: string;
+        
   // searchInput
   searchInput = {
     invoicenumber: "",
@@ -55,7 +77,7 @@ export class InvoiceComponent implements OnInit {
   showModal: boolean;
   modalConfig = {
     keyboard: true,
-    class: "modal-lg",
+    class: "modal-xl",
   };
 
   constructor(
@@ -74,11 +96,6 @@ export class InvoiceComponent implements OnInit {
     this.remarkForm = this.formBuilder.group({
       remark: new FormControl(""),     
     });
-  }
-
-  download(url: string): void {
-    console.log(url);
-    window.open(url, '_blank');
   }
 
   ngOnInit() {
@@ -240,7 +257,31 @@ export class InvoiceComponent implements OnInit {
 
   openModal(modalRef: TemplateRef<any>) {
     this.modal = this.modalService.show(modalRef, this.modalConfig);
+  }
 
+  detailView(modalRef: TemplateRef<any>, row) {
+    console.log(row);
+    this.modal = this.modalService.show(modalRef, this.modalConfig);
+    this.companyname = row.company_name
+    this.companyperiod = row.inv_period
+    this.companycid = row.cid_id;
+    this.companyname = row.company_name;
+    this.companyaddress = row.company_address;
+    this.companyemail = row.company_email;
+    this.companytel = row.office_num;
+    this.invoicenumber = row.invoice_no;
+    this.invoicestatus = row.status;
+    this.invoiceduedate = row.due_at_str;
+    this.domesticflight = row.domestic_flight;
+    this.inboundflight = row.inbound_flight;
+    this.outboundflight = row.outbound_flight;
+    this.overflight = row.over_flight;
+    this.otherflight = row.other_flight;
+    this.subtotal = row.sub_total;
+    this.invoicesurcharge = row.surchage;
+    this.invoicetotal = row.invoice_total;
+    this.companyfax = row.fax_number;
+   
   }
 
   closeModal() {
@@ -248,9 +289,28 @@ export class InvoiceComponent implements OnInit {
   }
 
   statusBadge(status: string) {
-    if (status == "Overdue") return "badge badge-danger";
-    if (status == "Disputed") return "badge badge-warning";
-    if (status == "Partial") return "badge badge-primary";
-    if (status == "Paid") return "badge badge-success";
+    if (status == "UNPAID") return "badge badge-danger";
+    if (status == "OUTSTANDING") return "badge badge-warning";
+    if (status == "PARTIAL") return "badge badge-primary";
+    if (status == "PAID") return "badge badge-success";
   }
+
+  download(url: string, company_name: string): void {
+    console.log(url);
+    // to do :
+    // post request to downloadpdf route with id as payloads
+    this.invoiceService.exportpdf({"id":url}).subscribe(
+      (res) => {
+        console.log("this is res");
+        var filename = company_name + ".pdf"
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+        console.log("this is err");
+      }
+
+    )
+
+  }
+
 }

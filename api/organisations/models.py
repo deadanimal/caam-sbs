@@ -14,7 +14,7 @@ class Organisation(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, default='NA')
     shortname = models.CharField(max_length=6, default='NA')
-    cid = models.CharField(max_length=4, default='NA', unique=True)
+    cid = models.CharField(max_length=4, unique=True, null=True, blank=True)
     cid_id = models.CharField(max_length=100, default='NA')
     is_active = models.BooleanField(default=True)
     

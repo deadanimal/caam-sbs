@@ -100,8 +100,7 @@
               </div>
             </div>
             <div class="col-lg-6 text-right">
-              <button class="btn btn-sm btn-dark" (click)="openModal(note)"
-                *ngIf="authService.decodedToken().user_type == 'OPS' || authService.decodedToken().user_type == 'APT'">
+              <button class="btn btn-sm btn-dark" (click)="openModal(note)">
                 Add New Note
               </button>
               <!-- <button class="btn btn-sm btn-dark" (click)="exportPdf()">

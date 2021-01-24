@@ -1,6 +1,6 @@
 import os
 import datetime, pandas, time
-from datetime import timezone
+from datetime import timezone, datetime, timedelta
 from django.db.models import Count, Q, Sum
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -15,6 +15,7 @@ from django.core.files.base import ContentFile
 from django.http import JsonResponse, HttpResponse
 import pandas
 import json
+import re
 
 # import settings
 from core.settings import BASE_DIR 
@@ -44,6 +45,13 @@ from accounts.models import (
 from accounts.serializers import (
     StatementSerializer
 )
+
+def changeFormat(fpl_date):
+    fpl_date = re.sub(r'/', '-', fpl_date)
+    fpl_date = datetime.strptime(fpl_date, '%Y-%m-%d')
+    fpl_date = fpl_date.strftime('%Y-%m')
+    return fpl_date
+        
 
 class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Invoices.objects.all()
@@ -82,25 +90,34 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def generate(self, request, *args, **kwargs):
         
+        fpl_ids = []
         temp = {}
         init_running_no = 6543
         ctgs = ['DOM', 'INB', 'LOC', 'OUB', 'OVF', 'NA']
         print(f"total_flight_with_cid: {Fpldata.objects.filter(cid__isnull=False).count()}")
+
         cids = [dict(t) for t in {tuple(d.items()) for d in Fpldata.objects.values('cid').filter(cid__isnull=False)}]
 
-        inv_periods = pandas.date_range('2019-01-01', datetime.datetime.now().strftime("%Y-%m-%d"), freq='MS').strftime("%Y-%b").tolist()
+        fpldatas = Fpldata.objects.filter(Q(status='FPL4') & Q(computed=False))
+        date_group  = list(set([changeFormat(i.fpl_date) for i in fpldatas]))
+        
+        print(f"cid_group: {len(cids)}")
+        print(f"periods: {date_group}")
+        print(f"len_periods: {len(date_group)}")
         
         for c in cids:
             org = Organisation.objects.get(cid=c["cid"])
-            fpldatas = Fpldata.objects.filter(cid=c["cid"])
+            fpldatas = Fpldata.objects.filter(Q(cid=c["cid"]) & Q(status='FPL4') & Q(computed=False))
             total_flight = fpldatas.count()
-            for period in inv_periods:
+            for period in date_group:
                 for i in ctgs:
                     temp[i] = 0
                     for j in fpldatas:
-                        if j.created_at.strftime("%Y-%b") == period:
+                        if changeFormat(j.fpl_date) == period:
                             if j.ctg == i:
                                 temp[i] += round(j.rate * j.dist, 2)
+
+                        fpl_ids.append(j.id)
                 
                 sub_total = sum(temp.values())
                 surcharge = 0
@@ -108,8 +125,8 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 running_no = init_running_no + 1
                 init_running_no = running_no
 
-                created_at_str = datetime.datetime.now().strftime("%d/%m/%Y")
-                due_at_str = (datetime.datetime.now() + datetime.timedelta(days=30)).strftime("%d/%m/%Y")
+                created_at_str = datetime.now().strftime("%d/%m/%Y")
+                due_at_str = (datetime.now() + timedelta(days=30)).strftime("%d/%m/%Y")
 
                 temp_obj = {
                     "cid":org.cid,
@@ -137,6 +154,12 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 serializer = InvoiceSerializer(data=temp_obj)
                 valid = serializer.is_valid(raise_exception=True)
                 serializer.save()
+
+                # bulk update on fpl_ids
+                if valid:
+                    for fpl in fpl_ids:
+                        Fpldata.objects.filter(id=fpl).update(computed=True)
+
 
                 # create statement objects
 

@@ -10,7 +10,7 @@ class Note(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     note_no = models.CharField(max_length=20, default='NA', blank=True)
-    cid = models.CharField(max_length=20, default='NA', blank=True)
+    cid_id = models.CharField(max_length=20, default='NA', blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     due_at = models.DateTimeField(null=True,blank=True)
@@ -20,6 +20,7 @@ class Note(models.Model):
     company_name = models.CharField(max_length=200, default='NA', blank=True)
     remarks = models.TextField(default='NA', blank=True)
     amount = models.CharField(max_length=200, default='NA', blank=True, null=True)
+    note_type = models.CharField(max_length=20, choices=TYPE, default='DEBIT')
 
     def  __str__(self):
         return self.note_no

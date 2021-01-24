@@ -57,7 +57,7 @@ export class FpldatasService {
 
   update(id: String, body:any): Observable<FpldatasModel> {
     let urlFlight = this.url + id + '/'
-    return this.http.patch<FpldatasModel>(urlFlight, body).pipe(
+    return this.http.put<FpldatasModel>(urlFlight, body).pipe(
       tap((res) => {
         console.log('FpldatasModel', res)
       })

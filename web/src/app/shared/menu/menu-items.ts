@@ -97,7 +97,7 @@ export const AirportRoutes: RouteInfo[] = [
         // { path: "dispute", title: "Dispute", type: "link" },
         // { path: "tfl-vfr", title: "TFL/VFR", type: "link" },  
         { path: "dispute", title: "Dispute", type: "link" },
-        { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
+        // { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
         { path: "upload", title: "TFL/VFR", type: "link" },  
         // { path: "data", title: "History", type: "link" },   
     ],
@@ -150,10 +150,10 @@ export const OperationRoutes: RouteInfo[] = [
     children: [
       // { path: "tflvfr", title: "TFL/VFR", type: "link" },
       // { path: "dispute", title: "Dispute", type: "link" },
-      { path: "task", title: "Task", type: "link" }, 
-      { path: "upload", title: "TFL/VFR", type: "link" },  
+      { path: "task", title: "TFL/VFR", type: "link" }, 
+      // { path: "upload", title: "TFL/VFR", type: "link" },  
       { path: "dispute", title: "Dispute", type: "link" },
-      { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
+      // { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
 
 
     ],

@@ -281,6 +281,8 @@ class Fpldata(models.Model):
     # dispute
     staged = models.BooleanField(default=False)
     disputed = models.BooleanField(default=False)
+    computed = models.BooleanField(default=False)
+
 
     fileupload = models.ForeignKey(
         FileUpload,
@@ -293,6 +295,7 @@ class Fpldata(models.Model):
         CustomUser,
         on_delete=models.CASCADE,
         related_name='fpl_data_uploaded_by',
+        null=True,
         limit_choices_to=Q(user_type='OPS') | Q(user_type='APT')
     )
     checked_by = models.ForeignKey(
