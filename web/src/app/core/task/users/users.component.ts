@@ -19,6 +19,9 @@ export class UsersComponent implements OnInit {
   processTitle: any;
   tempForm: any;
   userFormGroup: FormGroup;
+  getRowClass: any;
+  entries: number = 5;
+
 
     //id: string,
     //full_name: string,
@@ -33,7 +36,7 @@ export class UsersComponent implements OnInit {
 
   constructor(
 	private userService: UsersService,
-	private authService: AuthService,
+	public authService: AuthService,
     private modalService: NgbModal,
 	private formBuilder: FormBuilder,
   ) {
@@ -148,7 +151,12 @@ export class UsersComponent implements OnInit {
     this.open(content, "modal-mini", "sm", "Add New User");
   }
 
-  
+  filterTable(field) {
+  }
+
+  entriesChange($event) {
+    this.entries = $event.target.value;
+  }
 
 
 }

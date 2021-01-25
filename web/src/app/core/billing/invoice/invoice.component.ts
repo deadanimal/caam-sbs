@@ -28,6 +28,7 @@ export class InvoiceComponent implements OnInit {
   disputeStage: boolean = false;
   fplToDispute: any[] = [];
   disputeBody: any;
+  displayCheck: any;
 
   // Table
   entries: number = 5;
@@ -99,7 +100,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.FilterTable(this.filterby);
+    this.filterTable(this.filterby);
     this.getFpls();
     this.unstageDispute();
   }
@@ -152,7 +153,7 @@ export class InvoiceComponent implements OnInit {
 
   
 
-  FilterTable(field) {
+  filterTable(field) {
     let search = field.toLocaleLowerCase();
     let tempAll = [];
 
