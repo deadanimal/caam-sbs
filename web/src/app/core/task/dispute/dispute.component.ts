@@ -32,6 +32,7 @@ export class DisputeComponent implements OnInit {
   opened_id: string = null;
   selectedUser: string = null;
   users: UsersModel[] = [];
+  entries: number = 5;
 
   fplFormGroup: any;
 
@@ -206,6 +207,11 @@ export class DisputeComponent implements OnInit {
       }
     );
   }
+
+  entriesChange($event) {
+    this.entries = $event.target.value;
+  }
+
 
 }
 
