@@ -10,8 +10,8 @@ import { CreditDebit } from './credit-and-debit.model';
   providedIn: "root",
 })
 export class CreditDebitService {
-  // url: string = environment.baseUrl + "v1/note/";
-  url: string = "http://127.0.0.1:8000/v1/note/";
+  url: string = environment.baseUrl + "v1/note/";
+  // url: string = "http://127.0.0.1:8000/v1/note/";
 
 
   // Data

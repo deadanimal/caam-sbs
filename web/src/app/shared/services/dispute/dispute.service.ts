@@ -10,8 +10,8 @@ import { DisputeModel } from  "./dispute.model";
   providedIn: 'root'
 })
 export class DisputeService {
-  // url: string = environment.baseUrl + "v1/dispute/";
-  url: string = "http://127.0.0.1:8000/v1/dispute/";
+  url: string = environment.baseUrl + "v1/dispute/";
+  // url: string = "http://127.0.0.1:8000/v1/dispute/";
 
   disputemodels: DisputeModel[] = [];
 

@@ -115,6 +115,7 @@ export class UploadComponent implements OnInit {
   ) {
 
     this.user_obj = this.authService.decodedToken();
+    console.log("userObj", this.user_obj)
     if (this.user_obj) this.getFileUpload(this.user_obj);
 
     this.fileuploadFormGroup = this.formBuilder.group({
@@ -425,6 +426,7 @@ export class UploadComponent implements OnInit {
 
   // upload vfl/tfr function
   upload() {
+    console.log("how", this.user_obj.user_id)
     const formData = new FormData();
     formData.append(
       "data_file_link",

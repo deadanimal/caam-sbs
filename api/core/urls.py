@@ -163,9 +163,13 @@ note_router = router.register(
 
 # Payment app
 from payments.views import (
-    PaymentViewSet
+    PaymentViewSet, DepositsViewSet
 )
 
+
+deposites_router = router.register(
+    'deposits', DepositsViewSet
+)
 
 
 payment_router = router.register(

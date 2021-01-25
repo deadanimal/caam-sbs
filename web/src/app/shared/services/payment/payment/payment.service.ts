@@ -10,8 +10,8 @@ import { Payment } from './payment.model';
   providedIn: "root",
 })
 export class PaymentService {
-  // url: string = environment.baseUrl + "v1/payments/";  
-  url: string = "http://127.0.0.1:8000/v1/payments/";
+  url: string = environment.baseUrl + "v1/payments/";  
+  // url: string = "http://127.0.0.1:8000/v1/payments/";
 
   // Data
   public payment: Payment

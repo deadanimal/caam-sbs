@@ -340,6 +340,16 @@
                 {{row.invoice_total | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>PAID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.paid_amount | currency: "MYR"}}
+              </ng-template>
+            </ngx-datatable-column>
+
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>STATUS</span>

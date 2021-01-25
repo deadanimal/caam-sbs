@@ -40,6 +40,7 @@ class Invoices(models.Model):
     sub_total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     surchage = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     invoice_total = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
     # invoice age
     month_0_1 = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)

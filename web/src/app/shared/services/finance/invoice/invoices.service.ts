@@ -11,8 +11,8 @@ import { Posts } from './opost';
   providedIn: "root",
 })
 export class InvoicesService {
-  // url: string = environment.baseUrl + "v1/invoices/";
-  url: string = "http://127.0.0.1:8000/v1/invoices/";
+  url: string = environment.baseUrl + "v1/invoices/";
+  // url: string = "http://127.0.0.1:8000/v1/invoices/";
 
   // Data
   public invoice: Invoice

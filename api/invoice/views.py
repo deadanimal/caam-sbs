@@ -74,9 +74,10 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def check_outstanding(self, request, *args, **kwargs):
         invoice = Invoices.objects.filter(status='UNPAID', invoice_total__gt=0).values()
         for i in invoice:
-            gap = datetime.datetime.utcnow()-datetime.datetime.strptime(i['created_at_str'], "%Y-%m-%d")
+            gap = datetime.utcnow()-datetime.strptime(i['inv_period'], "%Y-%m")
+            print("gap", gap)
             print(type(i['created_at']))
-            if gap > datetime.timedelta(days=30):
+            if gap > timedelta(days=30):
                 Invoices.objects.filter(id=i['id']).update(status="OUTSTANDING")
                 print("here")
         
@@ -213,31 +214,30 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['GET'], detail=False)
     def aging(self, request, *args, **kwargs):
-        invoices = Invoices.objects.filter(status='OUTSTANDING', invoice_total__gt=0).values()
-        print(invoices)
+        invoices = Invoices.objects.filter(Q(status='OUTSTANDING') & Q(invoice_total__gt=0) | Q(status='PARTIAL')).values()
         for i in invoices:
             print(i)
-            gap = datetime.datetime.now()-datetime.datetime.strptime(i['inv_period'], "%Y-%b")
+            gap = datetime.now()-datetime.strptime(i['inv_period'], "%Y-%m")
 
-            if gap < datetime.timedelta(days=30):
+            if gap < timedelta(days=30):
                 Invoices.objects.filter(id=i['id']).update(month_0_1=i['invoice_total'])
             
-            elif gap > datetime.timedelta(days=30) and gap < datetime.timedelta(90):
+            elif gap > timedelta(days=30) and gap < timedelta(90):
                 Invoices.objects.filter(id=i['id']).update(month_0_1=0.0, month_1_3=i['invoice_total'])
 
-            elif gap > datetime.timedelta(days=90) and gap < datetime.timedelta(180):
+            elif gap > timedelta(days=90) and gap < timedelta(180):
                 Invoices.objects.filter(id=i['id']).update(month_1_3=0.0, month_4_6=i['invoice_total'])
 
-            elif gap > datetime.timedelta(days=180) and gap < datetime.timedelta(360):
+            elif gap > timedelta(days=180) and gap < timedelta(360):
                 Invoices.objects.filter(id=i['id']).update(month_4_6=0.0, month_7_12=i['invoice_total'])
 
-            elif gap > datetime.timedelta(days=360) and gap < datetime.timedelta(720):
+            elif gap > timedelta(days=360) and gap < timedelta(720):
                 Invoices.objects.filter(id=i['id']).update(month_7_12=0.0, month_13_36=i['invoice_total'])
 
-            elif gap > datetime.timedelta(days=720) and gap < datetime.timedelta(2160):
+            elif gap > timedelta(days=720) and gap < timedelta(2160):
                 Invoices.objects.filter(id=i['id']).update(month_13_36=0.0, month_37_72=i['invoice_total'])
 
-            elif gap > datetime.timedelta(days=2160):
+            elif gap > timedelta(days=2160):
                 Invoices.objects.filter(id=i['id']).update(month_37_72=0.0, month_73=i['invoice_total'])
         
 

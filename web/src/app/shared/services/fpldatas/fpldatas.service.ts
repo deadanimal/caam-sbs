@@ -10,8 +10,8 @@ import { FpldatasModel } from "./fpldatas.model";
   providedIn: "root",
 })
 export class FpldatasService {
-  // url: string = environment.baseUrl + "v1/fpldatas/";
-  url: string = "http://127.0.0.1:8000/v1/fpldatas/";
+  url: string = environment.baseUrl + "v1/fpldatas/";
+  // url: string = "http://127.0.0.1:8000/v1/fpldatas/";
 
   // Data
   public fpldmodels: FpldatasModel[] = [];
