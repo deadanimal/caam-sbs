@@ -18,3 +18,5 @@ coverage.*
 !.isort.cfg
 node_modules/
 bkp/
+
+web/dist
