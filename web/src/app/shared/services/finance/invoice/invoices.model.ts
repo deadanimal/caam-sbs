@@ -21,8 +21,9 @@ export class Invoice {
   public sub_total: number;
   public surcharge: number;
   public invoice_total: number;
-  public cid: string;
   public total_flight: number;
+  public cid: any;
+  public cid_id: string;
   public month_0_1: number;
   public month_1_3: number;
   public month_4_6: number;
@@ -53,8 +54,9 @@ export class Invoice {
     sub_total: number,
     surcharge: number,
     invoice_total: number,
-    cid: string,
     total_flight: number,
+    cid: any,
+    cid_id: string,
     month_0_1: number,
     month_1_3: number,
     month_4_6: number,
@@ -86,8 +88,9 @@ export class Invoice {
     this.sub_total = sub_total;
     this.surcharge = surcharge;
     this.invoice_total = invoice_total;
-    this.cid = cid;
     this.total_flight = total_flight;
+    this.cid = cid;
+    this.cid_id = cid_id;
     this.month_0_1 = month_0_1;
     this.month_1_3 = month_1_3;
     this.month_4_6 = month_4_6;

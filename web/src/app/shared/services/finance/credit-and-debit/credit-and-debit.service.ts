@@ -10,7 +10,9 @@ import { CreditDebit } from './credit-and-debit.model';
   providedIn: "root",
 })
 export class CreditDebitService {
-  url: string = environment.baseUrl + "v1/credit-debit/";
+  url: string = environment.baseUrl + "v1/note/";
+  // url: string = "http://127.0.0.1:8000/v1/note/";
+
 
   // Data
   public creditDebit: CreditDebit
@@ -25,6 +27,15 @@ export class CreditDebitService {
       })
     );
   }
+  submit(body): Observable<CreditDebit> {
+    return this.http.post<any>(this.url + "submit/", body).pipe(
+      tap((res) => {
+        console.log("CreditDebit", res);
+      })
+    );
+  }
+
+
 
   get(): Observable<CreditDebit[]> {
     return this.http.get<any>(this.url).pipe(

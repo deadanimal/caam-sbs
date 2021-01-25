@@ -2,8 +2,11 @@ import { Component, OnInit, NgZone, TemplateRef } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { DisputeService } from 'src/app/shared/services/dispute/dispute.service';
 import { DisputeModel } from 'src/app/shared/services/dispute/dispute.model';
-import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
+import { UsersService } from 'src/app/shared/services/users/users.service';
+import { UsersModel } from 'src/app/shared/services/users/users.model';
 import { invoicelist } from 'src/app/variables/finance/invoice';
+import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
+import { FpldatasService } from 'src/app/shared/services/fpldatas/fpldatas.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {
   Validators,
@@ -20,13 +23,18 @@ import {
   styleUrls: ['./dispute.component.scss']
 })
 export class DisputeComponent implements OnInit {
-        
+  userObj: any;      
   disputeList: DisputeModel[] = [];
   fpls: FpldatasModel[] = [];
   editedFpls: FpldatasModel[] = [];
-  fplFormGroup: any;
+  fpl_ids: any[] = [];
 
   opened_id: string = null;
+  selectedUser: string = null;
+  users: UsersModel[] = [];
+
+  fplFormGroup: any;
+
   rows = invoicelist;
   activeRow: any;
 
@@ -39,9 +47,11 @@ export class DisputeComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
+    private userService: UsersService,
     private authService: AuthService,
     private disputeService: DisputeService,
     private modalDialogService: BsModalService,
+    private fpldataService: FpldatasService,
   ) {
     this.fplFormGroup = this.formBuilder.group({
       id: new FormControl(""), 
@@ -59,8 +69,20 @@ export class DisputeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getDispute();
+    this.checkRole();
+    this.getExplicitUsers();
     this.opened_id = null;
+    this.selectedUser = null;
+  }
+
+  getExplicitUsers() {
+    this.userService.getExplicit().subscribe(
+      (res) => {
+        this.users = res;
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
   onActivate(event) {
@@ -74,16 +96,9 @@ export class DisputeComponent implements OnInit {
         
   openModalHod(modalRef: TemplateRef<any>, row) {
     this.opened_id = row.id;
+    this.fpl_ids = row.fpl_ids;
+    this.getDisputedFpls();
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
-    this.disputeService.getfilteredHOD({'fpl_ids': row.fpl_ids}).subscribe(
-      (res) => {
-        this.fpls = res;
-        console.log(this.fpls);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
   }
 
   openModalOps(modalRef: TemplateRef<any>, row) {
@@ -99,7 +114,7 @@ export class DisputeComponent implements OnInit {
     this.disputeService.reject({'id':this.opened_id}).subscribe(
       (res) => {
         this.modal.hide()
-        this.getDispute();
+        this.checkRole();
       },
       (err) => {
         console.log(err);
@@ -108,14 +123,12 @@ export class DisputeComponent implements OnInit {
   }
 
   openSubModal(modalRef: TemplateRef<any>, row) {
-    // get movement report data for the current disputed 
     this.modal.hide();
-
     this.fplFormGroup.patchValue({...row});
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
   }
 
-  getDispute() {
+  getDisputeHOD() {
     this.disputeService.get().subscribe(
       (res) => {
         this.disputeList = res;
@@ -125,6 +138,75 @@ export class DisputeComponent implements OnInit {
       });
   }
 
+  getDisputeOPS(email) {
+    let body = {
+      "type": "ops",
+      "email": email
+    }
+    this.disputeService.getFilter(body).subscribe(
+      (res) => {
+        this.disputeList = res;
+      },
+      (err) => {
+        console.log(err); 
+      });
+  }
+
+  getDisputedFpls() {
+      this.disputeService.getfilteredHOD({'fpl_ids': this.fpl_ids}).subscribe(
+      (res) => {
+        this.fpls = res;
+        console.log(this.fpls);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+
+  }
+  assignUser() {
+    this.modal.hide()
+    let body = {
+      "id": this.opened_id,
+      "user": this.selectedUser
+    }
+    this.disputeService.assignUser(body).subscribe(
+    (res) => {
+      console.log(res);
+      this.checkRole();
+    },      
+    (err) => {
+      console.log(err);
+    });
+  }
+
+  checkRole() {
+    this.userObj = this.authService.decodedToken();
+    let utype = this.userObj.user_type;
+    if (utype == 'HOD') {
+      this.getDisputeHOD();
+    }
+    else if (utype == 'OPS' || utype == 'APT') {
+      this.getDisputeOPS(this.userObj.email);
+    }
+  }
+
+  fplEdit() {
+    let id = this.fplFormGroup.value['id']
+    this.fpldataService.update(id, this.fplFormGroup.value).subscribe(
+      (res) => {
+        console.log(res);
+        this.getDisputedFpls();
+        this.modal.hide();
+      },
+      (err) => {
+        console.log(err);
+        this.getDisputedFpls();
+        this.modal.hide();
+      }
+    );
+  }
 
 }
+
 

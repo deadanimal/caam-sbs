@@ -48,7 +48,7 @@ let pages = [
   UploadComponent,
   InvoiceComponent,
   TaskComponent,
-  CreditDebitNoteComponent,
+  // CreditDebitNoteComponent,
 ]
 
 @NgModule({

@@ -418,6 +418,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST'], detail=False)
     def upload(self, request, *args, **kwargs):
 
+        FplObjs = []
         data_type = request.data['data_type']
         print(data_type)
         data_file_link = request.FILES['data_file_link']
@@ -482,6 +483,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         # if TFL, make a readable format
         elif data_type == 'TFL':
+            print("GO HERE")
             response_array = []
             error_data = 0
             total_data = 0
@@ -631,7 +633,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                         file_date = array_tfl[2][0:8]
                         file_date_ts = change_time_format(array_tfl[2], change_to_time=True)
 
-        bulkCreate_status = Fpldata.objects.bulk_create(FplObjs)
+        Fpldata.objects.bulk_create(FplObjs)
 
         fileupload = FileUpload.objects.filter(id=fileupload_id)
         print("fileupload", fileupload)
@@ -909,7 +911,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         # use this on invoice app
 
         response_array = []
-        results = Fpldata.objects.values('cid').filter(cid__isnull=False).annotate(total_flight=Count('cid_id'), total_amount=Sum('amount'))
+        results = Fpldata.objects.values('cid').filter(Q(cid__isnull=False) & Q(computed=False)).annotate(total_flight=Count('cid_id'), total_amount=Sum('amount'))
         results2 = Fpldata.objects.filter(cid__isnull=False).all().values()
 
         for result in results:

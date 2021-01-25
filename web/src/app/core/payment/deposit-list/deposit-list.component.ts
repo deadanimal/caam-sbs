@@ -19,13 +19,14 @@ export class DepositListComponent implements OnInit {
 
   // Data
   temp = [];
-  depositList: DepositList[] = [];
+  deposit : any[] = [];
 
   constructor(
     private depositListService: DepositListService
   ) { }
 
   ngOnInit() {
+    this.getDeposits();
   }
 
   download(url: string): void {
@@ -60,5 +61,16 @@ export class DepositListComponent implements OnInit {
 
   onActivate(event) {
     this.activeRow = event.row;
+  }
+
+  getDeposits() {
+    this.depositListService.get().subscribe(
+      (res) => {
+        this.deposit = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

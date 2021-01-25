@@ -10,8 +10,8 @@ import { OrganisationsModel } from "./organisations.model";
   providedIn: "root",
 })
 export class OrganisationsService {
-  // url: string = environment.baseUrl + "v1/organisations/";
-  url: string = "http://127.0.0.1:8000/v1/organisations/";
+  url: string = environment.baseUrl + "v1/organisations/";
+  // url: string = "http://127.0.0.1:8000/v1/organisations/";
 
 
   // Data

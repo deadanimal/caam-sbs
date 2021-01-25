@@ -115,6 +115,7 @@ export class UploadComponent implements OnInit {
   ) {
 
     this.user_obj = this.authService.decodedToken();
+    console.log("userObj", this.user_obj)
     if (this.user_obj) this.getFileUpload(this.user_obj);
 
     this.fileuploadFormGroup = this.formBuilder.group({
@@ -425,6 +426,7 @@ export class UploadComponent implements OnInit {
 
   // upload vfl/tfr function
   upload() {
+    console.log("how", this.user_obj.user_id)
     const formData = new FormData();
     formData.append(
       "data_file_link",
@@ -576,6 +578,7 @@ export class UploadComponent implements OnInit {
             .subscribe(
               (res) => {
                 console.log("res", res);
+                this.getFplData();
                 this.spinner.hide();
                 swal
                   .fire({
@@ -587,8 +590,8 @@ export class UploadComponent implements OnInit {
                   })
                   .then((result) => {
                     if (result.value) {
-                      this.modalService.dismissAll();
-                      this.getFplData();
+                      this.user_obj = this.authService.decodedToken();
+                      this.getFileUpload(this.user_obj);
                       this.modal.hide();
                       // window.location.reload();
                     }

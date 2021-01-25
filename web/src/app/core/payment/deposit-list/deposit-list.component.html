@@ -92,7 +92,7 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp " (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="deposit" (activate)="onActivate($event)">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -107,18 +107,26 @@
               <ng-template ngx-datatable-header-template>
                 <span>CID</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.company_id }}
+              </ng-template>
+
             </ngx-datatable-column>
             <ngx-datatable-column name="companyname">
               <ng-template ngx-datatable-header-template>
                 <span>COMPANY NAME</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.company_name }}
+              </ng-template>
+
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>DEPOSIT AMOUNT</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.depositamount | currency: "MYR"}}
+                {{row.amount_receive | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
 

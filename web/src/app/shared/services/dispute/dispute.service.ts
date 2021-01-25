@@ -10,12 +10,20 @@ import { DisputeModel } from  "./dispute.model";
   providedIn: 'root'
 })
 export class DisputeService {
-  // url: string = environment.baseUrl + "v1/dispute/";
-  url: string = "http://127.0.0.1:8000/v1/dispute/";
+  url: string = environment.baseUrl + "v1/dispute/";
+  // url: string = "http://127.0.0.1:8000/v1/dispute/";
 
   disputemodels: DisputeModel[] = [];
 
   constructor(private http: HttpClient) { }
+
+  assignUser(body): Observable<any> {
+    return this.http.post<any>(this.url + "assignDispute/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
 
   submit(body): Observable<any> {
     return this.http.post<any>(this.url + "submit/", body).pipe(
@@ -40,6 +48,16 @@ export class DisputeService {
       })
     );
   }
+        
+  getFilter(body): Observable<any> {
+    return this.http.post<any>(this.url + "getfilter/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
+
 
 
   get(): Observable<any> {

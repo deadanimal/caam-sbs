@@ -69,7 +69,7 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="movementreport" (activate)="onActivate($event)" [displayCheck]="displayCheck" [scrollbarH]="true">
+            [rows]="movementreport" (activate)="onActivate($event)" [displayCheck]="displayCheck">
             <ngx-datatable-column [width]="30" [headerCheckboxable]="true">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -147,13 +147,10 @@
               </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+            <ngx-datatable-column *ngIf="disputeStage == true" name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" (click)="openModal()" title="click to view">
-                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
-                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <a *ngIf="disputeStage == true" href="javascript:void(0)" title="click to download" (click)='archive(row.id)'>
-                  <i class="fa fa-plus text-green" aria-hidden="true"></i>
+                <a href="javascript:void(0)" title="add to dispute" (click)='archive(row.id)'>
+                  <i class="fas fa-archive" aria-hidden="true"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>
@@ -162,7 +159,7 @@
         </div>
         <div *ngIf="disputeStage==true">
         <div class="card-body">
-          <h3>Archive Table</h3>
+          <h3>Dispute Table</h3>
         </div>
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
@@ -235,11 +232,8 @@
 
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" (click)="openModal()" title="click to view">
-                  <i class="fa fa-eye text-black" aria-hidden="true"></i>
-                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <a *ngIf="disputeStage == true" href="javascript:void(0)" title="click to download" (click)='archive(row.id)'>
-                  <i class="fa fa-minus text-red" aria-hidden="true"></i>
+                <a href="javascript:void(0)" title="click to undo" (click)='archive(row.id)'>
+                  <i class="fa fa-undo text-black" aria-hidden="true"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>
@@ -301,7 +295,7 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="invoices" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="invoices" (activate)="onActivate($event)">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -346,6 +340,16 @@
                 {{row.invoice_total | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>PAID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.paid_amount | currency: "MYR"}}
+              </ng-template>
+            </ngx-datatable-column>
+
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>STATUS</span>
@@ -358,10 +362,10 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" (click)="openModal()" title="click to view">
+                <a href="javascript:void(0)" (click)="detailView(view, row)" title="click to view">
                   <i class="fa fa-eye text-black" aria-hidden="true"></i>
                 </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.id, row.company_name)'>
                   <i class="fa fa-download text-black" aria-hidden="true"></i>
                 </a>
 
@@ -373,3 +377,103 @@
     </div>
   </div>
 </div>
+
+<!-- invoice show by modal -->
+<ng-template #view>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Invoice
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div class="row clearfix">
+        <div class="col-6">
+          <span>
+            <span class="h3"><b>INVPeriod: {{companyperiod}}</b></span><br>
+              {{companyname}}<br>
+              {{companyaddress}}<br>
+              <b>Email : </b>{{companyemail}}<br>
+              <b>Tel : </b>{{companytel}}<br>
+              <b>Fax : </b>{{companyfax}}<br>
+          </span>
+        </div>
+        <div class="col-6" style="text-align: right;">
+          <span>
+            <span class="h3"><b>Running No: {{invoicenumber}}</b></span><br>
+            <span class="h3">Status: {{invoicestatus}}<br>
+              <b>Invoice Date : </b>{{invoicedate}}<br>
+              <b>Due Date : </b>{{invoiceduedate}}</span><br>
+          </span>
+        </div>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Invoice Summary</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>Item</td>
+                  <td>Amount</td>
+                </tr>
+              </thead>
+              <tbody>
+                  
+                <tr>
+                  <td class="thick-line">Domestic Flight</td>
+                  <td class="thick-line">{{domesticflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Inbound Flight</td>
+                  <td class="no-line">{{inboundflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Outbound Flight</td>
+                  <td class="no-line">{{outboundflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Over Flight</td>
+                  <td class="no-line">{{overflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Other</td>
+                  <td class="no-line">{{otherflight}}</td>
+                </tr>
+                <tr>
+                  <td class="thick-line"><strong>Subtotal</strong></td>
+                  <td class="thick-line">{{subtotal}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"><strong>Surcharge</strong></td>
+                  <td class="no-line">{{invoicesurcharge}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"><strong>Invoice Total</strong></td>
+                  <td class="no-line">{{invoicetotal}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Close
+    </button>
+  </div>
+</ng-template>
