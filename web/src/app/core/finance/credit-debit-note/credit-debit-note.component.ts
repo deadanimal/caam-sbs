@@ -26,6 +26,7 @@ export class CreditDebitNoteComponent implements OnInit {
   orgs: OrganisationsModel[] = [];
   activeRow: any;
   rows = dummylist.creditdebitlist;
+  some: any;
 
   noteFormGroup: FormGroup
 
@@ -215,6 +216,9 @@ export class CreditDebitNoteComponent implements OnInit {
     if (status == "Disputed") return "badge badge-warning";
     if (status == "Partial") return "badge badge-primary";
     if (status == "Paid") return "badge badge-success";
+  }
+
+  exportPdf() {
   }
 }
 

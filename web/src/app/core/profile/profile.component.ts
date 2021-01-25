@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms"
 export class ProfileComponent implements OnInit {
   closeResult: any;
   processTitle: any;
-  users: UsersModel[] = []
+  users: any[] = []
   userFormGroup: FormGroup;
 
   private userId: string = "";
