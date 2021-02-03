@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: caam-sbs-api
-        image: syafiqpipe/caam-sbs-api:1.0.21 #boleh tambah version
+        image: syafiqpipe/caam-sbs-api:1.0.22 #boleh tambah version
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
