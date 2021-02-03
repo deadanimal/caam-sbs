@@ -296,9 +296,6 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         print(len(aging))
         return Response({'data':aging})
 
-        
-                
-
     # insertion
     @action(methods=['POST'], detail=False)
     def insertion(self, request, *args, **kwargs):
@@ -337,10 +334,17 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         return Response({"tinky winky"})
 
     @action(methods=['POST'], detail=False)
+    def autoPaid(self, request, *args, **kwargs):
+        # fetch deposit list
+        # treat as payment
+        # update invoice
+        # update deposit list
+        pass
+
+    @action(methods=['POST'], detail=False)
     def getfilteredcid(self, request, *args, **kwargs):
         cid_id = request.data['cid_id']
         queryset = Invoices.objects.filter(cid=cid_id).values()
         serializer_class = InvoiceSerializer(queryset, many=True)
-        print(queryset)
         return Response(serializer_class.data)
 

@@ -25,7 +25,8 @@ class Dispute(models.Model):
 
     company_name = models.CharField(max_length=200, default='NA', blank=True)
     remarks = models.TextField(default='NA', blank=True)
-    fpl_ids = ArrayField(models.CharField(max_length=200), blank=True)
+    fpl_ids = ArrayField(models.CharField(max_length=200), blank=True, null=True)
+    arch_ids = ArrayField(models.CharField(max_length=200), blank=True, null=True)
     assign_to = models.CharField(max_length=200, default='NA', blank=True) # user email
 
     def  __str__(self):

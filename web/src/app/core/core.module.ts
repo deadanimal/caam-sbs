@@ -25,6 +25,7 @@ import { MasterDataComponent } from './master-data/master-data.component';
 import { DatePipe } from '@angular/common';
 import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 import { ProfileComponent } from './profile/profile.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 
@@ -34,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
     MovementReportComponent,
     MasterDataComponent,
     ProfileComponent,
+    PasswordResetComponent,
   ],
   imports: [
     CommonModule,

@@ -23,6 +23,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
+import { DisputeComponent } from './dispute/dispute.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     CreditNoteComponent,
     DebitNoteComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    DisputeComponent
   ],
   providers: [
     DatePipe,

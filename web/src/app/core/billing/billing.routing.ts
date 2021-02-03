@@ -2,6 +2,8 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CreditNoteComponent } from './credit-note/credit-note.component';
 import { DebitNoteComponent } from './debit-note/debit-note.component';
+import { DisputeComponent } from './dispute/dispute.component';
+
 
 const routes: Routes = [
   {  },
@@ -23,6 +25,10 @@ export const BillingRoutes: Routes = [
         path: "invoice",
         component: InvoiceComponent,
       },   
+      {
+        path: "dispute",
+        component: DisputeComponent,
+      },
     ],
   },
 ]

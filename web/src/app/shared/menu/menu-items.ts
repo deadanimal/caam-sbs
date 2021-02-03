@@ -47,6 +47,8 @@ export const AirlineRoutes: RouteInfo[] = [
       { path: "invoice", title: "Invoice", type: "link" },    
       { path: "credit-note", title: "Credit Note", type: "link" },           
       { path: "debit-note", title: "Debit Note", type: "link" },          
+      { path: "dispute", title: "Dispute", type: "link" },          
+
     ]
   },
   {
@@ -150,8 +152,8 @@ export const OperationRoutes: RouteInfo[] = [
     children: [
       // { path: "tflvfr", title: "TFL/VFR", type: "link" },
       // { path: "dispute", title: "Dispute", type: "link" },
-      { path: "task", title: "TFL/VFR", type: "link" }, 
-      // { path: "upload", title: "TFL/VFR", type: "link" },  
+      { path: "task", title: "Approve", type: "link" }, 
+      { path: "upload", title: "TFL/VFR", type: "link" },  
       { path: "dispute", title: "Dispute", type: "link" },
       // { path: "credit-debit-note", title: "Credit and Debit Note", type: "link" },          
 

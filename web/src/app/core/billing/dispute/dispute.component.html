@@ -10,7 +10,7 @@
           <ng-template #popTemplate>
             <h4 class="text-center">Information</h4>
             <small class="text-justify">User able to upload VFR and TFL data in this module. This system
-              will automatically check for error, calculate the  and
+              will automatically check for error, calculate the invoice and
               generate invoice.<br />
               User will need to update the error data in order to generate
               invoice.<br />
@@ -28,9 +28,6 @@
 </div>
 
 <div class="container-fluid mt--8">
-  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
-    <p style="color: white;">Loading, Please wait a moment...</p>
-  </ngx-spinner>
   <div class="row">
     <div class="col">
       <div class="card">
@@ -144,15 +141,11 @@
 
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <a *ngIf="authService.decodedToken().user_type == 'HOD'" href="javascript:void(0)" title="click to view"
-                  (click)="openModalHod(hodModal, row)">
-                  <i class="fas fa-edit"></i>
+                <a href="javascript:void(0)" title="click to view"
+                  (click)="openModal(opsModal, row)">
+                  <i class="fas fa-eye"></i>
                 </a>
-                <a *ngIf="authService.decodedToken().user_type == 'OPS' || authService.decodedToken().user_type == 'APT'" href="javascript:void(0)" title="click to view"
-                  (click)="openModalHod(opsModal, row)">
-                  <i class="fas fa-edit"></i>
-                </a>
-              </ng-template>
+               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
         </div>
@@ -166,7 +159,7 @@
 
 <!-- proccessing modal -->
 
-<ng-template #hodModal>
+<ng-template #detailview>
 
   <div class="modal-header bg-default viewtemplate">
     <h6 class="modal-title text-white my-auto" id="modal-title-default">
@@ -354,7 +347,6 @@
 
     <div class="row">
       <div class="col">
-      <div class=card-header><h5>Disputed Fpls</h5></div>
         <div class="card">
           <!-- <div class="card-header">
             <div class="row">
@@ -489,156 +481,7 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" sortable="false" prop="id">
                 <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                  <a class="pr--3" href="javascript:void(0)" title="click to view"
-                    (click)="openSubModal(detailView, row)">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                  <a href="javascript:void(0)" title="click to archive"
-                    (click)="archiveFpl(row)">
-                    <i class="fas fa-trash"></i>
-                  </a>
-
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>
-          </div>
-        </div>
-        <div class=card-header><h5>Archived Fpls</h5></div>
-        <div class="card">
-          <!-- <div class="card-header">
-            <div class="row">
-              <div class="col">
-                <h3 class="mb-0">List of VFR and TFL Data</h3>
-              </div>
-              <div class="col-auto">
-                <h3 class="text-danger" *ngIf="dataErrors.length > 0">
-                  <ng9-odometer [number]="dataErrors.length" [config]="{}"></ng9-odometer>
-                  errors occured
-                </h3>
-              </div>
-            </div>
-          </div> -->
-          <div class="dataTables_wrapper py-4">
-            <div class="row">
-              <div class="col-sm-12 col-md-4">
-                <div class="dataTables_length" id="datatable_length">
-                  <label>
-                    Show
-                    <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
-                      (change)="entriesChange($event)">
-                      <option value="5" [selected]="entries == 5">5</option>
-                      <option value="10" [selected]="entries == 10">10</option>
-                      <option value="25" [selected]="entries == 25">25</option>
-                      <option value="50" [selected]="entries == 50">50</option>
-                      <!-- <option value="-1" [selected]="entries == -1">All</option> -->
-                    </select>
-                    entries
-                  </label>
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-4" style="
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                ">
-                <!-- <span class="text-danger pr-3">Show error data(s) only</span> -->
-                <!-- <label class="custom-toggle">
-                  <input type="checkbox" checked="" [(ngModel)]="toggleDataError"
-                    [ngModelOptions]="{ standalone: true }" (change)="showDataError()" />
-                  <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
-                </label> -->
-              </div>
-              <div class="col-sm-12 col-md-4">
-                <div id="datatable_filter" class="dataTables_filter">
-                  <label>
-                    <input type="search" class="form-control form-control-sm" placeholder="Search records"
-                      aria-controls="datatable" (keyup)="filterTableFlight($event)" />
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
-              [footerHeight]="50" [rowHeight]="'auto'" 
-              [limit]="entries != -1 ? entries : undefined" [rows]="archs"
-              (activate)="onActivate($event)" [scrollbarH]="true">
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>No.</span>
-                </ng-template>
-                <ng-template let-row="fpls" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                  {{
-                    rowIndex +1
-                  }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>Active Time</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.fpl_date_ts | date}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>Callsign</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.fpl_no }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>AC Type</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.aircraft_model }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>DEP</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.dep }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>DEST</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.dest }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>CTG</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.ctg }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>Dist</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.dist | number: "1.0-0" }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column>
-                <ng-template ngx-datatable-header-template>
-                  <span>Route</span>
-                </ng-template>
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  {{ row.route }}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Actions" sortable="false" prop="id">
-                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                  <a class="pr--3" href="javascript:void(0)" title="click to view"
+                  <a href="javascript:void(0)" title="click to view"
                     (click)="openSubModal(detailView, row)">
                     <i class="fas fa-edit"></i>
                   </a>
@@ -647,7 +490,6 @@
             </ngx-datatable>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -656,10 +498,6 @@
     <button class="btn btn-dark" type="button" (click)="closeModal()">
       Cancel
     </button>
-    <button class="btn btn-success" type="button" (click)="creditDebit()">
-     Submit 
-    </button>
-
   </div>
 </ng-template>
 

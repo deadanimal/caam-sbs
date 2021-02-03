@@ -126,9 +126,7 @@ export class PaymentComponent implements OnInit {
       remark: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      attachment: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
+      attachment: [""],
     });
 
     this.FilterTable(this.filterby);
@@ -190,6 +188,7 @@ export class PaymentComponent implements OnInit {
   submitPayment() {
 
     this.tempForm = this.createManualForm.value;
+    console.log(this.createManualForm)
     this.tempForm['cid'] = this.authService.decodedToken().user_id;
     console.log(this.tempForm);
     this.isLoading = true

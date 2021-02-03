@@ -26,8 +26,11 @@ export class DisputeComponent implements OnInit {
   userObj: any;      
   disputeList: DisputeModel[] = [];
   fpls: FpldatasModel[] = [];
+  archs: FpldatasModel[] = [];
+
   editedFpls: FpldatasModel[] = [];
   fpl_ids: any[] = [];
+  arch_ids: any[] = [];
 
   opened_id: string = null;
   selectedUser: string = null;
@@ -98,6 +101,7 @@ export class DisputeComponent implements OnInit {
   openModalHod(modalRef: TemplateRef<any>, row) {
     this.opened_id = row.id;
     this.fpl_ids = row.fpl_ids;
+    this.arch_ids = row.arch_ids;
     this.getDisputedFpls();
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
   }
@@ -127,6 +131,17 @@ export class DisputeComponent implements OnInit {
     this.modal.hide();
     this.fplFormGroup.patchValue({...row});
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
+  }
+
+  archiveFpl(row) {
+    this.disputeService.archieve({'fpl_id':row.id, 'dispute_id':this.opened_id}).subscribe(
+      (res) => {
+        this.fpl_ids = res.fpl_ids;
+        this.arch_ids = res.arch_ids;
+        this.getDisputedFpls()
+      },
+      (err) => {
+      });
   }
 
   getDisputeHOD() {
@@ -161,10 +176,19 @@ export class DisputeComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-      }
-    )
+      });
+
+      this.disputeService.getfilteredHOD_2({'arch_ids': this.arch_ids}).subscribe(
+      (res) => {
+        this.archs = res;
+        console.log(this.archs);
+      },
+      (err) => {
+        console.log(err);
+      });
 
   }
+
   assignUser() {
     this.modal.hide()
     let body = {
@@ -212,6 +236,15 @@ export class DisputeComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
+  creditDebit() {
+    this.disputeService.createNote({"id": this.opened_id}).subscribe(
+    (res) => {
+      this.modal.hide()
+    },
+    (err) => {
+      this.modal.hide()
+    });
+  }
 
 }
 

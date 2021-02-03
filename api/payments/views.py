@@ -1,4 +1,5 @@
-import datetime
+import datetime, json
+from django.core.files.base import ContentFile
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -54,8 +55,12 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['POST'], detail=False)
     def manual(self, request, *args, **kwargs):
-        print(request.data)
-        # this boy will deal with attachment
+
+        # storing attachment 
+        attachment = request.FILES['attachment']
+        extension = os.path.splitext(str(data_file_link))[1]
+        print("extenstion", extension)
+        
         cid_id = CustomUser.objects.filter(id=request.data['cid']).values()[0]['cid_id']
         orgs = Organisation.objects.filter(cid_id=cid_id)
         print(orgs)
@@ -65,7 +70,9 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             "remark": request.data["remark"],
             "company_id": cid_id,
             "company_name": orgs.values()[0]['name'],
-            "approved":False
+            "approved":False,
+            "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
+            "attachment": doc
         }
 
         serializer = PaymentSerializer(data=temp_obj)

@@ -41,6 +41,14 @@ export class DisputeService {
     );
   }
 
+  getfilteredCID(body): Observable<any> {
+    return this.http.post<any>(this.url + "getFilteredCID/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
   getfilteredHOD(body): Observable<any> {
     return this.http.post<any>(this.url + "getdisputedfpls/", body).pipe(
       tap((res) => {
@@ -48,9 +56,35 @@ export class DisputeService {
       })
     );
   }
-        
+
+  getfilteredHOD_2(body): Observable<any> {
+    return this.http.post<any>(this.url + "getdisputedfpls_2/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
+
+  archieve(body): Observable<any> {
+    return this.http.post<any>(this.url + "archive/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
+     
   getFilter(body): Observable<any> {
     return this.http.post<any>(this.url + "getfilter/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
+  createNote(body): Observable<any> {
+    return this.http.post<any>(this.url + "createnote/", body).pipe(
       tap((res) => {
         console.log(res);
       })

@@ -82,6 +82,13 @@ class CustomUserViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         return Response(serializer_class.data)
 
     @action(methods=['POST'], detail=False)
+    def toggle(self, request, *args, **kwargs):
+        queryset = CustomUser.objects.filter(id=request.data['id'])
+        new_status = False if queryset.values()[0]['is_active'] else True
+        queryset.update(is_active=new_status)
+        return Response(status.HTTP_200_OK)
+
+    @action(methods=['POST'], detail=False)
     def notification(self, request, *args, **kwargs):
         print("REQ", request.data)
         token = request.data['token']
@@ -104,5 +111,4 @@ class CustomUserViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         except Exception as e:
             print(e) 
             return Response(status.HTTP_400_BAD_REQUEST)
-
 

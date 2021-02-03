@@ -130,7 +130,7 @@
           <!-- look here to display payment objects -->
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="payments" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="payments" (activate)="onActivate($event)" [scrollbarH]="false">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -146,7 +146,7 @@
                 <span>DATE</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.created_at}}
+                {{row.created_at_str}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -162,8 +162,7 @@
                 <span>REMARK</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                <span><textarea rows="3" id="address"
-                    style="min-width: 100%;resize:vertical; border: none !important;">{{row.remark}}</textarea></span>
+                {{ row.remark }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>

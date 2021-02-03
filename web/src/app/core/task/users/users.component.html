@@ -85,7 +85,7 @@
 					    <button class="btn btn-outline-danger" data-dismiss="modal" (click)="c('Close click')">
 						  Cancel
 						</button>
-						<button class="btn btn-dark float-right" (click)="submit()">
+						<button [disabled]="userFormGroup.invalid" class="btn btn-dark float-right" (click)="submit()">
 						  Submit
 						</button>
   					  </div>
@@ -178,8 +178,8 @@
 
           <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
             [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="tempUsers" [rowClass]="getRowClass"
-            (activate)="onActivate($event)" [scrollbarH]="true">
-            <ngx-datatable-column>
+            (activate)="onActivate($event)" [scrollbarH]="false">
+            <ngx-datatable-column [width]="7">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
@@ -238,17 +238,29 @@
               <ng-template ngx-datatable-header-template>
                 <span>company</span>
               </ng-template>
-			  <ng-template ngx-datatable-header-template>
-                <span>{{ row.organisation }}</span>
+			  <ng-template let-row="row" ngx-datatable-cell-template>
+                <span>{{ row.company_name }}</span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column sortable="false" prop="id" *ngIf="authService.decodedToken().user_type == 'OPS'">
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Status</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span *ngIf="row.is_active == true" class="badge badge-success">ACTIVE</span>                
+                <span *ngIf="row.is_active == false" class="badge badge-warning">NOT ACTIVE</span>                
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column sortable="false" prop="id">
               <ng-template ngx-datatable-header-template>
                 <span>Action</span>
               </ng-template>
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                <a href="javascript:void(0)" title="click to edit" (click)="edit(row, classic1)">
-                  <i class="fa fa-edit text-black" aria-hidden="true"></i>
+                <a href="javascript:void(0)" title="click to edit" (click)="deleteUser(row)">
+                  <i class="pr-3 fa fa-trash" aria-hidden="true"></i>
+                </a>
+                <a href="javascript:void(0)" title="click to change status" (click)="toggleUserStatus(row)">
+                  <i class="fas fa-undo" aria-hidden="true"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>

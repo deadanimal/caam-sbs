@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/shared/services/users/users.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import swal from "sweetalert2";
 
 
 @Component({
@@ -43,15 +44,33 @@ export class UsersComponent implements OnInit {
     // init FormGroup, FormControl
     this.userFormGroup = this.formBuilder.group({
       id: new FormControl(""),
-      username: new FormControl(""),
-	  email: new FormControl(""), 
-      mobile: new FormControl(""),
-      position: new FormControl(""), 
-      department: new FormControl(""),
-      user_type: new FormControl(""),
-      company_name: new FormControl(""),
-      cid_id: new FormControl(""),
-      is_active:  new FormControl(""),
+      username: new FormControl("", Validators.compose([
+        Validators.required
+      ])),
+	  email: new FormControl("", Validators.compose([
+        Validators.required
+      ])), 
+      mobile: new FormControl("", Validators.compose([
+        Validators.required
+      ])),
+      position: new FormControl("", Validators.compose([
+        Validators.required
+      ])), 
+      department: new FormControl("", Validators.compose([
+        Validators.required
+      ])),
+      user_type: new FormControl("", Validators.compose([
+        Validators.required
+      ])),
+      company_name: new FormControl("", Validators.compose([
+        Validators.required
+      ])),
+      cid_id: new FormControl("", Validators.compose([
+        Validators.required
+      ])),
+      is_active:  new FormControl("", Validators.compose([
+        Validators.required
+      ])),
     })	
   }
 
@@ -73,17 +92,40 @@ export class UsersComponent implements OnInit {
 		this.notifyUsers(res);
 		this.userService.update(res.user.pk, this.tempForm).subscribe(
 		  (res) => {
-			this.modalService.dismissAll();
+        swal.fire({
+          title: "User Registration",
+          text:
+            "Registration Succesfull",
+          buttonsStyling: false,
+          confirmButtonText: "Close",
+          customClass: {
+            confirmButton: "btn btn-success",
+          },
+        });
+
+			  this.modalService.dismissAll();
 		    this.getUsers();
 		  },
 		  (err) => {
-			console.log(err);
-		  }
-        );
+			  
+		  });
       }
 	},
 	(err) => {
 	  console.log(err);
+      let error = err.error
+      let popup = error[Object.keys(error)[0]]
+      swal.fire({
+        title: "User Registration",
+        text:
+          popup,
+        buttonsStyling: false,
+        confirmButtonText: "Close",
+        customClass: {
+          confirmButton: "btn btn-success",
+        },
+      });
+
 	});
   }
 
@@ -158,5 +200,25 @@ export class UsersComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
+  toggleUserStatus(row) {
+    let body = {'id': row.id}
+    this.userService.toggle(body).subscribe(
+      (res) => {
+        this.getUsers();
+      },
+      (err) => {}
+    );
+  }
+
+
+  deleteUser(row) {
+    this.userService.delete(row.id).subscribe(
+      (res) => {
+        this.getUsers();
+      },
+      (err) => {
+      }
+    );
+  }
 
 }

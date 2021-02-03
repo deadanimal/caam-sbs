@@ -100,5 +100,15 @@ export class UsersService {
 
   }
 
+  toggle(body: any): Observable<any> {
+    return this.http.post<any>(this.url + "toggle/", body).pipe(
+	  tap(
+	    (res) => {
+	      console.log("toggle", res);
+      })
+    );
+
+  }
+
 
 }
