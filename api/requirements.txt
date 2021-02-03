@@ -54,14 +54,14 @@ kombu==4.6.8
 lazy-object-proxy==1.4.3
 Markdown==3.1
 mccabe==0.6.1
-numpy==1.18.2
+numpy==1.19.4
 oauthlib==3.1.0
 onesignal-notifications==0.2.6
 onesignal-sdk==1.1.0
-pandas==1.0.3
+pandas==1.1.4
 pexpect==4.8.0
 phonenumbers==8.12.6
-Pillow==7.1.2
+Pillow==8.0.1
 psycopg2-binary==2.8.4
 ptyprocess==0.6.0
 pycparser==2.20
@@ -79,7 +79,7 @@ regex==2020.7.14
 requests==2.22.0
 requests-oauthlib==1.2.0
 s3transfer==0.2.1
-six==1.12.0
+six==1.15.0
 sqlparse==0.3.0
 tinycss2==1.0.2
 toml==0.10.1
