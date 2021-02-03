@@ -1,10 +1,14 @@
-
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/finance/credit-debit-note";
-import { CreditDebitService } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.service';
 import { CreditDebit } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.model';
+import { CreditDebitService } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.service';
 import { DatePipe } from '@angular/common';
+import { OrganisationsModel } from 'src/app/shared/services/organisations/organisations.model';
+import { OrganisationsService } from 'src/app/shared/services/organisations/organisations.service';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -16,10 +20,16 @@ export class CreditDebitNoteComponent implements OnInit {
 
   // Table
   entries: number = 5;
+  notes: any[];
   selected: any[] = [];
   temp = [];
+  orgs: OrganisationsModel[] = [];
   activeRow: any;
   rows = dummylist.creditdebitlist;
+  some: any;
+
+  noteFormGroup: FormGroup
+
 
   // Search Filter
   fromDate: Date;
@@ -31,9 +41,6 @@ export class CreditDebitNoteComponent implements OnInit {
   creditDebits: CreditDebit[] = [];
 
   // View Data
-  companyname: string;
-  transactionnumber: string;
-  transactiondate: string;
 
   // Modal
   modal: BsModalRef;
@@ -43,21 +50,32 @@ export class CreditDebitNoteComponent implements OnInit {
     class: "modal-lg"
   };
 
-
-
-
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
+    private authService: AuthService,
     private creditDebitService: CreditDebitService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private formBuilder: FormBuilder,
+    private orgService: OrganisationsService,
+
   ) {
     this.filterby = "all";
     this.searchText = "";
-  }
+    this.noteFormGroup = this.formBuilder.group({
+
+      id: new FormControl(""),
+      note_type: new FormControl(""),
+      amount: new FormControl(""),
+      cid_id: new FormControl(""),
+      remarks: new FormControl(""),
+    });
+    }
 
   ngOnInit() {
     this.FilterTable(this.filterby);
+    this.getOrgs();
+    this.getAllData();
   }
 
   FilterTable(field) {
@@ -128,14 +146,24 @@ export class CreditDebitNoteComponent implements OnInit {
   }
 
   getAllData = () => {
+    // obtainToken
+    // get userid
+    // get extended user fields (request to v1/users/userid)
+    // conditional get
+    // if cuser_type=ALN
+      // get user cid_id
+      // post request with cid_id to Note route getFIlteredCID
+    // elif cuser_type=HOD
+      // basic get
+    // elif cuser_type=APT, OPS
+      // get by assignto
+      // post request with assign_to Note route getFilteredAssignTo
     this.creditDebitService.get().subscribe(
-      data => {
-        this.creditDebits = data;
+      (res) => {
+        this.notes = res;
       },
-      error => {
-        console.log(error)
-      }
-    )
+      (err) => {
+      });
   }
 
   entriesChange($event) {
@@ -147,9 +175,6 @@ export class CreditDebitNoteComponent implements OnInit {
   }
 
   viewData(row) {
-    this.companyname = row.companyname;
-    this.transactiondate = row.transactiondate;
-    this.transactionnumber = row.transactionnumber;
   }
 
   openModal(modalRef: TemplateRef<any>, row) {
@@ -161,13 +186,39 @@ export class CreditDebitNoteComponent implements OnInit {
     this.modal.hide()
   }
 
+  getOrgs() {
+    this.orgService.get().subscribe(
+      (res) => {
+        console.log(res);
+        this.orgs = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
+  submit() {
+    this.creditDebitService.submit(this.noteFormGroup.value).subscribe(
+    (res) => {
+      console.log(res);
+      this.closeModal();
+      this.getAllData();
+    },
+    (err) => {
+      console.log(err);
+      this.closeModal();
+    });
+  }
 
   statusBadge(status: string) {
     if (status == "Overdue") return "badge badge-danger";
     if (status == "Disputed") return "badge badge-warning";
     if (status == "Partial") return "badge badge-primary";
     if (status == "Paid") return "badge badge-success";
+  }
+
+  exportPdf() {
   }
 }
 

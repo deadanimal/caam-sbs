@@ -43,6 +43,15 @@ export class PaymentService {
     );
   }
 
+  getFiltered(body): Observable<any> {
+    return this.http.post<any>(this.url + "getFilteredCID/", body).pipe(
+      tap((res) => {
+        console.log("Payment", res);
+      })
+    );
+  }
+
+
   get(): Observable<Payment[]> {
     return this.http.get<any>(this.url).pipe(
       tap((res) => {

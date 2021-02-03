@@ -130,7 +130,7 @@
           <!-- look here to display payment objects -->
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="payments" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="payments" (activate)="onActivate($event)" [scrollbarH]="false">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -146,15 +146,7 @@
                 <span>DATE</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.created_at}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column>
-              <ng-template ngx-datatable-header-template>
-                <span>Company</span>
-              </ng-template>
-              <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.company_name}}
+                {{row.created_at_str}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -170,8 +162,7 @@
                 <span>REMARK</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                <span><textarea rows="3" id="address"
-                    style="min-width: 100%;resize:vertical; border: none !important;">{{row.remark}}</textarea></span>
+                {{ row.remark }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -201,221 +192,88 @@
     </div>
   </div>
 </div>
-
 <ng-template #payment>
-  <div class="modal-header bg-default">
-    <h6 class="modal-title text-white my-auto" id="modal-title-default">
-      New Payment
-    </h6>
-
-    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="confirm()">
-      <span aria-hidden="true" class="text-white my-auto"> × </span>
-    </button>
-  </div>
-
-  <div class="modal-body">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-      <li [ngbNavItem]="1">
-        <a ngbNavLink>Manual Payment</a>
-        <ng-template ngbNavContent>
-          <div class="mt-4">
-            <form [formGroup]="createManualForm" (ngSubmit)="submitManualForm()">
-
-              <div class="form-group">
-                <label class="form-control-label">
-                  Amount
-                </label>
-                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
-                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
-                <ng-container *ngFor="let message of registerManualFormMessages.amount">
-                  <div *ngIf="
-                    createManualForm.get('amount').hasError(message.type) &&
-                          (createManualForm.get('amount').dirty ||
-                          createManualForm.get('amount').touched)
-                        ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
-              </div>
-
-              <div class="form-group">
-                <label class="form-control-label" for="company"> Company</label>
-                <select class="form-control" id="company" formControlName="company">
-                  <option hidden selected>Select Company</option>
-                  <option *ngFor="let c of company_names" value={{c.companyname}}>{{c.companyname}}</option>
-                </select>
-                <ng-container *ngFor="let message of registerOnlineFormMessages.company">
-                  <div *ngIf="
-                  createOnlineForm.get('company').hasError(message.type) &&
-                          (createOnlineForm.get('company').dirty ||
-                          createOnlineForm.get('company').touched)
-                        ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
-              </div>
-
-
-              <div class="form-group">
-                <label class="form-control-label">
-                  Remark
-                </label>
-                <input class="form-control text-dark" placeholder="remark" type="text" (focus)="focus = true"
-                  (blur)="focus = false" formControlName="remark" />
-                <ng-container *ngFor="let message of registerManualFormMessages.remark">
-                  <div *ngIf="
-                    createManualForm.get('remark').hasError(message.type) &&
-                          (createManualForm.get('remark').dirty ||
-                          createManualForm.get('remark').touched)
-                        ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
-              </div>
-
-              <div class="form-group">
-                <label class="form-control-label">
-                  Attachment
-                </label>
-                <div class="dropzone dropzone-single mb-3" data-toggle="dropzone" data-dropzone-url="http://">
-                  <div class="fallback">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="attachment" formControlName="attachment">
-                      <label class="custom-file-label" for="attachment">Choose file</label>
-                    </div>
+  <div class="card-header pb-5">Payment</div>
+    <div class="card-body">
+          <form [formGroup]="createManualForm" (ngSubmit)="submitManualForm()">
+            <div class="form-group">
+              <label class="form-control-label">
+                Amount
+              </label>
+              <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
+                (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
+              <ng-container *ngFor="let message of registerManualFormMessages.amount">
+                <div *ngIf="
+                  createManualForm.get('amount').hasError(message.type) &&
+                        (createManualForm.get('amount').dirty ||
+                        createManualForm.get('amount').touched)
+                      ">
+                  <p class="error-message">
+                    <span>{{ message.message }}</span>
+                  </p>
+                </div>
+              </ng-container>
+            </div>
+      
+                 
+            <div class="form-group">
+              <label class="form-control-label">
+                Remark
+              </label>
+              <input class="form-control text-dark" placeholder="remark" type="text" (focus)="focus = true"
+                (blur)="focus = false" formControlName="remark" />
+              <ng-container *ngFor="let message of registerManualFormMessages.remark">
+                <div *ngIf="
+                  createManualForm.get('remark').hasError(message.type) &&
+                        (createManualForm.get('remark').dirty ||
+                        createManualForm.get('remark').touched)
+                      ">
+                  <p class="error-message">
+                    <span>{{ message.message }}</span>
+                  </p>
+                </div>
+              </ng-container>
+            </div>
+      
+            <div class="form-group">
+              <label class="form-control-label">
+                Attachment
+              </label>
+              <div class="dropzone dropzone-single mb-3" data-toggle="dropzone" data-dropzone-url="http://">
+                <div class="fallback">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="attachment" formControlName="attachment">
+                    <label class="custom-file-label" for="attachment">Choose file</label>
                   </div>
                 </div>
-                <ng-container *ngFor="let message of registerManualFormMessages.attachment">
-                  <div *ngIf="
-                    createManualForm.get('attachment').hasError(message.type) &&
-                          (createManualForm.get('attachment').dirty ||
-                          createManualForm.get('attachment').touched)
-                        ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
               </div>
-              <div class="row">
-                <div class="col clearfix">
-                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
-                    Cancel
-                  </button>
-                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit"
-                    [disabled]="createManualForm.invalid">
-                    Submit
-                  </button>
+              <ng-container *ngFor="let message of registerManualFormMessages.attachment">
+                <div *ngIf="
+                  createManualForm.get('attachment').hasError(message.type) &&
+                        (createManualForm.get('attachment').dirty ||
+                        createManualForm.get('attachment').touched)
+                      ">
+                  <p class="error-message">
+                    <span>{{ message.message }}</span>
+                  </p>
                 </div>
-              </div>
-
-            </form>
-          </div>
-        </ng-template>
-      </li>
-      <li [ngbNavItem]="2">
-        <a ngbNavLink>Online Payment</a>
-        <ng-template ngbNavContent>
-          <div class="mt-4">
-            <form [formGroup]="createOnlineForm" (ngSubmit)="submitOnlineForm()">
-
-              <div class="form-group">
-                <label class="form-control-label">
-                  Amount
-                </label>
-                <input class="form-control text-dark" currencyMask placeholder="amount" type="text"
-                  (focus)="focus = true" (blur)="focus = false" formControlName="amount_receive" />
-                <ng-container *ngFor="let message of registerOnlineFormMessages.amount">
-                  <div *ngIf="
-                    createOnlineForm.get('amount').hasError(message.type) &&
-                            (createOnlineForm.get('amount').dirty ||
-                            createOnlineForm.get('amount').touched)
-                          ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
-              </div>
-
-              <div class="form-group">
-                <label class="form-control-label" for="company"> Company</label>
-                <select class="form-control" id="company" formControlName="company">
-                  <option hidden selected>Select Company</option>
-                  <option *ngFor="let c of company_names" value={{c.companyname}}>{{c.companyname}}</option>
-                </select>
-                <ng-container *ngFor="let message of registerOnlineFormMessages.company">
-                  <div *ngIf="
-                  createOnlineForm.get('company').hasError(message.type) &&
-                          (createOnlineForm.get('company').dirty ||
-                          createOnlineForm.get('company').touched)
-                        ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
-              </div>
-
-
-              <div class="form-group">
-                <label class="form-control-label" for="paymentmethod"> Payment Method</label>
-                <select class="form-control" id="paymentmethod" formControlName="payment_method">
-                  <option hidden selected>Select Payment Method</option>
-                  <option *ngFor="let bank of banks" value={{bank.code}}>{{bank.name}}</option>
-                </select>
-                <ng-container *ngFor="let message of registerOnlineFormMessages.paymentmethod">
-                  <div *ngIf="
-                  createOnlineForm.get('paymentmethod').hasError(message.type) &&
-                          (createOnlineForm.get('paymentmethod').dirty ||
-                          createOnlineForm.get('paymentmethod').touched)
-                        ">
-                    <p class="error-message">
-                      <span>{{ message.message }}</span>
-                    </p>
-                  </div>
-                </ng-container>
-              </div>
-
-              <!-- <div class="form-group">
-                <label class="form-control-label">
-                  Summary (RM)
-                </label>
-                <input class="form-control text-dark" currencyMask placeholder="summary" type="text"
-                  (focus)="focus = true" (blur)="focus = false" formControlName="summary" />
-              </div> -->
-              <div class="row">
-                <div class="col clearfix">
-                  <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
-                    Cancel
-                  </button>
-                  <button class="btn btn-dark float-right" data-dismiss="modal" type="submit"
-                    [disabled]="createOnlineForm.invalid">
-                    Submit
-                  </button>
-                </div>
-              </div>
-
-            </form>
-          </div>
-
-        </ng-template>
-
-      </li>
-
-    </ul>
-
-    <div [ngbNavOutlet]="nav" class="mt-2"></div>
-
-  </div>
+              </ng-container>
+            </div>
+          </form>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col clearfix">
+          <button class="btn btn-outline-danger" data-dismiss="modal" type="button" (click)="confirm()">
+            Cancel
+          </button>
+          <button class="btn btn-dark float-right" data-dismiss="modal" type="submit" (click)="submitPayment()">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
 </ng-template>
-
 
 <ng-template #view>
 

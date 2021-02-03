@@ -36,8 +36,7 @@
         <div class="card-body">
           <div class="row">
 
-            <div class="col-md-6">
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="form-control-label">Filter By</label>
                 <select class="form-control" [(ngModel)]="filterby" id="filterby">
                   <option value="">-Select Filter By-</option>
@@ -55,9 +54,13 @@
                       (click)="searchAll()">Search</button>
                   </div>
                 </div>
+              </div> -->
+              <div id="datatable_filter" class="dataTables_filter" style="float: right;">
+                <label>
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
+                </label>
               </div>
-            </div>
-
             <div class="col-md-6" *ngIf="filterby==='fpl_no'">
               <div class="form-group">
                 <label class="form-control-label">Search Keyword</label>

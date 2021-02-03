@@ -27,6 +27,7 @@ import os
 from django_filters.rest_framework import DjangoFilterBackend
 
 from aircrafts.models import Aircraft
+from organisations.models import Organisation
 
 from datetime import datetime
 
@@ -38,7 +39,7 @@ from .models import (
     FileUpload,
     Fpldata,
     FpldataHistory,
-    CustomUser
+    CustomUser,
 )
 
 from .serializers import (
@@ -104,7 +105,7 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Rate.objects.all().values()
+        report = Rate.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 
@@ -234,7 +235,7 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Callsign.objects.all().values()
+        report = Callsign.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 
@@ -315,7 +316,7 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Route.objects.all().values()
+        report = Route.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 
@@ -417,6 +418,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST'], detail=False)
     def upload(self, request, *args, **kwargs):
 
+        FplObjs = []
         data_type = request.data['data_type']
         print(data_type)
         data_file_link = request.FILES['data_file_link']
@@ -481,12 +483,15 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         # if TFL, make a readable format
         elif data_type == 'TFL':
-
+            print("GO HERE")
             response_array = []
             error_data = 0
             total_data = 0
             file_date = ''
+            FplObjs = []
 
+            print(reader)
+            print("len data: ", len(reader))
             for json_dict in json.loads(reader.to_json(orient='records')):
                 for key,value in json_dict.items():
                     # print("key: {0} | value: {1}".format(key, regex.sub(' +', '|', value)))
@@ -521,46 +526,24 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                             if distance == 0:
                                 error_remark.append('PLEASE CHECK THE ROUTE. CURRENT ROUTE IS NOT IN DATABASE')
 
-                            temp_obj = {
-                                'fpl_date': change_time_format(array_tfl[2]),
-                                'fpl_date_ts': change_time_format(array_tfl[2], change_to_time=True),
-                                'fpl_no': array_tfl[3],
-                                'fr': 'I',
-                                'aircraft_model': array_tfl[7],
-                                'dep': array_tfl[10],
-                                'dest': array_tfl[13],
-                                'ctg': array_tfl[15],
-                                'dist': distance, 
-                                'route': array_tfl[18],
-                                'rate': rate,
-                                'fpl_type': 'TFL',
-                                'uploaded_by': request.data['uploaded_by'],
-                                'error_remark': ''.join(error_remark),
-                                'fileupload': fileupload_id,
-                                'status': 'FPL0'
-                            }
-
-                            # test
-
-                            # 'num': array_tfl[1],
-                            # 'fpl_date': array_tfl[2],
-                            # 'fpl_no': array_tfl[3],
-                            # 'ssr': '',
-                            # 'fr': array_tfl[4],
-                            # 'f': array_tfl[5],
-                            # 't': array_tfl[6],
-                            # 'aircraft_model': array_tfl[7],
-                            # 'rlv': array_tfl[8],
-                            # 'plv': array_tfl[9],
-                            # 'dep': array_tfl[10],
-                            # 'drw': array_tfl[11],
-                            # 'off_blow_time': array_tfl[12],
-                            # 'dest': array_tfl[13],
-                            # 'arw': array_tfl[14],
-                            # 'ctg': array_tfl[15],
-                            # 'dur': array_tfl[16],
-                            # 'dist': array_tfl[17],
-                            # 'route': array_tfl[18]
+                            FplObjs.append(Fpldata(
+                                fpl_date = change_time_format(array_tfl[2]),
+                                fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
+                                fpl_no = array_tfl[3],
+                                fr = 'I',
+                                aircraft_model = array_tfl[7],
+                                dep = array_tfl[10],
+                                dest = array_tfl[13],
+                                ctg = array_tfl[15],
+                                dist = distance, 
+                                route = array_tfl[18],
+                                rate = rate,
+                                fpl_type = 'TFL',
+                                uploaded_by = CustomUser(id=request.data['uploaded_by']),
+                                error_remark = ''.join(error_remark),
+                                fileupload = FileUpload(id=fileupload_id),
+                                status = 'FPL0'
+                            ))
 
                         else:
                             # to concat array for get icao route
@@ -598,7 +581,6 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 if un_match == 0:
                                     distance = i['distance']
 
-                            # if no routes in database
                             if distance == 0:
                                 error_remark.append('PLEASE CHECK THE ROUTE. CURRENT ROUTE IS NOT IN DATABASE')
 
@@ -620,40 +602,38 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'fileupload': fileupload_id,
                                 'status': 'FPL0'
                             }
+                            print(f"distance: {distance}")
 
-                            # 'num': array_tfl[1],
-                            # 'fpl_date': array_tfl[2],
-                            # 'fpl_no': array_tfl[3],
-                            # 'ssr': array_tfl[4],
-                            # 'fr': array_tfl[5],
-                            # 'f': array_tfl[6],
-                            # 't': array_tfl[7],
-                            # 'aircraft_model': array_tfl[8],
-                            # 'rlv': array_tfl[9],
-                            # 'plv': array_tfl[10],
-                            # 'dep': array_tfl[11],
-                            # 'drw': array_tfl[12],
-                            # 'off_blow_time': array_tfl[13],
-                            # 'dest': array_tfl[14],
-                            # 'arw': array_tfl[15],
-                            # 'ctg': array_tfl[16],
-                            # 'dur': array_tfl[17],
-                            # 'dist': array_tfl[18],
-                            # 'route': icao_route
-                        
+                            print(f"arraytfl[13]: {array_tfl[13]}")
+                            print(f"arraytfl[14]: {array_tfl[14]}")
+
+                            FplObjs.append(Fpldata(
+                                fpl_date = change_time_format(array_tfl[2]),
+                                fpl_date_ts = change_time_format(array_tfl[2], change_to_time=True),
+                                fpl_no = array_tfl[3],
+                                fr = 'I',
+                                aircraft_model = array_tfl[8],
+                                dep = array_tfl[11],
+                                dest = array_tfl[14],
+                                ctg = array_tfl[16],
+                                dist = distance, 
+                                route = icao_route, 
+                                rate = rate,
+                                fpl_type = 'TFL',
+                                uploaded_by = CustomUser(id=request.data['uploaded_by']),
+                                error_remark = ''.join(error_remark),
+                                fileupload = FileUpload(id=fileupload_id),
+                                status = 'FPL0'
+                            ))
+
                         response_array.append(temp_obj)
-                        # print('response_array: ', response_array)
 
                         serializer = FpldataSerializer(data=temp_obj)
                         total_data += 1
                         file_date = array_tfl[2][0:8]
                         file_date_ts = change_time_format(array_tfl[2], change_to_time=True)
 
-                        if serializer.is_valid():
-                            serializer.save()
-                        else:
-                            print(serializer.errors)
-                            error_data += 1
+        Fpldata.objects.bulk_create(FplObjs)
 
         fileupload = FileUpload.objects.filter(id=fileupload_id)
         print("fileupload", fileupload)
@@ -727,11 +707,27 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     #         return Response(serializer.data)
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['POST'], detail=False)
+    def staged(self, request, *args, **kwargs):
+        fpl = Fpldata.objects.get(id=request.data['id'])
+        updateStaged = True if fpl.staged == False else False
+        Fpldata.objects.filter(id=request.data['id']).update(staged=updateStaged)
+        return Response({'status':status.HTTP_200_OK})
+    
+    @action(methods=['GET'], detail=False)
+    def unstaged(self, request, *args, **kwargs):
+        queryset = Fpldata.objects.filter(staged=True)
+        print(queryset)
+        for q in queryset:
+            q.staged = False
+            q.save()
+        return Response({'status':status.HTTP_200_OK})
+
 
     @action(methods=['GET'], detail=False)
     def file_filter(self, request, *args, **kwargs):
         uploaded_by = self.request.query_params.get('uploaded_by')
-        print(uploaded_by)
+        print("UPLOADED", uploaded_by)
         # submitted_at = self.request.query_params.get('submitted_at')
         fileupload = self.request.query_params.get('fileupload_id')
 
@@ -796,11 +792,21 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             
             return Response(serializer_class.data) 
 
-    @action(methods=['GET'], detail=False)
-    def movement_report(self, request, *args, **kwargs):
-        print("user", request.user)
-        return Response({})
+    @action(methods=['POST'], detail=False)
+    def getfiltered(self, request, *args, **kwargs):
+        cid_id = request.data['cid_id']
+        queryset = Fpldata.objects.filter(cid=cid_id)
+        serializer_class = FpldataSerializer(queryset, many=True)
+        return Response(serializer_class.data)
 
+    @action(methods=['POST'], detail=False)
+    def getfilteredmonthly(self, request, *args, **kwargs):
+        cid_id = request.data['cid_id']
+        # add monthly filter
+        queryset = Fpldata.objects.filter(cid=cid_id)
+        serializer_class = FpldataSerializer(queryset, many=True)
+        return Response(serializer_class.data)
+        
     def partial_update(self, request, pk=None):
         fpldata = self.get_object()
         serializer = FpldataSerializer(fpldata, data=request.data, partial=True)
@@ -855,6 +861,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         # change the status of file upload from draft into processing
         fileupload = FileUpload.objects.filter(id=request.data['fileupload_id'])
         fileupload.update(status='FIL1', modified_by = uploaded_by)
+        print("fileupload_id",request.data['fileupload_id'])
 
         return Response(status.HTTP_200_OK)
 
@@ -904,7 +911,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         # use this on invoice app
 
         response_array = []
-        results = Fpldata.objects.values('cid').filter(cid__isnull=False).annotate(total_flight=Count('cid_id'), total_amount=Sum('amount'))
+        results = Fpldata.objects.values('cid').filter(Q(cid__isnull=False) & Q(computed=False)).annotate(total_flight=Count('cid_id'), total_amount=Sum('amount'))
         results2 = Fpldata.objects.filter(cid__isnull=False).all().values()
 
         for result in results:
@@ -945,6 +952,62 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         print(str(results.query))
 
         return Response(str(results.query))
+
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        
+        report = FileUpload.objects.all().values()[:50]
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'FileUpload.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('route_en.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = '/home/lenovo/Desktop/RouteList.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def get_masterdata(self, request, *args, **kwargs):
+        queryset = Fpldata.objects.filter(Q(status='FPL3') | Q(status='FPL4')).all()
+        serializer_class = FpldataSerializer(queryset, many=True)
+        return Response(serializer_class.data)
+
+
 
 
 class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):

@@ -99,6 +99,15 @@ export class FpldatasService {
       })
     );
   }
+
+  get_masterdata(): Observable<FpldatasModel[]> {
+    let urlFilter = this.url + "get_masterdata/";
+    return this.http.get<FpldatasModel[]>(urlFilter).pipe(
+      tap((res) => {
+        console.log("masterdata", res);
+      })
+    );
+  }
   
   // To be submitted by Operation or Airport
   submit(body): Observable<any> {
@@ -109,6 +118,25 @@ export class FpldatasService {
       })
     );
   }
+
+  getFiltered(cid): Observable<any> {
+    let url = this.url + "getfiltered/";
+    return this.http.post<any>(url, cid).pipe(
+      tap((res) => {
+        console.log("FpldatasModel", res);
+      })
+    );
+  }
+        
+  getFilteredMonthly(cid): Observable<any> {
+    let url = this.url + "getfilteredmonthly/";
+    return this.http.post<any>(url, cid).pipe(
+      tap((res) => {
+        console.log("FpldatasModel", res);
+      })
+    );
+  }
+
 
   // To be checked by Operation
   check(body): Observable<any> {
@@ -150,13 +178,21 @@ export class FpldatasService {
     );
   }
 
-  // Get movement report
-  movement_report(): Observable<any> {
-    let url = this.url + "movement_report/";
-    return this.http.get<any>(url).pipe(
-      tap((res) => {
-        console.log("Movement Report", res);
-      })
-    );
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
   }
+
+  stage(body): Observable<any> {
+    return this.http.post<any>(this.url + "staged/", body);
+  }
+  unstage(): Observable<any> {
+    return this.http.get<any>(this.url + "unstaged/");
+  }
+
+
+
+
 }

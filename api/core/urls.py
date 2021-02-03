@@ -138,6 +138,40 @@ from payments.views import (
     PaymentViewSet
 )
 
+# Dispute app
+from dispute.views import (
+    DisputeViewSet
+)
+
+dispute_router = router.register(
+    'dispute', DisputeViewSet
+)
+
+# Payment app
+from payments.views import (
+    PaymentViewSet
+)
+
+# Note app
+from note.views import (
+   NoteViewSet 
+)
+
+note_router = router.register(
+    'note', NoteViewSet 
+)
+
+# Payment app
+from payments.views import (
+    PaymentViewSet, DepositsViewSet
+)
+
+
+deposites_router = router.register(
+    'deposits', DepositsViewSet
+)
+
+
 payment_router = router.register(
     'payments', PaymentViewSet
 )
@@ -164,7 +198,7 @@ ledger_router = router.register(
 urlpatterns = [
     url(r'v1/', include(router.urls)),
     url(r'auth/', include('rest_auth.urls')),
-    url(r'auth/registration/', include('rest_auth.registration.urls')),
+    url(r'auth/registration/', include('rest_auth.registration.urls')),#reg
 
     url('auth/obtain/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     url('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

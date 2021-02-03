@@ -2,6 +2,12 @@ import { OutstandingPaymentService } from './../../../shared/services/payment/ou
 import { OutstandingPayement } from './../../../shared/services/payment/outstanding-payment/outstanding-payment.model';
 import { Component, OnInit } from '@angular/core';
 
+// invoice handler
+import { InvoicesService } from 'src/app/shared/services/finance/invoice/invoices.service';
+import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model';
+import { NgxSpinnerService } from "ngx-spinner";
+
+
 @Component({
   selector: 'app-outstanding-payment',
   templateUrl: './outstanding-payment.component.html',
@@ -19,12 +25,16 @@ export class OutstandingPaymentComponent implements OnInit {
   // Data
   temp = [];
   outstandingPayments: OutstandingPayement[] = [];
+  invoices: Invoice[] = [];
 
   constructor(
-    private oustandingPaymentService: OutstandingPaymentService
+    private oustandingPaymentService: OutstandingPaymentService,
+    private invoiceService: InvoicesService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.getAllData()
   }
 
   download(url: string): void {
@@ -33,12 +43,16 @@ export class OutstandingPaymentComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.oustandingPaymentService.get().subscribe(
+    this.spinner.show()
+    this.invoiceService.get_outstanding().subscribe(
       data => {
-        this.outstandingPayments = data;
+        this.invoices = data;
+        console.log(this.invoices)
+        this.spinner.hide()
       },
       error => {
         console.log(error)
+        this.spinner.hide()
       }
     )
   }

@@ -28,14 +28,6 @@ export class OrganisationsService {
     );
   }
 
-  explicitPost(body): Observable<OrganisationsModel> {
-    return this.http.post<any>(this.url + "addairline/", body).pipe(
-      tap((res) => {
-        console.log("OrganisationsModel", res);
-      })
-    );
-  }
-
   get(): Observable<OrganisationsModel[]> {
     return this.http.get<any>(this.url).pipe(
       tap((res) => {

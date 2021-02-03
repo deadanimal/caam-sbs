@@ -13,7 +13,6 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { HttpClientModule } from "@angular/common/http";
 import { Ng9OdometerModule } from "ng9-odometer";
-import { NgxSpinnerModule } from "ngx-spinner";
 
 import { RouterModule } from "@angular/router";
 import { CoreRoute } from "./core.routing";
@@ -24,6 +23,9 @@ import { ModalModule,} from 'ngx-bootstrap/modal';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MasterDataComponent } from './master-data/master-data.component';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
+import { ProfileComponent } from './profile/profile.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 
@@ -32,6 +34,8 @@ import { DatePipe } from '@angular/common';
     DashboardComponent,
     MovementReportComponent,
     MasterDataComponent,
+    ProfileComponent,
+    PasswordResetComponent,
   ],
   imports: [
     CommonModule,
@@ -53,6 +57,7 @@ import { DatePipe } from '@angular/common';
     Ng2SearchPipeModule,
     ModalModule.forRoot(),
     CurrencyMaskModule,
+    NgxSpinnerModule
   ],
   providers: [
     DatePipe,

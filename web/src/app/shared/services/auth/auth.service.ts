@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TokenResponse } from "./auth.model";
 import { Form } from "@angular/forms";
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -21,15 +21,17 @@ export class AuthService {
   public urlTokenRefresh: string = environment.baseUrl + "auth/refresh/";
   public urlTokenVerify: string = environment.baseUrl + "auth/verify/";
   public urlUser: string = environment.baseUrl + "v1/users/";
+  public urlPasswordResetConfirm: string =
+    environment.baseUrl + "auth/password/reset/confirm/";
 
   // Local
-  // public urlRegister: string = "http://127.0.0.1:8000/auth/registration/";
-  // public urlPasswordChange: string = "http://127.0.0.1:8000/auth/password/change/";
-  // public urlPasswordReset: string = "http://127.0.0.1:8000/auth/password/reset";
-  // public urlTokenObtain: string = "http://127.0.0.1:8000/auth/obtain/";
-  // public urlTokenRefresh: string = "http://127.0.0.1:8000/auth/refresh/";
-  // public urlTokenVerify: string = "http://127.0.0.1:8000/auth/verify/";
-  // public urlUser: string = "http://127.0.0.1:8000/v1/users/";
+  // public urlRegister: string = "http://.0.0.1:8000/auth/registration/";
+  // public urlPasswordChange: string = "http://.0.0.1:8000/auth/password/change/";
+  // public urlPasswordReset: string = "http://.0.0.1:8000/auth/password/reset";
+  // public urlTokenObtain: string = "http://.0.0.1:8000/auth/obtain/";
+  // public urlTokenRefresh: string = "http://.0.0.1:8000/auth/refresh/";
+  // public urlTokenVerify: string = "http://.0.0.1:8000/auth/verify/";
+  // public urlUser: string = "http://.0.0.1:8000/v1/users/";
 
   // Data
   public token: TokenResponse;
@@ -47,7 +49,7 @@ export class AuthService {
 
   constructor(private jwtService: JwtService, private http: HttpClient, private userService: UsersService) {}
 
-  register(body: Form): Observable<any> {
+  registerAccount(body: Form): Observable<any> {
     return this.http.post<any>(this.urlRegister, body).pipe(
       tap((res) => {
         console.log("Registration: ", res);
@@ -56,17 +58,37 @@ export class AuthService {
   }
 
   changePassword(body: Form): Observable<any> {
-    return this.http.post<any>(this.urlPasswordChange, body).pipe(
+    let httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + this.jwtService.getToken("accessToken"),
+      }),
+    };
+    return this.http.post<any>(this.urlPasswordChange, body, httpOptions).pipe(
       tap((res) => {
         console.log("Change password: ", res);
       })
     );
   }
 
+
+
   resetPassword(body: Form): Observable<any> {
     return this.http.post<any>(this.urlPasswordReset, body).pipe(
       tap((res) => {
-        console.log("Reset password: ", res);
+	    console.log("Reset password: ", res);
+      })
+    );
+  }
+
+  resetPasswordConfirm(body: Form): Observable<any> {
+    console.log("before", body);
+    body['uid'] = this.decodedToken().user_id
+    body['token'] = localStorage.getItem("accessToken");
+    console.log("after", body)
+    return this.http.post<any>(this.urlPasswordResetConfirm, body).pipe(
+      tap((res) => {
+        console.log("Reset password confirm: ", res);
       })
     );
   }

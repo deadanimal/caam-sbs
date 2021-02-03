@@ -11,7 +11,7 @@ import { AircraftsModel } from "./aircrafts.model";
 })
 export class AircraftsService {
   url: string = environment.baseUrl + "v1/aircrafts/";
-  // url: string = "http://127.0.0.1:8000/v1/aircrafts/";
+  // url: string = "http://.0.0.1:8000/v1/aircrafts/";
 
   // Data
   public amodels: AircraftsModel[] = [];

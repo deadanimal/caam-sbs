@@ -6,6 +6,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { InvoicesService } from 'src/app/shared/services/finance/invoice/invoices.service';
 import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model';
 
+// filesaver package for pdf handler
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: "app-invoices",
   templateUrl: "./invoices.component.html",
@@ -74,9 +77,22 @@ export class InvoicesComponent implements OnInit {
 
 
 
-  download(url: string): void {
+  download(url: string, company_name: string): void {
     console.log(url);
-    window.open(url, '_blank');
+    // to do :
+    // post request to downloadpdf route with id as payloads
+    this.invoiceService.exportpdf({"id":url}).subscribe(
+      (res) => {
+        console.log("this is res");
+        var filename = company_name + ".pdf"
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+        console.log("this is err");
+      }
+
+    )
+
   }
   // get all invoices
   getAllData = () => {
@@ -170,9 +186,9 @@ export class InvoicesComponent implements OnInit {
 
   statusBadge(status: string) {
     if (status == "UNPAID") return "badge badge-danger";
-    if (status == "Disputed") return "badge badge-warning";
-    if (status == "Partial") return "badge badge-primary";
-    if (status == "Paid") return "badge badge-success";
+    if (status == "OUTSTANDING") return "badge badge-warning";
+    if (status == "PARTIAL") return "badge badge-primary";
+    if (status == "PAID") return "badge badge-success";
   }
 
   testSpinner() {

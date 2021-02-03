@@ -24,6 +24,9 @@
 </div>
 
 <div class="container-fluid mt--8">
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="timer" [fullScreen]="true">
+    <p style="color: white;">Updating Outstanding Payment ...</p>
+  </ngx-spinner>
   <div class="row">
     <div class="col">
       <div class="card mb-4">
@@ -91,26 +94,48 @@
           </div>
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
-            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp " (activate)="onActivate($event)" [scrollbarH]="true">
-            <ngx-datatable-column [width]="30">
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="invoices "
+            (activate)="onActivate($event)" [scrollbarH]="true">
+            <ngx-datatable-column [width]="40">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
-              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+              <ng-template let-row="invoices" let-rowIndex="rowIndex" ngx-datatable-cell-template>
                 {{
                   rowIndex +1
                 }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="date">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>CID</span>
+                <span>Invoice Number</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.invoice_no}}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="companyname">
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>COMPANY NAME</span>
+                <span>INV PERIOD</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.inv_period}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Company Name</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.company_name}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>Invoice Date</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.created_at_str}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -118,15 +143,18 @@
                 <span>AMOUNT</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.totalamount | currency: "MYR"}}
+                {{row.invoice_total | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
-
-            <ngx-datatable-column name="Actions" sortable="false">
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" title="click to view" (click)="download(row.file)">
+                <a href="javascript:void(0)" (click)="openModal(view,row)" title="click to view">
                   <i class="fa fa-eye text-black" aria-hidden="true"></i>
+                </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                  <i class="fa fa-download text-black" aria-hidden="true"></i>
                 </a>
+
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

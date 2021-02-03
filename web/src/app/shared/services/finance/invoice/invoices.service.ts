@@ -38,9 +38,27 @@ export class InvoicesService {
     );
   }
 
+  // get aging
+  get_aging(): Observable<Invoice[]> {
+    return this.http.get<any>(this.url + "aging/").pipe(
+      tap((res)=> {
+        console.log("aging", res)
+      })
+    )
+  }
+
   // generate invoice will use this connector
   post(opost:Posts): Observable<any> {
     return this.http.post(this.url + "generate/", opost)
+  }
+
+  // process outstanding invoices
+  get_outstanding(): Observable<Invoice[]> {
+    return this.http.get<any>(this.url + "check_outstanding/").pipe(
+      tap((res) => {
+        console.log("Outstanding", res)
+      })
+    )
   }
 
 
@@ -75,6 +93,22 @@ export class InvoicesService {
     return this.http.get<Invoice[]>(urlFilter).pipe(
       tap((res) => {
         console.log("Invoice", res);
+      })
+    );
+  }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+  }
+
+  getfilteredCID(body): Observable<Invoice> {
+    let urlID = this.url + "getfilteredcid/";
+    return this.http.post<any>(urlID, body).pipe(
+      tap((res) => {
+        console.log("Imana", res)
       })
     );
   }

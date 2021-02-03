@@ -81,7 +81,7 @@ class AircraftViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Aircraft.objects.all().values()[:5]
+        report = Aircraft.objects.all().values()
         report_list = [i for i in report]
         export_type = request.data['file_type']
 

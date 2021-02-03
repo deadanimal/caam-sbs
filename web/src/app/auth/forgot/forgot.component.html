@@ -11,13 +11,36 @@
                             <div class="form-group mb-3" [ngClass]="{ focused: focus === true }">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text bg-primary">
-                                            <i class="ni ni-email-83 text-white"></i>
-                                        </span>
                                     </div>
                                     <input
                                         class="form-control text-dark"
-                                        placeholder="Email"
+                                        placeholder="token"
+                                        type="text"
+                                        (focus)="focus = true"
+                                        (blur)="focus = false"
+                                    />
+                                </div>
+                            </div>
+							<div class="form-group mb-3" [ngClass]="{ focused: focus === true }">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                    </div>
+                                    <input
+                                        class="form-control text-dark"
+                                        placeholder="new password"
+                                        type="email"
+                                        (focus)="focus = true"
+                                        (blur)="focus = false"
+                                    />
+                                </div>
+                            </div>
+							<div class="form-group mb-3" [ngClass]="{ focused: focus === true }">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                    </div>
+                                    <input
+                                        class="form-control text-dark"
+                                        placeholder="new password"
                                         type="email"
                                         (focus)="focus = true"
                                         (blur)="focus = false"
@@ -27,9 +50,6 @@
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary btn-block my-4" (click)="doResetPassword()">
                                     Reset Password
-                                </button>
-                                <button type="button" class="btn btn-outline-primary btn-block my-4" [routerLink]="['/auth/login']">
-                                    Login
                                 </button>
                             </div>
                         </form>

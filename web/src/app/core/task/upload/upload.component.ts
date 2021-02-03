@@ -14,6 +14,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as FromAirports from "src/app/variables/from-airports";
 import swal from "sweetalert2";
 
+import * as FileSaver from 'file-saver';
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { FpldatasService } from "src/app/shared/services/fpldatas/fpldatas.service";
 import { UploadsService } from "src/app/shared/services/uploads/uploads.service";
@@ -114,6 +115,7 @@ export class UploadComponent implements OnInit {
   ) {
 
     this.user_obj = this.authService.decodedToken();
+    console.log("userObj", this.user_obj)
     if (this.user_obj) this.getFileUpload(this.user_obj);
 
     this.fileuploadFormGroup = this.formBuilder.group({
@@ -138,6 +140,31 @@ export class UploadComponent implements OnInit {
   ngOnInit() {
     this.getFplData();
   }
+
+  exportPdf(value: string) {
+    console.log("value", value)
+    this.spinner.show()
+    this.fpldataService.exportpdf({"file_type":value}).subscribe(
+      (res) => {
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "Upload.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "Upload.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+      }
+    )
+  }
+
 
 
   // getRowClass = (row) => {
@@ -399,6 +426,7 @@ export class UploadComponent implements OnInit {
 
   // upload vfl/tfr function
   upload() {
+    console.log("how", this.user_obj.user_id)
     const formData = new FormData();
     formData.append(
       "data_file_link",
@@ -550,6 +578,7 @@ export class UploadComponent implements OnInit {
             .subscribe(
               (res) => {
                 console.log("res", res);
+                this.getFplData();
                 this.spinner.hide();
                 swal
                   .fire({
@@ -561,10 +590,10 @@ export class UploadComponent implements OnInit {
                   })
                   .then((result) => {
                     if (result.value) {
-                      this.modalService.dismissAll();
-                      this.getFplData();
+                      this.user_obj = this.authService.decodedToken();
+                      this.getFileUpload(this.user_obj);
                       this.modal.hide();
-                      window.location.reload();
+                      // window.location.reload();
                     }
                   });
               },
@@ -593,7 +622,7 @@ export class UploadComponent implements OnInit {
       .then((result) => {
         if (result.value) {
           this.modal.hide();
-          window.location.reload();
+          // window.location.reload();
         }
       });
   }

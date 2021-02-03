@@ -44,6 +44,7 @@
                   <option value="transaction">Transaction</option>
                 </select>
               </div>
+              
             </div>
 
             <div class="col-md-6" *ngIf="filterby==='companyname'">
@@ -98,6 +99,19 @@
                 </div>
               </div>
             </div>
+            <div class="col-lg-6 text-right">
+              <button class="btn btn-sm btn-dark" (click)="openModal(note, some)">
+                Add New Note
+              </button>
+              <!-- <button class="btn btn-sm btn-dark" (click)="exportPdf()">
+                Export
+              </button> -->
+              <select class="btn btn-sm btn-dark dropdown-toggle" style="background-color: black; color: white" id="selectid" (change)="exportPdf()">
+                <option disabled selected hidden><b>Export</b></option>
+                <option class="dropdown-item" value="PDF" style="color: white;">Export Pdf</option>
+                <option class="dropdown-item" value="XLSX" style="color: white;">Export Excel</option>
+              </select>
+            </div>
 
           </div>
         </div>
@@ -130,7 +144,7 @@
           </div>
 
           <ngx-datatable class="bootstrap selection-cell table-responsive " [columnMode]="'force'" [headerHeight]="50"
-            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="notes"
             (activate)="onActivate($event)" [scrollbarH]="true">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
@@ -146,30 +160,40 @@
               <ng-template ngx-datatable-header-template>
                 <span>CID</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.cid_id }}
+              </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="companyname">
               <ng-template ngx-datatable-header-template>
-                <span>Company Name</span>
+                <span>COMPANY</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.company_name}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="transaction">
               <ng-template ngx-datatable-header-template>
-                <span>Transaction</span>
+                <span>REMARKS</span>
               </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="transactionnumber">
-              <ng-template ngx-datatable-header-template>
-                <span>Transaction No.</span>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.remarks}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="transactiondate">
               <ng-template ngx-datatable-header-template>
-                <span>Transaction Date</span>
+                <span>CREATED AT</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.created_at_str}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="invoicenumber">
               <ng-template ngx-datatable-header-template>
-                <span>Invoice No.</span>
+                <span>TYPE</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.note_type}}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column>
@@ -198,42 +222,56 @@
   </div>
 </div>
 
-<ng-template #view>
-  <div class="modal-header bg-default">
-    <h6 class="modal-title text-white my-auto" id="modal-title-default">
-      Credit and Debit Note
-    </h6>
-
-    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
-      <span aria-hidden="true" class="text-white my-auto"> × </span>
-    </button>
-  </div>
-
-  <div class="modal-body">
-    <form>
-      <div class="row clearfix">
-        <div class="col">
-          <span>
-            <span class="h1">DEBIT NOTE</span><br>
-            <span class="h3">{{companyname}}</span><br>
-            {{"Transaction Date: " + transactiondate}}<br>
-            {{"Transaction Number: " + transactionnumber}}<br>
-          </span>
-        </div>
-      </div>
-      <hr>
-      <img src="../../../../../assets/img/invoice/debitcredit.jpg" style="position: relative; width: 100%;" />
-
-    </form>
-  </div>
-
-  <div class="modal-footer">
-
-    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
-      Close
-    </button>
-  </div>
-
-
-
+<ng-template #note let-c="close" let-d="dismiss">
+ <div class="modal-content">
+   <div class="modal-body p-0">
+     <div class="card bg-secondary shadow border-0">
+       <div class="card-header bg-dark">
+         <div class="text-muted mb-3">
+           <h4 class="mb-0 text-white">
+             Add New Note
+           </h4>                
+         </div>
+       </div>
+       <div class="card-body">
+         <form [formGroup]="noteFormGroup">
+           <div class="form-group">
+           <label>Amount:</label>
+             <input type="text" class="form-control" placeholder="Amount MYR" formControlName="amount" />
+           </div>
+           <div class="form-group">
+             <label>Assign Dispute to:</label>
+             <select class="form-control" formControlName="cid_id">
+               <option *ngFor="let i of orgs" [ngValue]="i.cid">{{i.name}}</option>
+             </select>
+           </div>
+           <div class="form-group">
+             <label>remarks:</label>
+             <input type="tel" class="form-control" placeholder="Remarks" formControlName="remarks" />
+           </div>
+            <div class="form-group">
+             <label>Note Type:</label>
+             <select class="form-control" formControlName="note_type">
+               <option disabled selected hidden><b>Type</b></option>
+               <option value="DEBIT" selected>Debit</option>
+               <option value="CREDIT">Credit</option>
+             </select>
+           </div>
+           <div class="row mt-4">
+             <div class="col clearfix">
+               <button class="btn btn-outline-danger" data-dismiss="modal" (click)="closeModal()">
+                 Cancel
+               </button>
+               <button class="btn btn-dark float-right" (click)="submit()">
+                 Submit
+               </button>
+               </div>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
 </ng-template>
+        
+

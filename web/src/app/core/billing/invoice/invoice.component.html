@@ -25,81 +25,19 @@
 <div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
-      <div class="card mb-4">
-        <div class="card-header bg-secondary">
-          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
-        </div>
-        <div class="card-body">
-          <div class="row">
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="form-control-label">Filter By</label>
-                <select class="form-control" [(ngModel)]="filterby" id="filterby">
-                  <option value="all">-Select Filter By-</option>
-                  <option value="date">Date</option>
-                  <option value="invoicenumber">Invoice No.</option>
-                  <option value="status">Status</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='invoicenumber'">
-              <div class="form-group">
-                <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Invoice No." [(ngModel)]="searchText"
-                  (keyup)="FilterTable(searchText)">
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='status'">
-              <div class="form-group">
-                <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Status" [(ngModel)]="searchText"
-                  (keyup)="FilterTable(searchText)">
-              </div>
-            </div>
-
-            <!-- <div class="col-md-6" *ngIf="filterby==='date'">
-              <h4>Search by Date</h4>
-              <div class="row">
-                <div class="col-xs-6 col-md-6 form-group">
-                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
-                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate">
-                </div>
-                <div class="col-xs-6 col-md-6 form-group">
-                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker"
-                    placeholder="Enter End Date" bsDatepicker [(ngModel)]="toDate">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col clearfix">
-                  <button class="btn btn-warning float-right" (click)="FilterDate()">Search</button>
-                </div>
-              </div>
-            </div> -->
-
-            <div class="col-md-6" *ngIf="filterby==='date'">
-              <h4>Search by Date</h4>
-              <div class="row">
-                <div class="col-xs-12 col-md-12 form-group">
-                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
-                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate" (ngModelChange)="FilterDate()">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col">
       <div class="card">
-
+       <div class="card-header pb-5">
+         <div class="row">
+           <div class="col-xl-6 text-left">
+             <h3 style="float: left;">Monthly Movement Report</h3>
+           </div>
+           <div class="col-xl-6 text-right">
+             <button class="btn btn-sm btn-dark" style="float: right; background-color: black; color: white" (click)="stagingDispute()">
+               Create Dispute
+             </button>
+           </div>
+         </div>
+       </div>
         <div class="dataTables_wrapper py-4">
           <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -118,11 +56,234 @@
                 </label>
               </div>
             </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
+                </label>
+              </div>
+            </div>
+
           </div>
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="movementreport" (activate)="onActivate($event)" [displayCheck]="displayCheck">
+            <ngx-datatable-column [width]="30" [headerCheckboxable]="true">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>CID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <span>{{ row.cid }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>CTG</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                      <span>{{ row.ctg }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="invoicedate">
+              <ng-template ngx-datatable-header-template>
+                <span>DATE</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                      <span>{{ row.fpl_date }}</span>
+              </ng-template>
+
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEP</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dep }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEST</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dest }}
+              </ng-template>
+            </ngx-datatable-column>
+           
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DIST</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dist }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column *ngIf="disputeStage == true" name="Actions" sortable="false" prop="id">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <a href="javascript:void(0)" title="add to dispute" (click)='archive(row.id)'>
+                  <i class="fas fa-archive" aria-hidden="true"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+
+          </ngx-datatable>
+        </div>
+        <div *ngIf="disputeStage==true">
+        <div class="card-body">
+          <h3>Dispute Table</h3>
+        </div>
+          <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+            [rows]="movementreportStaged" (activate)="onActivate($event)" [displayCheck]="displayCheck" [scrollbarH]="true">
+            <ngx-datatable-column [width]="30" [headerCheckboxable]="true">
+              <ng-template ngx-datatable-header-template>
+                <span>No.</span>
+              </ng-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                {{
+                  rowIndex +1
+                }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>CID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <span>{{ row.cid }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>CTG</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                      <span>{{ row.ctg }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="invoicedate">
+              <ng-template ngx-datatable-header-template>
+                <span>DATE</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                      <span>{{ row.fpl_date }}</span>
+              </ng-template>
+
+            </ngx-datatable-column>
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEP</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dep }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DEST</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dest }}
+              </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DIST</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dist }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Actions" sortable="false" prop="id">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
+                <a href="javascript:void(0)" title="click to undo" (click)='archive(row.id)'>
+                  <i class="fa fa-undo text-black" aria-hidden="true"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        <div class="form-group pb-5" [formGroup]="remarkForm"  style="width: 95%; margin: auto;">
+            <label class="form-control-label">Remark</label>
+            <textarea class=" form-control" placeholder="Enter Remark" rows="5" formControlName="remark"></textarea>
+        </div>
+
+        <div class="card-footer pb-5">
+          <button class="btn btn-sm btn-dark ml-5" style="float: right; background-color: black; color: white" (click)="submit()">
+            Submit  
+          </button>
+          <button class="btn btn-sm btn-dark" style="float: right; background-color: black; color: white" (click)="unstageDispute()">
+            Close
+          </button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <div class="card">
+       <div class="card-header pb-5">
+
+         <h3>Invoices</h3>
+       </div>
+        <div class="dataTables_wrapper py-4">
+         <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatable_length">
+                <label>
+                  Show
+                  <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
+                    (change)="entriesChange($event)">
+                    <option value="5" [selected]="entries == 5">5</option>
+                    <option value="10" [selected]="entries == 10">10</option>
+                    <option value="25" [selected]="entries == 25">25</option>
+                    <option value="50" [selected]="entries == 50">50</option>
+                    <option value="-1" [selected]="entries == -1">All</option>
+                  </select>
+                  entries
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+            [rows]="invoices" (activate)="onActivate($event)">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -137,25 +298,46 @@
               <ng-template ngx-datatable-header-template>
                 <span>INVOICE NO.</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <span>{{ row.invoice_no }}</span>
+              </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="invoiceperiod">
               <ng-template ngx-datatable-header-template>
                 <span>INVOICE PERIOD</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <span>{{ row.inv_period }}</span>
+              </ng-template>
+
             </ngx-datatable-column>
             <ngx-datatable-column name="invoicedate">
               <ng-template ngx-datatable-header-template>
                 <span>INVOICE DATE</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <span>{{ row.created_at_str }}</span>
+              </ng-template>
+
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>AMOUNT</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.amount | currency: "MYR"}}
+                {{row.invoice_total | currency: "MYR"}}
               </ng-template>
             </ngx-datatable-column>
+
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>PAID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{row.paid_amount | currency: "MYR"}}
+              </ng-template>
+            </ngx-datatable-column>
+
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>STATUS</span>
@@ -168,10 +350,10 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">
-                <a href="javascript:void(0)" (click)="openModal()" title="click to view">
+                <a href="javascript:void(0)" (click)="detailView(view, row)" title="click to view">
                   <i class="fa fa-eye text-black" aria-hidden="true"></i>
                 </a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" title="click to download" (click)='download(row.file)'>
+                <a href="javascript:void(0)" title="click to download" (click)='download(row.id, row.company_name)'>
                   <i class="fa fa-download text-black" aria-hidden="true"></i>
                 </a>
 
@@ -183,3 +365,103 @@
     </div>
   </div>
 </div>
+
+<!-- invoice show by modal -->
+<ng-template #view>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Invoice
+    </h6>
+
+    <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div class="row clearfix">
+        <div class="col-6">
+          <span>
+            <span class="h3"><b>INVPeriod: {{companyperiod}}</b></span><br>
+              {{companyname}}<br>
+              {{companyaddress}}<br>
+              <b>Email : </b>{{companyemail}}<br>
+              <b>Tel : </b>{{companytel}}<br>
+              <b>Fax : </b>{{companyfax}}<br>
+          </span>
+        </div>
+        <div class="col-6" style="text-align: right;">
+          <span>
+            <span class="h3"><b>Running No: {{invoicenumber}}</b></span><br>
+            <span class="h3">Status: {{invoicestatus}}<br>
+              <b>Invoice Date : </b>{{invoicedate}}<br>
+              <b>Due Date : </b>{{invoiceduedate}}</span><br>
+          </span>
+        </div>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Invoice Summary</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>Item</td>
+                  <td>Amount</td>
+                </tr>
+              </thead>
+              <tbody>
+                  
+                <tr>
+                  <td class="thick-line">Domestic Flight</td>
+                  <td class="thick-line">{{domesticflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Inbound Flight</td>
+                  <td class="no-line">{{inboundflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Outbound Flight</td>
+                  <td class="no-line">{{outboundflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Over Flight</td>
+                  <td class="no-line">{{overflight}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line">Other</td>
+                  <td class="no-line">{{otherflight}}</td>
+                </tr>
+                <tr>
+                  <td class="thick-line"><strong>Subtotal</strong></td>
+                  <td class="thick-line">{{subtotal}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"><strong>Surcharge</strong></td>
+                  <td class="no-line">{{invoicesurcharge}}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"><strong>Invoice Total</strong></td>
+                  <td class="no-line">{{invoicetotal}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="modal-footer">
+
+    <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+      Close
+    </button>
+  </div>
+</ng-template>

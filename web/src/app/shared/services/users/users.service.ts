@@ -38,12 +38,29 @@ export class UsersService {
     );
   }
 
-  getOne(id: string): Observable<UsersModel> {
-    let urlID = this.url + id + "/";
-    return this.http.get<UsersModel>(urlID).pipe(
-      tap((res: UsersModel) => {
+  getExplicit(): Observable<UsersModel[]> {
+    return this.http.get<any>(this.url + "getExplicit/").pipe(
+      tap((res) => {
         console.log("UsersModel", res);
-        this.umodel = res;
+        this.umodels = res;
+      })
+    );
+  }
+
+  getFiltered(): Observable<UsersModel[]> {
+    return this.http.get<any>(this.url + "getFiltered/").pipe(
+      tap((res) => {
+        console.log("UsersModel", res);
+        this.umodels = res;
+      })
+    );
+  }
+
+  getOne(id: string): Observable<any> {
+    let urlID = this.url + id + "/";
+    return this.http.get<any>(urlID).pipe(
+      tap((res) => {
+        console.log("UsersModel", res);
       })
     );
   }
@@ -71,6 +88,26 @@ export class UsersService {
         console.log("UsersModel", res);
       })
     );
+  }
+
+  notification(body: any): Observable<any> {
+    return this.http.post<any>(this.url + "notification/", body).pipe(
+	  tap(
+	    (res) => {
+	      console.log("notifications", res);
+      })
+    );
+
+  }
+
+  toggle(body: any): Observable<any> {
+    return this.http.post<any>(this.url + "toggle/", body).pipe(
+	  tap(
+	    (res) => {
+	      console.log("toggle", res);
+      })
+    );
+
   }
 
 

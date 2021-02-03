@@ -1,4 +1,5 @@
 import { TaskComponent } from './task/task.component';
+import { CreditDebitNoteComponent } from 'src/app/core/finance/credit-debit-note/credit-debit-note.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { NgModule } from "@angular/core";
@@ -28,6 +29,7 @@ import { DisputeComponent } from './dispute/dispute.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { DatePipe } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { UsersComponent } from './users/users.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: 'right',
@@ -46,11 +48,13 @@ let pages = [
   UploadComponent,
   InvoiceComponent,
   TaskComponent,
+  // CreditDebitNoteComponent,
 ]
 
 @NgModule({
   declarations: [
-    pages   
+    pages,
+    UsersComponent   
   ],
   imports: [
     CommonModule,

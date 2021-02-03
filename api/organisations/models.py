@@ -14,7 +14,8 @@ class Organisation(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, default='NA')
     shortname = models.CharField(max_length=6, default='NA')
-    cid = models.CharField(max_length=4, default='NA', unique=True)
+    cid = models.CharField(max_length=4, unique=True, null=True, blank=True)
+    cid_id = models.CharField(max_length=100, default='NA')
     is_active = models.BooleanField(default=True)
     
     ORGANISATION_TYPE = [
@@ -34,8 +35,12 @@ class Organisation(models.Model):
     mobile_num = models.CharField(max_length=100, default='NA')
     fax_number = models.CharField(max_length=100, default='NA')
 
+    # add pic details for user creation
     pic_name = models.CharField(max_length=100, default='NA')
     pic_num = models.CharField(max_length=100, default='NA')
+    pic_email = models.CharField(max_length=100, default='NA')
+    pic_position = models.CharField(max_length=100, default='NA')
+    pic_department = models.CharField(max_length=100, default='NA')
 
     address_line_1 = models.CharField(max_length=200, default='NA')
     address_line_2 = models.CharField(max_length=200, default='NA')

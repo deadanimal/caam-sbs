@@ -1,4 +1,5 @@
-import datetime
+import datetime, json
+from django.core.files.base import ContentFile
 
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
@@ -6,11 +7,21 @@ from rest_framework.decorators import action
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
-from payments.models import Payments
+from payments.models import (
+        Payments,
+        Deposits
+)
+
+from invoice.models import Invoices
 
 from payments.serializers import (
-    PaymentSerializer
+    PaymentSerializer,
+    DepositsSerializer
 )
+
+from organisations.models import Organisation
+
+from users.models import CustomUser
 
 from accounts.models import Statements
 
@@ -34,17 +45,34 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         queryset = Payments.objects.all()
         return queryset
 
+    @action(methods=['POST'], detail=False)
+    def getFilteredCID(self, request):
+        cid_id = CustomUser.objects.filter(id=request.data['cid']).values()[0]['cid_id']
+        queryset = Payments.objects.filter(company_id=cid_id)
+        serializer_class = PaymentSerializer(queryset, many=True)
+        return Response(serializer_class.data)
+
 
     @action(methods=['POST'], detail=False)
     def manual(self, request, *args, **kwargs):
-        print(request.data)
-        # this boy will deal with attachment
+
+        # storing attachment 
+        attachment = request.FILES['attachment']
+        extension = os.path.splitext(str(data_file_link))[1]
+        print("extenstion", extension)
+        
+        cid_id = CustomUser.objects.filter(id=request.data['cid']).values()[0]['cid_id']
+        orgs = Organisation.objects.filter(cid_id=cid_id)
+        print(orgs)
         temp_obj = {
             "online":False,
             "amount_receive":request.data["amount_receive"],
             "remark": request.data["remark"],
-            "company_name": request.data["company"],
-            "approved":False
+            "company_id": cid_id,
+            "company_name": orgs.values()[0]['name'],
+            "approved":False,
+            "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
+            "attachment": doc
         }
 
         serializer = PaymentSerializer(data=temp_obj)
@@ -81,9 +109,41 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         payment_obj.status = "APPROVED"
         payment_obj.save()
 
+        print("paymentObj", payment_obj.company_id)
+        # update invoice
+        invoices = Invoices.objects.exclude(status='PAID').filter(cid=payment_obj.company_id)
+        balance = float(payment_obj.amount_receive)
+        for i in invoices:
+            balance =  balance - float(i.invoice_total)
+            
+            if balance >= 0:
+                # means paid la
+                i.status = 'PAID'
+                i.paid_amount = i.invoice_total
+                i.save()
+
+            else:
+                i.status='PARTIAL'
+                i.paid_amount = abs(balance)
+                i.save()
+
+        if balance >= 0:
+
+            print("MURDA")
+            deposit = {
+                    'company_name': payment_obj.company_name, 
+                    'company_id': payment_obj.company_id,
+                    'amount_receive': balance 
+            }
+
+            serializer_class = DepositsSerializer(data = deposit)
+            valid = serializer_class.is_valid(raise_exception=True)
+            if valid:
+                serializer_class.save()
+
         # create statement for payment
         temp_obj2 = {
-                "cid": payment_obj.cid,
+                "cid": payment_obj.company_id,
                 "company_name": payment_obj.company_name,
                 "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
                 "transaction": "PAYMENT",
@@ -105,5 +165,20 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         return Response(status.HTTP_200_OK)
 
     
+class DepositsViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    queryset = Deposits.objects.all()
+    serializer_class = DepositsSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [AllowAny]
+        else:
+            permission_classes = [AllowAny]
+        return [permission() for permission in permission_classes]   
+
+
+    def get_queryset(self):
+        queryset = Deposits.objects.all()
+        return queryset
 
 

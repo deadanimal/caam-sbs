@@ -527,6 +527,8 @@ export class TaskComponent implements OnInit {
             .subscribe(
               (res) => {
                 console.log("res", res);
+                this.user_obj = this.authService.decodedToken();
+                if (this.user_obj) this.getFileUpload();
                 this.spinner.hide();
                 swal
                   .fire({
@@ -538,9 +540,10 @@ export class TaskComponent implements OnInit {
                   })
                   .then((result) => {
                     if (result.value) {
-                      this.modalService.dismissAll();
+                       this.user_obj = this.authService.decodedToken();
+                       if (this.user_obj) this.getFileUpload();
+
                       this.modal.hide();
-                      window.location.reload();
                     }
                   });
               },

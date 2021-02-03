@@ -71,36 +71,10 @@ class OrganisationViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         """
         return queryset    
 
-    @action(methods=['POST'], detail=False)
-    def addairline(self, request, *args, **kwargs):
-
-        serializer = OrganisationSerializer(data=request.data)
-        valid = serializer.is_valid(raise_exception=True)
-        
-        if valid:
-            serializer.save()
-
-            sub = "CAAM Single Billing System"
-            plain_msg = 'Youre company have been registered and eligible to use this software, please go to this link for confirmation purpose'
-            t = Template(f"{plain_msg} <a clicktracking=off href='https://caam-sbs.pipe.my/#/auth/login'>CAAM SBS DASHBOARD</a>")
-            c = Context()
-            html_message = t.render(c)
-            to = [request.data['email_1']] 
-
-            try:
-                send_mail(sub, plain_msg, None, to, html_message=html_message)
-                return Response(status=status.HTTP_200_OK, data="succeed")
-
-            except Exception as e:
-                return Response(status=status.HTTP_400_BAD_REQUEST, data=str(e))
-                
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
-    
     @action(methods=['POST', 'GET'], detail=False)
     def export(self, request, *args, **kwargs):
         
-        report = Organisation.objects.all().values()
+        report = Organisation.objects.all().values()[:50]
         report_list = [i for i in report]
         export_type = request.data['file_type']
 

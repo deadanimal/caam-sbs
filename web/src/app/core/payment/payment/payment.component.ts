@@ -4,8 +4,9 @@ import * as dummylist from "src/app/variables/payment/payment";
 import * as banklist from "src/app/variables/bank-lists";
 import * as companylist from "src/app/variables/companies";
 import { Payment } from 'src/app/shared/services/payment/payment/payment.model';
-import { PaymentService } from 'src/app/shared/services/payment/payment/payment.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { PaymentService } from 'src/app/shared/services/payment/payment/payment.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { NotifyService } from 'src/app/shared/handler/notify/notify.service';
 import swal from 'sweetalert2';
 import { DatePipe } from '@angular/common';
@@ -30,6 +31,8 @@ export class PaymentComponent implements OnInit {
   // Form
   createManualForm: FormGroup
   createOnlineForm: FormGroup
+  tempForm: any;
+
   registerManualFormMessages = {
     'amount_receive': [
       { type: 'required', message: 'Amount is required.' },
@@ -65,7 +68,7 @@ export class PaymentComponent implements OnInit {
   activeRow: any;
   
   // Data
-  payments: Payment[] = [];
+  payments: any[] = [];
   rows = dummylist.paymentlist;
   banks= banklist.Banks;
   // company_names = companylist.Companies;
@@ -104,6 +107,7 @@ export class PaymentComponent implements OnInit {
     public zone: NgZone,
     private modalService: BsModalService,
     private paymentService: PaymentService,
+    private authService: AuthService,
     private toastr: NotifyService,
     private datePipe: DatePipe
   ) {
@@ -122,26 +126,9 @@ export class PaymentComponent implements OnInit {
       remark: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      company: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      attachment: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
+      attachment: [""],
     });
-    this.createOnlineForm = this.formBuilder.group({
-      amount_receive: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*)))(\\.\\d{1,2})?$')
-      ])),
-      company: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      payment_method: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
-      summary: new FormControl(),
-    });
+
     this.FilterTable(this.filterby);
   }
 
@@ -198,10 +185,14 @@ export class PaymentComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  submitManualForm() {
-    console.log(this.createManualForm.value)
+  submitPayment() {
+
+    this.tempForm = this.createManualForm.value;
+    console.log(this.createManualForm)
+    this.tempForm['cid'] = this.authService.decodedToken().user_id;
+    console.log(this.tempForm);
     this.isLoading = true
-    this.paymentService.manual(this.createManualForm.value).subscribe(
+    this.paymentService.manual(this.tempForm).subscribe(
       () => {
         // Success
         this.isLoading = false
@@ -219,32 +210,11 @@ export class PaymentComponent implements OnInit {
     )
   }
 
-  submitOnlineForm() {
-    console.log(this.createOnlineForm.value)
-    this.isLoading = true
-    this.paymentService.online(this.createOnlineForm.value).subscribe(
-      () => {
-        // Success
-        this.isLoading = false
-        this.closeModal();
-        this.getAllData();
-      },
-      () => {
-        // Failed
-        this.isLoading = false
-        this.closeModal()
-
-      },
-      () => {
-        // After
-        this.toastr.openToastr('', 'Requesting')
-      }
-    )
-  }
-
   getAllData = () => {
-    console.log("im called")
-    this.paymentService.get().subscribe(
+    let body = {
+      "cid": this.authService.decodedToken().user_id
+    }
+    this.paymentService.getFiltered(body).subscribe(
       data => {
         this.payments = data;
       },
