@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <link href="invoice.css" media="print" rel="stylesheet">
+    <title>Invoice</title>
+    <meta name="description" content="Invoice demo sample">
+    <meta name="author" content="Kozea">
+  </head>
+  
+  <body>
+  <aside>
+      <address id="from">
+        <h5>DATE: {{current_date}}
+
+          <b>CIVIL AVIATION AUTHORITY OF MALAYSIA</b> 
+          ANFC Unit, Air Traffic Management Centre 
+          Level 4, Podium Block B, Lot 4G4, Precinct 4 
+          No. 27, Persiaran Perdana 
+          62618 Putrajaya, MALAYSIA 
+          Email : anfc.abs@gmail.com 
+          Tel No : +603 8871 4000 
+          Fax No : +603 8881 0520 
+
+          INVPeriod : {{invoice.inv_period}} 
+          Invoiced To : CID {{invoice.cid_id}} 
+          {{invoice.company_name}} 
+          Email : {{invoice.company_email}} 
+          Tel : {{invoice.office_num}} 
+          Fax : {{invoice.fax_number}} 
+        </h5> 
+      </address>
+
+      <address id="to">
+        <img style="width: 100px; height:100px;" src="https://pipeline-project.sgp1.digitaloceanspaces.com/caam/default/caam.png" alt="icon"/>
+        <h5>No: {{invoice.running_no}}
+
+        <b>INVOICE</b> 
+        <b># {{invoice.invoice_no}}</b> 
+        <b>Status: {{invoice.status}}</b>  
+        <b>CID {{invoice.cid_id}}</b> 
+        Invoice Date: {{invoice.created_at_str}} 
+        Due Date: {{invoice.due_at_str}} 
+        </h5>
+      </address>
+  </aside>
+
+
+  <div>
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="width: 55%;"><h5>Flight</h5></th>
+          <th style="width: 20%;"><h5>Amount (MYR)</h5></th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for i,j in first_table %}
+          <tr>
+              <td style='border:none;'>
+                <h5>{{i}}</h5>
+              </td>
+              <td style='border:none;'>
+                <h5>{{j}}</h5>
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div style='margin-top: 50px;'>
+    <table style="width: 100%;">
+      <thead>
+          <tr>
+              <th style="width: 55%;"><h5>Item</h5></th>
+              <th style="width: 20%;"><h5>Amount (MYR)</h5></th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for i,j in second_table %}
+          <tr>
+              <td  style='border:none;'>
+                  <h5>{{i}}</h5>
+              </td>
+              <td  style='border:none;'>
+                  <h5>{{j}}</h5>
+              </td>
+          </tr>
+          {% endfor %}
+
+      </tbody>
+    </table>
+    </div>
+    <div class="" style="text-align: justify;">
+      <h5>
+        You are required to pay the amount stated in the invoice in full in
+        MALAYSIA RINGGIT or equivalent USD amount. If you have paid,
+        please email to us about your payment indicating your Company,
+        Invoice NO, Invoice Period, Paid Amount, Cheque/Bank Draft/TT
+        reference number and date.  
+        BANK INFORMATION  
+        In favor of: Civil Aviation Authority of Malaysia  
+        Account No.: 3811340215  
+        Account Name: CAAM  
+        Bank Name: Public Islamic Bank  
+        Swift Code: PBBR MYKL XXX  
+        Bank Address: No. 66, Jalan Diplomatik, Presint 15, 62050, Putrajaya  
+        All Telegraphic Transfer/Bank Charges shall be borne by the customer. This invoice is
+        considered correct if no queries are received within 14 days from the date of its
+        issuance. Please direct your inquiries to the contact information in this invoice.
+        Please quote the Invoice No. for any correspondence.
+      </h5>
+    </div>
+  </body>
+</html>

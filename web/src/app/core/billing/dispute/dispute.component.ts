@@ -18,6 +18,7 @@ export class DisputeComponent implements OnInit {
   fpl_ids: any[] = [];
   opened_id: string = null;
   activeRow: any;
+  temp = [];
 
   entries: number = 5;
 
@@ -49,6 +50,14 @@ export class DisputeComponent implements OnInit {
     this.disputeService.getfilteredCID({'id':user_id}).subscribe(
       (res) => { 
         this.disputeList = res;
+        this.temp = this.disputeList.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
         console.log(this.disputeList);
       },
       (err) => {
@@ -57,6 +66,26 @@ export class DisputeComponent implements OnInit {
     );
 
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.disputeList.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
   getDisputedFpls() {
       this.disputeService.getfilteredHOD({'fpl_ids': this.fpl_ids}).subscribe(

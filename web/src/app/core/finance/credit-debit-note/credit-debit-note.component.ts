@@ -8,8 +8,7 @@ import { DatePipe } from '@angular/common';
 import { OrganisationsModel } from 'src/app/shared/services/organisations/organisations.model';
 import { OrganisationsService } from 'src/app/shared/services/organisations/organisations.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-
-
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-credit-debit-note',
@@ -17,6 +16,21 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./credit-debit-note.component.scss']
 })
 export class CreditDebitNoteComponent implements OnInit {
+
+  // detail view
+  note_type : any;
+  airline_cid : any;
+  airline_name : any;
+  airline_address : any;
+  airline_email : any;
+  airline_tel : any;
+  airline_fax : any;
+  cdate : any;
+  note_amount : any;
+  invoice_no : any;
+  note_no: any;
+  invoice_amount : any;
+
 
   // Table
   entries: number = 5;
@@ -73,44 +87,11 @@ export class CreditDebitNoteComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.FilterTable(this.filterby);
     this.getOrgs();
     this.getAllData();
   }
 
-  FilterTable(field) {
-    let search = field.toLocaleLowerCase();
-    let tempAll =[];
-    
-
-    if (this.filterby == 'all') {
-      for (let i = 0; i < 15; i++) {
-        if(this.rows[i] != null)
-        {tempAll[i] = this.rows[i];}
-      }
-
-      return this.temp = tempAll;
-       
-    }
-    else if (this.filterby == 'companyname') {
-      this.temp = this.rows.filter(function (d) {
-        return d.companyname.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'transactionnumber') {
-      this.temp = this.rows.filter(function (d) {
-        return d.transactionnumber.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'transaction') {
-      this.temp = this.rows.filter(function (d) {
-        console.log("transaction")
-        return d.transaction.toString().includes(search);
-      })
-    }
-  }
-
-
+  
   // FilterDate() {
   //   let fromdate = this.fromDate
   //   let todate = this.toDate
@@ -140,31 +121,42 @@ export class CreditDebitNoteComponent implements OnInit {
   }
 
 
-  download(url: string): void {
-    console.log(url);
-    window.open(url, '_blank');
-  }
-
   getAllData = () => {
-    // obtainToken
-    // get userid
-    // get extended user fields (request to v1/users/userid)
-    // conditional get
-    // if cuser_type=ALN
-      // get user cid_id
-      // post request with cid_id to Note route getFIlteredCID
-    // elif cuser_type=HOD
-      // basic get
-    // elif cuser_type=APT, OPS
-      // get by assignto
-      // post request with assign_to Note route getFilteredAssignTo
     this.creditDebitService.get().subscribe(
       (res) => {
         this.notes = res;
+        this.temp = this.notes.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
       },
       (err) => {
       });
   }
+        
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.notes.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
   entriesChange($event) {
     this.entries = $event.target.value;
@@ -174,11 +166,21 @@ export class CreditDebitNoteComponent implements OnInit {
     this.activeRow = event.row;
   }
 
-  viewData(row) {
-  }
-
   openModal(modalRef: TemplateRef<any>, row) {
-    this.viewData(row);
+
+    this.note_type = row.note_type
+    this.airline_cid = row.cid_id
+    this.airline_name = row.company_name
+    this.airline_address = row.company_address
+    this.airline_email = row.company_email
+    this.airline_tel = row.company_tel
+    this.airline_fax =row.company_fax
+    this.cdate = row.created_at_str
+    this.invoice_no = row.invoice_id
+    this.invoice_amount = row.invoice_amount
+    this.note_amount = row.amount
+    this.note_no = row.note_no
+
     this.modal = this.modalService.show(modalRef, this.modalConfig);
   }
 
@@ -218,8 +220,16 @@ export class CreditDebitNoteComponent implements OnInit {
     if (status == "Paid") return "badge badge-success";
   }
 
-  exportPdf() {
+  downloadpdf(id, company_name) {
+    this.creditDebitService.exportpdf({"id": id}).subscribe(
+      (res) => {
+        var filename = company_name + ".pdf"
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+      });
   }
+
 }
 
 

@@ -80,6 +80,15 @@ export class MovementReportComponent implements OnInit {
         this.fplService.getFiltered(postFilter).subscribe(
           (res) => {
             this.movementreport = res;
+            this.temp = this.movementreport.map((prop, key) => {
+               return {
+                 ...prop,
+                 // id: key,
+                 no: key,
+               };
+             });
+
+
             console.log(this.movementreport)
           },
           (err) => {
@@ -94,6 +103,26 @@ export class MovementReportComponent implements OnInit {
     console.log(userObj)
     
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.movementreport.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
   entriesChange($event) {
     this.entries = $event.target.value;

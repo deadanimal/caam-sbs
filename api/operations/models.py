@@ -268,6 +268,13 @@ class Fpldata(models.Model):
     error_remark = models.TextField(blank=True, null=True)
     reason = models.TextField(max_length=300, default="NA")
     remark = models.TextField(max_length=300, default="NA")
+ 
+    # for dispute 
+    ERRTYPE = [
+        ('FLIGHT', 'flight'), # dest, distance
+        ('AIRLINE', 'airline'), # wrong cid
+    ]
+    error_type = models.CharField(max_length=20, choices=ERRTYPE, default='NA', blank=True, null=True)
 
     STATUSES = [
         ('FPL0', 'Draf'),

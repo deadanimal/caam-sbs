@@ -24,11 +24,14 @@ from dispute.models import (
 )
 
 from operations.models import (
-   Fpldata
+   Fpldata,
+   Callsign
 )
 
 from users.models import CustomUser
 from organisations.models import Organisation
+from invoice.models import Invoices
+from note.models import Note
 
 from dispute.serializers import DisputeSerializer
 from note.serializers import NoteSerializer
@@ -92,7 +95,11 @@ class DisputeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     @action(methods=['POST', 'GET'], detail=False)
     def getdisputedfpls_2(self, request, *args, **kwargs):
-        queryset = [Fpldata.objects.filter(id=i).values()[0] for i in request.data['arch_ids']]
+        try:
+            queryset = [Fpldata.objects.filter(id=i).values()[0] for i in request.data['arch_ids']]
+        except Exception as e:
+            queryset = [{}]
+
         return Response(queryset)
     
     @action(methods=['POST', 'GET'], detail=False)
@@ -140,35 +147,178 @@ class DisputeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def createnote(self, request, *args, **kwargs):
 
         dispute = Dispute.objects.filter(id=request.data['id']).values()[0]
-        queryset = [Fpldata.objects.filter(id=i).values()[0] for i in dispute['arch_ids']]
-        total_amt = sum([i['amount'] for i in queryset])
+        orgs = Organisation.objects.filter(cid=dispute['cid']).values()[0]
+        inv = Invoices.objects.filter(cid=dispute['cid']).values()
+        inv = inv[len(inv)-1]
+        print(inv['created_at_str'])
         
-        # create debit
-        debit_cid = queryset[0]['cid_id']
-        org = Organisation.objects.get(cid=debit_cid)
-        debit = {
-                    "cid_id": debit_cid, 
-                    "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
-                    "company_name": org.name,
-                    "note_type": 'DEBIT'
+        flight = [] # error in flight 
+        airline = [] # error in airline assign 
+        offset_amount = 0
+
+        disputedFpls = dispute['fpl_ids']
+        for i in disputedFpls:
+            data = Fpldata.objects.filter(id=i).values()[0]
+            if data['error_type'] == 'FLIGHT':
+                flight.append(data)
+            elif data['error_type'] == 'AIRLINE':
+                airline.append(data)
+
+        # credit-debit note base
+        temp_obj = {
+            'amount': "",
+            'remarks': "",
+            'cid_id': dispute['cid'],
+            'note_type': "",
+            'company_name': orgs['name'], 
+            'company_address': orgs['address_line_1'],
+            'company_email': orgs['email_1'],
+            'company_tel': orgs['office_num'],
+            'company_fax': orgs['fax_number'],
+            'invoice_id': str(inv['id']),
+            'invoice_amount': inv['invoice_total'],
+            'invoice_period': inv['inv_period'],
+            'created_at_str': datetime.datetime.now().strftime("%d/%m/%Y"),
+        }
+
+
+        # process flight error
+        for i in flight:
+            #offset_amount += (i['amount'] - (float(i['rate'])*float(i['distance']))
+            temp = i['amount'] - round(i['dist']*i['rate'],2)
+            offset_amount += temp
+        
+        if offset_amount > 0:
+            # create credit note 
+            temp_obj['amount'] = offset_amount
+            temp_obj['note_type'] = 'CREDIT'
+            temp_obj['remarks'] = f"Invoice :{inv['inv_period']} is overcharged due to flight error"
+
+            # generate running no
+            count = Note.objects.all().count() + 1
+            y = datetime.datetime.now().strftime('%Y')
+            temp_obj['note_no'] = f"C{count}/{y}"
+
+    
+            serializer_class = NoteSerializer(data = temp_obj)
+            valid = serializer_class.is_valid(raise_exception=True) 
+            serializer_class.save()
+
+            
+        if offset_amount < 0:
+            # create debit note
+            temp_obj['amount'] = abs(offset_amount)
+            temp_obj['note_type'] = 'DEBIT'
+            temp_obj['remarks'] = f"Invoice :{inv['inv_period']} is undercharged due to flight error"
+
+            # generate running no
+            count = Note.objects.all().count() + 1
+            y = datetime.datetime.now().strftime('%Y')
+            temp_obj['note_no'] = f"C{count}/{y}"
+
+
+
+            serializer_class = NoteSerializer(data = temp_obj)
+            valid = serializer_class.is_valid(raise_exception=True) 
+            serializer_class.save()
+
+        
+        # process airline error
+        temp = {}
+        wrong_cid = []
+        cids = []
+        for i in airline:
+            callsign = Callsign.objects.filter(callsign__startswith=i['fpl_no'][0:3]).values()
+            if len(callsign) > 0:
+                cid=callsign[0]['cid_id']
+                cids.append(cid)
+                if cid != dispute['cid']:
+                    wrong_cid.append(i)
+
+            else:
+                wrong.append(i)
+
+        cids = set(cids) 
+        for i in cids:
+            temp[i] = 0
+            for j in wrong_cid:
+                if Callsign.objects.filter(callsign__startswith=j['fpl_no'][0:3]).values()[0]['cid_id'] == i:
+                    temp[i] += j['amount']
+
+        # generate debit from temp for the wrong airline       
+        credit = 0
+        for i in cids:
+            if temp[i] != 0 and i!=dispute['cid']:
+                # override base orgs, invs to build the note
+                orgs = Organisation.objects.filter(cid=i).values()[0]
+                inv = Invoices.objects.filter(cid=i).values()
+                inv = inv[len(inv)-1]
+                temp_obj = {
+                            'amount': temp[i],
+                            'remarks': "Wrong Airline",
+                            'cid_id': i,
+                            'note_type': "DEBIT",
+                            'company_name': orgs['name'], 
+                            'company_address': orgs['address_line_1'],
+                            'company_email': orgs['email_1'],
+                            'company_tel': orgs['office_num'],
+                            'company_fax': orgs['fax_number'],
+                            'invoice_id': str(inv['id']),
+                            'invoice_amount': inv['invoice_total'],
+                            'invoice_period': inv['inv_period'],
+                            'created_at_str': datetime.datetime.now().strftime("%d/%m/%Y"),
                 }
 
-        serializer_class = NoteSerializer(data = debit)
-        valid = serializer_class.is_valid(raise_exception=True)
-        serializer_class.save()
-        
+                # generate running no
+                count = Note.objects.all().count() + 1
+                y = datetime.datetime.now().strftime('%Y')
+                temp_obj['note_no'] = f"C{count}/{y}"
+
+
+                serializer_class = NoteSerializer(data = temp_obj)
+                valid = serializer_class.is_valid(raise_exception=True) 
+                serializer_class.save()
+
+                credit += temp[i]
+
         # create credit
-        credit_cid = dispute['cid']
-        org = Organisation.objects.get(cid=credit_cid)
-        credit = {
-                    "cid_id": credit_cid,
-                    "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
-                    "company_name": org.name,
-                    "note_type": 'CREDIT'
-                }
+        if credit > 0:
+            dispute = Dispute.objects.filter(id=request.data['id']).values()[0]
+            orgs = Organisation.objects.filter(cid=dispute['cid']).values()[0]
+            inv = Invoices.objects.filter(cid=dispute['cid']).values()
+            inv = inv[len(inv)-1]
+            
+            temp_obj = {
+                'amount': credit,
+                'remarks': "Wrong Airline",
+                'cid_id': dispute['cid'],
+                'note_type': "CREDIT",
+                'company_name': orgs['name'], 
+                'company_address': orgs['address_line_1'],
+                'company_email': orgs['email_1'],
+                'company_tel': orgs['office_num'],
+                'company_fax': orgs['fax_number'],
+                'invoice_id': str(inv['id']),
+                'invoice_amount': inv['invoice_total'],
+                'invoice_period': inv['inv_period'],
+                'created_at_str': datetime.datetime.now().strftime("%d/%m/%Y"),
+            }
 
-        serializer_class = NoteSerializer(data = credit)
-        valid = serializer_class.is_valid(raise_exception=True)
-        serializer_class.save()
+            # generate running no
+            count = Note.objects.all().count() + 1
+            y = datetime.datetime.now().strftime('%Y')
+            temp_obj['note_no'] = f"C{count}/{y}"
+
+    
+            serializer_class = NoteSerializer(data = temp_obj)
+            valid = serializer_class.is_valid(raise_exception=True) 
+            serializer_class.save()
+    
+
+        queryset = Dispute.objects.filter(id=request.data['id'])
+        queryset.update(status = "CLOSED")
+
         return Response(status.HTTP_200_OK)
+        
+        
 

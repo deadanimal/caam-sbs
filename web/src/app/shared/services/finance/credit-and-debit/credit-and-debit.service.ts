@@ -27,6 +27,7 @@ export class CreditDebitService {
       })
     );
   }
+
   submit(body): Observable<CreditDebit> {
     return this.http.post<any>(this.url + "submit/", body).pipe(
       tap((res) => {
@@ -35,6 +36,13 @@ export class CreditDebitService {
     );
   }
 
+  getfiltered(body): Observable<CreditDebit[]> {
+    return this.http.post<any>(this.url + "getfiltered/", body).pipe(
+      tap((res) => {
+        console.log("CreditDebit", res);
+      })
+    );
+  }
 
 
   get(): Observable<CreditDebit[]> {
@@ -80,4 +88,12 @@ export class CreditDebitService {
       })
     );
   }
+
+  exportpdf(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
+  }
+
 }

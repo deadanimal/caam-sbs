@@ -15,64 +15,7 @@
 </div>
 
 <div class="container-fluid mt--8 ">
-    <div class="row">
-        <div class="col">
-            <div class="card mb-4">
-                <div class="card-header bg-secondary">
-                    <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-control-label">Filter By</label>
-                                <select class="form-control" [(ngModel)]="filterby" id="filterby">
-                                    <option value="all">-Select Filter By-</option>
-                                    <option value="issuedate">Issue Date</option>
-                                    <option value="duedate">Due Date</option>
-                                    <option value="transaction">Transaction</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6" *ngIf="filterby==='transaction'">
-                            <div class="form-group">
-                                <label class="form-control-label">Search Keyword</label>
-                                <input type="text" class="form-control" placeholder="Search Transaction"
-                                    [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6" *ngIf="filterby==='issuedate'">
-                            <h4>Search by Date</h4>
-                            <div class="row">
-                                <div class="col-xs-12 col-md-12 form-group">
-                                    <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate"
-                                        #dp="bsDatepicker" placeholder="Enter Date" bsDatepicker [(ngModel)]="fromDate"
-                                        (ngModelChange)="FilterDate()">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6" *ngIf="filterby==='duedate'">
-                            <h4>Search by Date</h4>
-                            <div class="row">
-                                <div class="col-xs-12 col-md-12 form-group">
-                                    <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate"
-                                        #dp="bsDatepicker" placeholder="Enter Date" bsDatepicker [(ngModel)]="fromDate"
-                                        (ngModelChange)="FilterDate()">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
+     <div class="row">
         <div class="col">
             <div class="card">
 
@@ -94,11 +37,20 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-6">
+                          <div id="datatable_filter" class="dataTables_filter">
+                            <label>
+                              <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                                aria-controls="datatable" (keyup)="filterTable($event)" />
+                            </label>
+                          </div>
+                        </div>
+
                     </div>
 
                     <ngx-datatable class="bootstrap selection-cell " [headerHeight]="50" [columnMode]="'force'"
                         [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-                        [rows]="statementaccounts" (activate)="onActivate($event)" [scrollbarH]="true">
+                        [rows]="temp" (activate)="onActivate($event)">
 
                         <ngx-datatable-column [width]="30">
                             <ng-template ngx-datatable-header-template>

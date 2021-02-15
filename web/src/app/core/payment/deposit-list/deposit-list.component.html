@@ -26,48 +26,6 @@
 <div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
-      <div class="card mb-4">
-        <div class="card-header bg-secondary">
-          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
-        </div>
-        <div class="card-body">
-          <div class="row">
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="form-control-label">Filter By</label>
-                <select class="form-control" [(ngModel)]="filterby" id="filterby">
-                  <option value="all">-Select Filter By-</option>
-                  <option value="cid">CID NO.</option>
-                  <option value="companyname">Company Name</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='companyname'">
-              <div class="form-group">
-                <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Company Name" [(ngModel)]="searchText"
-                  (keyup)="FilterTable(filterby,searchText)">
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='cid'">
-              <div class="form-group">
-                <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search CID No." [(ngModel)]="searchText"
-                  (keyup)="FilterTable(filterby,searchText)">
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
       <div class="card">
 
         <div class="dataTables_wrapper py-4">
@@ -88,11 +46,20 @@
                 </label>
               </div>
             </div>
+            <div class="col-sm-12 col-md-6">
+              <div id="datatable_filter" class="dataTables_filter">
+                <label>
+                  <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                    aria-controls="datatable" (keyup)="filterTable($event)" />
+                </label>
+              </div>
+            </div>
+
           </div>
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="deposit" (activate)="onActivate($event)">
+            [rows]="temp" (activate)="onActivate($event)">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>

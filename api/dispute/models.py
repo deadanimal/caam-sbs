@@ -23,7 +23,9 @@ class Dispute(models.Model):
     created_at_str = models.CharField(max_length=200, default='NA', blank=True, null=True)
     due_at_str = models.CharField(max_length=200, default='NA', blank=True, null=True)
 
+    # organisation detail
     company_name = models.CharField(max_length=200, default='NA', blank=True)
+       
     remarks = models.TextField(default='NA', blank=True)
     fpl_ids = ArrayField(models.CharField(max_length=200), blank=True, null=True)
     arch_ids = ArrayField(models.CharField(max_length=200), blank=True, null=True)

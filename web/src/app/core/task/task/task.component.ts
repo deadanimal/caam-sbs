@@ -196,6 +196,26 @@ export class TaskComponent implements OnInit {
       });
   }
 
+  filterTable($event) {
+    let val = $event.target.value;
+    this.tempFileUpload = this.rowsFileUpload.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+
   getFplDataHistory() {
     this.fpldataService
       .filter("uploaded_by=" + this.uploadBy + "&fileupload_id=" + this.fileId)
@@ -281,14 +301,14 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  filterTable(filterby, search) {
-    this.fileuploadService.filterByField(filterby, search).subscribe((res) => {
-      this.tempFileUpload = res;
-    },
-      error => {
-        console.log(error)
-      })
-  }
+//  filterTable(filterby, search) {
+//    this.fileuploadService.filterByField(filterby, search).subscribe((res) => {
+//      this.tempFileUpload = res;
+//    },
+//      error => {
+//        console.log(error)
+//      })
+//  }
 
   onSelect({ selected }) {
     this.selected.splice(0, this.selected.length);

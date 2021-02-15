@@ -27,6 +27,7 @@ export class PaymentComponent implements OnInit {
   toDate: Date;
   filterby: String;
   searchText: String;
+  temp = [];
 
   // Form
   createManualForm: FormGroup
@@ -64,8 +65,8 @@ export class PaymentComponent implements OnInit {
   active = 1;
   entries: number = 5;
   selected: any[] = [];
-  temp = [];
   activeRow: any;
+  fileToUpload: File = null;
   
   // Data
   payments: any[] = [];
@@ -87,6 +88,7 @@ export class PaymentComponent implements OnInit {
   }]
 
   viewData = {
+    id: "",
     date: "",
     amount: "",
     remark: "",
@@ -128,8 +130,6 @@ export class PaymentComponent implements OnInit {
       ])),
       attachment: [""],
     });
-
-    this.FilterTable(this.filterby);
   }
 
   FilterTable(field) {
@@ -180,21 +180,21 @@ export class PaymentComponent implements OnInit {
         }
   }
 
-  download(url: string): void {
-    console.log(url);
-    window.open(url, '_blank');
-  }
-
   submitPayment() {
-
     this.tempForm = this.createManualForm.value;
-    console.log(this.createManualForm)
     this.tempForm['cid'] = this.authService.decodedToken().user_id;
-    console.log(this.tempForm);
+    console.log(this.tempForm)
     this.isLoading = true
     this.paymentService.manual(this.tempForm).subscribe(
-      () => {
-        // Success
+      (res) => {
+        // get payment id on res
+        // pass id with file
+
+        this.paymentService.upload(res.id, this.fileToUpload).subscribe(
+          (res) => {},
+          (err) => {}
+        );
+
         this.isLoading = false
         this.closeModal();
         this.getAllData();
@@ -210,6 +210,25 @@ export class PaymentComponent implements OnInit {
     )
   }
 
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.payments.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
   getAllData = () => {
     let body = {
       "cid": this.authService.decodedToken().user_id
@@ -217,6 +236,15 @@ export class PaymentComponent implements OnInit {
     this.paymentService.getFiltered(body).subscribe(
       data => {
         this.payments = data;
+        this.temp = this.payments.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
+
       },
       error => {
         console.log(error)
@@ -234,6 +262,7 @@ export class PaymentComponent implements OnInit {
   }
 
   openModal(modalRef: TemplateRef<any>, data:any) {
+    this.viewData.id = data.id;
     this.viewData.amount = data.amount_receive;
     this.viewData.attachment = data.attachment;
     this.viewData.remark = data.remark;
@@ -242,6 +271,17 @@ export class PaymentComponent implements OnInit {
     this.modal = this.modalService.show(modalRef, this.modalConfig);
     
 
+  }
+
+  download(id) {
+    this.paymentService.getOne(id).subscribe(
+      (res) => {
+        window.open(res.attachment);
+      },
+
+      (err) => {
+    });
+    
   }
 
   confirm() {
@@ -272,6 +312,10 @@ export class PaymentComponent implements OnInit {
     // if (status == "Pending") return "badge badge-primary";
     if (status == "APPROVED") return "badge badge-success";
     // if (status == "Failed") return "badge badge-danger";
+  }
+
+  onFileChange(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 }
 

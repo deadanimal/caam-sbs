@@ -17,6 +17,10 @@ export class PaymentListComponent implements OnInit {
   payments: Payment[] = [];
   approved_payments: Payment[] = [];
   unapproved_payments: Payment[] = [];
+  approved_amount: any;
+
+  temp = [];
+  temp2 = [];
 
   // Search Filter
   filterby: String;
@@ -80,14 +84,54 @@ export class PaymentListComponent implements OnInit {
     this.getPaymentData();
   }
 
-  download(url: string): void {
-    console.log(url);
-    window.open(url, '_blank');
+  download(attachment) {
+    window.open(attachment);
   }
+
 
   entriesChange($event) {
     this.entries = $event.target.value;
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.unapproved_payments.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+  filterTable2($event) {
+    let val = $event.target.value;
+    this.temp2 = this.approved_payments.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+
 
 
   onActivate(event) {
@@ -195,7 +239,11 @@ export class PaymentListComponent implements OnInit {
       .then((result)=>{
         if (result.value) {
           this.spinner.show()
-          this.paymentService.approve({"payment_id":data}).subscribe(
+          const body = {
+            "payment_id": data,
+            "approved_amount": this.approved_amount
+          }
+          this.paymentService.approve(body).subscribe(
             data => {
               console.log(data)
               this.closeModal()
@@ -225,13 +273,29 @@ export class PaymentListComponent implements OnInit {
       if (data[i].approved == true) {
         tempApproved.push(data[i])
         this.approved_payments = tempApproved
+        this.temp2 = this.approved_payments.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
 
       } else {
         tempUnapproved.push(data[i]);
         this.unapproved_payments = tempUnapproved
+        this.temp = this.unapproved_payments.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
       }
     }
-    console.log(this.approved_payments);
+    console.log(this.temp2);
     console.log(this.unapproved_payments)
   }
 

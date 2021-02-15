@@ -57,6 +57,26 @@ export class DepositListComponent implements OnInit {
   entriesChange($event) {
     this.entries = $event.target.value;
   }
+        
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.deposit.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
 
   onActivate(event) {
@@ -67,6 +87,14 @@ export class DepositListComponent implements OnInit {
     this.depositListService.get().subscribe(
       (res) => {
         this.deposit = res;
+        this.temp = this.deposit.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
       },
       (err) => {
         console.log(err);

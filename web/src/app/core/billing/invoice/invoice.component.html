@@ -69,7 +69,7 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="movementreport" (activate)="onActivate($event)" [displayCheck]="displayCheck">
+            [rows]="temp1" (activate)="onActivate($event)" [displayCheck]="displayCheck">
             <ngx-datatable-column [width]="30" [headerCheckboxable]="true">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -274,7 +274,7 @@
               <div id="datatable_filter" class="dataTables_filter">
                 <label>
                   <input type="search" class="form-control form-control-sm" placeholder="Search records"
-                    aria-controls="datatable" (keyup)="filterTable($event)" />
+                    aria-controls="datatable" (keyup)="filterTable2($event)" />
                 </label>
               </div>
             </div>
@@ -283,7 +283,7 @@
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="invoices" (activate)="onActivate($event)">
+            [rows]="temp2" (activate)="onActivate($event)">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>

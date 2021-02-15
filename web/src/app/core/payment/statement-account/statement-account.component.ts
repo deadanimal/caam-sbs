@@ -1,5 +1,6 @@
 import { StatementAccountService } from './../../../shared/services/payment/statement-account/statement-account.service';
 import { StatementAccount } from './../../../shared/services/payment/statement-account/statement-account.model';
+import { AuthService } from './../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -41,6 +42,7 @@ export class StatementAccountComponent implements OnInit {
 
   constructor(
     private statementAccountService: StatementAccountService,
+    private authService: AuthService,
   ) { 
   }
 
@@ -49,21 +51,27 @@ export class StatementAccountComponent implements OnInit {
   }
 
   getAllData = () => {
-    var airasia = [];
-    this.statementAccountService.get().subscribe(
-      data => {
-        // quick patch for airasia
-        for (var i = 0; i < data.length; i++) {
-          if (data[i].company_name == "AIRASIA SDN BHD") {
-            airasia.push(data[i])
-            this.statementaccounts = airasia
-          }
-        }
+    const user_id = this.authService.decodedToken().user_id
+    const body = {
+      "user_id": user_id
+    }
+
+    this.statementAccountService.getfiltered(body).subscribe(
+      (res) => {
+        this.statementaccounts = res;
+        this.temp = this.statementaccounts.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
+        console.log(this.statementaccounts);
       },
-      error => {
-        console.log(error)
-      }
-    )
+      (err) => {
+        console.log("err", err);
+      });
   }
 
   entriesChange($event) {
@@ -75,5 +83,26 @@ export class StatementAccountComponent implements OnInit {
     this.activeRow = event.row;
 
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.statementaccounts.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+
 
 }

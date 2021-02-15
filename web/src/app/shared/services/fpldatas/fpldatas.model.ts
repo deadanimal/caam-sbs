@@ -21,6 +21,8 @@ export class FpldatasModel {
   public fileupload_id: string;
   public created_at: any;
   public modified_at: any;
+  public error_type: any;
+
 
   constructor(
     id: string,
@@ -44,7 +46,9 @@ export class FpldatasModel {
     uploaded_by: string,
     fileupload_id: string,
     created_at: any,
-    modified_at: any
+    modified_at: any,
+    error_type: any,
+
   ) {
     this.id = id;
     this.invoice_no = invoice_no;
@@ -68,5 +72,6 @@ export class FpldatasModel {
     this.fileupload_id = fileupload_id;
     this.created_at = created_at;
     this.modified_at = modified_at;
+    this.error_type = error_type;
   }
 }

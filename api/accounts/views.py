@@ -6,6 +6,8 @@ from rest_framework.decorators import action
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
 
+from users.models import CustomUser
+
 from accounts.serializers import (
     StatementSerializer,
     LedgerSerializer
@@ -31,6 +33,13 @@ class StatementViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Statements.objects.all()
         return queryset
+
+    @action(methods=['POST'], detail=False)
+    def getfiltered(self, request, *args, **kwargs):
+        cid = CustomUser.objects.filter(id=request.data['user_id']).values()[0]['cid_id']
+        queryset = Statements.objects.filter(cid=cid).values()
+        return Response(queryset)
+
 
 class LedgerViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Ledgers.objects.all()

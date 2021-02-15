@@ -47,8 +47,17 @@ export class OutstandingPaymentComponent implements OnInit {
     this.invoiceService.get_outstanding().subscribe(
       data => {
         this.invoices = data;
+        this.temp = this.invoices.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
         console.log(this.invoices)
         this.spinner.hide()
+
       },
       error => {
         console.log(error)
@@ -56,16 +65,27 @@ export class OutstandingPaymentComponent implements OnInit {
       }
     )
   }
-
-  filterTable(filterby,search){
-    this.oustandingPaymentService.filter(filterby,search).subscribe((res) => {
-      this.outstandingPayments = res;
-    },
-    error => {
-      console.log(error)
-    })
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.invoices.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
   }
 
+
+  
   entriesChange($event) {
     this.entries = $event.target.value;
   }
