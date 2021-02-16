@@ -19,7 +19,6 @@ import re
 
 # import settings
 from core.settings import BASE_DIR 
-print("dir",BASE_DIR)
 
 from invoice.models import Invoices
 
