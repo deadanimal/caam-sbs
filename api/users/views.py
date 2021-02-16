@@ -21,7 +21,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.utils.html import strip_tags
 
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -56,9 +56,9 @@ class CustomUserViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]
 

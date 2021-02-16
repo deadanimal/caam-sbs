@@ -45,12 +45,12 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
-    CookieService,
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: HttpTokenInterceptor,
-  //     multi: true,
-  //   },    
+  // CookieService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpTokenInterceptor,
+    multi: true,
+  },    
   ],
 
   bootstrap: [AppComponent],
