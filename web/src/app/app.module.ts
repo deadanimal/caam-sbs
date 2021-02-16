@@ -45,7 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [
-  // CookieService,
+  CookieService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpTokenInterceptor,
