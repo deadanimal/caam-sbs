@@ -71,7 +71,6 @@ export class InvoicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.FilterTable(this.filterby);
     this.getAllData();
   }
 
@@ -100,6 +99,14 @@ export class InvoicesComponent implements OnInit {
     this.invoiceService.get().subscribe(
       data => {
         this.invoices = data;
+        this.temp = this.invoices.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
         this.spinner.hide()
       },
       error => {
@@ -114,37 +121,26 @@ export class InvoicesComponent implements OnInit {
     this.entries = $event.target.value;
   }
 
-
-  FilterTable(field) {
-    let search = field.toLocaleLowerCase();
-    let tempAll = [];
-
-
-    if (this.filterby == 'all') {
-      for (let i = 0; i < 15; i++) {
-        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.invoices.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
       }
-
-      return this.temp = tempAll;
-
-    }
-    else if (this.filterby == 'companyname') {
-      this.temp = this.rows.filter(function (d) {
-        return d.companyname.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'invoicenumber') {
-      this.temp = this.rows.filter(function (d) {
-        return d.invoicenumber.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'status') {
-      this.temp = this.rows.filter(function (d) {
-        return d.status.toLocaleLowerCase().includes(search);
-      })
-    }
+      return false;
+    });
   }
 
+  
   onActivate(event) {
     this.activeRow = event.row;
   }

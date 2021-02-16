@@ -52,8 +52,6 @@ export class GeneralLedgerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.spinner)
-    this.FilterTable(this.filterby);
     this.updateLedger();
   }
 
@@ -61,6 +59,14 @@ export class GeneralLedgerComponent implements OnInit {
     this.ledgerService.get().subscribe(
       data => {
         this.generalLedger = data;
+        this.temp = this.generalLedger.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
         this.spinner.hide()
       },
       error => {
@@ -68,6 +74,29 @@ export class GeneralLedgerComponent implements OnInit {
       }
     )
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    console.log(this.rows)
+    this.temp = this.generalLedger.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+
+
 
   updateLedger = () => {
     this.spinner.show()

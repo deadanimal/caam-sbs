@@ -11,6 +11,7 @@ import { Invoice } from 'src/app/shared/services/finance/invoice/invoices.model'
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import * as FileSaver from 'file-saver';
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-invoice',
@@ -34,6 +35,8 @@ export class InvoiceComponent implements OnInit {
   entries: number = 5;
   selected: any[] = [];
   temp = [];
+  temp1 = [];
+  temp2 = [];
   activeRow: any;
   rows = dummylist.invoicelist;
 
@@ -100,7 +103,6 @@ export class InvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterTable(this.filterby);
     this.getFpls();
     this.unstageDispute();
   }
@@ -123,6 +125,44 @@ export class InvoiceComponent implements OnInit {
   }
 
   submit() {
+    swal
+      .fire({
+        title: "Submit",
+        text: "Do you want to submit dispute?",
+        type: "question",
+        showCancelButton: true,
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-dark",
+        confirmButtonText: "Yes, Submit",
+        cancelButtonClass: "btn btn-secondary",
+        cancelButtonText: "No",
+      })
+      .then((result) => {
+        if (result.value) {
+          this.disputeStage = false;
+          this.disputeBody = {
+            'cid': this.cid_id,  
+            'remarks': this.remarkForm.value['remark'],
+            'fpl_ids': this.fplToDispute,
+          }
+
+          console.log(this.disputeBody);
+
+          this.disputeService.submit(this.disputeBody).subscribe(
+          (res) => {
+            this.unstageDispute();
+          },
+          (err) => {});
+
+
+        } else {
+          console.log("dismissed")
+        }
+      })
+
+  }
+
+  submitOld() {
     this.disputeStage = false;
     this.disputeBody = {
       'cid': this.cid_id,  
@@ -153,32 +193,7 @@ export class InvoiceComponent implements OnInit {
 
   
 
-  filterTable(field) {
-    let search = field.toLocaleLowerCase();
-    let tempAll = [];
-
-
-    if (this.filterby == 'all') {
-      for (let i = 0; i < 15; i++) {
-        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
-      }
-
-      return this.temp = tempAll;
-
-    }
-    else if (this.filterby == 'invoicenumber') {
-      this.temp = this.rows.filter(function (d) {
-        return d.invoicenumber.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'status') {
-      this.temp = this.rows.filter(function (d) {
-        return d.status.toLocaleLowerCase().includes(search);
-      })
-    }
-  }
-
-  // FilterDate() {
+    // FilterDate() {
   //   let fromdate = this.fromDate
   //   let todate = this.toDate
 
@@ -216,12 +231,22 @@ export class InvoiceComponent implements OnInit {
           (res) => {
             var temp = [];
             this.movementreport = res;
+            this.temp1 = this.movementreport.map((prop, key) => {
+              return {
+                ...prop,
+                // id: key,
+                no: key,
+              };
+            });
+
+
             for (var i=0; i < res.length; i++) {
               if (res[i].staged == true) {
                 temp.push(res[i]);
               }
             }
             this.movementreportStaged = temp;
+            
             console.log("staged", this.movementreportStaged);
           },
           (err) => {
@@ -234,11 +259,59 @@ export class InvoiceComponent implements OnInit {
     });
 
   }
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp1 = this.movementreport.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+
+
+  filterTable2($event) {
+    let val = $event.target.value;
+    this.temp2 = this.invoices.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
   getInvoices() {
     this.invoiceService.getfilteredCID({'cid_id':this.cid_id}).subscribe(
     (res) => {
       this.invoices = res;
+      this.temp2 = this.invoices.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
       console.log(this.invoices);
     },
     (err) => {

@@ -11,7 +11,7 @@ import { StatementAccount } from "./statement-account.model";
 })
 export class StatementAccountService {
   url: string = environment.baseUrl + "v1/statements/";
-  // url: string = "http://.0.0.1:8000/v1/statements/";
+  // url: string = "http://127.0.0.1:8000/v1/statements/";
 
   // Data
   public statementAccounts: StatementAccount[] = [];
@@ -69,5 +69,14 @@ export class StatementAccountService {
         console.log("StatementAccount", res);
       })
     );
+  }
+
+  getfiltered(body): Observable<StatementAccount[]> {
+    return this.http.post<any>(this.url + 'getfiltered/', body).pipe(
+      tap((res) => {
+      console.log("StatementAccount", res);
+    })
+  );
+   
   }
 }

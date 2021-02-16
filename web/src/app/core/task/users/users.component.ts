@@ -81,8 +81,8 @@ export class UsersComponent implements OnInit {
   submit() {
     // post request to auth/registration route
 	this.tempForm = this.userFormGroup.value
-	this.tempForm.password1 = "abc123def",
-	this.tempForm.password2 = "abc123def",
+	this.tempForm.password1 = "PabloEscobar",
+	this.tempForm.password2 = "PabloEscobar",
 	this.tempForm.full_name = this.userFormGroup.value['username'],
                   
 	this.authService.registerAccount(this.tempForm).subscribe(
@@ -93,11 +93,11 @@ export class UsersComponent implements OnInit {
 		this.userService.update(res.user.pk, this.tempForm).subscribe(
 		  (res) => {
         swal.fire({
-          title: "User Registration",
+          title: "user registration",
           text:
-            "Registration Succesfull",
+            "registration succesfull",
           buttonsStyling: false,
-          confirmButtonText: "Close",
+          confirmButtonText: "close",
           customClass: {
             confirmButton: "btn btn-success",
           },
@@ -134,14 +134,40 @@ export class UsersComponent implements OnInit {
 		(res) => {
 			this.rowsUsers = res;
 			this.tempUsers = this.rowsUsers;
+      this.tempUsers = this.rowsUsers.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
 			console.log(this.tempUsers);
 		},
 		(err) => {
 			console.log(err);
-		}
-	)
-	
+		});
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    this.tempUsers = this.rowsUsers.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
   notifyUsers(res) {
 	this.userService.notification(res).subscribe(
@@ -191,9 +217,6 @@ export class UsersComponent implements OnInit {
 
   create(content) {
     this.open(content, "modal-mini", "sm", "Add New User");
-  }
-
-  filterTable(field) {
   }
 
   entriesChange($event) {

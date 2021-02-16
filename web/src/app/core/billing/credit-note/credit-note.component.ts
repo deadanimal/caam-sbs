@@ -1,10 +1,11 @@
-
 import { Component, OnInit, NgZone, TemplateRef } from "@angular/core";
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import * as dummylist from "src/app/variables/billing/credit-note";
-import { CreditNoteService } from 'src/app/shared/services/billing/credit-note/credit-note.service';
-import { CreditNote } from 'src/app/shared/services/billing/credit-note/credit-note.model';
+import { CreditDebitService } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.service';
+import { CreditDebit } from 'src/app/shared/services/finance/credit-and-debit/credit-and-debit.model';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { DatePipe } from '@angular/common';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-credit-note',
@@ -13,15 +14,30 @@ import { DatePipe } from '@angular/common';
 })
 export class CreditNoteComponent implements OnInit {
 
+  // view data
+  note_type : any;
+  airline_cid : any;
+  airline_name : any;
+  airline_address : any;
+  airline_email : any;
+  airline_tel : any;
+  airline_fax : any;
+  cdate : any;
+  note_amount : any;
+  invoice_no : any;
+  note_no: any;
+  invoice_amount : any;
+
+
   // Table
   entries: number = 5;
   selected: any[] = [];
   temp = [];
   activeRow: any;
-  rows = dummylist.creditnotelist;
+  rows = [];
 
   // Data
-  creditNotes: CreditNote[] = [];
+  notes : CreditDebit[] = [];
 
   // Search Filter
   fromDate: Date;
@@ -40,7 +56,8 @@ export class CreditNoteComponent implements OnInit {
   constructor(
     public zone: NgZone,
     private modalService: BsModalService,
-    private creditNoteService: CreditNoteService,
+    private noteService: CreditDebitService,
+    private authService: AuthService,
     private datePipe: DatePipe
   ) {
     this.filterby = "all";
@@ -48,7 +65,7 @@ export class CreditNoteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.FilterTable(this.filterby);
+    this.getAllData();
   }
 
   download(url: string): void {
@@ -57,15 +74,46 @@ export class CreditNoteComponent implements OnInit {
   }
 
   getAllData = () => {
-    this.creditNoteService.get().subscribe(
-      data => {
-        this.creditNotes = data;
-      },
-      error => {
-        console.log(error)
-      }
-    )
+    const user_id = this.authService.decodedToken().user_id;
+    const body = {
+      "user_id":user_id
+    }
+    this.noteService.getfiltered(body).subscribe(
+    (res) => {
+      this.notes = res;
+      this.temp = this.notes.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
+    },
+    (err) => {
+      console.log(err);
+    });
   }
+        
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.notes.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
 
   FilterTable(field) {
     let search = field.toLocaleLowerCase();
@@ -123,7 +171,21 @@ export class CreditNoteComponent implements OnInit {
     this.activeRow = event.row;
   }
 
-  openModal(modalRef: TemplateRef<any>) {
+  openModal(modalRef: TemplateRef<any>, row) {
+    // assign value to modal varialble
+    this.note_type = row.note_type
+    this.airline_cid = row.cid_id
+    this.airline_name = row.company_name
+    this.airline_address = row.company_address
+    this.airline_email = row.company_email
+    this.airline_tel = row.company_tel
+    this.airline_fax =row.company_fax
+    this.cdate = row.created_at_str
+    this.invoice_no = row.invoice_id
+    this.invoice_amount = row.invoice_amount
+    this.note_amount = row.amount
+    this.note_no = row.note_no
+     
     this.modal = this.modalService.show(modalRef, this.modalConfig);
 
   }
@@ -131,4 +193,15 @@ export class CreditNoteComponent implements OnInit {
   closeModal() {
     this.modal.hide()
   }
+
+  downloadpdf(id, company_name) {
+    this.noteService.exportpdf({"id": id}).subscribe(
+      (res) => {
+        var filename = company_name + ".pdf"
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+      });
+  }
+  
 }

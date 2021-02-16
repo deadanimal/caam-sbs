@@ -195,6 +195,15 @@ ledger_router = router.register(
     'ledgers', LedgerViewSet
 )
 
+# dashboard route
+from operations.views import (
+    DashboardViewSet
+)
+
+dashboard_router = router.register(
+    'dashboard', DashboardViewSet
+)
+
 urlpatterns = [
     url(r'v1/', include(router.urls)),
     url(r'auth/', include('rest_auth.urls')),

@@ -53,6 +53,7 @@ class Invoices(models.Model):
 
 
     class Meta:
+        # dont kacau this order
         ordering = ['cid__name', 'inv_period']
 
     def __str__(self):

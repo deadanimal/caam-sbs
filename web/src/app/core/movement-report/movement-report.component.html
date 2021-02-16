@@ -26,68 +26,6 @@
 <div class="container-fluid mt--8">
   <div class="row">
     <div class="col">
-      <div class="card mb-4">
-        <div class="card-header bg-secondary">
-          <h4 class="mb-0"><i class="fas fa-search" aria-hidden="true"></i>&nbsp;Search</h4>
-        </div>
-        <div class="card-body">
-          <div class="row">
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="form-control-label">Filter By</label>
-                <select class="form-control" [(ngModel)]="filterby" id="filterby">
-                  <option value="all">-Select Filter By-</option>
-                  <option value="date">Date</option>
-                  <option value="departure">Departure</option>
-                  <option value="destination">Destination</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='departure'">
-              <div class="form-group">
-                <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Departure"
-                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='destination'">
-              <div class="form-group">
-                <label class="form-control-label">Search Keyword</label>
-                <input type="text" class="form-control" placeholder="Search Destination"
-                  [(ngModel)]="searchText" (keyup)="FilterTable(searchText)">
-              </div>
-            </div>
-
-            <div class="col-md-6" *ngIf="filterby==='date'">
-              <h4>Search by Date</h4>
-              <div class="row">
-                <div class="col-xs-6 col-md-6 form-group">
-                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker"
-                    placeholder="Enter Start Date" bsDatepicker [(ngModel)]="fromDate">
-                </div>
-                <div class="col-xs-6 col-md-6 form-group">
-                  <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp1="bsDatepicker"
-                    placeholder="Enter End Date" bsDatepicker [(ngModel)]="toDate">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col clearfix">
-                  <button class="btn btn-warning float-right" (click)="FilterDate()">Search</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
       <div class="card">
 
         <div class="dataTables_wrapper py-4">
@@ -120,13 +58,21 @@
                   <a class="dropdown-item" href="javascript:void(0)">Export as Report</a>
                   <a class="dropdown-item" href="javascript:void(0)">Print</a>
                 </div>
+                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input type="search" class="form-control form-control-sm" placeholder="Search records"
+                      aria-controls="datatable" (keyup)="filterTable($event)" />
+                  </label>
+                </div>
+
               </div>
             </div>
           </div>
 
           <ngx-datatable class="bootstrap selection-cell " [columnMode]="'force'" [headerHeight]="50"
             [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
-            [rows]="temp | filter:searchText" (activate)="onActivate($event)" [scrollbarH]="true">
+            [rows]="temp" (activate)="onActivate($event)">
             <ngx-datatable-column [width]="30">
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
@@ -137,49 +83,61 @@
                 }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="datetime">
+            
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Date/Time</span>
+                <span>CID</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <span>{{ row.cid }}</span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="callsign">
-              <ng-template ngx-datatable-header-template>
-                <span>Callsign</span>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="type">
-              <ng-template ngx-datatable-header-template>
-                <span>Type</span>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="departure">
-              <ng-template ngx-datatable-header-template>
-                <span>Departure</span>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="destination">
-              <ng-template ngx-datatable-header-template>
-                <span>Destination</span>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="ctg">
+
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>CTG</span>
               </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                      <span>{{ row.ctg }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="invoicedate">
+              <ng-template ngx-datatable-header-template>
+                <span>DATE</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                      <span>{{ row.fpl_date }}</span>
+              </ng-template>
+
             </ngx-datatable-column>
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Distance</span>
+                <span>DEP</span>
               </ng-template>
               <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.distance | number}}
+                {{ row.dep }}
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="route">
+
+            <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
-                <span>Route</span>
+                <span>DEST</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dest }}
               </ng-template>
             </ngx-datatable-column>
+           
+            <ngx-datatable-column>
+              <ng-template ngx-datatable-header-template>
+                <span>DIST</span>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-row="row">
+                {{ row.dist }}
+              </ng-template>
+            </ngx-datatable-column>
+
 
             <ngx-datatable-column name="Actions" sortable="false" prop="id">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template let-row="row">

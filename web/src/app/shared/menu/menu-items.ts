@@ -45,8 +45,8 @@ export const AirlineRoutes: RouteInfo[] = [
     isCollapsed: true,
     children: [
       { path: "invoice", title: "Invoice", type: "link" },    
-      { path: "credit-note", title: "Credit Note", type: "link" },           
-      { path: "debit-note", title: "Debit Note", type: "link" },          
+      { path: "credit-note", title: "Debit & Credit Note", type: "link" },           
+      //{ path: "debit-note", title: "Debit Note", type: "link" },          
       { path: "dispute", title: "Dispute", type: "link" },          
 
     ]
@@ -137,7 +137,7 @@ export const OperationRoutes: RouteInfo[] = [
       { path: "airline", title: "Airline", type: "link" },
       { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },
+      //{ path: "exemptions", title: "Exemptions", type: "link" },
       { path: "rate", title: "Rate", type: "link" },
       { path: "route", title: "Route", type: "link" },
     ],
@@ -312,7 +312,7 @@ export const FinanceRoutes: RouteInfo[] = [
       { path: "airline", title: "Airline", type: "link" },
       { path: "airport", title: "Airport", type: "link" },
       { path: "callsign", title: "Callsign", type: "link" },
-      { path: "exemptions", title: "Exemptions", type: "link" },
+      //{ path: "exemptions", title: "Exemptions", type: "link" },
       { path: "rate", title: "Rate", type: "link" },
       { path: "route", title: "Route", type: "link" },
     ],

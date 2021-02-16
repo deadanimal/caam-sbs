@@ -17,9 +17,21 @@ class Note(models.Model):
     created_at_str = models.CharField(max_length=200, default='NA', blank=True, null=True)
     due_at_str = models.CharField(max_length=200, default='NA', blank=True, null=True)
 
+    # orgs detail
     company_name = models.CharField(max_length=200, default='NA', blank=True)
+    company_address = models.CharField(max_length=200, default='NA', blank=True)
+    company_email = models.CharField(max_length=200, default='NA', blank=True)
+    company_tel = models.CharField(max_length=200, default='NA', blank=True)
+    company_fax = models.CharField(max_length=200, default='NA', blank=True)
+
+    # invoice detail
+    invoice_id = models.CharField(max_length=200, default='NA', blank=True)
+    invoice_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    invoice_period = models.CharField(max_length=200, default='NA', blank=True)
+
+
     remarks = models.TextField(default='NA', blank=True)
-    amount = models.CharField(max_length=200, default='NA', blank=True, null=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     note_type = models.CharField(max_length=20, choices=TYPE, default='DEBIT')
 
     def  __str__(self):

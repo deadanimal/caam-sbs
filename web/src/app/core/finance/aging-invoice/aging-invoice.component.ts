@@ -67,7 +67,6 @@ export class AgingInvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.FilterTable(this.filterby);
     this.refreshOutstanding();
     this.getData();
   }
@@ -100,12 +99,39 @@ export class AgingInvoiceComponent implements OnInit {
   //     // console.log(this.invoicenos)
   //   }
   // }
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.invoices.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
 
   getData() {
     this.spinner.show()
     this.invoiceService.get_aging().subscribe(
       data => {
         this.invoices = data['data'];
+        this.temp = this.invoices.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
+
         console.log("wgat", this.invoices)
         this.spinner.hide()
       },
@@ -127,36 +153,7 @@ export class AgingInvoiceComponent implements OnInit {
     )
   }
 
-  FilterTable(field) {
-    let search = field.toLocaleLowerCase();
-    let tempAll = [];
-
-
-    if (this.filterby == 'all') {
-      for (let i = 0; i < 15; i++) {
-        if (this.rows[i] != null) { tempAll[i] = this.rows[i]; }
-      }
-
-      return this.temp = tempAll;
-
-    }
-    else if (this.filterby == 'companyname') {
-      this.temp = this.rows.filter(function (d) {
-        return d.companyname.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'invoicenumber') {
-      this.temp = this.rows.filter(function (d) {
-        return d.invoicenumber.toLocaleLowerCase().includes(search);
-      })
-    }
-    else if (this.filterby == 'status') {
-      this.temp = this.rows.filter(function (d) {
-        return d.status.toLocaleLowerCase().includes(search);
-      })
-    }
-  }
-
+  
   // FilterDate() {
   //   let fromdate = this.fromDate
   //   let todate = this.toDate

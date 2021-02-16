@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { DashboardService } from 'src/app/shared/services/dashboard/dashboard.service';
 import swal from "sweetalert2";
 import * as L from "leaflet";
 import * as am4core from "@amcharts/amcharts4/core";
@@ -34,15 +35,47 @@ export class DashboardComponent implements OnInit {
 
   airportList = []//AirportRoutes.AirportRoutes;
 
-  constructor() {}
+  // card data
+  total_invoice: any;
+  total_paid: any;
+  total_deposit: any;
+  total_unpaid: any;
+
+  chart1_data: any[];
+  chart2_data: any[];
+
+  constructor(
+    private dashboardService: DashboardService,
+  ) {}
 
   ngOnInit() {
-    this.initChart();
-    this.initChart2();
+    this.getData();
+  }
+
+  getData() {
+    this.dashboardService.get().subscribe(
+      (res) => {
+        console.log(res);
+        this.total_invoice = res.total_invoice;
+        this.total_paid= res.total_paid_invoice;
+        this.total_deposit= res.total_deposits ;
+        this.total_unpaid= res.total_unpaid_invoice;
+        this.chart1_data = res.bar_data;
+        this.chart2_data = res.donut_data;
+
+        this.initChart();
+        this.initChart2();
+
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
  
   initChart() {
-    let chart = am4core.create("finance", am4charts.XYChart);
+    let chart = am4core.create("chart", am4charts.XYChart);
 	
 
     // legend
@@ -52,59 +85,60 @@ export class DashboardComponent implements OnInit {
 	marker.strokeWidth = 2;
 	marker.strokeOpacity = 1;
 	marker.stroke = am4core.color("#ccc");
-	chart.data = [
-	  {
-	    category: "Jan",
-	    total_invoice: 1200,
-	    paid: 590,
-	  },
-	  {
-	    category: "Feb",
-	    total_invoice: 2500,
-	    paid: 1500,
-	  },
-	  {
-	    category: "March",
-	    total_invoice: 3300,
-	    paid: 1400,
-	  },
-	  {
-	    category: "April",
-	    total_invoice: 2500,
-	    paid: 1500,
-	  },
-	  {
-	    category: "May",
-	    total_invoice: 5400,
-	    paid: 4500,
-	  },
-	  {
-	    category: "June",
-	    total_invoice: 4300,
-	    paid: 3800,
-	  },
-	  {
-	    category: "July",
-	    total_invoice: 1509,
-	    paid: 800,
-	  },
-	  {
-	    category: "Aug",
-	    total_invoice: 4300,
-	    paid: 3800,
-	  },
-	  {
-	    category: "Sept",
-	    total_invoice: 5400,
-	    paid: 3800,
-	  },
-	  {
-	    category: "Oct",
-	    total_invoice: 4300,
-	    paid: 3800,
-	  },
-	];
-	
+//	chart.data = [
+//	  {
+//	    category: "Jan",
+//	    total_invoice: 1200,
+//	    paid: 590,
+//	  },
+//	  {
+//	    category: "Feb",
+//	    total_invoice: 2500,
+//	    paid: 1500,
+//	  },
+//	  {
+//	    category: "March",
+//	    total_invoice: 3300,
+//	    paid: 1400,
+//	  },
+//	  {
+//	    category: "April",
+//	    total_invoice: 2500,
+//	    paid: 1500,
+//	  },
+//	  {
+//	    category: "May",
+//	    total_invoice: 5400,
+//	    paid: 4500,
+//	  },
+//	  {
+//	    category: "June",
+//	    total_invoice: 4300,
+//	    paid: 3800,
+//	  },
+//	  {
+//	    category: "July",
+//	    total_invoice: 1509,
+//	    paid: 800,
+//	  },
+//	  {
+//	    category: "Aug",
+//	    total_invoice: 4300,
+//	    paid: 3800,
+//	  },
+//	  {
+//	    category: "Sept",
+//	    total_invoice: 5400,
+//	    paid: 3800,
+//	  },
+//	  {
+//	    category: "Oct",
+//	    total_invoice: 4300,
+//	    paid: 3800,
+//	  },
+//	];
+//	
+  chart.data = this.chart1_data;
 	chart.colors.step = 2;
 	
 	var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -139,7 +173,7 @@ export class DashboardComponent implements OnInit {
 	}
 
   initChart2() {
-	let chart = am4core.create("finance2", am4charts.PieChart);
+	let chart = am4core.create("chart2", am4charts.PieChart);
 
 	
 	// Let's cut a hole in our Pie chart the size of 40% the radius
@@ -186,19 +220,19 @@ export class DashboardComponent implements OnInit {
 	pieSeries2.labels.template.fontSize = 10;
 	
 	// Add data
-	pieSeries2.data = [{
-	  "category": "Paid",
-	  "value": 35
-	}, {
-	  "category": "Partial",
-	  "value": 40
-	}, {
-	  "category": "Unpaid",
-	  "value": 25,
-	  "fill":"#dedede"
-	}];
-	
-	
+	//pieSeries2.data = [{
+	//  "category": "Paid",
+	//  "value": 35
+	//}, {
+	//  "category": "Partial",
+	//  "value": 40
+	//}, {
+	//  "category": "Unpaid",
+	//  "value": 25,
+	//  "fill":"#dedede"
+	//}];
+  pieSeries2.data = this.chart2_data;
+
 	pieSeries.adapter.add("innerRadius", function(innerRadius, target){
 	  return am4core.percent(40);
 	})

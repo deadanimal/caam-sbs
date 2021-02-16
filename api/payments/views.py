@@ -1,7 +1,7 @@
 import datetime, json
 from django.core.files.base import ContentFile
 
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
@@ -35,9 +35,9 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]   
 
 
@@ -52,14 +52,16 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         serializer_class = PaymentSerializer(queryset, many=True)
         return Response(serializer_class.data)
 
+    @action(methods=['POST'], detail=False)
+    def upload(self, request):
+        payment_id = request.data['payment_id']
+        queryset = Payments.objects.get(id=payment_id)
+        queryset.attachment = request.FILES['file']
+        queryset.save()
+        return Response(status.HTTP_200_OK)
 
     @action(methods=['POST'], detail=False)
     def manual(self, request, *args, **kwargs):
-
-        # storing attachment 
-        attachment = request.FILES['attachment']
-        extension = os.path.splitext(str(data_file_link))[1]
-        print("extenstion", extension)
         
         cid_id = CustomUser.objects.filter(id=request.data['cid']).values()[0]['cid_id']
         orgs = Organisation.objects.filter(cid_id=cid_id)
@@ -72,7 +74,6 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             "company_name": orgs.values()[0]['name'],
             "approved":False,
             "created_at_str": datetime.datetime.now().strftime("%d/%m/%Y"),
-            "attachment": doc
         }
 
         serializer = PaymentSerializer(data=temp_obj)
@@ -80,7 +81,7 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         print(test)
         serializer.save()
 
-        return Response(status.HTTP_200_OK)
+        return Response(serializer.data)
     
 
     @action(methods=['POST'], detail=False)
@@ -107,6 +108,7 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         payment_obj = Payments.objects.get(id=request.data['payment_id'])
         payment_obj.approved = True
         payment_obj.status = "APPROVED"
+        payment_obj.amount_receive = request.data['approved_amount']
         payment_obj.save()
 
         print("paymentObj", payment_obj.company_id)
@@ -136,10 +138,19 @@ class PaymentViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                     'amount_receive': balance 
             }
 
-            serializer_class = DepositsSerializer(data = deposit)
-            valid = serializer_class.is_valid(raise_exception=True)
-            if valid:
-                serializer_class.save()
+            deposit_obj = Deposits.objects.all().count()
+            if deposit_obj > 0:
+                prev_deposit = Deposits.objects.get(company_id=payment_obj.company_id)
+                prev_deposit.amount_receive = float(prev_deposit.amount_receive) + balance
+                prev_deposit.updated_at_str = datetime.datetime.now().strftime("%d/%m/%Y")
+                prev_deposit.save()
+
+            else:
+
+                serializer_class = DepositsSerializer(data = deposit)
+                valid = serializer_class.is_valid(raise_exception=True)
+                if valid:
+                    serializer_class.save()
 
         # create statement for payment
         temp_obj2 = {
@@ -171,9 +182,9 @@ class DepositsViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]   
 
 

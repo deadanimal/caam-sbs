@@ -11,7 +11,7 @@ import { Payment } from './payment.model';
 })
 export class PaymentService {
   url: string = environment.baseUrl + "v1/payments/";  
-  // url: string = "http://127.0.0.1:8000/v1/payments/";
+  //url: string = "http://127.0.0.1:8000/v1/payments/";
 
   // Data
   public payment: Payment
@@ -31,6 +31,17 @@ export class PaymentService {
     return this.http.post<any>(this.url + "online/", body).pipe(
       tap((res) => {
         console.log("Payment", res);
+      })
+    );
+  }
+
+  upload(id, fileToUpload: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('payment_id', id);
+    return this.http.post<any>(this.url + "upload/", formData).pipe(
+      tap((res)=>{
+        console.log("upload", res);         
       })
     );
   }

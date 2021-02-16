@@ -138,7 +138,6 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getFplData();
   }
 
   exportPdf(value: string) {
@@ -176,7 +175,8 @@ export class UploadComponent implements OnInit {
 
   // To get data on table FlightData
   getFplData() {
-
+    console.log("upload by", this.uploadBy)
+    console.log("fileid", this.fileId)
     this.fpldataService
       .filter("uploaded_by=" + this.uploadBy + "&fileupload_id=" + this.fileId)
       .subscribe((res) => {

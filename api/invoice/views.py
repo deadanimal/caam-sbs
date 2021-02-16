@@ -2,7 +2,7 @@ import os
 import datetime, pandas, time
 from datetime import timezone, datetime, timedelta
 from django.db.models import Count, Q, Sum
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
@@ -46,10 +46,12 @@ from accounts.serializers import (
     StatementSerializer
 )
 
+from payments.models import Deposits 
+
 def changeFormat(fpl_date):
     fpl_date = re.sub(r'/', '-', fpl_date)
     fpl_date = datetime.strptime(fpl_date, '%Y-%m-%d')
-    fpl_date = fpl_date.strftime('%Y-%m')
+    fpl_date = fpl_date.strftime('%Y-%b')
     return fpl_date
         
 
@@ -59,9 +61,9 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]   
 
 
@@ -74,7 +76,7 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def check_outstanding(self, request, *args, **kwargs):
         invoice = Invoices.objects.filter(status='UNPAID', invoice_total__gt=0).values()
         for i in invoice:
-            gap = datetime.utcnow()-datetime.strptime(i['inv_period'], "%Y-%m")
+            gap = datetime.utcnow()-datetime.strptime(i['inv_period'], "%Y-%b")
             print("gap", gap)
             print(type(i['created_at']))
             if gap > timedelta(days=30):
@@ -93,7 +95,7 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         
         fpl_ids = []
         temp = {}
-        init_running_no = 6543
+        init_running_no = Invoices.objects.all().count()
         ctgs = ['DOM', 'INB', 'LOC', 'OUB', 'OVF', 'NA']
         print(f"total_flight_with_cid: {Fpldata.objects.filter(cid__isnull=False).count()}")
 
@@ -135,7 +137,7 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                     "created_at_str":created_at_str,
                     "total_flight": total_flight,
                     "due_at_str":due_at_str,
-                    "invoice_no": init_running_no+1,
+                    "invoice_no": f"{init_running_no+1}/{datetime.now().strftime('Y')}",
                     "company_name": org.name,
                     "company_address": org.address_line_1,
                     "company_email": org.email_1,
@@ -183,6 +185,30 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                 valid = stmt_serializer.is_valid(raise_exception=True)
                 stmt_serializer.save()
 
+        deposits = Deposits.objects.filter(amount_receive__gt = 0).values()
+        for i in deposits:
+            deposit_amount = i['amount_receive']
+            invoices = Invoices.objects.exclude(status='PAID').filter(cid=i['company_id'])
+            for j in invoices:
+                deposit_amount = deposit_amount - j.invoice_total
+                
+                if deposit_amount >= 0:
+                    j.status = 'PAID'
+                    j.paid_amount = j.invoice_total
+                    j.save()
+
+                elif deposit_amount < 0:
+                    j.status = 'PARTIAL'
+                    j.paid_amount = abs(deposit_amount)
+                    j.save()
+
+            depo = Deposits.objects.get(company_id=i['company_id'])
+
+            deposit_amount =  deposit_amount if deposit_amount >= 0 else 0
+            depo.amount_receive = deposit_amount
+            depo.updated_at_str = datetime.now().strftime("%d/%m/%Y")
+            depo.save()
+
         return Response(status.HTTP_200_OK)
 
     @action(methods=['POST', 'GET'], detail=False)
@@ -206,8 +232,10 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         amount = [f"Subtotal: {invoice_data['sub_total']}", f"Surcharge: {invoice_data['surchage']}", f"Invoice Total: {invoice_data['invoice_total']}"]
         second_table = zip(item, amount)
 
-        html_string = render_to_string('invoice_en.html', {'first_table':first_table, 'second_table':second_table, 'invoice':invoice_data})
-        pdf = HTML(string=html_string).write_pdf(stylesheets=[BASE_DIR + '/staticfiles/rest_framework/css/bootstrap.min.css'])
+        html_string = render_to_string('invoice_en_2.html', {'first_table':first_table, 'second_table':second_table, 'invoice':invoice_data})
+        
+        css_path = f"{BASE_DIR}/templates/custom.css"
+        pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_path)])
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
@@ -217,7 +245,7 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         invoices = Invoices.objects.filter(Q(status='OUTSTANDING') & Q(invoice_total__gt=0) | Q(status='PARTIAL')).values()
         for i in invoices:
             print(i)
-            gap = datetime.now()-datetime.strptime(i['inv_period'], "%Y-%m")
+            gap = datetime.now()-datetime.strptime(i['inv_period'], "%Y-%b")
 
             if gap < timedelta(days=30):
                 Invoices.objects.filter(id=i['id']).update(month_0_1=i['invoice_total'])
@@ -299,15 +327,15 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     # insertion
     @action(methods=['POST'], detail=False)
     def insertion(self, request, *args, **kwargs):
-        reader = pandas.read_excel("/home/lenovo/Desktop/unpaid_invoice.xlsx")
-        inv_periods = pandas.date_range('2019-01-01', datetime.datetime.now().strftime("%Y-%m-%d"), freq='MS').strftime("%Y-%b").tolist()
+        reader = pandas.read_excel("/home/lenovo/Invoice.xlsx")
+        inv_periods = pandas.date_range('2019-01-01', datetime.now().strftime("%Y-%m-%d"), freq='MS').strftime("%Y-%b").tolist()
         pool_dict = [i for i in json.loads(reader.to_json(orient='records'))]
         for period in inv_periods:
             for i in pool_dict:
-                if datetime.datetime.fromtimestamp(i['created_at']/1000).strftime("%Y-%b") == period:
+                if datetime.fromtimestamp(i['created_at']/1000).strftime("%Y-%b") == period:
                     try:
                         org = Organisation.objects.get(cid=i['cid'])
-                        created_at_str = datetime.datetime.fromtimestamp(i['created_at']/1000).strftime("%Y-%m-%d")
+                        created_at_str = datetime.fromtimestamp(i['created_at']/1000).strftime("%Y-%m-%d")
                         temp_obj = {
                             "cid":i['cid'],
                             "inv_period": period,

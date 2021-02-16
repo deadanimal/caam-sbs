@@ -10,7 +10,7 @@ from django.http import HttpResponse
 import io
 import xlsxwriter
 
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated  
 from rest_framework.parsers import FileUploadParser, JSONParser
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -30,6 +30,10 @@ from aircrafts.models import Aircraft
 from organisations.models import Organisation
 
 from datetime import datetime
+
+# invoice
+from invoice.models import Invoices
+from payments.models import Deposits 
 
 from .models import (
     Charge,
@@ -91,9 +95,9 @@ class RateViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -165,9 +169,9 @@ class ChargeViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -211,9 +215,9 @@ class CallsignViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -293,9 +297,9 @@ class RouteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -374,9 +378,9 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -460,6 +464,8 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                         'ctg': json_dict['CTG'],
                         'dist': json_dict['DIST'],
                         'route': json_dict['ROUTE'],
+                        'rate': json_dict['RATE'],
+                        'amount': round(float(json_dict['DIST'])*float(json_dict['RATE']),2),
                         'fpl_type': 'VFR',
                         'uploaded_by': request.data['uploaded_by'],
                         'fileupload': fileupload_id,
@@ -596,6 +602,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 'dist': distance,
                                 'route': icao_route,
                                 'rate': rate,
+                                'amount': float(rate)*float(distance),
                                 'fpl_type': 'TFL',
                                 'uploaded_by': request.data['uploaded_by'],
                                 'error_remark': ''.join(error_remark),
@@ -619,6 +626,7 @@ class FileUploadViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
                                 dist = distance, 
                                 route = icao_route, 
                                 rate = rate,
+                                amount = float(rate)*float(distance),
                                 fpl_type = 'TFL',
                                 uploaded_by = CustomUser(id=request.data['uploaded_by']),
                                 error_remark = ''.join(error_remark),
@@ -673,9 +681,9 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -1022,9 +1030,9 @@ class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
 
         return [permission() for permission in permission_classes]    
 
@@ -1056,3 +1064,80 @@ class FpldataHistoryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         new_history = FpldataHistory.objects.create(user=user_obj, master_data_id=master_obj, reason = reason, remark=remark)
 
         return Response(status.HTTP_200_OK)
+
+
+class DashboardViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    queryset = Fpldata.objects.all()
+    serializer_class = FpldataSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [IsAuthenticated]
+        else:
+            permission_classes = [IsAuthenticated]
+
+        return [permission() for permission in permission_classes]    
+
+
+    def get_queryset(self):
+        queryset = FpldataHistory.objects.all()
+        return queryset    
+
+
+    @action(methods=['GET'], detail=False)
+    def dashboard(self, request, *args, **kwargs):
+
+        # cards 
+        inv = Invoices.objects.all().values()
+        total_invoice = len(inv)
+        total_paid_invoice = sum([i['paid_amount'] for i in inv])
+        total_unpaid_invoice = sum([i['invoice_total'] for i in inv]) - total_paid_invoice
+            
+        # sum of deposit
+        deps = Deposits.objects.all().values()
+        total_deposits = sum([i['amount_receive'] for i in deps])
+        
+        # donut charts
+        paid_len = Invoices.objects.filter(status='PAID').count()
+        unpaid_len = Invoices.objects.filter(status='UNPAID').count()
+        partial_len = abs(paid_len -unpaid_len)
+
+        donut_data = [
+            {'category': 'Paid', 'value': paid_len},
+            {'category': 'Unpaid', 'value': unpaid_len},
+            {'category': 'Partial', 'value': partial_len},
+        ]
+
+        # get invoices data
+        # group by period
+        # for each period
+        # compute total invoice amount
+        # compute total invoice paid amount
+
+        inv_periods = [i['inv_period'] for i in inv]
+        inv_periods = sorted(list(set(inv_periods)))
+        bar_data = []
+        temp = {}
+        for i in inv_periods:
+            temp['category'] = i  
+            temp['total_invoice'] = 0
+            temp['paid'] = 0
+            for j in inv:
+                if j['inv_period'] == i:
+                    temp['total_invoice'] += j['invoice_total']
+                    temp['paid'] += j['paid_amount']
+
+
+            bar_data.append(temp)
+            temp = {}
+        
+        temp_obj = {
+                "total_invoice": total_invoice,
+                "total_paid_invoice": total_paid_invoice,
+                "total_unpaid_invoice": total_unpaid_invoice,
+                "total_deposits": total_deposits,
+                "bar_data": bar_data,
+                "donut_data": donut_data
+            }
+
+        return Response(temp_obj)

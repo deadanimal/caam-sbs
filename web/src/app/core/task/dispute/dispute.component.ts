@@ -8,6 +8,8 @@ import { invoicelist } from 'src/app/variables/finance/invoice';
 import { FpldatasModel } from 'src/app/shared/services/fpldatas/fpldatas.model';
 import { FpldatasService } from 'src/app/shared/services/fpldatas/fpldatas.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import swal from "sweetalert2";
+
 import {
   Validators,
   FormBuilder,
@@ -24,6 +26,7 @@ import {
 })
 export class DisputeComponent implements OnInit {
   userObj: any;      
+  temp = [];
   disputeList: DisputeModel[] = [];
   fpls: FpldatasModel[] = [];
   archs: FpldatasModel[] = [];
@@ -60,6 +63,7 @@ export class DisputeComponent implements OnInit {
     this.fplFormGroup = this.formBuilder.group({
       id: new FormControl(""), 
       fpl_date_ts: new FormControl(""), 
+      fpl_date: new FormControl(""), 
       fpl_no : new FormControl(""), 
       aircraft_model: new FormControl(""), 
       dep : new FormControl(""), 
@@ -67,6 +71,8 @@ export class DisputeComponent implements OnInit {
       ctg : new FormControl(""), 
       dist : new FormControl(""), 
       route : new FormControl(""), 
+      error_type : new FormControl(""), 
+
     });
 
   }
@@ -112,6 +118,8 @@ export class DisputeComponent implements OnInit {
   }
 
   closeModal() {
+    console.log("orking");
+    console.log(this.modal);
     this.modal.hide()
   }
 
@@ -127,8 +135,27 @@ export class DisputeComponent implements OnInit {
     )
   }
 
+  filterTable($event) {
+    let val = $event.target.value;
+    this.temp = this.disputeList.filter(function (d) {
+      for (var key in d) {
+        if (d[key] != "" && d[key] != null) {
+          if (
+            d[key]
+              .toString()
+              .toLowerCase()
+              .indexOf(val.toString().toLowerCase()) !== -1
+          ) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+  }
+
+
   openSubModal(modalRef: TemplateRef<any>, row) {
-    this.modal.hide();
     this.fplFormGroup.patchValue({...row});
     this.modal = this.modalDialogService.show(modalRef, this.modalConfig);
   }
@@ -148,6 +175,14 @@ export class DisputeComponent implements OnInit {
     this.disputeService.get().subscribe(
       (res) => {
         this.disputeList = res;
+        this.temp = this.disputeList.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
       },
       (err) => {
         console.log(err);
@@ -162,6 +197,14 @@ export class DisputeComponent implements OnInit {
     this.disputeService.getFilter(body).subscribe(
       (res) => {
         this.disputeList = res;
+        this.temp = this.disputeList.map((prop, key) => {
+            return {
+              ...prop,
+              // id: key,
+              no: key,
+            };
+          });
+
       },
       (err) => {
         console.log(err); 
@@ -218,16 +261,26 @@ export class DisputeComponent implements OnInit {
 
   fplEdit() {
     let id = this.fplFormGroup.value['id']
+    console.log("data", this.fplFormGroup.value)
     this.fpldataService.update(id, this.fplFormGroup.value).subscribe(
       (res) => {
         console.log(res);
         this.getDisputedFpls();
-        this.modal.hide();
+        swal.fire({
+          title: "FPL updated",
+          text:
+            "update succesfull",
+          buttonsStyling: false,
+          confirmButtonText: "close",
+          customClass: {
+            confirmButton: "btn btn-success",
+          },
+        });
+
       },
       (err) => {
         console.log(err);
         this.getDisputedFpls();
-        this.modal.hide();
       }
     );
   }
@@ -237,15 +290,33 @@ export class DisputeComponent implements OnInit {
   }
 
   creditDebit() {
-    this.disputeService.createNote({"id": this.opened_id}).subscribe(
-    (res) => {
-      this.modal.hide()
-    },
-    (err) => {
-      this.modal.hide()
-    });
-  }
-
+    swal
+      .fire({
+        title: "Generate",
+        text: "Do you want to generate credit/debit?",
+        type: "question",
+        showCancelButton: true,
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-dark",
+        confirmButtonText: "Yes, Generate it",
+        cancelButtonClass: "btn btn-secondary",
+        cancelButtonText: "No",
+      })
+      .then((result) => {
+        if (result.value) {
+          this.disputeService.createNote({"id": this.opened_id}).subscribe(
+            (res) => {
+              this.modal.hide()
+            },
+            (err) => {
+              this.modal.hide()
+            });
+                
+        } else {
+          console.log("dismissed")
+        }
+      })
+    }
 }
 
 

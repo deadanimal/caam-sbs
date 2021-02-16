@@ -1,10 +1,12 @@
 import datetime, pandas, time
 from django.db.models import Count, Q, Sum
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated 
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
+
+from users.models import CustomUser
 
 from accounts.serializers import (
     StatementSerializer,
@@ -22,9 +24,9 @@ class StatementViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]   
 
 
@@ -32,15 +34,22 @@ class StatementViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         queryset = Statements.objects.all()
         return queryset
 
+    @action(methods=['POST'], detail=False)
+    def getfiltered(self, request, *args, **kwargs):
+        cid = CustomUser.objects.filter(id=request.data['user_id']).values()[0]['cid_id']
+        queryset = Statements.objects.filter(cid=cid).values()
+        return Response(queryset)
+
+
 class LedgerViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Ledgers.objects.all()
     serializer_class = LedgerSerializer
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         else:
-            permission_classes = [AllowAny]
+            permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]   
 
 

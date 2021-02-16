@@ -25,6 +25,9 @@ export class MasterDataComponent implements OnInit {
   fromDate: any;
   toDate: any;
 
+  temp1 = [];
+  temp2 = [];
+
   // Table
   active = 1;
   entries: number = 10;
@@ -104,7 +107,7 @@ export class MasterDataComponent implements OnInit {
     this.activeRow = event.row;
   }
 
-  filterTable($event) {
+  filterTable2($event) {
     let val = $event.target.value;
     console.log(val);
     // to do : filter and update tempApproved and tempArchived
@@ -120,5 +123,23 @@ export class MasterDataComponent implements OnInit {
     });
     
   }
+
+  filterTable($event) {
+    let val = $event.target.value;
+    console.log(val);
+    // to do : filter and update tempApproved and tempArchived
+    this.tempApprovedData = this.rowsApproveData.filter(function (d) {
+      for (var key in d) {
+        if (d[key]!="" && d[key]!=null) {
+          if (d[key].toString().toLowerCase().indexOf(val.toString().toLowerCase()) != -1) {
+            return true;
+          }
+        } 
+      }
+      return false;
+    });
+    
+  }
+
 }
 
