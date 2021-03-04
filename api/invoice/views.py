@@ -1,4 +1,5 @@
-import os
+import os, io
+import xlsxwriter
 import datetime, pandas, time
 from datetime import timezone, datetime, timedelta
 from django.db.models import Count, Q, Sum
@@ -375,4 +376,50 @@ class InvoiceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         queryset = Invoices.objects.filter(cid=cid_id).values()
         serializer_class = InvoiceSerializer(queryset, many=True)
         return Response(serializer_class.data)
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        report = Invoices.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'InvoiceList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('invoice_list.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = 'invoice_list.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
 

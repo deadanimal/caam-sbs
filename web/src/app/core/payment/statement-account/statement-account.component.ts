@@ -2,6 +2,8 @@ import { StatementAccountService } from './../../../shared/services/payment/stat
 import { StatementAccount } from './../../../shared/services/payment/statement-account/statement-account.model';
 import { AuthService } from './../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-statement-account',
@@ -102,6 +104,27 @@ export class StatementAccountComponent implements OnInit {
       return false;
     });
   }
+
+  exportPdf(value: string) {
+    this.statementAccountService.exportList({"file_type":value}).subscribe(
+      (res) => {
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "statement_of_account.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "statement_of_account.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+      }
+    )
+  }
+
 
 
 

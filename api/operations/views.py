@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Count, Q, Sum
 from django.db.models.functions import Substr
 from django.utils import timezone
-import json, os, regex, pandas, csv
+import json, os, regex, pandas, csv, re
 
 from datetime import datetime as dt
 from django.core import serializers
@@ -10,7 +10,7 @@ from django.http import HttpResponse
 import io
 import xlsxwriter
 
-from rest_framework.permissions import IsAuthenticated  
+from rest_framework.permissions import IsAuthenticated, AllowAny 
 from rest_framework.parsers import FileUploadParser, JSONParser
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -31,9 +31,9 @@ from organisations.models import Organisation
 
 from datetime import datetime
 
-# invoice
 from invoice.models import Invoices
 from payments.models import Deposits 
+from users.models import CustomUser
 
 from .models import (
     Charge,
@@ -75,6 +75,12 @@ def change_time_format(str_date, change_to_time=False):
         date = [str_date[i:j] for i,j in zip(split_points, split_points[1:] + [None])][0:3] 
         date = "/".join(date)
         return date
+
+def changeFormat(fpl_date):
+    fpl_date = re.sub(r'/', '-', fpl_date)
+    fpl_date = datetime.strptime(fpl_date, '%Y-%m-%d')
+    fpl_date = fpl_date.strftime('%Y-%b')
+    return fpl_date
 
 def change_time_modifier(str_date, modifier):
     datetime_obj = datetime.strptime(str_date, '%Y/%m/%d')
@@ -1072,9 +1078,12 @@ class DashboardViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [IsAuthenticated]
+            #permission_classes = [IsAuthenticated]
+            permission_classes = [AllowAny]
+
         else:
-            permission_classes = [IsAuthenticated]
+            # permission_classes = [IsAuthenticated]
+            permission_classes = [AllowAny]
 
         return [permission() for permission in permission_classes]    
 
@@ -1141,3 +1150,124 @@ class DashboardViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             }
 
         return Response(temp_obj)
+
+    @action(methods=['GET'], detail=False)
+    def dashboard_ops(self, request, *args, **kwargs):
+
+        # cards
+        oub = 0
+        inb = 0
+        ovf = 0
+        dom = 0
+
+        fpl = Fpldata.objects.all().values() 
+        for i in fpl:
+
+            ctg = i['ctg']
+
+            if ctg == 'DOM':
+                dom += 1
+            elif ctg == 'INB':                
+                inb += 1
+            elif ctg == 'OVF':
+                ovf += 1
+            elif ctg == 'OUT':
+                oub += 1
+
+        
+        # fpl tracker
+        bar_data = []
+        temp = {}
+        
+        date_group  = list(set([changeFormat(i['fpl_date']) for i in fpl]))
+        for i in date_group:
+            temp[i] = 0
+            for j in fpl:
+                if changeFormat(j['fpl_date']) == i:
+                    temp[i] += 1
+
+            bar_data.append(temp)
+
+        # top monthly 
+        top = {}
+        cids = [dict(t) for t in {tuple(d.items()) for d in Fpldata.objects.values('cid').filter(cid__isnull=False)}]
+        for cid in cids:
+            orgs = Organisation.objects.get(cid=cid['cid'])
+            fpldatas = Fpldata.objects.filter(cid=cid['cid'])
+            top[orgs.name] = len(fpldatas)
+
+        # sort from higher to low
+        donut_data = {}
+        top = sorted(top.items(), key=lambda x: x[1], reverse=True)    
+        for i in top:
+            donut_data[i[0]] = i[1]
+        
+        temp_obj = {
+                 'oub': oub,
+                 'inb': inb,
+                 'ovf': ovf,
+                 'dom': dom,
+                 'donut_data': [donut_data],
+                 'bar_data': bar_data
+             }
+
+        return Response(temp_obj)
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def dashboard_aln(self, request, *args, **kwargs):
+
+        cid_id = CustomUser.objects.filter(id=request.data['id']).values()[0]['cid_id']
+        inv = Invoices.objects.filter(cid=cid_id).values()
+        total_invoice = len(inv)
+        total_paid_invoice = sum([i['paid_amount'] for i in inv])
+        total_unpaid_invoice = sum([i['invoice_total'] for i in inv]) - total_paid_invoice
+            
+        # sum of deposit
+        deps = Deposits.objects.all().values()
+        total_deposits = sum([i['amount_receive'] for i in deps])
+        
+        # donut charts
+        paid_len = Invoices.objects.filter(status='PAID').count()
+        unpaid_len = Invoices.objects.filter(status='UNPAID').count()
+        partial_len = abs(paid_len -unpaid_len)
+
+        donut_data = [
+            {'category': 'Paid', 'value': paid_len},
+            {'category': 'Unpaid', 'value': unpaid_len},
+            {'category': 'Partial', 'value': partial_len},
+        ]
+
+        # get invoices data
+        # group by period
+        # for each period
+        # compute total invoice amount
+        # compute total invoice paid amount
+
+        inv_periods = [i['inv_period'] for i in inv]
+        inv_periods = sorted(list(set(inv_periods)))
+        bar_data = []
+        temp = {}
+        for i in inv_periods:
+            temp['category'] = i  
+            temp['total_invoice'] = 0
+            temp['paid'] = 0
+            for j in inv:
+                if j['inv_period'] == i:
+                    temp['total_invoice'] += j['invoice_total']
+                    temp['paid'] += j['paid_amount']
+
+
+            bar_data.append(temp)
+            temp = {}
+        
+        temp_obj = {
+                "total_invoice": total_invoice,
+                "total_paid_invoice": total_paid_invoice,
+                "total_unpaid_invoice": total_unpaid_invoice,
+                "total_deposits": total_deposits,
+                "bar_data": bar_data,
+                "donut_data": donut_data
+            }
+
+        return Response(temp_obj)
+

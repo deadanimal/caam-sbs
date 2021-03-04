@@ -132,6 +132,17 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+
+  selectPaymentType(val, payment) {
+    console.log(val);
+    if (val == 'manual') {
+      this.openModal(payment, '');
+    }
+    else {
+      // redirect to payment page
+    }
+  }
+
   FilterTable(field) {
     let search = field.toLocaleLowerCase();
     let tempAll = [];

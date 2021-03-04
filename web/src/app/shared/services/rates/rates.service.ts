@@ -11,7 +11,6 @@ import { RatesModel } from "./rates.model";
 })
 export class RatesService {
   url: string = environment.baseUrl + "v1/rates/";
-  // url: string = "http://.0.0.1:8000/v1/rates/"
 
   // Data
   public rmodels: RatesModel[] = [];

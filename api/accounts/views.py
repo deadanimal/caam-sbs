@@ -5,6 +5,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
 from rest_framework_extensions.mixins import NestedViewSetMixin
+import os, io
+import xlsxwriter
+from django.http import JsonResponse, HttpResponse
+
+from weasyprint import HTML, CSS
+from django.template.loader import render_to_string
+
 
 from users.models import CustomUser
 
@@ -39,6 +46,53 @@ class StatementViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         cid = CustomUser.objects.filter(id=request.data['user_id']).values()[0]['cid_id']
         queryset = Statements.objects.filter(cid=cid).values()
         return Response(queryset)
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        report = Statements.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'Statements.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = datetime.datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('statement_list.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = 'statements_list.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+
 
 
 class LedgerViewSet(NestedViewSetMixin, viewsets.ModelViewSet):

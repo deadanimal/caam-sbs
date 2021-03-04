@@ -11,7 +11,6 @@ import { AirportsModel } from "./airports.model";
 })
 export class AirportsService {
   url: string = environment.baseUrl + "v1/airports/";
-  // url: string = "http://.0.0.1:8000/v1/airports/"
 
   // Data
   public airmodels: AirportsModel[] = [];

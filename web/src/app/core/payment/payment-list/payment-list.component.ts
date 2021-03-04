@@ -7,6 +7,8 @@ import { NotifyService } from 'src/app/shared/handler/notify/notify.service';
 import { DatePipe } from '@angular/common';
 import swal from "sweetalert2";
 import { NgxSpinnerService } from "ngx-spinner";
+import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-payment-list',
@@ -297,6 +299,26 @@ export class PaymentListComponent implements OnInit {
     }
     console.log(this.temp2);
     console.log(this.unapproved_payments)
+  }
+  exportPdf(value: string) {
+    console.log("value", value)
+    this.paymentService.exportList({"file_type":value}).subscribe(
+      (res) => {
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "payments_list.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "payments_list.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+      }
+    )
   }
 
 }

@@ -11,7 +11,6 @@ import { Payment } from './payment.model';
 })
 export class PaymentService {
   url: string = environment.baseUrl + "v1/payments/";  
-  //url: string = "http://127.0.0.1:8000/v1/payments/";
 
   // Data
   public payment: Payment
@@ -106,4 +105,12 @@ export class PaymentService {
       })
     );
   }
+
+  exportList(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
+  }
+
 }

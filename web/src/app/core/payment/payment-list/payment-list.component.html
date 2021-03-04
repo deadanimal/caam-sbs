@@ -17,6 +17,14 @@
               <span class="btn-inner--icon"><i class="fas fa-info-circle"></i></span>
             </button> -->
           </div>
+        <div class="col-lg-6">
+          <select class="btn btn-sm btn-dark dropdown-toggle" style="float: right; background-color: black; color: white" id="selectid" (change)="exportPdf($event.target.value)">
+            <option disabled selected hidden><b>Export</b></option>
+            <option class="dropdown-item" value="PDF" style="color: white;">Export Pdf</option>
+            <option class="dropdown-item" value="XLSX" style="color: white;">Export Excel</option>
+          </select>
+        </div>
+
         </div>
       </div>
     </div>

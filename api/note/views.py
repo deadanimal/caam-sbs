@@ -1,4 +1,5 @@
-import os
+import os, io
+import xlsxwriter
 import datetime, pandas, time
 from datetime import timezone
 from django.db.models import Count, Q, Sum
@@ -118,6 +119,52 @@ class NoteViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
         pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_path)])
         response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
+        return response
+
+    @action(methods=['POST', 'GET'], detail=False)
+    def export(self, request, *args, **kwargs):
+        report = Note.objects.all().values()
+        report_list = [i for i in report]
+        export_type = request.data['file_type']
+
+        if export_type == "PDF":
+            file_name = 'NotesList.pdf'
+            css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
+            ctime = datetime.datetime.today().strftime('%Y-%m-%d-%H:%M:%S')
+            html_string = render_to_string('notes_list.html', {'report': report, 'ctime':ctime})
+            pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
+            response = HttpResponse(pdf, content_type='application/pdf')
+
+        elif export_type == "XLSX":
+
+            output = io.BytesIO()
+            file_name = 'invoice_list.xlsx'
+            workbook = xlsxwriter.Workbook(output)
+            worksheet = workbook.add_worksheet('Sheet One')
+            
+            # get header 
+            header = [*report_list[0]]
+
+            first_row = 0
+            for h in header:
+                col = header.index(h)
+                worksheet.write(first_row, col, h)
+
+            row = 1
+            for i in report_list:
+                for _key, _value in i.items():
+                    col = header.index(_key)
+                    worksheet.write(row, col, str(_value))
+                row+=1
+
+            workbook.close()
+            output.seek(0)
+             
+            response = HttpResponse(
+                output,
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
         response['Content-Disposition'] = 'attachment; filename="' + file_name +'"'
         return response
 
