@@ -10,7 +10,6 @@ import { Observable } from "rxjs";
 })
 export class DashboardService {
   url: string = environment.baseUrl + "v1/dashboard/";
-  //url: string = "http://127.0.0.1:8000/v1/dashboard/";
 
   constructor(
     private http: HttpClient
@@ -23,4 +22,20 @@ export class DashboardService {
       })
     );
   }
+  get2(): Observable<any> {
+    return this.http.get<any>(this.url + "dashboard_ops/").pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+  get3(body): Observable<any> {
+    return this.http.post<any>(this.url + "dashboard_aln/", body).pipe(
+      tap((res) => {
+        console.log(res);
+      })
+    );
+  }
+
+
 }

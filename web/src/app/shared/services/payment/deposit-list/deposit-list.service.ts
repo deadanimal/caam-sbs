@@ -11,8 +11,6 @@ import { DepositList } from './deposit-list.model';
 })
 export class DepositListService {
   url: string = environment.baseUrl + "v1/deposits/";
-  // url: string = "http://127.0.0.1:8000/v1/deposits/";
-
 
   // Data
   public depositList: DepositList

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DashboardService } from 'src/app/shared/services/dashboard/dashboard.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import swal from "sweetalert2";
 import * as L from "leaflet";
 import * as am4core from "@amcharts/amcharts4/core";
@@ -35,21 +36,90 @@ export class DashboardComponent implements OnInit {
 
   airportList = []//AirportRoutes.AirportRoutes;
 
+  ctype: any;
+
   // card data
   total_invoice: any;
   total_paid: any;
   total_deposit: any;
   total_unpaid: any;
 
+  inb: any;
+  oub: any;
+  ovf: any;
+  dom: any;
+
   chart1_data: any[];
   chart2_data: any[];
 
   constructor(
     private dashboardService: DashboardService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
-    this.getData();
+    this.checkUser();
+  }
+
+  checkUser() {
+    const user_detail = this.authService.decodedToken();
+    const user_type = user_detail.user_type;
+    const user_id = user_detail.user_id;
+
+    this.ctype = user_type;
+
+    if (user_type == 'FIN' || user_type == 'HOD') {
+      this.getData();
+    }
+    else if (user_type == 'APT' || user_type == 'OPS'){
+      this.getData2();
+    }
+
+    else {
+      this.getData3(user_id)
+    }
+
+  }
+
+  getData3(user_id){
+    let body = { 'id': user_id }
+    console.log("la puta ama" + user_id);
+    this.dashboardService.get3(body).subscribe(
+      (res) => {
+        console.log(res);
+        this.total_invoice = res.total_invoice;
+        this.total_paid= res.total_paid_invoice;
+        this.total_deposit= res.total_deposits ;
+        this.total_unpaid= res.total_unpaid_invoice;
+        this.chart1_data = res.bar_data;
+        this.chart2_data = res.donut_data;
+
+        this.initChart();
+        this.initChart2();
+
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+
+  }
+
+  getData2() {
+    console.log("soy la puta ama");
+    this.dashboardService.get2().subscribe(
+      (res) => {
+        console.log(res);
+        this.oub = res.oub;
+        this.inb = res.inb; 
+        this.ovf = res.ovf;
+        this.dom = res.dom; 
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
   getData() {

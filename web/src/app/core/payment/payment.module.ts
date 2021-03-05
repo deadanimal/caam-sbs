@@ -30,6 +30,7 @@ import { PaymentListComponent } from './payment-list/payment-list.component';
 import { OutstandingPaymentComponent } from './outstanding-list/outstanding-payment.component';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { OnlinePaymentComponent } from './online-payment/online-payment/online-payment.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: 'right',
@@ -72,7 +73,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     StatementAccountComponent,
     OutstandingPaymentComponent,
     DepositListComponent,
-    PaymentListComponent
+    PaymentListComponent,
+    OnlinePaymentComponent
   ],
   providers: [
     { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },

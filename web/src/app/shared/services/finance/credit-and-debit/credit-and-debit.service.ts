@@ -11,8 +11,6 @@ import { CreditDebit } from './credit-and-debit.model';
 })
 export class CreditDebitService {
   url: string = environment.baseUrl + "v1/note/";
-  // url: string = "http://127.0.0.1:8000/v1/note/";
-
 
   // Data
   public creditDebit: CreditDebit
@@ -95,5 +93,13 @@ export class CreditDebitService {
     }
     return this.http.post<any>(this.url + "downloadpdf/", body, HTTPOptions);
   }
+
+  exportList(body): Observable<any> {
+    var HTTPOptions = {
+      'responseType': 'blob' as 'json'
+    }
+    return this.http.post<any>(this.url + "export/", body, HTTPOptions);
+  }
+
 
 }

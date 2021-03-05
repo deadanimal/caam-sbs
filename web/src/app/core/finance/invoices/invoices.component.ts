@@ -194,6 +194,31 @@ export class InvoicesComponent implements OnInit {
          this.spinner.hide();
     }, 10000);
   }
+
+  exportPdf(value: string) {
+    console.log("value", value)
+    this.spinner.show()
+    this.invoiceService.exportList({"file_type":value}).subscribe(
+      (res) => {
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "invoice_list.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "invoice_list.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
+        this.spinner.hide()
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+        this.spinner.hide()
+      }
+    )
+  }
+
 }
 
 

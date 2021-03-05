@@ -11,8 +11,6 @@ import { UploadsModel } from "./uploads.model";
 })
 export class UploadsService {
   url: string = environment.baseUrl + "v1/file-uploads/";
-  // url: string = "http://127.0.0.1:8000/v1/file-uploads/";
-
 
   // Data
   public umodels: UploadsModel[] = [];

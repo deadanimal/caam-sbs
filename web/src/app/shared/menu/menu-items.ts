@@ -59,6 +59,7 @@ export const AirlineRoutes: RouteInfo[] = [
     collapse: "payment",
     isCollapsed: true,
     children: [
+      // { path: "online", title: "Pay Online", type: "link" },    
       { path: "payment", title: "Payment", type: "link" },    
       { path: "statement-account", title: "Statement of Account", type: "link" },            
     ]

@@ -230,6 +230,27 @@ export class CreditDebitNoteComponent implements OnInit {
       });
   }
 
+  exportPdf(value: string) {
+    console.log("value", value)
+    this.creditDebitService.exportList({"file_type":value}).subscribe(
+      (res) => {
+        let filename: string;
+        console.log("this is res", res)
+        if (value=="PDF") {
+          filename = "credit_debit_list.pdf"
+        }
+        else if (value=="XLSX") {
+          filename = "credit_debit_list.xlsx"
+        }
+        FileSaver.saveAs(res, filename)
+      },
+      (err) => {
+        console.log("this is err")
+        console.log(err)
+      }
+    )
+  }
+
 }
 
 

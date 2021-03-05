@@ -18,7 +18,8 @@
           </nav>
         </div>
       </div>
-      <div class="row">
+      <!--hod/fin/aln -->
+      <div *ngIf="ctype=='HOD'||ctype=='ALN'||ctype=='FIN'" class="row">
         <div class="col-xl-3 col-md-6">
           <div class="card card-stats border-bottom border-primary">
             <div class="card-body">
@@ -99,6 +100,89 @@
           </div>
         </div>
       </div>
+
+      <!-- operations/apt -->
+      <div *ngIf="ctype=='APT'||ctype=='OPS'" class="row">
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-primary">
+            <div class="card-body">
+              <div class="row pt-3 pb-3">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape rounded-circle shadow" style="background: #e4d7fc"
+                  >
+                    <i class="fas fa-plane text-primary"> </i>
+                  </div>
+                </div>
+                <div style="display: block;">
+                        <span class="h3 font-weight-bold mb-0 text-left">{{ inb }}</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-left">INBOUND FLIGHT</h5>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-primary">
+            <div class="card-body">
+              <div class="row pt-3 pb-3">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape  rounded-circle shadow" style="color: #08c7fc; background:#cff5ff"
+                  >
+                    <i class="fas fa-plane"> </i>
+                  </div>
+                </div>
+                <div style="display: block;">
+                        <span class="h3 font-weight-bold mb-0 text-left">{{ oub }}</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-left">OUTBOUND FLIGHT</h5>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-primary">
+            <div class="card-body">
+              <div class="row pt-3 pb-3">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape rounded-circle shadow" style="color: #faac02; background: #fce1a7"
+                  >
+                    <i class="fas fa-plane"> </i>
+                  </div>
+                </div>
+                <div style="display: block;">
+                        <span class="h3 font-weight-bold mb-0 text-left">{{ dom }}</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-left">DOMESTIC FLIGHT</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-stats border-bottom border-primary">
+            <div class="card-body">
+              <div class="row pt-3 pb-3">
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape rounded-circle shadow" style="color:#f005a1; background:#fae1f1"
+                  >
+                    <i class="fas fa-plane"></i>
+                  </div>
+                </div>
+                <div style="display: block;">
+                  <span class="h3 font-weight-bold mb-0 text-left">{{ ovf }}</span>
+                  <h5 class="card-title text-uppercase text-muted mb-0 text-left">OVER FLIGHT</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -117,7 +201,7 @@
       </div>
     </div>
   </div> -->
-      <div class="card">
+      <div *ngIf="ctype=='HOD'||ctype=='ALN'||ctype=='FIN'" class="card">
         <div class="card-header"><h3 class="text-left">FIN Tracker</h3></div>
         <div class="card-body">
           <div class="row">
@@ -130,5 +214,20 @@
              </div>
         </div>
       </div>
+
+      <div *ngIf="ctype=='APT'||ctype=='OPS'" class="card">
+        <div class="card-header"><h3 class="text-left">FPL Tracker</h3></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-8">
+              <div id="chart3" style="width: 100%; height: 400px;"></div>
+            </div>
+            <div class="col-xl-4">
+                <div id="chart4" style="width: 100%; height: 400px;"></div>
+            </div>
+             </div>
+        </div>
+      </div>
+
 </div>
 
