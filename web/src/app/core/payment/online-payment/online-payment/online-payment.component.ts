@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnlinePaymentComponent implements OnInit {
 
+  focus 
   constructor() { }
 
   ngOnInit() {
