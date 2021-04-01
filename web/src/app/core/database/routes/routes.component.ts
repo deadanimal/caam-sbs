@@ -255,7 +255,7 @@ export class RoutesComponent implements OnInit {
   }
 
   entriesChange($event) {
-    this.entries = $event.target.value;
+    this.entries = +$event.target.value;
   }
   
   exportPdf(value: string) {

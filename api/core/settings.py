@@ -21,7 +21,8 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = [
     'caam-sbs-api.pipe.my',
-    '127.0.0.1'
+    '127.0.0.1',
+    'localhost'
 ]
 
 # Application definition
@@ -225,8 +226,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
-GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
+#GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+#GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 
 ANYMAIL = {
     "SENDGRID_API_KEY": config('SENDGRID_API_KEY'),
@@ -239,4 +240,4 @@ CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-CELERY_BEAT_SCHEDULE = {}
+

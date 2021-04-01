@@ -979,7 +979,7 @@ class FpldataViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
             file_name = 'FileUpload.pdf'
             css_file = 'https://pipeline-project.sgp1.digitaloceanspaces.com/mbpp-elatihan/css/template.css'
             ctime = dt.today().strftime('%Y-%m-%d-%H:%M:%S')
-            html_string = render_to_string('route_en.html', {'report': report, 'ctime':ctime})
+            html_string = render_to_string('fpl.html', {'report': report, 'ctime':ctime})
             pdf = HTML(string=html_string).write_pdf(stylesheets=[CSS(css_file)])
             response = HttpResponse(pdf, content_type='application/pdf')
 

@@ -245,20 +245,25 @@
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <label>Company Name</label>
                             <input type="text" class="form-control" placeholder="company name" formControlName="name" />
                           </div>
                           <div class="form-group">
+                            <label>Company ID</label>
                             <input type="text" class="form-control" placeholder="cid" formControlName="cid_id" />
                           </div>
                           <div class="form-group">
+                            <label>First Email</label>
                             <input type="email" class="form-control" placeholder="first email"
                               formControlName="email_1" />
                           </div>
                           <div class="form-group">
+                            <label>Third Email</label>
                             <input type="email" class="form-control" placeholder="third email"
                               formControlName="email_3" />
                           </div>
                           <div class="form-group">
+                            <label>Office Number</label>
                             <input type="tel" class="form-control" placeholder="office number"
                               formControlName="office_num" />
                           </div>
@@ -266,22 +271,27 @@
 
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <label>Short Name</label>
                             <input type="text" class="form-control" placeholder="Shortname (not more than 6 character)"
                               formControlName="shortname" />
                           </div>
                           <div class="form-group">
+                            <label>Second Email</label>
                             <input type="email" class="form-control" placeholder="second email"
                               formControlName="email_2" />
                           </div>
                           <div class="form-group">
+                            <label>Fourth Email</label>
                             <input type="email" class="form-control" placeholder="fourth email"
                               formControlName="email_4" />
                           </div>
                           <div class="form-group">
+                            <label>Mobile Number</label>
                             <input type="tel" class="form-control" placeholder="mobile number"
                               formControlName="mobile_num" />
                           </div>
                           <div class="form-group">
+                            <label>Fax Number</label>
                             <input type="tel" class="form-control" placeholder="fax number"
                               formControlName="fax_number" />
                           </div>
@@ -293,14 +303,17 @@
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <label>PIC Name</label>
                             <input type="tel" class="form-control" placeholder="pic name"
                               formControlName="pic_name" />
                           </div>
                           <div class="form-group">
+                            <label>PIC Number</label>
                             <input type="tel" class="form-control" placeholder="pic number"
                               formControlName="pic_num" />
                           </div>
                           <div class="form-group">
+                            <label>PIC Email</label>
                             <input type="tel" class="form-control" placeholder="pic email"
                               formControlName="pic_email" />
                           </div>
@@ -308,10 +321,12 @@
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <label>PIC Position</label>
                             <input type="tel" class="form-control" placeholder="pic position"
                               formControlName="pic_position" />
                           </div>
                           <div class="form-group">
+                            <label>PIC Departmnet</label>
                             <input type="tel" class="form-control" placeholder="pic department"
                               formControlName="pic_department" />
                           </div>
@@ -324,30 +339,37 @@
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <label>Address Line 1</label>
                             <input type="text" class="form-control" placeholder="address line 1"
                               formControlName="address_line_1" />
                           </div>
                           <div class="form-group">
+                            <label>Address Line 2</label>
                             <input type="text" class="form-control" placeholder="address line 2"
                               formControlName="address_line_2" />
                           </div>
                           <div class="form-group">
+                            <label>Address Line 3</label>
                             <input type="text" class="form-control" placeholder="address line 3"
                               formControlName="address_line_3" />
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <label>Postcode</label>
                             <input type="number" class="form-control" placeholder="postcode"
                               formControlName="postcode" />
                           </div>
                           <div class="form-group">
+                            <label>City</label>
                             <input type="text" class="form-control" placeholder="city" formControlName="city" />
                           </div>
                           <div class="form-group">
+                            <label>State</label>
                             <input type="text" class="form-control" placeholder="state" formControlName="state" />
                           </div>
                           <div class="form-group">
+                            <label>Country</label>
                             <input type="text" class="form-control" placeholder="country"
                               formControlName="country" />
                           </div>
@@ -474,12 +496,11 @@
                 <label>
                   Show
                   <select name="datatable_length" aria-controls="datatable" class="form-control form-control-sm"
-                    (change)="entriesChange($event)">
-                    <option value="5" [selected]="entries == 5">5</option>
-                    <option value="10" [selected]="entries == 10">10</option>
-                    <option value="25" [selected]="entries == 25">25</option>
-                    <option value="50" [selected]="entries == 50">50</option>
-                    <option value="-1" [selected]="entries == -1">All</option>
+                    (change)="entriesChange($event.target.value)">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
                   </select>
                   entries
                 </label>
@@ -496,13 +517,13 @@
           </div>
 
           <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-            [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined" [rows]="temp" [rowClass]="getRowClass"
-            (activate)="onActivate($event)" [scrollbarH]="true">
+            [rowHeight]="'auto'" [limit]="entries" [rows]="temp" [rowClass]="getRowClass"
+            (activate)="onActivate($event)" [scrollbarH]="true" style="overflow-y: scroll;">
             <ngx-datatable-column>
               <ng-template ngx-datatable-header-template>
                 <span>No.</span>
               </ng-template>
-              <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+              <ng-template let-row="temp" let-rowIndex="rowIndex" ngx-datatable-cell-template>
                 {{ rowIndex + 1 }}
               </ng-template>
             </ngx-datatable-column>

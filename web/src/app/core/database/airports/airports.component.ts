@@ -129,7 +129,7 @@ export class AirportsComponent implements OnInit {
   }
 
   entriesChange($event) {
-    this.entries = $event.target.value;
+    this.entries = +$event.target.value;
   }
 
   filterTable($event) {

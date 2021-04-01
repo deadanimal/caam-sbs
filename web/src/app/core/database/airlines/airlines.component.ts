@@ -97,7 +97,9 @@ export class AirlinesComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.entries = 5;
+  }
 
   submit() {
     // patch role value == "ALN" into temp formgroup var
@@ -182,9 +184,6 @@ export class AirlinesComponent implements OnInit {
     );
   }
 
-  entriesChange($event) {
-    this.entries = $event.target.value;
-  }
 
   exportPdf(value: string) {
     console.log("value", value)
@@ -327,6 +326,10 @@ export class AirlinesComponent implements OnInit {
           });
         }
       });
+  }
+
+  entriesChange(val) {
+    this.entries = +val;
   }
 
   getRowClass = (row) => {

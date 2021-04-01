@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
       this.getData();
     }
     else if (user_type == 'APT' || user_type == 'OPS'){
-      this.getData2();
+      this.getData();
     }
 
     else {
